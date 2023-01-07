@@ -20,7 +20,7 @@ nodes:
     ipAddress: 172.16.30.101
     controlPlane: true
     installDisk: /dev/nvme0n1
-    disableSearchDomain: true
+    # disableSearchDomain: true
     networkInterfaces:
       - interface: eth0
         dhcp: true
@@ -30,7 +30,7 @@ nodes:
     ipAddress: 172.16.30.102
     controlPlane: true
     installDisk: /dev/nvme0n1
-    disableSearchDomain: true
+    # disableSearchDomain: true
     networkInterfaces:
       - interface: eth0
         dhcp: true
@@ -40,7 +40,7 @@ nodes:
     ipAddress: 172.16.30.103
     controlPlane: true
     installDisk: /dev/nvme0n1
-    disableSearchDomain: true
+    # disableSearchDomain: true
     networkInterfaces:
       - interface: eth0
         dhcp: true
@@ -50,7 +50,7 @@ nodes:
     ipAddress: 172.16.30.104
     controlPlane: false
     installDisk: /dev/nvme0n1
-    disableSearchDomain: true
+    # disableSearchDomain: true
     networkInterfaces:
       - interface: eth0
         dhcp: true
@@ -63,7 +63,7 @@ nodes:
     ipAddress: 172.16.30.105
     controlPlane: false
     installDisk: /dev/nvme0n1
-    disableSearchDomain: true
+    # disableSearchDomain: true
     networkInterfaces:
       - interface: eth0
         dhcp: true
@@ -76,7 +76,7 @@ nodes:
     ipAddress: 172.16.30.106
     controlPlane: false
     installDisk: /dev/nvme0n1
-    disableSearchDomain: true
+    # disableSearchDomain: true
     networkInterfaces:
       - interface: eth0
         dhcp: true
@@ -89,7 +89,7 @@ nodes:
     ipAddress: 172.16.30.107
     controlPlane: false
     installDisk: /dev/nvme0n1
-    disableSearchDomain: true
+    # disableSearchDomain: true
     networkInterfaces:
       - interface: eth0
         dhcp: true
@@ -102,7 +102,7 @@ nodes:
     ipAddress: 172.16.30.108
     controlPlane: false
     installDisk: /dev/nvme0n1
-    disableSearchDomain: true
+    # disableSearchDomain: true
     networkInterfaces:
       - interface: eth0
         dhcp: true
@@ -115,7 +115,7 @@ nodes:
     ipAddress: 172.16.30.109
     controlPlane: false
     installDisk: /dev/nvme0n1
-    disableSearchDomain: true
+    # disableSearchDomain: true
     networkInterfaces:
       - interface: eth0
         dhcp: true
