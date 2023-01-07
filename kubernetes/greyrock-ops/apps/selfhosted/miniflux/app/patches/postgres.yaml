@@ -1,0 +1,37 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: miniflux
+  namespace: selfhosted
+spec:
+  values:
+    initContainers:
+      init-db:
+        image: ghcr.io/onedr0p/postgres-initdb:14.6@sha256:9f430f444231161e09506e53fc77318c045d407688edc8477da908bcae009b2d
+        env:
+          - name: POSTGRES_HOST
+            valueFrom:
+              secretKeyRef:
+                name: miniflux-secrets
+                key: POSTGRES_HOST
+          - name: POSTGRES_DB
+            valueFrom:
+              secretKeyRef:
+                name: miniflux-secrets
+                key: POSTGRES_DB
+          - name: POSTGRES_SUPER_PASS
+            valueFrom:
+              secretKeyRef:
+                name: miniflux-secrets
+                key: POSTGRES_SUPER_PASS
+          - name: POSTGRES_USER
+            valueFrom:
+              secretKeyRef:
+                name: miniflux-secrets
+                key: POSTGRES_USER
+          - name: POSTGRES_PASS
+            valueFrom:
+              secretKeyRef:
+                name: miniflux-secrets
+                key: POSTGRES_PASSWORD

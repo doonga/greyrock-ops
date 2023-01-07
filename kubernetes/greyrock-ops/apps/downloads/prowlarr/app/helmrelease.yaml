@@ -1,0 +1,76 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: prowlarr
+  namespace: downloads
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 1.2.1
+      interval: 30m
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+
+  values:
+    image:
+      repository: ghcr.io/onedr0p/prowlarr-nightly
+      tag: 1.1.0.2246@sha256:7969da8e0d8fbc1d40726d3b06c2b86b5648465722d3ba981a0119110effe31f
+
+    podAnnotations:
+      setGateway: "true"
+      secret.reloader.stakater.com/reload: prowlarr-secrets
+
+    podSecurityContext:
+      runAsUser: 568
+      runAsGroup: 568
+      fsGroup: 568
+      fsGroupChangePolicy: "OnRootMismatch"
+
+    env:
+      PROWLARR__INSTANCE_NAME: Prowlarr
+      PROWLARR__PORT: &port 9696
+      PROWLARR__LOG_LEVEL: info
+      PROWLARR__ANALYTICS_ENABLED: "False"
+      PROWLARR__AUTHENTICATION_METHOD: External
+      PROWLARR__API_KEY:
+        valueFrom:
+          secretKeyRef:
+            name: prowlarr-secrets
+            key: api_key
+
+    hostname: prowlarr
+
+    service:
+      main:
+        ports:
+          http:
+            port: *port
+
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: "nginx"
+        hosts:
+          - host: &host "prowlarr.bjw-s.dev"
+            paths:
+              - path: /
+        tls:
+          - hosts:
+              - *host
+
+    persistence:
+      config:
+        enabled: true
+        existingClaim: prowlarr-config
+
+    resources:
+      requests:
+        cpu: 20m
+        memory: 273M
+      limits:
+        memory: 1841M

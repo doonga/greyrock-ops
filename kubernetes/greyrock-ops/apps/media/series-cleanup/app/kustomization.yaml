@@ -1,0 +1,20 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: media
+resources:
+  - ./pvc.yaml
+  - ./externalsecret.yaml
+  - ./cronjob.yaml
+  - ./replicationsource.yaml
+configMapGenerator:
+  - name: series-cleanup-config
+    files:
+      - config/settings.json
+generatorOptions:
+  disableNameSuffixHash: true
+  annotations:
+    kustomize.toolkit.fluxcd.io/substitute: disabled
+commonLabels:
+  app.kubernetes.io/name: series-cleanup
+  app.kubernetes.io/instance: series-cleanup

@@ -1,0 +1,17 @@
+---
+version: "3"
+
+vars:
+  PROJECT_DIR:
+    sh: "git rev-parse --show-toplevel"
+
+includes:
+  cluster: .taskfiles/cluster.yaml
+  externalsecrets: .taskfiles/externalsecrets/tasks.yaml
+  volsync: .taskfiles/volsync/tasks.yaml
+
+tasks:
+  default:
+    silent: true
+    cmds:
+      - task -l

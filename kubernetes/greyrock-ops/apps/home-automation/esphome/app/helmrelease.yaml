@@ -1,0 +1,74 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: esphome
+  namespace: home-automation
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 1.2.1
+      interval: 30m
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+
+  values:
+    image:
+      repository: esphome/esphome
+      tag: 2022.12.3
+
+    podAnnotations:
+      secret.reloader.stakater.com/reload: esphome-secrets,esphome-deploykey
+      k8s.v1.cni.cncf.io/networks: macvlan-static-iot-esphome
+
+    service:
+      main:
+        ports:
+          http:
+            port: 6052
+
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: "nginx"
+        hosts:
+          - host: &host "esphome.bjw-s.dev"
+            paths:
+              - path: /
+        tls:
+          - hosts:
+              - *host
+
+    persistence:
+      config:
+        enabled: true
+        existingClaim: esphome-config
+      secrets:
+        enabled: true
+        type: secret
+        name: esphome-secrets
+        mountPath: /config/secrets.yaml
+        subPath: secrets.yaml
+      esphome-cache:
+        enabled: true
+        type: emptyDir
+        mountPath: /config/.esphome
+      deploy-key:
+        enabled: true
+        type: secret
+        name: esphome-deploykey
+        defaultMode: 256
+        subPath:
+          - path: id_ed25519
+            mountPath: /root/.ssh/id_ed25519
+
+    resources:
+      requests:
+        cpu: 300m
+        memory: 512M
+      limits:
+        memory: 2048M

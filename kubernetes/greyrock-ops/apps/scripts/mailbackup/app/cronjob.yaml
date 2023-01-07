@@ -1,0 +1,61 @@
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: mailbackup
+  namespace: scripts
+  labels:
+    app: mailbackup
+spec:
+  schedule: "0 2 * * *"
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          automountServiceAccountToken: false
+
+          securityContext:
+            runAsUser: 568
+            runAsGroup: 568
+            fsGroup: 568
+            fsGroupChangePolicy: "OnRootMismatch"
+            supplementalGroups:
+              - 65541
+
+          containers:
+            - name: mailbackup-2020
+              image: ghcr.io/bjw-s/getmail:6.18.11@sha256:42d3c4f1a4213d9482daf9fab0c9e1a21bfff42064e0417da339036220367dd4
+              imagePullPolicy: IfNotPresent
+              command:
+                - "/scripts/mailbackup.sh"
+              volumeMounts:
+                - name: mailbackup-script
+                  mountPath: /scripts/mailbackup.sh
+                  subPath: mailbackup.sh
+                  readOnly: true
+                - name: secrets
+                  mountPath: /config
+                  readOnly: true
+                - mountPath: /data
+                  name: mailbackup
+
+          restartPolicy: OnFailure
+
+          volumes:
+            - name: mailbackup-script
+              projected:
+                defaultMode: 0775
+                sources:
+                  - configMap:
+                      name: mailbackup
+                      items:
+                        - key: mailbackup.sh
+                          path: mailbackup.sh
+            - name: secrets
+              secret:
+                secretName: mailbackup-secrets
+            - name: mailbackup
+              nfs:
+                server: "nas.bjw-s.tech"
+                path: /volume1/Backup/Bernd/Email
