@@ -94,15 +94,24 @@ spec:
         config:
           osdsPerDevice: "1"
         nodes:
-          - name: "delta"
+          - name: "worker-01"
             devices:
-              - name: "/dev/disk/by-id/nvme-Samsung_SSD_980_1TB_S649NX0RB57009Y"
-          - name: "enigma"
+              - name: "/dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_BTWL503001EB800RGN"
+          - name: "worker-02"
             devices:
-              - name: "/dev/disk/by-id/nvme-Samsung_SSD_980_1TB_S649NX0RB57050E"
-          - name: "felix"
+              - name: "/dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_BTWL406300TG800RGN1"
+          - name: "worker-03"
             devices:
-              - name: "/dev/disk/by-id/nvme-CT1000P1SSD8_202228759489"
+              - name: "/dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_BTWL503001AJ800RGN"
+          - name: "worker-04"
+            devices:
+              - name: "/dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_PHWL4343005F800RGN"
+          - name: "worker-05"
+            devices:
+              - name: "/dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_PHWL503400YV800RGN"
+          - name: "worker-06"
+            devices:
+              - name: "/dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_PHWL437601XW800RGN"
 
     ingress:
       ingressClassName: "nginx"
@@ -110,7 +119,7 @@ spec:
         annotations:
           nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
         host:
-          name: &host rook-${CLUSTER_NAME}.bjw-s.dev
+          name: &host rook-${CLUSTER_NAME}.greyrock.tech
           path: "/"
         tls:
           - hosts:

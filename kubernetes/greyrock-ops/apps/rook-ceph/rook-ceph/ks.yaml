@@ -8,11 +8,11 @@ metadata:
     substitution.flux.home.arpa/enabled: "true"
 spec:
   interval: 10m
-  path: "./kubernetes/cluster-0/apps/rook-ceph/rook-ceph/operator"
+  path: "./kubernetes/greyrock-ops/apps/rook-ceph/rook-ceph/operator"
   prune: true
   sourceRef:
     kind: GitRepository
-    name: home-ops-kubernetes
+    name: greyrock-ops-kubernetes
   wait: true
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
@@ -24,11 +24,11 @@ metadata:
     substitution.flux.home.arpa/enabled: "true"
 spec:
   interval: 10m
-  path: "./kubernetes/cluster-0/apps/rook-ceph/rook-ceph/cluster"
+  path: "./kubernetes/greyrock-ops/apps/rook-ceph/rook-ceph/cluster"
   prune: true
   sourceRef:
     kind: GitRepository
-    name: home-ops-kubernetes
+    name: greyrock-ops-kubernetes
   wait: true
   dependsOn:
     - name: cluster-apps-rook-ceph
@@ -42,11 +42,11 @@ metadata:
     substitution.flux.home.arpa/enabled: "true"
 spec:
   interval: 10m
-  path: "./kubernetes/cluster-0/apps/rook-ceph/rook-ceph/add-ons"
+  path: "./kubernetes/greyrock-ops/apps/rook-ceph/rook-ceph/add-ons"
   prune: true
   sourceRef:
     kind: GitRepository
-    name: home-ops-kubernetes
+    name: greyrock-ops-kubernetes
   wait: true
   dependsOn:
     - name: cluster-apps-rook-ceph-cluster

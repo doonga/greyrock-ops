@@ -2,10 +2,10 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: disk-wipe-delta
+  name: disk-wipe-worker-01
 spec:
   restartPolicy: Never
-  nodeName: delta
+  nodeName: worker-01
   containers:
     - name: disk-wipe
       image: busybox@sha256:7b3ccabffc97de872a30dfd234fd972a66d247c8cfc69b0550f276481852627c
@@ -15,17 +15,17 @@ spec:
         [
           "/bin/sh",
           "-c",
-          "blkdiscard /dev/nvme0n1",
-          "dd if=/dev/zero bs=1M count=10000 oflag=direct of=/dev/nvme0n1",
+          "blkdiscard /dev/sda",
+          "dd if=/dev/zero bs=1M count=10000 oflag=direct of=/dev/sda",
         ]
 ---
 apiVersion: v1
 kind: Pod
 metadata:
-  name: disk-wipe-enigma
+  name: disk-wipe-worker-02
 spec:
   restartPolicy: Never
-  nodeName: enigma
+  nodeName: worker-02
   containers:
     - name: disk-wipe
       image: busybox@sha256:7b3ccabffc97de872a30dfd234fd972a66d247c8cfc69b0550f276481852627c
@@ -35,17 +35,17 @@ spec:
         [
           "/bin/sh",
           "-c",
-          "blkdiscard /dev/nvme0n1",
-          "dd if=/dev/zero bs=1M count=10000 oflag=direct of=/dev/nvme0n1",
+          "blkdiscard /dev/sda",
+          "dd if=/dev/zero bs=1M count=10000 oflag=direct of=/dev/sda",
         ]
 ---
 apiVersion: v1
 kind: Pod
 metadata:
-  name: disk-wipe-felix
+  name: disk-wipe-worker-03
 spec:
   restartPolicy: Never
-  nodeName: felix
+  nodeName: worker-03
   containers:
     - name: disk-wipe
       image: busybox@sha256:7b3ccabffc97de872a30dfd234fd972a66d247c8cfc69b0550f276481852627c
@@ -55,6 +55,66 @@ spec:
         [
           "/bin/sh",
           "-c",
-          "blkdiscard /dev/nvme0n1",
-          "dd if=/dev/zero bs=1M count=10000 oflag=direct of=/dev/nvme0n1",
+          "blkdiscard /dev/sda",
+          "dd if=/dev/zero bs=1M count=10000 oflag=direct of=/dev/sda",
+        ]
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: disk-wipe-worker-04
+spec:
+  restartPolicy: Never
+  nodeName: worker-04
+  containers:
+    - name: disk-wipe
+      image: busybox@sha256:7b3ccabffc97de872a30dfd234fd972a66d247c8cfc69b0550f276481852627c
+      securityContext:
+        privileged: true
+      command:
+        [
+          "/bin/sh",
+          "-c",
+          "blkdiscard /dev/sda",
+          "dd if=/dev/zero bs=1M count=10000 oflag=direct of=/dev/sda",
+        ]
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: disk-wipe-worker-05
+spec:
+  restartPolicy: Never
+  nodeName: worker-05
+  containers:
+    - name: disk-wipe
+      image: busybox@sha256:7b3ccabffc97de872a30dfd234fd972a66d247c8cfc69b0550f276481852627c
+      securityContext:
+        privileged: true
+      command:
+        [
+          "/bin/sh",
+          "-c",
+          "blkdiscard /dev/sda",
+          "dd if=/dev/zero bs=1M count=10000 oflag=direct of=/dev/sda",
+        ]
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: disk-wipe-worker-06
+spec:
+  restartPolicy: Never
+  nodeName: worker-06
+  containers:
+    - name: disk-wipe
+      image: busybox@sha256:7b3ccabffc97de872a30dfd234fd972a66d247c8cfc69b0550f276481852627c
+      securityContext:
+        privileged: true
+      command:
+        [
+          "/bin/sh",
+          "-c",
+          "blkdiscard /dev/sda",
+          "dd if=/dev/zero bs=1M count=10000 oflag=direct of=/dev/sda",
         ]
