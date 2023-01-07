@@ -17,4 +17,4 @@ spec:
       interval: 30m
   values:
     providerRegex: |
-      ^(control.*|worker.*)$
+      ^(control-[0-9][0-9]|worker-[0-9][0-9])$
