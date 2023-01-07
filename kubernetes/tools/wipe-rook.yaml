@@ -8,13 +8,14 @@ spec:
   nodeName: worker-01
   containers:
     - name: disk-wipe
-      image: busybox@sha256:7b3ccabffc97de872a30dfd234fd972a66d247c8cfc69b0550f276481852627c
+      image: quay.io/ceph/ceph:v16.2.10
       securityContext:
         privileged: true
       command:
         [
           "/bin/sh",
           "-c",
+          "sgdisk -Z /dev/sda",
           "blkdiscard /dev/sda",
           "dd if=/dev/zero bs=1M count=10000 oflag=direct of=/dev/sda",
         ]
@@ -28,13 +29,14 @@ spec:
   nodeName: worker-02
   containers:
     - name: disk-wipe
-      image: busybox@sha256:7b3ccabffc97de872a30dfd234fd972a66d247c8cfc69b0550f276481852627c
+      image: quay.io/ceph/ceph:v16.2.10
       securityContext:
         privileged: true
       command:
         [
           "/bin/sh",
           "-c",
+          "sgdisk -Z /dev/sda",
           "blkdiscard /dev/sda",
           "dd if=/dev/zero bs=1M count=10000 oflag=direct of=/dev/sda",
         ]
@@ -48,13 +50,14 @@ spec:
   nodeName: worker-03
   containers:
     - name: disk-wipe
-      image: busybox@sha256:7b3ccabffc97de872a30dfd234fd972a66d247c8cfc69b0550f276481852627c
+      image: quay.io/ceph/ceph:v16.2.10
       securityContext:
         privileged: true
       command:
         [
           "/bin/sh",
           "-c",
+          "sgdisk -Z /dev/sda",
           "blkdiscard /dev/sda",
           "dd if=/dev/zero bs=1M count=10000 oflag=direct of=/dev/sda",
         ]
@@ -68,13 +71,14 @@ spec:
   nodeName: worker-04
   containers:
     - name: disk-wipe
-      image: busybox@sha256:7b3ccabffc97de872a30dfd234fd972a66d247c8cfc69b0550f276481852627c
+      image: quay.io/ceph/ceph:v16.2.10
       securityContext:
         privileged: true
       command:
         [
           "/bin/sh",
           "-c",
+          "sgdisk -Z /dev/sda",
           "blkdiscard /dev/sda",
           "dd if=/dev/zero bs=1M count=10000 oflag=direct of=/dev/sda",
         ]
@@ -88,13 +92,14 @@ spec:
   nodeName: worker-05
   containers:
     - name: disk-wipe
-      image: busybox@sha256:7b3ccabffc97de872a30dfd234fd972a66d247c8cfc69b0550f276481852627c
+      image: quay.io/ceph/ceph:v16.2.10
       securityContext:
         privileged: true
       command:
         [
           "/bin/sh",
           "-c",
+          "sgdisk -Z /dev/sda",
           "blkdiscard /dev/sda",
           "dd if=/dev/zero bs=1M count=10000 oflag=direct of=/dev/sda",
         ]
@@ -108,13 +113,14 @@ spec:
   nodeName: worker-06
   containers:
     - name: disk-wipe
-      image: busybox@sha256:7b3ccabffc97de872a30dfd234fd972a66d247c8cfc69b0550f276481852627c
+      image: quay.io/ceph/ceph:v16.2.10
       securityContext:
         privileged: true
       command:
         [
           "/bin/sh",
           "-c",
+          "sgdisk -Z /dev/sda",
           "blkdiscard /dev/sda",
           "dd if=/dev/zero bs=1M count=10000 oflag=direct of=/dev/sda",
         ]
