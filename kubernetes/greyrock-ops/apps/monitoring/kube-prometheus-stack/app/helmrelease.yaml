@@ -130,7 +130,7 @@ spec:
         ingressClassName: nginx
         pathType: Prefix
         hosts:
-          - &host_prometheus prometheus-${CLUSTER_NAME}.bjw-s.dev
+          - &host_prometheus prometheus-${CLUSTER_NAME}.greyrock.tech
         tls:
           - hosts:
               - *host_prometheus
@@ -269,7 +269,7 @@ spec:
         ingressClassName: nginx
         pathType: Prefix
         hosts:
-          - &host_alertmanager alertmanager-${CLUSTER_NAME}.bjw-s.dev
+          - &host_alertmanager alertmanager-${CLUSTER_NAME}.greyrock.tech
         tls:
           - hosts:
               - *host_alertmanager
