@@ -285,12 +285,12 @@ spec:
                 - __meta_kubernetes_pod_node_name
               targetLabel: kubernetes_node
 
-  valuesFrom:
-    - kind: Secret
-      name: alertmanager-secrets
-      valuesKey: pushover_api_token
-      targetPath: alertmanager.config.receivers[1].pushover_configs[0].token
-    - kind: Secret
-      name: alertmanager-secrets
-      valuesKey: pushover_api_userkey
-      targetPath: alertmanager.config.receivers[1].pushover_configs[0].user_key
+#   valuesFrom:
+#     - kind: Secret
+#       name: alertmanager-secrets
+#       valuesKey: pushover_api_token
+#       targetPath: alertmanager.config.receivers[1].pushover_configs[0].token
+#     - kind: Secret
+#       name: alertmanager-secrets
+#       valuesKey: pushover_api_userkey
+#       targetPath: alertmanager.config.receivers[1].pushover_configs[0].user_key
