@@ -160,6 +160,9 @@ controlPlane:
           extraArgs:
             feature-gates: GracefulNodeShutdown=true,MixedProtocolLBService=true
             rotate-server-certificates: "true"
+          nodeIP:
+            validSubnets:
+              - 172.16.30.0/24
         install:
           extraKernelArgs:
             - "talos.logging.kernel=udp://vector.greyrock.tech:6050/"
@@ -183,3 +186,41 @@ controlPlane:
     - |-
       - op: remove
         path: /cluster/apiServer/admissionControl
+
+worker:
+  patches:
+    - |-
+      machine:
+        files:
+          - content: |
+              [plugins."io.containerd.grpc.v1.cri"]
+                enable_unprivileged_ports = true
+                enable_unprivileged_icmp = true
+            path: /etc/cri/conf.d/20-customization.part
+            op: create
+        kubelet:
+          extraArgs:
+            feature-gates: GracefulNodeShutdown=true,MixedProtocolLBService=true
+            rotate-server-certificates: "true"
+          nodeIP:
+            validSubnets:
+              - 172.16.30.0/24
+        install:
+          extraKernelArgs:
+            - "talos.logging.kernel=udp://vector.greyrock.tech:6050/"
+        logging:
+          destinations:
+            - endpoint: "udp://vector.greyrock.tech:6051/"
+              format: json_lines
+        network:
+          extraHostEntries:
+            - ip: ${clusterEndpointIP}
+              aliases:
+                - greyrock-ops.private.greyrock.io
+        sysctls:
+          fs.inotify.max_user_watches: "1048576"
+          fs.inotify.max_user_instances: "8192"
+        time:
+          disabled: false
+          servers:
+            - 172.16.30.2
