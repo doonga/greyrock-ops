@@ -6,5 +6,6 @@ creation_rules:
       age136uhfkdjvxacd40d9r7guay8a7tqdz9y0264xvxvhvswxwh229lqlwan93
 
   - path_regex: .*\.sops\.ya?ml
+    encrypted_regex: "^(data|stringData)$"
     age: >-
       age136uhfkdjvxacd40d9r7guay8a7tqdz9y0264xvxvhvswxwh229lqlwan93
