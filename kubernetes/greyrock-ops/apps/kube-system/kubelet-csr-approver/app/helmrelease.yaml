@@ -17,4 +17,4 @@ spec:
       interval: 30m
   values:
     providerRegex: |
-      ^(delta|enigma|felix)$
+      ^(control.*|worker.*)$
