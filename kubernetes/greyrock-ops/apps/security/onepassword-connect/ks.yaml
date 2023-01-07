@@ -8,7 +8,7 @@ metadata:
     substitution.flux.home.arpa/enabled: "true"
 spec:
   interval: 10m
-  path: "./kubernetes/cluster-0/apps/security/onepassword-connect/app"
+  path: "./kubernetes/greyrock-ops/apps/security/onepassword-connect/app"
   prune: true
   sourceRef:
     kind: GitRepository
