@@ -28,6 +28,7 @@ spec:
           - host: &host op-scim.greyrock.tech
             paths:
               - path: /
+                pathType: ImplementationSpecific
         tls:
           - hosts:
               - *host
