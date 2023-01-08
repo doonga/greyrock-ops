@@ -8,11 +8,11 @@ metadata:
     substitution.flux.home.arpa/enabled: "true"
 spec:
   interval: 10m
-  path: "./kubernetes/cluster-0/apps/security/oauth2-proxy/redis"
+  path: "./kubernetes/greyrock-ops/apps/security/oauth2-proxy/redis"
   prune: true
   sourceRef:
     kind: GitRepository
-    name: home-ops-kubernetes
+    name: greyrock-ops-kubernetes
   wait: true
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
@@ -24,11 +24,11 @@ metadata:
     substitution.flux.home.arpa/enabled: "true"
 spec:
   interval: 10m
-  path: "./kubernetes/cluster-0/apps/security/oauth2-proxy/app"
+  path: "./kubernetes/greyrock-ops/apps/security/oauth2-proxy/app"
   prune: true
   sourceRef:
     kind: GitRepository
-    name: home-ops-kubernetes
+    name: greyrock-ops-kubernetes
   wait: true
   dependsOn:
     - name: cluster-apps-oauth2-proxy-redis

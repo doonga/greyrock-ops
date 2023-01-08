@@ -1,0 +1,10 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: op-scim-bridge
+  namespace: flux-system
+spec:
+  interval: 30m
+  url: https://1password.github.io/op-scim-helm
+  timeout: 3m
