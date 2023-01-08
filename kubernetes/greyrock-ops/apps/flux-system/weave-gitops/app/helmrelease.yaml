@@ -48,7 +48,7 @@ spec:
       enabled: true
       className: nginx
       hosts:
-        - host: &host "gitops.bjw-s.dev"
+        - host: &host "gitops.greyrock.tech"
           paths:
             - path: /
               pathType: Prefix
