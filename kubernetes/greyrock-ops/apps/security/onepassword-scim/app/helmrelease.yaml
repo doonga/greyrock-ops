@@ -23,7 +23,8 @@ spec:
 
       ingress:
         enabled: true
-        # className: "nginx"
+        annotations:
+          external-dns.home.arpa/enabled: "true"
         hosts:
           - host: &host op-scim.greyrock.tech
             paths:
