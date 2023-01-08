@@ -23,9 +23,9 @@ spec:
 
       ingress:
         enabled: true
-        className: "nginx"
+        # className: "nginx"
         hosts:
-          - host: &host "op-scim.greyrock.tech"
+          - host: &host op-scim.greyrock.tech
             paths:
               - path: /
         tls:
