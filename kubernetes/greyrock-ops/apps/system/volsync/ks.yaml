@@ -8,11 +8,11 @@ metadata:
     substitution.flux.home.arpa/enabled: "true"
 spec:
   interval: 10m
-  path: "./kubernetes/cluster-0/apps/system/volsync/app"
+  path: "./kubernetes/greyrock-ops/apps/system/volsync/app"
   prune: true
   sourceRef:
     kind: GitRepository
-    name: home-ops-kubernetes
+    name: greyrock-ops-kubernetes
   dependsOn:
     - name: cluster-apps-snapshot-controller
   healthChecks:
