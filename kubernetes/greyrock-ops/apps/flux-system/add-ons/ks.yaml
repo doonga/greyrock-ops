@@ -8,11 +8,11 @@ metadata:
     substitution.flux.home.arpa/enabled: "true"
 spec:
   interval: 10m
-  path: ./kubernetes/cluster-0/apps/flux-system/add-ons/monitoring
+  path: ./kubernetes/greyrock-ops/apps/flux-system/add-ons/monitoring
   prune: true
   sourceRef:
     kind: GitRepository
-    name: home-ops-kubernetes
+    name: greyrock-ops-kubernetes
   wait: true
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
@@ -24,11 +24,11 @@ metadata:
     substitution.flux.home.arpa/enabled: "true"
 spec:
   interval: 10m
-  path: ./kubernetes/cluster-0/apps/flux-system/add-ons/notifications
+  path: ./kubernetes/greyrock-ops/apps/flux-system/add-ons/notifications
   prune: true
   sourceRef:
     kind: GitRepository
-    name: home-ops-kubernetes
+    name: greyrock-ops-kubernetes
   wait: true
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
@@ -40,9 +40,9 @@ metadata:
     substitution.flux.home.arpa/enabled: "true"
 spec:
   interval: 10m
-  path: ./kubernetes/cluster-0/apps/flux-system/add-ons/webhooks
+  path: ./kubernetes/greyrock-ops/apps/flux-system/add-ons/webhooks
   prune: true
   sourceRef:
     kind: GitRepository
-    name: home-ops-kubernetes
+    name: greyrock-ops-kubernetes
   wait: true
