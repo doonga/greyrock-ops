@@ -34,7 +34,7 @@ spec:
         type: LoadBalancer
         loadBalancerIP: "${SVC_VECTOR_AGGREGATOR_ADDR}"
         annotations:
-          coredns.io/hostname: "vector.bjw-s.dev"
+          coredns.io/hostname: "vector.greyrock.tech"
         externalTrafficPolicy: Local
         ports:
           http:

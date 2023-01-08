@@ -8,11 +8,11 @@ metadata:
     substitution.flux.home.arpa/enabled: "true"
 spec:
   interval: 10m
-  path: "./kubernetes/cluster-0/apps/monitoring/vector/aggregator"
+  path: "./kubernetes/greyrock-ops/apps/monitoring/vector/aggregator"
   prune: true
   sourceRef:
     kind: GitRepository
-    name: home-ops-kubernetes
+    name: greyrock-ops-kubernetes
   wait: true
   dependsOn:
     - name: cluster-apps-loki
@@ -26,11 +26,11 @@ spec:
 #     substitution.flux.home.arpa/enabled: "true"
 # spec:
 #   interval: 10m
-#   path: "./kubernetes/cluster-0/apps/monitoring/vector/geoipupdate"
+#   path: "./kubernetes/greyrock-ops/apps/monitoring/vector/geoipupdate"
 #   prune: true
 #   sourceRef:
 #     kind: GitRepository
-#     name: home-ops-kubernetes
+#     name: greyrock-ops-kubernetes
 #   wait: true
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
@@ -42,11 +42,11 @@ metadata:
     substitution.flux.home.arpa/enabled: "true"
 spec:
   interval: 10m
-  path: "./kubernetes/cluster-0/apps/monitoring/vector/agent"
+  path: "./kubernetes/greyrock-ops/apps/monitoring/vector/agent"
   prune: true
   sourceRef:
     kind: GitRepository
-    name: home-ops-kubernetes
+    name: greyrock-ops-kubernetes
   wait: true
   dependsOn:
     # - name: cluster-apps-vector-geoipupdate
