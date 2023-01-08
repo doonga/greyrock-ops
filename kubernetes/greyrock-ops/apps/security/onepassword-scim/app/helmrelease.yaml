@@ -21,13 +21,13 @@ spec:
       credentialsVolume:
         storageClass: ceph-block
 
-    ingress:
-      enabled: true
-      className: "nginx"
-      hosts:
-        - host: &host "op-scim.greyrock.tech"
-          paths:
-            - path: /
-      tls:
-        - hosts:
-            - *host
+      ingress:
+        enabled: true
+        className: "nginx"
+        hosts:
+          - host: &host "op-scim.greyrock.tech"
+            paths:
+              - path: /
+        tls:
+          - hosts:
+              - *host
