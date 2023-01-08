@@ -5,7 +5,7 @@ metadata:
   name: letsencrypt-production
 spec:
   acme:
-    email: postmaster@bjw-s.dev
+    email: acme@sl.greyrock.io
     preferredChain: ""
     privateKeySecretRef:
       name: letsencrypt-production
@@ -18,4 +18,4 @@ spec:
               key: api-token
         selector:
           dnsZones:
-            - bjw-s.dev
+            - greyrock.tech
