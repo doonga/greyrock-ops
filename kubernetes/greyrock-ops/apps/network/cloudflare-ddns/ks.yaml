@@ -10,7 +10,7 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-apps-external-secrets
-  path: ./kubernetes/greyrock-ops/apps/networking/cloudflare-ddns-home/app
+  path: ./kubernetes/greyrock-ops/apps/networking/cloudflare-ddns/app
   prune: true
   sourceRef:
     kind: GitRepository
