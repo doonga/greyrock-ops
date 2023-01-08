@@ -2,14 +2,14 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: "bjw-s-dev"
+  name: "greyrock-tech"
   namespace: network
 spec:
-  secretName: "bjw-s-dev-tls"
+  secretName: "greyrock-tech-tls"
   issuerRef:
     name: letsencrypt-production
     kind: ClusterIssuer
-  commonName: "bjw-s.dev"
+  commonName: "greyrock.tech"
   dnsNames:
-    - "bjw-s.dev"
-    - "*.bjw-s.dev"
+    - "greyrock.tech"
+    - "*.greyrock.tech"
