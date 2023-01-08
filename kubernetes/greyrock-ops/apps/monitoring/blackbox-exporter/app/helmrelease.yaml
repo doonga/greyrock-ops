@@ -45,7 +45,7 @@ spec:
       enabled: true
       className: nginx
       hosts:
-        - host: &host "blackbox-${CLUSTER_NAME}.bjw-s.dev"
+        - host: &host "blackbox-${CLUSTER_NAME}.greyrock.tech"
           paths:
             - path: /
               pathType: Prefix
@@ -101,48 +101,48 @@ spec:
         scrapeTimeout: 30s
       targets:
         # 3D Printer controller
-        - module: http_2xx
-          name: horus-http
-          url: "http://horus.bjw-s.tech"
-        - module: icmp
-          name: horus-icmp
-          url: horus.bjw-s.tech
+        # - module: http_2xx
+        #   name: horus-http
+        #   url: "http://horus.bjw-s.tech"
+        # - module: icmp
+        #   name: horus-icmp
+        #   url: horus.bjw-s.tech
 
         # PiKVM
-        - module: http_2xx
-          name: pikvm-http
-          url: "https://pikvm.bjw-s.tech"
-        - module: icmp
-          name: pikvm-icmp
-          url: diego.bjw-s.tech
+        # - module: http_2xx
+        #   name: pikvm-http
+        #   url: "https://pikvm.bjw-s.tech"
+        # - module: icmp
+        #   name: pikvm-icmp
+        #   url: diego.bjw-s.tech
 
         # Robot vacuums
-        - module: icmp
-          name: valetudo-living-room-icmp
-          url: livingroom-vacuum.bjw-s.tech
-        - module: http_2xx
-          name: valetudo-living-room-http
-          url: "http://livingroom-vacuum.bjw-s.tech"
-        - module: icmp
-          name: valetudo-upstairs-icmp
-          url: upstairs-vacuum.bjw-s.tech
-        - module: http_2xx
-          name: valetudo-upstairs-http
-          url: "http://upstairs-vacuum.bjw-s.tech"
+        # - module: icmp
+        #   name: valetudo-living-room-icmp
+        #   url: livingroom-vacuum.bjw-s.tech
+        # - module: http_2xx
+        #   name: valetudo-living-room-http
+        #   url: "http://livingroom-vacuum.bjw-s.tech"
+        # - module: icmp
+        #   name: valetudo-upstairs-icmp
+        #   url: upstairs-vacuum.bjw-s.tech
+        # - module: http_2xx
+        #   name: valetudo-upstairs-http
+        #   url: "http://upstairs-vacuum.bjw-s.tech"
 
         # Wallmount tablets
-        - module: http_2xx
-          name: hallway-tablet-http
-          url: "http://hallway-tablet.bjw-s.tech:2323"
-        - module: icmp
-          name: hallway-tablet-icmp
-          url: hallway-tablet.bjw-s.tech
+        # - module: http_2xx
+        #   name: hallway-tablet-http
+        #   url: "http://hallway-tablet.bjw-s.tech:2323"
+        # - module: icmp
+        #   name: hallway-tablet-icmp
+        #   url: hallway-tablet.bjw-s.tech
 
         # Other devices
         - module: icmp
           name: zigbee-controller-icmp
-          url: hallway-zigbee-adapter.bjw-s.tech
+          url: tubeszb-cc2652-poe-2022.private.greyrock.io
 
         - module: icmp
           name: nas-icmp
-          url: nas.bjw-s.tech
+          url: nas01.private.greyrock.io
