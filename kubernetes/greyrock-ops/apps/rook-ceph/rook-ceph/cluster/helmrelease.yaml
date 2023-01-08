@@ -114,8 +114,8 @@ spec:
               - name: "/dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_PHWL437601XW800RGN"
 
     ingress:
-      ingressClassName: "nginx"
       dashboard:
+        ingressClassName: "nginx"
         annotations:
           nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
         host:
