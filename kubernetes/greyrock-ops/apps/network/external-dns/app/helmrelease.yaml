@@ -18,7 +18,7 @@ spec:
 
   values:
     domainFilters:
-      - bjw-s.dev
+      - greyrock.tech
 
     env:
       - name: CF_API_TOKEN

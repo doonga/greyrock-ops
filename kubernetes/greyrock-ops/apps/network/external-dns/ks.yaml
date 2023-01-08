@@ -8,9 +8,9 @@ metadata:
     substitution.flux.home.arpa/enabled: "true"
 spec:
   interval: 10m
-  path: "./kubernetes/cluster-0/apps/network/external-dns/app"
+  path: "./kubernetes/greyrock-ops/apps/network/external-dns/app"
   prune: true
   sourceRef:
     kind: GitRepository
-    name: home-ops-kubernetes
+    name: greyrock-ops-kubernetes
   wait: true
