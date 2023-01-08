@@ -83,8 +83,8 @@ spec:
       auth.basic:
         enabled: false
       auth.azuread:
-        enabled: true
         name: Azure AD
+        enabled: true
         allow_sign_up: true
         scopes: "openid profile email"
         client_id: # Set by env vars
