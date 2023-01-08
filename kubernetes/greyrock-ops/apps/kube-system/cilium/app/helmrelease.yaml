@@ -47,6 +47,7 @@ spec:
         enabled: true
       ui:
         enabled: true
+        className: "nginx"
         ingress:
           annotations:
             cert-manager.io/cluster-issuer: letsencrypt-production
