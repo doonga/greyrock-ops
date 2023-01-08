@@ -2,7 +2,7 @@
 apiVersion: actions.summerwind.dev/v1alpha1
 kind: RunnerDeployment
 metadata:
-  name: runner-home-ops
+  name: runner-greyrock-ops
   namespace: dev
 spec:
   template:
@@ -11,7 +11,7 @@ spec:
       imagePullPolicy: Always
       dockerdWithinRunnerContainer: true
       ephemeral: true
-      repository: bjw-s/home-ops
+      repository: Doonga/greyrock-ops
       labels:
         - self-hosted
       securityContext:
@@ -28,11 +28,11 @@ spec:
 apiVersion: actions.summerwind.dev/v1alpha1
 kind: HorizontalRunnerAutoscaler
 metadata:
-  name: home-ops-autoscaler
+  name: greyrock-ops-autoscaler
   namespace: dev
 spec:
   scaleTargetRef:
-    name: runner-home-ops
+    name: runner-greyrock-ops
   scaleUpTriggers:
     - githubEvent:
         checkRun:
@@ -45,4 +45,4 @@ spec:
   metrics:
     - type: TotalNumberOfQueuedAndInProgressWorkflowRuns
       repositoryNames:
-        - bjw-s/home-ops
+        - Doonga/greyrock-ops

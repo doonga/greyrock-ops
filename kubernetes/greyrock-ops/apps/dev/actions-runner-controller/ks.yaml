@@ -8,11 +8,11 @@ metadata:
     substitution.flux.home.arpa/enabled: "true"
 spec:
   interval: 10m
-  path: "./kubernetes/cluster-0/apps/dev/actions-runner-controller/operator"
+  path: "./kubernetes/greyrock-ops/apps/dev/actions-runner-controller/operator"
   prune: true
   sourceRef:
     kind: GitRepository
-    name: home-ops-kubernetes
+    name: greyrock-ops-kubernetes
   wait: true
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
@@ -24,11 +24,11 @@ metadata:
     substitution.flux.home.arpa/enabled: "true"
 spec:
   interval: 10m
-  path: "./kubernetes/cluster-0/apps/dev/actions-runner-controller/runners"
+  path: "./kubernetes/greyrock-ops/apps/dev/actions-runner-controller/runners"
   prune: true
   sourceRef:
     kind: GitRepository
-    name: home-ops-kubernetes
+    name: greyrock-ops-kubernetes
   wait: true
   dependsOn:
     - name: cluster-apps-actions-runner-controller

@@ -43,7 +43,7 @@ spec:
           external-dns.home.arpa/enabled: "true"
         ingressClassName: "nginx"
         hosts:
-          - host: &host "acr-hook.bjw-s.dev"
+          - host: &host "acr-hook.greyrock.tech"
             paths:
               - path: /
                 pathType: Prefix
