@@ -46,6 +46,10 @@ spec:
       - name: INTERVAL
         value: "300"
 
+    service:
+      main:
+        enabled: false
+
     resources:
       requests:
         cpu: 20m
