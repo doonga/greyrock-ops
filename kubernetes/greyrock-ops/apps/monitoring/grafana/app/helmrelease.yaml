@@ -71,7 +71,7 @@ spec:
       GF_PATHS_PROVISIONING: /etc/grafana/provisioning
       GF_SECURITY_ALLOW_EMBEDDING: true
       GF_SECURITY_COOKIE_SAMESITE: grafana
-      GF_SERVER_ROOT_URL: "https://grafana.bjw-s.dev"
+      GF_SERVER_ROOT_URL: "https://grafana.greyrock.tech"
 
     envFromSecret: grafana-secrets
 
@@ -95,7 +95,7 @@ spec:
 
       auth.generic_oauth.group_mapping:
         role_attribute_path: |
-          contains("https://bjw-s/groups"[*], 'grafana-admin') && 'Admin' || contains("https://bjw-s/groups"[*], 'grafana-viewer') && 'Viewer'
+          contains("https://greyrock/groups"[*], 'grafana-admin') && 'Admin' || contains("https://greyrock/groups"[*], 'grafana-viewer') && 'Viewer'
         org_id: 1
       grafana_net:
         url: https://grafana.net
@@ -107,7 +107,7 @@ spec:
         plugins: /var/lib/grafana/plugins
         provisioning: /etc/grafana/provisioning
       server:
-        root_url: https://grafana.bjw-s.dev
+        root_url: https://grafana.greyrock.tech
 
     imageRenderer:
       enabled: true
@@ -116,7 +116,7 @@ spec:
       enabled: true
       ingressClassName: nginx
       hosts:
-        - &host grafana.bjw-s.dev
+        - &host grafana.greyrock.tech
       tls:
         - hosts:
             - *host
