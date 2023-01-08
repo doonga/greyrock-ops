@@ -6,6 +6,7 @@ metadata:
   namespace: network
 spec:
   interval: 30m
+  logLevel: debug
   chart:
     spec:
       chart: external-dns
@@ -18,7 +19,7 @@ spec:
 
   values:
     domainFilters:
-      - greyrock.tech
+      - 'greyrock.tech'
 
     env:
       - name: CF_API_TOKEN
