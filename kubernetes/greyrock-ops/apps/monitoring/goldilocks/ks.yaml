@@ -8,11 +8,11 @@ metadata:
     substitution.flux.home.arpa/enabled: "true"
 spec:
   interval: 10m
-  path: "./kubernetes/cluster-0/apps/monitoring/goldilocks/app"
+  path: "./kubernetes/greyrock-ops/apps/monitoring/goldilocks/app"
   prune: true
   sourceRef:
     kind: GitRepository
-    name: home-ops-kubernetes
+    name: greyrock-ops-kubernetes
   wait: true
   dependsOn:
     - name: cluster-apps-vpa
