@@ -25,10 +25,7 @@ spec:
       - name: CF_HOSTS
         value: ingress.greyrock.tech
       - name: CF_ZONES
-        valueFrom:
-          secretKeyRef:
-            name: cloudflare-ddns-secrets
-            key: cloudflare_zones
+        value: greyrock.tech
       - name: CF_APITOKEN
         valueFrom:
           secretKeyRef:
