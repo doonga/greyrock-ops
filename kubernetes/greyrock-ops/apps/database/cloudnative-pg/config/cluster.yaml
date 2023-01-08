@@ -22,7 +22,7 @@ spec:
         compression: bzip2
         maxParallel: 8
       destinationPath: s3://postgresql/
-      endpointURL: http://s3.bjw-s.dev
+      endpointURL: http://nas01.private.greyrock.io:9768
       serverName: postgres-v1
       s3Credentials:
         accessKeyId:

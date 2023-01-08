@@ -51,7 +51,7 @@ spec:
         enabled: true
         ingressClassName: "nginx"
         hosts:
-          - host: &host "kopia-${CLUSTER_NAME}.bjw-s.dev"
+          - host: &host "kopia-${CLUSTER_NAME}.greyrock.tech"
             paths:
               - path: /
         tls:
@@ -70,8 +70,8 @@ spec:
       backup:
         enabled: true
         type: nfs
-        server: "nas.bjw-s.tech"
-        path: /volume1/Backup/Kubernetes/Kopia
+        server: "nas01.private.greyrock.io"
+        path: /mnt/user/backup/kubernetes/kopia
         mountPath: /backups
 
     resources:

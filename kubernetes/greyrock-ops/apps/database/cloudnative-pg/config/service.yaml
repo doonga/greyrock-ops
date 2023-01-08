@@ -5,7 +5,7 @@ metadata:
   name: postgres
   namespace: database
   annotations:
-    coredns.io/hostname: "postgres.bjw-s.dev"
+    coredns.io/hostname: "postgres.greyrock.tech"
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Local
