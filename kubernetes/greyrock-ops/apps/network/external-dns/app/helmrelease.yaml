@@ -6,7 +6,6 @@ metadata:
   namespace: network
 spec:
   interval: 30m
-  logLevel: debug
   chart:
     spec:
       chart: external-dns
@@ -18,6 +17,8 @@ spec:
       interval: 30m
 
   values:
+    logLevel: debug
+
     domainFilters:
       - 'greyrock.tech'
 
