@@ -5,45 +5,50 @@ metadata:
   name: cloudflare-ddns
   namespace: network
 spec:
-  interval: 15m
+  interval: 30m
   chart:
     spec:
       chart: app-template
       version: 1.2.1
+      interval: 30m
       sourceRef:
         kind: HelmRepository
         name: bjw-s
         namespace: flux-system
-  install:
-    createNamespace: true
-    remediation:
-      retries: 3
-  upgrade:
-    remediation:
-      retries: 3
+
   values:
-    controller:
-      type: cronjob
-      cronjob:
-        concurrencyPolicy: Forbid
-        schedule: "@hourly"
-    restartPolicy: OnFailure
     image:
-      repository: ghcr.io/onedr0p/kubernetes-kubectl
-      tag: 1.26.0@sha256:6ee3353da3495bc99d73af29a4495bb95570e31e71579cfce719c4123882723d
-    command: ["/bin/bash", "/app/cloudflare-ddns.sh"]
-    envFrom:
-      - secretRef:
-          name: cloudflare-ddns-secret
-    service:
-      main:
-        enabled: false
-    persistence:
-      config:
-        enabled: true
-        type: configMap
-        name: cloudflare-ddns-configmap
-        subPath: cloudflare-ddns.sh
-        mountPath: /app/cloudflare-ddns.sh
-        defaultMode: 0775
-        readOnly: true
+      repository: hotio/cloudflareddns
+      tag: latest
+
+    env:
+      - name: CF_HOSTS
+        value: ingress.greyrock.tech
+      - name: CF_ZONES
+        valueFrom:
+          secretKeyRef:
+            name: cloudflare-ddns-secrets
+            key: cloudflare_zones
+      - name: CF_APITOKEN
+        valueFrom:
+          secretKeyRef:
+            name: cloudflare-ddns-secrets
+            key: cloudflare_api_token
+      - name: CF_RECORDTYPES
+        value: A
+      - name: APPRISE
+        valueFrom:
+          secretKeyRef:
+            name: cloudflare-ddns-secrets
+            key: apprise-discord-webhook
+      - name: LOGLEVEL
+        value: "2"
+      - name: INTERVAL
+        value: "300"
+
+    resources:
+      requests:
+        cpu: 20m
+        memory: 64Mi
+      limits:
+        memory: 128Mi
