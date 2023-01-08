@@ -16,7 +16,7 @@ spec:
           securityContext:
             runAsUser: 1031
             runAsGroup: 1031
-            fsGroup: 1031
+            fsGroup: 100
             supplementalGroups:
               - 65541
 
@@ -50,5 +50,5 @@ spec:
           volumes:
             - name: nas-backups
               nfs:
-                server: "nas.bjw-s.tech"
-                path: /volume1/Backup/Databases/postgresql
+                server: "nas01.private.greyrock.io"
+                path: /mnt/user/backup/databases/postgresql
