@@ -59,7 +59,7 @@ spec:
             any: true
 
       extraArgs:
-        default-ssl-certificate: "network/bjw-s-dev-tls"
+        default-ssl-certificate: "network/greyrock-tech-tls"
 
       topologySpreadConstraints:
         - maxSkew: 2
