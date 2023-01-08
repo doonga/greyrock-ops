@@ -42,7 +42,7 @@ spec:
             name: cloudflare-ddns-secrets
             key: apprise-discord-webhook
       - name: LOGLEVEL
-        value: "2"
+        value: "3"
       - name: INTERVAL
         value: "300"
 
