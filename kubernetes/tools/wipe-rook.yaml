@@ -8,7 +8,7 @@ spec:
   nodeName: worker-01
   containers:
     - name: disk-wipe
-      image: quay.io/ceph/ceph:v16.2.10
+      image: quay.io/ceph/ceph:v17.2.5@sha256:0560b16bec6e84345f29fb6693cd2430884e6efff16a95d5bdd0bb06d7661c45
       securityContext:
         privileged: true
       command:
@@ -29,7 +29,7 @@ spec:
   nodeName: worker-02
   containers:
     - name: disk-wipe
-      image: quay.io/ceph/ceph:v16.2.10
+      image: quay.io/ceph/ceph:v17.2.5@sha256:0560b16bec6e84345f29fb6693cd2430884e6efff16a95d5bdd0bb06d7661c45
       securityContext:
         privileged: true
       command:
@@ -50,7 +50,7 @@ spec:
   nodeName: worker-03
   containers:
     - name: disk-wipe
-      image: quay.io/ceph/ceph:v16.2.10
+      image: quay.io/ceph/ceph:v17.2.5@sha256:0560b16bec6e84345f29fb6693cd2430884e6efff16a95d5bdd0bb06d7661c45
       securityContext:
         privileged: true
       command:
@@ -71,7 +71,7 @@ spec:
   nodeName: worker-04
   containers:
     - name: disk-wipe
-      image: quay.io/ceph/ceph:v16.2.10
+      image: quay.io/ceph/ceph:v17.2.5@sha256:0560b16bec6e84345f29fb6693cd2430884e6efff16a95d5bdd0bb06d7661c45
       securityContext:
         privileged: true
       command:
@@ -92,7 +92,7 @@ spec:
   nodeName: worker-05
   containers:
     - name: disk-wipe
-      image: quay.io/ceph/ceph:v16.2.10
+      image: quay.io/ceph/ceph:v17.2.5@sha256:0560b16bec6e84345f29fb6693cd2430884e6efff16a95d5bdd0bb06d7661c45
       securityContext:
         privileged: true
       command:
@@ -113,7 +113,7 @@ spec:
   nodeName: worker-06
   containers:
     - name: disk-wipe
-      image: quay.io/ceph/ceph:v16.2.10
+      image: quay.io/ceph/ceph:v17.2.5@sha256:0560b16bec6e84345f29fb6693cd2430884e6efff16a95d5bdd0bb06d7661c45
       securityContext:
         privileged: true
       command:
