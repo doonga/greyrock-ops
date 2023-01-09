@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: overseerr
+  name: jellyseerr
   namespace: downloads
 spec:
   interval: 30m
@@ -18,8 +18,8 @@ spec:
 
   values:
     image:
-      repository: ghcr.io/sct/overseerr
-      tag: 1.31.0
+      repository: docker.io/fallenbagel/jellyseerr
+      tag: 1.3.0
 
     env:
       LOG_LEVEL: "info"
@@ -38,10 +38,10 @@ spec:
         annotations:
           nginx.ingress.kubernetes.io/configuration-snippet: |
             proxy_set_header Accept-Encoding "";
-            sub_filter '</head>' '<link rel="stylesheet" type="text/css" href="https://theme-park.bjw-s.dev/css/base/overseerr/nord.css"></head>';
+            sub_filter '</head>' '<link rel="stylesheet" type="text/css" href="https://theme-park.greyrock.tech/css/base/jellyseerr/nord.css"></head>';
             sub_filter_once on;
         hosts:
-          - host: &host "overseerr.bjw-s.dev"
+          - host: &host "jellyseerr.greyrock.tech"
             paths:
               - path: /
         tls:
@@ -51,7 +51,7 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: overseerr-config
+        existingClaim: jellyseerr-config
         mountPath: /app/config
 
     resources:
