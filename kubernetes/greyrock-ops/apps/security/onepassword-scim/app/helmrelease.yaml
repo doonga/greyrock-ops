@@ -25,6 +25,7 @@ spec:
         enabled: true
         annotations:
           external-dns.home.arpa/enabled: "true"
+          nginx.ingress.kubernetes.io/whitelist-source-range: 0.0.0.0/0
         hosts:
           - host: &host op-scim.greyrock.tech
             paths:
