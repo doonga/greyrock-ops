@@ -2,7 +2,7 @@
 clusterName: greyrock-ops
 
 talosVersion: v1.3.1
-kubernetesVersion: 1.25.5
+kubernetesVersion: 1.26.0
 endpoint: "https://greyrock-ops.private.greyrock.io:6443"
 
 cniConfig:

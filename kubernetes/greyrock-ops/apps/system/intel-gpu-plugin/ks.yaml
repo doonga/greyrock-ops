@@ -2,15 +2,36 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: cluster-apps-intel-gpu-plugin
+  name: cluster-apps-intel-device-plugins-operator
   namespace: flux-system
   labels:
     substitution.flux.home.arpa/enabled: "true"
 spec:
-  interval: 10m
-  path: "./kubernetes/greyrock-ops/apps/system/intel-gpu-plugin/app"
-  prune: true
+  path: "./kubernetes/greyrock-ops/apps/system/intel-device-plugins/operator"
   sourceRef:
     kind: GitRepository
     name: greyrock-ops-kubernetes
+  interval: 10m
+  prune: true
   wait: true
+  dependsOn:
+    - name: cluster-apps-cert-manager
+    - name: cluster-apps-node-feature-discovery-rules
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: cluster-apps-intel-device-plugins-gpu
+  namespace: flux-system
+  labels:
+    substitution.flux.home.arpa/enabled: "true"
+spec:
+  path: "./kubernetes/greyrock-ops/apps/system/intel-device-plugins/gpu"
+  sourceRef:
+    kind: GitRepository
+    name: greyrock-ops-kubernetes
+  interval: 30m
+  prune: true
+  wait: true
+  dependsOn:
+    - name: cluster-apps-intel-device-plugins-operator
