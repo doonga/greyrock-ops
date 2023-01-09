@@ -8,9 +8,9 @@ metadata:
     substitution.flux.home.arpa/enabled: "true"
 spec:
   interval: 10m
-  path: "./kubernetes/cluster-0/apps/vpn/pod-gateway/downloads"
+  path: "./kubernetes/greyrock-ops/apps/vpn/pod-gateway/downloads"
   prune: true
   sourceRef:
     kind: GitRepository
-    name: home-ops-kubernetes
+    name: greyrock-ops-kubernetes
   wait: true
