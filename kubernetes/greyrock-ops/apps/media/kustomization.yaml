@@ -10,4 +10,3 @@ resources:
   - ./jellyfin/ks.yaml
   - ./navidrome/ks.yaml
   - ./series-cleanup/ks.yaml
-  - ./tautulli/ks.yaml
