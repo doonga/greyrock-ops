@@ -133,6 +133,12 @@ controlPlane:
         apiServer:
           extraArgs:
             feature-gates: MixedProtocolLBService=true,EphemeralContainers=True
+            oidc-client-id: ${oidcClientId}
+            oidc-groups-claim: groups
+            oidc-groups-prefix: 'oidc:'
+            oidc-issuer-url: ${oidcIssuerURL}
+            oidc-username-claim: email
+            oidc-username-prefix: 'oidc:'
         controllerManager:
           extraArgs:
             feature-gates: MixedProtocolLBService=true,EphemeralContainers=True
@@ -147,6 +153,8 @@ controlPlane:
         scheduler:
           extraArgs:
             feature-gates: MixedProtocolLBService=true,EphemeralContainers=True
+        extraManifests:
+          - https://raw.githubusercontent.com/Doonga/greyrock-ops/main/infrastructure/talos/greyrock-ops/rbac/oidc.yaml
 
       machine:
         files:
