@@ -24,7 +24,12 @@ spec:
 
       credentialsSecrets:
         scimsession:
-          key: onepassword-scim-scimsession
+          key: scimsession
+          value_json:
+            valuesFrom:
+              - kind: Secret
+                name: onepassword-scim-scimsession
+                valuesKey: scimsession
 
       ingress:
         enabled: true
