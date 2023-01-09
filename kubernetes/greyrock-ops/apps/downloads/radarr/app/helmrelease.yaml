@@ -35,7 +35,7 @@ spec:
     env:
       RADARR__INSTANCE_NAME: Radarr
       RADARR__PORT: &port 7878
-      RADARR__APPLICATION_URL: "https://radarr.bjw-s.dev"
+      RADARR__APPLICATION_URL: "https://radarr.greyrock.tech"
       RADARR__LOG_LEVEL: info
       RADARR__API_KEY:
         valueFrom:
@@ -56,10 +56,10 @@ spec:
         annotations:
           nginx.ingress.kubernetes.io/configuration-snippet: |
             proxy_set_header Accept-Encoding "";
-            sub_filter '</head>' '<link rel="stylesheet" type="text/css" href="https://theme-park.bjw-s.dev/css/base/radarr/nord.css"></head>';
+            sub_filter '</head>' '<link rel="stylesheet" type="text/css" href="https://theme-park.greyrock.tech/css/base/radarr/nord.css"></head>';
             sub_filter_once on;
         hosts:
-          - host: &host "radarr.bjw-s.dev"
+          - host: &host "radarr.grerock.tech"
             paths:
               - path: /
         tls:
@@ -74,8 +74,8 @@ spec:
       media:
         enabled: true
         type: nfs
-        server: "nas.bjw-s.tech"
-        path: /volume1/Media
+        server: "nas01.private.greyrock.io"
+        path: /mnt/user/media
         mountPath: /data/nas-media
 
     resources:
