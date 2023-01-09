@@ -19,7 +19,12 @@ spec:
   values:
     scim:
       credentialsVolume:
+        files: ""
         storageClass: ceph-block
+
+      credentialsSecrets:
+        scimsession:
+          key: onepassword-scim-scimsession
 
       ingress:
         enabled: true
