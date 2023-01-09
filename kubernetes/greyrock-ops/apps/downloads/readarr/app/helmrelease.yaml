@@ -35,7 +35,7 @@ spec:
     env:
       READARR__INSTANCE_NAME: Readarr
       READARR__PORT: &port 8787
-      READARR__APPLICATION_URL: "https://readarr.bjw-s.dev"
+      READARR__APPLICATION_URL: "https://readarr.greyrock.tech"
       READARR__LOG_LEVEL: info
       READARR__API_KEY:
         valueFrom:
@@ -56,10 +56,10 @@ spec:
         annotations:
           nginx.ingress.kubernetes.io/configuration-snippet: |
             proxy_set_header Accept-Encoding "";
-            sub_filter '</head>' '<link rel="stylesheet" type="text/css" href="https://theme-park.bjw-s.dev/css/base/readarr/nord.css"></head>';
+            sub_filter '</head>' '<link rel="stylesheet" type="text/css" href="https://theme-park.greyrock.tech/css/base/readarr/nord.css"></head>';
             sub_filter_once on;
         hosts:
-          - host: &host "readarr.bjw-s.dev"
+          - host: &host "readarr.greyrock.tech"
             paths:
               - path: /
         tls:
@@ -74,8 +74,8 @@ spec:
       media:
         enabled: true
         type: nfs
-        server: "nas.bjw-s.tech"
-        path: /volume1/Media
+        server: "nas01.private.greyrock.io"
+        path: /mnt/user/media
         mountPath: /data/nas-media
 
     resources:
