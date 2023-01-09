@@ -19,17 +19,7 @@ spec:
   values:
     scim:
       credentialsVolume:
-        files: ""
         storageClass: ceph-block
-
-      credentialsSecrets:
-        scimsession:
-          key: scimsession
-          value_json:
-            valuesFrom:
-              - kind: Secret
-                name: onepassword-scim-scimsession
-                valuesKey: scimsession
 
       ingress:
         enabled: true
@@ -39,7 +29,7 @@ spec:
           - host: &host op-scim.greyrock.tech
             paths:
               - path: /
-                pathType: ImplementationSpecific
+                pathType: Prefix
         tls:
           - hosts:
               - *host
