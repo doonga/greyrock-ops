@@ -13,7 +13,7 @@ env:
 jobs:
   cloudflare-proxied-networks-update:
     name: Cloudflare Proxied Networks
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -39,4 +39,3 @@ jobs:
             Update cloudflare proxy networks configmap from https://www.cloudflare.com/ips/
           labels: |
             renovate/github-action
-            self-hosted
