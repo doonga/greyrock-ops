@@ -26,12 +26,12 @@ spec:
 
     podSecurityContext:
       supplementalGroups:
-        - 65539
+        - 100
 
     env:
       SONARR__INSTANCE_NAME: Sonarr
       SONARR__PORT: &port 8989
-      SONARR__APPLICATION_URL: "https://sonarr.bjw-s.dev"
+      SONARR__APPLICATION_URL: "https://sonarr.greyrock.tech"
       SONARR__LOG_LEVEL: info
       SONARR__API_KEY:
         valueFrom:
@@ -50,7 +50,7 @@ spec:
         enabled: true
         ingressClassName: "nginx"
         hosts:
-          - host: &host "sonarr.bjw-s.dev"
+          - host: &host "sonarr.greyrock.tech"
             paths:
               - path: /
         tls:
@@ -64,8 +64,8 @@ spec:
       media:
         enabled: true
         type: nfs
-        server: "nas.bjw-s.tech"
-        path: /volume1/Media
+        server: "nas01.private.greyrock.io"
+        path: /mnt/user/media
         mountPath: /data/nas-media
 
     resources:
