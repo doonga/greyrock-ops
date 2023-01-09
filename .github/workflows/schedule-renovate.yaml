@@ -27,6 +27,7 @@ on:
 jobs:
   renovate:
     name: Renovate
+    runs-on: ["self-hosted"]
     uses: Doonga/gh-workflows/.github/workflows/run-renovate.yaml@main
     with:
       configurationFile: ".github/renovate.json5"
