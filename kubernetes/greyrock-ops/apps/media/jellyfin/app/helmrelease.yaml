@@ -47,7 +47,7 @@ spec:
         enabled: true
         ingressClassName: nginx
         hosts:
-          - host: &host jellyfin.bjw-s.dev
+          - host: &host jellyfin.greyrock.tech
             paths:
               - path: /
                 pathType: Prefix
@@ -62,8 +62,8 @@ spec:
       nfs-nas-media:
         enabled: true
         mountPath: /storage/media
-        path: /volume1/Media
-        server: nas.bjw-s.tech
+        path: /mnt/user/media
+        server: nas01.private.greyrock.io
         type: nfs
       transcode:
         enabled: true
