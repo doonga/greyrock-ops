@@ -63,7 +63,7 @@ spec:
         annotations:
           external-dns.home.arpa/enabled: "true"
         hosts:
-          - host: &host "obsidian-db.bjw-s.dev"
+          - host: &host "obsidian-db.greyrock.tech"
             paths:
               - path: /
         tls:
