@@ -5,9 +5,7 @@ resources:
   # Pre Flux-Kustomizations
   - ./namespace.yaml
   # Flux-Kustomizations
-  - ./amcrest2mqtt/ks.yaml
-  - ./dsmr-reader/ks.yaml
-  - ./esphome/ks.yaml
+  - ./amcrest2mqtt-courtyard/ks.yaml
   - ./frigate/ks.yaml
   - ./home-assistant/ks.yaml
   - ./mosquitto/ks.yaml

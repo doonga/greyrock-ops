@@ -42,7 +42,7 @@ spec:
         annotations:
           external-dns.home.arpa/enabled: "true"
         hosts:
-          - host: &host "domo.bjw-s.dev"
+          - host: &host "hass.greyrock.tech"
             paths:
               - path: /
         tls:
@@ -54,14 +54,14 @@ spec:
         enabled: true
         existingClaim: home-assistant-data
 
-      deploy-key:
-        enabled: true
-        type: secret
-        name: home-assistant-deploykey
-        defaultMode: 256
-        subPath:
-          - path: id_rsa
-            mountPath: /root/.ssh/id_rsa
+      # deploy-key:
+      #   enabled: true
+      #   type: secret
+      #   name: home-assistant-deploykey
+      #   defaultMode: 256
+      #   subPath:
+      #     - path: id_rsa
+      #       mountPath: /root/.ssh/id_rsa
 
     probes:
       liveness:

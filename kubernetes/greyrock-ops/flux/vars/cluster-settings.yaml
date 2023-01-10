@@ -28,4 +28,4 @@ data:
   SVC_POSTGRES_ADDR: 172.16.70.25
 
   # Additional network IP's
-  MULTUS_IOT_HASS: 172.16.10.9
+  MULTUS_LAN_HASS: 172.16.10.9

@@ -7,13 +7,13 @@ spec:
   config: '{
       "cniVersion": "0.3.1",
       "type": "macvlan",
-      "master": "eth0.40",
+      "master": "eth0.10",
       "mode": "bridge",
       "ipam": {
         "type": "static",
         "addresses": [
            {
-             "address": "${MULTUS_IOT_HASS}/24"
+             "address": "${MULTUS_LAN_HASS}/24"
            }
          ]
       }
