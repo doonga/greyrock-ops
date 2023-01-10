@@ -44,7 +44,7 @@ spec:
         type: LoadBalancer
         loadBalancerIP: "${SVC_MOSQUITTO_ADDR}"
         annotations:
-          coredns.io/hostname: "mqtt.bjw-s.dev"
+          coredns.io/hostname: "mqtt.greyrock.tech"
         externalTrafficPolicy: Local
         ports:
           http:
