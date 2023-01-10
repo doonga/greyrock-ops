@@ -27,7 +27,7 @@ spec:
 
     initContainers:
       copy-config:
-        image: eclipse-mosquitto:2.0.15@sha256:342ca8c3d787fef053b7ec1fd60cf1414cbd7504c98b7b709660f60206623f41
+        image: eclipse-mosquitto:2.0.15
         command:
           - "/bin/sh"
           - -c
