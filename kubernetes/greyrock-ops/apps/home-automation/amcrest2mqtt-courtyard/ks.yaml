@@ -8,11 +8,11 @@ metadata:
     substitution.flux.home.arpa/enabled: "true"
 spec:
   interval: 10m
-  path: "./kubernetes/cluster-0/apps/home-automation/amcrest2mqtt-courtyard/app"
+  path: "./kubernetes/greyrock-ops/apps/home-automation/amcrest2mqtt-courtyard/app"
   prune: true
   sourceRef:
     kind: GitRepository
-    name: home-ops-kubernetes
+    name: greyrock-ops-kubernetes
   wait: true
   dependsOn:
     - name: cluster-apps-mosquitto
