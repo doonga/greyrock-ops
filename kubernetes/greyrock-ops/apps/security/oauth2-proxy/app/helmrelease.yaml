@@ -48,26 +48,6 @@ spec:
           secretKeyRef:
             name: oauth2-proxy-secrets
             key: oidc-issuer-url
-      OAUTH2_PROXY_LOGIN_URL:
-        valueFrom:
-          secretKeyRef:
-            name: oauth2-proxy-secrets
-            key: oidc-login-url
-      OAUTH2_PROXY_REDEEM_URL:
-        valueFrom:
-          secretKeyRef:
-            name: oauth2-proxy-secrets
-            key: oidc-redeem-url
-      OAUTH2_PROXY_JWKS_URL:
-        valueFrom:
-          secretKeyRef:
-            name: oauth2-proxy-secrets
-            key: oidc-jwks-url
-      OAUTH2_PROXY_PROFILE_URL:
-        valueFrom:
-          secretKeyRef:
-            name: oauth2-proxy-secrets
-            key: oidc-profile-url
       OAUTH2_PROXY_CLIENT_ID:
         valueFrom:
           secretKeyRef:
@@ -78,6 +58,7 @@ spec:
           secretKeyRef:
             name: oauth2-proxy-secrets
             key: client-secret
+      OAUTH2_PROXY_OIDC_GROUPS_CLAIM: https://greyrock/groups
 
       OAUTH2_PROXY_SESSION_STORE_TYPE: redis
       OAUTH2_PROXY_REDIS_CONNECTION_URL: redis://oauth2-proxy-redis.security.svc.cluster.local:6379
