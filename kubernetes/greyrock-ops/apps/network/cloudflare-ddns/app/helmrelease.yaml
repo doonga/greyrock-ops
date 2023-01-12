@@ -23,7 +23,7 @@ spec:
 
     env:
       - name: CF_HOSTS
-        value: ingress.greyrock.tech
+        value: ipv4.greyrock.tech
       - name: CF_ZONES
         value: greyrock.tech
       - name: CF_APITOKEN

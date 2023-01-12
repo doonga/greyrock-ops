@@ -1,5 +1,5 @@
-resource "cloudflare_account" "Grey Rock" {
-  name              = "Grey Rock Account"
+resource "cloudflare_account" "greyrock" {
+  name              = "Grey Rock"
   type              = "standard"
   enforce_twofactor = false
 }
