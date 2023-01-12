@@ -190,12 +190,6 @@ controlPlane:
           disabled: false
           servers:
             - 172.16.30.2
-        registries:
-          config:
-            docker.io:
-              auth:
-                username: ${dockerHubUsername}
-                password: ${dockerHubPassword}
     - |-
       - op: remove
         path: /cluster/apiServer/admissionControl
@@ -237,9 +231,3 @@ worker:
           disabled: false
           servers:
             - 172.16.30.2
-        registries:
-          config:
-            docker.io:
-              auth:
-                username: ${dockerHubUsername}
-                password: ${dockerHubPassword}
