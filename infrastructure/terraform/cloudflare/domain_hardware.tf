@@ -1,7 +1,7 @@
 module "cf_domain_hardware" {
   source     = "./modules/cf_domain"
-  domain     = "bjw-s.tech"
-  account_id = cloudflare_account.bjw_s.id
+  domain     = "greyrock.tech"
+  account_id = cloudflare_account.greyrock.id
   dns_entries = [
     {
       name  = "ipv4"

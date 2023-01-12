@@ -38,11 +38,11 @@ module "greyrock" {
     auth0_client_id     = module.onepassword_item_auth0.fields.terraform_client_id
     auth0_client_secret = module.onepassword_item_auth0.fields.terraform_client_secret
     users = {
-      bernd = {
+      todd = {
         email    = module.onepassword_item_auth0.fields.user_todd_email
         password = module.onepassword_item_auth0.fields.user_todd_password
       }
-      manyie = {
+      andy = {
         email    = module.onepassword_item_auth0.fields.user_andy_email
         password = module.onepassword_item_auth0.fields.user_andy_password
       }

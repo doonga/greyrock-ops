@@ -1,8 +1,8 @@
 terraform {
   cloud {
-    organization = "bjw-s"
+    organization = "grey-rock"
     workspaces {
-      name = "home-cloudflare-provisioner"
+      name = "greyrock-cloudflare-provisioner"
     }
   }
 

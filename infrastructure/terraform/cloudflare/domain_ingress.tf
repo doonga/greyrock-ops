@@ -1,7 +1,7 @@
 module "cf_domain_ingress" {
   source     = "./modules/cf_domain"
-  domain     = "bjw-s.dev"
-  account_id = cloudflare_account.bjw_s.id
+  domain     = "greyrock.io"
+  account_id = cloudflare_account.greyrock.id
   dns_entries = [
     {
       name  = "ipv4"
