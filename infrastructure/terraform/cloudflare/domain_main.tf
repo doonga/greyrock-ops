@@ -7,6 +7,21 @@ module "cf_domain_main" {
       name  = "ipv4"
       value = local.home_ipv4
     },
+    # To be cleaned up
+    {
+      id      = "enterpriseenrollment"
+      name    = "enterpriseenrollment"
+      value   = "enterpriseenrollment-s.manage.microsoft.com"
+      type    = "CNAME"
+      proxied = false
+    },
+    {
+      id      = "enterpriseregistration"
+      name    = "enterpriseregistration"
+      value   = "enterpriseregistration.windows.net"
+      type    = "CNAME"
+      proxied = false
+    },
     # Generic settings
     {
       name  = "_dmarc"
@@ -123,6 +138,13 @@ module "cf_domain_main" {
       name  = "m"
       value = "v=spf1 include:mailgun.org ~all"
       type  = "TXT"
+    },
+    {
+      id      = "mailgun_email"
+      name    = "email.m"
+      value   = "mailgun.org"
+      type    = "CNAME"
+      proxied = false
     },
   ]
 }

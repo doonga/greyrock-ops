@@ -18,6 +18,12 @@ module "cf_domain_ingress" {
       value = "v=DMARC1; p=reject; rua=mailto:3iucjkde@ag.us.dmarcian.com;"
       type  = "TXT"
     },
+    {
+      id    = "ingress_spf"
+      name  = "@"
+      value = "v=spf1 -all"
+      type  = "TXT"
+    },
   ]
 }
 

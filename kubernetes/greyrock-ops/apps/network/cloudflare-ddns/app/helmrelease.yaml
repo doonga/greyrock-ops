@@ -23,16 +23,16 @@ spec:
 
     env:
       - name: CF_HOSTS
-        value: ipv4.greyrock.tech
+        value: ipv4.greyrock.tech;ipv4.greyrock.io
       - name: CF_ZONES
-        value: greyrock.tech
+        value: greyrock.tech;greyrock.io
       - name: CF_APITOKEN
         valueFrom:
           secretKeyRef:
             name: cloudflare-ddns-secrets
             key: cloudflare_api_token
       - name: CF_RECORDTYPES
-        value: A
+        value: A;A
       - name: APPRISE
         valueFrom:
           secretKeyRef:
