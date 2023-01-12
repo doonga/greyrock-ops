@@ -73,14 +73,14 @@ module "cf_domain_main" {
     # SL settings
     {
       id       = "fastmail_sl_mx_1"
-      name     = "@"
+      name     = "sl"
       priority = 10
       value    = "in1-smtp.messagingengine.com"
       type     = "MX"
     },
     {
       id       = "fastmail_sl_mx_2"
-      name     = "@"
+      name     = "sl"
       priority = 20
       value    = "in2-smtp.messagingengine.com"
       type     = "MX"
