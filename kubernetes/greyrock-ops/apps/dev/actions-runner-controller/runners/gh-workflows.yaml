@@ -8,8 +8,7 @@ spec:
   template:
     spec:
       image: ghcr.io/actions/actions-runner-controller/actions-runner:v2.299.1-ubuntu-20.04@sha256:69e3b023ecdb34313935952c4375a75414db79f177353123c774290028b3bb3a
-      imagePullPolicy: Always
-      dockerdWithinRunnerContainer: true
+      dockerdWithinRunnerContainer: false
       ephemeral: true
       repository: Doonga/gh-workflows
       containers:
