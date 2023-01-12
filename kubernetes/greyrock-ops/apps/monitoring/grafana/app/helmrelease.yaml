@@ -82,17 +82,21 @@ spec:
         oauth_auto_login: true
       auth.basic:
         enabled: false
-      auth.azuread:
-        name: Azure AD
+      auth.generic_oauth:
         enabled: true
-        allow_sign_up: true
+        name: Auth0
         scopes: "openid profile email"
         client_id: # Set by env vars
         client_secret: # Set by env vars
         auth_url: # Set by env vars
         token_url: # Set by env vars
-        allow_assign_grafana_admin: true
-        role_attribute_strict: false
+        api_url: # Set by env vars
+        use_pkce: true
+
+      auth.generic_oauth.group_mapping:
+        role_attribute_path: |
+          contains("https://greyrock/groups"[*], 'grafana-admin') && 'Admin' || contains("https://greyrock/groups"[*], 'grafana-viewer') && 'Viewer'
+        org_id: 1
 
       grafana_net:
         url: https://grafana.net
