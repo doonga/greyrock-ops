@@ -51,8 +51,16 @@ spec:
             name: Loki
             type: loki
             url: http://loki-gateway.monitoring.svc.cluster.local:80
+          - name: Alertmanager
+            type: alertmanager
+            access: proxy
+            url: http://alertmanager.monitoring.svc.cluster.local:9093
+            jsonData:
+              implementation: prometheus
         deleteDatasources:
           - name: Loki
+            orgId: 1
+          - name: Alertmanager
             orgId: 1
 
     deploymentStrategy:
@@ -97,7 +105,6 @@ spec:
         role_attribute_path: |
           contains("https://greyrock/groups"[*], 'grafana-admin') && 'Admin' || contains("https://greyrock/groups"[*], 'grafana-viewer') && 'Viewer'
         org_id: 1
-
       grafana_net:
         url: https://grafana.net
       log:
