@@ -5,7 +5,7 @@ creation_rules:
     age: >-
       age136uhfkdjvxacd40d9r7guay8a7tqdz9y0264xvxvhvswxwh229lqlwan93
 
-  - path_regex: cloudflare_secret.*\.sops\.ya?ml
+  - path_regex: (cloudflare_secret.*|main)\.sops\.ya?ml
     age: >-
       age136uhfkdjvxacd40d9r7guay8a7tqdz9y0264xvxvhvswxwh229lqlwan93
 
