@@ -41,6 +41,7 @@ zfs_filesystems:
     recordsize: 1M
     owner: 568
     group: 100
+    sharenfs: on
     mountpoint: /tank/series/
   - name: movies
     pool: tank
@@ -48,6 +49,7 @@ zfs_filesystems:
     recordsize: 1M
     owner: 568
     group: 100
+    sharenfs: on
     mountpoint: /tank/movies/
   - name: music
     pool: tank
@@ -55,6 +57,7 @@ zfs_filesystems:
     recordsize: 1M
     owner: 568
     group: 100
+    sharenfs: on
     mountpoint: /tank/music/
   - name: backup
     pool: tank
@@ -62,6 +65,7 @@ zfs_filesystems:
     recordsize: 1M
     owner: 568
     group: 100
+    sharenfs: on
     mountpoint: /tank/backup/
   - name: downloads
     pool: tank
@@ -69,6 +73,7 @@ zfs_filesystems:
     recordsize: 1M
     owner: 568
     group: 100
+    sharenfs: on
     mountpoint: /tank/downloads/
   - name: media
     pool: tank
@@ -76,6 +81,7 @@ zfs_filesystems:
     recordsize: 1M
     owner: 568
     group: 100
+    sharenfs: on
     mountpoint: /tank/media/
   - name: photos
     pool: tank
@@ -83,6 +89,7 @@ zfs_filesystems:
     recordsize: 1M
     owner: 568
     group: 100
+    sharenfs: on
     mountpoint: /tank/photos/
   - name: software
     pool: tank
@@ -90,12 +97,14 @@ zfs_filesystems:
     recordsize: 1M
     owner: 568
     group: 100
+    sharenfs: on
     mountpoint: /tank/software/
   - name: documents
     pool: tank
     state: present
     owner: 568
     group: 100
+    sharenfs: on
     mountpoint: /tank/documents/
   - name: frigate
     pool: tank
@@ -103,12 +112,13 @@ zfs_filesystems:
     recordsize: 1M
     owner: 568
     group: 100
+    sharenfs: on
     mountpoint: /tank/frigate/
   - name: minio
     pool: tank
     state: present
-    owner: 568
-    group: 100
+    owner: 1000
+    group: 1000
     mountpoint: /tank/minio/
   - name: books
     pool: tank
@@ -116,6 +126,7 @@ zfs_filesystems:
     recordsize: 1M
     owner: 568
     group: 100
+    sharenfs: on
     mountpoint: /tank/books/
   - name: unsorted
     pool: tank
@@ -123,6 +134,7 @@ zfs_filesystems:
     recordsize: 1M
     owner: 568
     group: 100
+    sharenfs: on
     mountpoint: /tank/unsorted/
   - name: syncthing
     pool: tank
@@ -130,6 +142,7 @@ zfs_filesystems:
     recordsize: 1M
     owner: 568
     group: 100
+    sharenfs: on
     mountpoint: /tank/syncthing/
 
 zfs_enable_monitoring: true
