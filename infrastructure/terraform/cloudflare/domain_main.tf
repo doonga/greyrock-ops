@@ -146,5 +146,13 @@ module "cf_domain_main" {
       type    = "CNAME"
       proxied = false
     },
+    # Auth0
+    {
+      id      = "auth0_cname"
+      name    = "auth0"
+      value   = "dev-gvjdz1ftpmafzm2p-cd-q4phwlokcjiqxdnr.edge.tenants.us.auth0.com"
+      type    = "CNAME"
+      proxied = false
+    }
   ]
 }
