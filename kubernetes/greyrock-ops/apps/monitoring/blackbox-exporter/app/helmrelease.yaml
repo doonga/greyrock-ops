@@ -45,7 +45,7 @@ spec:
       enabled: true
       className: nginx
       hosts:
-        - host: &host "blackbox-${CLUSTER_NAME}.greyrock.tech"
+        - host: &host "blackbox.greyrock.tech"
           paths:
             - path: /
               pathType: Prefix

@@ -103,7 +103,7 @@ spec:
         annotations:
           nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
         host:
-          name: &host rook-${CLUSTER_NAME}.greyrock.tech
+          name: &host rook.greyrock.tech
           path: "/"
         tls:
           - hosts:

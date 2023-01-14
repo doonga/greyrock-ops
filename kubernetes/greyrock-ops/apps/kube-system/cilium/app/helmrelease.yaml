@@ -53,7 +53,7 @@ spec:
             cert-manager.io/cluster-issuer: letsencrypt-production
           enabled: true
           hosts:
-            - &host hubble-${CLUSTER_NAME}.greyrock.tech
+            - &host hubble.greyrock.tech
           tls:
             - hosts:
                 - *host

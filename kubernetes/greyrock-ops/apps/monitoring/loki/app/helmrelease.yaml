@@ -113,7 +113,7 @@ spec:
         enabled: true
         ingressClassName: "nginx"
         hosts:
-          - host: &host "loki-${CLUSTER_NAME}.greyrock.tech"
+          - host: &host "loki.greyrock.tech"
             paths:
               - path: /
                 pathType: Prefix

@@ -51,7 +51,7 @@ spec:
         enabled: true
         ingressClassName: "nginx"
         hosts:
-          - host: &host "kopia-${CLUSTER_NAME}.greyrock.tech"
+          - host: &host "kopia.greyrock.tech"
             paths:
               - path: /
         tls:

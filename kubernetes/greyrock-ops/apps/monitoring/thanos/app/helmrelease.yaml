@@ -28,7 +28,7 @@ spec:
         sidecarsNamespace: monitoring
       ingress:
         enabled: true
-        hostname: "thanos-${CLUSTER_NAME}.greyrock.tech"
+        hostname: "thanos.greyrock.tech"
         ingressClassName: "nginx"
         tls: true
       replicaLabels:

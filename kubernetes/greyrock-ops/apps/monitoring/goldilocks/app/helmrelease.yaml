@@ -31,7 +31,7 @@ spec:
         enabled: true
         ingressClassName: "nginx"
         hosts:
-          - host: &host "goldilocks-${CLUSTER_NAME}.greyrock.tech"
+          - host: &host "goldilocks.greyrock.tech"
             paths:
               - path: /
                 type: Prefix
