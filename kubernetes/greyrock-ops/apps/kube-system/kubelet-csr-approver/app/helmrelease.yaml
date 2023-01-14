@@ -16,5 +16,6 @@ spec:
         namespace: flux-system
       interval: 30m
   values:
+    bypassDnsResolution: true
     providerRegex: |
       ^(control-[0-9][0-9]|worker-[0-9][0-9])$

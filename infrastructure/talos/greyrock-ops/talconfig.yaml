@@ -183,6 +183,33 @@ controlPlane:
             - ip: ${clusterEndpointIP}
               aliases:
                 - greyrock-ops.private.greyrock.io
+            - ip: 172.16.30.101
+              aliases:
+                - control-01.private.greyrock.io
+            - ip: 172.16.30.102
+              aliases:
+                - control-02.private.greyrock.io
+            - ip: 172.16.30.103
+              aliases:
+                - control-03.private.greyrock.io
+            - ip: 172.16.30.104
+              aliases:
+                - worker-01.private.greyrock.io
+            - ip: 172.16.30.105
+              aliases:
+                - worker-02.private.greyrock.io
+            - ip: 172.16.30.106
+              aliases:
+                - worker-03.private.greyrock.io
+            - ip: 172.16.30.107
+              aliases:
+                - worker-04.private.greyrock.io
+            - ip: 172.16.30.108
+              aliases:
+                - worker-05.private.greyrock.io
+            - ip: 172.16.30.109
+              aliases:
+                - worker-06.private.greyrock.io
         sysctls:
           fs.inotify.max_user_watches: "1048576"
           fs.inotify.max_user_instances: "8192"
@@ -224,6 +251,33 @@ worker:
             - ip: ${clusterEndpointIP}
               aliases:
                 - greyrock-ops.private.greyrock.io
+            - ip: 172.16.30.101
+              aliases:
+                - control-01.private.greyrock.io
+            - ip: 172.16.30.102
+              aliases:
+                - control-02.private.greyrock.io
+            - ip: 172.16.30.103
+              aliases:
+                - control-03.private.greyrock.io
+            - ip: 172.16.30.104
+              aliases:
+                - worker-01.private.greyrock.io
+            - ip: 172.16.30.105
+              aliases:
+                - worker-02.private.greyrock.io
+            - ip: 172.16.30.106
+              aliases:
+                - worker-03.private.greyrock.io
+            - ip: 172.16.30.107
+              aliases:
+                - worker-04.private.greyrock.io
+            - ip: 172.16.30.108
+              aliases:
+                - worker-05.private.greyrock.io
+            - ip: 172.16.30.109
+              aliases:
+                - worker-06.private.greyrock.io
         sysctls:
           fs.inotify.max_user_watches: "1048576"
           fs.inotify.max_user_instances: "8192"
