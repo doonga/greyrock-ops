@@ -15,8 +15,21 @@ terraform {
       source  = "hashicorp/http"
       version = "3.2.1"
     }
+    cloudflare = {
+      source  = "cloudflare/cloudflare"
+      version = "3.32.0"
+    }
+    sops = {
+      source  = "carlpett/sops"
+      version = "0.7.2"
+    }
   }
 }
+
+data "sops_file" "cloudflare_secrets" {
+  source_file = "cloudflare_secrets.sops.yaml"
+}
+
 
 module "onepassword_item_auth0" {
   source = "github.com/Doonga/terraform-1password-item?ref=main"
