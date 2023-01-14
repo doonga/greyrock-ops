@@ -70,8 +70,8 @@ spec:
       backup:
         enabled: true
         type: nfs
-        server: "nas01.private.greyrock.io"
-        path: /mnt/user/backup/kubernetes/kopia
+        server: "nas.private.greyrock.io"
+        path: /tank/backup/kubernetes/kopia
         mountPath: /backups
 
     resources:

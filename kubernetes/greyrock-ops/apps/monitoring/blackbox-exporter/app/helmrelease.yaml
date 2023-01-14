@@ -145,4 +145,4 @@ spec:
 
         - module: icmp
           name: nas-icmp
-          url: nas01.private.greyrock.io
+          url: nas.private.greyrock.io

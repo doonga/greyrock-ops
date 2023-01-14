@@ -83,8 +83,8 @@ spec:
       media:
         enabled: true
         type: nfs
-        server: "nas01.private.greyrock.io"
-        path: /mnt/user/media
+        server: "nas.private.greyrock.io"
+        path: /tank/media
         mountPath: /data/nas-media
       incomplete:
         enabled: true
