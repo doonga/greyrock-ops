@@ -35,3 +35,5 @@ jobs:
     secrets:
       app_id: ${{ secrets.GREYROCK_APP_ID }}
       app_private_key: ${{ secrets.GREYROCK_APP_PRIVATE_KEY }}
+      dockerhub_username: ${{ secrets.DOCKERHUB_USERNAME }}
+      dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
