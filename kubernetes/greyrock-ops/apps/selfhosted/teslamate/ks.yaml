@@ -7,7 +7,7 @@ metadata:
   labels:
     substitution.flux.home.arpa/enabled: "true"
 spec:
-  path: ./kubernetes/apps/selfhosted/teslamate/app
+  path: "./kubernetes/greyrock-ops/apps/selfhosted/teslamate/app"
   sourceRef:
     kind: GitRepository
     name: greyrock-ops-kubernetes
