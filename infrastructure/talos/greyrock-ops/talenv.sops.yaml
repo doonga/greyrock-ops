@@ -1,8 +1,6 @@
 clusterEndpointIP: ENC[AES256_GCM,data:CVTQ6NFW3A3SBMjQ,iv:wVHxdLE88NaWzCw1YjAkMZ6k0HlUvv+RXkdxRhB9co4=,tag:W5y6yEkRB7Un4W63JWGfew==,type:str]
 oidcClientId: ENC[AES256_GCM,data:0Yv7K2GsYEcPiw/bzQZ86uSOQjDI3AvKyP2uq3/PQho=,iv:Gjr1BtgXaNtd50kGG2vFI9xM9jO1b4Ea46hkuLG7VUE=,tag:x6Dr8k0/Rd5cfLZIV+v9UA==,type:str]
 oidcIssuerURL: ENC[AES256_GCM,data:UFG58FFpBxudQY2GOOFooVBiAVo/34wqj7pf8d/GnFY097eBASJOzn8=,iv:b2BOm4p0TDCNQp6l6VV8+P0jQAJo/wGtzWzZ3w/DhBg=,tag:f4znR7GwGMylNUWfZNuzgw==,type:str]
-dockerHubUser: ENC[AES256_GCM,data:LOin6URxilJKfQ==,iv:c4pK0mtdzuu4JRPnaDgRKKhpBWxE1aRwYHdQo2HmLrg=,tag:5Q6WLDsfkydsWFJCVYr7lw==,type:str]
-dockerHubToken: ENC[AES256_GCM,data:ato9266I6Mn7+yDR6X4L2hc0u+on5rME01hhBn97QV553qNE,iv:2LALNb1NXrKNNCu45e6zS2y2RUmwgiompf/RW85Lm90=,tag:jDqspKIUuwZAj5vdw/LPdA==,type:str]
 sops:
     kms: []
     gcp_kms: []
@@ -18,8 +16,8 @@ sops:
             eEtpdHNQYkorQmxsQUcwV3p3eDU1Y0EKIAAjybQn+st4wViNO2HDZnTDN4zsR9yY
             XbukoArjeFsHBi/K2UOSyglI+G3cyPFe1dMUAW2sMnW3Vgb7kh9rdg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2023-01-15T05:30:32Z"
-    mac: ENC[AES256_GCM,data:kJqmpFoskvpE5WCXvJR4SIJIx18kZgKzWpYLId9qLEW+51UzliErgOruZ4WCrD2Q29TQF2hu0jENBdqHOIXbJUA5ee6tjoz7R9/ePCGQIv0CPOJZE3beQh14SYk4YaS4lTRXxhwwtnCtM0E4bhdKp0tVMk/bBEvl3imu77gNPB4=,iv:tOpTt2tA9Vv6FEP9qp/C2iakimL/NYUxODSCk/d52VU=,tag:X91br7FIlTxzzffCjwD5qQ==,type:str]
+    lastmodified: "2023-01-15T18:27:49Z"
+    mac: ENC[AES256_GCM,data:wOXaw1Og9ZEkjdXWiTxU2VJvTe2zjqTwgadqQpXuah8yu0YbJj/mhSNh8KpqxrBkk+vUG3LKNzfRdHEEflJrgKb+Rhl/6PGFgesbKt9JXtqIdw1ep/LvO+1ob2nzJ3741/nmK81xXLMvWNtcVwzrZBVXZkvh24oXTLcgRQZYXNc=,iv:SK8u3FNWMsQDXzBFwW/ZKsP1D94ZMAkTWOSddo4ECg4=,tag:+q0ZvYJVb+AqNUgIHhhZVw==,type:str]
     pgp: []
     unencrypted_suffix: _unencrypted
     version: 3.7.3
