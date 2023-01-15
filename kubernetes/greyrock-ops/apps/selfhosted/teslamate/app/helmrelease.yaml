@@ -75,9 +75,11 @@ spec:
         enabled: true
         ingressClassName: "nginx"
         hosts:
-          - host: "teslamate.greyrock.tech"
+          - host: &host "teslamate.greyrock.tech"
             paths:
               - path: /
-                pathType: Prefix
+        tls:
+          - hosts:
+              - *host
     postgresql:
       enabled: false
