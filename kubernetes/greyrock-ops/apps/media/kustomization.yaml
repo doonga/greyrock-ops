@@ -5,8 +5,6 @@ resources:
   # Pre Flux-Kustomizations
   - ./namespace.yaml
   # Flux-Kustomizations
-  - ./bonob/ks.yaml
   - ./calibre-web/ks.yaml
   - ./jellyfin/ks.yaml
-  - ./navidrome/ks.yaml
   - ./series-cleanup/ks.yaml
