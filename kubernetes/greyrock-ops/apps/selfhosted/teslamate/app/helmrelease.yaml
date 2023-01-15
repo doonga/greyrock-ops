@@ -41,8 +41,16 @@ spec:
       tag: 1.27.2
     env:
       DISABLE_MQTT: "true"
-      DATABASE_HOST: postgres-rw.dbms
-      DATABASE_NAME: teslamate
+      DATABASE_HOST:
+        valueFrom:
+          secretKeyRef:
+            name: teslamate-secret
+            key: POSTGRES_HOST
+      DATABASE_NAME:
+        valueFrom:
+          secretKeyRef:
+            name: teslamate-secret
+            key: POSTGRES_DB
       DATABASE_USER:
         valueFrom:
           secretKeyRef:
