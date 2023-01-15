@@ -81,8 +81,8 @@ spec:
       media:
         enabled: true
         type: nfs
-        server: "nas.bjw-s.tech"
-        path: /volume1/IPCams/frigate
+        server: "nas.private.greyrock.io"
+        path: /tank/frigate
         mountPath: /media
       usb:
         enabled: true
@@ -100,7 +100,7 @@ spec:
         enabled: true
         ingressClassName: "nginx"
         hosts:
-          - host: &host "frigate.bjw-s.dev"
+          - host: &host "frigate.greyrock.tech"
             paths:
               - path: /
         tls:

@@ -69,22 +69,67 @@ record:
 
 # Specify camera's
 cameras:
-  doorbell:
+  courtyard_porch_doorbell:
     # Camera-specific ffmpeg configuration
     ffmpeg:
       inputs:
-        - path: "rtsp://{FRIGATE_CAMERA_DOORBELL_USER}:{FRIGATE_CAMERA_DOORBELL_PASSWORD}@{FRIGATE_CAMERA_DOORBELL_HOST}:554/cam/realmonitor?channel=1&subtype=0"
+        - path: "rtsp://{FRIGATE_CAMERA_COURTYARD_DOORBELL_USER}:{FRIGATE_CAMERA_COURTYARD_DOORBELL_PASSWORD}@{FRIGATE_CAMERA_COURTYARD_DOORBELL_HOST}:554/cam/realmonitor?channel=1&subtype=0"
           roles:
             - rtmp
             - record
-        - path: "rtsp://{FRIGATE_CAMERA_DOORBELL_USER}:{FRIGATE_CAMERA_DOORBELL_PASSWORD}@{FRIGATE_CAMERA_DOORBELL_HOST}:554/cam/realmonitor?channel=1&subtype=1"
+        - path: "rtsp://{FRIGATE_CAMERA_COURTYARD_DOORBELL_USER}:{FRIGATE_CAMERA_COURTYARD_DOORBELL_PASSWORD}@{FRIGATE_CAMERA_COURTYARD_DOORBELL_HOST}:554/cam/realmonitor?channel=1&subtype=1"
           roles:
             - detect
 
     # Camera-specific detection configuration
     detect:
-      width: 960
-      height: 720
+      width: 1920
+      height: 1080
+      fps: 10
+
+    # Camera-specific detection configuration
+    motion:
+      mask:
+        - "1595,0,1920,0,1920,1080,1278,1080,1332,1080,1242,1080,1045,734,1053,0"
+        - "0,1080,221,1080,433,921,386,498,0,439"
+        - "1032,487,1037,726,843,731,842,492"
+
+    # Camera-specific detection configuration
+    objects:
+      track:
+        - person
+      filters:
+        person:
+          mask: "1595,0,1920,0,1920,1080,1278,1080,1332,1080,1242,1080,1045,734,1053,0"
+
+    # Camera-specific recording configuration
+    record:
+      events:
+        retain:
+          default: 14
+
+    # Camera-specific snapshots configuration
+    snapshots:
+      retain:
+        default: 14
+
+  garage:
+    ffmpeg:
+      inputs:
+        - path: rtsp://{FRIGATE_CAMERA_GARAGE_USER}:{FRIGATE_CAMERA_GARAGE_PASSWORD}@{FRIGATE_CAMERA_GARAGE_HOST}:554/cam/realmonitor?channel=1&subtype=1
+          roles:
+            - rtmp
+        - path: rtsp://{FRIGATE_CAMERA_GARAGE_USER}:{FRIGATE_CAMERA_GARAGE_PASSWORD}@{FRIGATE_CAMERA_GARAGE_HOST}:554/cam/realmonitor?channel=1&subtype=2
+          roles:
+            - detect
+        - path: rtsp://{FRIGATE_CAMERA_GARAGE_USER}:{FRIGATE_CAMERA_GARAGE_PASSWORD}@{FRIGATE_CAMERA_GARAGE_HOST}:554/cam/realmonitor?channel=1&subtype=0
+          roles:
+            - record
+
+    # Camera-specific detection configuration
+    detect:
+      width: 1920
+      height: 1080
       fps: 10
 
     # Camera-specific recording configuration
