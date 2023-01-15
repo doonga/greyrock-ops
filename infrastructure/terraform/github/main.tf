@@ -31,9 +31,3 @@ module "onepassword_item_flux" {
   vault  = "Automation"
   item   = "flux"
 }
-
-module "onepassword_item_dockerhub" {
-  source = "github.com/Doonga/terraform-1password-item?ref=main"
-  vault  = "Automation"
-  item   = "docker-hub"
-}
