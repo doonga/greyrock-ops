@@ -110,8 +110,8 @@ zfs_filesystems:
     pool: tank
     state: present
     recordsize: 1M
-    owner: 568
-    group: 100
+    owner: 65534
+    group: 65534
     sharenfs: on
     mountpoint: /tank/frigate/
   - name: minio
