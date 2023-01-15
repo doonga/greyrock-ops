@@ -39,6 +39,8 @@ spec:
     image:
       repository: teslamate/teslamate
       tag: 1.27.2
+    podAnnotations:
+      secret.reloader.stakater.com/reload: teslamate-secret
     env:
       DATABASE_HOST:
         valueFrom:
