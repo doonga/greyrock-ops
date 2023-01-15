@@ -23,4 +23,9 @@ locals {
     "GREYROCK_APP_ID"          = module.onepassword_item_github_greyrock_bot.fields.github_app_id
     "GREYROCK_APP_PRIVATE_KEY" = module.onepassword_item_github_greyrock_bot.fields.github_app_private_key
   }
+
+  dockerhub_secrets = {
+    "DOCKERHUB_USERNAME"       = module.onepassword_item_dockerhub.fields.dockerhub_user
+    "DOCKERHUB_TOKEN"          = module.onepassword_item_dockerhub.fields.dockerhub_token
+  }
 }
