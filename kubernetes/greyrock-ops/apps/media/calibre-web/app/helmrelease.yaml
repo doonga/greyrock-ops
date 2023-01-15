@@ -44,14 +44,14 @@ spec:
         enabled: true
         annotations:
           auth.home.arpa/enabled: "true"
-          nginx.ingress.kubernetes.io/auth-url: https://auth.bjw-s.dev/oauth2/auth?allowed_groups=calibre-web
+          nginx.ingress.kubernetes.io/auth-url: https://auth.greyrock.tech/oauth2/auth?allowed_groups=calibre-web
           nginx.ingress.kubernetes.io/configuration-snippet: |
             proxy_set_header Accept-Encoding "";
-            sub_filter '</head>' '<link rel="stylesheet" type="text/css" href="https://theme-park.bjw-s.dev/css/base/calibreweb/nord.css"></head>';
+            sub_filter '</head>' '<link rel="stylesheet" type="text/css" href="https://theme-park.greyrock.tech/css/base/calibreweb/nord.css"></head>';
             sub_filter_once on;
         ingressClassName: nginx
         hosts:
-          - host: &host calibre-web.bjw-s.dev
+          - host: &host calibre-web.greyrock.tech
             paths:
               - path: /
         tls:
@@ -61,7 +61,7 @@ spec:
         enabled: true
         ingressClassName: nginx
         hosts:
-          - host: &host_kobo calibre-kobo.bjw-s.dev
+          - host: &host_kobo calibre-kobo.greyrock.tech
             paths:
               - path: /kobo/
         tls:
@@ -75,8 +75,8 @@ spec:
       media:
         enabled: true
         mountPath: /data/nas-media
-        path: /volume1/Media
-        server: nas.bjw-s.tech
+        path: /tank/media
+        server: nas.private.greyrock.io
         type: nfs
       cache:
         enabled: true
