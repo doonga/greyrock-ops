@@ -6,4 +6,3 @@ resources:
   - ./namespace.yaml
   # Flux-Kustomizations
   - ./icloud-photos-backup/ks.yaml
-  - ./mailbackup/ks.yaml
