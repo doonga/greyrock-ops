@@ -55,7 +55,6 @@
       "versioningTemplate": "semver"
     }
   ],
-  "enabledManagers": ["kubernetes", "helm-values", "regex", "github-actions", "pre-commit"],
   "packageRules": [
     // Custom version schemes
     {
