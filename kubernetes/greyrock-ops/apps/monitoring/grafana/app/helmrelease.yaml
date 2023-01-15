@@ -57,7 +57,7 @@ spec:
             url: http://alertmanager.monitoring.svc.cluster.local:9093
             jsonData:
               implementation: prometheus
-          - name: Teslamate
+          - name: TeslaMate
             type: postgres
             access: proxy
             url: postgres-any.database.svc.cluster.local:5432
