@@ -10,4 +10,5 @@ resources:
   - ./n8n/ks.yaml
   - ./obsidian-couchdb/ks.yaml
   - ./paperless/ks.yaml
+  - ./teslamate/ks.yaml
   - ./theme-park/ks.yaml
