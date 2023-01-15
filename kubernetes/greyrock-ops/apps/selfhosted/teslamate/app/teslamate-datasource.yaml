@@ -16,9 +16,7 @@ data:
       url: postgres-any.database.svc.cluster.local:5432
       database: teslamate
       user: teslamate
-      secureJsonData:
-        password: $TESLAMATE_POSTGRES_PASSWORD
-        sslmode: disable
+      password: $TESLAMATE_POSTGRES_PASSWORD
       jsonData:
         postgresVersion: 1000
         sslmode: disable
