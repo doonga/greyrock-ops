@@ -80,7 +80,8 @@ module "renovate-config" {
 
   plaintext_secrets = merge(
     {},
-    local.greyrock_bot_secrets
+    local.greyrock_bot_secrets,
+    local.dockerhub_secrets
   )
 
   issue_labels_merge_with_github_labels = false
