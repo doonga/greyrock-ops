@@ -1,0 +1,83 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: &app teslamate
+  namespace: selfhosted
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 1.2.1
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s-charts
+        namespace: flux-system
+      interval: 15m
+  maxHistory: 3
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    initContainers:
+      init-db:
+        image: ghcr.io/onedr0p/postgres-initdb:14.6
+        imagePullPolicy: Always
+        env:
+          - name: POSTGRES_HOST
+            value: postgres-rw.dbms
+          - name: POSTGRES_DB
+            value: *app
+        envFrom:
+          - secretRef:
+              name: *app
+          - secretRef:
+              name: postgres-superuser
+    controller:
+      annotations:
+        secret.reloader.stakater.com/reload: *app
+    image:
+      repository: teslamate/teslamate
+      tag: 1.27.2
+    env:
+      DISABLE_MQTT: "true"
+      DATABASE_HOST: postgres-rw.dbms
+      DATABASE_NAME: teslamate
+      DATABASE_USER:
+        valueFrom:
+          secretKeyRef:
+            name: *app
+            key: POSTGRES_USER
+      DATABASE_PASS:
+        valueFrom:
+          secretKeyRef:
+            name: *app
+            key: POSTGRES_PASS
+    envFrom:
+      - secretRef:
+          name: *app
+    service:
+      main:
+        type: ClusterIP
+        ports:
+          http:
+            port: 4000
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: "nginx"
+        hosts:
+          - host: "teslamate.greyrock.tech"
+            paths:
+              - path: /
+                pathType: Prefix
+    postgresql:
+      enabled: false
