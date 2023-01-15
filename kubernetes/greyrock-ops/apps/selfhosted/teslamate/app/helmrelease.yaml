@@ -46,16 +46,16 @@ spec:
       DATABASE_USER:
         valueFrom:
           secretKeyRef:
-            name: *app
+            name: teslamate-secret
             key: POSTGRES_USER
       DATABASE_PASS:
         valueFrom:
           secretKeyRef:
-            name: *app
+            name: teslamate-secret
             key: POSTGRES_PASS
     envFrom:
       - secretRef:
-          name: *app
+          name: teslamate-secret
     service:
       main:
         type: ClusterIP
