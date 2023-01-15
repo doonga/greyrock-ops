@@ -40,7 +40,6 @@ spec:
       repository: teslamate/teslamate
       tag: 1.27.2
     env:
-      DISABLE_MQTT: "true"
       DATABASE_HOST:
         valueFrom:
           secretKeyRef:
