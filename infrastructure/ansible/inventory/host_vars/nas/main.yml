@@ -113,7 +113,7 @@ zfs_filesystems:
     pool: tank
     state: present
     owner: 568
-    group: 100
+    group: 65543
     sharenfs: on
     mountpoint: /tank/documents/
   - name: frigate

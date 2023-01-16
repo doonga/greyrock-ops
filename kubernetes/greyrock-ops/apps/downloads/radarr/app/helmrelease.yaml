@@ -59,7 +59,7 @@ spec:
             sub_filter '</head>' '<link rel="stylesheet" type="text/css" href="https://theme-park.greyrock.tech/css/base/radarr/nord.css"></head>';
             sub_filter_once on;
         hosts:
-          - host: &host "radarr.grerock.tech"
+          - host: &host "radarr.greyrock.tech"
             paths:
               - path: /
         tls:
