@@ -26,9 +26,7 @@ spec:
       fsGroup: 568
       fsGroupChangePolicy: "OnRootMismatch"
       supplementalGroups:
-        - 44
-        - 109
-        - 65539
+        - 100
 
     env:
       DOTNET_SYSTEM_IO_DISABLEFILELOCKING: "true"
