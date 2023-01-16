@@ -15,7 +15,6 @@ spec:
     name: greyrock-ops-kubernetes
   dependsOn:
     - name: cluster-apps-external-secrets
-    - name: cluster-apps-kube-prometheus-stack
   healthChecks:
     - apiVersion: helm.toolkit.fluxcd.io/v2beta1
       kind: HelmRelease

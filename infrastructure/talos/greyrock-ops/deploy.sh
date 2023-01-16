@@ -15,6 +15,7 @@ talosctl apply-config -i -n 172.16.30.106 -f ./clusterconfig/greyrock-ops-worker
 talosctl apply-config -i -n 172.16.30.107 -f ./clusterconfig/greyrock-ops-worker-04.private.greyrock.io.yaml
 talosctl apply-config -i -n 172.16.30.108 -f ./clusterconfig/greyrock-ops-worker-05.private.greyrock.io.yaml
 talosctl apply-config -i -n 172.16.30.109 -f ./clusterconfig/greyrock-ops-worker-06.private.greyrock.io.yaml
+talosctl apply-config -i -n 172.16.30.110 -f ./clusterconfig/greyrock-ops-worker-07.private.greyrock.io.yaml
 
 echo "Waiting 2 mins..."
 sleep 120
