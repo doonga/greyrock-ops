@@ -8,7 +8,7 @@ resource "auth0_client" "default" {
     "https://auth.greyrock.tech/oauth2/callback",               # oauth2-proxy
     "https://grafana.greyrock.tech/login/generic_oauth",        # Grafana
     "http://localhost:8000",                                # kubectl oidc-login
-    "https://status.greyrock.tech/authorization-code/callback", # Gatus
+    "https://status.greyrock.io/authorization-code/callback", # Gatus
     "https://kubenav.io/oidc.html",                         # Kubenav
     "https://gitops.greyrock.tech/oauth2/callback",             # Weave-Gitops
   ]

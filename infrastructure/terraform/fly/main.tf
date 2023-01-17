@@ -1,6 +1,6 @@
 terraform {
   cloud {
-    organization = "greyrock"
+    organization = "grey-rock"
     workspaces {
       name = "greyrock-ops-fly-provisioner"
     }
