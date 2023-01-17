@@ -43,3 +43,23 @@ module "minio_bucket_volsync" {
   user_name   = module.onepassword_item_minio.fields.volsync_access_key
   user_secret = module.onepassword_item_minio.fields.volsync_secret_key
 }
+
+module "minio_bucket_todd" {
+  source      = "./modules/minio_bucket"
+  bucket_name = "volsync"
+  providers = {
+    minio = minio.nas
+  }
+  user_name   = module.onepassword_item_minio.fields.todd_access_key
+  user_secret = module.onepassword_item_minio.fields.todd_secret_key
+}
+
+module "minio_bucket_andy" {
+  source      = "./modules/minio_bucket"
+  bucket_name = "volsync"
+  providers = {
+    minio = minio.nas
+  }
+  user_name   = module.onepassword_item_minio.fields.andy_access_key
+  user_secret = module.onepassword_item_minio.fields.andy_secret_key
+}
