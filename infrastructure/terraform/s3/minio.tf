@@ -46,7 +46,7 @@ module "minio_bucket_volsync" {
 
 module "minio_bucket_todd" {
   source      = "./modules/minio_bucket"
-  bucket_name = "volsync"
+  bucket_name = "todd"
   providers = {
     minio = minio.nas
   }
@@ -56,7 +56,7 @@ module "minio_bucket_todd" {
 
 module "minio_bucket_andy" {
   source      = "./modules/minio_bucket"
-  bucket_name = "volsync"
+  bucket_name = "andy"
   providers = {
     minio = minio.nas
   }
