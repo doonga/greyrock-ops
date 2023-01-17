@@ -15,8 +15,8 @@ spec:
         [
           "/bin/sh",
           "-c",
-          "blkdiscard /dev/sda",
           "dd if=/dev/zero bs=1M count=10000 oflag=direct of=/dev/sda",
+          "blkdiscard /dev/sda",
         ]
 ---
 apiVersion: v1
@@ -35,8 +35,8 @@ spec:
         [
           "/bin/sh",
           "-c",
-          "blkdiscard /dev/sda",
           "dd if=/dev/zero bs=1M count=10000 oflag=direct of=/dev/sda",
+          "blkdiscard /dev/sda",
         ]
 ---
 apiVersion: v1
@@ -55,8 +55,8 @@ spec:
         [
           "/bin/sh",
           "-c",
-          "blkdiscard /dev/sda",
           "dd if=/dev/zero bs=1M count=10000 oflag=direct of=/dev/sda",
+          "blkdiscard /dev/sda",
         ]
 ---
 apiVersion: v1
@@ -75,8 +75,8 @@ spec:
         [
           "/bin/sh",
           "-c",
-          "blkdiscard /dev/sda",
           "dd if=/dev/zero bs=1M count=10000 oflag=direct of=/dev/sda",
+          "blkdiscard /dev/sda",
         ]
 ---
 apiVersion: v1
@@ -95,8 +95,8 @@ spec:
         [
           "/bin/sh",
           "-c",
-          "blkdiscard /dev/sda",
           "dd if=/dev/zero bs=1M count=10000 oflag=direct of=/dev/sda",
+          "blkdiscard /dev/sda",
         ]
 ---
 apiVersion: v1
@@ -115,6 +115,46 @@ spec:
         [
           "/bin/sh",
           "-c",
-          "blkdiscard /dev/sda",
           "dd if=/dev/zero bs=1M count=10000 oflag=direct of=/dev/sda",
+          "blkdiscard /dev/sda",
+        ]
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: disk-wipe-worker-07
+spec:
+  restartPolicy: Never
+  nodeName: worker-07
+  containers:
+    - name: disk-wipe
+      image: busybox@sha256:7b3ccabffc97de872a30dfd234fd972a66d247c8cfc69b0550f276481852627c
+      securityContext:
+        privileged: true
+      command:
+        [
+          "/bin/sh",
+          "-c",
+          "dd if=/dev/zero bs=1M count=10000 oflag=direct of=/dev/sda",
+          "blkdiscard /dev/sda",
+        ]
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: disk-wipe-worker-08
+spec:
+  restartPolicy: Never
+  nodeName: worker-08
+  containers:
+    - name: disk-wipe
+      image: busybox@sha256:7b3ccabffc97de872a30dfd234fd972a66d247c8cfc69b0550f276481852627c
+      securityContext:
+        privileged: true
+      command:
+        [
+          "/bin/sh",
+          "-c",
+          "dd if=/dev/zero bs=1M count=10000 oflag=direct of=/dev/sda",
+          "blkdiscard /dev/sda",
         ]

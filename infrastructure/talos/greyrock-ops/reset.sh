@@ -1,6 +1,8 @@
 #!/bin/bash
 
 # Reset the worker nodes first since the path to them is through the control plane nodes
+talosctl reset --graceful=false --system-labels-to-wipe STATE --system-labels-to-wipe EPHEMERAL --reboot -n 172.16.30.111 -e 172.16.30.111
+talosctl reset --graceful=false --system-labels-to-wipe STATE --system-labels-to-wipe EPHEMERAL --reboot -n 172.16.30.110 -e 172.16.30.110
 talosctl reset --graceful=false --system-labels-to-wipe STATE --system-labels-to-wipe EPHEMERAL --reboot -n 172.16.30.109 -e 172.16.30.109
 talosctl reset --graceful=false --system-labels-to-wipe STATE --system-labels-to-wipe EPHEMERAL --reboot -n 172.16.30.108 -e 172.16.30.108
 talosctl reset --graceful=false --system-labels-to-wipe STATE --system-labels-to-wipe EPHEMERAL --reboot -n 172.16.30.107 -e 172.16.30.107
