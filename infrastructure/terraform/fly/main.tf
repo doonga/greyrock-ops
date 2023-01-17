@@ -49,7 +49,7 @@ module "gatus" {
   secrets = {
     gatus = {
       oidc = {
-        issuer_url    = "${module.onepassword_item_auth0.fields.greyrock_domain}/"
+        issuer_url    = "${module.onepassword_item_auth0.fields.greyrock_custom_domain}/"
         client_id     = module.onepassword_item_auth0.fields.generic_client_id
         client_secret = module.onepassword_item_auth0.fields.generic_client_secret
         subjects      = ["auth0|63bf4b931234b841d085c087"]
