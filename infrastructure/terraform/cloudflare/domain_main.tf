@@ -4,8 +4,9 @@ module "cf_domain_main" {
   account_id = cloudflare_account.greyrock.id
   dns_entries = [
     {
-      name  = "ipv4"
-      value = local.home_ipv4
+      name    = "ipv4"
+      value   = local.home_ipv4
+      proxied = false
     },
     # To be cleaned up
     {
