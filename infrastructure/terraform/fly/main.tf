@@ -60,5 +60,5 @@ module "gatus" {
       }
     }
   }
-  regions = ["ams"]
+  regions = ["iad"]
 }
