@@ -6,7 +6,7 @@ metadata:
   namespace: infrastructure
 spec:
   interval: 1m
-  url: oci://ghcr.io/bjw-s/terraform-fly
+  url: oci://ghcr.io/doonga/terraform-fly
   ref:
     tag: main
 ---
