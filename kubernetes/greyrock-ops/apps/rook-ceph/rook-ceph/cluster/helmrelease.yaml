@@ -99,6 +99,9 @@ spec:
           - name: "worker-07"
             devices:
               - name: "/dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_PHWL5034005A800RGN"
+          - name: "worker-08"
+            devices:
+              - name: "/dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_PHWL4436048S800RGN"
 
     ingress:
       dashboard:

@@ -137,6 +137,19 @@ nodes:
             dhcp: false
             addresses:
               - 172.16.10.110/24
+  - hostname: worker-08.private.greyrock.io
+    ipAddress: 172.16.30.111
+    controlPlane: false
+    installDisk: /dev/nvme0n1
+    disableSearchDomain: true
+    networkInterfaces:
+      - interface: eth0
+        dhcp: true
+        vlans:
+          - vlanId: 10
+            dhcp: false
+            addresses:
+              - 172.16.10.111/24
 
 controlPlane:
   patches:
@@ -226,6 +239,9 @@ controlPlane:
             - ip: 172.16.30.110
               aliases:
                 - worker-07.private.greyrock.io
+            - ip: 172.16.30.111
+              aliases:
+                - worker-08.private.greyrock.io
         sysctls:
           fs.inotify.max_user_watches: "1048576"
           fs.inotify.max_user_instances: "8192"
@@ -297,6 +313,9 @@ worker:
             - ip: 172.16.30.110
               aliases:
                 - worker-07.private.greyrock.io
+            - ip: 172.16.30.111
+              aliases:
+                - worker-08.private.greyrock.io
         sysctls:
           fs.inotify.max_user_watches: "1048576"
           fs.inotify.max_user_instances: "8192"
