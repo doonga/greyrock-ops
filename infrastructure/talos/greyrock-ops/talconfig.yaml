@@ -160,7 +160,7 @@ controlPlane:
           extraArgs:
             feature-gates: MixedProtocolLBService=true,EphemeralContainers=True
             oidc-client-id: ${oidcClientId}
-            oidc-groups-claim: groups
+            oidc-groups-claim: https://greyrock/groups
             oidc-groups-prefix: 'oidc:'
             oidc-issuer-url: ${oidcIssuerURL}
             oidc-username-claim: email
