@@ -43,8 +43,6 @@ spec:
 
     ingress:
       main:
-        annotations:
-          external-dns.home.arpa/enabled: "true"
         enabled: true
         ingressClassName: "nginx"
         hosts:
