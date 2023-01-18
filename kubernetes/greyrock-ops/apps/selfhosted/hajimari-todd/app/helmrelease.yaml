@@ -20,6 +20,10 @@ spec:
       repository: ghcr.io/toboshii/hajimari
       tag: v0.3.1
 
+    controller:
+      replicas: 3
+      strategy: RollingUpdate
+
     hajimari:
       defaultEnable: false
       darkTheme: chalk
@@ -127,8 +131,8 @@ spec:
 
     persistence:
       data:
-        enabled: true
-        existingClaim: hajimari-config-todd
+        enabled: false
+
     podAnnotations:
       configmap.reloader.stakater.com/reload: hajimari-todd-settings
 
