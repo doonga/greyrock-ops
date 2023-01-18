@@ -6,6 +6,7 @@ resources:
   - ./namespace.yaml
   # Flux-Kustomizations
   - ./excalidraw/ks.yaml
+  - ./hajimari-todd/ks.yaml
   - ./miniflux/ks.yaml
   - ./n8n/ks.yaml
   - ./obsidian-couchdb/ks.yaml
