@@ -25,6 +25,8 @@ spec:
       darkTheme: chalk
       instanceName: "todd"
       title: "Todd's Homepage"
+      showAppUrls: false
+      showAppInfo: true
       namespaceSelector:
         matchNames:
           - default
