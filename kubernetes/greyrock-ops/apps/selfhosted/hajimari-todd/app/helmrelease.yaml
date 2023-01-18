@@ -24,7 +24,7 @@ spec:
       defaultEnable: false
       darkTheme: chalk
       instanceName: "todd"
-      title: "Todd"
+      title: "Todd's Homepage"
       namespaceSelector:
         matchNames:
           - default
@@ -35,7 +35,7 @@ spec:
           - monitoring
           - media
           - rook-ceph
-      name: "Captain"
+      name: "Todd"
       customApps:
         - name: Camelus-Plexii
           url: http://10.1.0.50:5000
