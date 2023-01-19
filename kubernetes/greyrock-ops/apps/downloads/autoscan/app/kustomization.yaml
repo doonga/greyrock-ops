@@ -3,16 +3,8 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: downloads
 resources:
-  - ./externalsecret.yaml
   - ./helmrelease.yaml
-configMapGenerator:
-  - name: autoscan-config
-    files:
-      - config/config.yaml
-generatorOptions:
-  disableNameSuffixHash: true
-  annotations:
-    kustomize.toolkit.fluxcd.io/substitute: disabled
+  - ./pvc.yaml
 commonLabels:
   app.kubernetes.io/name: autoscan
   app.kubernetes.io/instance: autoscan
