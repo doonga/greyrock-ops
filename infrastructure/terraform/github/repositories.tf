@@ -54,10 +54,6 @@ module "greyrock-ops" {
       secret       = module.onepassword_item_flux.fields.github_webhook_token
     }
   ]
-
-  security_and_analysis = {
-    advanced_security = "enabled"
-  }
 }
 
 module "renovate-config" {
@@ -90,10 +86,6 @@ module "renovate-config" {
     [],
     local.default_issue_labels
   )
-
-  security_and_analysis = {
-    advanced_security = "enabled"
-  }
 }
 
 module "gh-workflows" {
@@ -126,10 +118,6 @@ module "gh-workflows" {
     [],
     local.default_issue_labels
   )
-
-  security_and_analysis = {
-    advanced_security = "enabled"
-  }
 }
 
 module "terraform-1password-item" {
@@ -162,8 +150,4 @@ module "terraform-1password-item" {
     [],
     local.default_issue_labels
   )
-
-  security_and_analysis = {
-    advanced_security = "enabled"
-  }
 }
