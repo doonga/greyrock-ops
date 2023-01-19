@@ -38,11 +38,7 @@ spec:
     persistence:
       config:
         enabled: true
-        type: configMap
-        name: autoscan-config
-        subPath: config.yaml
-        mountPath: /config/config.yml
-        readOnly: true
+        existingClaim: autoscan-data
 
     resources:
       requests:
