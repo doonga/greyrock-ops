@@ -39,6 +39,12 @@ spec:
       config:
         enabled: true
         existingClaim: autoscan-data
+      media:
+        enabled: true
+        type: nfs
+        server: "nas.private.greyrock.io"
+        path: /tank/media
+        mountPath: /data/nas-media
 
     resources:
       requests:
