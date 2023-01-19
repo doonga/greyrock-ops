@@ -9,6 +9,10 @@ configMapGenerator:
   - name: autoscan-config
     files:
       - config/config.yaml
+generatorOptions:
+  disableNameSuffixHash: true
+  annotations:
+    kustomize.toolkit.fluxcd.io/substitute: disabled
 commonLabels:
   app.kubernetes.io/name: autoscan
   app.kubernetes.io/instance: autoscan
