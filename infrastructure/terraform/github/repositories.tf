@@ -1,5 +1,6 @@
 module "greyrock-ops" {
-  source = "github.com/doonga/terraform-github-repository.git?ref=main"
+  source = "mineiros-io/repository/github"
+  version = "0.18.0"
 
   name         = "greyrock-ops"
   description  = "My home or for-home infrastructure written as code, adhering to GitOps practices"
@@ -60,7 +61,8 @@ module "greyrock-ops" {
 }
 
 module "renovate-config" {
-  source = "github.com/doonga/terraform-github-repository.git?ref=main"
+  source = "mineiros-io/repository/github"
+  version = "0.18.0"
 
   name        = "renovate-config"
   description = "Renovate configuration presets"
@@ -95,7 +97,8 @@ module "renovate-config" {
 }
 
 module "gh-workflows" {
-  source = "github.com/doonga/terraform-github-repository.git?ref=main"
+  source = "mineiros-io/repository/github"
+  version = "0.18.0"
 
   name        = "gh-workflows"
   description = "A collection of reusable GitHub workflows"
@@ -130,7 +133,8 @@ module "gh-workflows" {
 }
 
 module "terraform-1password-item" {
-  source = "github.com/doonga/terraform-github-repository.git?ref=main"
+  source = "mineiros-io/repository/github"
+  version = "0.18.0"
 
   name        = "terraform-1password-item"
   description = "Terraform Module that collects all fields for a 1Password Item."
