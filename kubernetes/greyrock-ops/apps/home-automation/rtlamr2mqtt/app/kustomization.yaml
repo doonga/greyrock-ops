@@ -5,6 +5,7 @@ namespace: home-automation
 resources:
   - ./externalsecret.yaml
   - ./helmrelease.yaml
+  - ./nodefeaturerule.yaml
 commonLabels:
   app.kubernetes.io/name: rtlamr2mqtt
   app.kubernetes.io/instance: rtlamr2mqtt
