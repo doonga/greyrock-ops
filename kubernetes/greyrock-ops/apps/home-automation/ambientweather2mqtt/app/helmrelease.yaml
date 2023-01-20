@@ -1,0 +1,46 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: ambientweather2mqtt
+  namespace: home-automation
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 1.2.1
+      interval: 30m
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+
+  values:
+    image:
+      repository: ghcr.io/neilenns/ambientweather2mqtt
+      tag: v4.0.0
+
+    envFrom:
+      - secretRef:
+          name: ambientweather2mqtt-secrets
+
+    service:
+      main:
+        type: LoadBalancer
+        loadBalancerIP: "${SVC_AMBW2MQTT_ADDR}"
+        externalTrafficPolicy: Local
+        ports:
+          http:
+            port: 8080
+
+    ingress:
+      main:
+        enabled: false
+
+    resources:
+      requests:
+        cpu: 15m
+        memory: 226M
+      limits:
+        memory: 1937M

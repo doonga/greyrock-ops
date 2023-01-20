@@ -18,12 +18,22 @@ spec:
       command:
         [
           "/bin/sh",
-          "-c",
-          "apk add --no-cache sgdisk util-linux parted",
-          "sgdisk --zap-all $CEPH_DISK",
-          "blkdiscard $CEPH_DISK",
-          "partprobe $CEPH_DISK"
+          "-c"
         ]
+      args:
+        - apk add --no-cache sgdisk util-linux parted;
+          sgdisk --zap-all $CEPH_DISK;
+          blkdiscard $CEPH_DISK;
+          dd if=/dev/zero bs=1M count=10000 oflag=direct of=$CEPH_DISK;
+          partprobe $CEPH_DISK;
+          rm -rf /mnt/host_var/lib/rook
+      volumeMounts:
+        - mountPath: /mnt/host_var
+          name: host-var
+  volumes:
+    - name: host-var
+      hostPath:
+        path: /var
 ---
 apiVersion: v1
 kind: Pod
@@ -44,12 +54,22 @@ spec:
       command:
         [
           "/bin/sh",
-          "-c",
-          "apk add --no-cache sgdisk util-linux parted",
-          "sgdisk --zap-all $CEPH_DISK",
-          "blkdiscard $CEPH_DISK",
-          "partprobe $CEPH_DISK"
+          "-c"
         ]
+      args:
+        - apk add --no-cache sgdisk util-linux parted;
+          sgdisk --zap-all $CEPH_DISK;
+          blkdiscard $CEPH_DISK;
+          dd if=/dev/zero bs=1M count=10000 oflag=direct of=$CEPH_DISK;
+          partprobe $CEPH_DISK;
+          rm -rf /mnt/host_var/lib/rook
+      volumeMounts:
+        - mountPath: /mnt/host_var
+          name: host-var
+  volumes:
+    - name: host-var
+      hostPath:
+        path: /var
 ---
 apiVersion: v1
 kind: Pod
@@ -58,7 +78,6 @@ metadata:
 spec:
   restartPolicy: Never
   nodeName: worker-03
-
   containers:
     - name: disk-wipe
       image: ghcr.io/onedr0p/alpine:3.17.0@sha256:23ca8ffcdfbe16492f0d638b71691985b15b3aa7cc373f366a14ec17275bc584
@@ -71,12 +90,22 @@ spec:
       command:
         [
           "/bin/sh",
-          "-c",
-          "apk add --no-cache sgdisk util-linux parted",
-          "sgdisk --zap-all $CEPH_DISK",
-          "blkdiscard $CEPH_DISK",
-          "partprobe $CEPH_DISK"
+          "-c"
         ]
+      args:
+        - apk add --no-cache sgdisk util-linux parted;
+          sgdisk --zap-all $CEPH_DISK;
+          blkdiscard $CEPH_DISK;
+          dd if=/dev/zero bs=1M count=10000 oflag=direct of=$CEPH_DISK;
+          partprobe $CEPH_DISK;
+          rm -rf /mnt/host_var/lib/rook
+      volumeMounts:
+        - mountPath: /mnt/host_var
+          name: host-var
+  volumes:
+    - name: host-var
+      hostPath:
+        path: /var
 ---
 apiVersion: v1
 kind: Pod
@@ -97,12 +126,22 @@ spec:
       command:
         [
           "/bin/sh",
-          "-c",
-          "apk add --no-cache sgdisk util-linux parted",
-          "sgdisk --zap-all $CEPH_DISK",
-          "blkdiscard $CEPH_DISK",
-          "partprobe $CEPH_DISK"
+          "-c"
         ]
+      args:
+        - apk add --no-cache sgdisk util-linux parted;
+          sgdisk --zap-all $CEPH_DISK;
+          blkdiscard $CEPH_DISK;
+          dd if=/dev/zero bs=1M count=10000 oflag=direct of=$CEPH_DISK;
+          partprobe $CEPH_DISK;
+          rm -rf /mnt/host_var/lib/rook
+      volumeMounts:
+        - mountPath: /mnt/host_var
+          name: host-var
+  volumes:
+    - name: host-var
+      hostPath:
+        path: /var
 ---
 apiVersion: v1
 kind: Pod
@@ -123,12 +162,22 @@ spec:
       command:
         [
           "/bin/sh",
-          "-c",
-          "apk add --no-cache sgdisk util-linux parted",
-          "sgdisk --zap-all $CEPH_DISK",
-          "blkdiscard $CEPH_DISK",
-          "partprobe $CEPH_DISK"
+          "-c"
         ]
+      args:
+        - apk add --no-cache sgdisk util-linux parted;
+          sgdisk --zap-all $CEPH_DISK;
+          blkdiscard $CEPH_DISK;
+          dd if=/dev/zero bs=1M count=10000 oflag=direct of=$CEPH_DISK;
+          partprobe $CEPH_DISK;
+          rm -rf /mnt/host_var/lib/rook
+      volumeMounts:
+        - mountPath: /mnt/host_var
+          name: host-var
+  volumes:
+    - name: host-var
+      hostPath:
+        path: /var
 ---
 apiVersion: v1
 kind: Pod
@@ -149,12 +198,22 @@ spec:
       command:
         [
           "/bin/sh",
-          "-c",
-          "apk add --no-cache sgdisk util-linux parted",
-          "sgdisk --zap-all $CEPH_DISK",
-          "blkdiscard $CEPH_DISK",
-          "partprobe $CEPH_DISK"
+          "-c"
         ]
+      args:
+        - apk add --no-cache sgdisk util-linux parted;
+          sgdisk --zap-all $CEPH_DISK;
+          blkdiscard $CEPH_DISK;
+          dd if=/dev/zero bs=1M count=10000 oflag=direct of=$CEPH_DISK;
+          partprobe $CEPH_DISK;
+          rm -rf /mnt/host_var/lib/rook
+      volumeMounts:
+        - mountPath: /mnt/host_var
+          name: host-var
+  volumes:
+    - name: host-var
+      hostPath:
+        path: /var
 ---
 apiVersion: v1
 kind: Pod
@@ -175,12 +234,22 @@ spec:
       command:
         [
           "/bin/sh",
-          "-c",
-          "apk add --no-cache sgdisk util-linux parted",
-          "sgdisk --zap-all $CEPH_DISK",
-          "blkdiscard $CEPH_DISK",
-          "partprobe $CEPH_DISK"
+          "-c"
         ]
+      args:
+        - apk add --no-cache sgdisk util-linux parted;
+          sgdisk --zap-all $CEPH_DISK;
+          blkdiscard $CEPH_DISK;
+          dd if=/dev/zero bs=1M count=10000 oflag=direct of=$CEPH_DISK;
+          partprobe $CEPH_DISK;
+          rm -rf /mnt/host_var/lib/rook
+      volumeMounts:
+        - mountPath: /mnt/host_var
+          name: host-var
+  volumes:
+    - name: host-var
+      hostPath:
+        path: /var
 ---
 apiVersion: v1
 kind: Pod
@@ -201,9 +270,55 @@ spec:
       command:
         [
           "/bin/sh",
-          "-c",
-          "apk add --no-cache sgdisk util-linux parted",
-          "sgdisk --zap-all $CEPH_DISK",
-          "blkdiscard $CEPH_DISK",
-          "partprobe $CEPH_DISK"
+          "-c"
         ]
+      args:
+        - apk add --no-cache sgdisk util-linux parted;
+          sgdisk --zap-all $CEPH_DISK;
+          blkdiscard $CEPH_DISK;
+          dd if=/dev/zero bs=1M count=10000 oflag=direct of=$CEPH_DISK;
+          partprobe $CEPH_DISK;
+          rm -rf /mnt/host_var/lib/rook
+      volumeMounts:
+        - mountPath: /mnt/host_var
+          name: host-var
+  volumes:
+    - name: host-var
+      hostPath:
+        path: /var
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: disk-wipe-worker-09
+spec:
+  restartPolicy: Never
+  nodeName: worker-09
+  containers:
+    - name: disk-wipe
+      image: ghcr.io/onedr0p/alpine:3.17.0@sha256:23ca8ffcdfbe16492f0d638b71691985b15b3aa7cc373f366a14ec17275bc584
+      securityContext:
+        privileged: true
+      resources: {}
+      env:
+        - name: CEPH_DISK
+          value: /dev/sda
+      command:
+        [
+          "/bin/sh",
+          "-c"
+        ]
+      args:
+        - apk add --no-cache sgdisk util-linux parted;
+          sgdisk --zap-all $CEPH_DISK;
+          blkdiscard $CEPH_DISK;
+          dd if=/dev/zero bs=1M count=10000 oflag=direct of=$CEPH_DISK;
+          partprobe $CEPH_DISK;
+          rm -rf /mnt/host_var/lib/rook
+      volumeMounts:
+        - mountPath: /mnt/host_var
+          name: host-var
+  volumes:
+    - name: host-var
+      hostPath:
+        path: /var
