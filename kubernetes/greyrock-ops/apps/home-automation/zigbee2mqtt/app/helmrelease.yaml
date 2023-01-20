@@ -48,7 +48,7 @@ spec:
         enabled: true
         ingressClassName: "nginx"
         hosts:
-          - host: &host "zigbee2mqtt.bjw-s.dev"
+          - host: &host "zigbee2mqtt.greyrock.tech"
             paths:
               - path: /
         tls:
