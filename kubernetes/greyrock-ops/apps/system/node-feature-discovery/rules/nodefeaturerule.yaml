@@ -13,3 +13,11 @@ spec:
         - feature: usb.device
           matchExpressions:
             vendor: { op: In, value: ["1a6e", "18d1"] }
+    - # RTLAMR radio
+      name: rtlamr
+      labels:
+        rtlamr.feature.node.kubernetes.io/rtlamr: "true"
+      matchFeatures:
+        - feature: usb.device
+          matchExpressions:
+            vendor: { op: In, valus: ["0bda", "2838"] }
