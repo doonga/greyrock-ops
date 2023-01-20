@@ -38,3 +38,6 @@ spec:
         subPath:
           - path: RT_LAMR_CONFIG_FILE
             mountPath: /etc/rtlamr2mqtt.yaml
+
+    nodeSelector:
+      rtlamr.feature.node.kubernetes.io/rtlamr: "true"
