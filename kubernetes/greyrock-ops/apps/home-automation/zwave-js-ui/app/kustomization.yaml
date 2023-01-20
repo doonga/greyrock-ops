@@ -6,4 +6,4 @@ namespace: home-automation
 resources:
   - ./nodefeaturerule.yaml
   - ./helmrelease.yaml
-  - ./volsync.yaml
+  - ./replicationsource.yaml
