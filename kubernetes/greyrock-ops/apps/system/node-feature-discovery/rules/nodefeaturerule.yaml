@@ -27,4 +27,4 @@ spec:
       matchFeatures:
         - feature: usb.device
           matchExpressions:
-            vendor: { op: In, valus: ["0bda", "2838"] }
+            vendor: { op: In, value: ["0bda", "2838"] }
