@@ -100,10 +100,6 @@ spec:
       podAnnotations:
         secret.reloader.stakater.com/reload: loki-secret
 
-      readinessProbe:
-        initialDelaySeconds: 120
-        timeoutSeconds: 120
-
     gateway:
       enabled: true
       replicas: 3
