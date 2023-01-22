@@ -125,13 +125,6 @@ spec:
       persistence:
         size: 10Gi
         storageClass: ceph-block
-      extraEnv:
-        - name: MY_POD_IP
-          valueFrom:
-            fieldRef:
-              fieldPath: status.podIP
-      extraArgs:
-        - -memberlist.bind-addr=$(MY_POD_IP)
 
     backend:
       replicas: 3
