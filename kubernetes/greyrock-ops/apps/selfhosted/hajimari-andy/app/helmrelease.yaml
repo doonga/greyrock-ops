@@ -42,13 +42,13 @@ spec:
           - media
           - rook-ceph
       name: "Andy"
-      bookmarkGroups:
+      globalBookmarks:
         - group: Lifestyle
-          links:
+          bookmarks:
             - name: Youtube
               url: "https://youtube.com"
         - group: FFXIV
-          links:
+          bookmarks:
             - name: Sub Calculator
               url: "https://www.mogship.com/submarines/exp-calculator"
             - name: Sub Map
