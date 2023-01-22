@@ -76,7 +76,7 @@ spec:
         enabled: false
 
     podAnnotations:
-      configmap.reloader.stakater.com/reload: hajimari-todd-settings
+      configmap.reloader.stakater.com/reload: hajimari-andy-settings
 
     resources:
       requests:
