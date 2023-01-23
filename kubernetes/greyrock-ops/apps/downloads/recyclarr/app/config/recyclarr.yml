@@ -64,6 +64,8 @@ sonarr:
             reset_unmatched_scores: true
           - name: Ultra-HD
             reset_unmatched_scores: true
+          - name: HD - 720p/1080p
+            reset_unmatched_scored: true
 
 # Configuration specific to Radarr.
 radarr:
@@ -126,7 +128,7 @@ radarr:
             reset_unmatched_scores: true
           - name: Ultra-HD
             reset_unmatched_scores: true
-          - name: HD - 720p/1080p
+          - name: Best
             reset_unmatched_scores: true
       - trash_ids:
           - 4b900e171accbfb172729b63323ea8ca # Optional: Multi
@@ -136,5 +138,5 @@ radarr:
             score: -10000
           - name: Ultra-HD
             score: -10000
-          - name: HD - 720p/1080p
+          - name: Best
             score: -10000
