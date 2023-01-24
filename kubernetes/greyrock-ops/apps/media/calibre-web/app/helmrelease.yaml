@@ -47,7 +47,7 @@ spec:
           nginx.ingress.kubernetes.io/auth-url: https://auth.greyrock.tech/oauth2/auth?allowed_groups=calibre-web
           nginx.ingress.kubernetes.io/configuration-snippet: |
             proxy_set_header Accept-Encoding "";
-            sub_filter '</head>' '<link rel="stylesheet" type="text/css" href="https://theme-park.greyrock.tech/css/base/calibreweb/nord.css"></head>';
+            sub_filter '</head>' '<link rel="stylesheet" type="text/css" href="https://theme-park.greyrock.tech/css/base/calibreweb/dracula.css"></head>';
             sub_filter_once on;
         ingressClassName: nginx
         hosts:

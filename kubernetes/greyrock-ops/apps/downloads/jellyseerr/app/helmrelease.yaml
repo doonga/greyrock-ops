@@ -41,7 +41,7 @@ spec:
           hajimari.io/icon: "jellyfish"
           nginx.ingress.kubernetes.io/configuration-snippet: |
             proxy_set_header Accept-Encoding "";
-            sub_filter '</head>' '<link rel="stylesheet" type="text/css" href="https://theme-park.greyrock.tech/css/base/jellyseerr/nord.css"></head>';
+            sub_filter '</head>' '<link rel="stylesheet" type="text/css" href="https://theme-park.greyrock.tech/css/base/jellyseerr/dracula.css"></head>';
             sub_filter_once on;
         hosts:
           - host: &host "jellyseerr.greyrock.tech"
