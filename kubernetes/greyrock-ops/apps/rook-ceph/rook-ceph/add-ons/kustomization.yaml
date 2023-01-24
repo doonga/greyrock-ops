@@ -1,16 +1,6 @@
 ---
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-
-patches:
-  - path: ./patches/prometheus-ceph-rules.yaml
-    target:
-      group: monitoring.coreos.com
-      version: v1
-      kind: PrometheusRule
-      name: prometheus-ceph-rules
-      namespace: rook-ceph
-
 resources:
   - ./dashboard
   - ./direct-mount
