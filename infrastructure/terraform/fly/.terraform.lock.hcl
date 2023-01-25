@@ -6,6 +6,7 @@ provider "registry.terraform.io/1password/onepassword" {
   constraints = "1.1.4"
   hashes = [
     "h1:+cONzCC4jHPsPHku0Ced0PTngpTIfbYyNe7YHaqi4Gw=",
+    "h1:3TVsJ9fbNOerTE00uFqqKQDW6WRAPP0kZVhVhfd0COw=",
     "zh:018f3e223ae82ba675f0f088af135a9196326501f9f57f397067a65342cdcca3",
     "zh:1a077bba8db0ffa0c969bbcd8525d30f4d8018257363408b4e6891b319397e91",
     "zh:273534ba172eec6bc71cdf107cb51197fb58818b5a31bf9812b89ebaa0545522",
@@ -27,6 +28,7 @@ provider "registry.terraform.io/fly-apps/fly" {
   constraints = "0.0.20"
   hashes = [
     "h1:7085pVqseuAl7rmN5ek8mZbhn+bcTVSuqutYsbCPo8c=",
+    "h1:8JwTdGNTaU/hXdd1CS5LK5YHNOB3buNLSUcCIeM0WEc=",
     "zh:05aaa3f9b751fdf9479786fda41e446e21e59db2588fcea3fa37b8771fdb424a",
     "zh:06a03fc2fddf3529a9ed993db89a2863047bd731bb8d419d3d83dd336da0c1fe",
     "zh:0f7781e32e714f30b67df4bfbed182f3b5ccf9ffaafd2420327a0fc3b4999db9",
@@ -50,6 +52,7 @@ provider "registry.terraform.io/hashicorp/http" {
   constraints = "3.2.1"
   hashes = [
     "h1:DfxMa1zM/0NCFWN5PAxivSHJMNkOAFZvDYQkO72ZQmw=",
+    "h1:Q2YQZzEhHQVlkQCQVpMzFVs0Gg+eXzISbOwaOYqpflc=",
     "zh:088b3b3128034485e11dff8da16e857d316fbefeaaf5bef24cceda34c6980641",
     "zh:09ed1f2462ea4590b112e048c4af556f0b6eafc7cf2c75bb2ac21cd87ca59377",
     "zh:39c6b0b4d3f0f65e783c467d3f634e2394820b8aef907fcc24493f21dcf73ca3",

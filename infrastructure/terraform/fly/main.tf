@@ -40,7 +40,7 @@ provider "fly" {
   fly_api_token        = module.onepassword_item_fly.fields.access_token_terraform
   useinternaltunnel    = true
   internaltunnelorg    = "personal"
-  internaltunnelregion = "iad"
+  internaltunnelregion = "ord"
 }
 
 module "gatus" {
@@ -60,5 +60,5 @@ module "gatus" {
       }
     }
   }
-  regions = ["iad"]
+  regions = ["ord"]
 }
