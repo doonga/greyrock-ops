@@ -151,7 +151,7 @@ module "cf_domain_main" {
     {
       id      = "fly_status_challenge"
       name    = "_acme-challenge.status"
-      value   = "status.greyrock.io.xzdd8k.flydns.net."
+      value   = "status.greyrock.io.gk291w.flydns.net."
       type    = "CNAME"
       proxied = false
     },
