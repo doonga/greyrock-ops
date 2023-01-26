@@ -1,0 +1,330 @@
+# ----------------
+# Devices
+# ----------------
+hosts:
+    # ----------------------
+    # Management
+    # ----------------------
+    gateway:
+        network: management
+        ipv4_hostid: 1
+        aliases:
+            - ipv4.greyrock.tech
+            - ipv4.greyrock.io
+            - vpn.greyrock.io
+    gameroom-switch:
+        mac_addr: 64:e8:81:b1:62:14
+        network: management
+        ipv4_hostid: 2
+        groups:
+            - aruba_devices
+    office-switch-24:
+        mac_addr: 8c:85:c1:1f:fb:55
+        network: management
+        ipv4_hostid: 3
+        groups:
+            - aruba_devices
+    garage-switch:
+        mac_addr: 64:e8:81:b1:51:e1
+        network: management
+        ipv4_hostid: 4
+        groups:
+            - aruba_devices
+    office-switch-8:
+        mac_addr: 44:5b:ed:7a:d8:81
+        network: management
+        ipv4_hostid: 9
+    gameroom-access-point:
+        mac_addr: b0:1f:8c:c7:cb:28
+        network: management
+        ipv4_hostid: 5
+        groups:
+            - aruba_devices
+    kitchen-access-point:
+        mac_addr: b0:1f:8c:c7:c0:6a
+        network: management
+        ipv4_hostid: 6
+        groups:
+            - aruba_devices
+    outdoor-access-point:
+        mac_addr: bc:9f:e4:c2:00:68
+        network: management
+        ipv4_hostid: 7
+        groups:
+            - aruba_devices
+    upstairs-access-point:
+        mac_addr: b0:1f:8c:c7:c1:12
+        network: management
+        ipv4_hostid: 9
+        groups:
+            - aruba_devices
+    # ----------------------
+    # LAN
+    # ----------------------
+    todds-iphone:
+        mac_addr: 70:b3:06:4c:04:65
+        network: lan
+        ipv4_hostid: 250
+        groups:
+            - ios_devices
+            - jellyfin_clients
+    todds-macbook:
+        mac_addr: bc:d0:74:68:c2:94
+        network: lan
+        ipv4_hostid: 251
+        groups:
+            - jellyfin_clients
+            - mqtt_clients
+    todds-desktop:
+        mac_addr: 2c:f0:5d:ad:e5:b4
+        network: lan
+        ipv4_hostid: 252
+        groups:
+            - jellyfin_clients
+            - mqtt_clients
+    brother-printer:
+        mac_addr: b4:22:00:44:a0:d7
+        network: lan
+        ipv4_hostid: 254
+        groups:
+            - printers
+            - scanners
+    # ----------------------
+    # Game Consoles
+    # ----------------------
+    # ----------------------
+    # Servers
+    # ----------------------
+    chronos:
+        mac_addr: 4e:90:51:6f:5b:40
+        network: servers
+        ipv4_hostid: 2
+    nas:
+        mac_addr: 4c:cc:6a:18:22:bb
+        network: servers
+        ipv4_hostid: 7
+        groups:
+            - nas
+        aliases:
+            - s3.private.greyrock.io
+    control-01:
+        mac_addr: 00:23:24:da:c4:79
+        network: servers
+        ipv4_hostid: 101
+        groups:
+            - k8s_nodes
+    control-02:
+        mac_addr: 00:23:24:da:f0:2c
+        network: servers
+        ipv4_hostid: 102
+        groups:
+            - k8s_nodes
+    control-03:
+        mac_addr: 00:23:24:c2:17:7b
+        network: servers
+        ipv4_hostid: 103
+        groups:
+            - k8s_nodes
+    worker-01:
+        mac_addr: e0:4f:43:24:19:6e
+        network: servers
+        ipv4_hostid: 104
+        groups:
+            - k8s_nodes
+    worker-02:
+        mac_addr: e0:4f:43:24:29:ae
+        network: servers
+        ipv4_hostid: 105
+        groups:
+            - k8s_nodes
+    worker-03:
+        mac_addr: e0:4f:43:24:2a:eb
+        network: servers
+        ipv4_hostid: 106
+        groups:
+            - k8s_nodes
+    worker-04:
+        mac_addr: ee0:4f:43:24:2d:bd
+        network: servers
+        ipv4_hostid: 107
+        groups:
+            - k8s_nodes
+    worker-05:
+        mac_addr: e0:4f:43:24:31:a4
+        network: servers
+        ipv4_hostid: 108
+        groups:
+            - k8s_nodes
+    worker-06:
+        mac_addr: e0:4f:43:24:2c:86
+        network: servers
+        ipv4_hostid: 109
+        groups:
+            - k8s_nodes
+    worker-07:
+        mac_addr: 00:23:24:c2:14:8e
+        network: servers
+        ipv4_hostid: 110
+        groups:
+            - k8s_nodes
+    worker-08:
+        mac_addr: 6c:0b:84:e1:a9:3d
+        network: servers
+        ipv4_hostid: 111
+        groups:
+            - k8s_nodes
+    worker-09:
+        mac_addr: 00:23:24:bf:2d:70
+        network: servers
+        ipv4_hostid: 112
+        groups:
+            - k8s_nodes
+    # ----------------------
+    # IOT
+    # ----------------------
+    hydrawise-sprinkler-controller:
+        mac_addr: 00:03:10:b3:72:fa
+        network: iot
+        ipv4_hostid: 174
+    withings-scale:
+        mac_addr: 00:24:e4:58:73:f6
+        network: iot
+        ipv4_hostid: 187
+    todds-tesla-model-3:
+        mac_addr: 4c:fc:aa:37:cd:f3
+        network: iot
+        ipv4_hostid: 188
+    gameroom-samsung-tv-left:
+        mac_addr: 98:06:3c:ef:d6:3c
+        network: iot
+        ipv4_hostid: 189
+    office-samsung-tv:
+        mac_addr: 68:27:37:c2:fc:f0
+        network: iot
+        ipv4_hostid: 190
+    upstairs-litter-robot:
+        mac_addr: 94:b5:55:99:de:70
+        network: iot
+        ipv4_hostid: 191
+    fsr-lg-tv:
+        mac_addr: ac:f1:08:03:59:46
+        network: iot
+        ipv4_hostid: 192
+    downstairs-litter-robot:
+        mac_addr: ec:fa:bc:0e:80:9f
+        network: iot
+        ipv4_hostid: 193
+    garage-door-todd:
+        mac_addr: cc:6a:10:03:29:cb
+        network: iot
+        ipv4_hostid: 194
+    garage-door-andy:
+        mac_addr: cc:6a:10:03:2a:2d
+        network: iot
+        ipv4_hostid: 195
+    tubeszb-cc2652-poe-2022:
+        mac_addr: 7c:9e:bd:bf:a0:7f
+        network: iot
+        ipv4_hostid: 196
+    office-hs110-rack:
+        mac_addr: 50:c7:bf:7c:ee:70
+        network: iot
+        ipv4_hostid: 197
+    ambient-ws5000:
+        mac_addr: ambient-ws5000
+        network: iot
+        ipv4_hostid: 198
+        groups:
+            - k8s_ingress_allowed
+    solargedge_inverter:
+        mac_addr: 84:d6:c5:11:38:8b
+        network: iot
+        ipv4_hostid: 199
+    kitchen-mitsubishi-inverter:
+        mac_addr: 74:7a:90:cf:3e:72
+        network: iot
+        ipv4_hostid: 200
+        groups:
+            - mitsubishi_inverters
+    gameroom-mitsubishi-inverter:
+        mac_addr: 74:7a:90:d0:b8:b8
+        network: iot
+        ipv4_hostid: 201
+        groups:
+            - mitsubishi_inverters
+    masterbedroom-mitsubishi-inverter:
+        mac_addr: 74:7a:90:ce:4d:30
+        network: iot
+        ipv4_hostid: 202
+        groups:
+            - mitsubishi_inverters
+    diningroom-mitsubishi-inverter:
+        mac_addr: 74:7a:90:cf:05:dc
+        network: iot
+        ipv4_hostid: 203
+        groups:
+            - mitsubishi_inverters
+    office-mitsubishi-inverter:
+        mac_addr: 74:7a:90:cd:6c:5e
+        network: iot
+        ipv4_hostid: 204
+        groups:
+            - mitsubishi_inverters
+    garage-iotawatt:
+        mac_addr: 44:17:93:07:aa:18
+        network: iot
+        ipv4_hostid: 250
+    basement-iotawatt:
+        mac_addr: 44:17:93:06:8e:8f
+        network: iot
+        ipv4_hostid: 251
+    teslawallconnecter-todd:
+        mac_addr: 98:ed:5c:96:3a:d9
+        network: iot
+        ipv4_hostid: 252
+    courtyard-porch-doorbell:
+        mac_addr: 9c:8e:cd:2c:28:38
+        network: iot
+        ipv4_hostid: 253
+    # ----------------------
+    # VoIP
+    # ----------------------
+    # ----------------------
+    # Cameras
+    # ----------------------
+    # ----------------------
+    # Guest
+    # ----------------------
+    # ----------------------
+    # Work
+    # ----------------------
+    todds-work-machine:
+        mac_addr: 30:24:a9:a7:b8:66
+        network: work
+        ipv4_hostid: 254
+# -------------------
+# (Virtual) Services
+# -------------------
+services:
+    k8s_ingress:
+        ipv4_addr: 172.16.70.1
+    k8s_vector_aggregator:
+        ipv4_addr: 172.16.70.2
+    k8s_jellyfin:
+        ipv4_addr: 172.16.70.21
+    k8s_mqtt:
+        ipv4_addr: 172.16.70.10
+    k8s_api:
+        ipv4_addr: 172.16.31.10
+    vyos_coredns:
+        ipv4_addr: 172.16.31.11
+    vyos_adguard_home:
+        ipv4_addr: 172.16.31.12
+    ntp_chronos:
+        ipv4_addr: 172.16.30.2
+# -----------------------
+# Manual static mappings
+# -----------------------
+static_mappings:
+    - hostname: greyrock-ops.private.greyrock.io
+      service: k8s_api

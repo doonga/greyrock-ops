@@ -1,0 +1,554 @@
+---
+config:
+  hostname: "gateway"
+  domain_name: "private.greyrock.io"
+  fqdn: "gateway.private.greyrock.io"
+  upstream_name_server: "1.1.1.1"
+  time_zone: "America/New_York"
+
+  api:
+    listen_address: "0.0.0.0"
+    port: 8443
+    keys:
+      terraform: ${secrets.api.key}
+
+  ssh:
+    user: ${secrets.ssh.user}
+    port: 22
+    disable_password_login: true
+    keys:
+      - name: personal
+        type: ssh-ed25519
+        key: ${secrets.ssh.keys.personal}
+
+  zones:
+    local:
+      description: Local router zone
+      local_zone: true
+      firewall:
+        default:
+          default: drop
+          rules:
+            - accept_established: null
+            - accept_related: null
+            - drop_invalid: null
+            - accept_ntp: null
+            - accept_dhcp: null
+        fromZones:
+          - zones:
+              - management
+            default: drop
+            rules:
+              - accept_established: null
+              - accept_related: null
+              - drop_invalid: null
+              - accept_ssh: null
+              - accept_ntp: null
+              - accept_dhcp: null
+          - zones:
+              - trusted
+              - wg_trusted
+            default: drop
+            rules:
+              - accept_established: null
+              - accept_related: null
+              - drop_invalid: null
+              - accept_icmp: null
+              - accept_ssh: null
+              - accept_ntp: null
+              - accept_dhcp: null
+              - accept_igmp: null
+              - accept_mdns: null
+              - accept_vyos_api: null
+              - accept_discovery_from_sonos_players: null
+              - accept_discovery_from_sonos_controllers: null
+          - zones:
+              - iot
+            default: drop
+            rules:
+              - accept_established: null
+              - accept_related: null
+              - drop_invalid: null
+              - accept_ssh: null
+              - accept_ntp: null
+              - accept_dhcp: null
+              - accept_igmp: null
+              - accept_mdns: null
+              - accept_discovery_from_sonos_players: null
+              - accept_discovery_from_sonos_controllers: null
+          - zones:
+              - servers
+            default: drop
+            rules:
+              - accept_established: null
+              - accept_related: null
+              - drop_invalid: null
+              - accept_icmp: null
+              - accept_ntp: null
+              - accept_dhcp: null
+              - accept_bgp: null
+              - accept_tftp: null
+              - accept_prometheus_from_k8s_nodes: null
+          - zones:
+              - wan
+            default: drop
+            rules:
+              - accept_established: null
+              - accept_related: null
+              - drop_invalid: null
+              - accept_wireguard: null
+          - zones:
+              - guest
+            default: drop
+            rules:
+              - accept_established: null
+              - accept_related: null
+              - drop_invalid: null
+              - accept_dhcp: null
+
+    wan:
+      interface: eth0
+      firewall:
+        default:
+          default: accept
+          defaultLog: false
+          rules:
+            - accept_established: null
+            - accept_related: null
+            - drop_invalid: null
+        fromZones:
+          - zones:
+              - video
+            default: drop
+            defaultLog: false
+            rules: []
+
+    management:
+      interface: eth1
+      dhcp:
+        name_server: ${address_book.services.vyos_adguard_home.ipv4_addr}
+      firewall:
+        default:
+          default: drop
+          rules:
+            - accept_established: null
+            - accept_related: null
+            - drop_invalid: null
+
+        fromZones:
+          - zones:
+              - trusted
+              - wg_trusted
+            default: accept
+            defaultLog: false
+            rules:
+              - accept_established: null
+              - accept_related: null
+              - drop_invalid: null
+          - zones:
+              - servers
+            default: drop
+            defaultLog: false
+            rules:
+              - accept_established: null
+              - accept_related: null
+              - drop_invalid: null
+              - accept_icmp: null
+
+    rescue:
+      interface: eth2
+      dhcp:
+        name_server: ${cidrhost(networks["rescue"], 1)}
+
+    servers:
+      interface: eth1.30
+      dhcp:
+        domain_name: private.greyrock.io
+        name_server: ${address_book.services.vyos_adguard_home.ipv4_addr}
+      firewall:
+        default:
+          default: drop
+          rules:
+            - accept_established: null
+            - accept_related: null
+            - drop_invalid: null
+
+        fromZones:
+          - zones:
+              - trusted
+              - wg_trusted
+              - services
+            default: accept
+            defaultLog: false
+            rules:
+              - accept_established: null
+              - accept_related: null
+              - drop_invalid: null
+              - accept_icmp: null
+          - zones:
+              - wan
+            default: drop
+            rules:
+              - accept_established: null
+              - accept_related: null
+              - drop_invalid: null
+              - accept_ingress_from_cloudflare: null
+          - zones:
+              - management
+            default: drop
+            rules:
+              - accept_established: null
+              - accept_related: null
+              - drop_invalid: null
+              - accept_icmp: null
+              - accept_unifi_inform: null
+              - accept_unifi_stun: null
+          - zones:
+              - iot
+            default: drop
+            rules:
+              - accept_established: null
+              - accept_related: null
+              - accept_nas_smb_from_scanners: null
+              - accept_plex_from_plex_clients: null
+              - accept_jellyfin_from_jellyfin_clients: null
+              - accept_mqtt_from_mqtt_clients: null
+              - accept_mqtt_from_esp: null
+              - accept_k8s_ingress_from_sonos_players: null
+              - accept_k8s_ingress_from_ereaders: null
+              - accept_k8s_ingress_from_wall_displays: null
+              - accept_k8s_ingress_from_allowed_devices: null
+              - accept_vector_journald_from_allowed_devices: null
+              - drop_invalid: null
+          - zones:
+              - local
+            default: drop
+            rules:
+              - accept_established: null
+              - accept_related: null
+              - drop_invalid: null
+              - accept_bgp: null
+              - accept_k8s_api: null
+              - accept_dns: null
+
+    lan:
+      interface: eth1.10
+      dhcp:
+        domain_name: private.greyrock.io
+        name_server: ${address_book.services.vyos_adguard_home.ipv4_addr}
+      firewall:
+        default:
+          default: drop
+          rules:
+            - accept_established: null
+            - accept_related: null
+            - drop_invalid: null
+        fromZones:
+          - zones:
+              - local
+            default: drop
+            rules:
+              - accept_established: null
+              - accept_related: null
+              - drop_invalid: null
+              - accept_igmp: null
+              - accept_mdns: null
+              - accept_discovery_from_sonos_players: null
+          - zones:
+              - wg_trusted
+            default: accept
+            defaultLog: false
+            rules:
+              - accept_established: null
+              - accept_related: null
+              - drop_invalid: null
+          - zones:
+              - iot
+            default: drop
+            rules:
+              - accept_established: null
+              - accept_related: null
+              - drop_invalid: null
+              - accept_udp_from_sonos_players_to_sonos_controllers: null
+              - accept_tcp_from_sonos_players_to_sonos_controllers: null
+          - zones:
+              - servers
+            default: drop
+            defaultLog: false
+            rules:
+              - accept_established: null
+              - accept_related: null
+              - drop_invalid: null
+              - accept_icmp: null
+
+    guest:
+      interface: eth1.100
+      dhcp:
+        name_server: "1.1.1.1"
+      firewall:
+        default:
+          default: drop
+          rules:
+            - accept_established: null
+            - accept_related: null
+            - drop_invalid: null
+
+    work:
+      interface: eth1.200
+      dhcp:
+        name_server: "1.1.1.1"
+      firewall:
+        default:
+          default: drop
+          rules:
+            - accept_established: null
+            - accept_related: null
+            - drop_invalid: null
+
+    iot:
+      interface: eth1.40
+      dhcp:
+        domain_name: private.greyrock.io
+        name_server: ${address_book.services.vyos_adguard_home.ipv4_addr}
+      firewall:
+        default:
+          default: drop
+          rules:
+            - accept_established: null
+            - accept_related: null
+            - drop_invalid: null
+        fromZones:
+          - zones:
+              - trusted
+              - wg_trusted
+            default: accept
+            defaultLog: false
+            rules:
+              - accept_established: null
+              - accept_related: null
+              - drop_invalid: null
+              - accept_icmp: null
+              - accept_app_control_from_sonos_controllers_tcp: null
+              - accept_app_control_from_sonos_controllers_udp: null
+          - zones:
+              - servers
+            default: drop
+            rules:
+              - accept_established: null
+              - accept_related: null
+              - drop_invalid: null
+              - accept_icmp: null
+              - accept_p1reader_from_k8s_nodes: null
+              - accept_adb_from_k8s_nodes: null
+              - accept_3d_printer_control_from_k8s_nodes: null
+              - accept_k8s_nodes: null
+          - zones:
+              - local
+            default: drop
+            rules:
+              - accept_established: null
+              - accept_related: null
+              - drop_invalid: null
+              - accept_igmp: null
+              - accept_mdns: null
+              - accept_discovery_from_sonos_controllers: null
+          - zones:
+              - guest
+            default: drop
+            rules:
+              - accept_established: null
+              - accept_related: null
+              - drop_invalid: null
+              - accept_tcp_printer_from_allowed_devices: null
+              - accept_udp_printer_from_allowed_devices: null
+
+    cameras:
+      interface: eth1.60
+      dhcp:
+        domain_name: private.greyrock.io
+        name_server: ${address_book.services.vyos_adguard_home.ipv4_addr}
+      firewall:
+        default:
+          default: drop
+          rules:
+            - accept_established: null
+            - accept_related: null
+            - drop_invalid: null
+        fromZones:
+          - zones:
+              - trusted
+              - wg_trusted
+            default: accept
+            defaultLog: false
+            rules:
+              - accept_established: null
+              - accept_related: null
+              - drop_invalid: null
+              - accept_icmp: null
+          - zones:
+              - servers
+            default: drop
+            rules:
+              - accept_established: null
+              - accept_related: null
+              - drop_invalid: null
+              - accept_icmp: null
+              - accept_k8s_nodes: null
+
+    wg_trusted:
+      interface: wg01
+      port: 51820
+      private_key: ${secrets.wireguard.private_key}
+      peers:
+        ipad-bernd:
+          ipv4_hostid: 4
+          public_key: EYuUoDoCIcSYbnjNyPSsZUcz4Yp032AHWflYlH2V1EM=
+        iphone-bernd:
+          ipv4_hostid: 2
+          public_key: 608IT2YRPTCabLMGnpYfIWhgDnEpLV5IIpYi5J7m3As=
+        macbook-bernd:
+          ipv4_hostid: 3
+          public_key: iWKTc88fDBhqlsAgoCXYvkBdf9wG4YBZ8XTg/+0Ln2I=
+      firewall:
+        default:
+          default: drop
+          rules:
+            - accept_established: null
+            - accept_related: null
+            - drop_invalid: null
+
+        fromZones:
+          - zones:
+              - local
+            default: drop
+            rules:
+              - accept_established: null
+              - accept_related: null
+              - drop_invalid: null
+              - accept_igmp: null
+              - accept_mdns: null
+          - zones:
+              - iot
+            default: drop
+            rules:
+              - accept_established: null
+              - accept_related: null
+              - drop_invalid: null
+
+    services:
+      description: VyOS services zone
+      interface: cni-services
+      firewall:
+        default:
+          default: accept
+          defaultLog: false
+          rules:
+            - accept_established: null
+            - accept_related: null
+            - accept_dns: null
+            - drop_invalid: null
+        fromZones:
+          - zones:
+              - servers
+            default: accept
+            rules:
+              - accept_established: null
+              - accept_related: null
+              - accept_k8s_api: null
+              - drop_invalid: null
+          - zones:
+              - wan
+              - guest
+            default: drop
+            rules:
+              - accept_established: null
+              - accept_related: null
+              - drop_invalid: null
+
+  nat:
+    destination:
+      - description: HTTPS
+        protocol: tcp
+        interface: wan
+        port: 443
+        address: ${address_book.services.k8s_ingress.ipv4_addr}
+      - description: HTTP
+        protocol: tcp
+        interface: wan
+        port: 80
+        address: ${address_book.services.k8s_ingress.ipv4_addr}
+      - description: Force DNS for IoT
+        port: 53
+        protocol: tcp_udp
+        interface: iot
+        destinationAddress: "!${address_book.services.vyos_adguard_home.ipv4_addr}"
+        address: ${address_book.services.vyos_adguard_home.ipv4_addr}
+      - description: Force DNS for Cameras
+        port: 53
+        protocol: tcp_udp
+        interface: cameras
+        destinationAddress: "!${address_book.services.vyos_adguard_home.ipv4_addr}"
+        address: ${address_book.services.vyos_adguard_home.ipv4_addr}
+      - description: Force NTP for Management
+        port: 123
+        protocol: udp
+        interface: management
+        destinationAddress: "!${address_book.services.ntp_chronos.ipv4_addr}"
+        address: "${address_book.services.ntp_chronos.ipv4_addr}"
+      - description: Force NTP for LAN
+        port: 123
+        protocol: udp
+        interface: lan
+        destinationAddress: "!${address_book.services.ntp_chronos.ipv4_addr}"
+        address: "${address_book.services.ntp_chronos.ipv4_addr}"
+      - description: Force NTP for IoT
+        port: 123
+        protocol: udp
+        interface: iot
+        destinationAddress: "!${address_book.services.ntp_chronos.ipv4_addr}"
+        address: "${address_book.services.ntp_chronos.ipv4_addr}"
+      - description: Force NTP for Cameras
+        port: 123
+        protocol: udp
+        interface: cameras
+        destinationAddress: "!${address_book.services.ntp_chronos.ipv4_addr}"
+        address: "${address_book.services.ntp_chronos.ipv4_addr}"
+
+  firewall:
+    network_groups:
+      - name: k8s_services
+        networks:
+          - 172.16.70.0/16
+
+    port_groups:
+      - name: wireguard
+        ports:
+          - 51820
+
+  bgp:
+    local_as: 64512
+    router_id: ${cidrhost(networks.servers, 1)}
+    neighbor_groups:
+      - group: k8s_nodes
+        remote_as: 64513
+
+  containers:
+    coredns:
+      # renovate: docker-image
+      image: ghcr.io/k8s-at-home/coredns:v1.9.3
+
+    adguard-home:
+      # renovate: docker-image
+      image: docker.io/adguard/adguardhome:v0.107.22
+
+    udp-broadcast-relay:
+      # renovate: docker-image
+      image: ghcr.io/k8s-at-home/udp-broadcast-relay-redux:v1.27.0
+
+    haproxy:
+      # renovate: docker-image
+      image: docker.io/library/haproxy:2.7.2
+
+    vector:
+      # renovate: docker-image
+      image: docker.io/timberio/vector:0.27.0-debian
