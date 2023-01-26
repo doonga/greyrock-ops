@@ -10,7 +10,7 @@ locals {
     )
   )
 
-  networks       = yamldecode(chomp(data.http.greyrock_common_networks.response_body))
+  networks       = yamldecode(chomp(data.http.bjws_common_networks.response_body))
   address_book   = yamldecode(file(pathexpand("${path.module}/address_book.yaml")))
   firewall_rules = yamldecode(file(pathexpand("${path.module}/firewall_rules.yaml")))
 

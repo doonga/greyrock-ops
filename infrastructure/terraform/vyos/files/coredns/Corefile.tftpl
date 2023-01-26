@@ -19,7 +19,7 @@
 }
 
 (k8s_gateway) {
-  forward . 172.16.70.3:53
+  forward . 10.45.0.3:53
 }
 
 (forward_upstream) {
@@ -38,13 +38,13 @@
   }
 }
 
-greyrock.tech {
+bjw-s.dev {
   import common
   import local_hosts
   import k8s_gateway
 }
 
-greyrock.io {
+bjw-s.tech {
   import common
   import local_hosts
   import forward_upstream

@@ -1,10 +1,10 @@
 ---
 config:
   hostname: "gateway"
-  domain_name: "private.greyrock.io"
-  fqdn: "gateway.private.greyrock.io"
+  domain_name: "bjw-s.tech"
+  fqdn: "gateway.bjw-s.tech"
   upstream_name_server: "1.1.1.1"
-  time_zone: "America/New_York"
+  time_zone: "Europe/Amsterdam"
 
   api:
     listen_address: "0.0.0.0"
@@ -20,6 +20,9 @@ config:
       - name: personal
         type: ssh-ed25519
         key: ${secrets.ssh.keys.personal}
+      - name: ios
+        type: ssh-ed25519
+        key: ${secrets.ssh.keys.ios}
 
   zones:
     local:
@@ -36,7 +39,7 @@ config:
             - accept_dhcp: null
         fromZones:
           - zones:
-              - management
+              - lan
             default: drop
             rules:
               - accept_established: null
@@ -123,7 +126,7 @@ config:
             defaultLog: false
             rules: []
 
-    management:
+    lan:
       interface: eth1
       dhcp:
         name_server: ${address_book.services.vyos_adguard_home.ipv4_addr}
@@ -161,9 +164,9 @@ config:
         name_server: ${cidrhost(networks["rescue"], 1)}
 
     servers:
-      interface: eth1.30
+      interface: eth1.10
       dhcp:
-        domain_name: private.greyrock.io
+        domain_name: bjw-s.tech
         name_server: ${address_book.services.vyos_adguard_home.ipv4_addr}
       firewall:
         default:
@@ -194,7 +197,7 @@ config:
               - drop_invalid: null
               - accept_ingress_from_cloudflare: null
           - zones:
-              - management
+              - lan
             default: drop
             rules:
               - accept_established: null
@@ -231,10 +234,10 @@ config:
               - accept_k8s_api: null
               - accept_dns: null
 
-    lan:
-      interface: eth1.10
+    trusted:
+      interface: eth1.20
       dhcp:
-        domain_name: private.greyrock.io
+        domain_name: bjw-s.tech
         name_server: ${address_book.services.vyos_adguard_home.ipv4_addr}
       firewall:
         default:
@@ -282,19 +285,7 @@ config:
               - accept_icmp: null
 
     guest:
-      interface: eth1.100
-      dhcp:
-        name_server: "1.1.1.1"
-      firewall:
-        default:
-          default: drop
-          rules:
-            - accept_established: null
-            - accept_related: null
-            - drop_invalid: null
-
-    work:
-      interface: eth1.200
+      interface: eth1.30
       dhcp:
         name_server: "1.1.1.1"
       firewall:
@@ -308,7 +299,7 @@ config:
     iot:
       interface: eth1.40
       dhcp:
-        domain_name: private.greyrock.io
+        domain_name: bjw-s.tech
         name_server: ${address_book.services.vyos_adguard_home.ipv4_addr}
       firewall:
         default:
@@ -362,10 +353,10 @@ config:
               - accept_tcp_printer_from_allowed_devices: null
               - accept_udp_printer_from_allowed_devices: null
 
-    cameras:
-      interface: eth1.60
+    video:
+      interface: eth1.50
       dhcp:
-        domain_name: private.greyrock.io
+        domain_name: bjw-s.tech
         name_server: ${address_book.services.vyos_adguard_home.ipv4_addr}
       firewall:
         default:
@@ -483,42 +474,48 @@ config:
         interface: iot
         destinationAddress: "!${address_book.services.vyos_adguard_home.ipv4_addr}"
         address: ${address_book.services.vyos_adguard_home.ipv4_addr}
-      - description: Force DNS for Cameras
+      - description: Force DNS for Video
         port: 53
         protocol: tcp_udp
-        interface: cameras
+        interface: video
         destinationAddress: "!${address_book.services.vyos_adguard_home.ipv4_addr}"
         address: ${address_book.services.vyos_adguard_home.ipv4_addr}
-      - description: Force NTP for Management
-        port: 123
-        protocol: udp
-        interface: management
-        destinationAddress: "!${address_book.services.ntp_chronos.ipv4_addr}"
-        address: "${address_book.services.ntp_chronos.ipv4_addr}"
       - description: Force NTP for LAN
         port: 123
         protocol: udp
         interface: lan
-        destinationAddress: "!${address_book.services.ntp_chronos.ipv4_addr}"
-        address: "${address_book.services.ntp_chronos.ipv4_addr}"
+        destinationAddress: "!${address_book.services.vyos_chronyd.ipv4_addr}"
+        address: "${address_book.services.vyos_chronyd.ipv4_addr}"
+      - description: Force NTP for Trusted
+        port: 123
+        protocol: udp
+        interface: trusted
+        destinationAddress: "!${address_book.services.vyos_chronyd.ipv4_addr}"
+        address: "${address_book.services.vyos_chronyd.ipv4_addr}"
       - description: Force NTP for IoT
         port: 123
         protocol: udp
         interface: iot
-        destinationAddress: "!${address_book.services.ntp_chronos.ipv4_addr}"
-        address: "${address_book.services.ntp_chronos.ipv4_addr}"
-      - description: Force NTP for Cameras
+        destinationAddress: "!${address_book.services.vyos_chronyd.ipv4_addr}"
+        address: "${address_book.services.vyos_chronyd.ipv4_addr}"
+      - description: Force NTP for Video
         port: 123
         protocol: udp
-        interface: cameras
-        destinationAddress: "!${address_book.services.ntp_chronos.ipv4_addr}"
-        address: "${address_book.services.ntp_chronos.ipv4_addr}"
+        interface: video
+        destinationAddress: "!${address_book.services.vyos_chronyd.ipv4_addr}"
+        address: "${address_book.services.vyos_chronyd.ipv4_addr}"
+      - description: Force NTP for Wireguard Trusted
+        port: 123
+        protocol: udp
+        interface: wg_trusted
+        destinationAddress: "!${address_book.services.vyos_chronyd.ipv4_addr}"
+        address: "${address_book.services.vyos_chronyd.ipv4_addr}"
 
   firewall:
     network_groups:
       - name: k8s_services
         networks:
-          - 172.16.70.0/16
+          - 10.45.0.0/16
 
     port_groups:
       - name: wireguard
@@ -527,23 +524,23 @@ config:
 
   bgp:
     local_as: 64512
-    router_id: ${cidrhost(networks.servers, 1)}
+    router_id: ${cidrhost(networks.lan, 1)}
     neighbor_groups:
       - group: k8s_nodes
-        remote_as: 64513
+        remote_as: 64512
 
   containers:
     coredns:
       # renovate: docker-image
       image: ghcr.io/k8s-at-home/coredns:v1.9.3
 
-    adguard-home:
-      # renovate: docker-image
-      image: docker.io/adguard/adguardhome:v0.107.22
-
     udp-broadcast-relay:
       # renovate: docker-image
       image: ghcr.io/k8s-at-home/udp-broadcast-relay-redux:v1.27.0
+
+    adguard-home:
+      # renovate: docker-image
+      image: docker.io/adguard/adguardhome:v0.107.22
 
     haproxy:
       # renovate: docker-image
@@ -552,3 +549,7 @@ config:
     vector:
       # renovate: docker-image
       image: docker.io/timberio/vector:0.27.0-debian
+
+    chrony:
+      # renovate: docker-image
+      image: docker.io/simonrupf/chronyd:0.4.2
