@@ -30,8 +30,8 @@ data "sops_file" "vyos_secrets" {
   source_file = "vyos_secrets.sops.yaml"
 }
 
-data "http" "bjws_common_networks" {
-  url = "https://raw.githubusercontent.com/bjw-s/home-ops/main/infrastructure/_shared/networks.yaml"
+data "http" "greyrock_common_networks" {
+  url = "https://raw.githubusercontent.com/doonga/greyrock-ops/main/infrastructure/_shared/networks.yaml"
 }
 
 module "config" {

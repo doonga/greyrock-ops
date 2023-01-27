@@ -3,7 +3,7 @@ resource "vyos_config" "interface-wan" {
   value = jsonencode({
     "address"     = "dhcp"
     "description" = "WAN"
-    "hw-id"       = "00:f4:21:68:3e:9c"
+    "hw-id"       = "3c:ec:ef:57:eb:24"
   })
 }
 
@@ -12,7 +12,7 @@ resource "vyos_config" "interface-lan" {
   value = jsonencode({
     "address"     = "${cidrhost(var.networks.lan, 1)}/24"
     "description" = "LAN"
-    "hw-id"       = "00:f4:21:68:3e:9d"
+    "hw-id"       = "3c:ec:ef:57:eb:25"
     "vif" = {
       "10" = {
         "description" = "SERVERS"
@@ -43,7 +43,7 @@ resource "vyos_config" "interface-rescue" {
   value = jsonencode({
     "address"     = "${cidrhost(var.networks.rescue, 1)}/24"
     "description" = "RESCUE"
-    "hw-id"       = "00:f4:21:68:3e:9e"
+    "hw-id"       = "3c:ec:ef:57:eb:26"
   })
 }
 

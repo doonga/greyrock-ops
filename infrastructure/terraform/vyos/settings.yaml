@@ -1,10 +1,10 @@
 ---
 config:
   hostname: "gateway"
-  domain_name: "bjw-s.tech"
-  fqdn: "gateway.bjw-s.tech"
+  domain_name: "private.greyrock.io"
+  fqdn: "gateway.private.greyrock.io"
   upstream_name_server: "1.1.1.1"
-  time_zone: "Europe/Amsterdam"
+  time_zone: "America/New_York"
 
   api:
     listen_address: "0.0.0.0"
@@ -18,11 +18,8 @@ config:
     disable_password_login: true
     keys:
       - name: personal
-        type: ssh-ed25519
+        type: ssh-rsa
         key: ${secrets.ssh.keys.personal}
-      - name: ios
-        type: ssh-ed25519
-        key: ${secrets.ssh.keys.ios}
 
   zones:
     local:
@@ -166,7 +163,7 @@ config:
     servers:
       interface: eth1.10
       dhcp:
-        domain_name: bjw-s.tech
+        domain_name: private.greyrock.io
         name_server: ${address_book.services.vyos_adguard_home.ipv4_addr}
       firewall:
         default:
@@ -237,7 +234,7 @@ config:
     trusted:
       interface: eth1.20
       dhcp:
-        domain_name: bjw-s.tech
+        domain_name: private.greyrock.io
         name_server: ${address_book.services.vyos_adguard_home.ipv4_addr}
       firewall:
         default:
@@ -299,7 +296,7 @@ config:
     iot:
       interface: eth1.40
       dhcp:
-        domain_name: bjw-s.tech
+        domain_name: private.greyrock.io
         name_server: ${address_book.services.vyos_adguard_home.ipv4_addr}
       firewall:
         default:
@@ -356,7 +353,7 @@ config:
     video:
       interface: eth1.50
       dhcp:
-        domain_name: bjw-s.tech
+        domain_name: private.greyrock.io
         name_server: ${address_book.services.vyos_adguard_home.ipv4_addr}
       firewall:
         default:
@@ -527,7 +524,7 @@ config:
     router_id: ${cidrhost(networks.lan, 1)}
     neighbor_groups:
       - group: k8s_nodes
-        remote_as: 64512
+        remote_as: 64513
 
   containers:
     coredns:
