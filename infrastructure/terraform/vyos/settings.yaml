@@ -60,8 +60,6 @@ config:
               - accept_igmp: null
               - accept_mdns: null
               - accept_vyos_api: null
-              - accept_discovery_from_sonos_players: null
-              - accept_discovery_from_sonos_controllers: null
           - zones:
               - iot
             default: drop
@@ -74,8 +72,6 @@ config:
               - accept_dhcp: null
               - accept_igmp: null
               - accept_mdns: null
-              - accept_discovery_from_sonos_players: null
-              - accept_discovery_from_sonos_controllers: null
           - zones:
               - servers
             default: drop
@@ -124,7 +120,7 @@ config:
             rules: []
 
     lan:
-      interface: eth1
+      interface: eth4
       dhcp:
         name_server: ${address_book.services.vyos_adguard_home.ipv4_addr}
       firewall:
@@ -156,12 +152,12 @@ config:
               - accept_icmp: null
 
     rescue:
-      interface: eth2
+      interface: eth6
       dhcp:
         name_server: ${cidrhost(networks["rescue"], 1)}
 
     servers:
-      interface: eth1.10
+      interface: eth4.10
       dhcp:
         domain_name: private.greyrock.io
         name_server: ${address_book.services.vyos_adguard_home.ipv4_addr}
@@ -201,8 +197,6 @@ config:
               - accept_related: null
               - drop_invalid: null
               - accept_icmp: null
-              - accept_unifi_inform: null
-              - accept_unifi_stun: null
           - zones:
               - iot
             default: drop
@@ -210,15 +204,10 @@ config:
               - accept_established: null
               - accept_related: null
               - accept_nas_smb_from_scanners: null
-              - accept_plex_from_plex_clients: null
               - accept_jellyfin_from_jellyfin_clients: null
               - accept_mqtt_from_mqtt_clients: null
-              - accept_mqtt_from_esp: null
-              - accept_k8s_ingress_from_sonos_players: null
               - accept_k8s_ingress_from_ereaders: null
-              - accept_k8s_ingress_from_wall_displays: null
               - accept_k8s_ingress_from_allowed_devices: null
-              - accept_vector_journald_from_allowed_devices: null
               - drop_invalid: null
           - zones:
               - local
@@ -232,7 +221,7 @@ config:
               - accept_dns: null
 
     trusted:
-      interface: eth1.20
+      interface: eth4.20
       dhcp:
         domain_name: private.greyrock.io
         name_server: ${address_book.services.vyos_adguard_home.ipv4_addr}
@@ -253,7 +242,6 @@ config:
               - drop_invalid: null
               - accept_igmp: null
               - accept_mdns: null
-              - accept_discovery_from_sonos_players: null
           - zones:
               - wg_trusted
             default: accept
@@ -269,8 +257,6 @@ config:
               - accept_established: null
               - accept_related: null
               - drop_invalid: null
-              - accept_udp_from_sonos_players_to_sonos_controllers: null
-              - accept_tcp_from_sonos_players_to_sonos_controllers: null
           - zones:
               - servers
             default: drop
@@ -282,7 +268,7 @@ config:
               - accept_icmp: null
 
     guest:
-      interface: eth1.30
+      interface: eth4.30
       dhcp:
         name_server: "1.1.1.1"
       firewall:
@@ -294,7 +280,7 @@ config:
             - drop_invalid: null
 
     iot:
-      interface: eth1.40
+      interface: eth4.40
       dhcp:
         domain_name: private.greyrock.io
         name_server: ${address_book.services.vyos_adguard_home.ipv4_addr}
@@ -316,8 +302,6 @@ config:
               - accept_related: null
               - drop_invalid: null
               - accept_icmp: null
-              - accept_app_control_from_sonos_controllers_tcp: null
-              - accept_app_control_from_sonos_controllers_udp: null
           - zones:
               - servers
             default: drop
@@ -326,9 +310,6 @@ config:
               - accept_related: null
               - drop_invalid: null
               - accept_icmp: null
-              - accept_p1reader_from_k8s_nodes: null
-              - accept_adb_from_k8s_nodes: null
-              - accept_3d_printer_control_from_k8s_nodes: null
               - accept_k8s_nodes: null
           - zones:
               - local
@@ -339,7 +320,6 @@ config:
               - drop_invalid: null
               - accept_igmp: null
               - accept_mdns: null
-              - accept_discovery_from_sonos_controllers: null
           - zones:
               - guest
             default: drop
@@ -347,11 +327,9 @@ config:
               - accept_established: null
               - accept_related: null
               - drop_invalid: null
-              - accept_tcp_printer_from_allowed_devices: null
-              - accept_udp_printer_from_allowed_devices: null
 
     video:
-      interface: eth1.50
+      interface: eth4.50
       dhcp:
         domain_name: private.greyrock.io
         name_server: ${address_book.services.vyos_adguard_home.ipv4_addr}

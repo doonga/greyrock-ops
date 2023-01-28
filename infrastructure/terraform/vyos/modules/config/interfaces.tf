@@ -2,7 +2,7 @@ resource "vyos_config" "interface-wan" {
   path = "interfaces ethernet ${var.config.zones.wan.interface}"
   value = jsonencode({
     "address"     = "dhcp"
-    "description" = "WAN"
+    "description" = "SPECTRUM"
     "hw-id"       = "3c:ec:ef:57:eb:24"
   })
 }
@@ -12,7 +12,7 @@ resource "vyos_config" "interface-lan" {
   value = jsonencode({
     "address"     = "${cidrhost(var.networks.lan, 1)}/24"
     "description" = "LAN"
-    "hw-id"       = "3c:ec:ef:57:eb:25"
+    "hw-id"       = "68:05:ca:39:a4:e4"
     "vif" = {
       "10" = {
         "description" = "SERVERS"

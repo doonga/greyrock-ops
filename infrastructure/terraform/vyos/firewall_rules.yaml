@@ -116,38 +116,11 @@ accept_mqtt_from_mqtt_clients:
     port: 1883
     address-group: k8s_mqtt
 
-accept_mqtt_from_esp:
-  action: accept
-  protocol: tcp
-  source:
-    address-group: esp
-  destination:
-    port: 1883
-    address-group: k8s_mqtt
-
 accept_k8s_nodes:
   action: accept
   protocol: tcp
   source:
     address-group: k8s_nodes
-
-accept_unifi_inform:
-  action: accept
-  protocol: tcp
-  source:
-    address-group: unifi_devices
-  destination:
-    port: 8080,8443
-    address-group: k8s_unifi
-
-accept_unifi_stun:
-  action: accept
-  protocol: udp
-  source:
-    address-group: unifi_devices
-  destination:
-    port: 3478
-    address-group: k8s_unifi
 
 accept_prometheus_from_k8s_nodes:
   action: accept
@@ -156,33 +129,6 @@ accept_prometheus_from_k8s_nodes:
     address-group: k8s_nodes
   destination:
     port: 9153
-
-accept_p1reader_from_k8s_nodes:
-  action: accept
-  protocol: tcp
-  source:
-    address-group: k8s_nodes
-  destination:
-    port: 8088
-    host: hallway-p1reader-esp
-
-accept_adb_from_k8s_nodes:
-  action: accept
-  protocol: tcp
-  source:
-    address-group: k8s_nodes
-  destination:
-    port: 5555
-    address-group: android_tv_players
-
-accept_plex_from_plex_clients:
-  action: accept
-  protocol: tcp
-  source:
-    address-group: plex_clients
-  destination:
-    port: 32400
-    address-group: k8s_plex
 
 accept_jellyfin_from_jellyfin_clients:
   action: accept
@@ -193,79 +139,11 @@ accept_jellyfin_from_jellyfin_clients:
     port: 8096
     address-group: k8s_jellyfin
 
-accept_3d_printer_control_from_k8s_nodes:
-  action: accept
-  protocol: tcp
-  source:
-    address-group: k8s_nodes
-  destination:
-    address-group: 3d_printer_controllers
-    port: 7125
-
-accept_discovery_from_sonos_players:
-  action: accept
-  protocol: udp
-  source:
-    address-group: sonos_players
-  destination:
-    port: 1900,1901,1902
-
-accept_discovery_from_sonos_controllers:
-  action: accept
-  protocol: udp
-  source:
-    address-group: sonos_controllers
-  destination:
-    port: 1900,1901,1902,57621
-
-accept_udp_from_sonos_players_to_sonos_controllers:
-  action: accept
-  protocol: udp
-  source:
-    address-group: sonos_players
-  destination:
-    address-group: sonos_controllers
-    port: 30000-65535
-
-accept_tcp_from_sonos_players_to_sonos_controllers:
-  action: accept
-  protocol: tcp
-  source:
-    address-group: sonos_players
-  destination:
-    address-group: sonos_controllers
-    port: 1400,3400,3401,3500,30000-65535
-
-accept_app_control_from_sonos_controllers_tcp:
-  action: accept
-  protocol: tcp
-  source:
-    address-group: sonos_controllers
-  destination:
-    port: 80,443,445,1400,3400,3401,3500,4070,4444
-
-accept_app_control_from_sonos_controllers_udp:
-  action: accept
-  protocol: udp
-  source:
-    address-group: sonos_controllers
-  destination:
-    port: 136-139,1900-1901,2869,10243,10280-10284,5353,6969
-
 accept_k8s_ingress_from_allowed_devices:
   action: accept
   protocol: tcp
   source:
     address-group: k8s_ingress_allowed
-  destination:
-    port: http,https
-    address-group: k8s_ingress
-
-accept_k8s_ingress_from_sonos_players:
-  action: accept
-  protocol: tcp
-  source:
-    address-group: sonos_players
   destination:
     port: http,https
     address-group: k8s_ingress
@@ -279,15 +157,6 @@ accept_k8s_ingress_from_ereaders:
     port: http,https
     address-group: k8s_ingress
 
-accept_k8s_ingress_from_wall_displays:
-  action: accept
-  protocol: tcp
-  source:
-    address-group: wall_displays
-  destination:
-    port: http,https
-    address-group: k8s_ingress
-
 accept_nas_smb_from_scanners:
   action: accept
   protocol: tcp
@@ -296,33 +165,6 @@ accept_nas_smb_from_scanners:
   destination:
     port: microsoft-ds
     address-group: nas
-
-accept_tcp_printer_from_allowed_devices:
-  action: accept
-  protocol: tcp
-  source:
-    address-group: printer_allowed
-  destination:
-    port: http,9100
-    address-group: printers
-
-accept_udp_printer_from_allowed_devices:
-  action: accept
-  protocol: udp
-  source:
-    address-group: printer_allowed
-  destination:
-    port: 161
-    address-group: printers
-
-accept_vector_journald_from_allowed_devices:
-  action: accept
-  protocol: tcp
-  source:
-    address-group: vector_journald_allowed
-  destination:
-    port: 6002
-    address-group: k8s_vector_aggregator
 
 accept_vyos_api:
   action: accept
