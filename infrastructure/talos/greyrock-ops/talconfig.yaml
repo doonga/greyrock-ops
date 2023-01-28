@@ -16,159 +16,51 @@ additionalMachineCertSans:
   - greyrock-ops.private.greyrock.io
 
 nodes:
-  - hostname: control-01.private.greyrock.io
-    ipAddress: 172.16.30.101
+  - hostname: k8s1.private.greyrock.io
+    ipAddress: 10.1.1.4
     controlPlane: true
     installDisk: /dev/nvme0n1
     disableSearchDomain: true
     networkInterfaces:
       - interface: eth0
         dhcp: true
-        vip:
-          ip: ${clusterEndpointIP}
-  - hostname: control-02.private.greyrock.io
-    ipAddress: 172.16.30.102
+        vlans:
+          - vlanId: 40
+            dhcp: false
+            addresses:
+              - 10.1.3.4/24
+  - hostname: k8s2.private.greyrock.io
+    ipAddress: 10.1.1.5
     controlPlane: true
     installDisk: /dev/nvme0n1
     disableSearchDomain: true
     networkInterfaces:
       - interface: eth0
         dhcp: true
-        vip:
-          ip: ${clusterEndpointIP}
-  - hostname: control-03.private.greyrock.io
-    ipAddress: 172.16.30.103
+        vlans:
+          - vlanId: 40
+            dhcp: false
+            addresses:
+              - 10.1.3.5/24
+  - hostname: k8s3.private.greyrock.io
+    ipAddress: 10.1.1.6
     controlPlane: true
     installDisk: /dev/nvme0n1
     disableSearchDomain: true
     networkInterfaces:
       - interface: eth0
         dhcp: true
-        vip:
-          ip: ${clusterEndpointIP}
-  - hostname: worker-01.private.greyrock.io
-    ipAddress: 172.16.30.104
-    controlPlane: false
-    installDisk: /dev/nvme0n1
-    disableSearchDomain: true
-    networkInterfaces:
-      - interface: eth0
-        dhcp: true
         vlans:
-          - vlanId: 10
+          - vlanId: 40
             dhcp: false
             addresses:
-              - 172.16.10.104/24
-  - hostname: worker-02.private.greyrock.io
-    ipAddress: 172.16.30.105
-    controlPlane: false
-    installDisk: /dev/nvme0n1
-    disableSearchDomain: true
-    networkInterfaces:
-      - interface: eth0
-        dhcp: true
-        vlans:
-          - vlanId: 10
-            dhcp: false
-            addresses:
-              - 172.16.10.105/24
-  - hostname: worker-03.private.greyrock.io
-    ipAddress: 172.16.30.106
-    controlPlane: false
-    installDisk: /dev/nvme0n1
-    disableSearchDomain: true
-    networkInterfaces:
-      - interface: eth0
-        dhcp: true
-        vlans:
-          - vlanId: 10
-            dhcp: false
-            addresses:
-              - 172.16.10.106/24
-  - hostname: worker-04.private.greyrock.io
-    ipAddress: 172.16.30.107
-    controlPlane: false
-    installDisk: /dev/nvme0n1
-    disableSearchDomain: true
-    networkInterfaces:
-      - interface: eth0
-        dhcp: true
-        vlans:
-          - vlanId: 10
-            dhcp: false
-            addresses:
-              - 172.16.10.107/24
-  - hostname: worker-05.private.greyrock.io
-    ipAddress: 172.16.30.108
-    controlPlane: false
-    installDisk: /dev/nvme0n1
-    disableSearchDomain: true
-    networkInterfaces:
-      - interface: eth0
-        dhcp: true
-        vlans:
-          - vlanId: 10
-            dhcp: false
-            addresses:
-              - 172.16.10.108/24
-  - hostname: worker-06.private.greyrock.io
-    ipAddress: 172.16.30.109
-    controlPlane: false
-    installDisk: /dev/nvme0n1
-    disableSearchDomain: true
-    networkInterfaces:
-      - interface: eth0
-        dhcp: true
-        vlans:
-          - vlanId: 10
-            dhcp: false
-            addresses:
-              - 172.16.10.109/24
-  - hostname: worker-07.private.greyrock.io
-    ipAddress: 172.16.30.110
-    controlPlane: false
-    installDisk: /dev/nvme0n1
-    disableSearchDomain: true
-    networkInterfaces:
-      - interface: eth0
-        dhcp: true
-        vlans:
-          - vlanId: 10
-            dhcp: false
-            addresses:
-              - 172.16.10.110/24
-  - hostname: worker-08.private.greyrock.io
-    ipAddress: 172.16.30.111
-    controlPlane: false
-    installDisk: /dev/nvme0n1
-    disableSearchDomain: true
-    networkInterfaces:
-      - interface: eth0
-        dhcp: true
-        vlans:
-          - vlanId: 10
-            dhcp: false
-            addresses:
-              - 172.16.10.111/24
-  - hostname: worker-09.private.greyrock.io
-    ipAddress: 172.16.30.112
-    controlPlane: false
-    installDisk: /dev/nvme0n1
-    disableSearchDomain: true
-    networkInterfaces:
-      - interface: eth0
-        dhcp: true
-        vlans:
-          - vlanId: 10
-            dhcp: false
-            addresses:
-              - 172.16.10.112/24
+              - 10.1.3.6/24
 
 controlPlane:
   patches:
     - |-
       cluster:
-        allowSchedulingOnMasters: false
+        allowSchedulingOnMasters: true
         apiServer:
           extraArgs:
             feature-gates: MixedProtocolLBService=true,EphemeralContainers=True
@@ -193,7 +85,7 @@ controlPlane:
           extraArgs:
             feature-gates: MixedProtocolLBService=true,EphemeralContainers=True
         extraManifests:
-          - https://raw.githubusercontent.com/Doonga/greyrock-ops/main/infrastructure/talos/greyrock-ops/rbac/oidc.yaml
+          - https://raw.githubusercontent.com/doonga/greyrock-ops/main/infrastructure/talos/greyrock-ops/rbac/oidc.yaml
 
       machine:
         files:
@@ -210,7 +102,7 @@ controlPlane:
             rotate-server-certificates: "true"
           nodeIP:
             validSubnets:
-              - 172.16.30.0/24
+              - 10.1.1.0/24
         install:
           extraKernelArgs:
             - "talos.logging.kernel=udp://vector.greyrock.tech:6050/"
@@ -223,124 +115,13 @@ controlPlane:
             - ip: ${clusterEndpointIP}
               aliases:
                 - greyrock-ops.private.greyrock.io
-            - ip: 172.16.30.101
-              aliases:
-                - control-01.private.greyrock.io
-            - ip: 172.16.30.102
-              aliases:
-                - control-02.private.greyrock.io
-            - ip: 172.16.30.103
-              aliases:
-                - control-03.private.greyrock.io
-            - ip: 172.16.30.104
-              aliases:
-                - worker-01.private.greyrock.io
-            - ip: 172.16.30.105
-              aliases:
-                - worker-02.private.greyrock.io
-            - ip: 172.16.30.106
-              aliases:
-                - worker-03.private.greyrock.io
-            - ip: 172.16.30.107
-              aliases:
-                - worker-04.private.greyrock.io
-            - ip: 172.16.30.108
-              aliases:
-                - worker-05.private.greyrock.io
-            - ip: 172.16.30.109
-              aliases:
-                - worker-06.private.greyrock.io
-            - ip: 172.16.30.110
-              aliases:
-                - worker-07.private.greyrock.io
-            - ip: 172.16.30.111
-              aliases:
-                - worker-08.private.greyrock.io
-            - ip: 172.16.30.112
-              aliases:
-                - worker-09.private.greyrock.io
         sysctls:
           fs.inotify.max_user_watches: "1048576"
           fs.inotify.max_user_instances: "8192"
         time:
           disabled: false
           servers:
-            - 172.16.30.2
+            - ntp.greyrock.io
     - |-
       - op: remove
         path: /cluster/apiServer/admissionControl
-
-worker:
-  patches:
-    - |-
-      machine:
-        files:
-          - content: |
-              [plugins]
-                [plugins."io.containerd.grpc.v1.cri"]
-                  enable_unprivileged_ports = true
-                  enable_unprivileged_icmp = true
-            path: /etc/cri/conf.d/20-customization.part
-            op: create
-        kubelet:
-          extraArgs:
-            feature-gates: GracefulNodeShutdown=true,MixedProtocolLBService=true
-            rotate-server-certificates: "true"
-          nodeIP:
-            validSubnets:
-              - 172.16.30.0/24
-        install:
-          extraKernelArgs:
-            - "talos.logging.kernel=udp://vector.greyrock.tech:6050/"
-        logging:
-          destinations:
-            - endpoint: "udp://vector.greyrock.tech:6051/"
-              format: json_lines
-        network:
-          extraHostEntries:
-            - ip: ${clusterEndpointIP}
-              aliases:
-                - greyrock-ops.private.greyrock.io
-            - ip: 172.16.30.101
-              aliases:
-                - control-01.private.greyrock.io
-            - ip: 172.16.30.102
-              aliases:
-                - control-02.private.greyrock.io
-            - ip: 172.16.30.103
-              aliases:
-                - control-03.private.greyrock.io
-            - ip: 172.16.30.104
-              aliases:
-                - worker-01.private.greyrock.io
-            - ip: 172.16.30.105
-              aliases:
-                - worker-02.private.greyrock.io
-            - ip: 172.16.30.106
-              aliases:
-                - worker-03.private.greyrock.io
-            - ip: 172.16.30.107
-              aliases:
-                - worker-04.private.greyrock.io
-            - ip: 172.16.30.108
-              aliases:
-                - worker-05.private.greyrock.io
-            - ip: 172.16.30.109
-              aliases:
-                - worker-06.private.greyrock.io
-            - ip: 172.16.30.110
-              aliases:
-                - worker-07.private.greyrock.io
-            - ip: 172.16.30.111
-              aliases:
-                - worker-08.private.greyrock.io
-            - ip: 172.16.30.112
-              aliases:
-                - worker-09.private.greyrock.io
-        sysctls:
-          fs.inotify.max_user_watches: "1048576"
-          fs.inotify.max_user_instances: "8192"
-        time:
-          disabled: false
-          servers:
-            - 172.16.30.2

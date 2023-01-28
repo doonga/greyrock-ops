@@ -2,19 +2,19 @@
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
-  name: frigate-restic
-  namespace: home-automation
+  name: n8n-restic
+  namespace: selfhosted
 spec:
   secretStoreRef:
     kind: ClusterSecretStore
     name: onepassword-connect
   target:
-    name: frigate-restic-secret
+    name: n8n-restic-secret
     creationPolicy: Owner
     template:
       engineVersion: v2
       data:
-        RESTIC_REPOSITORY: '{{ .REPOSITORY_TEMPLATE }}/frigate'
+        RESTIC_REPOSITORY: '{{ .REPOSITORY_TEMPLATE }}/n8n'
         RESTIC_PASSWORD: '{{ .RESTIC_PASSWORD }}'
         AWS_ACCESS_KEY_ID: '{{ .AWS_ACCESS_KEY_ID }}'
         AWS_SECRET_ACCESS_KEY: '{{ .AWS_SECRET_ACCESS_KEY }}'
@@ -25,15 +25,15 @@ spec:
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: frigate
-  namespace: home-automation
+  name: n8n
+  namespace: selfhosted
 spec:
-  sourcePVC: frigate-data
+  sourcePVC: config-n8n-0
   trigger:
     schedule: "0 */12 * * *"
   restic:
     copyMethod: Snapshot
     pruneIntervalDays: 14
-    repository: frigate-restic-secret
+    repository: n8n-restic-secret
     retain:
       daily: 14

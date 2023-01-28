@@ -13,7 +13,7 @@ spec:
         "type": "static",
         "addresses": [
            {
-             "address": "${MULTUS_LAN_HASS}/24"
+             "address": "${MULTUS_IOT_HASS}/24"
            }
          ]
       }

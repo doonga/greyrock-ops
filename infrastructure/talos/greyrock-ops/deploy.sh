@@ -1,28 +1,21 @@
 #!/bin/bash
 
 # Only need to do this once since the config keys will always be the same
-# talosctl --talosconfig=./clusterconfig/talosconfig config endpoint 172.16.30.10
+# talosctl --talosconfig=./clusterconfig/talosconfig config endpoint 10.5.0.2
 # talosctl config merge ./clusterconfig/talosconfig
-# talosctl kubeconfig -n 172.16.30.101
+# talosctl kubeconfig -n 10.5.0.2
 
 # Deploy the configuration to the nodes
-talosctl apply-config -i -n 172.16.30.101 -f ./clusterconfig/greyrock-ops-control-01.private.greyrock.io.yaml
-talosctl apply-config -i -n 172.16.30.102 -f ./clusterconfig/greyrock-ops-control-02.private.greyrock.io.yaml
-talosctl apply-config -i -n 172.16.30.103 -f ./clusterconfig/greyrock-ops-control-03.private.greyrock.io.yaml
-talosctl apply-config -i -n 172.16.30.104 -f ./clusterconfig/greyrock-ops-worker-01.private.greyrock.io.yaml
-talosctl apply-config -i -n 172.16.30.105 -f ./clusterconfig/greyrock-ops-worker-02.private.greyrock.io.yaml
-talosctl apply-config -i -n 172.16.30.106 -f ./clusterconfig/greyrock-ops-worker-03.private.greyrock.io.yaml
-talosctl apply-config -i -n 172.16.30.107 -f ./clusterconfig/greyrock-ops-worker-04.private.greyrock.io.yaml
-talosctl apply-config -i -n 172.16.30.108 -f ./clusterconfig/greyrock-ops-worker-05.private.greyrock.io.yaml
-talosctl apply-config -i -n 172.16.30.109 -f ./clusterconfig/greyrock-ops-worker-06.private.greyrock.io.yaml
-talosctl apply-config -i -n 172.16.30.110 -f ./clusterconfig/greyrock-ops-worker-07.private.greyrock.io.yaml
-talosctl apply-config -i -n 172.16.30.111 -f ./clusterconfig/greyrock-ops-worker-08.private.greyrock.io.yaml
+talosctl apply-config -i -n 10.1.1.4 -f ./clusterconfig/greyrock-ops-k8s1.private.greyrock.io.yaml
+talosctl apply-config -i -n 10.1.1.5 -f ./clusterconfig/greyrock-ops-k8s2.private.greyrock.io.yaml
+talosctl apply-config -i -n 10.1.1.6 -f ./clusterconfig/greyrock-ops-k8s3.private.greyrock.io.yaml
 
+echo "Config applied"
 echo "Waiting 2 mins..."
 sleep 120
 
 echo "Bootstrap..."
-talosctl bootstrap -n 172.16.30.101 -e 172.16.30.101
+talosctl bootstrap -n 10.1.1.4 -e 10.1.1.4
 
 echo "Waiting 3 mins..."
 sleep 180

@@ -68,83 +68,35 @@ hosts:
     nas:
         mac_addr: 4c:cc:6a:18:22:bb
         network: servers
-        ipv4_hostid: 7
+        ipv4_hostid: 3
         groups:
             - nas
         aliases:
             - s3.private.greyrock.io
-    control-01:
+    k8s1:
         mac_addr: 00:23:24:da:c4:79
         network: servers
-        ipv4_hostid: 101
+        ipv4_hostid: 4
         groups:
             - k8s_nodes
-    control-02:
+        aliases:
+            - worker1.private.greyrock.io
+    k8s2:
         mac_addr: 00:23:24:da:f0:2c
         network: servers
-        ipv4_hostid: 102
+        ipv4_hostid: 5
         groups:
             - k8s_nodes
-    control-03:
+        aliases:
+            - worker2.private.greyrock.io
+    k8s3:
         mac_addr: 00:23:24:c2:17:7b
         network: servers
-        ipv4_hostid: 103
+        ipv4_hostid: 6
         groups:
             - k8s_nodes
-    worker-01:
-        mac_addr: e0:4f:43:24:19:6e
-        network: servers
-        ipv4_hostid: 104
-        groups:
-            - k8s_nodes
-    worker-02:
-        mac_addr: e0:4f:43:24:29:ae
-        network: servers
-        ipv4_hostid: 105
-        groups:
-            - k8s_nodes
-    worker-03:
-        mac_addr: e0:4f:43:24:2a:eb
-        network: servers
-        ipv4_hostid: 106
-        groups:
-            - k8s_nodes
-    worker-04:
-        mac_addr: e0:4f:43:24:2d:bd
-        network: servers
-        ipv4_hostid: 107
-        groups:
-            - k8s_nodes
-    worker-05:
-        mac_addr: e0:4f:43:24:31:a4
-        network: servers
-        ipv4_hostid: 108
-        groups:
-            - k8s_nodes
-    worker-06:
-        mac_addr: e0:4f:43:24:2c:86
-        network: servers
-        ipv4_hostid: 109
-        groups:
-            - k8s_nodes
-    worker-07:
-        mac_addr: 00:23:24:c2:14:8e
-        network: servers
-        ipv4_hostid: 110
-        groups:
-            - k8s_nodes
-    worker-08:
-        mac_addr: 6c:0b:84:e1:a9:3d
-        network: servers
-        ipv4_hostid: 111
-        groups:
-            - k8s_nodes
-    worker-09:
-        mac_addr: 00:23:24:bf:2d:70
-        network: servers
-        ipv4_hostid: 112
-        groups:
-            - k8s_nodes
+        aliases:
+            - worker3.private.greyrock.io
     # ----------------------
     # Trusted
     # ----------------------

@@ -1,5 +1,5 @@
 ---
-ansible_host: '172.16.30.7'
+ansible_host: '10.1.1.3'
 ansible_python_interpreter: /usr/bin/python3
 ansible_user: todd
 tm_todd_laptop_user: tm-todd-laptop

@@ -78,30 +78,15 @@ spec:
         config:
           osdsPerDevice: "1"
         nodes:
-          - name: "worker-01"
+          - name: "k8s1"
             devices:
               - name: "/dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_BTWL503001EB800RGN"
-          - name: "worker-02"
+          - name: "k8s2"
             devices:
               - name: "/dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_BTWL406300TG800RGN"
-          - name: "worker-03"
+          - name: "k8s3"
             devices:
               - name: "/dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_BTWL503001AJ800RGN"
-          - name: "worker-04"
-            devices:
-              - name: "/dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_PHWL4343005F800RGN"
-          - name: "worker-05"
-            devices:
-              - name: "/dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_PHWL503400YV800RGN"
-          - name: "worker-06"
-            devices:
-              - name: "/dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_PHWL437601XW800RGN"
-          - name: "worker-07"
-            devices:
-              - name: "/dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_PHWL5034005A800RGN"
-          - name: "worker-08"
-            devices:
-              - name: "/dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_PHWL4436048S800RGN"
 
     ingress:
       dashboard:
