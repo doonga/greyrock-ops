@@ -18,4 +18,4 @@ spec:
   values:
     bypassDnsResolution: true
     providerRegex: |
-      ^(control-[0-9][0-9]|worker-[0-9][0-9])$
+      ^(k8s[0-9]).*
