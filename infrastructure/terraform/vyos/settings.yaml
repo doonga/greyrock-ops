@@ -103,7 +103,7 @@ config:
               - accept_dhcp: null
 
     wan:
-      interface: eth0
+      interface: eth4
       firewall:
         default:
           default: accept
@@ -120,7 +120,7 @@ config:
             rules: []
 
     lan:
-      interface: eth4
+      interface: eth5
       dhcp:
         name_server: ${address_book.services.vyos_adguard_home.ipv4_addr}
       firewall:
@@ -157,7 +157,7 @@ config:
         name_server: ${cidrhost(networks["rescue"], 1)}
 
     servers:
-      interface: eth4.10
+      interface: eth5.10
       dhcp:
         domain_name: private.greyrock.io
         name_server: ${address_book.services.vyos_adguard_home.ipv4_addr}
@@ -221,7 +221,7 @@ config:
               - accept_dns: null
 
     trusted:
-      interface: eth4.20
+      interface: eth5.20
       dhcp:
         domain_name: private.greyrock.io
         name_server: ${address_book.services.vyos_adguard_home.ipv4_addr}
@@ -268,7 +268,7 @@ config:
               - accept_icmp: null
 
     guest:
-      interface: eth4.30
+      interface: eth5.30
       dhcp:
         name_server: "1.1.1.1"
       firewall:
@@ -280,7 +280,7 @@ config:
             - drop_invalid: null
 
     iot:
-      interface: eth4.40
+      interface: eth5.40
       dhcp:
         domain_name: private.greyrock.io
         name_server: ${address_book.services.vyos_adguard_home.ipv4_addr}
@@ -329,7 +329,7 @@ config:
               - drop_invalid: null
 
     video:
-      interface: eth4.50
+      interface: eth5.50
       dhcp:
         domain_name: private.greyrock.io
         name_server: ${address_book.services.vyos_adguard_home.ipv4_addr}
