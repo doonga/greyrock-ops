@@ -109,12 +109,12 @@ spec:
         #   url: horus.bjw-s.tech
 
         # PiKVM
-        # - module: http_2xx
-        #   name: pikvm-http
-        #   url: "https://pikvm.bjw-s.tech"
-        # - module: icmp
-        #   name: pikvm-icmp
-        #   url: diego.bjw-s.tech
+        - module: http_2xx
+          name: pikvm-http
+          url: "https://pikvm.private.greyrock.io"
+        - module: icmp
+          name: pikvm-icmp
+          url: pikvm.private.greyrock.io
 
         # Robot vacuums
         # - module: icmp

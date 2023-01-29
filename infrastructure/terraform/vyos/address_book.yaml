@@ -125,6 +125,13 @@ hosts:
     # ----------------------
     # IOT
     # ----------------------
+    # Pi 4 PiKVM
+    pikvm:
+        mac_addr: dc:a6:32:93:f5:83
+        network: iot
+        ipv4_hostid: 60
+        groups:
+            - vector_journald_allowed
     hydrawise-sprinkler-controller:
         mac_addr: 00:03:10:b3:72:fa
         network: iot
