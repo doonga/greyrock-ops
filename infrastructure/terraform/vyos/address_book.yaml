@@ -100,28 +100,47 @@ hosts:
     # ----------------------
     # Trusted
     # ----------------------
-    todds-iphone:
-        mac_addr: 70:b3:06:4c:04:65
-        network: trusted
-        ipv4_hostid: 250
-        groups:
-            - ios_devices
-            - jellyfin_clients
-    todds-macbook:
-        mac_addr: bc:d0:74:68:c2:94
-        network: trusted
-        ipv4_hostid: 251
-        groups:
-            - jellyfin_clients
-            - mqtt_clients
     todds-desktop:
         mac_addr: 2c:f0:5d:ad:e5:b4
         network: trusted
-        ipv4_hostid: 252
+        ipv4_hostid: 10
         groups:
             - jellyfin_clients
             - mqtt_clients
             - ereaders
+    todds-macbook:
+        mac_addr: bc:d0:74:68:c2:94
+        network: trusted
+        ipv4_hostid: 11
+        groups:
+            - jellyfin_clients
+            - mqtt_clients
+    todds-iphone:
+        mac_addr: 70:b3:06:4c:04:65
+        network: trusted
+        ipv4_hostid: 12
+        groups:
+            - ios_devices
+            - jellyfin_clients
+    todds-ipad:
+        mac_addr: 50:ed:3c:cf:36:6a
+        network: trusted
+        ipv4_hostid: 13
+        groups:
+            - ios_devices
+            - jellyfin_clients
+    andys-desktop:
+        mac_addr: 04:42:1a:08:f3:fe
+        network: trusted
+        ipv4_hostid: 14
+        groups:
+            - jellyfin_clients
+    andys-iphone:
+        mac_addr: 44:90:bb:c9:44:79
+        network: trusted
+        ipv4_hostid: 15
+        groups:
+            - ios_devices
     # ----------------------
     # IOT
     # ----------------------
