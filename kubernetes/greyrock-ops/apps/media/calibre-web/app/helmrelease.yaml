@@ -43,6 +43,9 @@ spec:
       main:
         enabled: true
         annotations:
+          hajimari.io/enable: "true"
+          hajimari.io/instance: "todd"
+          hajimari.io/icon: "book-open"
           auth.home.arpa/enabled: "true"
           nginx.ingress.kubernetes.io/auth-url: https://auth.greyrock.tech/oauth2/auth?allowed_groups=calibre-web
           nginx.ingress.kubernetes.io/configuration-snippet: |

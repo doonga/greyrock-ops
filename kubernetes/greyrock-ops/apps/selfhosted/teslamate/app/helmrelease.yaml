@@ -73,6 +73,10 @@ spec:
             port: 4000
     ingress:
       main:
+        annotations:
+          hajimari.io/enable: "true"
+          hajimari.io/instance: "todd"
+          hajimari.io/icon: "car-electric"
         enabled: true
         ingressClassName: "nginx"
         hosts:

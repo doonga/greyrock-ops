@@ -66,6 +66,9 @@ spec:
         enabled: true
         ingressClassName: "nginx"
         annotations:
+          hajimari.io/enable: "true"
+          hajimari.io/instance: "todd"
+          hajimari.io/icon: "file-multiple"
           auth.home.arpa/enabled: "true"
           nginx.ingress.kubernetes.io/auth-url: https://auth.greyrock.tech/oauth2/auth?allowed_groups=paperless
         hosts:
