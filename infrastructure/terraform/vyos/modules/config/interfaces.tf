@@ -1,9 +1,9 @@
 resource "vyos_config" "interface-wan" {
   path = "interfaces ethernet ${var.config.zones.wan.interface}"
   value = jsonencode({
-    "address"     = "dhcp"
-    "description" = "SPECTRUM"
-    "hw-id"       = "68:05:ca:39:a4:e4"
+    "address"      = "dhcp"
+    "description"  = "SPECTRUM"
+    "hw-id"        = "68:05:ca:39:a4:e4"
   })
 }
 

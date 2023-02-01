@@ -1,5 +1,5 @@
 resource "vyos_config" "service-dns-dynamic-ingress" {
-  path = "service dns dynamic interface eth0 service ingress"
+  path = "service dns dynamic interface eth4 service ingress"
   value = jsonencode(
     {
       "host-name" = "ipv4.greyrock.tech"
@@ -13,7 +13,7 @@ resource "vyos_config" "service-dns-dynamic-ingress" {
 }
 
 resource "vyos_config" "service-dns-dynamic-hardware" {
-  path = "service dns dynamic interface eth0 service hardware"
+  path = "service dns dynamic interface eth4 service hardware"
   value = jsonencode(
     {
       "host-name" = "ipv4.greyrock.io"
