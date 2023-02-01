@@ -36,44 +36,6 @@ spec:
               - kind: ConfigMap
                 name: cluster-settings
       target:
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-kind: Kustomization
-metadata:
-  name: cluster-apps
-  namespace: flux-system
-spec:
-  interval: 10m
-  path: ./kubernetes/greyrock-ops/apps
-  prune: true
-  sourceRef:
-    kind: GitRepository
-    name: greyrock-ops-kubernetes
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-age
-  postBuild:
-    substituteFrom:
-      - kind: ConfigMap
-        name: cluster-settings
-  patches:
-    - patch: |-
-        apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-        kind: Kustomization
-        metadata:
-          name: not-used
-          namespace: not-used
-        spec:
-          decryption:
-            provider: sops
-            secretRef:
-              name: sops-age
-          postBuild:
-            substituteFrom:
-              - kind: ConfigMap
-                name: cluster-settings
-      target:
         group: kustomize.toolkit.fluxcd.io
         version: v1beta2
         kind: Kustomization
