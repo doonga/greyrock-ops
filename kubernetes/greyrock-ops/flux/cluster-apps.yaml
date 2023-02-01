@@ -44,11 +44,11 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
-  path: ./kubernetes/cluster-0/apps
+  path: ./kubernetes/greyrock-ops/apps
   prune: true
   sourceRef:
     kind: GitRepository
-    name: home-ops-kubernetes
+    name: greyrock-ops-kubernetes
   decryption:
     provider: sops
     secretRef:
