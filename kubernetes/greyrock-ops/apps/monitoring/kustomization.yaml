@@ -16,4 +16,4 @@ resources:
   - ./vector/ks.yaml
   - ./vpa/ks.yaml
   # Standard Resources
-  - ./miscellaneous
+  # - ./miscellaneous
