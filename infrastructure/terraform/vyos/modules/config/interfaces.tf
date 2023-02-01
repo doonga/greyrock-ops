@@ -7,13 +7,6 @@ resource "vyos_config" "interface-wan" {
   })
 }
 
-resource "vyos_config" "interface-wan-dhcp-options" {
-  path = "interfaces ethernet ${var.config.zones.wan.interface} dhcp-options"
-  value = jsonencode({
-    "reject"      = "192.168.100.0/24"
-  })
-}
-
 resource "vyos_config" "interface-lan" {
   path = "interfaces ethernet ${var.config.zones.lan.interface}"
   value = jsonencode({

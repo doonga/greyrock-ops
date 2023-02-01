@@ -74,7 +74,7 @@ hosts:
         aliases:
             - s3.private.greyrock.io
     k8s1:
-        mac_addr: 00:23:24:da:c4:79
+        mac_addr: 48:21:0b:3e:d8:02
         network: servers
         ipv4_hostid: 4
         groups:
@@ -82,7 +82,7 @@ hosts:
         aliases:
             - worker1.private.greyrock.io
     k8s2:
-        mac_addr: 00:23:24:da:f0:2c
+        mac_addr: 48:21:0b:3e:db:da
         network: servers
         ipv4_hostid: 5
         groups:
@@ -90,7 +90,7 @@ hosts:
         aliases:
             - worker2.private.greyrock.io
     k8s3:
-        mac_addr: 00:23:24:c2:17:7b
+        mac_addr: 48:21:0b:3e:d8:14
         network: servers
         ipv4_hostid: 6
         groups:

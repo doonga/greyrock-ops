@@ -80,13 +80,13 @@ spec:
         nodes:
           - name: "k8s1"
             devices:
-              - name: "/dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_BTWL503001EB800RGN"
+              - name: "/dev/disk/by-id/nvme-WD_BLACK_SN770_1TB_22472N805186"
           - name: "k8s2"
             devices:
-              - name: "/dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_BTWL406300TG800RGN"
+              - name: "/dev/disk/by-id/nvme-WD_BLACK_SN770_1TB_22472N804710"
           - name: "k8s3"
             devices:
-              - name: "/dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_BTWL503001AJ800RGN"
+              - name: "/dev/disk/by-id/nvme-WD_BLACK_SN770_1TB_22472N801099"
 
     ingress:
       dashboard:

@@ -19,7 +19,7 @@ nodes:
   - hostname: k8s1.private.greyrock.io
     ipAddress: 10.1.1.4
     controlPlane: true
-    installDisk: /dev/nvme0n1
+    installDisk: /dev/sda
     disableSearchDomain: true
     networkInterfaces:
       - interface: eth0
@@ -32,7 +32,7 @@ nodes:
   - hostname: k8s2.private.greyrock.io
     ipAddress: 10.1.1.5
     controlPlane: true
-    installDisk: /dev/nvme0n1
+    installDisk: /dev/sda
     disableSearchDomain: true
     networkInterfaces:
       - interface: eth0
@@ -45,7 +45,7 @@ nodes:
   - hostname: k8s3.private.greyrock.io
     ipAddress: 10.1.1.6
     controlPlane: true
-    installDisk: /dev/nvme0n1
+    installDisk: /dev/sda
     disableSearchDomain: true
     networkInterfaces:
       - interface: eth0
