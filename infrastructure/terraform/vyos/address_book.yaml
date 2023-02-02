@@ -145,6 +145,10 @@ hosts:
         ipv4_hostid: 15
         groups:
             - ios_devices
+    gitops:
+        mac_addr: 00:23:24:e3:26:a8
+        network: trusted
+        ipv4_hostid: 16
     # ----------------------
     # IOT
     # ----------------------
