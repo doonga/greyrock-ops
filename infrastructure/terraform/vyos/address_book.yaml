@@ -97,10 +97,6 @@ hosts:
             - k8s_nodes
         aliases:
             - worker3.private.greyrock.io
-    gitops:
-        mac_addr: 00:23:24:e3:26:a8
-        network: servers
-        ipv4_hostid: 7
     # ----------------------
     # Trusted
     # ----------------------
