@@ -145,6 +145,66 @@ hosts:
         mac_addr: 00:23:24:e3:26:a8
         network: trusted
         ipv4_hostid: 16
+    garage-homepod:
+        mac_addr: d4:90:9c:c6:de:0f
+        network: trusted
+        ipv4_hostid: 17
+        groups:
+            - homekit_devices
+    masterbedroom-homepod:
+        mac_addr: e0:2b:96:9f:e9:bc
+        network: trusted
+        ipv4_hostid: 18
+        groups:
+            - homekit_devices
+    kitchen-homepod:
+        mac_addr: e0:2b:96:8d:05:c4
+        network: trusted
+        ipv4_hostid: 19
+        groups:
+            - homekit_devices
+    fsr-homepod:
+        mac_addr: 94:ea:32:a2:a1:d5
+        network: trusted
+        ipv4_hostid: 20
+        groups:
+            - homekit_devices
+    office-homepod:
+        mac_addr: 4c:20:b8:de:46:e8
+        network: trusted
+        ipv4_hostid: 21
+        groups:
+            - homekit_devices
+    gameroom-homepod:
+        mac_addr: 94:ea:32:a1:15:65
+        network: trusted
+        ipv4_hostid: 22
+        groups:
+            - homekit_devices
+    office-appletv:
+        mac_addr: ec:a9:07:00:50:be
+        network: trusted
+        ipv4_hostid: 23
+        groups:
+            - homekit_devices
+    gameroom-appletv:
+        mac_addr: 6c:4a:85:32:e2:09
+        network: trusted
+        ipv4_hostid: 24
+        groups:
+            - homekit_devices
+    fsr-appletv:
+        mac_addr: 4c:ab:4f:8e:e4:3e
+        network: trusted
+        ipv4_hostid: 25
+        groups:
+            - homekit_devices
+    todds-watch:
+        mac_addr: 08:25:73:b2:e6:e0
+        network: trusted
+        ipv4_hostid: 26
+        groups:
+            - ios_devices
     # ----------------------
     # IOT
     # ----------------------
@@ -262,6 +322,11 @@ hosts:
         groups:
             - printers
             - scanners
+    homeassistant-egress:
+        network: iot
+        ipv4_hostid: 151
+        groups:
+            - homeassistant_egress
     # ----------------------
     # Video
     # ----------------------
