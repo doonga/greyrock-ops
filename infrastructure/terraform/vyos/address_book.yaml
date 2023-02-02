@@ -98,7 +98,7 @@ hosts:
         aliases:
             - worker3.private.greyrock.io
     gitops:
-        mac_addr: 00:23:24:e3:28:a8
+        mac_addr: 00:23:24:e3:26:a8
         network: servers
         ipv4_hostid: 7
     # ----------------------
