@@ -17,11 +17,27 @@ spec:
       interval: 30m
   values:
     replicaCount: 3
+    crds:
+      install: true
 
     updateStrategy:
       type: RollingUpdate
       rollingUpdate:
         maxSurge: 1
+
+    grafana:
+      enabled: true
+    serviceMonitor:
+      enabled: true
+    backgroundController:
+      serviceMonitor:
+        enabled: true
+    cleanupController:
+      serviceMonitor:
+        enabled: true
+    reportsController:
+      serviceMonitor:
+        enabled: true
 
     resources:
       requests:
