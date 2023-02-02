@@ -5,6 +5,7 @@ provider "registry.terraform.io/carlpett/sops" {
   version     = "0.7.2"
   constraints = "0.7.2"
   hashes = [
+    "h1:eetjYKFBQb6nbgxjehD/gzzAmH2ru94ha2tEzXNiNy8=",
     "h1:nWrLW+9JjGLwfss4T7pTaE+JiZlBJQGoYxt4pDe5OE8=",
     "zh:43f218054ea3a72c9756bf989aeebb9d0f23b66fd08e9fb4ae75d4f921295e82",
     "zh:57fd326388042a6b7ecd60f740f81e5ef931546c4f068f054e7df34acf65d190",
@@ -20,6 +21,7 @@ provider "registry.terraform.io/hashicorp/http" {
   version     = "3.2.1"
   constraints = "3.2.1"
   hashes = [
+    "h1:DfxMa1zM/0NCFWN5PAxivSHJMNkOAFZvDYQkO72ZQmw=",
     "h1:Q2YQZzEhHQVlkQCQVpMzFVs0Gg+eXzISbOwaOYqpflc=",
     "zh:088b3b3128034485e11dff8da16e857d316fbefeaaf5bef24cceda34c6980641",
     "zh:09ed1f2462ea4590b112e048c4af556f0b6eafc7cf2c75bb2ac21cd87ca59377",
@@ -41,6 +43,7 @@ provider "registry.terraform.io/tenstad/remote" {
   constraints = "0.1.1"
   hashes = [
     "h1:va2NAPsAaDuSPbTipAajgETLmJ9DLmtSEvJJoUft/W8=",
+    "h1:x+VrpVS5+DG1ARCzq8m6yVylQYox1WUqGLR1VAgf+CE=",
     "zh:00dab99d546d4f74b9b9a4aa23e5e4562edee95f815d284c1ffda92bab6e8b9f",
     "zh:12475396d20d34ccdb5132caf0a50378ffc46f28fa8c6e5b867ac505ea6a776c",
     "zh:3c6c0c664d5f7c4d3feb28d841b627781381f9e439a2f834fc64b5ddd577ce8f",
@@ -64,6 +67,7 @@ provider "registry.terraform.io/tgnthump/vyos" {
   constraints = "1.1.0"
   hashes = [
     "h1:06+ZMxtKo8j0lmFxpNXkJJxb+3CLOqEJZN6HCTXcf+c=",
+    "h1:tLo+8EnkTM1M2v/L9l8VH2dy4KhsS04m/83z5A8PM/0=",
     "zh:0d922e1ff6b3465b748cde5e4fad8a6baee8bfd3e749b58cf4b1527003d8823e",
     "zh:1a8196238aeb96d5ee4a6eba3a216afb9d9f8e640dbf0d345119eef8de8c9fc1",
     "zh:1c974ba397a709d0ae5ed3ad8981253fcb9282731933574e619280e5b16e305c",
