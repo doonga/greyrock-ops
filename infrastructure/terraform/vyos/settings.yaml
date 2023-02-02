@@ -3,7 +3,7 @@ config:
   hostname: "gateway"
   domain_name: "private.greyrock.io"
   fqdn: "gateway.private.greyrock.io"
-  upstream_name_server: "1.1.1.1"
+  upstream_name_server: "10.5.0.6" # Was 1.1.1.1
   time_zone: "America/New_York"
 
   api:
