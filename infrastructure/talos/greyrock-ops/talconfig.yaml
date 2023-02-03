@@ -25,10 +25,6 @@ nodes:
       - interface: eth0
         dhcp: true
         vlans:
-          - vlanId: 20
-            dhcp: false
-            addresses:
-              - 10.1.2.4/24
           - vlanId: 40
             dhcp: false
             addresses:
@@ -42,10 +38,6 @@ nodes:
       - interface: eth0
         dhcp: true
         vlans:
-          - vlanId: 20
-            dhcp: false
-            addresses:
-              - 10.1.2.5/24
           - vlanId: 40
             dhcp: false
             addresses:
@@ -59,10 +51,6 @@ nodes:
       - interface: eth0
         dhcp: true
         vlans:
-          - vlanId: 20
-            dhcp: false
-            addresses:
-              - 10.1.2.6/24
           - vlanId: 40
             dhcp: false
             addresses:
