@@ -3,7 +3,7 @@
   "folderRegex": "(?P<Show>.*) \\(\\d{4}\\) \\[imdb-(?P<IMDBID>[t\\d]+)\\]",
   "loglevel": "debug",
   "scanFolders": ["/storage/media/series"],
-  "dryrun": true,
+  "dryRun": true,
   "trakt": {
     "user": "doonga"
   },
