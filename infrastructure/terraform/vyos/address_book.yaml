@@ -141,10 +141,6 @@ hosts:
         ipv4_hostid: 15
         groups:
             - ios_devices
-    gitops:
-        mac_addr: 00:23:24:e3:26:a8
-        network: trusted
-        ipv4_hostid: 16
     garage-homepod:
         mac_addr: d4:90:9c:c6:de:0f
         network: trusted
@@ -205,6 +201,11 @@ hosts:
         ipv4_hostid: 26
         groups:
             - ios_devices
+    homeassistant-egress:
+        network: trusted
+        ipv4_hostid: 151
+        groups:
+            - homeassistant_egress
     # ----------------------
     # IOT
     # ----------------------
@@ -322,11 +323,6 @@ hosts:
         groups:
             - printers
             - scanners
-    homeassistant-egress:
-        network: iot
-        ipv4_hostid: 151
-        groups:
-            - homeassistant_egress
     # ----------------------
     # Video
     # ----------------------
