@@ -28,7 +28,7 @@ metadata:
   name: jellyseerr
   namespace: downloads
 spec:
-  sourcePVC: jellyseerr-config
+  sourcePVC: config-jellyseerr-0
   trigger:
     schedule: "0 */12 * * *"
   restic:
