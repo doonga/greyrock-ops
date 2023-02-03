@@ -2,21 +2,65 @@
   "deleteAfterHours": 24,
   "folderRegex": "(?P<Show>.*) \\(\\d{4}\\) \\[imdb-(?P<IMDBID>[t\\d]+)\\]",
   "loglevel": "debug",
-  "scanFolders": ["/storage/media/Library/Main/Series"],
+  "scanFolders": ["/storage/media/series"],
   "trakt": {
-    "user": "bjw-s"
+    "user": "doonga"
   },
   "overrides": [
     {
-      "folder": "Friends (1994) [imdb-tt0108778]",
+      "folder": "12 Monkeys (2015) [tvdbid-272644]",
       "skip": true
     },
     {
-      "folder": "Game of Thrones (2011) [imdb-tt0944947]",
+      "folder": "Bake Off - The Professionals (2018) [tvdbid-347046]",
       "skip": true
     },
     {
-      "folder": "Rome (2005) [imdb-tt0384766]",
+      "folder": "Better Call Saul (2015) [tvdbid-273181]",
+      "skip": true
+    },
+    {
+      "folder": "Boardwalk Empire (2010) [tvdbid-84947]",
+      "skip": true
+    },
+    {
+      "folder": "Californication (2007) [tvdbid-80349]",
+      "skip": true
+    },
+    {
+      "folder": "Charmed (1998) [tvdbid-70626]",
+      "skip": true
+    },
+    {
+      "folder": "Cougar Town (2009) [tvdbid-94991]",
+      "skip": true
+    },
+    {
+      "folder": "ER (1994) [tvdbid-70761]",
+      "skip": true
+    },
+    {
+      "folder": "Futurama (1999) [tvdbid-73871]",
+      "skip": true
+    },
+    {
+      "folder": "Homeland (2011) [tvdbid-247897]",
+      "skip": true
+    },
+    {
+      "folder": "How Its Made (2001) [tvdbid-79485]",
+      "skip": true
+    },
+    {
+      "folder": "Luther (2010) [tvdbid-159591]",
+      "skip": true
+    },
+    {
+      "folder": "Parks and Recreation (2009) [tvdbid-84912]",
+      "skip": true
+    },
+    {
+      "folder": "Ray Donovan (2013) [tvdbid-259866]",
       "skip": true
     },
     {
@@ -24,17 +68,19 @@
       "skip": true
     },
     {
-      "folder": "The Old Man [imdb-tt5645432]",
-      "mapping": {
-        "tvdbid": 367392
-      }
-    },
-    {
-      "folder": "The Shield (2002) [imdb-tt0286486]",
+      "folder": "South Park (1997) [tvdbid-75897]",
       "skip": true
     },
     {
-      "folder": "The Sopranos (1999) [imdb-tt0141842]",
+      "folder": "Teen Wolf (2011) [tvdbid-175001]",
+      "skip": true
+    },
+    {
+      "folder": "The Americans (2013) [tvdbid-261690]",
+      "skip": true
+    },
+    {
+      "folder": "TURN - Washingtons Spies (2014) [tvdbid-272135]",
       "skip": true
     },
     {
