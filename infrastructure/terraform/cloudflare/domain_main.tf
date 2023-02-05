@@ -8,6 +8,12 @@ module "cf_domain_main" {
       value   = local.home_ipv4
       proxied = false
     },
+    {
+      name    = "vpn"
+      value   = "ipv4.greyrock.io"
+      type    = "CNAME"
+      proxied = false
+    },
     # To be cleaned up
     {
       id      = "enterpriseenrollment"
