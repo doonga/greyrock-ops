@@ -366,15 +366,15 @@ config:
       port: 51820
       private_key: ${secrets.wireguard.private_key}
       peers:
-        ipad-bernd:
-          ipv4_hostid: 4
-          public_key: EYuUoDoCIcSYbnjNyPSsZUcz4Yp032AHWflYlH2V1EM=
-        iphone-bernd:
+        iphone-todd:
           ipv4_hostid: 2
-          public_key: 608IT2YRPTCabLMGnpYfIWhgDnEpLV5IIpYi5J7m3As=
-        macbook-bernd:
+          public_key: Nra9xTkUYNynIZvjAurDkYDaDOSVeb/COgmzcxRmHio=
+        ipad-todd:
           ipv4_hostid: 3
-          public_key: iWKTc88fDBhqlsAgoCXYvkBdf9wG4YBZ8XTg/+0Ln2I=
+          public_key: tyxACMBFCXxJZ8AdrHfXAI+lhueC7Msrj0s/DCNnXgs=
+        macbook-todd:
+          ipv4_hostid: 4
+          public_key: /NCWOUGrjcspzfwMraFKHUu40lXbxX0Rt7baosoM+Do=
       firewall:
         default:
           default: drop
