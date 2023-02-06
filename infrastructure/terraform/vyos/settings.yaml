@@ -5,6 +5,7 @@ config:
   fqdn: "gateway.private.greyrock.io"
   upstream_name_server: "10.5.0.6" # Was 1.1.1.1
   time_zone: "America/New_York"
+  ntp_servers: "chronos.private.greyrock.io,0.pool.ntp.org,1.pool.ntp.org,2.pool.ntp.org,3.pool.ntp.org"
 
   api:
     listen_address: "0.0.0.0"
