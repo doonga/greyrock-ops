@@ -220,6 +220,10 @@ hosts:
         mac_addr: 00:03:10:b3:72:fa
         network: iot
         ipv4_hostid: 174
+    gameroom-samsung-tv-right:
+        mac_addr: f4:fe:fb:8b:c2:6e
+        network: iot
+        ipv4_hostid: 186
     withings-scale:
         mac_addr: 00:24:e4:58:73:f6
         network: iot
