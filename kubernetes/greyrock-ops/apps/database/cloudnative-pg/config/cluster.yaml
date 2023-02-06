@@ -27,7 +27,7 @@ spec:
       wal:
         compression: gzip
       destinationPath: s3://postgresql/v1
-      endpointURL: http://s3.private.greyrock.io
+      endpointURL: http://s3.private.greyrock.io:9001
       s3Credentials:
         accessKeyId:
           name: cloudnative-pg-postgres-s3
@@ -41,7 +41,7 @@ spec:
     - name: postgres
       barmanObjectStore:
         destinationPath: s3://postgresql/v1
-        endpointURL: http://s3.private.greyrock.io
+        endpointURL: http://s3.private.greyrock.io:9001
         s3Credentials:
           accessKeyId:
             name: cloudnative-pg-postgres-s3
