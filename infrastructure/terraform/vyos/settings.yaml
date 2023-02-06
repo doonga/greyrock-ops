@@ -86,6 +86,7 @@ config:
               - accept_bgp: null
               - accept_tftp: null
               - accept_prometheus_from_k8s_nodes: null
+              - accept_mdns: null
           - zones:
               - wan
             default: drop
@@ -220,6 +221,7 @@ config:
               - accept_bgp: null
               - accept_k8s_api: null
               - accept_dns: null
+              - accept_mdns: null
 
     trusted:
       interface: eth5.20
