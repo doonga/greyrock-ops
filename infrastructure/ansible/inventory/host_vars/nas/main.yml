@@ -46,22 +46,6 @@ zfs_pools:
     type: 'mirror'
     state: 'present'
 zfs_filesystems:
-  - name: series
-    pool: tank
-    state: present
-    recordsize: 1M
-    owner: 568
-    group: 100
-    sharenfs: on
-    mountpoint: /tank/series/
-  - name: movies
-    pool: tank
-    state: present
-    recordsize: 1M
-    owner: 568
-    group: 100
-    sharenfs: on
-    mountpoint: /tank/movies/
   - name: music
     pool: tank
     state: present

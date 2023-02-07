@@ -6,7 +6,6 @@ module "cf_domain_main" {
     {
       name    = "ipv4"
       value   = local.home_ipv4
-      proxied = false
     },
     {
       name    = "vpn"
