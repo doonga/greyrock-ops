@@ -49,10 +49,10 @@ nodes:
       - interface: eth0
         dhcp: true
         vlans:
-          - vlanId: 40
+          - vlanId: 20
             dhcp: false
             addresses:
-              - 10.1.3.7/24
+              - 10.1.2.7/24
   - hostname: k8s5.private.greyrock.io
     ipAddress: 10.1.1.8
     controlPlane: false
@@ -62,10 +62,10 @@ nodes:
       - interface: eth0
         dhcp: true
         vlans:
-          - vlanId: 40
+          - vlanId: 20
             dhcp: false
             addresses:
-              - 10.1.3.8/24
+              - 10.1.2.8/24
   - hostname: k8s6.private.greyrock.io
     ipAddress: 10.1.1.9
     controlPlane: false
@@ -75,10 +75,10 @@ nodes:
       - interface: eth0
         dhcp: true
         vlans:
-          - vlanId: 40
+          - vlanId: 20
             dhcp: false
             addresses:
-              - 10.1.3.9/24
+              - 10.1.2.9/24
 
 controlPlane:
   patches:
