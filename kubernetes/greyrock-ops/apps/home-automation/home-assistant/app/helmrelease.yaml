@@ -35,7 +35,7 @@ spec:
       tag: 2023.2.2
 
     podAnnotations:
-      k8s.v1.cni.cncf.io/networks: macvlan-static-iot-hass
+      k8s.v1.cni.cncf.io/networks: macvlan-static-trusted-hass
 
     envFrom:
       - secretRef:
