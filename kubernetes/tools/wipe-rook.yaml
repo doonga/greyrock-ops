@@ -34,75 +34,75 @@ spec:
     - name: host-var
       hostPath:
         path: /var
-# ---
-# apiVersion: v1
-# kind: Pod
-# metadata:
-#   name: disk-wipe-k8s2
-# spec:
-#   restartPolicy: Never
-#   nodeName: k8s2
-#   containers:
-#     - name: disk-wipe
-#       image: ghcr.io/onedr0p/alpine:3.17.0@sha256:23ca8ffcdfbe16492f0d638b71691985b15b3aa7cc373f366a14ec17275bc584
-#       securityContext:
-#         privileged: true
-#       resources: {}
-#       env:
-#         - name: CEPH_DISK
-#           value: /dev/nvme0n1
-#       command:
-#         [
-#           "/bin/sh",
-#           "-c"
-#         ]
-#       args:
-#         - apk add --no-cache sgdisk util-linux parted;
-#           sgdisk --zap-all $CEPH_DISK;
-#           blkdiscard $CEPH_DISK;
-#           dd if=/dev/zero bs=1M count=10000 oflag=direct of=$CEPH_DISK;
-#           partprobe $CEPH_DISK;
-#           rm -rf /mnt/host_var/lib/rook
-#       volumeMounts:
-#         - mountPath: /mnt/host_var
-#           name: host-var
-#   volumes:
-#     - name: host-var
-#       hostPath:
-#         path: /var
-# ---
-# apiVersion: v1
-# kind: Pod
-# metadata:
-#   name: disk-wipe-k8s3
-# spec:
-#   restartPolicy: Never
-#   nodeName: k8s3
-#   containers:
-#     - name: disk-wipe
-#       image: ghcr.io/onedr0p/alpine:3.17.0@sha256:23ca8ffcdfbe16492f0d638b71691985b15b3aa7cc373f366a14ec17275bc584
-#       securityContext:
-#         privileged: true
-#       resources: {}
-#       env:
-#         - name: CEPH_DISK
-#           value: /dev/nvme0n1
-#       command:
-#         [
-#           "/bin/sh",
-#           "-c"
-#         ]
-#       args:
-#         - apk add --no-cache sgdisk util-linux parted;
-#           sgdisk --zap-all $CEPH_DISK;
-#           blkdiscard $CEPH_DISK;
-#           dd if=/dev/zero bs=1M count=10000 oflag=direct of=$CEPH_DISK;
-#           partprobe $CEPH_DISK;
-#           rm -rf /mnt/host_var/lib/rook
-#       volumeMounts:
-#         - mountPath: /mnt/host_var
-#           name: host-var
-#   volumes:
-#     - name: host-var
-#       hostPath:
-#         path: /var
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: disk-wipe-k8s5
+spec:
+  restartPolicy: Never
+  nodeName: k8s5
+  containers:
+    - name: disk-wipe
+      image: ghcr.io/onedr0p/alpine:3.17.0@sha256:23ca8ffcdfbe16492f0d638b71691985b15b3aa7cc373f366a14ec17275bc584
+      securityContext:
+        privileged: true
+      resources: {}
+      env:
+        - name: CEPH_DISK
+          value: /dev/nvme0n1
+      command:
+        [
+          "/bin/sh",
+          "-c"
+        ]
+      args:
+        - apk add --no-cache sgdisk util-linux parted;
+          sgdisk --zap-all $CEPH_DISK;
+          blkdiscard $CEPH_DISK;
+          dd if=/dev/zero bs=1M count=10000 oflag=direct of=$CEPH_DISK;
+          partprobe $CEPH_DISK;
+          rm -rf /mnt/host_var/lib/rook
+      volumeMounts:
+        - mountPath: /mnt/host_var
+          name: host-var
+  volumes:
+    - name: host-var
+      hostPath:
+        path: /var
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: disk-wipe-k8s6
+spec:
+  restartPolicy: Never
+  nodeName: k8s6
+  containers:
+    - name: disk-wipe
+      image: ghcr.io/onedr0p/alpine:3.17.0@sha256:23ca8ffcdfbe16492f0d638b71691985b15b3aa7cc373f366a14ec17275bc584
+      securityContext:
+        privileged: true
+      resources: {}
+      env:
+        - name: CEPH_DISK
+          value: /dev/nvme0n1
+      command:
+        [
+          "/bin/sh",
+          "-c"
+        ]
+      args:
+        - apk add --no-cache sgdisk util-linux parted;
+          sgdisk --zap-all $CEPH_DISK;
+          blkdiscard $CEPH_DISK;
+          dd if=/dev/zero bs=1M count=10000 oflag=direct of=$CEPH_DISK;
+          partprobe $CEPH_DISK;
+          rm -rf /mnt/host_var/lib/rook
+      volumeMounts:
+        - mountPath: /mnt/host_var
+          name: host-var
+  volumes:
+    - name: host-var
+      hostPath:
+        path: /var
