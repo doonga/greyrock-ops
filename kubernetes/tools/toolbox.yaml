@@ -19,7 +19,7 @@ spec:
       dnsPolicy: ClusterFirstWithHostNet
       containers:
         - name: rook-ceph-tools
-          image: rook/ceph:master@sha256:5351f34f5e4d21dca9402b96483312aaddb37f66606fffee39ebb3ed54dec4ab
+          image: rook/ceph:master@sha256:87d392d622e5448a72243a42db84df2a07ac0a908335de0b811517fcdfc17ae0
           command: ["/bin/bash"]
           args: ["-m", "-c", "/usr/local/bin/toolbox.sh"]
           imagePullPolicy: IfNotPresent
