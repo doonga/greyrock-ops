@@ -122,6 +122,12 @@ spec:
         storageClass: ceph-block
 
     read:
+      extraVolumeMounts:
+        - name: rules-read
+          mountPath: /rules
+      extraVolumes:
+        - name: rules-read
+          emptyDir: {}
       persistence:
         size: 10Gi
         storageClass: ceph-block
