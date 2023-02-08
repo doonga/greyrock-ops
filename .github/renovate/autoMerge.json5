@@ -16,7 +16,7 @@
       automerge: true,
       automergeType: "branch",
       matchUpdateTypes: ["minor", "patch"],
-      matchPackageNames: ["ghcr.io/onedr0p/prowlarr-nightly"],
+      matchPackageNames: ["ghcr.io/onedr0p/prowlarr-nightly", "ghcr.io/onedr0p/sonarr-develop"],
       ignoreTests: true,
     },
   ],
