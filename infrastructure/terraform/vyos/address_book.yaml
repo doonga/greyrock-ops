@@ -88,7 +88,7 @@ hosts:
         groups:
             - k8s_nodes
         aliases:
-            - worker1.private.greyrock.io
+            - worker2.private.greyrock.io
     k8s3:
         mac_addr: 00:23:24:bf:2d:70
         network: servers
@@ -96,7 +96,7 @@ hosts:
         groups:
             - k8s_nodes
         aliases:
-            - worker1.private.greyrock.io
+            - worker3.private.greyrock.io
     k8s4:
         mac_addr: 48:21:0b:3e:d8:02
         network: servers
