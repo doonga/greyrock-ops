@@ -14,7 +14,7 @@ spec:
         "type": "static",
         "addresses": [
            {
-             "address": "${MULTUS_TRUSTED_HASS}/24"
+             "address": "${MULTUS_IOT_HASS}/24"
            }
          ]
       }
