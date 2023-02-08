@@ -2,7 +2,7 @@
 apiVersion: "k8s.cni.cncf.io/v1"
 kind: NetworkAttachmentDefinition
 metadata:
-  name: macvlan-static-iot-hass
+  name: macvlan-static-trusted-hass
   namespace: home-automation
 spec:
   config: '{
@@ -14,7 +14,7 @@ spec:
         "type": "static",
         "addresses": [
            {
-             "address": "${MULTUS_IOT_HASS}/24"
+             "address": "${MULTUS_TRUSTED_HASS}/24"
            }
          ]
       }
