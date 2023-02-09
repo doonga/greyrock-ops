@@ -92,3 +92,4 @@ spec:
                   operator: In
                   values:
                     - sabnzbd
+            topologyKey: kubernetes.io/hostname
