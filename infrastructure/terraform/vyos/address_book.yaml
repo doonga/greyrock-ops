@@ -139,6 +139,7 @@ hosts:
         groups:
             - jellyfin_clients
             - mqtt_clients
+            - plex_clients
     todds-iphone:
         mac_addr: 70:b3:06:4c:04:65
         network: trusted
@@ -146,6 +147,7 @@ hosts:
         groups:
             - ios_devices
             - jellyfin_clients
+            - plex_clients
     todds-ipad:
         mac_addr: 50:ed:3c:cf:36:6a
         network: trusted
@@ -153,18 +155,21 @@ hosts:
         groups:
             - ios_devices
             - jellyfin_clients
+            - plex_clients
     andys-desktop:
         mac_addr: 04:42:1a:08:f3:fe
         network: trusted
         ipv4_hostid: 14
         groups:
             - jellyfin_clients
+            - plex_clients
     andys-iphone:
         mac_addr: 44:90:bb:c9:44:79
         network: trusted
         ipv4_hostid: 15
         groups:
             - ios_devices
+            - plex_clients
     garage-homepod:
         mac_addr: d4:90:9c:c6:de:0f
         network: trusted
@@ -207,18 +212,21 @@ hosts:
         ipv4_hostid: 23
         groups:
             - homekit_devices
+            - plex_clients
     gameroom-appletv:
         mac_addr: 6c:4a:85:32:e2:09
         network: trusted
         ipv4_hostid: 24
         groups:
             - homekit_devices
+            - plex_clients
     fsr-appletv:
         mac_addr: 4c:ab:4f:8e:e4:3e
         network: trusted
         ipv4_hostid: 25
         groups:
             - homekit_devices
+            - plex_clients
     todds-watch:
         mac_addr: 08:25:73:b2:e6:e0
         network: trusted
@@ -373,6 +381,8 @@ services:
         ipv4_addr: 10.45.0.1
     k8s_vector_aggregator:
         ipv4_addr: 10.45.0.2
+    k8s_plex:
+        ipv4_addr: 10.45.0.20
     k8s_jellyfin:
         ipv4_addr: 10.45.0.21
     k8s_mqtt:

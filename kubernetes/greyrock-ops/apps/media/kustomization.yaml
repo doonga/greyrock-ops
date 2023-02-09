@@ -9,3 +9,4 @@ resources:
   - ./jellyfin/ks.yaml
   - ./plex/ks.yaml
   - ./series-cleanup/ks.yaml
+  - ./tautulli/ks.yaml

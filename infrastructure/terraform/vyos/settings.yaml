@@ -206,6 +206,7 @@ config:
               - accept_established: null
               - accept_related: null
               - accept_nas_smb_from_scanners: null
+              - accept_plex_from_plex_clients: null
               - accept_jellyfin_from_jellyfin_clients: null
               - accept_mqtt_from_mqtt_clients: null
               - accept_k8s_ingress_from_ereaders: null

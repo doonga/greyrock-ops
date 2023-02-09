@@ -130,6 +130,15 @@ accept_prometheus_from_k8s_nodes:
   destination:
     port: 9153
 
+accept_plex_from_plex_clients:
+  action: accept
+  protocol: tcp
+  source:
+    address-group: plex_clients
+  destination:
+    port: 32400
+    address-group: k8s_plex
+
 accept_jellyfin_from_jellyfin_clients:
   action: accept
   protocol: tcp
