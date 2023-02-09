@@ -1,0 +1,70 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: plex-trakt-sync
+  namespace: media
+spec:
+  chart:
+    spec:
+      chart: app-template
+      version: 1.3.1
+      interval: 30m
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  interval: 30m
+  values:
+    image:
+      repository: ghcr.io/taxel/plextraktsync
+      tag: 0.25.15
+
+    args:
+      - watch
+
+    enableServiceLinks: false
+
+    env:
+      PLEX_BASEURL: http://plex.media.svc.cluster.local:32400
+      PLEX_LOCALURL: http://plex.media.svc.cluster.local:32400
+      PLEX_TOKEN:
+        valueFrom:
+          secretKeyRef:
+            name: plex-trakt-sync-secrets
+            key: PLEX_TOKEN
+      PLEX_USERNAME: doonga2023
+      TRAKT_USERNAME: doonga
+
+    service:
+      main:
+        enabled: false
+
+    ingress:
+      main:
+        enabled: false
+
+    persistence:
+      config:
+        enabled: true
+        existingClaim: plex-trakt-sync-config
+        mountPath: /app/config
+      config-yaml:
+        enabled: true
+        mountPath: /app/config/config.yml
+        name: plex-tract-sync-config-yaml
+        readOnly: true
+        subPath: config.yml
+        type: configMap
+
+    podAnnotations:
+      configmap.reloader.stakater.com/reload: "plex-tract-sync-config-yaml"
+      secret.reloader.stakater.com/reload: "plex-trakt-sync-secrets"
+
+    probes:
+      liveness:
+        enabled: false
+      readiness:
+        enabled: false
+      startup:
+        enabled: false
