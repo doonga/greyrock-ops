@@ -19,7 +19,7 @@ spec:
   values:
     initContainers:
       init-db:
-        image: ghcr.io/onedr0p/postgres-initdb:14.6
+        image: ghcr.io/onedr0p/postgres-initdb:14.7@sha256:633a7416ba34224caf4d7aac70b6e447c875c9a44d81822c961fcb35d383d23e
         imagePullPolicy: IfNotPresent
         envFrom:
           - secretRef:
