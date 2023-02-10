@@ -35,8 +35,8 @@ spec:
             sub_filter '</head>' '<link rel="stylesheet" type="text/css" href="https://theme-park.bjw-s.dev/css/base/tautulli/dracula.css"></head>';
             sub_filter_once on;
           hajimari.io/enable: "true"
-          hajimari.io/icon: mdi:chart-bar
           hajimari.io/instance: "todd"
+          hajimari.io/icon: "mdi:chart-bar"
         hosts:
           - host: &host tautulli.greyrock.tech
             paths:
