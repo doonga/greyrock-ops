@@ -90,9 +90,6 @@ spec:
         server: "nas.private.greyrock.io"
         path: /tank/media
         mountPath: /data/nas-media
-      incomplete:
-        enabled: true
-        type: emptyDir
 
     resources:
       requests:
