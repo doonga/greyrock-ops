@@ -35,9 +35,9 @@ spec:
         annotations:
           external-dns.home.arpa/enabled: "true"
           nginx.ingress.kubernetes.io/backend-protocol: HTTPS
-          hajimari.io/enable: true
+          hajimari.io/enable: "true"
           hajimari.io/icon: mdi:plex
-          hajimari.io/instance: "todd,andy"
+          hajimari.io/instance: "todd, andy"
         ingressClassName: nginx
         hosts:
           - host: &host plex.greyrock.tech
