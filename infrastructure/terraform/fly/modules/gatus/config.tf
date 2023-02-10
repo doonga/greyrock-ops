@@ -59,6 +59,19 @@ locals {
           { "type" : "custom" }
         ]
       },
+      {
+        "name" : "plex"
+        "group" : "services"
+        "url" : "https://plex.greyrock.tech/web/index.html"
+        "interval" : "5m"
+        "conditions" : [
+          "[CONNECTED] == true",
+          "[STATUS] == 200"
+        ],
+        "alerts" : [
+          { "type" : "custom" }
+        ]
+      },
     ]
   }
 }
