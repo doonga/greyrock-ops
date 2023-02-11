@@ -43,7 +43,7 @@ spec:
           - name: DOT
             value: "off"
           - name: SERVER_CITIES
-            value: New York
+            value: New York NY
           - name: SERVER_HOSTNAMES
             value: us-nyc-wg-223
           - name: WIREGUARD_PRIVATE_KEY
