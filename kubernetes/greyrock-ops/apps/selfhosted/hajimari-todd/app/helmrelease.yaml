@@ -42,6 +42,17 @@ spec:
           - media
           - rook-ceph
       name: "Todd"
+      defaultSearchProvider: Whoogle
+      searchProviders:
+        - name: Google
+          token: g
+          icon: simple-icons:google
+          searchUrl: https://www.google.com/search?q={query}
+          url: https://www.google.com
+        - name: Whoogle
+          icon: simple-icons:google
+          searchUrl: https://search.greyrock.tech/search?q={query}
+          url: https://search.greyrock.tech
       customApps:
         - name: Camelus-Plexii
           url: http://10.1.0.50:5000
