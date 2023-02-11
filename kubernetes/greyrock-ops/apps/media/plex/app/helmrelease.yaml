@@ -83,3 +83,14 @@ spec:
       limits:
         # gpu.intel.com/i915: 1
         memory: 12G
+
+    affinity:
+      podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+                - key: app.kubernetes.io/name
+                  operator: In
+                  values:
+                    - sabnzbd
+            topologyKey: kubernetes.io/hostname
