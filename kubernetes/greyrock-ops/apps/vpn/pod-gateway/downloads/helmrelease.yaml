@@ -43,9 +43,9 @@ spec:
           - name: DOT
             value: "off"
           - name: SERVER_CITIES
-            value: Zurich
+            value: New York NY
           - name: SERVER_HOSTNAMES
-            value: ch2-wireguard
+            value: us123-wireguard
           - name: WIREGUARD_PRIVATE_KEY
             valueFrom:
               secretKeyRef:
@@ -79,6 +79,7 @@ spec:
 
     routed_namespaces:
       - downloads
+      - selfhosted
 
     settings:
       NOT_ROUTED_TO_GATEWAY_CIDRS: 10.0.0.0/8 192.168.0.0/16

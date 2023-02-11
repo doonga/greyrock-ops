@@ -67,7 +67,7 @@ spec:
 
     podAnnotations:
       secret.reloader.stakater.com/reload: whoogle
-      setGatewaySelfHosted: "true"
+      setGateway: "true"
 
     resources:
       requests:
