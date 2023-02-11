@@ -32,3 +32,8 @@ resource "auth0_role" "whoogle" {
   name        = "whoogle"
   description = "Whoogle access"
 }
+
+resource "auth0_role" "nitter" {
+  name        = "nitter"
+  description = "Nitter access"
+}
