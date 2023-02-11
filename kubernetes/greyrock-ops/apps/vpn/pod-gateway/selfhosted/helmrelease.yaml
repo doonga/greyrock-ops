@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: downloads-gateway
+  name: selfhosted-gateway
   namespace: vpn
 spec:
   interval: 30m
@@ -43,18 +43,18 @@ spec:
           - name: DOT
             value: "off"
           - name: SERVER_CITIES
-            value: Zurich
+            value: New York NY
           - name: SERVER_HOSTNAMES
-            value: ch2-wireguard
+            value: us123-wireguard
           - name: WIREGUARD_PRIVATE_KEY
             valueFrom:
               secretKeyRef:
-                name: downloads-gateway-vpnconfig
+                name: selfhosted-gateway-vpnconfig
                 key: WIREGUARD_PRIVATE_KEY
           - name: WIREGUARD_ADDRESSES
             valueFrom:
               secretKeyRef:
-                name: downloads-gateway-vpnconfig
+                name: selfhosted-gateway-vpnconfig
                 key: WIREGUARD_ADDRESSES
         securityContext:
           capabilities:
@@ -65,20 +65,11 @@ spec:
         enabled: true
 
     podAnnotations:
-      configmap.reloader.stakater.com/reload: downloads-gateway-pod-gateway
-      secret.reloader.stakater.com/reload: downloads-gateway-vpnconfig
-
-    publicPorts:
-      - IP: 10
-        hostname: qbittorrent
-        ports:
-          - port: 56202
-            type: udp
-          - port: 56202
-            type: tcp
+      configmap.reloader.stakater.com/reload: selfhosted-gateway-pod-gateway
+      secret.reloader.stakater.com/reload: selfhosted-gateway-vpnconfig
 
     routed_namespaces:
-      - downloads
+      - selfhosted
 
     settings:
       NOT_ROUTED_TO_GATEWAY_CIDRS: 10.0.0.0/8 192.168.0.0/16
@@ -90,9 +81,9 @@ spec:
       VXLAN_IP_NETWORK: 172.16.1
 
     webhook:
-      gatewayAnnotation: setGateway
+      gatewayAnnotation: setGatewaySelfHosted
       gatewayDefault: false
-      gatewayLabel: setGateway
+      gatewayLabel: setGatewaySelfHosted
       image:
         repository: ghcr.io/angelnu/gateway-admision-controller
         tag: v3.7.0@sha256:985eb60fd0017f657d5e66707f7e9b3f764f3337a87a379d26cd15e950bd79ad
