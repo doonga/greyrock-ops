@@ -12,6 +12,7 @@ resource "auth0_user" "todd" {
     auth0_role.grafana_admin.id,
     auth0_role.calibre_web.id,
     auth0_role.paperless.id,
+    auth0_role.libreddit.id,
     auth0_role.miniflux.id,
     auth0_role.nitter.id,
     auth0_role.whoogle.id,
@@ -33,6 +34,7 @@ resource "auth0_user" "andy" {
   roles = [
     auth0_role.calibre_web.id,
     auth0_role.paperless.id,
+    auth0_role.libreddit.id,
     auth0_role.nitter.id,
     auth0_role.whoogle.id,
   ]

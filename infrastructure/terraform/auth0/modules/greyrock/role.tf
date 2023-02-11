@@ -37,3 +37,8 @@ resource "auth0_role" "nitter" {
   name        = "nitter"
   description = "Nitter access"
 }
+
+resource "auth0_role" "libreddit" {
+  name        = "libreddit"
+  description = "libreddit access"
+}
