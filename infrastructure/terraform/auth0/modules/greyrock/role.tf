@@ -27,3 +27,8 @@ resource "auth0_role" "miniflux" {
   name        = "miniflux"
   description = "Miniflux access"
 }
+
+resource "auth0_role" "whoogle" {
+  name        = "whoogle"
+  description = "Whoogle access"
+}

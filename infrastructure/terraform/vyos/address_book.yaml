@@ -395,6 +395,8 @@ services:
         ipv4_addr: 10.5.0.5
     vyos_adguard_home:
         ipv4_addr: 10.5.0.6
+    vyos_netboot_xyz:
+        ipv4_addr: 10.5.0.7
 # -----------------------
 # Manual static mappings
 # -----------------------

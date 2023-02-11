@@ -532,3 +532,7 @@ config:
     chrony:
       # renovate: docker-image
       image: docker.io/simonrupf/chronyd:0.4.2
+
+    netboot-xyz:
+      # renovate: docker-image
+      image: ghcr.io/netbootxyz/netbootxyz:0.6.7-nbxyz25

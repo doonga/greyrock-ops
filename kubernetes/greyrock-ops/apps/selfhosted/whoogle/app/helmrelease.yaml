@@ -1,0 +1,77 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: whoogle
+  namespace: selfhosted
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 1.3.1
+      interval: 30m
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+
+  values:
+    image:
+      repository: docker.io/benbusby/whoogle-search
+      tag: 0.8.1
+
+    env:
+      WHOOGLE_ALT_TW: nitter.greyrock.tech
+      WHOOGLE_ALT_YT: invidious.greyrock.tech
+      WHOOGLE_ALT_IG: imginn.com
+      WHOOGLE_ALT_RD: libreddit.greyrock.tech
+      WHOOGLE_ALT_MD: scribe.greyrock.tech
+      WHOOGLE_ALT_TL: ""
+      WHOOGLE_ALT_IMG: bibliogram.art
+      WHOOGLE_ALT_IMDB: ""
+      WHOOGLE_ALT_WIKI: ""
+      WHOOGLE_ALT_QUORA: ""
+      WHOOGLE_CONFIG_ALTS: 1
+      WHOOGLE_CONFIG_THEME: system
+      WHOOGLE_CONFIG_URL: "https://search.greyrock.tech"
+      WHOOGLE_CONFIG_GET_ONLY: 1
+      WHOOGLE_CONFIG_COUNTRY: US
+      WHOOGLE_CONFIG_VIEW_IMAGE: 1
+      WHOOGLE_CONFIG_DISABLE: 1
+
+    service:
+      main:
+        ports:
+          http:
+            port: 5000
+
+    ingress:
+      main:
+        enabled: true
+        annotations:
+          external-dns.alpha.kubernetes.io/target: ingress.greyrock.tech
+          nginx.ingress.kubernetes.io/auth-url: https://auth.greyrock.tech/oauth2/auth?allowed_groups=whoogle
+          nginx.ingress.kubernetes.io/auth-signin: https://auth.greyrock.tech/oauth2/start?rd=$scheme://$best_http_host$request_uri
+          nginx.ingress.kubernetes.io/auth-response-headers: "x-auth-request-email, x-auth-request-groups"
+          hajimari.io/enable: "true"
+          hajimari.io/instance: "todd,andy"
+          hajimari.io/icon: mdi:google
+        hosts:
+          - host: &host "search.greyrock.tech"
+            paths:
+              - path: /
+        tls:
+          - hosts:
+              - *host
+
+    podAnnotations:
+      secret.reloader.stakater.com/reload: whoogle
+      setGateway: "true"
+
+    resources:
+      requests:
+        cpu: 5m
+        memory: 50M
+      limits:
+        memory: 250M
