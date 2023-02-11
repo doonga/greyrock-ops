@@ -8,11 +8,3 @@ resources:
 commonLabels:
   app.kubernetes.io/name: invidious-server
   app.kubernetes.io/instance: invidious-server
-configMapGenerator:
-  - name: invidious-server
-    files:
-      - config/config.yml
-generatorOptions:
-  disableNameSuffixHash: true
-metadata:
-  namespace: selfhosted
