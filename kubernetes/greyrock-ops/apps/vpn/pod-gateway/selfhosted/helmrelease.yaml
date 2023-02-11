@@ -45,7 +45,7 @@ spec:
           - name: SERVER_CITIES
             value: New York NY
           - name: SERVER_HOSTNAMES
-            value: us-nyc-wg-223
+            value: us123-wireguard
           - name: WIREGUARD_PRIVATE_KEY
             valueFrom:
               secretKeyRef:
