@@ -9,6 +9,7 @@ resources:
   - ./excalidraw/ks.yaml
   - ./hajimari-todd/ks.yaml
   - ./hajimari-andy/ks.yaml
+  - ./invidious-server/ks.yaml
   - ./miniflux/ks.yaml
   - ./n8n/ks.yaml
   - ./obsidian-couchdb/ks.yaml
