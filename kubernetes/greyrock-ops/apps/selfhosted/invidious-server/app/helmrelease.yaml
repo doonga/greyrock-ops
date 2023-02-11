@@ -78,7 +78,7 @@ spec:
       config:
         enabled: true
         type: configMap
-        name: invisious-ser
+        name: invidious-server
         subPath: config.yml
         mountPath: /invidious/config/config.yml
         readOnly: false
