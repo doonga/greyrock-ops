@@ -15,6 +15,7 @@ resource "auth0_user" "todd" {
     auth0_role.libreddit.id,
     auth0_role.miniflux.id,
     auth0_role.nitter.id,
+    auth0_role.scribe.id,
     auth0_role.whoogle.id,
   ]
 
@@ -36,6 +37,7 @@ resource "auth0_user" "andy" {
     auth0_role.paperless.id,
     auth0_role.libreddit.id,
     auth0_role.nitter.id,
+    auth0_role.scribe.id,
     auth0_role.whoogle.id,
   ]
 

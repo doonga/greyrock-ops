@@ -1,0 +1,81 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: scribe
+  namespace: services
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 1.3.1
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+
+  values:
+    controller:
+      annotations:
+        reloader.stakater.com/auto: 'true'
+      replicas: 3
+      strategy: RollingUpdate
+
+    image:
+      repository: fariszr/scribe
+      tag: latest
+
+    env:
+      APP_DOMAIN: scribe.greyrock.tech
+      LUCKY_ENV: production
+      PORT: 8080
+
+    envFrom:
+      - secretRef:
+          name: scribe-secret
+
+    service:
+      main:
+        ports:
+          http:
+            port: &port 8080
+
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: 'nginx'
+        annotations:
+          nginx.ingress.kubernetes.io/whitelist-source-range: "10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
+          nginx.ingress.kubernetes.io/auth-url: https://auth.greyrock.tech/oauth2/auth?allowed_groups=scribe
+          nginx.ingress.kubernetes.io/auth-signin: https://auth.greyrock.tech/oauth2/start?rd=$scheme://$best_http_host$request_uri
+          nginx.ingress.kubernetes.io/auth-response-headers: "x-auth-request-email, x-auth-request-groups"
+          hajimari.io/enable: "true"
+          hajimari.io/instance: "todd,andy"
+          hajimari.io/icon: simple-icons:medium
+        hosts:
+          - host: &host 'scribe.greyrock.tech'
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - *host
+
+    podAnnotations:
+      setGateway: 'true'
+
+    topologySpreadConstraints:
+      - maxSkew: 1
+        topologyKey: kubernetes.io/hostname
+        whenUnsatisfiable: DoNotSchedule
+        labelSelector:
+          matchLabels:
+            app.kubernetes.io/name: scribe
+
+    resources:
+      requests:
+        cpu: 5m
+        memory: 50Mi
+      limits:
+        memory: 250Mi
