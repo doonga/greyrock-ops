@@ -90,9 +90,9 @@ spec:
       VXLAN_IP_NETWORK: 172.16.1
 
     webhook:
-      gatewayAnnotation: setGateway
+      gatewayAnnotation: setGatewayDownloads
       gatewayDefault: false
-      gatewayLabel: setGateway
+      gatewayLabel: setGatewayDownloads
       image:
         repository: ghcr.io/angelnu/gateway-admision-controller
         tag: v3.7.0@sha256:985eb60fd0017f657d5e66707f7e9b3f764f3337a87a379d26cd15e950bd79ad

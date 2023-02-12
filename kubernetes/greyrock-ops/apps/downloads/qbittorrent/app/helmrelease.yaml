@@ -22,7 +22,7 @@ spec:
       tag: 4.5.0@sha256:a68f52f17f0686775b252f8306defb2e731259d945d8205e481ef1751497056d
 
     podAnnotations:
-      setGateway: "true"
+      setGatewayDownloads: "true"
       configmap.reloader.stakater.com/reload: "qbittorrent-config"
 
     podSecurityContext:

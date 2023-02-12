@@ -85,7 +85,7 @@ spec:
         readOnly: false
 
     podAnnotations:
-      setGateway: 'true'
+      setGatewaySelfHosted: 'true'
       secret.reloader.stakater.com/reload: nitter
 
     resources:
