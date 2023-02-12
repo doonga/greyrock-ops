@@ -27,18 +27,3 @@ resource "auth0_role" "miniflux" {
   name        = "miniflux"
   description = "Miniflux access"
 }
-
-resource "auth0_role" "whoogle" {
-  name        = "whoogle"
-  description = "Whoogle access"
-}
-
-resource "auth0_role" "libreddit" {
-  name        = "libreddit"
-  description = "libreddit access"
-}
-
-resource "auth0_role" "scribe" {
-  name        = "scribe"
-  description = "scribe access"
-}
