@@ -76,13 +76,13 @@ spec:
         enabled: false
 
     persistence:
-      config:
+      config-file:
         enabled: true
-        type: configMap
-        name: nitter
-        subPath: config.ini
-        mountPath: /src/nitter.conf
-        readOnly: false
+        type: secret
+        name: nitter-secret
+        subPath:
+          - path: NITTER_CONFIG_FILE
+            mountPath: /src/nitter.conf
 
     podAnnotations:
       setGatewaySelfHosted: 'true'
