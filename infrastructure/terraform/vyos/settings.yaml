@@ -535,4 +535,4 @@ config:
 
     netboot-xyz:
       # renovate: docker-image
-      image: ghcr.io/netbootxyz/netbootxyz:0.6.7-nbxyz25
+      image: ghcr.io/netbootxyz/netbootxyz:0.6.7-nbxyz9
