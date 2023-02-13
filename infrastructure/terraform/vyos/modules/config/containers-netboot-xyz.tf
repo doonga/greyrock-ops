@@ -5,7 +5,7 @@ resource "vyos_config" "container-netboot-xyz" {
     "image"   = "${var.config.containers.netboot-xyz.image}"
     "network" = {
       "services" = {
-        "address" = "${cidrhost(var.networks.services, 7)}"
+        "address" = "${cidrhost(var.networks.services, 254)}"
       }
     }
     "volume" = {

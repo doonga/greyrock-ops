@@ -211,6 +211,7 @@ config:
               - accept_mqtt_from_mqtt_clients: null
               - accept_k8s_ingress_from_ereaders: null
               - accept_k8s_ingress_from_allowed_devices: null
+              - accept_awnet_from_weather_stations: null
               - drop_invalid: null
           - zones:
               - local
@@ -515,7 +516,7 @@ config:
 
     udp-broadcast-relay:
       # renovate: docker-image
-      image: ghcr.io/k8s-at-home/udp-broadcast-relay-redux:v1.27.0
+      image: ghcr.io/onedr0p/udp-broadcast-relay-redux:1.0.27
 
     adguard-home:
       # renovate: docker-image
@@ -536,3 +537,11 @@ config:
     netboot-xyz:
       # renovate: docker-image
       image: ghcr.io/netbootxyz/netbootxyz:0.6.7-nbxyz9
+
+    node-exporter:
+      # renovate: docker-image
+      image: quay.io/prometheus/node-exporter:v1.5.0
+
+    speedtest-exporter:
+      # renovate: docker-image
+      image: ghcr.io/miguelndecarvalho/speedtest-exporter:v3.5.3

@@ -241,6 +241,15 @@ hosts:
     # ----------------------
     # IOT
     # ----------------------
+    # Game Consoles
+    ps5:
+        mac_addr: 78:c8:81:c3:0d:d6
+        network: iot
+        ipv4_hostid: 10
+    ps4:
+        mac_addr: 2c:cc:44:a9:b6:47
+        network: iot
+        ipv4_hostid: 11
     # Pi 4 PiKVM
     pikvm:
         mac_addr: dc:a6:32:93:f5:83
@@ -306,6 +315,7 @@ hosts:
         ipv4_hostid: 198
         groups:
             - k8s_ingress_allowed
+            - weather_stations
     solargedge-inverter:
         mac_addr: 84:d6:c5:11:38:8b
         network: iot
@@ -387,6 +397,8 @@ services:
         ipv4_addr: 10.45.0.21
     k8s_mqtt:
         ipv4_addr: 10.45.0.10
+    k8s_awnet:
+        ipv4_addr: 10.45.0.26
     k8s_api:
         ipv4_addr: 10.5.0.2
     vyos_coredns:

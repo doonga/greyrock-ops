@@ -180,3 +180,12 @@ accept_vyos_api:
   protocol: tcp
   destination:
     port: 8443
+
+accept_awnet_from_weather_stations:
+  action: accept
+  protocol: tcp
+  source:
+    address-group: weather_stations
+  destination:
+    port: 8080
+    address-group: k8s_awnet
