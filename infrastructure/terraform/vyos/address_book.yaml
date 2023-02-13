@@ -250,6 +250,10 @@ hosts:
         mac_addr: 2c:cc:44:a9:b6:47
         network: iot
         ipv4_hostid: 11
+    switch-todd:
+        mac_addr: 98:b6:e9:f2:64:61
+        network: iot
+        ipv4_hostid: 12
     # Pi 4 PiKVM
     pikvm:
         mac_addr: dc:a6:32:93:f5:83
