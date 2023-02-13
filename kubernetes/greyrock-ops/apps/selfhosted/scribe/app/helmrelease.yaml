@@ -19,7 +19,7 @@ spec:
     controller:
       annotations:
         reloader.stakater.com/auto: 'true'
-      replicas: 3
+      replicas: 2
       strategy: RollingUpdate
 
     image:
