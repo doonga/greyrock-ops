@@ -40,7 +40,7 @@ spec:
     # - name: v15-s3-backup
     #   barmanObjectStore:
     #     destinationPath: s3://postgresql/v15/v1
-    #     endpointURL: http://s3.bjw-s.dev
+    #     endpointURL: http://s3.private.greyrock.io:9000
     #     s3Credentials:
     #       accessKeyId:
     #         name: cloudnative-pg-postgres-s3
