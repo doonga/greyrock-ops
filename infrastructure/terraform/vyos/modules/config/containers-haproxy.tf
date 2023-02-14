@@ -24,6 +24,7 @@ resource "vyos_config" "container-haproxy-k8s-api" {
         "destination" = "/usr/local/etc/haproxy/haproxy.cfg"
       }
     }
+  "restart" = "on-failure"
   })
 
   depends_on = [

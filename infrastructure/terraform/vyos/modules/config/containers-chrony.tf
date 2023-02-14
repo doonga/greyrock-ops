@@ -12,5 +12,6 @@ resource "vyos_config" "container-chrony" {
         "value" = "${var.config.ntp_servers}"
       }
     }
+  "restart" = "on-failure"
   })
 }

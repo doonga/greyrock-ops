@@ -11,5 +11,6 @@ resource "vyos_config" "container-udp-broadcast-relay-mdns" {
       "CFG_MULTICAST" = { "value" = "224.0.0.251" }
       "SEPARATOR"     = { "value" = ";" }
     }
+  "restart" = "on-failure"
   })
 }

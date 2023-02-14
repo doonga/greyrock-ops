@@ -18,6 +18,7 @@ resource "vyos_config" "container-netboot-xyz" {
         "destination" = "/assets"
       }
     }
+  "restart" = "on-failure"
   })
 
   depends_on = [
