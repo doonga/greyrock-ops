@@ -27,20 +27,21 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    controller:
+      annotations:
+        reloader.stakater.com/auto: "true"
+
     initContainers:
       init-db:
         image: ghcr.io/onedr0p/postgres-initdb:14.7@sha256:63d3321053b2033bd5dff909959513939795f7ec7d66b473b457f933325c4c5a
         envFrom:
           - secretRef:
               name: teslamate-secret
-    controller:
-      annotations:
-        secret.reloader.stakater.com/reload: *app
+
     image:
       repository: teslamate/teslamate
       tag: 1.27.2
-    podAnnotations:
-      secret.reloader.stakater.com/reload: teslamate-secret
+
     env:
       DATABASE_HOST:
         valueFrom:
@@ -62,15 +63,18 @@ spec:
           secretKeyRef:
             name: teslamate-secret
             key: POSTGRES_PASS
+
     envFrom:
       - secretRef:
           name: teslamate-secret
+
     service:
       main:
         type: ClusterIP
         ports:
           http:
             port: 4000
+
     ingress:
       main:
         annotations:
