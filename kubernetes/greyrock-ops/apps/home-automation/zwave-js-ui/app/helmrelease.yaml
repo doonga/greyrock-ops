@@ -28,9 +28,11 @@ spec:
   values:
     controller:
       type: statefulset
+
     image:
       repository: ghcr.io/zwave-js/zwave-js-ui
       tag: 8.8.5
+
     service:
       main:
         ports:
@@ -39,9 +41,11 @@ spec:
           websocket:
             enabled: true
             port: 3000
+
     serviceMonitor:
       main:
         enabled: true
+
     probes:
       liveness: &probes
         enabled: true
@@ -57,6 +61,7 @@ spec:
       readiness: *probes
       startup:
         enabled: false
+
     ingress:
       main:
         enabled: true
@@ -74,8 +79,10 @@ spec:
         tls:
           - hosts:
               - *host
+
     securityContext:
       privileged: true
+
     persistence:
       config:
         enabled: true
@@ -86,8 +93,10 @@ spec:
         type: hostPath
         hostPath: /dev/serial/by-id/usb-0658_0200-if00
         hostPathType: CharDevice
+
     nodeSelector:
       zooz.feature.node.kubernetes.io/zwave: "true"
+
     resources:
       requests:
         cpu: 10m

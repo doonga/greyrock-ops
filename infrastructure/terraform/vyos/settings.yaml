@@ -124,7 +124,7 @@ config:
     lan:
       interface: eth5
       dhcp:
-        name_server: ${address_book.services.vyos_ctrld.ipv4_addr}
+        name_server: ${address_book.services.vyos_adguard_home.ipv4_addr}
       firewall:
         default:
           default: drop
@@ -162,7 +162,7 @@ config:
       interface: eth5.10
       dhcp:
         domain_name: private.greyrock.io
-        name_server: ${address_book.services.vyos_ctrld.ipv4_addr}
+        name_server: ${address_book.services.vyos_adguard_home.ipv4_addr}
       firewall:
         default:
           default: drop
@@ -288,7 +288,7 @@ config:
       interface: eth5.40
       dhcp:
         domain_name: private.greyrock.io
-        name_server: ${address_book.services.vyos_ctrld.ipv4_addr}
+        name_server: ${address_book.services.vyos_adguard_home.ipv4_addr}
       firewall:
         default:
           default: drop
@@ -337,7 +337,7 @@ config:
       interface: eth5.50
       dhcp:
         domain_name: private.greyrock.io
-        name_server: ${address_book.services.vyos_ctrld.ipv4_addr}
+        name_server: ${address_book.services.vyos_adguard_home.ipv4_addr}
       firewall:
         default:
           default: drop
@@ -452,14 +452,14 @@ config:
         port: 53
         protocol: tcp_udp
         interface: iot
-        destinationAddress: "!${address_book.services.vyos_ctrld.ipv4_addr}"
-        address: ${address_book.services.vyos_ctrld.ipv4_addr}
+        destinationAddress: "!${address_book.services.vyos_adguard_home.ipv4_addr}"
+        address: ${address_book.services.vyos_adguard_home.ipv4_addr}
       - description: Force DNS for Video
         port: 53
         protocol: tcp_udp
         interface: video
-        destinationAddress: "!${address_book.services.vyos_ctrld.ipv4_addr}"
-        address: ${address_book.services.vyos_ctrld.ipv4_addr}
+        destinationAddress: "!${address_book.services.vyos_adguard_home.ipv4_addr}"
+        address: ${address_book.services.vyos_adguard_home.ipv4_addr}
       - description: Force NTP for LAN
         port: 123
         protocol: udp
