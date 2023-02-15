@@ -1,0 +1,99 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: &app immich
+  namespace: selfhosted
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 1.3.1
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+      interval: 15m
+  maxHistory: 3
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    controller:
+      annotations:
+        reloader.stakater.com/auto: "true"
+
+    initContainers:
+      init-db:
+        image: ghcr.io/onedr0p/postgres-initdb:14.7@sha256:63d3321053b2033bd5dff909959513939795f7ec7d66b473b457f933325c4c5a
+        envFrom:
+          - secretRef:
+              name: immich-secret
+
+    image:
+      repository: ghcr.io/immich-app/immich-proxy
+      tag: v1.46.1
+
+    env:
+      DB_HOSTNAME:
+        valueFrom:
+          secretKeyRef:
+            name: immich-secret
+            key: POSTGRES_HOST
+      DB_DATABASE_NAME:
+        valueFrom:
+          secretKeyRef:
+            name: immich-secret
+            key: POSTGRES_DB
+      DB_USERNAME:
+        valueFrom:
+          secretKeyRef:
+            name: immich-secret
+            key: POSTGRES_USER
+      DB_PASSWORD:
+        valueFrom:
+          secretKeyRef:
+            name: immich-secret
+            key: POSTGRES_PASS
+      IMMICH_SERVER_URL: http://localhost:3001
+      IMMICH_WEB_URL: http://localhost:3000
+      IMMICH_MACHINE_LEARNING_URL: http://localhost:3003
+      REDIS_HOSTNAME: localhost
+
+    envFrom:
+      - secretRef:
+          name: immich-secret
+
+    service:
+      main:
+        type: ClusterIP
+        ports:
+          http:
+            port: 8080
+
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: "nginx"
+        annotations:
+          nginx.ingress.kubernetes.io/whitelist-source-range: "10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
+          nginx.ingress.kubernetes.io/proxy-body-size: "0"
+          hajimari.io/appName: "Immich"
+          hajimari.io/enable: "true"
+          hajimari.io/instance: "todd"
+          hajimari.io/icon: heroicons:photo
+        hosts:
+          - host: &host "photos.greyrock.tech"
+            paths:
+              - path: /
+        tls:
+          - hosts:
+              - *host
