@@ -55,6 +55,16 @@ zfs_pools:
       - '/dev/disk/by-id/scsi-SATA_WDC_WD140EFGX-68_9LKLU6HG'
     type: 'mirror'
     state: 'present'
+  - name: 'tank'
+    action: 'add'
+    atime: 'off'
+    ashift: 12
+    compression: 'lz4'
+    devices:
+      - '/dev/disk/by-id/scsi-SATA_WDC_WD140EFGX-68_9LK8EP0G'
+      - '/dev/disk/by-id/scsi-SATA_WDC_WD140EFGX-68_9LK8HXKG'
+    type: 'mirror'
+    state: 'present'
 zfs_filesystems:
   - name: music
     pool: tank
