@@ -45,9 +45,9 @@ spec:
           - name: SERVER_REGIONS
             value: US East
           - name: SERVER_CITIES
-            value: Boston
+            value: New York
           - name: SERVER_HOSTNAMES
-            value: us-east-039.whiskergalaxy.com
+            value: us-east-096.whiskergalaxy.com
           - name: HEALTH_VPN_DURATION_INITIAL
             value: 100s
           - name: LOG_LEVEL
