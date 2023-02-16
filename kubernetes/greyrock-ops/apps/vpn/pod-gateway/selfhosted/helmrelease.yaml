@@ -38,6 +38,8 @@ spec:
             value: wireguard
           - name: VPN_INTERFACE
             value: wg0
+          - name: VPN_ENDPOINT_PORT
+            value: "65142"
           - name: FIREWALL
             value: "off"
           - name: DOT
