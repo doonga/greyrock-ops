@@ -18,12 +18,18 @@
   hosts /config/hosts {
     ttl 1
     reload 5s
-    fallthrough greyrock.tech
+    fallthrough greyrock.tech greyrock.io
   }
 }
 
 (k8s_gateway) {
   forward . 10.45.0.3:53
+}
+
+(forward_upstream) {
+  forward . tls://1.1.1.1 tls://1.0.0.1 {
+    tls_servername cloudflare-dns.com
+  }
 }
 
 greyrock.tech {
@@ -35,4 +41,5 @@ greyrock.tech {
 greyrock.io {
   import common
   import local_hosts
+  import forward_upstream
 }
