@@ -63,11 +63,11 @@ spec:
               secretKeyRef:
                 name: selfhosted-gateway-vpnconfig
                 key: WIREGUARD_ADDRESSES
-          - name: WIREGUARD_PRESHARED_KEY
-            valueFrom:
-              secretKeyRef:
-                name: selfhosted-gateway-vpnconfig
-                key: WIREGUARD_PRESHARED_KEY
+          # - name: WIREGUARD_PRESHARED_KEY
+          #   valueFrom:
+          #     secretKeyRef:
+          #       name: selfhosted-gateway-vpnconfig
+          #       key: WIREGUARD_PRESHARED_KEY
         securityContext:
           capabilities:
             add:
