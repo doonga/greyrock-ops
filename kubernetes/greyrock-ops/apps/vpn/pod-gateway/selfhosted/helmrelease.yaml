@@ -44,6 +44,8 @@ spec:
             value: "off"
           - name: SERVER_REGIONS
             value: US East
+          - name: SERVER_CITIES
+            value: Boston
           - name: SERVER_HOSTNAMES
             valueFrom:
               secretKeyRef:
