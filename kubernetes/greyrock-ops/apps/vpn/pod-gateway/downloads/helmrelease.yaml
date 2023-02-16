@@ -33,29 +33,38 @@ spec:
           tag: v3.32.0@sha256:70e2b9fe66941d6de31419c3207b525293f2e6a92a3788869bb337a17e0e5ec8
         env:
           - name: VPN_SERVICE_PROVIDER
-            value: mullvad
+            value: windscribe
           - name: VPN_TYPE
             value: wireguard
           - name: VPN_INTERFACE
             value: wg0
+          - name: VPN_ENDPOINT_PORT
+            value: "65142"
           - name: FIREWALL
             value: "off"
           - name: DOT
             value: "off"
+          - name: SERVER_REGIONS
+            value: Switzerland
           - name: SERVER_CITIES
             value: Zurich
           - name: SERVER_HOSTNAMES
-            value: ch2-wireguard
+            value: ch-006.whiskergalaxy.com
           - name: WIREGUARD_PRIVATE_KEY
             valueFrom:
               secretKeyRef:
-                name: downloads-gateway-vpnconfig
+                name: selfhosted-gateway-vpnconfig
                 key: WIREGUARD_PRIVATE_KEY
           - name: WIREGUARD_ADDRESSES
             valueFrom:
               secretKeyRef:
-                name: downloads-gateway-vpnconfig
+                name: selfhosted-gateway-vpnconfig
                 key: WIREGUARD_ADDRESSES
+          - name: WIREGUARD_PRESHARED_KEY
+            valueFrom:
+              secretKeyRef:
+                name: selfhosted-gateway-vpnconfig
+                key: WIREGUARD_PRESHARED_KEY
         securityContext:
           capabilities:
             add:
@@ -85,7 +94,7 @@ spec:
       VPN_BLOCK_OTHER_TRAFFIC: true
       VPN_INTERFACE: wg0
       VPN_LOCAL_CIDRS: 10.0.0.0/8 192.168.0.0/16
-      VPN_TRAFFIC_PORT: "51820"
+      VPN_TRAFFIC_PORT: "65142"
       VXLAN_ID: 43
       VXLAN_IP_NETWORK: 172.16.1
 
