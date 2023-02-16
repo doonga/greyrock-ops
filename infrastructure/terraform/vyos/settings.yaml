@@ -3,7 +3,7 @@ config:
   hostname: "gateway"
   domain_name: "private.greyrock.io"
   fqdn: "gateway.private.greyrock.io"
-  upstream_name_server: "10.5.0.9" # Was 1.1.1.1
+  upstream_name_server: "1.1.1.1"
   time_zone: "America/New_York"
   ntp_servers: "chronos.private.greyrock.io,0.pool.ntp.org,1.pool.ntp.org,2.pool.ntp.org,3.pool.ntp.org"
 
@@ -124,7 +124,7 @@ config:
     lan:
       interface: eth5
       dhcp:
-        name_server: ${address_book.services.vyos_coredns.ipv4_addr}
+        name_server: ${address_book.services.vyos_dnsdist.ipv4_addr}
       firewall:
         default:
           default: drop
@@ -162,7 +162,7 @@ config:
       interface: eth5.10
       dhcp:
         domain_name: private.greyrock.io
-        name_server: ${address_book.services.vyos_ctrld.ipv4_addr}
+        name_server: ${address_book.services.vyos_dnsdist.ipv4_addr}
       firewall:
         default:
           default: drop
@@ -229,7 +229,7 @@ config:
       interface: eth5.20
       dhcp:
         domain_name: private.greyrock.io
-        name_server: ${address_book.services.vyos_ctrld.ipv4_addr}
+        name_server: ${address_book.services.vyos_dnsdist.ipv4_addr}
       firewall:
         default:
           default: drop
@@ -288,7 +288,7 @@ config:
       interface: eth5.40
       dhcp:
         domain_name: private.greyrock.io
-        name_server: ${address_book.services.vyos_ctrld.ipv4_addr}
+        name_server: ${address_book.services.vyos_dnsdist.ipv4_addr}
       firewall:
         default:
           default: drop
@@ -337,7 +337,7 @@ config:
       interface: eth5.50
       dhcp:
         domain_name: private.greyrock.io
-        name_server: ${address_book.services.vyos_ctrld.ipv4_addr}
+        name_server: ${address_book.services.vyos_dnsdist.ipv4_addr}
       firewall:
         default:
           default: drop
@@ -452,14 +452,14 @@ config:
         port: 53
         protocol: tcp_udp
         interface: iot
-        destinationAddress: "!${address_book.services.vyos_ctrld.ipv4_addr}"
-        address: ${address_book.services.vyos_ctrld.ipv4_addr}
+        destinationAddress: "!${address_book.services.vyos_dnsdist.ipv4_addr}"
+        address: ${address_book.services.vyos_dnsdist.ipv4_addr}
       - description: Force DNS for Video
         port: 53
         protocol: tcp_udp
         interface: video
-        destinationAddress: "!${address_book.services.vyos_ctrld.ipv4_addr}"
-        address: ${address_book.services.vyos_ctrld.ipv4_addr}
+        destinationAddress: "!${address_book.services.vyos_dnsdist.ipv4_addr}"
+        address: ${address_book.services.vyos_dnsdist.ipv4_addr}
       - description: Force NTP for LAN
         port: 123
         protocol: udp
@@ -542,6 +542,6 @@ config:
       # renovate: docker-image
       image: ghcr.io/miguelndecarvalho/speedtest-exporter:v3.5.3
 
-    ctrld:
+    dnsdist:
       # renovate: docker-image
-      image: ghcr.io/bjw-s/ctrld:1.1.0
+      image: docker.io/powerdns/dnsdist-17:1.7.3
