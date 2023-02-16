@@ -46,6 +46,8 @@ spec:
             value: US East
           - name: SERVER_CITIES
             value: Boston
+          - name: LOG_LEVEL
+            value: debug
           - name: SERVER_HOSTNAMES
             valueFrom:
               secretKeyRef:
