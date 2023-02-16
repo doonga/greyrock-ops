@@ -33,7 +33,7 @@ spec:
           tag: v3.32.0@sha256:70e2b9fe66941d6de31419c3207b525293f2e6a92a3788869bb337a17e0e5ec8
         env:
           - name: VPN_SERVICE_PROVIDER
-            value: mullvad
+            value: windscribe
           - name: VPN_TYPE
             value: wireguard
           - name: VPN_INTERFACE
@@ -42,10 +42,13 @@ spec:
             value: "off"
           - name: DOT
             value: "off"
-          - name: SERVER_CITIES
-            value: New York NY
+          - name: SERVER_REGIONS
+            value: US East
           - name: SERVER_HOSTNAMES
-            value: us123-wireguard
+            valueFrom:
+              secretKeyRef:
+                name: selfhosted-gateway-vpnconfig
+                key: SERVER_HOSTNAMES
           - name: WIREGUARD_PRIVATE_KEY
             valueFrom:
               secretKeyRef:
@@ -56,6 +59,11 @@ spec:
               secretKeyRef:
                 name: selfhosted-gateway-vpnconfig
                 key: WIREGUARD_ADDRESSES
+          - name: WIREGUARD_PRESHARED_KEY
+            valueFrom:
+              secretKeyRef:
+                name: selfhosted-gateway-vpnconfig
+                key: WIREGUARD_PRESHARED_KEY
         securityContext:
           capabilities:
             add:
