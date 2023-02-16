@@ -49,6 +49,8 @@ spec:
               secretKeyRef:
                 name: selfhosted-gateway-vpnconfig
                 key: SERVER_HOSTNAMES
+          - name: VPN_ENDPOINT_PORT
+            value: "65142"
           - name: WIREGUARD_PRIVATE_KEY
             valueFrom:
               secretKeyRef:
