@@ -45,12 +45,9 @@ spec:
           - name: SERVER_REGIONS
             value: US East
           - name: SERVER_CITIES
-            value: New York
+            value: Boston
           - name: SERVER_HOSTNAMES
-            valueFrom:
-              secretKeyRef:
-                name: selfhosted-gateway-vpnconfig
-                key: SERVER_HOSTNAMES
+            value: us-east-039.whiskergalaxy.com
           - name: WIREGUARD_PRIVATE_KEY
             valueFrom:
               secretKeyRef:
