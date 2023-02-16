@@ -45,9 +45,7 @@ spec:
           - name: SERVER_REGIONS
             value: US East
           - name: SERVER_CITIES
-            value: Boston
-          - name: LOG_LEVEL
-            value: debug
+            value: New York
           - name: SERVER_HOSTNAMES
             valueFrom:
               secretKeyRef:
@@ -63,11 +61,11 @@ spec:
               secretKeyRef:
                 name: selfhosted-gateway-vpnconfig
                 key: WIREGUARD_ADDRESSES
-          # - name: WIREGUARD_PRESHARED_KEY
-          #   valueFrom:
-          #     secretKeyRef:
-          #       name: selfhosted-gateway-vpnconfig
-          #       key: WIREGUARD_PRESHARED_KEY
+          - name: WIREGUARD_PRESHARED_KEY
+            valueFrom:
+              secretKeyRef:
+                name: selfhosted-gateway-vpnconfig
+                key: WIREGUARD_PRESHARED_KEY
         securityContext:
           capabilities:
             add:
