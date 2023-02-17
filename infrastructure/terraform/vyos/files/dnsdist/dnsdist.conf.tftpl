@@ -78,9 +78,9 @@ getPool(""):setCache(pc)
 addAction('greyrock.io', PoolAction('coredns'))
 addAction('greyrock.tech', PoolAction('coredns'))
 
-addAction("${networks.lan}", PoolAction("controld_servers"))        -- lan
-addAction("${networks.servers}", PoolAction("controld_servers"))    -- servers vlan
-addAction("${networks.trusted}", PoolAction("controld_trusted"))    -- trusted vlan
-addAction("${networks.iot}", PoolAction("controld_iot"))            -- iot vlan
-addAction("${networks.wg_trusted}", PoolAction("controld_trusted")) -- wg_trusted vlan
-addAction("${networks.guest}", PoolAction("cloudflare"))            -- guest vlan
+addAction("10.1.0.0/24", PoolAction("controld_servers"))        -- lan
+addAction("10.1.1.0/24", PoolAction("controld_servers"))    -- servers vlan
+addAction("10.1.2.0/24", PoolAction("controld_trusted"))    -- trusted vlan
+addAction("10.1.3.0/24", PoolAction("controld_iot"))            -- iot vlan
+addAction("10.0.11.0/24", PoolAction("controld_trusted")) -- wg_trusted vlan
+addAction("192.168.2.0/24", PoolAction("cloudflare"))            -- guest vlan

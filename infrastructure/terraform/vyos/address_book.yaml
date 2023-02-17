@@ -419,5 +419,3 @@ services:
 static_mappings:
     - hostname: greyrock-ops.private.greyrock.io
       service: k8s_api
-    - hostname: ntp.greyrock.io
-      service: vyos_chronyd
