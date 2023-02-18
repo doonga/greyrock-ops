@@ -135,6 +135,12 @@ zfs_filesystems:
     owner: 1000
     group: 1000
     mountpoint: /tank/minio/
+  - name: garage
+    pool: tank
+    state: present
+    owner: 1000
+    group: 1000
+    mountpoint: /tank/garage/
   - name: books
     pool: tank
     state: present

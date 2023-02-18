@@ -129,17 +129,17 @@ resource "vyos_config" "container_name" {
           "procfs" = {
             "source"      = "/proc"
             "destination" = "/host/proc"
-        #     "mode"        = "ro"
+            "mode"        = "ro"
           }
           "rootfs" = {
             "source"      = "/"
             "destination" = "/host/rootfs"
-        #     "mode"        = "ro"
+            "mode"        = "ro"
           }
           "sysfs" = {
             "source"      = "/sys"
             "destination" = "/host/sys"
-        #     "mode"        = "ro"
+            "mode"        = "ro"
           }
         }
       }
@@ -207,7 +207,7 @@ resource "vyos_config" "container_name" {
           "logs" = {
             "source"      = "/var/log"
             "destination" = "/var/log"
-          #   "mode"        = "ro"
+            "mode"        = "ro"
           }
         }
       }

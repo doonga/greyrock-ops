@@ -8,6 +8,8 @@ collections:
     version: 2.4.0
   - name: community.sops
     version: 1.6.0
+  - name: onepassword.connect
+    version: 2.2.1
 roles:
   - src: geerlingguy.pip
     version: 2.2.0
