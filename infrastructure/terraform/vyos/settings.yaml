@@ -223,6 +223,7 @@ config:
               - accept_bgp: null
               - accept_k8s_api: null
               - accept_dns: null
+              - accept_ntp: null
               - accept_mdns: null
 
     trusted:
