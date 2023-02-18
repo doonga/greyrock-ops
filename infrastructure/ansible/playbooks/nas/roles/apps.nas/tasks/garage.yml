@@ -33,7 +33,7 @@
 - name: "Garage : Manage container"
   containers.podman.podman_container:
     name: garage
-    image: "docker.io/dxflrs/garage:v0.8.1"
+    image: "docker.io/dxflrs/garage:v0.8.1@sha256:89b8fb3d4d62e96bff2b39c35a97cf9355b01ae648e4f769f94e956622e96d61"
     state: started
     network: host
     volume:
