@@ -143,14 +143,14 @@ spec:
             name: alertmanager
             port: 9093
             apiVersion: v2
-        # additionalScrapeConfigs:
-        #   - job_name: node-exporter
-        #     scrape_interval: 1m
-        #     scrape_timeout: 10s
-        #     honor_timestamps: true
-        #     static_configs:
-        #       - targets:
-        #           - "horus.bjw-s.tech:9100"
+        additionalScrapeConfigs:
+          - job_name: hs110
+            scrape_interval: 1m
+            scrape_timeout: 10s
+            honor_timestamps: true
+            static_configs:
+              - targets:
+                  - "hs110-exporter-rack.monitoring:8110"
         enableAdminAPI: true
         externalLabels:
           cluster: greyrock-ops
