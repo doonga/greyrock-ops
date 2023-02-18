@@ -21,7 +21,7 @@ spec:
       tag: v1.0.0
 
     env:
-      HS110IP: "10.1.4.197"
+      HS110IP: "10.1.3.197"
 
     service:
       main:
