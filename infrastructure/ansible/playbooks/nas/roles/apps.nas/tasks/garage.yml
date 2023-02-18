@@ -16,7 +16,7 @@
 
 - name: "Garage : Meta folder"
   ansible.builtin.file:
-    path: "/tank/garage/meta"
+    path: "/speedy/garage/meta"
     state: directory
     group: "1000"
     owner: "1000"
@@ -37,7 +37,7 @@
     state: started
     network: host
     volume:
-      - "/tank/garage/meta:/var/lib/garage/meta"
+      - "/speedy/garage/meta:/var/lib/garage/meta"
       - "/tank/garage/data:/var/lib/garage/data"
       - "/tank/garage/garage.toml:/etc/garage.toml"
     env:

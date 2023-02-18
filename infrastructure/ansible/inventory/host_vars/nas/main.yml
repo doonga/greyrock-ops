@@ -14,6 +14,20 @@ zfs_create_pools: true
 zfs_create_filesystems: true
 zfs_monitoring_capacity_threshold: 92
 zfs_pools:
+  - name: 'speedy'
+    action: 'create'
+    atime: 'off'
+    ashift: 12
+    xattr: sa
+    compression: 'lz4'
+    devices:
+      - '/dev/disk/by-id/scsi-SATA_INTEL_SSDSC2BB80_PHWL52240391800RGN'
+      - '/dev/disk/by-id/scsi-SATA_INTEL_SSDSC2BB80_PHWL522402DA800RGN'
+      - '/dev/disk/by-id/scsi-SATA_INTEL_SSDSC2BB80_PHWL5034005A800RGN'
+      - '/dev/disk/by-id/scsi-SATA_INTEL_SSDSC2BB80_PHWL4436048S800RGN'
+      - '/dev/disk/by-id/scsi-SATA_INTEL_SSDSC2BB80_PHWL50340062800RGN'
+    type: 'raidz2'
+    state: 'present'
   - name: 'tank'
     action: 'create'
     atime: 'off'
@@ -24,16 +38,6 @@ zfs_pools:
       - '/dev/disk/by-id/scsi-SATA_WDC_WD140EFGX-68_9LHZ4GAG'
       - '/dev/disk/by-id/scsi-SATA_WDC_WD140EFGX-68_QGKAHABT'
     type: 'mirror'
-    state: 'present'
-  - name: 'tank'
-    action: 'add'
-    atime: 'off'
-    ashift: 12
-    compression: 'lz4'
-    devices:
-      - '/dev/disk/by-id/scsi-SATA_INTEL_SSDSC2BB80_PHWL522402DA800RGN'
-      - '/dev/disk/by-id/scsi-SATA_INTEL_SSDSC2BB80_PHWL52240391800RGN'
-    type: 'cache'
     state: 'present'
   - name: 'tank'
     action: 'add'
@@ -141,6 +145,12 @@ zfs_filesystems:
     owner: 1000
     group: 1000
     mountpoint: /tank/garage/
+  - name: garage
+    pool: speedy
+    state: present
+    owner: 1000
+    group: 1000
+    mountpoint: /speedy/garage/
   - name: books
     pool: tank
     state: present
