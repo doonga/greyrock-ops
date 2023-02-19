@@ -43,6 +43,8 @@
     --pre-hook "tar -zcvf /root/.acme.sh/DefaultSSL_`date +%Y-%m-%d_%H.%M.%S`.tgz /etc/kvmd/nginx/ssl/server.*"
     --fullchainpath /etc/kvmd/nginx/ssl/server.crt
     --keypath /etc/kvmd/nginx/ssl/server.key
+    --insecure
+    --dnssleep 300
     --reloadcmd "systemctl restart kvmd-nginx.service"
   environment:
     CF_Account_ID: "{{ cloudflare['account_id'] }}"
