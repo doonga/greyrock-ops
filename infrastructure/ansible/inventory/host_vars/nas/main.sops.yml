@@ -9,9 +9,6 @@ certificate:
     common_name: ENC[AES256_GCM,data:bChUdLuMHAwyBHhbZz/WAJ3D3KcnHg==,iv:Hpo7RbDYIBAFQcDW6tb7uNaK59vkgFqSV268Lj/cQZY=,tag:bVKjRjGJF66DqXasV7RKxw==,type:str]
 internal_domain: ENC[AES256_GCM,data:61fV1qHMiIKGmiWxJGN1K2QDPg==,iv:Iykkweg3Aj8iOm+1boLHoZdaGWRhxjzitdvyR4Mg9KQ=,tag:sjQrToGLJT0qZjumn226Zg==,type:str]
 external_domain: ENC[AES256_GCM,data:G9PEIfBgXP7ld72Abw==,iv:AYPiJwbmgy/HPj3+dcLmDpLNGlTYR1rEluJLtWOyA9k=,tag:5K1c284eIOifIR6ZNJnjNA==,type:str]
-minio:
-    root_user: ENC[AES256_GCM,data:Glbljqo=,iv:2uDoLnzvwXC/Nw+6ZM+gGSmdgFjAavF+Djf85cxZ0hE=,tag:uAiVhBdIngbecnAXRdg37g==,type:str]
-    root_password: ENC[AES256_GCM,data:Bt/kg9LJOtTGMWmfZMXv4VzD,iv:kZB0TOLXK1WcaZEvDx7u7cBFFNpAYFRPITlN+GLuv6k=,tag:CjqhvkZfv3WtrbdZj/izQQ==,type:str]
 sops:
     kms: []
     gcp_kms: []
@@ -27,8 +24,8 @@ sops:
             NnFOcE95Q3ZyZG0zODFHZ3JhTVNwWlEKSPaYC5bpV5Z9ZaqBweIMGHwXs1+7GRnd
             wnKHkUWYgIta3nBPI2ESaGlIXuzgPNNyil2u9E2bUlfwVew9iBgbiw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2023-01-24T15:08:58Z"
-    mac: ENC[AES256_GCM,data:mjvO5AvanUvqU8dF7eCKnQMz75kYeHlTCLb8L+OM2Qvd4+ilyLTOMzLxM7iLfIQuh/BB0bJgsWDw6ozIO2jZe83phLQc/AR8xDlj9iEaPCliW7Mmu28oZcOYqowrhP1cGTOSxRXzgfa5YkoRZG9uSr+j707Ji+AiwxCEFtlBpv0=,iv:DQoZcqLwV2woFsXu1pSNRAm7l4NmaAKq/OhU8S0KcE8=,tag:mt9eerrOEfYHkHktKRVX0w==,type:str]
+    lastmodified: "2023-02-19T19:54:22Z"
+    mac: ENC[AES256_GCM,data:ZqGrjKu6wQ2CDlm4QgCSvmx+MJvtbEbwMk4j1KD2vTZNWvdRzCj6DX4mUX8TF17DZ/OXfDL8Kz/NskAqw8PRmTTkJ4cjDIPxVxzTDw8seL/f74I8YVoFdZitTv2LjhnVwJcUxx2pHLac9GtTovSeMEjq8b7EWGAtH+i8HTAqMvc=,iv:dVR8mWU0E3DmCOAo4aG7mvbnsmDcTyhhN7wcySqzxPo=,tag:CgNuOW0Merg1t53831qUTQ==,type:str]
     pgp: []
     unencrypted_suffix: _unencrypted
     version: 3.7.3

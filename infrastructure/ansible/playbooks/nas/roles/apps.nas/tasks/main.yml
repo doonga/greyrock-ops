@@ -35,9 +35,5 @@
   tags:
     - prom-smartctl
 
-- import_tasks: minio.yml
-  tags:
-    - minio
-
 - import_tasks: garage.yml
   tags: garage

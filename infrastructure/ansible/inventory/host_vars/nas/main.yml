@@ -133,12 +133,6 @@ zfs_filesystems:
     group: 65534
     sharenfs: on
     mountpoint: /tank/frigate/
-  - name: minio
-    pool: tank
-    state: present
-    owner: 1000
-    group: 1000
-    mountpoint: /tank/minio/
   - name: garage
     pool: tank
     state: present

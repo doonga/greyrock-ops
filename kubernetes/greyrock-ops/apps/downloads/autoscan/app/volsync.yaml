@@ -9,7 +9,7 @@ spec:
     kind: ClusterSecretStore
     name: onepassword-connect
   target:
-    name: n8n-restic-secret
+    name: autoscan-restic-secret
     creationPolicy: Owner
     template:
       engineVersion: v2
@@ -34,6 +34,6 @@ spec:
   restic:
     copyMethod: Snapshot
     pruneIntervalDays: 14
-    repository: n8n-restic-secret
+    repository: autoscan-restic-secret
     retain:
       daily: 14
