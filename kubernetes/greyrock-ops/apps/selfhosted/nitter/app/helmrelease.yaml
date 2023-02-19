@@ -82,7 +82,7 @@ spec:
             mountPath: /src/nitter.conf
 
     podAnnotations:
-      setGatewaySelfHosted: 'true'
+      setGateway: 'selfhosted'
       secret.reloader.stakater.com/reload: nitter
 
     resources:

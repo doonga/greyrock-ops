@@ -61,7 +61,7 @@ spec:
             app.kubernetes.io/name: libreddit
 
     podAnnotations:
-      setGatewaySelfHosted: 'true'
+      setGateway: 'selfhosted'
 
     probes:
       liveness: &probes

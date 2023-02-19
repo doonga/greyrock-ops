@@ -60,7 +60,7 @@ spec:
               - *host
 
     podAnnotations:
-      setGatewaySelfHosted: 'true'
+      setGateway: 'selfhosted'
 
     topologySpreadConstraints:
       - maxSkew: 1

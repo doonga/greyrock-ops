@@ -90,9 +90,11 @@ spec:
       VXLAN_IP_NETWORK: 172.16.1
 
     webhook:
-      gatewayAnnotation: setGatewaySelfHosted
+      gatewayAnnotation: setGateway
+      gatewayAnnotationValue: selfhosted
       gatewayDefault: false
-      gatewayLabel: setGatewaySelfHosted
+      gatewayLabel: setGateway
+      gatewayLabelValue: selfhosted
       image:
         repository: ghcr.io/angelnu/gateway-admision-controller
         tag: v3.8.0@sha256:da8233ea85a5de6a30847be96438b7406bab11110b5c763adfaab8d136062129
