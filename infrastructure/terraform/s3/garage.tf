@@ -3,7 +3,9 @@ locals {
     "thanos",
     "loki",
     "cnpg",
-    "volsync"
+    "volsync",
+    "todd",
+    "andy"
   ]
 }
 
