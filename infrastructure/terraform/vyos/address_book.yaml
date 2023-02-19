@@ -256,7 +256,7 @@ hosts:
         ipv4_hostid: 12
     # Pi 4 PiKVM
     pikvm:
-        mac_addr: dc:a6:32:93:f5:83
+        mac_addr: e4:5f:01:85:3b:2e
         network: iot
         ipv4_hostid: 60
         groups:
