@@ -70,14 +70,6 @@ zfs_pools:
     type: 'mirror'
     state: 'present'
 zfs_filesystems:
-  - name: music
-    pool: tank
-    state: present
-    recordsize: 1M
-    owner: 568
-    group: 100
-    sharenfs: on
-    mountpoint: /tank/music/
   - name: backup
     pool: tank
     state: present
@@ -86,14 +78,6 @@ zfs_filesystems:
     group: 100
     sharenfs: on
     mountpoint: /tank/backup/
-  - name: downloads
-    pool: tank
-    state: present
-    recordsize: 1M
-    owner: 568
-    group: 100
-    sharenfs: on
-    mountpoint: /tank/downloads/
   - name: media
     pool: tank
     state: present
@@ -102,22 +86,6 @@ zfs_filesystems:
     group: 100
     sharenfs: on
     mountpoint: /tank/media/
-  - name: photos
-    pool: tank
-    state: present
-    recordsize: 1M
-    owner: 568
-    group: 100
-    sharenfs: on
-    mountpoint: /tank/photos/
-  - name: software
-    pool: tank
-    state: present
-    recordsize: 1M
-    owner: 568
-    group: 100
-    sharenfs: on
-    mountpoint: /tank/software/
   - name: documents
     pool: tank
     state: present
@@ -145,30 +113,6 @@ zfs_filesystems:
     owner: 1000
     group: 1000
     mountpoint: /speedy/garage/
-  - name: books
-    pool: tank
-    state: present
-    recordsize: 1M
-    owner: 568
-    group: 100
-    sharenfs: on
-    mountpoint: /tank/books/
-  - name: unsorted
-    pool: tank
-    state: present
-    recordsize: 1M
-    owner: 568
-    group: 100
-    sharenfs: on
-    mountpoint: /tank/unsorted/
-  - name: syncthing
-    pool: tank
-    state: present
-    recordsize: 1M
-    owner: 568
-    group: 100
-    sharenfs: on
-    mountpoint: /tank/syncthing/
   - name: tm-todds-laptop
     pool: tank
     state: present
