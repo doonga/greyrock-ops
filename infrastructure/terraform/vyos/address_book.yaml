@@ -261,6 +261,10 @@ hosts:
         ipv4_hostid: 60
         groups:
             - vector_journald_allowed
+    # This has to be configured manually with a windows utility. See PiKVM docs.
+    tesmart-kvm:
+        network: iot
+        ipv4_hostid: 61
     hydrawise-sprinkler-controller:
         mac_addr: 00:03:10:b3:72:fa
         network: iot
