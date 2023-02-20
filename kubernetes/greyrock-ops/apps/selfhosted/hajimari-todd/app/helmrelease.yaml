@@ -55,7 +55,7 @@ spec:
           url: https://search.greyrock.tech
       customApps:
         - group: Infrastructure
-          app:
+          apps:
             - name: PiKVM
               url: https://pikvm.private.greyrock.io
               icon: video-switch
