@@ -10,7 +10,7 @@ locals {
 }
 
 module "onepassword_item_garage" {
-  source = "github.com/bjw-s/terraform-1password-item?ref=main"
+  source = "github.com/doonga/terraform-1password-item?ref=main"
   vault  = "Automation"
   item   = "garage"
 }
