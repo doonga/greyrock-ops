@@ -56,10 +56,13 @@ spec:
       customApps:
         - group: Infrastructure
           apps:
+            - name: Aruba Instant On Portal
+              url: https://portal.arubainstanton.com
+              icon: server-network
             - name: PiKVM
               url: https://pikvm.private.greyrock.io
               icon: video-switch
-              info: PiKVM
+
       globalBookmarks:
         - group: Lifestyle
           bookmarks:
