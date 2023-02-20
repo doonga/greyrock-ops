@@ -276,7 +276,7 @@ config:
     guest:
       interface: eth5.30
       dhcp:
-        name_server: "1.1.1.1"
+        name_server: ${address_book.services.vyos_dnsdist.ipv4_addr}
       firewall:
         default:
           default: drop
