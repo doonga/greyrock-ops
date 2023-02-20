@@ -254,6 +254,13 @@ hosts:
         mac_addr: 98:b6:e9:f2:64:61
         network: iot
         ipv4_hostid: 12
+    brother-printer:
+        mac_addr: cc:6b:1e:5e:7a:1d
+        network: iot
+        ipv4_hostid: 13
+        groups:
+            - printers
+            - scanners
     # Pi 4 PiKVM
     pikvm:
         mac_addr: e4:5f:01:85:3b:2e
@@ -370,13 +377,6 @@ hosts:
         mac_addr: 98:ed:5c:96:3a:d9
         network: iot
         ipv4_hostid: 252
-    brother-printer:
-        mac_addr: b4:22:00:44:a0:d7
-        network: iot
-        ipv4_hostid: 254
-        groups:
-            - printers
-            - scanners
     # ----------------------
     # Video
     # ----------------------
@@ -388,7 +388,7 @@ hosts:
     # Guest
     # ----------------------
     todds-work-laptop:
-        mac_addr: 30:24:a9:a7:b8:66
+        mac_addr: dc:41:a9:ba:b1:ca
         network: guest
         ipv4_hostid: 11
 # -------------------
