@@ -59,6 +59,7 @@ spec:
             - name: PiKVM
               url: https://pikvm.private.greyrock.io
               icon: video-switch
+              info: PiKVM
       globalBookmarks:
         - group: Lifestyle
           bookmarks:
