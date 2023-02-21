@@ -38,7 +38,7 @@ resource "vyos_config" "system-login-user" {
     vyos = {
       authentication = {
         encrypted-password = "${var.secrets.vyos_password}"
-        plaintext-password = ""
+        # plaintext-password = ""
 
         public-keys = {
           personal = {
