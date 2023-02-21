@@ -5,8 +5,8 @@ terraform {
       version = "0.8.3"
     }
     garage = {
-      source  = "prologin/garage"
-      version = "0.0.1"
+      source  = "terraform-registry.greyrock.tech/bjw-s/garage"
+      version = "0.0.2"
     }
   }
 }

@@ -54,3 +54,25 @@ provider "registry.terraform.io/prologin/garage" {
     "zh:ff8d56d3a59ff3f4386fa4fd1e73453669a19b9170679c9b6d1e4bec813dc500",
   ]
 }
+
+provider "terraform-registry.greyrock.tech/bjw-s/garage" {
+  version     = "0.0.2"
+  constraints = "0.0.2"
+  hashes = [
+    "h1:OxK98G71OF1Xv23uRrd1tlD/doOcjh62h+aAx0qbFtE=",
+    "zh:0d88cfbfdf3f40fdcdc9c1ae2a2d905ff14ac22104e70e9554a1d93fdc1eee12",
+    "zh:1a393c6cba957655914a1796eb927d81234e840c4573f108e93ed08ba29c0e39",
+    "zh:1eed39055160b584f6f41d98d80ece72bd991e095f7ad46ff6f3558b01674322",
+    "zh:32532fade85af8f30f1876bdd433d659882d196c1f83d68aef041ce0a81bf869",
+    "zh:3ea7bed33e29cea2c2159cd8ef24f69dd905cb32f095d69e8f438b3a5a373e34",
+    "zh:9d9fdb87b92268bac8e686f6fa7578f8d68eba7f8c7a99e06462a0a587fe8281",
+    "zh:9f8b6d4b517d4cdb21dd5f490291ecd4b1a1a64da7565a894c45e2479153071f",
+    "zh:ac7a93761032286ac92f9666d5cc346d5120a85812c08fe0053402a8408f3bb4",
+    "zh:b52603eac3b163f709e2aa6146845c4e4bc29a1e1d9edc5c0531a98ef7e15e67",
+    "zh:bbff4aa2d7c62aaa498860a5ca579855b5acfa3ef49cc84315272b3fcf8ad2ba",
+    "zh:bdc4d0316a4280bad1d0dfafd68672417252de13e1680bef4d11aad3a3b72e3b",
+    "zh:c2ded2936cbf747dcdbf43f5dca703d6a03c4c4672e14a4cf42478e6940b2019",
+    "zh:fd95c98f4f54a803425eba3a084a3703e17f53933f8e92224342493b92012ab4",
+    "zh:ff929d33e0351fbf72228de79bd833207f809ab257ad57be90c861badf61874d",
+  ]
+}
