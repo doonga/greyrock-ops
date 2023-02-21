@@ -28,7 +28,7 @@ metadata:
     jobLabel: garage
 spec:
   type: ExternalName
-  externalName: nas.private.greyrock.io.
+  externalName: nas.private.greyrock.io
   ports:
     - name: metrics
       port: &port 3911

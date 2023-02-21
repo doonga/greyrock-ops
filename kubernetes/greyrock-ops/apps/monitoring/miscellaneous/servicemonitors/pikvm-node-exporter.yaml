@@ -1,18 +1,32 @@
 ---
 apiVersion: v1
+kind: Endpoints
+metadata:
+  name: node-exporter-pikvm
+  namespace: monitoring
+  labels:
+    app.kubernetes.io/name: node-exporter-pikvm
+    app.kubernetes.io/instance: node-exporter-pikvm
+subsets:
+  - addresses:
+      - ip: 10.1.3.60
+    ports:
+      - name: metrics
+        port: 9100
+---
+apiVersion: v1
 kind: Service
 metadata:
-  name: &app pikvm-node-exporter
+  name: node-exporter-pikvm
   namespace: monitoring
   annotations:
     prometheus.io/scrape: "true"
   labels:
-    app.kubernetes.io/name: *app
-    app.kubernetes.io/instance: *app
-    jobLabel: node-exporter
+    app.kubernetes.io/name: node-exporter-pikvm
+    app.kubernetes.io/instance: node-exporter-pikvm
 spec:
   type: ExternalName
-  externalName: pikvm.private.greyrock.io.
+  externalName: pikvm.private.greyrock.io
   ports:
     - name: metrics
       port: &port 9100
@@ -22,19 +36,16 @@ spec:
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: &app pikvm-node-exporter
+  name: node-exporter-pikvm
   namespace: monitoring
-  labels: &labels
-    app.kubernetes.io/name: *app
-    app.kubernetes.io/instance: *app
-    jobLabel: node-exporter
+  labels:
+    app.kubernetes.io/name: node-exporter-pikvm
+    app.kubernetes.io/instance: node-exporter-pikvm
 spec:
-  namespaceSelector:
-    matchNames: ["monitoring"]
   selector:
     matchLabels:
-      <<: *labels
-  jobLabel: jobLabel
+      app.kubernetes.io/name: node-exporter-pikvm
+      app.kubernetes.io/instance: node-exporter-pikvm
   endpoints:
     - port: metrics
       path: /metrics
