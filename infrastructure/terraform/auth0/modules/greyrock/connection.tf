@@ -59,3 +59,17 @@ resource "auth0_connection" "username_password_authentication" {
     }
   }
 }
+
+resource "auth0_connection" "google_oauth2_connection" {
+  name     = "Google-OAuth2-Connection"
+  strategy = "google-oauth2"
+
+  options {
+    client_id                = var.secrets.google_client_id
+    client_secret            = var.secrets.google_client_secret
+    allowed_audiences        = ["example.com", "api.example.com"]
+    scopes                   = ["email", "profile"]
+    set_user_root_attributes = "on_each_login"
+    non_persistent_attrs     = ["ethnicity", "gender"]
+  }
+}

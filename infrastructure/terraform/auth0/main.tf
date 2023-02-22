@@ -44,9 +44,11 @@ module "greyrock" {
   source = "./modules/greyrock"
 
   secrets = {
-    auth0_domain        = module.onepassword_item_auth0.fields.greyrock_domain
-    auth0_client_id     = module.onepassword_item_auth0.fields.terraform_client_id
-    auth0_client_secret = module.onepassword_item_auth0.fields.terraform_client_secret
+    auth0_domain         = module.onepassword_item_auth0.fields.greyrock_domain
+    auth0_client_id      = module.onepassword_item_auth0.fields.terraform_client_id
+    auth0_client_secret  = module.onepassword_item_auth0.fields.terraform_client_secret
+    google_client_id     = module.onepassword_item_auth0.fields.google_client_id
+    google_client_secret = module.onepassword_item_auth0.fields.google_client_secret
     users = {
       todd = {
         email    = module.onepassword_item_auth0.fields.user_todd_email
