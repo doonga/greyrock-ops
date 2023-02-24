@@ -37,3 +37,5 @@ spec:
     repository: n8n-restic-secret
     retain:
       daily: 14
+    moverSecurityContext:
+      runAsUser: 1000
