@@ -138,7 +138,7 @@ spec:
                     {{- include "loki.writeSelectorLabels" . | nindent 12 }}
                 topologyKey: kubernetes.io/hostname
       persistence:
-        size: 15Gi
+        size: 10Gi
         storageClass: ceph-block
 
     read:
