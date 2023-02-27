@@ -22,7 +22,7 @@
 - name: run vector
   containers.podman.podman_container:
     name: vector
-    image: "docker.io/timberio/vector:0.27.1-debian@sha256:cbfc66c7a4463d28bfddb5c0a249ef6302441af1bc6382953a69ac323334c0c2"
+    image: "docker.io/timberio/vector:0.28.0-debian@sha256:bba312f0ff80498e0dee7c4ef61279bb827b449407cdd67dba14af63e8a8d64b"
     state: started
     privileged: true
     network: host
