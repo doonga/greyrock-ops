@@ -38,8 +38,8 @@
     network: host
     volume:
       - "/speedy/garage/meta:/var/lib/garage/meta"
-      - "/tank/garage/data:/var/lib/garage/data"
-      - "/tank/garage/garage.toml:/etc/garage.toml"
+      - "/speedy/garage/data:/var/lib/garage/data"
+      - "/speedy/garage/garage.toml:/etc/garage.toml"
     env:
       TZ: "America/New_York"
     ports:

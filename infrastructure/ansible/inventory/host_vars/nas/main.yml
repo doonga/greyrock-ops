@@ -102,12 +102,6 @@ zfs_filesystems:
     sharenfs: on
     mountpoint: /tank/frigate/
   - name: garage
-    pool: tank
-    state: present
-    owner: 1000
-    group: 1000
-    mountpoint: /tank/garage/
-  - name: garage
     pool: speedy
     state: present
     owner: 1000
