@@ -20,9 +20,11 @@ spec:
   interval: 30m
   values:
     controller:
+      replicas: 2
       strategy: RollingUpdate
       annotations:
         reloader.stakater.com/auto: "true"
+
     image:
       repository: ghcr.io/onedr0p/vector
       tag: 0.28.0-debian
@@ -32,7 +34,7 @@ spec:
     service:
       main:
         type: LoadBalancer
-        loadBalancerIP: "10.45.0.2"
+        loadBalancerIP: 10.45.0.2
         annotations:
           coredns.io/hostname: "vector.greyrock.tech"
         externalTrafficPolicy: Local

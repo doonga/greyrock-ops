@@ -100,8 +100,8 @@ spec:
       requests:
         cpu: 15m
         memory: "2048M"
-      limits:
-        memory: 8192M
+      # limits:
+      #   memory: "4096M"
 
     volumeClaimTemplates:
       - name: config

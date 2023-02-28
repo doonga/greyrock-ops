@@ -90,7 +90,7 @@ sinks:
 
   loki_journal:
     type: loki
-    endpoint: http://loki-gateway.monitoring.svc.cluster.local
+    endpoint: http://loki-gateway.monitoring.svc.cluster.local.
     encoding:
       codec: json
     inputs:

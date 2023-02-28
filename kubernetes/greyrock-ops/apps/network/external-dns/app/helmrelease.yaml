@@ -17,8 +17,6 @@ spec:
       interval: 30m
 
   values:
-    logLevel: debug
-
     domainFilters:
       - 'greyrock.tech'
 

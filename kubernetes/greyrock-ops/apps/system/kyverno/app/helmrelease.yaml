@@ -16,9 +16,10 @@ spec:
         namespace: flux-system
       interval: 30m
   values:
-    replicaCount: 3
     crds:
       install: true
+
+    replicaCount: 3
 
     updateStrategy:
       type: RollingUpdate
