@@ -18,7 +18,7 @@ sources:
 
   vyos_syslog:
     type: syslog
-    mode: tcp
+    mode: udp
     address: 0.0.0.0:6001
 
   journald_source:
@@ -50,7 +50,7 @@ transforms:
       - vyos_firewall_route.firewall
     source: |
       # Parse firewall rule message
-      split_message, split_err = parse_regex(.message, r'^^\[.*\].\[(?P<rule>.*?)\](?P<fields>.*)')
+      split_message, split_err = parse_regex(.message, r'^\[.*\].\[(?P<rule>.*?)\](?P<fields>.*)')
       if split_err != null {
           abort
       }

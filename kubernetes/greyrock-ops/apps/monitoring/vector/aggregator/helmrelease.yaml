@@ -47,10 +47,11 @@ spec:
           vyos-syslog:
             enabled: true
             port: 6001
-            nodePort: 30007
+            protocol: UDP
           journald-logs:
             enabled: true
             port: 6002
+            nodePort: 30007
 
     persistence:
       config:
