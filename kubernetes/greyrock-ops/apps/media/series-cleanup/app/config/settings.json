@@ -21,6 +21,12 @@
       "skip": true
     },
     {
+      "folder": "Bake Off - The Professionals (2018) [imdb-tt26596261]",
+      "mapping": {
+        "tvdbid": 347046
+      }
+    },
+    {
       "folder": "Californication (2007) [imdb-tt0904208]",
       "skip": true
     },
