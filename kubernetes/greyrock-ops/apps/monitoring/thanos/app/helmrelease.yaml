@@ -90,7 +90,8 @@ spec:
       enabled: true
       alertmanagers:
         - http://alertmanager.monitoring.svc.cluster.local:9093
-      clusterName: greyrock-ops # must match with kube-prometheus-stack value `.prometheus.prometheusSpec.externalLabels.cluster`
+      # Breaks any metric that has an existing "cluster" label on a metric
+      # clusterName: greyrock-ops # must match with kube-prometheus-stack value `.prometheus.prometheusSpec.externalLabels.cluster`
       config: |-
         groups:
           - name: "PrometheusWatcher"
