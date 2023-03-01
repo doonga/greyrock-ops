@@ -22,6 +22,7 @@ spec:
       cronjob:
         schedule: "10 */6 * * *"
         ttlSecondsAfterFinished: 86400
+        successfulJobsHistoryLimit: 1
 
     podSecurityContext:
       runAsUser: 568
