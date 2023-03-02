@@ -1,0 +1,96 @@
+# Editing MachineConfigs.config.talos.dev/v1alpha1 at node 10.1.1.9
+version: v1alpha1
+debug: false
+persist: true
+machine:
+  type: worker
+  token: 5eu4ee.2ldt12lfh4bcofwa
+  ca:
+    crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJQekNCOHFBREFnRUNBaEVBdnp1dXl5M3psK2xHRU83b1VtdUZOREFGQmdNclpYQXdFREVPTUF3R0ExVUUKQ2hNRmRHRnNiM013SGhjTk1qTXdNVEEzTVRVMU1qRTFXaGNOTXpNd01UQTBNVFUxTWpFMVdqQVFNUTR3REFZRApWUVFLRXdWMFlXeHZjekFxTUFVR0F5dGxjQU1oQUxMeUdZSW1NbmtKb2lRMzU2UU4wQ2FMUGw5NWlHYlJnNzlpCnBvNlRuMnRPbzJFd1h6QU9CZ05WSFE4QkFmOEVCQU1DQW9Rd0hRWURWUjBsQkJZd0ZBWUlLd1lCQlFVSEF3RUcKQ0NzR0FRVUZCd01DTUE4R0ExVWRFd0VCL3dRRk1BTUJBZjh3SFFZRFZSME9CQllFRkkyOHMyK0tScmlXY0srdApYWGJxaDlVQUJhZWNNQVVHQXl0bGNBTkJBSVhQWDZBakNrR2lOb0Y4b1dTRE9ISWx1ZlpxcitrbGdkd3lHbWxRCnNPZ05tUWx6MjNDcERmYnA3NVNnL09CRzZkaGdTRVkwSXVvNm9GOHdtQ3h2SUFBPQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+    key: ""
+  certSANs:
+    - 10.5.0.2
+    - greyrock-ops.private.greyrock.io
+  kubelet:
+    image: ghcr.io/siderolabs/kubelet:v1.26.1
+    extraArgs:
+      feature-gates: GracefulNodeShutdown=true,MixedProtocolLBService=true
+      rotate-server-certificates: "true"
+    defaultRuntimeSeccompProfileEnabled: true
+    nodeIP:
+      validSubnets:
+        - 10.1.1.0/24
+    disableManifestsDirectory: true
+  network:
+    hostname: k8s6.private.greyrock.io
+    interfaces:
+      - interface: eth0
+        vlans:
+          - addresses:
+              - 10.1.2.9/24
+            routes: []
+            dhcp: false
+            vlanId: 20
+        mtu: 0
+        dhcp: true
+    extraHostEntries:
+      - ip: 10.5.0.2
+        aliases:
+          - greyrock-ops.private.greyrock.io
+    disableSearchDomain: true
+  install:
+    disk: /dev/sda
+    extraKernelArgs:
+      - talos.logging.kernel=udp://vector.greyrock.tech:6050/
+    image: ghcr.io/siderolabs/installer:v1.4.0-alpha.2
+    extensions:
+      - image: ghcr.io/siderolabs/i915-ucode:20230210
+    bootloader: true
+    wipe: false
+  files:
+    - content: |
+        [plugins]
+          [plugins."io.containerd.grpc.v1.cri"]
+            enable_unprivileged_ports = true
+            enable_unprivileged_icmp = true
+      permissions: 0o0
+      path: /etc/cri/conf.d/20-customization.part
+      op: create
+  time:
+    disabled: false
+    servers:
+      - 10.1.1.1
+  sysctls:
+    fs.inotify.max_user_instances: "8192"
+    fs.inotify.max_user_watches: "1048576"
+  features:
+    rbac: true
+    stableHostname: true
+    apidCheckExtKeyUsage: true
+  logging:
+    destinations:
+      - endpoint: udp://vector.greyrock.tech:6051/
+        format: json_lines
+cluster:
+  id: IW2hDjG1jWCd6S_j1T8AGfkP-Xswqf6QoVlXpo3FOTY=
+  secret: 0g35hQ//0t0u0nPpOKowg1URL3iT2u9m40Ue44sMvl4=
+  controlPlane:
+    endpoint: https://greyrock-ops.private.greyrock.io:6443
+  network:
+    cni:
+      name: none
+    dnsDomain: cluster.local
+    podSubnets:
+      - 10.244.0.0/16
+    serviceSubnets:
+      - 10.96.0.0/12
+  token: 7a81g8.gq0ovh7uddzyb2w1
+  ca:
+    crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJpakNDQVMrZ0F3SUJBZ0lRSVZldG92ZFMxUU1PNXJISXBnRnpiakFLQmdncWhrak9QUVFEQWpBVk1STXcKRVFZRFZRUUtFd3ByZFdKbGNtNWxkR1Z6TUI0WERUSXpNREV3TnpFMU5USXhOVm9YRFRNek1ERXdOREUxTlRJeApOVm93RlRFVE1CRUdBMVVFQ2hNS2EzVmlaWEp1WlhSbGN6QlpNQk1HQnlxR1NNNDlBZ0VHQ0NxR1NNNDlBd0VICkEwSUFCRTZHTFFpQWpmOEdYM3JLQzNQQy9nMThrMzF2V3RrUXRzMml2K2hteUYwbENLeWw2em4vVWpIMXQrSzMKczR5dkFTazMxaXJsRUhTcWlxMms4VWsvUVhPallUQmZNQTRHQTFVZER3RUIvd1FFQXdJQ2hEQWRCZ05WSFNVRQpGakFVQmdnckJnRUZCUWNEQVFZSUt3WUJCUVVIQXdJd0R3WURWUjBUQVFIL0JBVXdBd0VCL3pBZEJnTlZIUTRFCkZnUVVaU1BVeHh2ODFjeTFHRHlmSFo4ZjZzRWtGVTh3Q2dZSUtvWkl6ajBFQXdJRFNRQXdSZ0loQU9QcGZZdGQKNmJhZ051UDBHUWQwTzBqbCs5dXVBRzNxVGRPb0prdkhTdDBYQWlFQXJ2Mkh5WitBU0J5WjNDYVVQb21uMTJMUgpvVW90TzlKUytaWVF6K0FWM0E0PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+    key: ""
+  discovery:
+    enabled: true
+    registries:
+      kubernetes:
+        disabled: true
+      service: {}

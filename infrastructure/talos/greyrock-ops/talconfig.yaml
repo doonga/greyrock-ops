@@ -1,7 +1,7 @@
 ---
 clusterName: greyrock-ops
 
-talosVersion: v1.3.5
+talosVersion: v1.4.0-alpha.2
 kubernetesVersion: 1.26.1
 endpoint: "https://greyrock-ops.private.greyrock.io:6443"
 
@@ -172,6 +172,8 @@ worker:
         install:
           extraKernelArgs:
             - "talos.logging.kernel=udp://vector.greyrock.tech:6050/"
+          extensions:
+            - image: ghcr.io/siderolabs/i915-ucode:20230210
         logging:
           destinations:
             - endpoint: "udp://vector.greyrock.tech:6051/"
