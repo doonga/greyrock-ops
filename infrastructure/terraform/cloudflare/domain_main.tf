@@ -152,20 +152,5 @@ module "cf_domain_main" {
       type    = "CNAME"
       proxied = false
     },
-    # Fly.io settings
-    {
-      id      = "fly_status_challenge"
-      name    = "_acme-challenge.status"
-      value   = "status.greyrock.io.gk291w.flydns.net."
-      type    = "CNAME"
-      proxied = false
-    },
-    {
-      id      = "fly_status_app"
-      name    = "status"
-      value   = "greyrock-gatus.fly.dev"
-      type    = "CNAME"
-      proxied = true
-    },
   ]
 }
