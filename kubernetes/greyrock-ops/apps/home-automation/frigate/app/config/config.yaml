@@ -79,6 +79,6 @@ cameras:
           roles:
             - detect
     detect:
-      width: 720
-      height: 576
+      width: 640
+      height: 480
       fps: 15
