@@ -51,7 +51,6 @@ spec:
           journald-logs:
             enabled: true
             port: 6002
-            nodePort: 30007
 
     persistence:
       config:
