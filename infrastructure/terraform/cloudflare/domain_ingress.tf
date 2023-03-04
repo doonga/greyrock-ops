@@ -45,7 +45,7 @@ resource "cloudflare_page_rule" "cf_domain_ingress_jellyfin_bypass_cache" {
   zone_id  = module.cf_domain_ingress.zone_id
   target   = format("jellyfin.%s/*", module.cf_domain_ingress.zone)
   status   = "active"
-  priority = 1
+  priority = 2
 
   actions {
     cache_level         = "bypass"
