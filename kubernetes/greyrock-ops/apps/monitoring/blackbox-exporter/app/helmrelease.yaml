@@ -143,7 +143,7 @@ spec:
         # Other devices
         - module: icmp
           name: zigbee-controller-icmp
-          url: tubeszb-cc2652-poe-2022.private.greyrock.io
+          url: slzb-06.private.greyrock.io
 
         - module: icmp
           name: nas-icmp
