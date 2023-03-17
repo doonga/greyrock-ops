@@ -69,6 +69,12 @@
       "matchPackageNames": ["docker.io/timberio/vector"],
       "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)-(?<compatibility>.*)$"
     },
+    {
+      "description": "Use custom versioning for http-https-echo",
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["ghcr.io/mendhak/http-https-echo"],
+      "versioning": "regex:^(?<major>\\d+)$"
+    },
     // Version strategies
     {
       "matchDatasources": ["docker"],
