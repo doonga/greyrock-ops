@@ -27,6 +27,10 @@
   tags:
     - tm-todd-laptop
 
+- import_tasks: tm-todd-desktop.yml
+  tags:
+    - tm-todd-desktop
+
 - import_tasks: samba.yml
   tags:
     - samba
