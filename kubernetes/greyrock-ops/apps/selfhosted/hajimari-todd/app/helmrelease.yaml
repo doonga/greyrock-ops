@@ -55,7 +55,7 @@ spec:
           searchUrl: https://search.greyrock.tech/search?q={query}
           url: https://search.greyrock.tech
       customApps:
-        - group: Infrastructure
+        - group: Network
           apps:
             - name: Aruba Instant On Portal
               url: https://portal.arubainstanton.com
