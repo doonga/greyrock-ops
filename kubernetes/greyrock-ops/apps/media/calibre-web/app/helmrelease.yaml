@@ -48,7 +48,6 @@ spec:
         annotations:
           hajimari.io/enable: "true"
           hajimari.io/instance: "todd"
-          hajimari.io/group: Media
           hajimari.io/icon: "book-open"
           nginx.ingress.kubernetes.io/auth-url: https://auth.greyrock.tech/oauth2/auth?allowed_groups=calibre-web
           nginx.ingress.kubernetes.io/auth-signin: https://auth.greyrock.tech/oauth2/start?rd=$scheme://$best_http_host$request_uri

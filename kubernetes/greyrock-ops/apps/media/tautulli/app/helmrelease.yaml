@@ -37,7 +37,6 @@ spec:
             sub_filter_once on;
           hajimari.io/enable: "true"
           hajimari.io/instance: "todd"
-          hajimari.io/group: Media
           hajimari.io/icon: "mdi:chart-bar"
         hosts:
           - host: &host tautulli.greyrock.tech

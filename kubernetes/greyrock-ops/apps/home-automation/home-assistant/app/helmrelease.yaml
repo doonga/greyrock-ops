@@ -64,7 +64,6 @@ spec:
         annotations:
           hajimari.io/enable: "true"
           hajimari.io/instance: "todd"
-          hajimari.io/group: "Home Automation"
           hajimari.io/icon: "mdi:home-assistant"
           external-dns.alpha.kubernetes.io/target: ingress.greyrock.tech
         hosts:

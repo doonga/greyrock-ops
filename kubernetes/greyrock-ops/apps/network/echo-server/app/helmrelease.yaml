@@ -43,7 +43,6 @@ spec:
           external-dns.alpha.kubernetes.io/target: ingress.greyrock.tech
           hajimari.io/enable: "true"
           hajimari.io/instance: "todd"
-          hajimari.io/group: Admin
           hajimari.io/icon: "video-input-antenna"
         hosts:
           - host: &host "echo-server.greyrock.tech"

@@ -42,7 +42,6 @@ spec:
           nginx.ingress.kubernetes.io/backend-protocol: HTTPS
           hajimari.io/enable: "true"
           hajimari.io/instance: "todd,andy"
-          hajimari.io/group: Media
           hajimari.io/icon: "mdi:plex"
         ingressClassName: nginx
         hosts:
