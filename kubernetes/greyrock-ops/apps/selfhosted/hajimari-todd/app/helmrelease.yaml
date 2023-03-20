@@ -31,6 +31,7 @@ spec:
       title: "Todd's Homepage"
       showAppUrls: false
       showAppInfo: true
+      showAppGroups: true
       namespaceSelector:
         matchNames:
           - default
