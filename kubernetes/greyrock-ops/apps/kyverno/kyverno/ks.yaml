@@ -8,7 +8,7 @@ metadata:
     substitution.flux.home.arpa/enabled: "true"
 spec:
   interval: 10m
-  path: "./kubernetes/greyrock-ops/apps/system/kyverno/app"
+  path: "./kubernetes/greyrock-ops/apps/kyverno/kyverno/app"
   prune: true
   sourceRef:
     kind: GitRepository
@@ -24,7 +24,7 @@ metadata:
     substitution.flux.home.arpa/enabled: "true"
 spec:
   interval: 10m
-  path: "./kubernetes/greyrock-ops/apps/system/kyverno/policies"
+  path: "./kubernetes/greyrock-ops/apps/kyverno/kyverno/policies"
   prune: true
   sourceRef:
     kind: GitRepository
