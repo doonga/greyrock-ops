@@ -86,30 +86,14 @@ controlPlane:
       cluster:
         allowSchedulingOnMasters: false
         apiServer:
-          extraArgs:
-            feature-gates: MixedProtocolLBService=true,EphemeralContainers=True
-            oidc-client-id: ${oidcClientId}
-            oidc-groups-claim: https://greyrock/groups
-            oidc-groups-prefix: 'oidc:'
-            oidc-issuer-url: ${oidcIssuerURL}
-            oidc-username-claim: email
-            oidc-username-prefix: 'oidc:'
         controllerManager:
-          extraArgs:
-            feature-gates: MixedProtocolLBService=true,EphemeralContainers=True
         discovery:
           registries:
             service:
               disabled: true
         proxy:
           disabled: true
-          extraArgs:
-            feature-gates: MixedProtocolLBService=true,EphemeralContainers=True
         scheduler:
-          extraArgs:
-            feature-gates: MixedProtocolLBService=true,EphemeralContainers=True
-        extraManifests:
-          - https://raw.githubusercontent.com/doonga/greyrock-ops/main/infrastructure/talos/greyrock-ops/rbac/oidc.yaml
 
       machine:
         files:
@@ -122,7 +106,7 @@ controlPlane:
             op: create
         kubelet:
           extraArgs:
-            feature-gates: GracefulNodeShutdown=true,MixedProtocolLBService=true
+            feature-gates: GracefulNodeShutdown=true
             rotate-server-certificates: "true"
           nodeIP:
             validSubnets:
@@ -164,7 +148,7 @@ worker:
             op: create
         kubelet:
           extraArgs:
-            feature-gates: GracefulNodeShutdown=true,MixedProtocolLBService=true
+            feature-gates: GracefulNodeShutdown=true
             rotate-server-certificates: "true"
           nodeIP:
             validSubnets:
