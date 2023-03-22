@@ -23,14 +23,6 @@
   tags:
     - zfs
 
-- import_tasks: tm-todd-laptop.yml
-  tags:
-    - tm-todd-laptop
-
-- import_tasks: tm-todd-desktop.yml
-  tags:
-    - tm-todd-desktop
-
 - import_tasks: samba.yml
   tags:
     - samba
