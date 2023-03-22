@@ -30,14 +30,6 @@ spec:
       annotations:
         reloader.stakater.com/auto: "true"
 
-    initContainers:
-      init-db:
-        image: ghcr.io/onedr0p/postgres-initdb:14.7@sha256:9a82796ecc291a42ba3e2e4813a9c086fe7674160b9df18aeaec265b09e4a3f6
-        imagePullPolicy: IfNotPresent
-        envFrom:
-          - secretRef:
-              name: invidious-server-secret
-
     image:
       repository: quay.io/invidious/invidious
       tag: latest@sha256:4d93adc3845e3d89a548f880d6789792f49b3383cffc2f4ef477b532e11c28de
