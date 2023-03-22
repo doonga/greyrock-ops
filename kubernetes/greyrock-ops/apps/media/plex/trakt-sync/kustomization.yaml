@@ -1,0 +1,19 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: media
+resources:
+  - ./helmrelease.yaml
+  - ./externalsecret.yaml
+  - ./volsync.yaml
+commonLabels:
+  app.kubernetes.io/name: plex-trakt-sync
+  app.kubernetes.io/instance: plex-trakt-sync
+configMapGenerator:
+  - name: plex-tract-sync-configmap
+    files:
+      - ./config/config.yml
+generatorOptions:
+  disableNameSuffixHash: true
+  annotations:
+    kustomize.toolkit.fluxcd.io/substitute: disabled
