@@ -56,11 +56,6 @@ spec:
           secretKeyRef:
             name: database-teslamate-user
             key: PASSWORD
-      DATABASE_URL:
-        valueFrom:
-          secretKeyRef:
-            key: database-teslamate-user
-            name: POSTGRES_URL
 
     envFrom:
       - secretRef:
