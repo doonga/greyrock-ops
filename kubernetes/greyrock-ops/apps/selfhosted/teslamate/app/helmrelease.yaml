@@ -46,23 +46,28 @@ spec:
       DATABASE_HOST:
         valueFrom:
           secretKeyRef:
-            name: teslamate-secret
-            key: POSTGRES_HOST
+            name: database-teslamate-user
+            key: HOST
       DATABASE_NAME:
         valueFrom:
           secretKeyRef:
-            name: teslamate-secret
-            key: POSTGRES_DB
+            name: database-teslamate-user
+            key: DATABASE_NAME
       DATABASE_USER:
         valueFrom:
           secretKeyRef:
-            name: teslamate-secret
-            key: POSTGRES_USER
+            name: database-teslamate-user
+            key: LOGIN
       DATABASE_PASS:
         valueFrom:
           secretKeyRef:
-            name: teslamate-secret
-            key: POSTGRES_PASS
+            name: database-teslamate-user
+            key: PASSWORD
+      DATABASE_URL:
+        valueFrom:
+          secretKeyRef:
+            key: database-teslamate-user
+            name: POSTGRES_URL
 
     envFrom:
       - secretRef:
