@@ -63,7 +63,6 @@ spec:
             type: postgres
             access: proxy
             url: postgres.database.svc.cluster.local:5432
-            database: teslamate
             user: teslamate-zV0DCd
             secureJsonData:
               password: $TESLAMATE_POSTGRES_PASSWORD
@@ -71,6 +70,7 @@ spec:
             jsonData:
               postgresVersion: 1000
               sslmode: disable
+              database: teslamate
         deleteDatasources:
           - name: Loki
             orgId: 1
