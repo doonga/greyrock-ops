@@ -31,13 +31,6 @@ spec:
       annotations:
         reloader.stakater.com/auto: "true"
 
-    initContainers:
-      init-db:
-        image: ghcr.io/onedr0p/postgres-initdb:14.7@sha256:9a82796ecc291a42ba3e2e4813a9c086fe7674160b9df18aeaec265b09e4a3f6
-        envFrom:
-          - secretRef:
-              name: teslamate-secret
-
     image:
       repository: teslamate/teslamate
       tag: 1.27.2
