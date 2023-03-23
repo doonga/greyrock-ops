@@ -168,7 +168,14 @@ spec:
             honor_timestamps: true
             static_configs:
               - targets:
-                  - "hs110-exporter-rack.monitoring:8110"
+                  - hs110-exporter-rack.monitoring:8110
+
+          - job_name: node-exporter
+            scrape_interval: 1m
+            scrape_timeout: 10s
+            honor_timestamps: true
+            static_configs:
+              - targets:
                   - gateway.private.greyrock.io:9100
                   - nas.private.greyrock.io:9100
                   - pikvm.private.greyrock.io:9100
