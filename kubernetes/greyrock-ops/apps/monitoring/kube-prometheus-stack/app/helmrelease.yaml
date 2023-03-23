@@ -168,7 +168,7 @@ spec:
             honor_timestamps: true
             static_configs:
               - targets:
-                  - hs110-exporter-rack.monitoring:8110
+                  - hs110-exporter-rack.monitoring.svc.cluster.local:8110
 
           - job_name: node-exporter
             scrape_interval: 1m
