@@ -36,45 +36,38 @@ module "cf_domain_main" {
     },
     # Fastmail settings
     {
-      id       = "fastmail_mx_1"
+      id       = "o365_mx_1"
       name     = "@"
-      priority = 10
-      value    = "in1-smtp.messagingengine.com"
+      priority = 0
+      value    = "greyrock-io.mail.protection.outlook.com"
       type     = "MX"
     },
     {
-      id       = "fastmail_mx_2"
-      name     = "@"
-      priority = 20
-      value    = "in2-smtp.messagingengine.com"
-      type     = "MX"
-    },
-    {
-      id      = "fastmail_dkim_1"
-      name    = "fm1._domainkey"
-      value   = "fm1.greyrock.io.dkim.fmhosted.com"
+      id      = "o365_dkim_1"
+      name    = "selector1._domainkey"
+      value   = "selector1-greyrock-io._domainkey.azureslgreyrock.onmicrosoft.com"
       type    = "CNAME"
       proxied = false
     },
     {
-      id      = "fastmail_dkim_2"
-      name    = "fm2._domainkey"
-      value   = "fm2.greyrock.io.dkim.fmhosted.com"
+      id      = "o365_dkim_2"
+      name    = "selector2._domainkey"
+      value   = "selector2-greyrock-io._domainkey.azureslgreyrock.onmicrosoft.com"
       type    = "CNAME"
       proxied = false
     },
     {
-      id      = "fastmail_dkim_3"
-      name    = "fm3._domainkey"
-      value   = "fm3.greyrock.io.dkim.fmhosted.com"
-      type    = "CNAME"
-      proxied = false
-    },
-    {
-      id    = "fastmail_spf"
+      id    = "o365_spf"
       name  = "@"
-      value = "v=spf1 include:spf.messagingengine.com ?all"
+      value = "v=spf1 include:spf.protection.outlook.com -all"
       type  = "TXT"
+    },
+    {
+      id      = "o365_autodiscover"
+      name    = "autodiscover"
+      value   = "autodiscover.outlook.com"
+      type    = "CNAME"
+      proxied = false
     },
     # SL settings
     {
