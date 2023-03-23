@@ -26,6 +26,17 @@ spec:
       dnsDiscovery:
         sidecarsService: kube-prometheus-stack-thanos-discovery
         sidecarsNamespace: monitoring
+      replicaLabels:
+        - "__replica__" # must match with kube-prometheus-stack value `.prometheus.prometheusSpec.replicaExternalLabelName`
+      resources:
+        requests:
+          cpu: 15m
+          memory: 64M
+        # limits:
+        #   memory: 99M
+
+    queryFrontend:
+      enabled: true
       ingress:
         enabled: true
         hostname: "thanos.greyrock.tech"
@@ -33,17 +44,6 @@ spec:
         annotations:
           nginx.ingress.kubernetes.io/whitelist-source-range: "10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
         tls: true
-      replicaLabels:
-        - "__replica__" # must match with kube-prometheus-stack value `.prometheus.prometheusSpec.replicaExternalLabelName`
-      resources:
-        requests:
-          cpu: 15m
-          memory: 64M
-        limits:
-          memory: 99M
-
-    queryFrontend:
-      enabled: false
 
     bucketweb:
       enabled: true
@@ -51,8 +51,8 @@ spec:
         requests:
           cpu: 15m
           memory: 64M
-        limits:
-          memory: 64M
+        # limits:
+        #   memory: 64M
 
     compactor:
       enabled: true
@@ -66,8 +66,8 @@ spec:
         requests:
           cpu: 15m
           memory: 204M
-        limits:
-          memory: 270M
+        # limits:
+        #   memory: 270M
       persistence:
         enabled: true
         storageClass: "ceph-block"
@@ -79,8 +79,8 @@ spec:
         requests:
           cpu: 23m
           memory: 204M
-        limits:
-          memory: 226M
+        # limits:
+        #   memory: 226M
       persistence:
         enabled: true
         storageClass: "ceph-block"
