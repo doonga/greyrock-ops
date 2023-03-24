@@ -56,7 +56,7 @@ spec:
           hajimari.io/enable: "true"
           hajimari.io/instance: "todd"
           hajimari.io/icon: "mdi:workflow"
-          nginx.ingress.kubernetes.io/auth-url: https://auth.greyrock.tech/oauth2/auth?allowed_groups=admins
+          nginx.ingress.kubernetes.io/auth-url: https://auth.greyrock.tech/oauth2/auth?allowed_groups=1d006f11-e13c-4f07-9c3f-4190215fd844
           nginx.ingress.kubernetes.io/auth-signin: https://auth.greyrock.tech/oauth2/start?rd=$scheme://$best_http_host$request_uri
           nginx.ingress.kubernetes.io/auth-response-headers: "x-auth-request-email, x-auth-request-groups"
           external-dns.alpha.kubernetes.io/target: ingress.greyrock.tech
