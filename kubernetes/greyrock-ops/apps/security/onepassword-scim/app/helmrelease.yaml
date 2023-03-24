@@ -27,7 +27,7 @@ spec:
 
     env:
       OP_PORT: &port 3002
-      OP_REDIS_URL: redis://onepassword-scim-redis.selfhosted.svc.cluster.local:6379
+      OP_REDIS_URL: redis://onepassword-scim-redis.security.svc.cluster.local:6379
       OP_SESSION:
         valueFrom:
           secretKeyRef:
