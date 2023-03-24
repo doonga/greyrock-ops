@@ -57,38 +57,11 @@ spec:
 
     probes:
       liveness:
-        enabled: true
-        custom: true
-        spec:
-          httpGet:
-            path: /ping
-            port: 80
-          initialDelaySeconds: 15
-          periodSeconds: 30
-          failureThreshold: 3
+        enabled: false
       readiness:
-        enabled: true
-        custom: true
-        spec:
-          httpGet:
-            path: /ping
-            port: 80
-          initialDelaySeconds: 15
+        enabled: false
       startup:
-        enabled: true
-        custom: true
-        spec:
-          httpGet:
-            path: /ping
-            port: 80
-          failureThreshold: 30
-          periodSeconds: 5
-          successThreshold: 1
-          timeoutSeconds: 1
-
-    podSecurityContext:
-      runAsUser: 999
-      runAsGroup: 999
+        enabled: false
 
     resources:
       requests:
