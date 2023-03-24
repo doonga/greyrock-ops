@@ -7,3 +7,4 @@ resources:
   # Flux-Kustomizations
   - ./external-secrets/ks.yaml
   - ./oauth2-proxy/ks.yaml
+  - ./onepassword-scim/ks.yaml
