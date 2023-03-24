@@ -26,6 +26,7 @@ spec:
       tag: v2.7.4
 
     env:
+      OP_PING_SERVER: 1
       OP_PORT: &port 3002
       OP_REDIS_URL: redis://onepassword-scim-redis.security.svc.cluster.local:6379
       OP_SESSION:
@@ -60,8 +61,8 @@ spec:
         custom: true
         spec:
           httpGet:
-            path: /heartbeat
-            port: *port
+            path: /ping
+            port: 80
           initialDelaySeconds: 15
           periodSeconds: 30
           failureThreshold: 3
@@ -70,16 +71,16 @@ spec:
         custom: true
         spec:
           httpGet:
-            path: /health
-            port: *port
+            path: /ping
+            port: 80
           initialDelaySeconds: 15
       startup:
         enabled: true
         custom: true
         spec:
           httpGet:
-            path: /health
-            port: *port
+            path: /ping
+            port: 80
           failureThreshold: 30
           periodSeconds: 5
           successThreshold: 1
