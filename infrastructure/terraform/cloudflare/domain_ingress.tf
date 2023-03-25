@@ -24,6 +24,12 @@ module "cf_domain_ingress" {
       value = "v=spf1 -all"
       type  = "TXT"
     },
+    {
+      id    = "azure_validator"
+      name  = "@"
+      value = "MS=ms17505606"
+      type  = "TXT"
+    },
   ]
 }
 
