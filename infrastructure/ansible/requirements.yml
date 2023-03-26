@@ -24,7 +24,7 @@ roles:
   - src: https://github.com/vladgh/ansible-collection-vladgh-samba
     scm: git
     name: vladgh.samba
-    version: v3.0.3
+    version: v3.1.0
   - src: https://github.com/brianhartsock/ansible-role-avahi
     scm: git
     name: ansible.avahi
