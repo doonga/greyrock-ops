@@ -13,7 +13,6 @@ module "cf_domain_main" {
       type    = "CNAME"
       proxied = false
     },
-    # To be cleaned up
     {
       id      = "enterpriseenrollment"
       name    = "enterpriseenrollment"
@@ -34,7 +33,6 @@ module "cf_domain_main" {
       value = "v=DMARC1; p=reject; rua=mailto:3iucjkde@ag.dmarcian.com; ruf=mailto:3iucjkde@fr.dmarcian.com;"
       type  = "TXT"
     },
-    # Fastmail settings
     {
       id       = "o365_mx_1"
       name     = "@"
@@ -68,48 +66,6 @@ module "cf_domain_main" {
       value   = "autodiscover.outlook.com"
       type    = "CNAME"
       proxied = false
-    },
-    # SL settings
-    {
-      id       = "fastmail_sl_mx_1"
-      name     = "sl"
-      priority = 10
-      value    = "in1-smtp.messagingengine.com"
-      type     = "MX"
-    },
-    {
-      id       = "fastmail_sl_mx_2"
-      name     = "sl"
-      priority = 20
-      value    = "in2-smtp.messagingengine.com"
-      type     = "MX"
-    },
-    {
-      id      = "fastmail_sl_dkim_1"
-      name    = "fm1._domainkey.sl"
-      value   = "fm1.sl.greyrock.io.dkim.fmhosted.com"
-      type    = "CNAME"
-      proxied = false
-    },
-    {
-      id      = "fastmail_sl_dkim_2"
-      name    = "fm2._domainkey.sl"
-      value   = "fm2.sl.greyrock.io.dkim.fmhosted.com"
-      type    = "CNAME"
-      proxied = false
-    },
-    {
-      id      = "fastmail_sl_dkim_3"
-      name    = "fm3._domainkey.sl"
-      value   = "fm3.sl.greyrock.io.dkim.fmhosted.com"
-      type    = "CNAME"
-      proxied = false
-    },
-    {
-      id    = "fastmail_sl_spf"
-      name  = "sl"
-      value = "v=spf1 include:spf.messagingengine.com ?all"
-      type  = "TXT"
     },
     # Mailgun settings
     {
