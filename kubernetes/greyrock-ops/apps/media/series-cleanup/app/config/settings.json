@@ -43,6 +43,12 @@
       "skip": true
     },
     {
+      "folder": "Drag Race Belgium (2023) [imdb-]",
+      "mapping": {
+        "tvdbid": 419549
+      }
+    },
+    {
       "folder": "ER (1994) [imdb-tt0108757]",
       "skip": true
     },
