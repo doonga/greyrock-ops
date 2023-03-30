@@ -100,12 +100,12 @@ zfs_filesystems:
     group: 65534
     sharenfs: on
     mountpoint: /tank/frigate/
-  - name: garage
+  - name: minio
     pool: speedy
     state: present
     owner: 1000
     group: 1000
-    mountpoint: /speedy/garage/
+    mountpoint: /speedy/minio/
 
 zfs_enable_monitoring: true
 zfs_monitoring_scrub_max_age: 8

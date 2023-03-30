@@ -1,6 +1,6 @@
-provider "garage" {
+provider "minio" {
   alias  = "nas"
-  host   = "s3.private.greyrock.io:3911"
-  scheme = "http"
-  token  = module.onepassword_item_garage.fields.admin_api_token
+  minio_server   = "s3.private.greyrock.io:3911"
+  minio_user     = module.onepassword_item_minio.fields.username
+  minio_password = module.onepassword_item_minio.fields.password
 }

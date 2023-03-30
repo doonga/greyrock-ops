@@ -1,0 +1,52 @@
+---
+- name: setup minio directory
+  ansible.builtin.file:
+    path: /speedy/minio
+    state: directory
+    group: "1000"
+    owner: "1000"
+    mode: "0600"
+
+- name: run minio
+  containers.podman.podman_container:
+    name: minio
+    image: "quay.io/minio/minio:RELEASE.2023-02-17T17-52-43Z@sha256:bb897b8a58195740bf3e19c8c4e547222c175383588bebe0c012ee47fa4a9059"
+    state: started
+    network: host
+    command:
+      - "server"
+      - "/data"
+      - "--console-address"
+      - ":9001"
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    env:
+      TZ: ${TZ}
+      MINIO_ROOT_USER: "{{ minio.root_user }}"
+      MINIO_ROOT_PASSWORD: "{{ minio.root_password }}"
+      MINIO_UPDATE: "off"
+      MINIO_PROMETHEUS_URL: http://prometheus.{{ external_domain }}
+      MINIO_PROMETHEUS_JOB_ID: minio
+      MINIO_PROMETHEUS_AUTH_TYPE: "public"
+      MINIO_BROWSER_REDIRECT_URL: "http://s3.{{ internal_domain }}:9001"
+      MINIO_SERVER_URL: "http://s3.{{ internal_domain }}:9000"
+    generate_systemd:
+      path: "/home/{{ ansible_user }}/.config/systemd/user"
+      restart_policy: always
+      time: 120
+      names: true
+      container_prefix: ansible
+    volume:
+      - "/speedy/minio:/data:z"
+  become: false
+
+- name: enable podman-systemd | minio
+  ansible.builtin.systemd:
+    name: ansible-minio
+    enabled: true
+    scope: user
+  environment:
+    XDG_RUNTIME_DIR: "/run/user/{{ ansible_user_uid }}"
+  become: false
+  remote_user: todd

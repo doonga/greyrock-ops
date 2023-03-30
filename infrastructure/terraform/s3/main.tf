@@ -4,9 +4,8 @@ terraform {
       source  = "Backblaze/b2"
       version = "0.8.4"
     }
-    garage = {
-      source  = "terraform-registry.greyrock.tech/bjw-s/garage"
-      version = "0.0.2"
-    }
+    minio = {
+      source = "aminueza/minio"
+      version = "1.13.0"    }
   }
 }

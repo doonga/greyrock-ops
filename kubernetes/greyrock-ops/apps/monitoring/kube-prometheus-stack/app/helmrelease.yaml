@@ -168,14 +168,6 @@ spec:
                 target_label: __address__
                 replacement: $1
 
-          - job_name: garage
-            scrape_interval: 1m
-            scrape_timeout: 10s
-            honor_timestamps: true
-            static_configs:
-              - targets:
-                  - nas.private.greyrock.io:3911
-
           - job_name: hs110
             scrape_interval: 1m
             scrape_timeout: 10s
