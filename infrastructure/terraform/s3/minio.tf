@@ -3,9 +3,9 @@ locals {
     "thanos",
     "volsync",
     "zalando-postgres",
-    "todd_desktop",
-    "todd_laptop",
-    "todd_surface",
+    "todd-desktop",
+    "todd-laptop",
+    "todd-surface",
     "andy"
   ]
 }
