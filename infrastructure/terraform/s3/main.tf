@@ -4,8 +4,10 @@ terraform {
       source  = "Backblaze/b2"
       version = "0.8.4"
     }
+
     minio = {
       source = "aminueza/minio"
-      version = "1.13.0"    }
+      version = "1.13.0"
+    }
   }
 }
