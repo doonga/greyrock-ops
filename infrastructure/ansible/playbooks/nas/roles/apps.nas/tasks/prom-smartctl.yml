@@ -15,7 +15,7 @@
 - name: run prometheus-smartctl
   containers.podman.podman_container:
     name: prom-smartctl
-    image: "docker.io/pnnlmiscscripts/smartctl-exporter@sha256:4b40ddb24da826f6816f6d15e0b93d02284faf846e5eeb6c58e97e723325e0a1"
+    image: "docker.io/pnnlmiscscripts/smartctl-exporter@sha256:e2bcdc9156d7d609de682948939cbd8f73eaa1fead3f57df43077b0b7f7dd3af"
     state: started
     group_add: disk
     privileged: true
