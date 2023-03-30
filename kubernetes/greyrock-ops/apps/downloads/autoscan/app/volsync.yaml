@@ -25,7 +25,7 @@ spec:
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: n8n
+  name: autoscan
   namespace: selfhosted
 spec:
   sourcePVC: config-autoscan-0
