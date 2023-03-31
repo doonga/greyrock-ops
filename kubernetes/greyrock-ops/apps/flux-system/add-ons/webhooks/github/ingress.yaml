@@ -9,7 +9,7 @@ metadata:
 spec:
   ingressClassName: "nginx"
   rules:
-    - host: &host "flux-receiver-${CLUSTER_NAME}.greyrock.tech"
+    - host: &host "flux-receiver-greyrock-ops.greyrock.tech"
       http:
         paths:
           - path: /hook/

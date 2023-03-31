@@ -28,7 +28,7 @@ spec:
     service:
       main:
         type: LoadBalancer
-        loadBalancerIP: "${SVC_AMBW2MQTT_ADDR}"
+        loadBalancerIP: 10.45.0.26
         externalTrafficPolicy: Local
         ports:
           http:
