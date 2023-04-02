@@ -6,7 +6,7 @@ locals {
     "todd-desktop",
     "todd-laptop",
     "todd-surface",
-    "andy"
+    "andy-desktop"
   ]
 }
 
