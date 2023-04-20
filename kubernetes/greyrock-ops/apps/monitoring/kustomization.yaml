@@ -7,7 +7,6 @@ resources:
   # Flux-Kustomizations
   - ./alertmanager/ks.yaml
   - ./blackbox-exporter/ks.yaml
-  - ./goldilocks/ks.yaml
   - ./grafana/ks.yaml
   - ./hs110-exporter-rack/ks.yaml
   - ./kube-prometheus-stack/ks.yaml
@@ -15,4 +14,3 @@ resources:
   - ./node-exporter/ks.yaml
   - ./thanos/ks.yaml
   - ./vector/ks.yaml
-  - ./vpa/ks.yaml
