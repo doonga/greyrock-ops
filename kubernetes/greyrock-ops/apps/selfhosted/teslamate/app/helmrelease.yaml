@@ -86,3 +86,10 @@ spec:
               - *host
     postgresql:
       enabled: false
+
+    resources:
+      requests:
+        cpu: 6m
+        memory: 242M
+      limits:
+        memory: 242M
