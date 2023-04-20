@@ -79,12 +79,12 @@ spec:
 
     resources:
       requests:
-        cpu: 100m
+        cpu: 5m
         gpu.intel.com/i915: 1
-        memory: 4282M
+        memory: 11510M
       limits:
         gpu.intel.com/i915: 1
-        memory: 12G
+        memory: 11510M
 
     volumeClaimTemplates:
       - name: config
