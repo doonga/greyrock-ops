@@ -37,3 +37,10 @@ spec:
     ingress:
       main:
         enabled: false
+
+    resources:
+      requests:
+        cpu: 5m
+        memory: 38M
+      limits:
+        memory: 38M

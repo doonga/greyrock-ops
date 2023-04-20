@@ -44,3 +44,10 @@ spec:
 
     nodeSelector:
       rtlamr.feature.node.kubernetes.io/rtlamr: "true"
+
+    resources:
+      requests:
+        cpu: 100m
+        memory: 36M
+      limits:
+        memory: 36M
