@@ -5,7 +5,6 @@ resources:
   # Pre Flux-Kustomizations
   - ./namespace.yaml
   # Flux-Kustomizations
-  - ./excalidraw/ks.yaml
   - ./hajimari-todd/ks.yaml
   - ./hajimari-andy/ks.yaml
   - ./immich/ks.yaml
