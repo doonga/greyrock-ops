@@ -128,10 +128,10 @@ spec:
       requests:
         gpu.intel.com/i915: 1
         cpu: 189m
-        memory: 770M
+        memory: 1219M
       limits:
         gpu.intel.com/i915: 1
-        memory: 770M
+        memory: 1219M
 
     volumeClaimTemplates:
       - name: data

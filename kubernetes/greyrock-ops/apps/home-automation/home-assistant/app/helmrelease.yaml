@@ -93,10 +93,10 @@ spec:
 
     resources:
       requests:
-        cpu: 126m
-        memory: 411M
+        cpu: 23m
+        memory: 1165M
       limits:
-        memory: 4417M
+        memory: 1165M
 
     volumeClaimTemplates:
       - name: config

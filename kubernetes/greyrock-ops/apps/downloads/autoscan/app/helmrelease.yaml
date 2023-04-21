@@ -43,9 +43,9 @@ spec:
     resources:
       requests:
         cpu: 5m
-        memory: 29M
+        memory: 34M
       limits:
-        memory: 29M
+        memory: 34M
 
     volumeClaimTemplates:
       - name: config
