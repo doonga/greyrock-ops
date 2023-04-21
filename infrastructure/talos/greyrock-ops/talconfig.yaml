@@ -2,7 +2,7 @@
 clusterName: greyrock-ops
 
 talosVersion: v1.4.0
-kubernetesVersion: 1.26.1
+kubernetesVersion: 1.26.3
 endpoint: "https://greyrock-ops.private.greyrock.io:6443"
 
 additionalApiServerCertSans:
