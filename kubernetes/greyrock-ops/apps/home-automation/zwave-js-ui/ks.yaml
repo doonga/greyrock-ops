@@ -10,9 +10,9 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-apps-node-feature-discovery
-    - name: cluster-apps-external-secrets
     - name: cluster-apps-rook-ceph-cluster
     - name: cluster-apps-volsync
+    - name: cluster-apps-external-secrets-stores
   path: ./kubernetes/greyrock-ops/apps/home-automation/zwave-js-ui/app
   prune: true
   sourceRef:
