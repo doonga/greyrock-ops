@@ -6,7 +6,9 @@ resources:
   - ./namespace.yaml
   # Flux-Kustomizations
   - ./calibre-web/ks.yaml
-  - ./jellyfin/ks.yaml
   - ./plex/ks.yaml
   - ./series-cleanup/ks.yaml
   - ./tautulli/ks.yaml
+
+# Disabled
+# - ./jellyfin/ks.yaml

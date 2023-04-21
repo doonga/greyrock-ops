@@ -16,63 +16,41 @@ spec:
       version: 1.13.2
   interval: 30m
 
+  valuesFrom:
+    - kind: ConfigMap
+      name: cilium-values
+
   values:
-    autoDirectNodeRoutes: true
     bgp:
-      announce:
-        loadbalancerIP: true
       enabled: true
-    cluster:
-      id: 1
-      name: greyrock-ops
-    containerRuntime:
-      integration: containerd
-    endpointRoutes:
-      enabled: true
+
     hubble:
-      enabled: true
       metrics:
-        enabled:
-          - dns:query;ignoreAAAA
-          - drop
-          - tcp
-          - flow
-          - port-distribution
-          - icmp
-          - http
+        serviceMonitor:
+          enabled: true
+
       relay:
-        enabled: true
-        rollOutPods: true
-      serviceMonitor:
-        enabled: true
+        prometheus:
+          serviceMonitor:
+            enabled: true
+
       ui:
-        enabled: true
         ingress:
+          enabled: true
           annotations:
             nginx.ingress.kubernetes.io/whitelist-source-range: 10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
-            cert-manager.io/cluster-issuer: letsencrypt-production
-          enabled: true
-          className: nginx
+          className: "nginx"
           hosts:
             - &host hubble.greyrock.tech
           tls:
             - hosts:
                 - *host
-        rollOutPods: true
-    ipam:
-      mode: kubernetes
-    ipv4NativeRoutingCIDR: 10.244.0.0/16
-    k8sServiceHost: greyrock-ops.private.greyrock.io
-    k8sServicePort: 6443
-    kubeProxyReplacement: strict
-    kubeProxyReplacementHealthzBindAddr: 0.0.0.0:10256
-    loadBalancer:
-      algorithm: maglev
-      mode: dsr
-    localRedirectPolicy: true
+
+    prometheus:
+      serviceMonitor:
+        enabled: true
+
     operator:
-      rollOutPods: true
-    rollOutCiliumPods: true
-    securityContext:
-      privileged: true
-    tunnel: disabled
+      prometheus:
+        serviceMonitor:
+          enabled: true
