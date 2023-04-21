@@ -82,9 +82,9 @@ spec:
     resources:
       requests:
         cpu: 5m
-        memory: 263Mi
+        memory: 256Mi
       limits:
-        memory: 263Mi
+        memory: 3949Mi
 
     topologySpreadConstraints:
       - maxSkew: 1
