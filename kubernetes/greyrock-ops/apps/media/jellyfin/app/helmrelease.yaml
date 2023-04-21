@@ -66,7 +66,7 @@ spec:
         enabled: true
         mountPath: /storage/media
         path: /tank/media
-        server: nas.private.greyrock.io
+        server: nas.greyrock.io
         type: nfs
       transcode:
         enabled: true

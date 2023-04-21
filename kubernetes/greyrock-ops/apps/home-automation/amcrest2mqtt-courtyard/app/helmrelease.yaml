@@ -28,7 +28,7 @@ spec:
       MQTT_HOST: mosquitto.home-automation
       MQTT_PORT: 1883
       HOME_ASSISTANT: "true"
-      AMCREST_HOST: courtyard-porch-doorbell.private.greyrock.io
+      AMCREST_HOST: courtyard-porch-doorbell.greyrock.io
 
     envFrom:
       - secretRef:

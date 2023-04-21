@@ -36,7 +36,7 @@ spec:
             targetLabel: kubernetes_node
           - action: replace
             regex: (.*)
-            replacement: $1.private.greyrock.io:9100
+            replacement: $1.greyrock.io:9100
             sourceLabels:
               - kubernetes_node
             targetLabel: instance

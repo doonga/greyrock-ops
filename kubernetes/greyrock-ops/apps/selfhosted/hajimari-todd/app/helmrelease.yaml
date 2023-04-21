@@ -61,7 +61,7 @@ spec:
               url: https://portal.arubainstanton.com
               icon: server-network
             - name: PiKVM
-              url: https://pikvm.private.greyrock.io
+              url: https://pikvm.greyrock.io
               icon: video-switch
 
       globalBookmarks:

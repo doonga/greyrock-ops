@@ -113,10 +113,10 @@ spec:
         # PiKVM
         - module: http_2xx
           name: pikvm-http
-          url: "https://pikvm.private.greyrock.io"
+          url: "https://pikvm.greyrock.io"
         - module: icmp
           name: pikvm-icmp
-          url: pikvm.private.greyrock.io
+          url: pikvm.greyrock.io
 
         # Robot vacuums
         # - module: icmp
@@ -143,11 +143,11 @@ spec:
         # Other devices
         - module: icmp
           name: zigbee-controller-icmp
-          url: slzb-06.private.greyrock.io
+          url: slzb-06.greyrock.io
 
         - module: icmp
           name: nas-icmp
-          url: nas.private.greyrock.io
+          url: nas.greyrock.io
 
         - module: icmp
           name: ping-cloudflare

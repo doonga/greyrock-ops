@@ -3,17 +3,17 @@ clusterName: greyrock-ops
 
 talosVersion: v1.4.0
 kubernetesVersion: 1.26.3
-endpoint: "https://greyrock-ops.private.greyrock.io:6443"
+endpoint: "https://greyrock-ops.greyrock.io:6443"
 
 additionalApiServerCertSans:
   - ${clusterEndpointIP}
 
 additionalMachineCertSans:
   - ${clusterEndpointIP}
-  - greyrock-ops.private.greyrock.io
+  - greyrock-ops.greyrock.io
 
 nodes:
-  - hostname: k8s1.private.greyrock.io
+  - hostname: k8s1.greyrock.io
     ipAddress: 10.1.1.4
     controlPlane: true
     installDisk: /dev/nvme0n1
@@ -21,7 +21,7 @@ nodes:
     networkInterfaces:
       - interface: eth0
         dhcp: true
-  - hostname: k8s2.private.greyrock.io
+  - hostname: k8s2.greyrock.io
     ipAddress: 10.1.1.5
     controlPlane: true
     installDisk: /dev/nvme0n1
@@ -29,7 +29,7 @@ nodes:
     networkInterfaces:
       - interface: eth0
         dhcp: true
-  - hostname: k8s3.private.greyrock.io
+  - hostname: k8s3.greyrock.io
     ipAddress: 10.1.1.6
     controlPlane: true
     installDisk: /dev/nvme0n1
@@ -37,7 +37,7 @@ nodes:
     networkInterfaces:
       - interface: eth0
         dhcp: true
-  - hostname: k8s4.private.greyrock.io
+  - hostname: k8s4.greyrock.io
     ipAddress: 10.1.1.7
     controlPlane: false
     installDisk: /dev/sda
@@ -50,7 +50,7 @@ nodes:
             dhcp: false
             addresses:
               - 10.1.2.7/24
-  - hostname: k8s5.private.greyrock.io
+  - hostname: k8s5.greyrock.io
     ipAddress: 10.1.1.8
     controlPlane: false
     installDisk: /dev/sda
@@ -63,7 +63,7 @@ nodes:
             dhcp: false
             addresses:
               - 10.1.2.8/24
-  - hostname: k8s6.private.greyrock.io
+  - hostname: k8s6.greyrock.io
     ipAddress: 10.1.1.9
     controlPlane: false
     installDisk: /dev/sda

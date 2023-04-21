@@ -83,7 +83,7 @@ spec:
       media:
         enabled: true
         type: nfs
-        server: "nas.private.greyrock.io"
+        server: "nas.greyrock.io"
         path: /tank/frigate
         mountPath: /media
       usb:

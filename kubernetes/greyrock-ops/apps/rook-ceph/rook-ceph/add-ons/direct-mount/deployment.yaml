@@ -82,5 +82,5 @@ spec:
                   name: direct-mount-scripts
         - name: nas-backup
           nfs:
-            server: "nas.private.greyrock.io"
+            server: "nas.greyrock.io"
             path: /tank/backup/kubernetes

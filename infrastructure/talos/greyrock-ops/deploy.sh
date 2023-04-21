@@ -6,12 +6,12 @@
 # talosctl kubeconfig -n 10.5.0.2
 
 # Deploy the configuration to the nodes
-talosctl apply-config -i -n 10.1.1.4 -f ./clusterconfig/greyrock-ops-k8s1.private.greyrock.io.yaml
-talosctl apply-config -i -n 10.1.1.5 -f ./clusterconfig/greyrock-ops-k8s2.private.greyrock.io.yaml
-talosctl apply-config -i -n 10.1.1.6 -f ./clusterconfig/greyrock-ops-k8s3.private.greyrock.io.yaml
-talosctl apply-config -i -n 10.1.1.7 -f ./clusterconfig/greyrock-ops-k8s4.private.greyrock.io.yaml
-talosctl apply-config -i -n 10.1.1.8 -f ./clusterconfig/greyrock-ops-k8s5.private.greyrock.io.yaml
-talosctl apply-config -i -n 10.1.1.9 -f ./clusterconfig/greyrock-ops-k8s6.private.greyrock.io.yaml
+talosctl apply-config -i -n 10.1.1.4 -f ./clusterconfig/greyrock-ops-k8s1.greyrock.io.yaml
+talosctl apply-config -i -n 10.1.1.5 -f ./clusterconfig/greyrock-ops-k8s2.greyrock.io.yaml
+talosctl apply-config -i -n 10.1.1.6 -f ./clusterconfig/greyrock-ops-k8s3.greyrock.io.yaml
+talosctl apply-config -i -n 10.1.1.7 -f ./clusterconfig/greyrock-ops-k8s4.greyrock.io.yaml
+talosctl apply-config -i -n 10.1.1.8 -f ./clusterconfig/greyrock-ops-k8s5.greyrock.io.yaml
+talosctl apply-config -i -n 10.1.1.9 -f ./clusterconfig/greyrock-ops-k8s6.greyrock.io.yaml
 
 echo "Config applied"
 echo "Waiting 2 mins..."

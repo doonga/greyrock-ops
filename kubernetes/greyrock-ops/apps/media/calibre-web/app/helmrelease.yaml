@@ -71,7 +71,7 @@ spec:
         enabled: true
         mountPath: /data/nas-media
         path: /tank/media
-        server: nas.private.greyrock.io
+        server: nas.greyrock.io
         type: nfs
       cache:
         enabled: true
