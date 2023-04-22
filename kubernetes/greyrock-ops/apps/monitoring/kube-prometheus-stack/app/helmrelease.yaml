@@ -69,6 +69,12 @@ spec:
 
     kubeStateMetrics:
       enabled: true
+      resources:
+        requests:
+          cpu: 15m
+          memory: 128M
+        limits:
+          memory: 256M
     kube-state-metrics:
       metricLabelsAllowlist:
         - "persistentvolumeclaims=[*]"
