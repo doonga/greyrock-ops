@@ -82,6 +82,10 @@
     },
     {
       "folder": "Ray Donovan (2013) [imdb-tt2249007]",
+            "skip": true
+    },
+    {
+      "folder": "Schmigadoon! (2021) [imdb-tt11808942]",
       "skip": true
     },
     {
