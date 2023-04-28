@@ -27,12 +27,12 @@ spec:
       vpn:
         enabled: true
         type: LoadBalancer
-        loadBalancerIP: 10.45.0.11
+        loadBalancerIP: 10.45.0.12
         externalTrafficPolicy: Local
         ports:
           shadowsocks:
             enabled: true
-            port: 8389
+            port: 8388
 
     addons:
       vpn:
