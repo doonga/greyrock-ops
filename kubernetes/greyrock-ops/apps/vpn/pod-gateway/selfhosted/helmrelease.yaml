@@ -32,7 +32,7 @@ spec:
         ports:
           shadowsocks:
             enabled: true
-            port: 8388
+            port: 8389
 
     addons:
       vpn:
