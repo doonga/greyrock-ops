@@ -1,6 +1,30 @@
-# Talos configuration as code
+## greyrock-ops
 
-These folders contain the definitions of my Talos clusters. I use the awesome `talhelper` tool written by [@budimanjojo](https://github.com/budimanjojo) (https://github.com/budimanjojo/talhelper) to generate the individual node configurations.
+greyrock-ops is my homeprod cluster.
 
-Run deploy.sh
-kustomize build --enable-helm | kubectl apply -f -
+## How to bootstrap
+
+Assuming you are in the `greyrock-ops` root folder:
+
+### Flux
+
+#### Install Flux
+
+```sh
+kubectl apply --server-side --kustomize ./bootstrap
+```
+
+### Apply Cluster Configuration
+
+_These cannot be applied with `kubectl` in the regular fashion due to some files being encrypted with sops_
+
+```sh
+sops --decrypt ./bootstrap/age-key.sops.yaml | kubectl apply -f -
+kubectl apply -f ./flux/vars/cluster-settings.yaml
+```
+
+### Kick off Flux applying this repository
+
+```sh
+kubectl apply --server-side --kustomize ./flux/config
+```
