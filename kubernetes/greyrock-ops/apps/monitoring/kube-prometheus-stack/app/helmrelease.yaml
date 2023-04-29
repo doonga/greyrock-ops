@@ -115,7 +115,7 @@ spec:
           cpu: 35m
           memory: 273M
         limits:
-          memory: 326M
+          memory: 512M
 
       prometheusConfigReloader:
         # resource config for prometheusConfigReloader
