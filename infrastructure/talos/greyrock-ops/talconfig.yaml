@@ -1,16 +1,16 @@
 ---
-clusterName: greyrock-ops
+clusterName: ${clustername}
 
 talosVersion: v1.4.1
-kubernetesVersion: 1.26.3
-endpoint: "https://greyrock-ops.greyrock.io:6443"
+kubernetesVersion: 1.27.1
+endpoint: "https://${clustername}.greyrock.io:6443"
 
 additionalApiServerCertSans:
   - ${clusterEndpointIP}
 
 additionalMachineCertSans:
   - ${clusterEndpointIP}
-  - greyrock-ops.greyrock.io
+  - ${clustername}.greyrock.io
 
 nodes:
   - hostname: k8s1.greyrock.io
@@ -82,14 +82,6 @@ controlPlane:
     - |-
       cluster:
         allowSchedulingOnMasters: false
-        extraManifests:
-            # Install the kubelet cert-approver manifests
-            - https://raw.githubusercontent.com/doonga/greyrock-ops/main/infrastructure/talos/greyrock-ops/integrations/kubelet-csr-approver/kubelet-csr-approver.yaml
-        network:
-          cni:
-            name: custom
-            urls:
-              - https://raw.githubusercontent.com/doonga/greyrock-ops/main/infrastructure/talos/greyrock-ops/integrations/cni/cilium.yaml
         proxy:
           disabled: true
     - |-
@@ -112,6 +104,14 @@ controlPlane:
           nodeIP:
             validSubnets:
               - 10.1.1.0/24
+        network:
+          extraHostEntries:
+            - ip: ${clusterEndpointIP}
+              aliases:
+                - ${clusterName}.greyrock.io
+        sysctls:
+          fs.inotify.max_user_watches: "1048576"
+          fs.inotify.max_user_instances: "8192"
         time:
           disabled: false
           servers:
@@ -136,6 +136,14 @@ worker:
           nodeIP:
             validSubnets:
               - 10.1.1.0/24
+        network:
+          extraHostEntries:
+            - ip: ${clusterEndpointIP}
+              aliases:
+                - ${clusterName}.greyrock.io
+        sysctls:
+          fs.inotify.max_user_watches: "1048576"
+          fs.inotify.max_user_instances: "8192"
         install:
           extensions:
             - image: ghcr.io/siderolabs/i915-ucode:20230210
