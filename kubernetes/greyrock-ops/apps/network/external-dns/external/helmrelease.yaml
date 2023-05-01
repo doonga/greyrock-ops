@@ -20,7 +20,7 @@ spec:
     fullnameOverride: externaldns-external
 
     domainFilters:
-      - 'greyrock.tech'
+      - greyrock.tech
 
     env:
       - name: CF_API_TOKEN
