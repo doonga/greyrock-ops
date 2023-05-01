@@ -25,7 +25,8 @@ spec:
         enabled: true
         type: LoadBalancer
         loadBalancerIP: 10.45.0.1
-        external-dns.alpha.kubernetes.io/hostname: "ingress.greyrock.tech"
+        annotations:
+          external-dns.alpha.kubernetes.io/hostname: "ingress.greyrock.tech"
         externalTrafficPolicy: Local
 
       publishService:
@@ -84,9 +85,9 @@ spec:
       resources:
         requests:
           cpu: 23m
-          memory: 249M
+          memory: 381M
         limits:
-          memory: 1G
+          memory: 463M
 
     defaultBackend:
       enabled: false
