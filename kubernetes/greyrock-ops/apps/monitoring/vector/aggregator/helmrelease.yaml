@@ -37,6 +37,7 @@ spec:
         loadBalancerIP: 10.45.0.2
         annotations:
           coredns.io/hostname: "vector.greyrock.tech"
+          external-dns.alpha.kubernetes.io/hostname: "vector.greyrock.tech."
         externalTrafficPolicy: Local
         ports:
           http:
