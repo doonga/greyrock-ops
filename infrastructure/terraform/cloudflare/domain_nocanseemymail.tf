@@ -4,46 +4,32 @@ module "cf_domain_nocanseemymail" {
   account_id = cloudflare_account.greyrock.id
   plan_type  = "free"
   dns_entries = [
-    # Fastmail settings
+    # Cloudflare Email Routing
     {
-      id       = "fastmail_mx_1"
+      id       = "cloudflare_mx_1"
       name     = "@"
-      priority = 10
-      value    = "in1-smtp.messagingengine.com"
+      priority = 22
+      value    = "route1.mx.cloudflare.net"
       type     = "MX"
     },
     {
-      id       = "fastmail_mx_2"
+      id       = "cloudflare_mx_2"
       name     = "@"
-      priority = 20
-      value    = "in2-smtp.messagingengine.com"
+      priority = 91
+      value    = "route2.mx.cloudflare.net"
       type     = "MX"
     },
     {
-      id      = "fastmail_dkim_1"
-      name    = "fm1._domainkey"
-      value   = "fm1.nocanseemymail.com.dkim.fmhosted.com"
-      type    = "CNAME"
-      proxied = false
+      id       = "cloudflare_mx_3"
+      name     = "@"
+      priority = 6
+      value    = "route3.mx.cloudflare.net"
+      type     = "MX"
     },
     {
-      id      = "fastmail_dkim_2"
-      name    = "fm2._domainkey"
-      value   = "fm2.nocanseemymail.com.dkim.fmhosted.com"
-      type    = "CNAME"
-      proxied = false
-    },
-    {
-      id      = "fastmail_dkim_3"
-      name    = "fm3._domainkey"
-      value   = "fm3.nocanseemymail.com.dkim.fmhosted.com"
-      type    = "CNAME"
-      proxied = false
-    },
-    {
-      id    = "fastmail_spf"
+      id    = "cloudflare_spf"
       name  = "@"
-      value = "v=spf1 include:spf.messagingengine.com ?all"
+      value = "v=spf1 include:_spf.mx.cloudflare.net ~all"
       type  = "TXT"
     },
   ]
