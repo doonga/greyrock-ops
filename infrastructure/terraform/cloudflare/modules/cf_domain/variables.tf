@@ -23,3 +23,7 @@ variable "dns_entries" {
   }))
   default = []
 }
+
+variable "plan_type" {
+  type = string
+}

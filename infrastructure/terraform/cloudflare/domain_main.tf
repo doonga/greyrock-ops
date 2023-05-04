@@ -2,6 +2,7 @@ module "cf_domain_main" {
   source     = "./modules/cf_domain"
   domain     = "greyrock.io"
   account_id = cloudflare_account.greyrock.id
+  plan_type  = "pro"
   dns_entries = [
     {
       name    = "ipv4"

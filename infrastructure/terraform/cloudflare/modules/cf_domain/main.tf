@@ -9,7 +9,7 @@ terraform {
 resource "cloudflare_zone" "zone" {
   zone       = var.domain
   account_id = var.account_id
-  plan       = "free"
+  plan       = var.plan_type
   type       = "full"
 }
 
