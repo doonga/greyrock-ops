@@ -1,0 +1,13 @@
+---
+apiVersion: externaldns.k8s.io/v1alpha1
+kind: DNSEndpoint
+metadata:
+  name: cloudflared-tunnel
+  namespace: network
+  annotations:
+    external-dns.alpha.kubernetes.io/target: ingress.greyrock.tech
+spec:
+  endpoints:
+    - dnsName: ingress.greyrock.tech
+      recordType: CNAME
+      targets: ["e23df852-19d0-4fcc-a82a-db4eb7e33112.cfargotunnel.com"]
