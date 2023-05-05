@@ -45,7 +45,7 @@ module "cf_domain_ingress" {
       name  = "*._domainkey"
       value = "v=DKIM1; p="
       type  = "TXT"
-    }
+    },
     {
       id    = "azure_validator"
       name  = "@"
