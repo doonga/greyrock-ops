@@ -49,6 +49,12 @@ spec:
             - name: "DS_PROMETHEUS"
               value: Prometheus
 
+        # Ref: https://grafana.com/grafana/dashboards/12309-bind9-exporter-dns/
+        bind:
+          gnetId: 12309
+          revision: 4
+          datasource: Prometheus
+
       node-exporter:
         # Ref: https://grafana.com/grafana/dashboards/1860-node-exporter-full/
         node-exporter:
