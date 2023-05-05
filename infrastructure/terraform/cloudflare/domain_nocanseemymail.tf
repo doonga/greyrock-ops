@@ -31,8 +31,20 @@ module "cf_domain_nocanseemymail" {
     {
       id    = "cloudflare_spf"
       name  = "@"
-      value = "v=spf1 include:_spf.mx.cloudflare.net ~all"
+      value = "v=spf1 include:_spf.mx.cloudflare.net -all"
       type  = "TXT"
     },
+    {
+      id    = "cloudflare_dmarc"
+      name  = "_dmarc"
+      value = "v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s; mailto:3bf00355c71d41bba80402d2dd6feacb@dmarc-reports.cloudflare.net;"
+      type  = "TXT"
+    },
+    {
+      id    = "cloudflare_dkim"
+      name  = "*._domainkey"
+      value = "v=DKIM1; p="
+      type  = "TXT"
+    }
   ]
 }
