@@ -8,11 +8,6 @@ module "cf_domain_ingress" {
       name  = "ipv4"
       value = local.home_ipv4
     },
-    {
-      name  = "ingress"
-      value = "ipv4.greyrock.tech"
-      type  = "CNAME"
-    },
     # Generic settings
     {
       name  = "_dmarc"
