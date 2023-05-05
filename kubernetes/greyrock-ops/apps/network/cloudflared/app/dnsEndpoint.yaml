@@ -10,4 +10,4 @@ spec:
   endpoints:
     - dnsName: ingress.greyrock.tech
       recordType: CNAME
-      targets: ["e23df852-19d0-4fcc-a82a-db4eb7e33112.cfargotunnel.com"]
+      targets: ["279b7f63-50ca-44f0-90e1-6c61d2876eb8.cfargotunnel.com"]
