@@ -30,7 +30,7 @@ module "cf_domain_doonga_info" {
     {
       id    = "cloudflare_spf"
       name  = "@"
-      value = "v=spf1 include:_spf.mx.cloudflare.net ~all"
+      value = "v=spf1 include:_spf.mx.cloudflare.net -all"
       type  = "TXT"
     },
     {
