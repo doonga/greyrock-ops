@@ -27,3 +27,7 @@ variable "dns_entries" {
 variable "plan_type" {
   type = string
 }
+
+variable "email_catch_all" {
+  type = string
+}

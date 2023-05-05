@@ -3,6 +3,7 @@ module "cf_domain_doonga_info" {
   domain     = "doonga.info"
   account_id = cloudflare_account.greyrock.id
   plan_type  = "free"
+  email_catch_all = "tpunderson+doonga-info@greyrock.io"
   dns_entries = [
     # Cloudflare Email Routing
     {

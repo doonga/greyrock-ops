@@ -3,6 +3,7 @@ module "cf_domain_nocanseemymail" {
   domain     = "nocanseemymail.com"
   account_id = cloudflare_account.greyrock.id
   plan_type  = "free"
+  email_catch_all = "tpunderson+nocanseemymail@greyrock.io"
   dns_entries = [
     # Cloudflare Email Routing
     {

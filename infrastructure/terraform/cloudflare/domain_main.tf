@@ -3,6 +3,7 @@ module "cf_domain_main" {
   domain     = "greyrock.io"
   account_id = cloudflare_account.greyrock.id
   plan_type  = "pro" # change to free when plan expires
+  email_catch_all = "tpunderson@greyrock.io"
   dns_entries = [
     {
       name    = "ipv4"
