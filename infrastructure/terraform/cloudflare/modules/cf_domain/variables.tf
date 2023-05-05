@@ -28,6 +28,12 @@ variable "plan_type" {
   type = string
 }
 
-variable "email_catch_all" {
+variable "email_catch_all_address" {
   type = string
+  default = ""
+}
+
+variable "enable_email_routing" {
+  type = bool
+  default = false
 }

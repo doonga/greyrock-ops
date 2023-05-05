@@ -1,7 +1,8 @@
 resource "cloudflare_email_routing_catch_all" "email_routing" {
+  count = var.enable_email_routing ? 1 : 0
   zone_id = cloudflare_zone.zone.id
   name    = "catch all"
-  enabled = true
+  enabled = var.enable_email_routing
 
   matcher {
     type = "all"
@@ -9,6 +10,6 @@ resource "cloudflare_email_routing_catch_all" "email_routing" {
 
   action {
     type  = "forward"
-    value = [var.email_catch_all]
+    value = [var.email_catch_all_address]
   }
 }
