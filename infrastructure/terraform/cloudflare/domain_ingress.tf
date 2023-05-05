@@ -4,10 +4,6 @@ module "cf_domain_ingress" {
   account_id = cloudflare_account.greyrock.id
   plan_type  = "free"
   dns_entries = [
-    {
-      name  = "ipv4"
-      value = local.home_ipv4
-    },
     # Generic settings
     {
       name  = "_dmarc"
