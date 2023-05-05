@@ -25,6 +25,7 @@ module "cf_domain_ingress" {
   ]
 }
 
+# Allow Flux Webhook to access zone
 resource "cloudflare_filter" "cf_domain_ingress_github_flux_webhook" {
   zone_id     = module.cf_domain_ingress.zone_id
   description = "Allow GitHub flux API"
@@ -37,28 +38,4 @@ resource "cloudflare_firewall_rule" "cf_domain_ingress_github_flux_webhook" {
   filter_id   = cloudflare_filter.cf_domain_ingress_github_flux_webhook.id
   action      = "allow"
   priority    = 1
-}
-
-resource "cloudflare_page_rule" "cf_domain_ingress_jellyfin_bypass_cache" {
-  zone_id  = module.cf_domain_ingress.zone_id
-  target   = format("jellyfin.%s/*", module.cf_domain_ingress.zone)
-  status   = "active"
-  priority = 2
-
-  actions {
-    cache_level         = "bypass"
-    disable_performance = true
-  }
-}
-
-resource "cloudflare_page_rule" "cf_domain_ingress_plex_bypass_cache" {
-  zone_id  = module.cf_domain_ingress.zone_id
-  target   = format("plex.%s/*", module.cf_domain_ingress.zone)
-  status   = "active"
-  priority = 1
-
-  actions {
-    cache_level         = "bypass"
-    disable_performance = true
-  }
 }
