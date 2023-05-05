@@ -32,7 +32,7 @@ module "cf_domain_main" {
     # Generic settings
     {
       name  = "_dmarc"
-      value = "v=DMARC1; p=reject; rua=mailto:3iucjkde@ag.dmarcian.com; ruf=mailto:3iucjkde@fr.dmarcian.com;"
+      value = "v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s; rua=mailto:9fad2d90843e43ff94930d1289f5dead@dmarc-reports.cloudflare.net"
       type  = "TXT"
     },
     {
