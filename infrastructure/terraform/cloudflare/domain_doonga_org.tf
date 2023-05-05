@@ -37,7 +37,7 @@ module "cf_domain_doonga_org" {
     {
       id    = "cloudflare_dmarc"
       name  = "_dmarc"
-      value = "v=DMARC1; p=reject; rua=mailto:136f654a846544cfb1d2a0a7e301f8dc@dmarc-reports.cloudflare.net;"
+      value = "v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s; rua=mailto:136f654a846544cfb1d2a0a7e301f8dc@dmarc-reports.cloudflare.net;"
       type  = "TXT"
     },
     {
