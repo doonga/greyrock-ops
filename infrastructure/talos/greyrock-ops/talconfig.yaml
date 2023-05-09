@@ -1,16 +1,16 @@
 ---
-clusterName: ${clustername}
+clusterName: ${clusterName}
 
-talosVersion: v1.4.1
+talosVersion: v1.4.2
 kubernetesVersion: 1.27.1
-endpoint: "https://${clustername}.greyrock.io:6443"
+endpoint: "https://${clusterName}.greyrock.io:6443"
 
 additionalApiServerCertSans:
   - ${clusterEndpointIP}
 
 additionalMachineCertSans:
   - ${clusterEndpointIP}
-  - ${clustername}.greyrock.io
+  - ${clusterName}.greyrock.io
 
 nodes:
   - hostname: k8s1.greyrock.io
