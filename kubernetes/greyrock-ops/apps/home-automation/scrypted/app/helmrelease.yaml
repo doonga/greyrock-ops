@@ -19,7 +19,7 @@ spec:
   values:
     image:
       repository: ghcr.io/koush/scrypted
-      tag: v0.12.1
+      tag: 18-bullseye-full-v0.12.1
 
     service:
       main:
@@ -30,7 +30,7 @@ spec:
           http:
             port: 80
             protocol: TCP
-            targetPort: 10443
+            targetPort: 5353
 
     ingress:
       main:
