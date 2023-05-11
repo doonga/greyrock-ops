@@ -30,7 +30,7 @@ spec:
           http:
             port: 80
             protocol: TCP
-            targetPort: 5353
+            targetPort: 10443
 
     ingress:
       main:
