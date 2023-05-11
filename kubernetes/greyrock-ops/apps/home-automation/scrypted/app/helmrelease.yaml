@@ -18,7 +18,8 @@ spec:
 
   values:
     image:
-      repository: ghcr.io/koush/scrypted:18-bullseye-full-v0.12.1
+      repository: ghcr.io/koush/scrypted
+      tag: 18-bullseye-full-v0.12.1
 
     service:
       main:
