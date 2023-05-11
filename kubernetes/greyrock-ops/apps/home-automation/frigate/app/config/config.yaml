@@ -61,7 +61,7 @@ objects:
 # Specify camera's
 go2rtc:
   streams:
-    courtyard_porch_doorbell:
+    courtyard_porch_doorbell_main:
       - rtsp://{FRIGATE_CAMERA_COURTYARD_DOORBELL_USER}:{FRIGATE_CAMERA_COURTYARD_DOORBELL_PASSWORD}@{FRIGATE_CAMERA_COURTYARD_DOORBELL_HOST}:554/h264Preview_01_main
     courtyard_porch_doorbell_substream:
       - rtsp://{FRIGATE_CAMERA_COURTYARD_DOORBELL_USER}:{FRIGATE_CAMERA_COURTYARD_DOORBELL_PASSWORD}@{FRIGATE_CAMERA_COURTYARD_DOORBELL_HOST}:554/h264Preview_01_sub
@@ -72,7 +72,7 @@ cameras:
       output_args:
         record: preset-record-generic-audio-copy
       inputs:
-        - path: rtsp://127.0.0.1:8554/courtyard_porch_doorbell
+        - path: rtsp://127.0.0.1:8554/courtyard_porch_doorbell_main
           input_args: preset-rtsp-restream
           roles:
             - record
