@@ -50,6 +50,12 @@ spec:
           - hosts:
               - *host
 
+    persistence:
+      config:
+        enabled: true
+        existingClaim: node-red-data
+        mountPath: /server/volume
+
     resources:
       requests:
         cpu: 5m
