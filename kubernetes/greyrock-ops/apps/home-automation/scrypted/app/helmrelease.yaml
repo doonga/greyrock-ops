@@ -28,7 +28,7 @@ spec:
         externalTrafficPolicy: Local
         ports:
           http:
-            port: 10443
+            port: 11080
 
     ingress:
       main:
