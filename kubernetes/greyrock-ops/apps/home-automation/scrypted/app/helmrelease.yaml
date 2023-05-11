@@ -28,9 +28,7 @@ spec:
         externalTrafficPolicy: Local
         ports:
           http:
-            port: 80
-            protocol: TCP
-            targetPort: 10443
+            port: 10443
 
     ingress:
       main:
