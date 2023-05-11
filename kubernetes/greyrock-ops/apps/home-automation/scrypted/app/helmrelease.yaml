@@ -53,7 +53,7 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: node-red-data
+        existingClaim: scrypted-data
         mountPath: /server/volume
 
     resources:
