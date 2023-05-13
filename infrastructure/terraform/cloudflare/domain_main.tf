@@ -15,59 +15,53 @@ module "cf_domain_main" {
       type    = "CNAME"
       proxied = false
     },
-    {
-      id      = "enterpriseenrollment"
-      name    = "enterpriseenrollment"
-      value   = "enterpriseenrollment-s.manage.microsoft.com"
-      type    = "CNAME"
-      proxied = false
-    },
-    {
-      id      = "enterpriseregistration"
-      name    = "enterpriseregistration"
-      value   = "enterpriseregistration.windows.net"
-      type    = "CNAME"
-      proxied = false
-    },
     # Generic settings
     {
       name  = "_dmarc"
       value = "v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s; rua=mailto:9fad2d90843e43ff94930d1289f5dead@dmarc-reports.cloudflare.net"
       type  = "TXT"
     },
+    # Fastmail settings
     {
-      id       = "o365_mx_1"
+      id       = "fastmail_mx_1"
       name     = "@"
-      priority = 0
-      value    = "greyrock-io.mail.protection.outlook.com"
+      priority = 10
+      value    = "in1-smtp.messagingengine.com"
       type     = "MX"
     },
     {
-      id      = "o365_dkim_1"
-      name    = "selector1._domainkey"
-      value   = "selector1-greyrock-io._domainkey.azureslgreyrock.onmicrosoft.com"
+      id       = "fastmail_mx_2"
+      name     = "@"
+      priority = 20
+      value    = "in2-smtp.messagingengine.com"
+      type     = "MX"
+    },
+    {
+      id      = "fastmail_dkim_1"
+      name    = "fm1._domainkey"
+      value   = "fm1.greyrock.io.dkim.fmhosted.com"
       type    = "CNAME"
       proxied = false
     },
     {
-      id      = "o365_dkim_2"
-      name    = "selector2._domainkey"
-      value   = "selector2-greyrock-io._domainkey.azureslgreyrock.onmicrosoft.com"
+      id      = "fastmail_dkim_2"
+      name    = "fm2._domainkey"
+      value   = "fm2.greyrock.io.dkim.fmhosted.com"
       type    = "CNAME"
       proxied = false
     },
     {
-      id    = "o365_spf"
+      id      = "fastmail_dkim_3"
+      name    = "fm3._domainkey"
+      value   = "fm3.greyrock.io.dkim.fmhosted.com"
+      type    = "CNAME"
+      proxied = false
+    },
+    {
+      id    = "fastmail_spf"
       name  = "@"
-      value = "v=spf1 include:spf.protection.outlook.com -all"
+      value = "v=spf1 include:spf.messagingengine.com -all"
       type  = "TXT"
-    },
-    {
-      id      = "o365_autodiscover"
-      name    = "autodiscover"
-      value   = "autodiscover.outlook.com"
-      type    = "CNAME"
-      proxied = false
     },
     # Mailgun settings
     {
@@ -93,7 +87,7 @@ module "cf_domain_main" {
     {
       id    = "mailgun_spf"
       name  = "m"
-      value = "v=spf1 include:mailgun.org ~all"
+      value = "v=spf1 include:mailgun.org -all"
       type  = "TXT"
     },
     {
