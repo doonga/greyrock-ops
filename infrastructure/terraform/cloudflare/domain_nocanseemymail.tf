@@ -3,35 +3,45 @@ module "cf_domain_nocanseemymail" {
   domain     = "nocanseemymail.com"
   account_id = cloudflare_account.greyrock.id
   plan_type  = "free"
-  enable_email_routing = true
-  email_catch_all_address = "tpunderson+nocanseemymail@greyrock.io"
+  enable_email_routing = false
   dns_entries = [
-    # Cloudflare Email Routing
+    # Fastmail settings
     {
-      id       = "cloudflare_mx_1"
+      id       = "fastmail_mx_1"
       name     = "@"
-      priority = 22
-      value    = "route1.mx.cloudflare.net"
+      priority = 10
+      value    = "in1-smtp.messagingengine.com"
       type     = "MX"
     },
     {
-      id       = "cloudflare_mx_2"
+      id       = "fastmail_mx_2"
       name     = "@"
-      priority = 91
-      value    = "route2.mx.cloudflare.net"
+      priority = 20
+      value    = "in2-smtp.messagingengine.com"
       type     = "MX"
     },
     {
-      id       = "cloudflare_mx_3"
-      name     = "@"
-      priority = 6
-      value    = "route3.mx.cloudflare.net"
-      type     = "MX"
+      id    = "fastmail_dkim_1"
+      name  = "fm1._domainkey"
+      value = "fm1.nocanseemymail.com.dkim.fmhosted.com"
+      type  = "TXT"
     },
     {
-      id    = "cloudflare_spf"
+      id    = "fastmail_dkim_2"
+      name  = "fm2._domainkey"
+      value = "fm2.nocanseemymail.com.dkim.fmhosted.com"
+      type  = "TXT"
+    },
+    {
+      id    = "fastmail_dkim_3"
+      name  = "fm3._domainkey"
+      value = "fm3.nocanseemymail.com.dkim.fmhosted.com"
+      type  = "TXT"
+    },
+    {
+      id    = "fastmail_spf"
       name  = "@"
-      value = "v=spf1 include:_spf.mx.cloudflare.net -all"
+      value = "v=spf1 include:spf.messagingengine.com -all"
       type  = "TXT"
     },
     {
@@ -40,11 +50,5 @@ module "cf_domain_nocanseemymail" {
       value = "v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s; mailto:3bf00355c71d41bba80402d2dd6feacb@dmarc-reports.cloudflare.net;"
       type  = "TXT"
     },
-    {
-      id    = "cloudflare_dkim"
-      name  = "*._domainkey"
-      value = "v=DKIM1; p="
-      type  = "TXT"
-    }
   ]
 }
