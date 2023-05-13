@@ -63,7 +63,7 @@ module "greyrock" {
       api_key = module.onepassword_item_mailgun.fields.auth0_smtp_password
     }
     cloudflare = {
-      api_token = module.onepassword_item_cloudflare.fields.auth0_terraform_api_token
+      api_token = module.onepassword_item_cloudflare.fields.cloudflare-ddns
     }
   }
 }
