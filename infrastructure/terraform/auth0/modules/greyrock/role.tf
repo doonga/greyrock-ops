@@ -13,11 +13,6 @@ resource "auth0_role" "grafana_admin" {
   description = "Grafana admins"
 }
 
-resource "auth0_role" "k8s_admin" {
-  name        = "k8s-admin"
-  description = "Kubernetes cluster admins"
-}
-
 resource "auth0_role" "paperless" {
   name        = "paperless"
   description = "Paperless access"
@@ -31,4 +26,14 @@ resource "auth0_role" "miniflux" {
 resource "auth0_role" "frigate" {
   name        = "frigate"
   description = "Frigate access"
+}
+
+resource "auth0_role" "todds_stuff" {
+  name        = "todds-stuff"
+  description = "Todd's Resources"
+}
+
+resource "auth0_role" "andys_stuff" {
+  name        = "andys-stuff"
+  description = "Andy's Resources"
 }
