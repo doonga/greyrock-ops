@@ -25,18 +25,21 @@ module "cf_domain_nocanseemymail" {
       name  = "fm1._domainkey"
       value = "fm1.nocanseemymail.com.dkim.fmhosted.com"
       type  = "CNAME"
+      proxied = false
     },
     {
       id    = "fastmail_dkim_2"
       name  = "fm2._domainkey"
       value = "fm2.nocanseemymail.com.dkim.fmhosted.com"
       type  = "CNAME"
+      proxied = false
     },
     {
       id    = "fastmail_dkim_3"
       name  = "fm3._domainkey"
       value = "fm3.nocanseemymail.com.dkim.fmhosted.com"
       type  = "CNAME"
+      proxied = false
     },
     {
       id    = "fastmail_spf"
