@@ -37,3 +37,8 @@ resource "auth0_role" "andys_stuff" {
   name        = "andys-stuff"
   description = "Andy's Resources"
 }
+
+resource "auth0_role" "teslamate" {
+  name        = "teslamate"
+  description = "Teslamate"
+}

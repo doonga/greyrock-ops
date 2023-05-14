@@ -14,6 +14,7 @@ resource "auth0_user" "todd" {
     auth0_role.paperless.id,
     auth0_role.miniflux.id,
     auth0_role.frigate.id,
+    auth0_role.teslamate.id,
   ]
 
   blocked        = false
