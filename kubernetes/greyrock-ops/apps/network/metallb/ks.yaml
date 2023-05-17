@@ -8,27 +8,9 @@ metadata:
     substitution.flux.home.arpa/enabled: "true"
 spec:
   interval: 10m
-  path: "./kubernetes/cluster-0/apps/network/metallb/app"
+  path: "./kubernetes/greyrock-ops/apps/network/metallb/app"
   prune: true
   sourceRef:
     kind: GitRepository
-    name: home-ops-kubernetes
+    name: greyrock-ops-kubernetes
   wait: true
-# ---
-# apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-# kind: Kustomization
-# metadata:
-#   name: cluster-apps-metallb-config
-#   namespace: flux-system
-#   labels:
-#     substitution.flux.home.arpa/enabled: "true"
-# spec:
-#   interval: 10m
-#   path: "./kubernetes/cluster-0/apps/network/metallb/config"
-#   prune: true
-#   sourceRef:
-#     kind: GitRepository
-#     name: home-ops-kubernetes
-#   wait: true
-#   dependsOn:
-#     - name: cluster-apps-metallb

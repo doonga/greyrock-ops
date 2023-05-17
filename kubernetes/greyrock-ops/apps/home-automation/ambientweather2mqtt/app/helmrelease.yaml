@@ -28,7 +28,8 @@ spec:
     service:
       main:
         type: LoadBalancer
-        loadBalancerIP: 10.45.0.26
+        annotations:
+          metallb.universe.tf/loadBalancerIPs: "10.45.0.26"
         externalTrafficPolicy: Local
         ports:
           http:
