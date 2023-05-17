@@ -15,4 +15,5 @@ spec:
     name: greyrock-ops-kubernetes
   wait: true
   dependsOn:
-    - name: cluster-apps-external-secrets-stores
+    - name: cluster-apps-multus-config
+    - name: cluster-apps-rook-ceph-cluster
