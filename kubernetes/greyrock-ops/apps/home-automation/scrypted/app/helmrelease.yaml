@@ -21,8 +21,8 @@ spec:
       repository: ghcr.io/koush/scrypted
       tag: 18-bullseye-full-v0.12.1
 
-    podAnnotations:
-      k8s.v1.cni.cncf.io/networks: macvlan-static-trusted-scrypted
+    # podAnnotations:
+    #   k8s.v1.cni.cncf.io/networks: macvlan-static-trusted-scrypted
 
     service:
       main:
