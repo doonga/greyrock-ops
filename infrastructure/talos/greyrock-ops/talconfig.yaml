@@ -87,6 +87,9 @@ controlPlane:
         allowSchedulingOnMasters: false
         proxy:
           disabled: true
+        extraManifests:
+          - https://raw.githubusercontent.com/doonga/greyrock-ops/main/infrastructure/talos/greyrock-ops/integrations/cni/cilium.yaml
+          - https://raw.githubusercontent.com/doonga/greyrock-ops/main/infrastructure/talos/greyrock-ops/integrations/kubelet-csr-approver/kubelet-csr-approver.yaml
     - |-
       - op: remove
         path: /cluster/apiServer/admissionControl
