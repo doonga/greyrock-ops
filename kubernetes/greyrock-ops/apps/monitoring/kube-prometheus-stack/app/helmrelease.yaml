@@ -69,12 +69,6 @@ spec:
 
     kubeStateMetrics:
       enabled: true
-      resources:
-        requests:
-          cpu: 15m
-          memory: 128M
-        limits:
-          memory: 256M
     kube-state-metrics:
       metricLabelsAllowlist:
         - "persistentvolumeclaims=[*]"
@@ -115,7 +109,7 @@ spec:
           cpu: 35m
           memory: 273M
         limits:
-          memory: 512M
+          memory: 326M
 
       prometheusConfigReloader:
         # resource config for prometheusConfigReloader
@@ -192,7 +186,7 @@ spec:
         resources:
           requests:
             cpu: 257m
-            memory: 3740M
+            memory: 3760M
           limits:
             memory: 3760M
         retention: 2d
