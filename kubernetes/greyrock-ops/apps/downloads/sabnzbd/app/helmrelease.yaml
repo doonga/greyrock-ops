@@ -26,9 +26,6 @@ spec:
       repository: ghcr.io/onedr0p/sabnzbd
       tag: 4.0.1@sha256:8c1f42be3ae0770ad80921780e22f0cdc09197483752ec13a808a35e60bb5496
 
-    podAnnotations:
-      secret.reloader.stakater.com/reload: sabnzbd-secrets
-
     podSecurityContext:
       runAsUser: 568
       runAsGroup: 568
@@ -36,7 +33,6 @@ spec:
       fsGroupChangePolicy: "OnRootMismatch"
       supplementalGroups:
         - 65539
-        - 100
 
     env:
       SABNZBD__PORT: &port 8080
@@ -95,9 +91,9 @@ spec:
     resources:
       requests:
         cpu: 5m
-        memory: 2324M
+        memory: "2392M"
       limits:
-        memory: 2324M
+        memory: "2392M"
 
     volumeClaimTemplates:
       - name: config
