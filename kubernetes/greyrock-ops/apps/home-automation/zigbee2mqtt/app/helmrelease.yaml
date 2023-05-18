@@ -54,16 +54,10 @@ spec:
           - hosts:
               - *host
 
-    persistence:
-      data:
-        enabled: true
-        mountPath: "/data"
-        existingClaim: zigbee2mqtt-data
-
     resources:
       requests:
-        cpu: 5m
-        memory: 256M
+        cpu: 8m
+        memory: 212M
       limits:
         memory: 256M
 
