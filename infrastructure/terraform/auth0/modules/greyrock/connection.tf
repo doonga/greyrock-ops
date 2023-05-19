@@ -73,3 +73,25 @@ resource "auth0_connection" "google_oauth2_connection" {
     non_persistent_attrs     = ["ethnicity", "gender"]
   }
 }
+
+resource "auth0_connection" "sms" {
+  name     = "SMS-Connection"
+  strategy = "sms"
+
+  options {
+    name                   = "SMS OTP"
+    twilio_sid             = var.secrets.twilio_sid
+    twilio_token           = var.secrets.twilio_token
+    from                   = var.secrets.twilio_phone_number
+    syntax                 = "md_with_macros"
+    template               = "Your one-time password is @@password@@"
+    disable_signup         = true
+    brute_force_protection = true
+    forward_request_info   = true
+
+    totp {
+      time_step = 300
+      length    = 6
+    }
+  }
+}
