@@ -72,13 +72,13 @@ resource "cloudflare_firewall_rule" "cf_domain_ingress_github_flux_webhook" {
 
 # Block Plex notifications (prevents cloudflared container spam)
 resource "cloudflare_filter" "plex_notifications" {
-  zone_id     = data.cloudflare_zone.zone_id
+  zone_id     = module.cf_domain_ingress.zone_id
   description = "Expression to block Plex notifications"
   expression  = "(http.host eq \"plex.greyrock.tech\" and http.request.uri.path contains \"/:/eventsource/notifications\")"
 }
 
 resource "cloudflare_firewall_rule" "plex_notifications" {
-  zone_id     = data.cloudflare_zone.zone_id
+  zone_id     = module.cf_domain_ingress.zone_id
   description = "Firewall rule to block Plex notifications"
   filter_id   = cloudflare_filter.plex_notifications.id
   action      = "block"
