@@ -2,7 +2,7 @@
 clusterName: ${clusterName}
 
 talosVersion: v1.4.4
-kubernetesVersion: 1.27.1
+kubernetesVersion: 1.27.2
 endpoint: "https://${clusterName}.greyrock.io:6443"
 
 additionalApiServerCertSans:
