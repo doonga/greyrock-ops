@@ -40,12 +40,6 @@ module "onepassword_item_cloudflare" {
   item   = "Cloudflare"
 }
 
-module "onepassword_item_twilio" {
-  source = "github.com/Doonga/terraform-1password-item?ref=main"
-  vault  = "Services"
-  item   = "twilio"
-}
-
 module "greyrock" {
   source = "./modules/greyrock"
 
@@ -55,9 +49,6 @@ module "greyrock" {
     auth0_client_secret  = module.onepassword_item_auth0.fields.terraform_client_secret
     google_client_id     = module.onepassword_item_auth0.fields.google_client_id
     google_client_secret = module.onepassword_item_auth0.fields.google_client_secret
-    twilio_sid           = module.onepassword_item_twilio.fields.sid
-    twilio_token         = module.onepassword_item_twilio.fields.token
-    twilio_phone_number  = module.onepassword_item_twilio.fields.phone_number
     users = {
       todd = {
         email    = module.onepassword_item_auth0.fields.user_todd_email
