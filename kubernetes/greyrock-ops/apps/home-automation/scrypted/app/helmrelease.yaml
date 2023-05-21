@@ -41,6 +41,10 @@ spec:
     ingress:
       main:
         enabled: true
+        annotations:
+          hajimari.io/enable: "true"
+          hajimari.io/instance: "todd"
+          hajimari.io/icon: "mdi:cctv"
         ingressClassName: "nginx"
         hosts:
           - host: &host "scrypted.greyrock.tech"
