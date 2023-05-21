@@ -9,4 +9,5 @@
     "ansible": ["infrastructure/ansible/*.yml", "infrastructure/ansible/*.yaml"],
     "kubernetes": ["kubernetes/*.yml", "kubernetes/*.yaml"]
   },
+  "ansible.python.interpreterPath": "/bin/python",
 }
