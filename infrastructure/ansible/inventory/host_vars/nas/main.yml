@@ -110,8 +110,8 @@ zfs_filesystems:
     pool: tank
     state: present
     recordsize: 1M
-    owner: 65534
-    group: 65534
+    owner: 568
+    group: 568
     sharenfs: on
     mountpoint: /tank/scrypted/
 
