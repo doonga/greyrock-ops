@@ -68,6 +68,12 @@ spec:
         enabled: true
         mountPath: /.npm
         type: emptyDir
+      media:
+        enabled: true
+        type: nfs
+        server: "nas.greyrock.io"
+        path: /tank/scrypted
+        mountPath: /media
 
     resources:
       requests:
