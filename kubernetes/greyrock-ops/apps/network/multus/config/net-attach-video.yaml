@@ -17,6 +17,9 @@ spec:
           "capabilities": {
             "ips": true
           }
+          "ipam": {
+            "type": "static",
+          }
         }
       ]
     }
