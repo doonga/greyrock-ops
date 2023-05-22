@@ -51,11 +51,6 @@ nodes:
             mtu: 1500
             dhcpOptions:
               routeMetric: 4096
-          - vlanId: 50
-            dhcp: true
-            mtu: 1500
-            dhcpOptions:
-              routeMetric: 4097
   - hostname: k8s5.greyrock.io
     ipAddress: 10.1.1.8
     controlPlane: false
@@ -70,11 +65,6 @@ nodes:
             mtu: 1500
             dhcpOptions:
               routeMetric: 4096
-          - vlanId: 50
-            dhcp: true
-            mtu: 1500
-            dhcpOptions:
-              routeMetric: 4097
   - hostname: k8s6.greyrock.io
     ipAddress: 10.1.1.9
     controlPlane: false
@@ -89,11 +79,6 @@ nodes:
             mtu: 1500
             dhcpOptions:
               routeMetric: 4096
-          - vlanId: 50
-            dhcp: true
-            mtu: 1500
-            dhcpOptions:
-              routeMetric: 4097
 
 controlPlane:
   patches:
