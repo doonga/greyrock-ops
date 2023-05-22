@@ -4,3 +4,4 @@ kind: Kustomization
 namespace: network
 resources:
   - ./net-attach-iot.yaml
+  - ./net-attach-video.yaml
