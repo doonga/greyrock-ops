@@ -32,7 +32,7 @@ spec:
 
     image:
       repository: quay.io/invidious/invidious
-      tag: latest@sha256:6b3333e90bcf18c8f44e35c6936352219de01adc157014a9281671534457c649
+      tag: latest@sha256:68cd6a8c8cc822d308d7790b150d6394cf6071ec6f9d4c3a626605fc4bfeda33
 
     envFrom:
       - secretRef:
