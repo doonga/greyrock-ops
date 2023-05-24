@@ -1,5 +1,9 @@
 ---
 ingress:
+  - hostname: "greyrock.tech"
+    service: https://ingress-nginx-controller.network.svc.cluster.local:443
+    originRequest:
+      originServerName: ingress.greyrock.tech
   - hostname: "*.greyrock.tech"
     service: https://ingress-nginx-controller.network.svc.cluster.local:443
     originRequest:
