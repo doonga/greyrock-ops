@@ -55,8 +55,10 @@ spec:
               - *host
 
     nodeSelector:
-      google.feature.node.kubernetes.io/coral: "true"
       intel.feature.node.kubernetes.io/gpu: "true"
+
+    securityContext:
+      privileged: true
 
     podSecurityContext:
       runAsUser: 568
@@ -75,10 +77,6 @@ spec:
         server: "nas.greyrock.io"
         path: /tank/scrypted
         mountPath: /media
-      usb:
-        enabled: true
-        type: hostPath
-        hostPath: /dev/bus/usb
 
     resources:
       requests:
