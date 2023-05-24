@@ -57,9 +57,6 @@ spec:
     nodeSelector:
       intel.feature.node.kubernetes.io/gpu: "true"
 
-    securityContext:
-      privileged: true
-
     podSecurityContext:
       runAsUser: 568
       runAsGroup: 568
