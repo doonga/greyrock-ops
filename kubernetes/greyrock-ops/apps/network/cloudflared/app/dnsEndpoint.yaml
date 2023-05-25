@@ -4,6 +4,8 @@ kind: DNSEndpoint
 metadata:
   name: cloudflared-tunnel
   namespace: network
+annotations:
+  external-dns.alpha.kubernetes.io/target: not-really-needed-but-it-makes-this-work
 spec:
   endpoints:
     - dnsName: ingress.greyrock.tech
