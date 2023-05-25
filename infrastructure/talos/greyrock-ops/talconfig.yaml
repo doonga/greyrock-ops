@@ -156,7 +156,7 @@ worker:
           fs.inotify.max_user_instances: "8192"
         install:
           extensions:
-            - image: ghcr.io/siderolabs/i915-ucode:20230210
+            - image: ghcr.io/siderolabs/i915-ucode:20230512
         time:
           disabled: false
           servers:
