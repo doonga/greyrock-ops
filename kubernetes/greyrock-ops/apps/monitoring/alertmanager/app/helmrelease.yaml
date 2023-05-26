@@ -6,77 +6,60 @@ metadata:
   namespace: monitoring
 spec:
   interval: 30m
-  timeout: 20m
   chart:
     spec:
-      chart: alertmanager
-      version: 0.31.0
+      chart: app-template
+      version: 1.5.0
       interval: 30m
       sourceRef:
         kind: HelmRepository
-        name: prometheus-community
+        name: bjw-s
         namespace: flux-system
   values:
+    controller:
+      type: statefulset
+      annotations:
+        reloader.stakater.com/auto: "true"
+
+    image:
+      repository: quay.io/prometheus/alertmanager
+      tag: main@sha256:94d72f2180b3095123617583f3b919172e91990280dae81beb89886c60210efc
+
     podAnnotations:
       reloader.stakater.com/auto: "true"
 
-    config: ""
-
-    extraInitContainers:
-      - name: render-config
-        image: ghcr.io/onedr0p/alpine:3.18.0@sha256:dd504f02473c176a0e68e4550ccaf6f6c0f14e9f64c08a59877f9c6153bf48a9
-        command:
-          - "/bin/sh"
-          - -c
-        args:
-          - "[ ! -f /etc/alertmanager/alertmanager.yml ] && envsubst < /data/configfiles/alertmanager.yml > /data/config/alertmanager.yml"
-        env:
-          - name: SECRET_PUSHOVER_API_TOKEN
-            valueFrom:
-              secretKeyRef:
-                name: alertmanager-secret
-                key: pushover_api_token
-          - name: SECRET_PUSHOVER_API_USERKEY
-            valueFrom:
-              secretKeyRef:
-                name: alertmanager-secret
-                key: pushover_api_userkey
-        volumeMounts:
-          - name: config
-            mountPath: /data/config
-          - name: configfiles
-            mountPath: /data/configfiles
+    service:
+      main:
+        ports:
+          http:
+            port: 9093
 
     ingress:
-      enabled: true
-      className: "nginx"
-      hosts:
-        - host: &host "alertmanager.greyrock.tech"
-          paths:
-            - path: /
-              pathType: ImplementationSpecific
-      tls:
-        - hosts:
-            - *host
+      main:
+        enabled: true
+        ingressClassName: nginx
+        hosts:
+          - host: &host alertmanager.greyrock.tech
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - *host
 
     persistence:
-      enabled: true
-      storageClass: "ceph-block"
-      accessModes:
-        - ReadWriteOnce
-      size: 50Mi
-
-    extraVolumeMounts:
-      - name: config
+      config:
+        enabled: true
+        type: configMap
+        name: alertmanager-configmap
         mountPath: /etc/alertmanager
-
-    extraVolumes:
-      - name: config
-        emptyDir: {}
-      - name: configfiles
-        configMap:
-          name: alertmanager-configmap
-          defaultMode: 420
+        readOnly: true
+      secrets:
+        enabled: true
+        type: secret
+        name: alertmanager-secret
+        mountPath: /etc/secrets
+        readOnly: true
 
     resources:
       requests:
@@ -84,3 +67,10 @@ spec:
         memory: 50M
       limits:
         memory: 99M
+
+    volumeClaimTemplates:
+      - name: storage
+        mountPath: /alertmanager
+        accessMode: ReadWriteOnce
+        size: 50Mi
+        storageClass: ceph-block

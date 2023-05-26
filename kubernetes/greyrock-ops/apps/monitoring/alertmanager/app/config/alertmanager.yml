@@ -3,8 +3,8 @@ receivers:
   - name: "pushover"
     pushover_configs:
       - html: true
-        token: "${SECRET_PUSHOVER_API_TOKEN}"
-        user_key: "${SECRET_PUSHOVER_API_USERKEY}"
+        token_file: /etc/secrets/pushover_api_token
+        user_key_file: /etc/secrets/pushover_api_userkey
         send_resolved: true
         priority: |-
           {{ if eq .Status "firing" }}1{{ else }}0{{ end }}
@@ -34,7 +34,6 @@ receivers:
               {{- end }}
             {{- end }}
           {{- end }}
-
 route:
   group_by: ["alertname", "job"]
   group_wait: 30s
