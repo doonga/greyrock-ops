@@ -19,7 +19,7 @@ spec:
   values:
     image:
       repository: ghcr.io/neilenns/ambientweather2mqtt
-      tag: v4.0.3
+      tag: v4.0.4
 
     envFrom:
       - secretRef:
