@@ -36,6 +36,7 @@ spec:
           hajimari.io/enable: "true"
           hajimari.io/instance: "todd,andy"
           hajimari.io/icon: "mdi:draw-pen"
+          external-dns.alpha.kubernetes.io/public: "true"
           external-dns.alpha.kubernetes.io/target: ingress.greyrock.tech
         hosts:
           - host: &host "draw.greyrock.tech"
