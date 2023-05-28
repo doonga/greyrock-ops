@@ -22,7 +22,7 @@ spec:
 
     image:
       repository: ghcr.io/koush/scrypted
-      tag: 18-focal-full.s6-v0.28.2
+      tag: 18-focal-thin.s6-v0.28.6
 
     podAnnotations:
       k8s.v1.cni.cncf.io/networks: |
