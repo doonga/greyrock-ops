@@ -22,7 +22,7 @@ spec:
 
     image:
       repository: ghcr.io/koush/scrypted
-      tag: 18-jammy-thin.s6-v0.28.10
+      tag: 18-jammy-lite.s6-v0.28.10
 
     podAnnotations:
       k8s.v1.cni.cncf.io/networks: |
