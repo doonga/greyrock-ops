@@ -58,11 +58,11 @@ spec:
           - name: DOT
             value: "off"
           - name: SERVER_REGIONS
-            value: Switzerland
+            value: US East
           - name: SERVER_CITIES
-            value: Zurich
+            value: New York
           - name: SERVER_HOSTNAMES
-            value: ch-006.whiskergalaxy.com
+            value: us-east-096.whiskergalaxy.com
           - name: WIREGUARD_PRIVATE_KEY
             valueFrom:
               secretKeyRef:
