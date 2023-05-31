@@ -5,6 +5,7 @@ module "cf_domain_doonga_info" {
   plan_type  = "free"
   enable_email_routing = true
   email_catch_all_address = "tpunderson+doonga-info@greyrock.io"
+
   dns_entries = [
     # Cloudflare Email Routing
     {
@@ -46,5 +47,20 @@ module "cf_domain_doonga_info" {
       value = "v=DKIM1; p="
       type  = "TXT"
     }
+  ]
+
+  waf_custom_rules = [
+    {
+      enabled     = true
+      description = "Firewall rule to block bots and threats determined by CF"
+      expression  = "(cf.client.bot) or (cf.threat_score gt 14)"
+      action      = "block"
+    },
+    {
+      enabled     = true
+      description = "Firewall rule to block all countries except US"
+      expression  = "(ip.geoip.country ne \"US\")"
+      action      = "block"
+    },
   ]
 }

@@ -4,6 +4,7 @@ module "cf_domain_nocanseemymail" {
   account_id = cloudflare_account.greyrock.id
   plan_type  = "free"
   enable_email_routing = false
+
   dns_entries = [
     # Fastmail settings
     {
@@ -52,6 +53,21 @@ module "cf_domain_nocanseemymail" {
       name  = "_dmarc"
       value = "v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s; mailto:3bf00355c71d41bba80402d2dd6feacb@dmarc-reports.cloudflare.net;"
       type  = "TXT"
+    },
+  ]
+
+  waf_custom_rules = [
+    {
+      enabled     = true
+      description = "Firewall rule to block bots and threats determined by CF"
+      expression  = "(cf.client.bot) or (cf.threat_score gt 14)"
+      action      = "block"
+    },
+    {
+      enabled     = true
+      description = "Firewall rule to block all countries except US"
+      expression  = "(ip.geoip.country ne \"US\")"
+      action      = "block"
     },
   ]
 }

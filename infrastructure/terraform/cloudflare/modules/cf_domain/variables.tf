@@ -24,6 +24,18 @@ variable "dns_entries" {
   default = []
 }
 
+variable "waf_custom_rules" {
+  type = list(object({
+    enabled           = bool
+    description       = string
+    expression        = string
+    action            = string
+    action_parameters = optional(any, {})
+    logging           = optional(any, {})
+  }))
+  default = []
+}
+
 variable "plan_type" {
   type = string
 }

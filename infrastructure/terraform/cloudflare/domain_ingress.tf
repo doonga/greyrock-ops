@@ -5,6 +5,7 @@ module "cf_domain_ingress" {
   plan_type  = "pro"
   enable_email_routing = true
   email_catch_all_address = "tpunderson+greyrock-tech@greyrock.io"
+
   dns_entries = [
   # Cloudflare Email Routing
     {
@@ -53,33 +54,20 @@ module "cf_domain_ingress" {
       type  = "TXT"
     },
   ]
-}
 
-# Allow Flux Webhook to access zone
-resource "cloudflare_filter" "cf_domain_ingress_github_flux_webhook" {
-  zone_id     = module.cf_domain_ingress.zone_id
-  description = "Allow GitHub flux API"
-  expression  = "(ip.geoip.asnum eq 36459 and http.host eq \"flux-receiver-greyrock-ops.greyrock.tech\")"
-}
+  waf_custom_rules = [
+    {
+      enabled     = true
+      description = "Firewall rule to block bots and threats determined by CF"
+      expression  = "(cf.client.bot) or (cf.threat_score gt 14)"
+      action      = "block"
+    },
+    {
+      enabled     = true
+      description = "Firewall rule to block all countries except US"
+      expression  = "(ip.geoip.country ne \"US\")"
+      action      = "block"
+    },
+  ]
 
-resource "cloudflare_firewall_rule" "cf_domain_ingress_github_flux_webhook" {
-  zone_id     = module.cf_domain_ingress.zone_id
-  description = "Allow GitHub flux API"
-  filter_id   = cloudflare_filter.cf_domain_ingress_github_flux_webhook.id
-  action      = "allow"
-  priority    = 1
-}
-
-# Block Plex notifications (prevents cloudflared container spam)
-resource "cloudflare_filter" "plex_notifications" {
-  zone_id     = module.cf_domain_ingress.zone_id
-  description = "Expression to block Plex notifications"
-  expression  = "(http.host eq \"plex.greyrock.tech\" and http.request.uri.path contains \"/:/eventsource/notifications\")"
-}
-
-resource "cloudflare_firewall_rule" "plex_notifications" {
-  zone_id     = module.cf_domain_ingress.zone_id
-  description = "Firewall rule to block Plex notifications"
-  filter_id   = cloudflare_filter.plex_notifications.id
-  action      = "block"
 }

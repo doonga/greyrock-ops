@@ -4,6 +4,7 @@ module "cf_domain_main" {
   account_id = cloudflare_account.greyrock.id
   plan_type  = "pro" # change to free when plan expires
   enable_email_routing = false
+
   dns_entries = [
     {
       name    = "ipv4"
@@ -96,6 +97,21 @@ module "cf_domain_main" {
       value   = "mailgun.org"
       type    = "CNAME"
       proxied = false
+    },
+  ]
+
+  waf_custom_rules = [
+    {
+      enabled     = true
+      description = "Firewall rule to block bots and threats determined by CF"
+      expression  = "(cf.client.bot) or (cf.threat_score gt 14)"
+      action      = "block"
+    },
+    {
+      enabled     = true
+      description = "Firewall rule to block all countries except US"
+      expression  = "(ip.geoip.country ne \"US\")"
+      action      = "block"
     },
   ]
 }
