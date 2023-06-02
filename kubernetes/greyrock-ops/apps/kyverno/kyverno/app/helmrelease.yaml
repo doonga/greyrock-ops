@@ -41,14 +41,6 @@ spec:
               resources:
                 - pods
 
-      container:
-        resources:
-          requests:
-            cpu: 419m
-            memory: 178Mi
-          limits:
-            memory: 178Mi
-
     cleanupController:
       serviceMonitor:
         enabled: true
@@ -71,14 +63,6 @@ spec:
                 - create
                 - update
                 - delete
-
-      container:
-        resources:
-          requests:
-            cpu: 104m
-            memory: 210Mi
-          limits:
-            memory: 512Mi
 
       topologySpreadConstraints:
         - maxSkew: 1
