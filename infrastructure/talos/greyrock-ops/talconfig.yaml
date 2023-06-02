@@ -156,7 +156,8 @@ worker:
           fs.inotify.max_user_instances: "8192"
         install:
           extensions:
-            - image: ghcr.io/siderolabs/i915-ucode:20230512
+            - image: ghcr.io/siderolabs/i915-ucode:20230310
+            - image: ghcr.io/siderolabs/gasket-driver:97aeba58-v1.4.5
         time:
           disabled: false
           servers:
