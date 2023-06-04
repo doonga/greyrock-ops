@@ -59,7 +59,7 @@ spec:
           hajimari.io/icon: "book-open"
           nginx.ingress.kubernetes.io/configuration-snippet: |
             proxy_set_header Accept-Encoding "";
-            sub_filter '</head>' '<link rel="stylesheet" type="text/css" href="https://theme-park.greyrock.tech/css/base/readarr/dracula.css"></head>';
+            sub_filter '</head>' '<link rel="stylesheet" type="text/css" href="https://theme-park.greyrock.tech/css/base/readarr/nord.css"></head>';
             sub_filter_once on;
         hosts:
           - host: &host "readarr.greyrock.tech"
