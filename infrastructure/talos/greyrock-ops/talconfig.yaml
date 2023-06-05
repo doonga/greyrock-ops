@@ -5,6 +5,9 @@ talosVersion: v1.4.5
 kubernetesVersion: 1.27.2
 endpoint: "https://${clusterName}.greyrock.io:6443"
 
+cniConfig:
+  name: none
+
 additionalApiServerCertSans:
   - ${clusterEndpointIP}
 
@@ -48,9 +51,9 @@ nodes:
         vlans:
           - vlanId: 40
             dhcp: true
-            mtu: 1500
-            dhcpOptions:
-              routeMetric: 4096
+        mtu: 1500
+        dhcpOptions:
+          routeMetric: 4096
   - hostname: k8s5.greyrock.io
     ipAddress: 10.1.1.8
     controlPlane: false
@@ -62,9 +65,9 @@ nodes:
         vlans:
           - vlanId: 40
             dhcp: true
-            mtu: 1500
-            dhcpOptions:
-              routeMetric: 4096
+        mtu: 1500
+        dhcpOptions:
+          routeMetric: 4096
   - hostname: k8s6.greyrock.io
     ipAddress: 10.1.1.9
     controlPlane: false
@@ -76,9 +79,9 @@ nodes:
         vlans:
           - vlanId: 40
             dhcp: true
-            mtu: 1500
-            dhcpOptions:
-              routeMetric: 4096
+        mtu: 1500
+        dhcpOptions:
+          routeMetric: 4096
 
 controlPlane:
   patches:
