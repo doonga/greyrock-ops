@@ -3,11 +3,7 @@ locals {
     "loki",
     "thanos",
     "volsync",
-    "zalando-postgres",
-    "todd-desktop",
-    "todd-laptop",
-    "todd-surface",
-    "andy-desktop"
+    "zalando-postgres"
   ]
 }
 
