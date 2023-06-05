@@ -7,15 +7,15 @@ resources:
   # Flux-Kustomizations
   - ./hajimari-todd/ks.yaml
   - ./hajimari-andy/ks.yaml
-  - ./immich/ks.yaml
-  - ./invidious-server/ks.yaml
+  # - ./immich/ks.yaml
+  # - ./invidious-server/ks.yaml
   - ./libreddit/ks.yaml
   - ./miniflux/ks.yaml
   - ./nitter/ks.yaml
   - ./obsidian-couchdb/ks.yaml
   - ./paperless/ks.yaml
   - ./scribe/ks.yaml
-  - ./teslamate/ks.yaml
+  # - ./teslamate/ks.yaml
   - ./theme-park/ks.yaml
   - ./whoogle/ks.yaml
   # - ./windmill/ks.yaml
