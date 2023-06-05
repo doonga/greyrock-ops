@@ -30,7 +30,7 @@ spec:
         type: LoadBalancer
         annotations:
           metallb.universe.tf/loadBalancerIPs: "10.45.0.26"
-        externalTrafficPolicy: Local
+        externalTrafficPolicy: Cluster
         ports:
           http:
             port: 8080
