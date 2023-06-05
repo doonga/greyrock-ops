@@ -23,7 +23,7 @@ tasks:
         vars:
           node: "{{.node}}"
     vars:
-      node: delta
+      node: k8s4
 
   wipe-node-k8s5:
     desc: Trigger a wipe of Rook-Ceph data on node "k8s5"
@@ -36,7 +36,7 @@ tasks:
         vars:
           node: "{{.node}}"
     vars:
-      node: enigma
+      node: k8s5
 
   wipe-node-k8s6:
     desc: Trigger a wipe of Rook-Ceph data on node "k8s6"
@@ -49,10 +49,10 @@ tasks:
         vars:
           node: "{{.node}}"
     vars:
-      node: felix
+      node: k8s6
 
   wipe-disk:
-    desc: Wipe all remnants of rook-ceph from a given disk (ex. task rook:wipe-disk node=delta ceph_disk="/dev/nvme0n1")
+    desc: Wipe all remnants of rook-ceph from a given disk (ex. task rook:wipe-disk node=k8s4 ceph_disk="/dev/nvme0n1")
     silent: true
     internal: true
     cmds:
@@ -72,7 +72,7 @@ tasks:
       - sh: test -f {{.wipeRookDiskJobTemplate}}
 
   wipe-data:
-    desc: Wipe all remnants of rook-ceph from a given disk (ex. task rook:wipe-data node=delta)
+    desc: Wipe all remnants of rook-ceph from a given disk (ex. task rook:wipe-data node=k8s4)
     silent: true
     internal: true
     cmds:

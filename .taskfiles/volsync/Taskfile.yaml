@@ -12,7 +12,7 @@ x-task-vars: &task-vars
 vars:
   destinationTemplate: "ReplicationDestination.tmpl.yaml"
   wipeJobTemplate: "WipeJob.tmpl.yaml"
-  waitForJobScript: "../_scripts/wait-for-job.sh"
+  waitForJobScript: "../_scripts/wait-for-k8s-job.sh"
   listJobTemplate: "ListJob.tmpl.yaml"
   unlockJobTemplate: "UnlockJob.tmpl.yaml"
   ts: '{{now | date "150405"}}'
