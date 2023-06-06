@@ -50,6 +50,7 @@ nodes:
         dhcp: true
         vlans:
           - vlanId: 40
+            mtu: 1500
             dhcp: true
             dhcpOptions:
               routeMetric: 4096
@@ -63,6 +64,7 @@ nodes:
         dhcp: true
         vlans:
           - vlanId: 40
+            mtu: 1500
             dhcp: true
             dhcpOptions:
               routeMetric: 4096
@@ -76,6 +78,7 @@ nodes:
         dhcp: true
         vlans:
           - vlanId: 40
+            mtu: 1500
             dhcp: true
             dhcpOptions:
               routeMetric: 4096
