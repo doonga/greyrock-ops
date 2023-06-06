@@ -13,7 +13,7 @@ spec:
     - name: cluster-apps-ext-postgres-operator
     - name: cluster-apps-external-secrets-stores
   prune: true
-  wait: true
+  wait: false # no flux ks dependents
   interval: 30m
   retryInterval: 2m
   timeout: 1m

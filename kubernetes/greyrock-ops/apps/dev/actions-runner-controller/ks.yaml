@@ -14,6 +14,7 @@ spec:
   wait: true
   dependsOn:
     - name: cluster-apps-external-secrets-stores
+
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
@@ -27,7 +28,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: greyrock-ops-kubernetes
-  wait: true
+  wait: false # no flux ks dependents
   dependsOn:
     - name: cluster-apps-actions-runner-controller
     - name: cluster-apps-rook-ceph-cluster
