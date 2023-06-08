@@ -161,6 +161,9 @@ worker:
           extensions:
             - image: ghcr.io/siderolabs/i915-ucode:20230310
             - image: ghcr.io/siderolabs/gasket-driver:97aeba58-v1.4.5
+        udev:
+          rules:
+            - SUBSYSTEM=="apex", MODE="0660", GROUP="568"
         time:
           disabled: false
           servers:
