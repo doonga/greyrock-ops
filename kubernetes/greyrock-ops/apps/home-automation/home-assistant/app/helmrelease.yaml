@@ -95,7 +95,7 @@ spec:
         memory: 1165M
 
     nodeSelector:
-      naam: k8s5
+      kubernetes.io/hostname: k8s5
 
     volumeClaimTemplates:
       - name: config
