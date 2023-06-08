@@ -54,6 +54,9 @@ spec:
           - hosts:
               - *host
 
+    securityContext:
+      privileged: true
+
     nodeSelector:
       google.feature.node.kubernetes.io/coral-pcie: "true"
       intel.feature.node.kubernetes.io/gpu: "true"
