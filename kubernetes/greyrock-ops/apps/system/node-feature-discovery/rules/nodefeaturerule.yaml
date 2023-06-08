@@ -13,3 +13,11 @@ spec:
         - feature: usb.device
           matchExpressions:
             vendor: { op: In, value: ["1a6e", "18d1"] }
+    - #  Google Coral pci-e Accelerator
+      name: google.coral-pcie
+      labels:
+        google.feature.node.kubernetes.io/coral-pcie: "true"
+      matchFeatures:
+        - feature: pci.device
+          matchExpressions:
+            vendor: { op: In, value: ["1ac1", "8086"]}
