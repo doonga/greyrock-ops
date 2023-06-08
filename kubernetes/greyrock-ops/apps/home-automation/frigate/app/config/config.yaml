@@ -21,7 +21,7 @@ database:
 detectors:
   coral:
     type: edgetpu
-    device: pci
+    device: usb
 
 # Global ffmpeg configuration
 ffmpeg:
