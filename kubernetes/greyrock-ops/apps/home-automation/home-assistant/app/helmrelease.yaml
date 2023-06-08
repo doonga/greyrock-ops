@@ -24,7 +24,7 @@ spec:
 
     image:
       repository: ghcr.io/home-assistant/home-assistant
-      tag: 2023.6.0
+      tag: 2023.5.4
 
     podAnnotations:
       k8s.v1.cni.cncf.io/networks: |
@@ -95,7 +95,7 @@ spec:
         memory: 1165M
 
     nodeSelector:
-      name: k8s5
+      naam: k8s5
 
     volumeClaimTemplates:
       - name: config
