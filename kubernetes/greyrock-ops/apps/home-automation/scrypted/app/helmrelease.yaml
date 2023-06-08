@@ -55,6 +55,7 @@ spec:
               - *host
 
     nodeSelector:
+      google.feature.node.kubernetes.io/coral-pcie: "true"
       intel.feature.node.kubernetes.io/gpu: "true"
 
     podSecurityContext:
