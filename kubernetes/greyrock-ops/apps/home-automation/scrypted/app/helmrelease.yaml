@@ -75,6 +75,10 @@ spec:
         server: "nas.greyrock.io"
         path: /tank/scrypted
         mountPath: /media
+      apex:
+        enabled: true
+        type: hostPath
+        hostPath: /dev/apex_0
 
     resources:
       requests:
@@ -91,7 +95,3 @@ spec:
         accessMode: ReadWriteOnce
         size: 1Gi
         storageClass: ceph-block
-
-    volumeMount:
-      - mountPath: /dev/apex_0
-        name: coral-pcie
