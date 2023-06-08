@@ -91,3 +91,7 @@ spec:
         accessMode: ReadWriteOnce
         size: 1Gi
         storageClass: ceph-block
+
+    volumeMount:
+      - mountPath: /dev/apex_0
+        name: coral-pcie
