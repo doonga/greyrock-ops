@@ -94,9 +94,6 @@ spec:
       limits:
         memory: 1165M
 
-    nodeSelector:
-      kubernetes.io/hostname: k8s5
-
     volumeClaimTemplates:
       - name: config
         mountPath: /config
