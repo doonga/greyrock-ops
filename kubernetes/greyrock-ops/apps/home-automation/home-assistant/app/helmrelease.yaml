@@ -69,6 +69,9 @@ spec:
           - hosts:
               - *host
 
+    nodeSelector:
+      kubernetes.io/hostname: k8s6
+
     persistence:
       deploy-key:
         enabled: true
