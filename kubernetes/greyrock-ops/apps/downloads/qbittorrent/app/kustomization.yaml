@@ -5,7 +5,8 @@ namespace: downloads
 resources:
   - ./helmrelease.yaml
   - ./volsync.yaml
-  - ./jobs
+  - ./qbittools-reannounce
+  - ./qbittools-tagging
 commonLabels:
   app.kubernetes.io/name: qbittorrent
   app.kubernetes.io/instance: qbittorrent
