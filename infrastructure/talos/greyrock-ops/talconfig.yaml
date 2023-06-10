@@ -87,6 +87,9 @@ controlPlane:
   patches:
     - |-
       cluster:
+        etcd:
+          advertisedSubnets:
+            - 10.1.1.0/24
         allowSchedulingOnMasters: false
         proxy:
           disabled: true
