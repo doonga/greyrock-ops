@@ -58,7 +58,7 @@ spec:
       privileged: true
 
     nodeSelector:
-      google.feature.node.kubernetes.io/coral-pcie: "true"
+      google.feature.node.kubernetes.io/coral: "true"
       intel.feature.node.kubernetes.io/gpu: "true"
 
     affinity:
