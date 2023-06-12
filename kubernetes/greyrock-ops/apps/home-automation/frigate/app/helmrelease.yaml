@@ -86,10 +86,10 @@ spec:
         server: "nas.greyrock.io"
         path: /tank/frigate
         mountPath: /media
-      usb:
+      coral:
         enabled: true
         type: hostPath
-        hostPath: /dev/bus/usb
+        hostPath: /dev/apex_0
       cache:
         enabled: true
         type: emptyDir
@@ -121,7 +121,7 @@ spec:
       privileged: true
 
     nodeSelector:
-      google.feature.node.kubernetes.io/coral: "true"
+      google.feature.node.kubernetes.io/coral-pcie: "true"
       intel.feature.node.kubernetes.io/gpu: "true"
 
     affinity:
