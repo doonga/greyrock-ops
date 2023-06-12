@@ -61,6 +61,19 @@ spec:
       google.feature.node.kubernetes.io/coral-pcie: "true"
       intel.feature.node.kubernetes.io/gpu: "true"
 
+    affinity:
+      podAntiAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                  - key: app.kubernetes.io/name
+                    operator: In
+                    values:
+                      - frigate
+              topologyKey: kubernetes.io/hostname
+
     podSecurityContext:
       runAsUser: 568
       runAsGroup: 568

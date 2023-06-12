@@ -124,6 +124,19 @@ spec:
       google.feature.node.kubernetes.io/coral: "true"
       intel.feature.node.kubernetes.io/gpu: "true"
 
+    affinity:
+      podAntiAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                  - key: app.kubernetes.io/name
+                    operator: In
+                    values:
+                      - scrypted
+              topologyKey: kubernetes.io/hostname
+
     resources:
       requests:
         gpu.intel.com/i915: 1
