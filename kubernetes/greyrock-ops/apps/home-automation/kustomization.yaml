@@ -6,6 +6,7 @@ resources:
   - ./namespace.yaml
   # Flux-Kustomizations
   - ./ambientweather2mqtt/ks.yaml
+  - ./esphome/ks.yaml
   - ./frigate/ks.yaml
   - ./home-assistant/ks.yaml
   - ./mosquitto/ks.yaml
