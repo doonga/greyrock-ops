@@ -3,7 +3,7 @@ apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
   name: omada-restic
-  namespace: media
+  namespace: network
 spec:
   secretStoreRef:
     kind: ClusterSecretStore
@@ -26,7 +26,7 @@ apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
   name: omada
-  namespace: media
+  namespace: network
 spec:
   sourcePVC: config-omada-0
   trigger:
