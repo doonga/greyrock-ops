@@ -38,6 +38,12 @@ spec:
       main:
         type: LoadBalancer
         externalTrafficPolicy: Cluster
+        ports:
+          http:
+            port: 8043
+      controller:
+        type: LoadBalancer
+        externalTrafficPolicy: Cluster
         annotations:
           io.cilium/lb-ipam-ips: "10.45.0.30"
         ports:
@@ -91,8 +97,6 @@ spec:
       main:
         enabled: true
         annotations:
-          external-dns.alpha.kubernetes.io/public: "true"
-          external-dns.alpha.kubernetes.io/target: ingress.greyrock.tech
           hajimari.io/enable: "true"
           hajimari.io/instance: "todd"
           hajimari.io/icon: "router-wireless-settings"
