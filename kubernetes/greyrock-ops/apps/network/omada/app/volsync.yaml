@@ -9,7 +9,7 @@ spec:
     kind: ClusterSecretStore
     name: onepassword-connect
   target:
-    name: omada-restic-secret
+    name: omada-data-restic-secret
     creationPolicy: Owner
     template:
       engineVersion: v2
@@ -32,7 +32,7 @@ spec:
     kind: ClusterSecretStore
     name: onepassword-connect
   target:
-    name: omada-restic-secret
+    name: omada-work-restic-secret
     creationPolicy: Owner
     template:
       engineVersion: v2
@@ -58,7 +58,7 @@ spec:
     cacheCapacity: 3G
     copyMethod: Snapshot
     pruneIntervalDays: 14
-    repository: omada-restic-secret
+    repository: omada-data-restic-secret
     moverSecurityContext:
       runAsUser: 568
       runAsGroup: 568
@@ -79,7 +79,7 @@ spec:
     cacheCapacity: 3G
     copyMethod: Snapshot
     pruneIntervalDays: 14
-    repository: omada-restic-secret
+    repository: omada-work-restic-secret
     moverSecurityContext:
       runAsUser: 568
       runAsGroup: 568
