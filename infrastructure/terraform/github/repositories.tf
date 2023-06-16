@@ -252,9 +252,9 @@ module "terraform-github-repository" {
   source  = "mineiros-io/repository/github"
   version = "0.18.0"
 
-  name        = "vyos-config"
-  description = "My VyOS configuration"
-  topics      = ["vyos", "iac"]
+  name        = "terraform-github-repository"
+  description = "Terraform Module to create and manage a GitHub repository."
+  topics      = ["terraform", "github"]
   visibility  = "public"
 
   auto_init              = true
