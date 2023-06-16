@@ -60,7 +60,7 @@ moved {
 
 moved {
   from = module.greyrock-ops
-  to   = module.doonga.module.home_ops
+  to   = module.doonga.module.greyrock_ops
 }
 
 moved {
