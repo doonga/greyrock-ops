@@ -2,7 +2,7 @@
 clusterName: ${clusterName}
 
 talosVersion: v1.4.5
-kubernetesVersion: 1.27.2
+kubernetesVersion: 1.27.3
 endpoint: "https://${clusterName}.greyrock.io:6443"
 
 cniConfig:
@@ -168,6 +168,10 @@ worker:
             - image: ghcr.io/siderolabs/intel-ucode:20230512
             - image: ghcr.io/siderolabs/i915-ucode:20230310
             - image: ghcr.io/siderolabs/gasket-driver:97aeba58-v1.4.5
+        kernel:
+          modules:
+            - name: gasket
+            - name: apex
         udev:
           rules:
             - SUBSYSTEM=="apex", MODE="0660", GROUP="568"
