@@ -31,7 +31,7 @@ spec:
       spec:
         containers:
           - name: runner
-            image: ghcr.io/doonga/github-actions-runner:2.305.0@sha256:ecce9ef82c2e8fbc62392ef47626989b5990d4b264a90b676ebef228ef68e7e3
+            image: ghcr.io/actions/actions-runner:2.305.0@sha256:18bf08879ba083b5469008fa9157d5bfec5496150ed81ead407cd71b7eb928ae
             command:
               - /home/runner/run.sh
 
