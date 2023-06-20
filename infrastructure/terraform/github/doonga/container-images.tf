@@ -17,7 +17,9 @@ module "container_images" {
   has_projects = false
 
   plaintext_secrets = merge(
-    {},
+    {
+      "GREYROCK_DISCORD_WEBHOOK" : var.secrets.discord_ci_webhook_url
+    },
     local.greyrock_bot_secrets
   )
 

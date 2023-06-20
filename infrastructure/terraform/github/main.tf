@@ -32,6 +32,12 @@ module "onepassword_item_flux" {
   item   = "flux"
 }
 
+module "onepassword_item_discord" {
+  source = "github.com/doonga/terraform-1password-item?ref=main"
+  vault  = "Services"
+  item   = "Discord"
+}
+
 module "doonga" {
   source = "./doonga"
 
@@ -40,6 +46,7 @@ module "doonga" {
     greyrock_bot_private_key       = module.onepassword_item_github_greyrock_bot.fields.github_app_private_key
     flux_github_webhook_url    = module.onepassword_item_flux.fields.github_webhook_url
     flux_github_webhook_secret = module.onepassword_item_flux.fields.github_webhook_token
+    discord_ci_webhook_url = module.onepassword_item_discord.fields.webhook_greyrock_github_ci
   }
 }
 
