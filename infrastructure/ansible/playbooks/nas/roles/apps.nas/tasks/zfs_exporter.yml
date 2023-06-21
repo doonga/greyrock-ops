@@ -2,7 +2,7 @@
 - name: run zfs_exporter
   containers.podman.podman_container:
     name: zfs_exporter
-    image: "ghcr.io/truxnell/container-images/zfs_exporter:v2.2.5@sha256:dfcb7bc6268d709f9374d6ca73798252171e5b0244b56f1f3d304b6a9fe7206d"
+    image: "ghcr.io/doonga/zfs_exporter:2.2.8"
     state: started
     privileged: true
     network: host

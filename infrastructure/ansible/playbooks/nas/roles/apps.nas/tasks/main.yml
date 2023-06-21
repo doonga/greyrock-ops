@@ -19,9 +19,9 @@
   tags:
     - node-exporter
 
-# - import_tasks: zfs_exporter.yml
-#  tags:
-#    - zfs_exporter
+- import_tasks: zfs_exporter.yml
+  tags:
+    - zfs_exporter
 
 # - import_tasks: cadvisor.yml
 #   tags:
