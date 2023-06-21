@@ -175,6 +175,22 @@ spec:
               - targets:
                   - gateway.greyrock.io:9798
 
+          - job_name: smartctl-exporter
+            scrape_interval: 10m
+            scrape_timeout: 10s
+            honor_timestamps: true
+            static_configs:
+              - targets:
+                  - "nas.greyrock.io:9633"
+
+          - job_name: zfs-exporter
+            scrape_interval: 1m
+            scrape_timeout: 10s
+            honor_timestamps: true
+            static_configs:
+              - targets:
+                  - "nas.greyrock.io:9134"
+
         enableAdminAPI: true
         # Breaks any metric that has an existing "cluster" label on a metric
         # externalLabels:
