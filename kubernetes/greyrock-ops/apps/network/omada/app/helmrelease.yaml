@@ -29,7 +29,7 @@ spec:
       TZ: "America/New_York"
       MANAGE_HTTP_PORT: "8088"
       MANAGE_HTTPS_PORT: "8043"
-      PORTAL_HTTP_PORT: "8088"
+      PORTAL_HTTP_PORT: "8188"
       PORTAL_HTTPS_PORT: "8843"
       SHOW_SERVER_LOGS: "true"
       SHOW_MONGODB_LOGS: "true"
@@ -49,6 +49,11 @@ spec:
         annotations:
           io.cilium/lb-ipam-ips: "10.45.0.30"
         ports:
+          portal-http: # When the clients visit the Portal page via an HTTPS connection.
+            enabled: true
+            port: 8188
+            targetPort: 8188
+            protocol: TCP
           portal-https: # When the clients visit the Portal page via an HTTPS connection.
             enabled: true
             port: 8843
