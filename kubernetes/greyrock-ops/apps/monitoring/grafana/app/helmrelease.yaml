@@ -62,6 +62,12 @@ spec:
           revision: 29
           datasource: Prometheus
 
+      zfs:
+        zfs:
+          gnetId: 7845
+          revision: 4
+          datasource: Prometheus
+
     datasources:
       datasources.yaml:
         apiVersion: 1
