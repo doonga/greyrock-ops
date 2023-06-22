@@ -57,8 +57,8 @@ spec:
 
         # Ref: https://grafana.com/grafana/dashboards/7845
         zfs:
-          gnetId: 12586
-          revision: 1
+          gnetId: 7845
+          revision: 4
           datasource: Prometheus
 
       node-exporter:
