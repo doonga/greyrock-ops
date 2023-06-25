@@ -9,7 +9,7 @@ metadata:
     app.kubernetes.io/instance: omada
 spec:
   type: ExternalName
-  externalName: omada.greyrock.io.
+  externalName: oc300.greyrock.io.
   ports:
     - name: http
       port: &port 443
