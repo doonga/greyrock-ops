@@ -11,16 +11,18 @@ spec:
   type: ExternalName
   externalName: omada.greyrock.io.
   ports:
-    - name: ui
-      port: &ui_port 443
+    - name: http
+      port: &port 443
       protocol: TCP
-      targetPort: *ui_port
+      targetPort: *port
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: omada
   namespace: network
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
   labels:
     app.kubernetes.io/name: omada
     app.kubernetes.io/instance: omada
@@ -36,7 +38,7 @@ spec:
               service:
                 name: omada
                 port:
-                  name: ui
+                  number: 443
   tls:
     - hosts:
         - *host
