@@ -4,4 +4,4 @@ kind: Kustomization
 namespace: network
 resources:
   - ./minio.yaml
-  - ./omada.yaml
+  # - ./omada.yaml
