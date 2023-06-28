@@ -59,7 +59,7 @@ spec:
           - name: DOT
             value: "off"
           - name: SERVER_CITIES
-            value: New York
+            value: "New York"
           - name: SERVER_HOSTNAMES
             value: us-ny1.wg.ivpn.net
           - name: WIREGUARD_PRIVATE_KEY
