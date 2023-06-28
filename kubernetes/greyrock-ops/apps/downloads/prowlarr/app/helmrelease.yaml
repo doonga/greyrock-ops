@@ -26,7 +26,7 @@ spec:
       tag: 1.7.0.3620@sha256:6b8f445f54823072fca93494ba6eae8039de3940aad6ad89311a37a0e87ecb2a
 
     podAnnotations:
-      setGateway: "downloads"
+      setGateway: "true"
 
     podSecurityContext:
       runAsUser: 568

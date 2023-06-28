@@ -58,9 +58,6 @@ spec:
           - hosts:
               - *host
 
-    podAnnotations:
-      setGateway: 'selfhosted'
-
     topologySpreadConstraints:
       - maxSkew: 1
         topologyKey: kubernetes.io/hostname
