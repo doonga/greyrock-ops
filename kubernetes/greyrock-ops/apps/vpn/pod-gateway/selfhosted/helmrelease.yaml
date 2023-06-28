@@ -45,25 +45,23 @@ spec:
             tag: v3.35.0@sha256:a98d1ec99e09a1b806aff7f0c3d8a133a8ede7d3d7a250b62029a39a61f01525
         env:
           - name: VPN_SERVICE_PROVIDER
-            value: windscribe
+            value: ivpn
           - name: VPN_TYPE
             value: wireguard
           - name: VPN_INTERFACE
             value: wg0
           - name: VPN_ENDPOINT_PORT
-            value: "65142"
-          - name: FIREWALL
-            value: "off"
+            value: "2049"
           - name: SHADOWSOCKS
             value: "on"
+          - name: FIREWALL
+            value: "off"
           - name: DOT
             value: "off"
-          - name: SERVER_REGIONS
-            value: US East
           - name: SERVER_CITIES
             value: New York
           - name: SERVER_HOSTNAMES
-            value: us-east-096.whiskergalaxy.com
+            value: us-ny1.wg.ivpn.net
           - name: WIREGUARD_PRIVATE_KEY
             valueFrom:
               secretKeyRef:
@@ -74,11 +72,6 @@ spec:
               secretKeyRef:
                 name: selfhosted-gateway-vpnconfig
                 key: WIREGUARD_ADDRESSES
-          - name: WIREGUARD_PRESHARED_KEY
-            valueFrom:
-              secretKeyRef:
-                name: selfhosted-gateway-vpnconfig
-                key: WIREGUARD_PRESHARED_KEY
         securityContext:
           capabilities:
             add:
@@ -86,6 +79,12 @@ spec:
 
       netshoot:
         enabled: true
+        resources:
+          requests:
+            cpu: 5m
+            memory: 10M
+          limits:
+            memory: 10M
 
     podAnnotations:
       configmap.reloader.stakater.com/reload: selfhosted-gateway-pod-gateway
@@ -98,8 +97,9 @@ spec:
       NOT_ROUTED_TO_GATEWAY_CIDRS: 10.0.0.0/8 192.168.0.0/16
       VPN_BLOCK_OTHER_TRAFFIC: true
       VPN_INTERFACE: wg0
+      VPN_INTERFACE_MTU: "1420"
       VPN_LOCAL_CIDRS: 10.0.0.0/8 192.168.0.0/16
-      VPN_TRAFFIC_PORT: "65142"
+      VPN_TRAFFIC_PORT: "2049"
       VXLAN_ID: 43
       VXLAN_IP_NETWORK: 172.16.1
 
@@ -112,3 +112,8 @@ spec:
       image:
         repository: ghcr.io/angelnu/gateway-admision-controller
         tag: v3.9.0@sha256:4e169da5af107a9c6c784d3e03c89da07fad45f18358ab5b7177662df12d955a
+
+  valuesFrom:
+    - kind: Secret
+      name: downloads-gateway-vpnconfig
+      valuesKey: secret_values
