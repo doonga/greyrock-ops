@@ -3,6 +3,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: downloads
 resources:
+  - ./externalsecret.yaml
   - ./helmrelease.yaml
   - ./volsync.yaml
   - ./qbittools-reannounce
@@ -10,6 +11,7 @@ resources:
 commonLabels:
   app.kubernetes.io/name: qbittorrent
   app.kubernetes.io/instance: qbittorrent
+  app.kubernetes.io/component: app
 configMapGenerator:
   - name: qbittorrent-configmap
     files:

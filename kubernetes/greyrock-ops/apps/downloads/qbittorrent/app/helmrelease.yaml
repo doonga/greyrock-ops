@@ -39,12 +39,22 @@ spec:
 
     initContainers:
       copy-config:
-        image: busybox:latest@sha256:2376a0c12759aa1214ba83e771ff252c7b1663216b192fbe5e0fb364e952f85c
+        image: ghcr.io/onedr0p/alpine:3.18.2@sha256:4b666f73ee079b4feac9527fae3b0e60b0e9883213758bdb28af852c9acb4efe
         command:
           - "/bin/sh"
           - -c
         args:
-          - cp /data/configfiles/* /data/config/
+          - |
+            for f in /data/configfiles/*; do
+              filename=$(basename $f)
+              envsubst < $f > /data/config/$filename;
+            done
+        env:
+          WIREGUARD_PORT:
+            valueFrom:
+              secretKeyRef:
+                name: qbittorrent-secret
+                key: WIREGUARD_PORT
         volumeMounts:
           - name: config
             mountPath: /data/config
@@ -113,10 +123,10 @@ spec:
 
     resources:
       requests:
-        cpu: 29m
-        memory: 1227M
+        cpu: 49m
+        memory: 1222Mi
       limits:
-        memory: 1227M
+        memory: 1222Mi
 
     volumeClaimTemplates:
       - name: data
