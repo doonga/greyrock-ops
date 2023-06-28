@@ -18,8 +18,8 @@ spec:
 
   values:
     image:
-      repository: ghcr.io/angelnu/pod-gateway
-      tag: v1.8.1@sha256:690b6365728fe9012ad4cdfca38334992664596513dca187d1b93d2025205776
+      repository: ghcr.io/bjw-s/pod-gateway
+      tag: dev@sha256:6f122f00490c76aa57980666dd5b694636bca71f1bc37792ade3f03b45b4a651
 
     DNS: 172.16.1.1
 
@@ -72,6 +72,12 @@ spec:
               secretKeyRef:
                 name: downloads-gateway-vpnconfig
                 key: WIREGUARD_ADDRESSES
+        resources:
+          requests:
+            cpu: 5m
+            memory: 64M
+          limits:
+            memory: 64M
         securityContext:
           capabilities:
             add:
