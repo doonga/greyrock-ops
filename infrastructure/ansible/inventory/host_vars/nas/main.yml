@@ -107,13 +107,13 @@ zfs_filesystems:
     group: 1000
     mountpoint: /speedy/minio/
   - name: scrypted
-    pool: tank
+    pool: speedy
     state: present
     recordsize: 1M
     owner: 568
     group: 568
     sharenfs: on
-    mountpoint: /tank/scrypted/
+    mountpoint: /speedy/scrypted/
 
 zfs_enable_monitoring: true
 zfs_monitoring_scrub_max_age: 8
