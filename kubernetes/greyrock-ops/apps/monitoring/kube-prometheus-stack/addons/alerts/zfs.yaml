@@ -1,0 +1,22 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    prometheus: k8s
+    role: alert-rules
+  name: zfs-rules
+  namespace: monitoring
+spec:
+  groups:
+    - name: zfs.rules
+      rules:
+        - alert: ZfsUnexpectedPoolState
+          annotations:
+            summary: ZFS pool {{$labels.zpool}} on {{$labels.instance}}
+              is in a unexpected state {{$labels.state}}
+          expr: |
+            node_zfs_zpool_state{state!="online"} > 0
+          for: 15m
+          labels:
+            severity: critical

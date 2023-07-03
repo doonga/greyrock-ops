@@ -5,3 +5,4 @@ namespace: monitoring
 resources:
   - ./oomkilled.yaml
   - ./smartctl-exporter.yaml
+  - ./zfs.yaml
