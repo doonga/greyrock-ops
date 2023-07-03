@@ -1,4 +1,0 @@
----
-- name: avahi
-  ansible.builtin.include_role:
-    role: "ansible.avahi"

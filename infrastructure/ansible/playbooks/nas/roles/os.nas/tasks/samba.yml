@@ -1,4 +1,0 @@
----
-- name: samba
-  ansible.builtin.include_role:
-    role: "vladgh.samba"

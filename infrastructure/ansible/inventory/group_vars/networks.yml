@@ -1,7 +1,0 @@
-networks:
-  - name: trusted
-    cidr: 10.1.2.0/24
-  - name: servers
-    cidr: 10.1.1.0/24
-  - name: iot
-    cidr: 10.1.3.0/24
