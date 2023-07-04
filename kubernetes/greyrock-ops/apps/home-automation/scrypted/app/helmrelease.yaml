@@ -81,6 +81,12 @@ spec:
         enabled: true
         mountPath: /.npm
         type: emptyDir
+      media:
+        enabled: true
+        type: nfs
+        server: "nas.greyrock.io"
+        path: /tank/scrypted
+        mountPath: /media
       apex:
         enabled: true
         type: hostPath
@@ -100,9 +106,4 @@ spec:
         mountPath: /server/volume
         accessMode: ReadWriteOnce
         size: 1Gi
-        storageClass: ceph-block
-      - name: recordings
-        mountPath: /media
-        accessMode: ReadWriteOnce
-        size: 600Gi
         storageClass: ceph-block
