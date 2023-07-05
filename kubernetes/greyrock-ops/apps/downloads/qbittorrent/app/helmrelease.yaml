@@ -79,7 +79,7 @@ spec:
         enabled: true
         type: nfs
         server: "nas.greyrock.io"
-        path: /volume1/Media
+        path: /tank/media
         mountPath: /data/nas-media
 
     resources:
