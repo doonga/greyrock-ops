@@ -19,7 +19,7 @@ spec:
     fullnameOverride: blackbox-exporter
 
     image:
-      repository: ghcr.io/prometheus/blackbox-exporter
+      repository: quay.io/prometheus/blackbox-exporter
 
     podSecurityContext:
       sysctls:
