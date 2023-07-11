@@ -19,7 +19,7 @@ spec:
     fullnameOverride: blackbox-exporter
 
     image:
-      repository: quay.io
+      registry: quay.io
 
     podSecurityContext:
       sysctls:
