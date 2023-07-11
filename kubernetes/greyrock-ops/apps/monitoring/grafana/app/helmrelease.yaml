@@ -124,6 +124,7 @@ spec:
     grafana.ini:
       analytics:
         check_for_updates: false
+        check_for_plugin_updates: false
         reporting_enabled: false
       auth:
         oauth_auto_login: true
@@ -151,6 +152,8 @@ spec:
         url: https://grafana.net
       log:
         mode: console
+      news:
+        news_feed_enabled: false
       paths:
         data: /var/lib/grafana/data
         logs: /var/log/grafana
