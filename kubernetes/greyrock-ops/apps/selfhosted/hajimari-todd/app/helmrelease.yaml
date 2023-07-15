@@ -57,9 +57,6 @@ spec:
       customApps:
         - group: Network
           apps:
-            - name: Aruba Instant On Portal
-              url: https://portal.arubainstanton.com
-              icon: server-network
             - name: PiHole
               url: https://pihole.greyrock.io/admin
               icon: https://pi-hole.github.io/graphics/Vortex/Vortex_Vertical_wordmark_darkmode.png
