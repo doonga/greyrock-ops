@@ -47,14 +47,14 @@ spec:
     ingress:
       main:
         enabled: true
-        ingressClassName: 'nginx'
+        ingressClassName: "internal-nginx"
         annotations:
           hajimari.io/enable: "true"
           hajimari.io/instance: "todd,andy"
           hajimari.io/appName: Invidious
           hajimari.io/icon: simple-icons:youtube
         hosts:
-          - host: &host 'invidious.greyrock.tech'
+          - host: &host "invidious.greyrock.tech"
             paths:
               - path: /
                 pathType: Prefix

@@ -99,7 +99,7 @@ spec:
           hajimari.io/instance: "todd"
           hajimari.io/icon: "mdi:zigbee"
         enabled: true
-        ingressClassName: "nginx"
+        ingressClassName: "internal-nginx"
         hosts:
           - host: &host "zigbee2mqtt.greyrock.tech"
             paths:

@@ -30,7 +30,7 @@ metadata:
     app.kubernetes.io/name: omada
     app.kubernetes.io/instance: omada
 spec:
-  ingressClassName: nginx
+  ingressClassName: internal-nginx
   rules:
     - host: &host omada.greyrock.tech
       http:

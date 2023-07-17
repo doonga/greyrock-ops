@@ -53,7 +53,7 @@ spec:
           hajimari.io/enable: "true"
           hajimari.io/instance: "todd,andy"
           hajimari.io/icon: mdi:google
-        ingressClassName: "nginx"
+        ingressClassName: "internal-nginx"
         hosts:
           - host: &host "search.greyrock.tech"
             paths:

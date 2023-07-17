@@ -33,13 +33,13 @@ spec:
     ingress:
       main:
         enabled: true
-        ingressClassName: 'nginx'
+        ingressClassName: "internal-nginx"
         annotations:
           hajimari.io/enable: "true"
           hajimari.io/instance: "todd,andy"
-          hajimari.io/icon: 'twitter'
+          hajimari.io/icon: "twitter"
         hosts:
-          - host: &host 'nitter.greyrock.tech'
+          - host: &host "nitter.greyrock.tech"
             paths:
               - path: /
                 pathType: Prefix

@@ -40,7 +40,7 @@ spec:
       ingress:
         enabled: true
         hostname: "thanos.greyrock.tech"
-        ingressClassName: "nginx"
+        ingressClassName: "internal-nginx"
         tls: true
 
     bucketweb:

@@ -37,13 +37,13 @@ spec:
     ingress:
       main:
         enabled: true
-        ingressClassName: 'nginx'
+        ingressClassName: "internal-nginx"
         annotations:
           hajimari.io/enable: "true"
           hajimari.io/instance: "todd,andy"
           hajimari.io/icon: simple-icons:reddit
         hosts:
-          - host: &host 'libreddit.greyrock.tech'
+          - host: &host "libreddit.greyrock.tech"
             paths:
               - path: /
                 pathType: Prefix

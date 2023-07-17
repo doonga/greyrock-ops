@@ -164,7 +164,7 @@ spec:
 
     ingress:
       enabled: true
-      ingressClassName: nginx
+      ingressClassName: internal-nginx
       hosts:
         - &host grafana.greyrock.tech
       tls:
