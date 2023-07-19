@@ -43,7 +43,12 @@ nodes:
   - hostname: k8s4.greyrock.io
     ipAddress: 10.1.1.7
     controlPlane: false
-    installDisk: /dev/sda
+    installDiskSelector:
+      busPath: /pci0000:00/0000:00:17.0/ata1/host0/target0:0:0/0:0:0:0/
+    machineDisks:
+      - device: /dev/disk/by-id/usb-SABRENT_SABRENT_DB9876543214E-0:0
+        partitions:
+          - mountpoint: /var/mnt/sata
     disableSearchDomain: true
     networkInterfaces:
       - interface: eth0
@@ -54,10 +59,27 @@ nodes:
             dhcp: true
             dhcpOptions:
               routeMetric: 4096
+    patches:
+      - |-
+        machine:
+          kubelet:
+            extraMounts:
+              - destination: /var/mnt/sata
+                type: bind
+                source: /var/mnt/sata
+                options:
+                  - rbind
+                  - rshared
+                  - rw
   - hostname: k8s5.greyrock.io
     ipAddress: 10.1.1.8
     controlPlane: false
-    installDisk: /dev/sda
+    installDiskSelector:
+      busPath: /pci0000:00/0000:00:17.0/ata1/host0/target0:0:0/0:0:0:0/
+    machineDisks:
+      - device: /dev/disk/by-id/usb-SABRENT_SABRENT_DB9876543214E-0:0
+        partitions:
+          - mountpoint: /var/mnt/sata
     disableSearchDomain: true
     networkInterfaces:
       - interface: eth0
@@ -68,10 +90,27 @@ nodes:
             dhcp: true
             dhcpOptions:
               routeMetric: 4096
+    patches:
+      - |-
+        machine:
+          kubelet:
+            extraMounts:
+              - destination: /var/mnt/sata
+                type: bind
+                source: /var/mnt/sata
+                options:
+                  - rbind
+                  - rshared
+                  - rw
   - hostname: k8s6.greyrock.io
     ipAddress: 10.1.1.9
     controlPlane: false
-    installDisk: /dev/sda
+    installDiskSelector:
+      busPath: /pci0000:00/0000:00:17.0/ata1/host0/target0:0:0/0:0:0:0/
+    machineDisks:
+      - device: /dev/disk/by-id/usb-SABRENT_SABRENT_DB9876543214E-0:0
+        partitions:
+          - mountpoint: /var/mnt/sata
     disableSearchDomain: true
     networkInterfaces:
       - interface: eth0
@@ -82,6 +121,18 @@ nodes:
             dhcp: true
             dhcpOptions:
               routeMetric: 4096
+    patches:
+      - |-
+        machine:
+          kubelet:
+            extraMounts:
+              - destination: /var/mnt/sata
+                type: bind
+                source: /var/mnt/sata
+                options:
+                  - rbind
+                  - rshared
+                  - rw
 
 controlPlane:
   patches:
