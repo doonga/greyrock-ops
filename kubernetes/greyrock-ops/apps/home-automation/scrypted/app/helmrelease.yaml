@@ -106,8 +106,3 @@ spec:
         accessMode: ReadWriteOnce
         size: 1Gi
         storageClass: ceph-block
-      - name: hksv
-        mountPath: /server/volume/plugins/@scrypted/homekit/files/hksv
-        accessMode: ReadWriteOnce
-        size: 30Gi
-        storageClass: ceph-block
