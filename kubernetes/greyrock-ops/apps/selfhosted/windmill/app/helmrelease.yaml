@@ -39,7 +39,7 @@ spec:
       baseProtocol: https
 
     ingress:
-      enabled: false
+      enabled: true
       className: "internal-nginx"
       tls:
         - hosts:
