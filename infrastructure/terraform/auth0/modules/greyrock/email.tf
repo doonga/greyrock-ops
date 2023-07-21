@@ -2,7 +2,7 @@ resource "auth0_email" "mailgun_provider" {
   name    = "mailgun"
   enabled = true
 
-  default_from_address = "Grey Rock authentication <noreply@m.greyrock.io>"
+  default_from_address = "Grey Rock authentication <auth0@m.greyrock.io>"
 
   credentials {
     domain    = "m.greyrock.io"

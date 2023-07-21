@@ -47,20 +47,16 @@ module "greyrock" {
     auth0_domain         = module.onepassword_item_auth0.fields.greyrock_domain
     auth0_client_id      = module.onepassword_item_auth0.fields.terraform_client_id
     auth0_client_secret  = module.onepassword_item_auth0.fields.terraform_client_secret
-    google_client_id     = module.onepassword_item_auth0.fields.google_client_id
-    google_client_secret = module.onepassword_item_auth0.fields.google_client_secret
     users = {
       todd = {
         email    = module.onepassword_item_auth0.fields.user_todd_email
-        password = module.onepassword_item_auth0.fields.user_todd_password
       }
       andy = {
         email    = module.onepassword_item_auth0.fields.user_andy_email
-        password = module.onepassword_item_auth0.fields.user_andy_password
       }
     }
     mailgun = {
-      api_key = module.onepassword_item_mailgun.fields.auth0_smtp_password
+      api_key = module.onepassword_item_mailgun.fields.auth0_api_key
     }
     cloudflare = {
       api_token = module.onepassword_item_cloudflare.fields.cloudflare-ddns

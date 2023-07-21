@@ -37,7 +37,7 @@ resource "auth0_action" "verify_app_access" {
   }
 }
 
-resource "auth0_trigger_binding" "login_flow" {
+resource "auth0_trigger_actions" "login_flow" {
   trigger = "post-login"
 
   actions {
