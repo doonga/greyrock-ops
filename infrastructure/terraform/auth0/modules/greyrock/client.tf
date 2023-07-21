@@ -1,5 +1,5 @@
 resource "auth0_client" "default" {
-  name = "your app"
+  name = "Grey Rock"
 
   allowed_clients     = []
   allowed_logout_urls = []
