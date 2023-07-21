@@ -8,7 +8,7 @@ resource "auth0_connection" "passwordless_email" {
     subject                  = "Welcome to {{ application.name }}"
     syntax                   = "liquid"
     template                 = file("${path.module}/templates/passwordless_email_template.txt")
-    disable_signup           = false
+    disable_signup           = true
     brute_force_protection   = true
     # set_user_root_attributes = "on_each_login"
     non_persistent_attrs     = []
