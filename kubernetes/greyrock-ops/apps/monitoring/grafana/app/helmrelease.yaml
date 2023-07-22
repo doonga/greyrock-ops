@@ -91,7 +91,7 @@ spec:
             type: postgres
             access: proxy
             url: postgres.database.svc.cluster.local:5432
-            user: teslamate-U2WxNe
+            user: teslamate-HEdz1T
             secureJsonData:
               password: $TESLAMATE_POSTGRES_PASSWORD
               sslmode: disable
