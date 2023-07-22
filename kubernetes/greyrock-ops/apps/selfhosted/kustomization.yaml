@@ -18,4 +18,4 @@ resources:
   - ./teslamate/ks.yaml
   - ./theme-park/ks.yaml
   - ./whoogle/ks.yaml
-  # - ./windmill/ks.yaml
+  - ./windmill/ks.yaml
