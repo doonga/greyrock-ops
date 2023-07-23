@@ -184,6 +184,28 @@ controlPlane:
           disabled: false
           servers:
             - 10.1.1.1
+        registries:
+          mirrors:
+            docker.io:
+              endpoints:
+                - https://harbor.greyrock.io/v2/proxy-docker.io
+              overridePath: true
+            ghcr.io:
+              endpoints:
+                - https://harbor.greyrock.io/v2/proxy-ghcr.io
+              overridePath: true
+            gcr.io:
+              endpoints:
+                - https://harbor.greyrock.io/v2/proxy-gcr.io
+              overridePath: true
+            registry.k8s.io:
+              endpoints:
+                - https://harbor.greyrock.io/v2/proxy-registry.k8s.io
+              overridePath: true
+            quay.io:
+              endpoints:
+                - https://harbor.greyrock.io/v2/proxy-quay.io
+              overridePath: true
 
 worker:
   patches:
@@ -230,3 +252,25 @@ worker:
           disabled: false
           servers:
             - 10.1.1.1
+        registries:
+          mirrors:
+            docker.io:
+              endpoints:
+                - https://harbor.greyrock.io/v2/proxy-docker.io
+              overridePath: true
+            ghcr.io:
+              endpoints:
+                - https://harbor.greyrock.io/v2/proxy-ghcr.io
+              overridePath: true
+            gcr.io:
+              endpoints:
+                - https://harbor.greyrock.io/v2/proxy-gcr.io
+              overridePath: true
+            registry.k8s.io:
+              endpoints:
+                - https://harbor.greyrock.io/v2/proxy-registry.k8s.io
+              overridePath: true
+            quay.io:
+              endpoints:
+                - https://harbor.greyrock.io/v2/proxy-quay.io
+              overridePath: true
