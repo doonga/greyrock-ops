@@ -3,7 +3,7 @@ apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
   name: node-red-restic
-  namespace: home-automation
+  namespace: selfhosted
 spec:
   secretStoreRef:
     kind: ClusterSecretStore
@@ -26,9 +26,9 @@ apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
   name: node-red
-  namespace: home-automation
+  namespace: selfhosted
 spec:
-  sourcePVC: node-red-data
+  sourcePVC: data-node-red-0
   trigger:
     schedule: "0 */12 * * *"
   restic:
@@ -36,9 +36,9 @@ spec:
     pruneIntervalDays: 14
     repository: node-red-restic-secret
     moverSecurityContext:
-      runAsUser: 568
-      runAsGroup: 568
-      fsGroup: 568
+      runAsUser: 1000
+      runAsGroup: 1000
+      fsGroup: 1000
     retain:
       daily: 14
     volumeSnapshotClassName: csi-ceph-blockpool
