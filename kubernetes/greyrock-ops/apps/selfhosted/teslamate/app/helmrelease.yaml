@@ -74,12 +74,8 @@ spec:
           hajimari.io/enable: "true"
           hajimari.io/instance: "todd"
           hajimari.io/icon: "car-electric"
-          nginx.ingress.kubernetes.io/auth-url: https://auth.greyrock.tech/oauth2/auth?allowed_groups=teslamate
-          nginx.ingress.kubernetes.io/auth-signin: https://auth.greyrock.tech/oauth2/start?rd=$scheme://$best_http_host$request_uri
-          nginx.ingress.kubernetes.io/auth-response-headers: "x-auth-request-email, x-auth-request-groups"
-          external-dns.alpha.kubernetes.io/target: ingress-ext.greyrock.tech
         enabled: true
-        ingressClassName: "external-nginx"
+        ingressClassName: "internal-nginx"
         hosts:
           - host: &host "teslamate.greyrock.tech"
             paths:
