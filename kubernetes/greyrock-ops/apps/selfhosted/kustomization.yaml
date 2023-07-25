@@ -12,7 +12,7 @@ resources:
   - ./libreddit/ks.yaml
   - ./miniflux/ks.yaml
   - ./nitter/ks.yaml
-  # - ./node-red/ks.yaml
+  - ./node-red/ks.yaml
   - ./obsidian-couchdb/ks.yaml
   - ./paperless/ks.yaml
   - ./scribe/ks.yaml
