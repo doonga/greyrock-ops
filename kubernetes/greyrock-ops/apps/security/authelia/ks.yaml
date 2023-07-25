@@ -6,11 +6,11 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
-  path: "./kubernetes/cluster-0/apps/security/authelia/app"
+  path: "./kubernetes/greyrock-ops/apps/security/authelia/app"
   prune: true
   sourceRef:
     kind: GitRepository
-    name: home-ops-kubernetes
+    name: greyrock-ops-kubernetes
   wait: false
   dependsOn:
     - name: cluster-apps-external-secrets-stores
