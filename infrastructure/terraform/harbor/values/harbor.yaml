@@ -1,0 +1,15 @@
+expose:
+  type: clusterIP
+  tls:
+    enabled: true
+    certSource: secret
+    auto:
+      commonName: ""
+    secret:
+      secretName: harbor-greyrock-io-tls
+ipFamily:
+  ipv6:
+    enabled: false
+persistence:
+  enabled: true
+  resourcePolicy: keep

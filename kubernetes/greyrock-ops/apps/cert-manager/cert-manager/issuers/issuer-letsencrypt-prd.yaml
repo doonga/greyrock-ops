@@ -5,7 +5,7 @@ metadata:
   name: letsencrypt-production
 spec:
   acme:
-    email: acme@sl.greyrock.io
+    email: acme@greyrock.io
     preferredChain: ""
     privateKeySecretRef:
       name: letsencrypt-production
