@@ -2,10 +2,10 @@ resource "helm_release" "harbor" {
   name       = "harbor"
   repository = "https://helm.goharbor.io"
   chart      = "harbor"
-  version    = "1.12.2"
+  version    = "v1.12.2"
 
   values = [
-    "${file("values/harbor.yaml")}"
+    templatefile("values/harbor.yaml", { secretKey = "${module.onepassword_item_harbor.fields.secret-key}"})
   ]
 }
 

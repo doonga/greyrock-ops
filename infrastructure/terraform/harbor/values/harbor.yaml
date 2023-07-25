@@ -3,8 +3,6 @@ expose:
   tls:
     enabled: true
     certSource: secret
-    auto:
-      commonName: ""
     secret:
       secretName: harbor-greyrock-io-tls
 ipFamily:
@@ -13,3 +11,7 @@ ipFamily:
 persistence:
   enabled: true
   resourcePolicy: keep
+externalURL: https://harbor.greyrock.io
+secretKey: ${secretKey}
+internalTLS:
+  enabled: true
