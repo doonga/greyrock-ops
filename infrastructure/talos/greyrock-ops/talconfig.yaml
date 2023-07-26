@@ -188,24 +188,19 @@ controlPlane:
           mirrors:
             docker.io:
               endpoints:
-                - https://harbor.greyrock.io/v2/proxy-docker.io
-              overridePath: true
-            ghcr.io:
-              endpoints:
-                - https://harbor.greyrock.io/v2/proxy-ghcr.io
-              overridePath: true
-            gcr.io:
-              endpoints:
-                - https://harbor.greyrock.io/v2/proxy-gcr.io
-              overridePath: true
+                - http://10.5.0.10:5000
             registry.k8s.io:
               endpoints:
-                - https://harbor.greyrock.io/v2/proxy-registry.k8s.io
-              overridePath: true
+                - http://10.5.0.11:5000
+            gcr.io:
+              endpoints:
+                - http://10.5.0.12:5000
+            ghcr.io:
+              endpoints:
+                - http://10.5.0.13:5000
             quay.io:
               endpoints:
-                - https://harbor.greyrock.io/v2/proxy-quay.io
-              overridePath: true
+                - http://10.5.0.14:5000
 
 worker:
   patches:
@@ -256,21 +251,16 @@ worker:
           mirrors:
             docker.io:
               endpoints:
-                - https://harbor.greyrock.io/v2/proxy-docker.io
-              overridePath: true
-            ghcr.io:
-              endpoints:
-                - https://harbor.greyrock.io/v2/proxy-ghcr.io
-              overridePath: true
-            gcr.io:
-              endpoints:
-                - https://harbor.greyrock.io/v2/proxy-gcr.io
-              overridePath: true
+                - http://10.5.0.10:5000
             registry.k8s.io:
               endpoints:
-                - https://harbor.greyrock.io/v2/proxy-registry.k8s.io
-              overridePath: true
+                - http://10.5.0.11:5000
+            gcr.io:
+              endpoints:
+                - http://10.5.0.12:5000
+            ghcr.io:
+              endpoints:
+                - http://10.5.0.13:5000
             quay.io:
               endpoints:
-                - https://harbor.greyrock.io/v2/proxy-quay.io
-              overridePath: true
+                - http://10.5.0.14:5000

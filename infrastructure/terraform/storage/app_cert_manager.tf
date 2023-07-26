@@ -20,6 +20,7 @@ resource "helm_release" "cert-manager" {
 }
 
 # When bootstraping, comment out the below until the cert-manager release is applied.
+# If this is using an already existing terraform state, then you must also remove the clusterissuer and certificate state entries.
 resource "kubernetes_manifest" "clusterissuer_letsencrypt_prod" {
   manifest = {
     "apiVersion" = "cert-manager.io/v1"
