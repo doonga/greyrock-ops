@@ -70,3 +70,16 @@ identity_providers:
         redirect_uris:
           - https://nodered.greyrock.tech/auth/strategy/callback
         userinfo_signing_algorithm: none
+      - id: harbor
+        description: Harbor
+        secret: "${HARBOR_OAUTH_CLIENT_SECRET}"
+        public: false
+        authorization_policy: two_factor
+        scopes:
+          - openid
+          - groups
+          - email
+          - profile
+        redirect_uris:
+          - https://harbor.greyrock.io/c/oidc/callback
+        userinfo_signing_algorithm: none
