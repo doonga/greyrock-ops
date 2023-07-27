@@ -11,7 +11,6 @@
   platform: "github",
   username: "greyrock-bot[bot]",
   gitAuthor: "greyrock-bot <112729691+greyrock-bot[bot]@users.noreply.github.com>",
-  repositories: ["doonga/greyrock-ops"],
   ignorePaths: ["^archive/**"],
   flux: {
     fileMatch: ["^kubernetes/.+\\.ya?ml$"],
