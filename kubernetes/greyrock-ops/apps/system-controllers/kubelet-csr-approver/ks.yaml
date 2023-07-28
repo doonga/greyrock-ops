@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
-  path: "./kubernetes/greyrock-ops/apps/kube-system/kubelet-csr-approver/app"
+  path: "./kubernetes/greyrock-ops/apps/system-controllers/kubelet-csr-approver/app"
   prune: true
   sourceRef:
     kind: GitRepository
