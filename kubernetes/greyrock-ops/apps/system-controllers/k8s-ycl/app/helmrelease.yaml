@@ -22,7 +22,7 @@ spec:
       strategy: RollingUpdate
 
     image:
-      repository: ghcr.io/doonga/k8s-ycl
+      repository: ghcr.io/bjw-s/k8s-ycl
       tag: v0.1.0
 
     topologySpreadConstraints:
