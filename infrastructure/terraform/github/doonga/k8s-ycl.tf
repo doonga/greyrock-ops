@@ -18,7 +18,7 @@ module "k8s_ycl" {
 
   plaintext_secrets = merge(
     {},
-    local.bjws_bot_secrets
+    local.greyrock_bot_secrets
   )
 
   issue_labels_manage_default_github_labels = false
