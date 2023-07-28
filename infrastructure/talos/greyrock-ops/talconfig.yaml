@@ -1,7 +1,7 @@
 ---
 clusterName: ${clusterName}
 
-talosVersion: v1.4.6
+talosVersion: v1.4.7
 kubernetesVersion: 1.27.3
 endpoint: "https://${clusterName}.greyrock.io:6443"
 
@@ -144,9 +144,6 @@ controlPlane:
         etcd:
           advertisedSubnets:
             - 10.1.1.0/24
-        extraManifests:
-          - https://raw.githubusercontent.com/doonga/greyrock-ops/main/infrastructure/talos/greyrock-ops/integrations/cni/cilium.yaml
-          - https://raw.githubusercontent.com/doonga/greyrock-ops/main/infrastructure/talos/greyrock-ops/integrations/kubelet-csr-approver/kubelet-csr-approver.yaml
     - |-
       - op: remove
         path: /cluster/apiServer/admissionControl
