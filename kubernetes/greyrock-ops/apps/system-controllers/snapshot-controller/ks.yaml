@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
-  path: "./kubernetes/greyrock-ops/apps/kube-system/snapshot-controller/app"
+  path: "./kubernetes/greyrock-ops/apps/system-controllers/snapshot-controller/app"
   prune: true
   sourceRef:
     kind: GitRepository
