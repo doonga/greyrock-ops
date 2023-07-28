@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
-  path: "./kubernetes/greyrock-ops/apps/system-hooks/k8s-ycl/app"
+  path: "./kubernetes/greyrock-ops/apps/system-controllers/k8s-ycl/app"
   prune: true
   sourceRef:
     kind: GitRepository
