@@ -53,8 +53,10 @@ packages_install:
   - nvme-cli
   - open-iscsi
   - samba
+  - samba-vfs-modules
   - smartmontools
   - socat
+  - avahi-daemon
 packages_remove:
   - apparmor
   - ufw
