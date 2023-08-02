@@ -28,3 +28,10 @@ kubectl apply -f ./flux/vars/cluster-settings.yaml
 ```sh
 kubectl apply --server-side --kustomize ./flux/config
 ```
+
+Notes:
+
+# Only need to do this once since the config keys will always be the same
+# talosctl --talosconfig=./clusterconfig/talosconfig config endpoint 10.5.0.2
+# talosctl config merge ./clusterconfig/talosconfig
+# talosctl kubeconfig -n 10.5.0.2
