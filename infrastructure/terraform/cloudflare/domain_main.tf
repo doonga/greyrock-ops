@@ -22,46 +22,32 @@ module "cf_domain_main" {
       value = "v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s; rua=mailto:9fad2d90843e43ff94930d1289f5dead@dmarc-reports.cloudflare.net"
       type  = "TXT"
     },
-    # Fastmail settings
+    # iCloud settings
     {
-      id       = "fastmail_mx_1"
+      id       = "icloud_mx_1"
       name     = "@"
       priority = 10
-      value    = "in1-smtp.messagingengine.com"
+      value    = "mx01.mail.icloud.com."
       type     = "MX"
     },
     {
-      id       = "fastmail_mx_2"
+      id       = "icloud_mx_2"
       name     = "@"
       priority = 20
-      value    = "in2-smtp.messagingengine.com"
+      value    = "mx02.mail.icloud.com."
       type     = "MX"
     },
     {
-      id      = "fastmail_dkim_1"
-      name    = "fm1._domainkey"
-      value   = "fm1.greyrock.io.dkim.fmhosted.com"
+      id      = "icloud_dkim_1"
+      name    = "sig1._domainkey"
+      value   = "sig1.dkim.greyrock.io.at.icloudmailadmin.com."
       type    = "CNAME"
       proxied = false
     },
     {
-      id      = "fastmail_dkim_2"
-      name    = "fm2._domainkey"
-      value   = "fm2.greyrock.io.dkim.fmhosted.com"
-      type    = "CNAME"
-      proxied = false
-    },
-    {
-      id      = "fastmail_dkim_3"
-      name    = "fm3._domainkey"
-      value   = "fm3.greyrock.io.dkim.fmhosted.com"
-      type    = "CNAME"
-      proxied = false
-    },
-    {
-      id    = "fastmail_spf"
+      id    = "icloud_spf"
       name  = "@"
-      value = "v=spf1 include:spf.messagingengine.com -all"
+      value = "v=spf1 include:icloud.com ~all"
       type  = "TXT"
     },
     # Mailgun settings
