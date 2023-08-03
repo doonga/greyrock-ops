@@ -1,8 +1,8 @@
 module "cf_domain_ingress" {
   source     = "./modules/cf_domain"
-  domain     = "greyrock.tech"
+  domain     = "greyrock.casa"
   account_id = cloudflare_account.greyrock.id
-  plan_type  = "pro"
+  plan_type  = "free"
   enable_email_routing = true
   email_catch_all_address = "tpunderson+greyrock-tech@greyrock.io"
 

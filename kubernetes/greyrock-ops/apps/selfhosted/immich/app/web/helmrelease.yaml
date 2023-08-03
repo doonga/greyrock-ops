@@ -73,7 +73,7 @@ spec:
         enabled: true
         ingressClassName: external-nginx
         annotations:
-          external-dns.alpha.kubernetes.io/target: ingress-ext.greyrock.tech
+          external-dns.alpha.kubernetes.io/target: ingress-ext.greyrock.casa
           nginx.ingress.kubernetes.io/configuration-snippet: |
             rewrite /api/(.*) /$1 break;
           nignx.ingress.kubernetes.io/force-ssl-redirect: "true"
@@ -83,7 +83,7 @@ spec:
           hajimari.io/appName: Immich
           hajimari.io/icon: "heroicons:photo"
         hosts:
-          - host: &host photos.greyrock.tech
+          - host: &host photos.greyrock.casa
             paths:
               - path: /
                 pathType: Prefix

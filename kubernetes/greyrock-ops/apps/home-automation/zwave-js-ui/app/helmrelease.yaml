@@ -71,7 +71,7 @@ spec:
           hajimari.io/instance: "todd"
           hajimari.io/icon: "mdi:z-wave"
         hosts:
-          - host: &host "zwave-js-ui.greyrock.tech"
+          - host: &host "zwave-js-ui.greyrock.casa"
             paths:
               - path: /
                 pathType: Prefix

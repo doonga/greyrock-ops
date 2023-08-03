@@ -1,5 +1,5 @@
 variable "vector_agent_host" {
-  default = "vector.greyrock.tech"
+  default = "vector.greyrock.casa"
   type    = string
 }
 variable "vector_agent_port" {

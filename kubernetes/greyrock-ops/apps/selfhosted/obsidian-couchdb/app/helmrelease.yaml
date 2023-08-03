@@ -65,9 +65,9 @@ spec:
           hajimari.io/enable: "true"
           hajimari.io/instance: "todd"
           hajimari.io/icon: "mdi:note-outline"
-          external-dns.alpha.kubernetes.io/target: ingress.greyrock.tech
+          external-dns.alpha.kubernetes.io/target: ingress.greyrock.casa
         hosts:
-          - host: &host "obsidian-db.greyrock.tech"
+          - host: &host "obsidian-db.greyrock.casa"
             paths:
               - path: /
         tls:

@@ -36,7 +36,7 @@ spec:
     env:
       RADARR__INSTANCE_NAME: Radarr
       RADARR__PORT: &port 7878
-      RADARR__APPLICATION_URL: "https://radarr.greyrock.tech"
+      RADARR__APPLICATION_URL: "https://radarr.greyrock.casa"
       RADARR__LOG_LEVEL: info
       RADARR__API_KEY:
         valueFrom:
@@ -63,7 +63,7 @@ spec:
             sub_filter '<body>' '<body><link rel="stylesheet" type="text/css" href="https://theme-park.dev/css/base/radarr/nord.css">';
             sub_filter_once on;
         hosts:
-          - host: &host "radarr.greyrock.tech"
+          - host: &host "radarr.greyrock.casa"
             paths:
               - path: /
         tls:

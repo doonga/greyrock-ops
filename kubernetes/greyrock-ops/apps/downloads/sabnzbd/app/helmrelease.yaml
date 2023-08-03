@@ -42,7 +42,7 @@ spec:
         sabnzbd.downloads.svc,
         sabnzbd.downloads.svc.cluster,
         sabnzbd.downloads.svc.cluster.local,
-        sabnzbd.greyrock.tech
+        sabnzbd.greyrock.casa
       SABNZBD__API_KEY:
         valueFrom:
           secretKeyRef:
@@ -70,10 +70,10 @@ spec:
           hajimari.io/icon: "mdi:download"
           nginx.ingress.kubernetes.io/configuration-snippet: |
             proxy_set_header Accept-Encoding "";
-            sub_filter '</head>' '<link rel="stylesheet" type="text/css" href="https://theme-park.greyrock.tech/css/base/sabnzbd/nord.css"></head>';
+            sub_filter '</head>' '<link rel="stylesheet" type="text/css" href="https://theme-park.greyrock.casa/css/base/sabnzbd/nord.css"></head>';
             sub_filter_once on;
         hosts:
-          - host: &host "sabnzbd.greyrock.tech"
+          - host: &host "sabnzbd.greyrock.casa"
             paths:
               - path: /
         tls:

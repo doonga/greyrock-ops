@@ -39,7 +39,7 @@ spec:
           hajimari.io/instance: "todd,andy"
           hajimari.io/icon: "twitter"
         hosts:
-          - host: &host "nitter.greyrock.tech"
+          - host: &host "nitter.greyrock.casa"
             paths:
               - path: /
                 pathType: Prefix

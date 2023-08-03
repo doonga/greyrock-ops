@@ -34,15 +34,15 @@ spec:
       tag: 2.0.46@sha256:0625952a7e45ff8824936d71eeaca57205c12b758d5b47e27fe11df98bebfcff
 
     env:
-      BASE_URL: https://miniflux.greyrock.tech
+      BASE_URL: https://miniflux.greyrock.casa
       CREATE_ADMIN: "1"
       DEBUG: "1"
       LOG_DATE_TIME: "1"
       OAUTH2_CLIENT_ID: miniflux
       OAUTH2_USER_CREATION: "1"
-      OAUTH2_OIDC_DISCOVERY_ENDPOINT: https://auth.greyrock.tech
+      OAUTH2_OIDC_DISCOVERY_ENDPOINT: https://auth.greyrock.casa
       OAUTH2_PROVIDER: oidc
-      OAUTH2_REDIRECT_URL: https://miniflux.greyrock.tech/oauth2/oidc/callback
+      OAUTH2_REDIRECT_URL: https://miniflux.greyrock.casa/oauth2/oidc/callback
       POLLING_SCHEDULER: "entry_frequency"
       POLLING_FREQUENCY: "15"
       RUN_MIGRATIONS: "1"
@@ -65,9 +65,9 @@ spec:
           hajimari.io/enable: "true"
           hajimari.io/instance: "todd"
           hajimari.io/icon: "mdi:rss"
-          external-dns.alpha.kubernetes.io/target: ingress-ext.greyrock.tech
+          external-dns.alpha.kubernetes.io/target: ingress-ext.greyrock.casa
         hosts:
-          - host: &host "miniflux.greyrock.tech"
+          - host: &host "miniflux.greyrock.casa"
             paths:
               - path: /
         tls:

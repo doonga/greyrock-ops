@@ -6,6 +6,6 @@ metadata:
   namespace: network
 spec:
   endpoints:
-    - dnsName: ingress-ext.greyrock.tech
+    - dnsName: ingress-ext.greyrock.casa
       recordType: CNAME
       targets: ["0bebc764-6f55-4f28-a348-26e54944333d.cfargotunnel.com"]

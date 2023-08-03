@@ -20,7 +20,7 @@ spec:
     fullnameOverride: &name externaldns-external
 
     domainFilters:
-      - greyrock.tech
+      - greyrock.casa
 
     env:
       - name: CF_API_TOKEN

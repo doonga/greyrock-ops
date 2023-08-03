@@ -43,7 +43,7 @@ spec:
           hajimari.io/instance: "todd,andy"
           hajimari.io/icon: simple-icons:reddit
         hosts:
-          - host: &host "libreddit.greyrock.tech"
+          - host: &host "libreddit.greyrock.casa"
             paths:
               - path: /
                 pathType: Prefix

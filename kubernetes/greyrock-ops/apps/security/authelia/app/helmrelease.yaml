@@ -49,7 +49,7 @@ spec:
       AUTHELIA_AUTHENTICATION_BACKEND_LDAP_USERS_FILTER: (&({username_attribute}={input})(objectClass=person))
       AUTHELIA_AUTHENTICATION_BACKEND_PASSWORD_RESET_DISABLE: "true"
       AUTHELIA_AUTHENTICATION_BACKEND_REFRESH_INTERVAL: 1m
-      AUTHELIA_DEFAULT_REDIRECTION_URL: https://auth.greyrock.tech
+      AUTHELIA_DEFAULT_REDIRECTION_URL: https://auth.greyrock.casa
       AUTHELIA_DUO_API_DISABLE: "true"
       AUTHELIA_LOG_LEVEL: info
       AUTHELIA_NOTIFIER_SMTP_HOST: smtp.mailgun.org
@@ -58,7 +58,7 @@ spec:
       AUTHELIA_NOTIFIER_SMTP_SENDER: Authelia <authelia@m.greyrock.io>
       AUTHELIA_SERVER_DISABLE_HEALTHCHECK: "true"
       AUTHELIA_SERVER_PORT: &port 80
-      AUTHELIA_SESSION_DOMAIN: greyrock.tech
+      AUTHELIA_SESSION_DOMAIN: greyrock.casa
       AUTHELIA_SESSION_NAME: authelia-home-ops
       AUTHELIA_STORAGE_LOCAL_PATH: /data/db.sqlite3
       AUTHELIA_TELEMETRY_METRICS_ADDRESS: tcp://0.0.0.0:8080
@@ -124,14 +124,14 @@ spec:
         enabled: true
         ingressClassName: external-nginx
         annotations:
-          external-dns.alpha.kubernetes.io/target: ingress-ext.greyrock.tech
+          external-dns.alpha.kubernetes.io/target: ingress-ext.greyrock.casa
           nginx.ingress.kubernetes.io/configuration-snippet: |
             add_header Cache-Control "no-store";
             add_header Pragma "no-cache";
             add_header X-Frame-Options "SAMEORIGIN";
             add_header X-XSS-Protection "1; mode=block";
         hosts:
-          - host: &host auth.greyrock.tech
+          - host: &host auth.greyrock.casa
             paths:
               - path: /
                 pathType: Prefix

@@ -30,7 +30,7 @@ spec:
 
     env:
       LLDAP_HTTP_PORT: &port 80
-      LLDAP_HTTP_URL: https://lldap.greyrock.tech
+      LLDAP_HTTP_URL: https://lldap.greyrock.casa
       LLDAP_LDAP_PORT: &ldapPort 389
       LLDAP_LDAP_BASE_DN: dc=greyrock,dc=io
 
@@ -52,9 +52,9 @@ spec:
         enabled: true
         ingressClassName: "external-nginx"
         annotations:
-          external-dns.alpha.kubernetes.io/target: ingress-ext.greyrock.tech
+          external-dns.alpha.kubernetes.io/target: ingress-ext.greyrock.casa
         hosts:
-          - host: &host "lldap.greyrock.tech"
+          - host: &host "lldap.greyrock.casa"
             paths:
               - path: /
                 pathType: Prefix

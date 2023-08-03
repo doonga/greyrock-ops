@@ -47,7 +47,7 @@ spec:
           hajimari.io/instance: "todd"
           hajimari.io/icon: "file-multiple"
         hosts:
-          - host: &host "paperless.greyrock.tech"
+          - host: &host "paperless.greyrock.casa"
             paths:
               - path: /
         tls:

@@ -6,7 +6,7 @@ metadata:
   namespace: selfhosted
 data:
   # Configure application
-  PAPERLESS_URL: https://paperless.greyrock.tech
+  PAPERLESS_URL: https://paperless.greyrock.casa
   PAPERLESS_PORT: "8000"
   PAPERLESS_TIME_ZONE: "America/New_York"
   PAPERLESS_WEBSERVER_WORKERS: "2"

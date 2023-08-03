@@ -9,7 +9,7 @@ spec:
   issuerRef:
     name: letsencrypt-production
     kind: ClusterIssuer
-  commonName: "greyrock.tech"
+  commonName: "greyrock.casa"
   dnsNames:
-    - "greyrock.tech"
-    - "*.greyrock.tech"
+    - "greyrock.casa"
+    - "*.greyrock.casa"

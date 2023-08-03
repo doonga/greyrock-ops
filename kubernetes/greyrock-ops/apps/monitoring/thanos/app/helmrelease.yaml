@@ -39,7 +39,7 @@ spec:
       enabled: true
       ingress:
         enabled: true
-        hostname: "thanos.greyrock.tech"
+        hostname: "thanos.greyrock.casa"
         ingressClassName: "internal-nginx"
         tls: true
 

@@ -77,7 +77,7 @@ spec:
         enabled: true
         ingressClassName: "internal-nginx"
         hosts:
-          - host: &host "teslamate.greyrock.tech"
+          - host: &host "teslamate.greyrock.casa"
             paths:
               - path: /
         tls:

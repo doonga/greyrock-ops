@@ -45,7 +45,7 @@ spec:
       enabled: true
       className: internal-nginx
       hosts:
-        - host: &host "blackbox-exporter.greyrock.tech"
+        - host: &host "blackbox-exporter.greyrock.casa"
           paths:
             - path: /
               pathType: Prefix

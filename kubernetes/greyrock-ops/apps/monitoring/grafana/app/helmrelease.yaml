@@ -132,9 +132,9 @@ spec:
         use_pkce: true
         client_id: grafana
         client_secret: # Set by env vars
-        auth_url: https://auth.greyrock.tech/api/oidc/authorization
-        token_url: https://auth.greyrock.tech/api/oidc/token
-        api_url: https://auth.greyrock.tech/api/oidc/userinfo
+        auth_url: https://auth.greyrock.casa/api/oidc/authorization
+        token_url: https://auth.greyrock.casa/api/oidc/token
+        api_url: https://auth.greyrock.casa/api/oidc/userinfo
       auth.generic_oauth.group_mapping:
         org_id: 1
         role_attribute_path: |
@@ -162,7 +162,7 @@ spec:
         allow_embedding: true
         cookie_samesite: grafana
       server:
-        root_url: https://grafana.greyrock.tech
+        root_url: https://grafana.greyrock.casa
 
     imageRenderer:
       enabled: true
@@ -171,7 +171,7 @@ spec:
       enabled: true
       ingressClassName: internal-nginx
       hosts:
-        - &host grafana.greyrock.tech
+        - &host grafana.greyrock.casa
       tls:
         - hosts:
             - *host

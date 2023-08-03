@@ -1,11 +1,11 @@
 ---
 ingress:
-  - hostname: "greyrock.tech"
+  - hostname: "greyrock.casa"
     service: https://nginx-external-controller.network.svc.cluster.local:443
     originRequest:
-      originServerName: ingress-ext.greyrock.tech
-  - hostname: "*.greyrock.tech"
+      originServerName: ingress-ext.greyrock.casa
+  - hostname: "*.greyrock.casa"
     service: https://nginx-external-controller.network.svc.cluster.local:443
     originRequest:
-      originServerName: ingress-ext.greyrock.tech
+      originServerName: ingress-ext.greyrock.casa
   - service: http_status:404

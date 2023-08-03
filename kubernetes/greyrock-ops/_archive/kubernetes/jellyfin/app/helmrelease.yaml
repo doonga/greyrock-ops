@@ -50,7 +50,7 @@ spec:
         enabled: true
         ingressClassName: internal-nginx
         hosts:
-          - host: &host jellyfin.greyrock.tech
+          - host: &host jellyfin.greyrock.casa
             paths:
               - path: /
                 pathType: Prefix

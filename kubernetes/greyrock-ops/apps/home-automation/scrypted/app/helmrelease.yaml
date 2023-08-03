@@ -45,10 +45,10 @@ spec:
           hajimari.io/enable: "true"
           hajimari.io/instance: "todd"
           hajimari.io/icon: "mdi:cctv"
-          external-dns.alpha.kubernetes.io/target: ingress-ext.greyrock.tech
+          external-dns.alpha.kubernetes.io/target: ingress-ext.greyrock.casa
         ingressClassName: "external-nginx"
         hosts:
-          - host: &host "scrypted.greyrock.tech"
+          - host: &host "scrypted.greyrock.casa"
             paths:
               - path: /
         tls:

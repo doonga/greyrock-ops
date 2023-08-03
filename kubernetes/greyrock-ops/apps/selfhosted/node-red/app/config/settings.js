@@ -12,13 +12,13 @@ module.exports = {
       icon: "fa-cloud",
       strategy: require("passport-openidconnect").Strategy,
       options: {
-        issuer: "https://auth.greyrock.tech",
-        authorizationURL: "https://auth.greyrock.tech/api/oidc/authorization",
-        tokenURL: "https://auth.greyrock.tech/api/oidc/token",
-        userInfoURL: "https://auth.greyrock.tech/api/oidc/userinfo",
+        issuer: "https://auth.greyrock.casa",
+        authorizationURL: "https://auth.greyrock.casa/api/oidc/authorization",
+        tokenURL: "https://auth.greyrock.casa/api/oidc/token",
+        userInfoURL: "https://auth.greyrock.casa/api/oidc/userinfo",
         clientID: "nodered",
         clientSecret: process.env.NODE_RED_OAUTH_CLIENT_SECRET,
-        callbackURL: "https://nodered.greyrock.tech/auth/strategy/callback",
+        callbackURL: "https://nodered.greyrock.casa/auth/strategy/callback",
         scope: ["email", "profile", "openid"],
         proxy: true,
         verify: function (issuer, profile, done) {

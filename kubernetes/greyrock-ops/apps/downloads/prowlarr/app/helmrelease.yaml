@@ -60,7 +60,7 @@ spec:
         enabled: true
         ingressClassName: "internal-nginx"
         hosts:
-          - host: &host "prowlarr.greyrock.tech"
+          - host: &host "prowlarr.greyrock.casa"
             paths:
               - path: /
         tls:

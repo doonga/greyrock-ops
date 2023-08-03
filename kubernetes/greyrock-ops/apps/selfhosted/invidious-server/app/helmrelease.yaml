@@ -54,7 +54,7 @@ spec:
           hajimari.io/appName: Invidious
           hajimari.io/icon: simple-icons:youtube
         hosts:
-          - host: &host "invidious.greyrock.tech"
+          - host: &host "invidious.greyrock.casa"
             paths:
               - path: /
                 pathType: Prefix

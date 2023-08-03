@@ -27,7 +27,7 @@ spec:
       tag: latest
 
     env:
-      APP_DOMAIN: scribe.greyrock.tech
+      APP_DOMAIN: scribe.greyrock.casa
       LUCKY_ENV: production
       PORT: 8080
 
@@ -50,7 +50,7 @@ spec:
           hajimari.io/instance: "todd,andy"
           hajimari.io/icon: simple-icons:medium
         hosts:
-          - host: &host "scribe.greyrock.tech"
+          - host: &host "scribe.greyrock.casa"
             paths:
               - path: /
                 pathType: Prefix

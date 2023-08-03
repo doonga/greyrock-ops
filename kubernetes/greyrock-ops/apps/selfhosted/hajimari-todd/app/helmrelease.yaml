@@ -52,8 +52,8 @@ spec:
           url: https://www.google.com
         - name: Whoogle
           icon: simple-icons:google
-          searchUrl: https://search.greyrock.tech/search?q={query}
-          url: https://search.greyrock.tech
+          searchUrl: https://search.greyrock.casa/search?q={query}
+          url: https://search.greyrock.casa
       customApps:
         - group: Network
           apps:
@@ -81,7 +81,7 @@ spec:
         enabled: true
         ingressClassName: internal-nginx
         hosts:
-          - host: &host "home-todd.greyrock.tech"
+          - host: &host "home-todd.greyrock.casa"
             paths:
               - path: /
                 pathType: Prefix

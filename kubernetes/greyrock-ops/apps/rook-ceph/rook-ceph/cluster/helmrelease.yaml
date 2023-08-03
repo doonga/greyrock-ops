@@ -94,7 +94,7 @@ spec:
         annotations:
           nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
         host:
-          name: &host rook.greyrock.tech
+          name: &host rook.greyrock.casa
           path: "/"
         tls:
           - hosts:

@@ -27,7 +27,7 @@ spec:
         enabled: true
         type: LoadBalancer
         annotations:
-          external-dns.alpha.kubernetes.io/hostname: "ingress-int.greyrock.tech"
+          external-dns.alpha.kubernetes.io/hostname: "ingress-int.greyrock.casa"
           io.cilium/lb-ipam-ips: "10.45.0.3"
         externalTrafficPolicy: Cluster
 

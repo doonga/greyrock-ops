@@ -32,7 +32,7 @@ metadata:
 spec:
   ingressClassName: internal-nginx
   rules:
-    - host: &host omada.greyrock.tech
+    - host: &host omada.greyrock.casa
       http:
         paths:
           - path: /

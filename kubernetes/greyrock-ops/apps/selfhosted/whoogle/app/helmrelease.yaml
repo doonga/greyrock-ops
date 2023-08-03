@@ -22,11 +22,11 @@ spec:
       tag: 0.8.2
 
     env:
-      WHOOGLE_ALT_TW: nitter.greyrock.tech
-      WHOOGLE_ALT_YT: invidious.greyrock.tech
+      WHOOGLE_ALT_TW: nitter.greyrock.casa
+      WHOOGLE_ALT_YT: invidious.greyrock.casa
       WHOOGLE_ALT_IG: imginn.com
-      WHOOGLE_ALT_RD: libreddit.greyrock.tech
-      WHOOGLE_ALT_MD: scribe.greyrock.tech
+      WHOOGLE_ALT_RD: libreddit.greyrock.casa
+      WHOOGLE_ALT_MD: scribe.greyrock.casa
       WHOOGLE_ALT_TL: ""
       WHOOGLE_ALT_IMG: bibliogram.art
       WHOOGLE_ALT_IMDB: ""
@@ -34,7 +34,7 @@ spec:
       WHOOGLE_ALT_QUORA: ""
       WHOOGLE_CONFIG_ALTS: 1
       WHOOGLE_CONFIG_THEME: system
-      WHOOGLE_CONFIG_URL: "https://search.greyrock.tech"
+      WHOOGLE_CONFIG_URL: "https://search.greyrock.casa"
       WHOOGLE_CONFIG_GET_ONLY: 1
       WHOOGLE_CONFIG_COUNTRY: US
       WHOOGLE_CONFIG_VIEW_IMAGE: 1
@@ -55,7 +55,7 @@ spec:
           hajimari.io/icon: mdi:google
         ingressClassName: "internal-nginx"
         hosts:
-          - host: &host "search.greyrock.tech"
+          - host: &host "search.greyrock.casa"
             paths:
               - path: /
         tls:
