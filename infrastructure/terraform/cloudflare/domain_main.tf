@@ -50,6 +50,12 @@ module "cf_domain_main" {
       value = "v=spf1 include:icloud.com ~all"
       type  = "TXT"
     },
+    {
+      id    = "icloud_validator"
+      name  = "@"
+      value = "apple-domain=q5Igx7wZUIwIR7xW"
+      type  = "TXT"
+    },
     # Mailgun settings
     {
       id       = "mailgun_mx_1"
