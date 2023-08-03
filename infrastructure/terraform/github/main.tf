@@ -41,6 +41,20 @@ module "onepassword_item_discord" {
 module "doonga" {
   source = "./doonga"
 
+  defaults = {
+    auto_init              = true
+    allow_merge_commit     = false
+    allow_squash_merge     = true
+    allow_auto_merge       = true
+    delete_branch_on_merge = true
+
+    squash_merge_commit_message = "BLANK"
+
+    has_issues   = true
+    has_wiki     = false
+    has_projects = false
+  }
+
   secrets = {
     greyrock_bot_app_id            = module.onepassword_item_github_greyrock_bot.fields.github_app_id
     greyrock_bot_private_key       = module.onepassword_item_github_greyrock_bot.fields.github_app_private_key
