@@ -78,7 +78,7 @@ spec:
             any: true
 
       extraArgs:
-        default-ssl-certificate: "network/greyrock-tech-tls"
+        default-ssl-certificate: "network/greyrock-casa-tls"
 
       topologySpreadConstraints:
         - maxSkew: 2

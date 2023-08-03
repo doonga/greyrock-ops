@@ -2,10 +2,10 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: "greyrock-tech"
+  name: "greyrock-casa"
   namespace: network
 spec:
-  secretName: "greyrock-tech-tls"
+  secretName: "greyrock-casa-tls"
   issuerRef:
     name: letsencrypt-production
     kind: ClusterIssuer

@@ -4,7 +4,7 @@ module "cf_domain_ingress" {
   account_id = cloudflare_account.greyrock.id
   plan_type  = "free"
   enable_email_routing = true
-  email_catch_all_address = "tpunderson+greyrock-tech@greyrock.io"
+  email_catch_all_address = "tpunderson+greyrock-casa@greyrock.io"
 
   dns_entries = [
   # Cloudflare Email Routing
