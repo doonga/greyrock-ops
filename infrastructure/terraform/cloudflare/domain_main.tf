@@ -33,7 +33,7 @@ module "cf_domain_main" {
     {
       id       = "icloud_mx_2"
       name     = "@"
-      priority = 20
+      priority = 10
       value    = "mx02.mail.icloud.com."
       type     = "MX"
     },
