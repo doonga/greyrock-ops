@@ -1,5 +1,5 @@
 module "esphome_config" {
-  source  = "github.com/doonga/terraform-github-repository?ref=v1.1.0"
+  source  = "github.com/doonga/terraform-github-repository?ref=v1.2.0"
 
   name        = "esphome-config"
   description = "My ESPHome configs."
