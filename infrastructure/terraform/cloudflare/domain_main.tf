@@ -27,20 +27,20 @@ module "cf_domain_main" {
       id       = "icloud_mx_1"
       name     = "@"
       priority = 10
-      value    = "mx01.mail.icloud.com."
+      value    = "mx01.mail.icloud.com"
       type     = "MX"
     },
     {
       id       = "icloud_mx_2"
       name     = "@"
       priority = 10
-      value    = "mx02.mail.icloud.com."
+      value    = "mx02.mail.icloud.com"
       type     = "MX"
     },
     {
       id      = "icloud_dkim_1"
       name    = "sig1._domainkey"
-      value   = "sig1.dkim.greyrock.io.at.icloudmailadmin.com."
+      value   = "sig1.dkim.greyrock.io.at.icloudmailadmin.com"
       type    = "CNAME"
       proxied = false
     },
@@ -53,7 +53,7 @@ module "cf_domain_main" {
     {
       id    = "icloud_validator"
       name  = "@"
-      value = "apple-domain=q5Igx7wZUIwIR7xW"
+      value = "apple-domain=G9jdk3lDkFkXsMSt"
       type  = "TXT"
     },
     # Mailgun settings
