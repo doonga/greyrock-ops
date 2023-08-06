@@ -101,7 +101,7 @@ resource "kubernetes_manifest" "certificate_greyrock_io" {
       "name"      = "greyrock-io"
       "namespace" = "default"
     }
-     "spec" = {
+    "spec" = {
         "secretName" = "greyrock-io-tls",
         "issuerRef" = {
           "name" = "letsencrypt-prod",
