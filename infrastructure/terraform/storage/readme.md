@@ -8,7 +8,7 @@ After bootstrapping vault:
 
   Create policy.hcl:
 
-  path "kv/*" {
+  path "*" {
     capabilities = ["read"]
   }
 
@@ -28,7 +28,8 @@ After bootstrapping vault:
     policies="external-secrets" \
     user_claim="sub" \
     role_type="jwt" \
-    bound_audiences="https://kubernetes.default.svc.cluster.local"
+    bound_audiences="https://kubernetes.default.svc.cluster.local" \
+    ttl=1h
 
   Go to jwt.io, change Algorithm from HS 256 to RS 256; Nothing need to be changed from HEADER section; Update "PAYLOAD" data with current "iat" epoch with https://www.epochconverter.com/; Another option is to add another "exp", token expire parameter to a future date. Finished PAYLOAD data should looks like this:
     {
