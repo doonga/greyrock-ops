@@ -81,16 +81,3 @@ identity_providers:
         redirect_uris:
           - https://nodered.greyrock.casa/auth/strategy/callback
         userinfo_signing_algorithm: none
-      - id: minio
-        description: MinIO
-        secret: "${MINIO_OAUTH_CLIENT_SECRET}"
-        public: false
-        authorization_policy: two_factor
-        redirect_uris:
-          - https://minio.greyrock.io/apps/oidc_login/oidc
-        scopes:
-          - openid
-          - profile
-          - email
-          - groups
-        userinfo_signing_algorithm: none
