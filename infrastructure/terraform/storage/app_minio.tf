@@ -142,24 +142,6 @@ resource "kubernetes_stateful_set_v1" "minio" {
   }
 }
 
-resource "kubernetes_manifest" "traefik_config" {
-  manifest = {
-    "apiVersion" = "helm.cattle.io/v1"
-    "kind"       = "HelmChartConfig"
-    "metadata" = {
-      "name"      = "traefik"
-      "namespace" = "kube-system"
-    }
-    "spec" = {
-      "valuesContent" = <<EOF
-        ports:
-          web:
-            redirectTo: websecure
-      EOF
-    }
-  }
-}
-
 resource "kubernetes_service_v1" "minio" {
   metadata {
     name      = "minio"
@@ -191,15 +173,15 @@ resource "kubernetes_ingress_v1" "minio" {
   metadata {
     name      = "minio-console"
     namespace = "default"
+    annotations = {
+      "traefik.ingress.kubernetes.io/router.entrypoints" = "web"
+    }
     labels = {
       "app.arpa.home/name" = "minio"
     }
   }
   spec {
     ingress_class_name = "traefik"
-    tls {
-      secret_name = "greyrock-io-tls"
-    }
     rule {
       host = "minio.greyrock.io"
       http {
@@ -225,7 +207,7 @@ resource "kubernetes_ingress_v1" "s3" {
     name      = "minio-s3"
     namespace = "default"
     annotations = {
-      "traefik.ingress.kubernetes.io/router.entrypoints" = "websecure"
+      "traefik.ingress.kubernetes.io/router.entrypoints" = "web"
     }
     labels = {
       "app.arpa.home/name" = "minio"
