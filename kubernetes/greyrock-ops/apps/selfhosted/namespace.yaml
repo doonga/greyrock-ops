@@ -5,4 +5,5 @@ metadata:
   name: selfhosted
   labels:
     kustomize.toolkit.fluxcd.io/prune: disabled
+    pgo-enabled-greyrock.casa: "true"
     routed-gateway: "true"
