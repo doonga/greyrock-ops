@@ -4,7 +4,7 @@ Provisions Kubernetes applications on k3s on my NAS for me
 
 Notes:
 After bootstrapping vault:
-vault secrets enable -path=secrets kv
+vault secrets enable -path=secrets -version=2 kv
 
 # create read-only policy for kubernetes
 
