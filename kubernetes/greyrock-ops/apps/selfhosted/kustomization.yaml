@@ -5,11 +5,13 @@ resources:
   # Pre Flux-Kustomizations
   - ./namespace.yaml
   # Flux-Kustomizations
+  - ./calibre-web/ks.yaml
   - ./hajimari-todd/ks.yaml
   - ./hajimari-andy/ks.yaml
   - ./immich/ks.yaml
   - ./invidious-server/ks.yaml
   - ./libreddit/ks.yaml
+  - ./linkding/ks.yaml
   - ./miniflux/ks.yaml
   - ./nitter/ks.yaml
   - ./node-red/ks.yaml
@@ -18,4 +20,5 @@ resources:
   - ./scribe/ks.yaml
   - ./teslamate/ks.yaml
   - ./theme-park/ks.yaml
+  # - ./wallabag/ks.yaml
   - ./whoogle/ks.yaml
