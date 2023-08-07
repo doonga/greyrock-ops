@@ -11,7 +11,7 @@ resources:
   - ./invidious-server/ks.yaml
   - ./libreddit/ks.yaml
   - ./linkding/ks.yaml
-  # - ./miniflux/ks.yaml
+  - ./miniflux/ks.yaml
   - ./nitter/ks.yaml
   - ./node-red/ks.yaml
   - ./obsidian-couchdb/ks.yaml
