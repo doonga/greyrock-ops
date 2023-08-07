@@ -28,7 +28,7 @@ spec:
 
     image:
       repository: ghcr.io/immich-app/immich-machine-learning
-      tag: v1.72.0@sha256:d6f157e23ee59a41c7d21dab6ef5ad52ed0c491ded3cd0cfac94c2e551539634
+      tag: v1.72.1@sha256:58a5bacaa1f52677d36f57c8751761df2fe35c21c2a9acae9438c26a3ad5d0a8
 
     env:
       DB_HOSTNAME:
