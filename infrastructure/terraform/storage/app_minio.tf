@@ -173,15 +173,15 @@ resource "kubernetes_ingress_v1" "minio" {
   metadata {
     name      = "minio-console"
     namespace = "default"
-    annotations = {
-      "traefik.ingress.kubernetes.io/router.entrypoints" = "web"
-    }
     labels = {
       "app.arpa.home/name" = "minio"
     }
   }
   spec {
     ingress_class_name = "traefik"
+    tls {
+      secret_name = "greyrock-io-tls"
+    }
     rule {
       host = "minio.greyrock.io"
       http {
@@ -206,15 +206,15 @@ resource "kubernetes_ingress_v1" "s3" {
   metadata {
     name      = "minio-s3"
     namespace = "default"
-    annotations = {
-      "traefik.ingress.kubernetes.io/router.entrypoints" = "web"
-    }
     labels = {
       "app.arpa.home/name" = "minio"
     }
   }
   spec {
     ingress_class_name = "traefik"
+    tls {
+      secret_name = "greyrock-io-tls"
+    }
     rule {
       host = "s3.greyrock.io"
       http {
