@@ -10,8 +10,8 @@ resources:
   - ./immich/ks.yaml
   - ./invidious-server/ks.yaml
   - ./libreddit/ks.yaml
-  # - ./linkding/ks.yaml
-  # - ./miniflux/ks.yaml
+  - ./linkding/ks.yaml
+  - ./miniflux/ks.yaml
   - ./nitter/ks.yaml
   - ./node-red/ks.yaml
   - ./obsidian-couchdb/ks.yaml
@@ -19,5 +19,5 @@ resources:
   - ./scribe/ks.yaml
   - ./teslamate/ks.yaml
   - ./theme-park/ks.yaml
-  # - ./wallabag/ks.yaml
+  - ./wallabag/ks.yaml
   - ./whoogle/ks.yaml
