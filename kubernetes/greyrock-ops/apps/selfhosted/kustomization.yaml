@@ -10,7 +10,7 @@ resources:
   - ./immich/ks.yaml
   - ./invidious-server/ks.yaml
   - ./libreddit/ks.yaml
-  - ./linkding/ks.yaml
+  # - ./linkding/ks.yaml
   - ./miniflux/ks.yaml
   - ./nitter/ks.yaml
   - ./node-red/ks.yaml
