@@ -37,7 +37,10 @@ spec:
 
     env:
       DATABASE_HOST:
-        value: "teslamate-primary.selfhosted.svc.cluster.local"
+        valueFrom:
+          secretKeyRef:
+            name: teslamate-pguser-teslamate
+            key: host
       DATABASE_NAME:
         valueFrom:
           secretKeyRef:
@@ -48,13 +51,11 @@ spec:
           secretKeyRef:
             name: teslamate-pguser-teslamate
             key: user
-            namespace: selfhosted
       DATABASE_PASS:
         valueFrom:
           secretKeyRef:
             name: teslamate-pguser-teslamate
             key: password
-            namespace: selfhosted
 
     envFrom:
       - secretRef:
