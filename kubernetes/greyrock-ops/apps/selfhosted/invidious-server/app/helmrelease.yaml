@@ -37,24 +37,20 @@ spec:
     env:
       SECRET_INVIDIOUS_DB_USER:
         secretRef:
-          connectTokenSecretRef:
-            name: invidious-server-pguser-invidious-server
-            key: user
+          name: invidious-server-pguser-invidious-server
+          key: user
       SECRET_INVIDIOUS_DB_PASSWORD:
         secretRef:
-          connectTokenSecretRef:
-            name: invidious-server-pguser-invidious-server
-            key: password
+          name: invidious-server-pguser-invidious-server
+          key: password
       SECRET_INVIDIOUS_DB_HOST:
         secretRef:
-          connectTokenSecretRef:
-            name: invidious-server-pguser-invidious-server
-            key: host
+          name: invidious-server-pguser-invidious-server
+          key: host
       SECRET_INVIDIOUS_DB_NAME:
         secretRef:
-          connectTokenSecretRef:
-            name: invidious-server-pguser-invidious-server
-            key: dbname
+          name: invidious-server-pguser-invidious-server
+          key: dbname
 
     service:
       main:
