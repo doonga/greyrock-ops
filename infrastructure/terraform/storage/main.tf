@@ -26,15 +26,3 @@ terraform {
 data "sops_file" "secrets" {
   source_file = "secret.sops.yaml"
 }
-
-module "onepassword_item_storage" {
-  source = "github.com/Doonga/terraform-1password-item?ref=main"
-  vault  = "Automation"
-  item   = "Storage"
-}
-
-module "onepassword_item_cloudflare" {
-  source = "github.com/Doonga/terraform-1password-item?ref=main"
-  vault  = "Services"
-  item   = "Cloudflare"
-}

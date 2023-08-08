@@ -37,11 +37,11 @@ resource "kubernetes_stateful_set_v1" "minio" {
           }
           env {
             name = "MINIO_ROOT_USER"
-            value = "${module.onepassword_item_storage.fields.minio_root_user}"
+            value = "${data.sops_file.secrets.data["minio_root_user"]}"
           }
           env {
             name = "MINIO_ROOT_PASSWORD"
-            value = "${module.onepassword_item_storage.fields.minio_root_password}"
+            value = "${data.sops_file.secrets.data["minio_root_password"]}"
           }
           env {
             name  = "MINIO_API_CORS_ALLOW_ORIGIN"

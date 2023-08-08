@@ -4,7 +4,7 @@ resource "kubernetes_secret" "cloudflare_api_token_secret" {
   }
 
   data = {
-    "api-token" = "${module.onepassword_item_cloudflare.fields.cert-manager}"
+    "api-token" = "${data.sops_file.secrets.data["cert_manager"]}"
   }
 }
 
