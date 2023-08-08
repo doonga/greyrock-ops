@@ -11,7 +11,7 @@ vault secrets enable -path=secrets -version=2 kv
 Create temporary policy.hcl and apply it
 
 path "secrets/*" {
-  capabilities = ["read"]
+  capabilities = ["read", "create", "update"]
 }
 
 vault policy write external-secrets-operator policy.hcl
