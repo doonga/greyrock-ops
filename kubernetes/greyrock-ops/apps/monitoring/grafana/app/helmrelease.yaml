@@ -93,7 +93,10 @@ spec:
             url: postgres.database.svc.cluster.local:5432
             user: teslamate-HEdz1T
             secureJsonData:
-              password: $TESLAMATE_POSTGRES_PASSWORD
+              password:
+                fromSecret:
+                  name: teslamate-pguser-teslamate
+                  key: password
               sslmode: disable
             jsonData:
               postgresVersion: 1000
