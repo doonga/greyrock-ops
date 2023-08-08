@@ -34,9 +34,27 @@ spec:
       repository: quay.io/invidious/invidious
       tag: latest@sha256:8a5a79a8b809f8c1ab26edc54747709750d97afc3729be60838e51afd723a868
 
-    envFrom:
-      - secretRef:
-          name: invidious-server-secret
+    env:
+      SECRET_INVIDIOUS_DB_USER:
+        secretRef:
+          connectTokenSecretRef:
+            name: invidious-server-pguser-invidious-server
+            key: user
+      SECRET_INVIDIOUS_DB_PASSWORD:
+        secretRef:
+          connectTokenSecretRef:
+            name: invidious-server-pguser-invidious-server
+            key: password
+      SECRET_INVIDIOUS_DB_HOST:
+        secretRef:
+          connectTokenSecretRef:
+            name: invidious-server-pguser-invidious-server
+            key: host
+      SECRET_INVIDIOUS_DB_NAME:
+        secretRef:
+          connectTokenSecretRef:
+            name: invidious-server-pguser-invidious-server
+            key: dbname
 
     service:
       main:
@@ -69,6 +87,16 @@ spec:
         labelSelector:
           matchLabels:
             app.kubernetes.io/name: invidious-server
+
+    persistence:
+      config:
+        enabled: true
+        type: configMap
+        name: invidious-server
+        subPath: config.yml
+        mountPath: /invidious/config/config.yml
+        readOnly: false
+
 
     resources:
       requests:
