@@ -56,8 +56,9 @@ spec:
           secretKeyRef:
             name: teslamate-pguser-teslamate
             key: password
-      DATABASE_SSL:
-        value: noverify
+      DATABASE_POOL_SIZE:
+        value: 10
+
 
     envFrom:
       - secretRef:
