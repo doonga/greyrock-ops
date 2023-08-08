@@ -39,23 +39,23 @@ spec:
       DATABASE_HOST:
         valueFrom:
           secretKeyRef:
-            name: database-teslamate-user
-            key: HOST
+            name: teslamate-pguser-teslamate
+            key: host
       DATABASE_NAME:
         valueFrom:
           secretKeyRef:
-            name: database-teslamate-user
-            key: DATABASE_NAME
+            name: teslamate-pguser-teslamate
+            key: dbname
       DATABASE_USER:
         valueFrom:
           secretKeyRef:
-            name: database-teslamate-user
-            key: LOGIN
+            name: teslamate-pguser-teslamate
+            key: user
       DATABASE_PASS:
         valueFrom:
           secretKeyRef:
-            name: database-teslamate-user
-            key: PASSWORD
+            name: teslamate-pguser-teslamate
+            key: password
 
     envFrom:
       - secretRef:

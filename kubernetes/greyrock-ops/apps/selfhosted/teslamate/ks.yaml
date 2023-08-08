@@ -10,8 +10,9 @@ spec:
     kind: GitRepository
     name: greyrock-ops-kubernetes
   dependsOn:
-    - name: cluster-apps-ext-postgres-operator
     - name: cluster-apps-external-secrets-stores
+    - name: cluster-apps-crunchy-postgres-operator
+    - name: cluster-apps-external-secrets-cluster-secrets
   prune: true
   wait: false # no flux ks dependents
   interval: 30m
