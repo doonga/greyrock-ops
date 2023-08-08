@@ -16,6 +16,14 @@ path "secrets/*" {
 
 vault policy write external-secrets-operator policy.hcl
 
-Create token for external-secrets-operator
-vault token create -policy=external-secrets-operator -period=8640h
+Create temporary policy.hcl and apply it
 
+path "secrets/*" {
+  capabilities = ["read"]
+}
+
+vault policy write terraform policy.hcl
+
+Create token for external-secrets-operator & terraform
+vault token create -policy=external-secrets-operator -period=8640h
+vault token create -policy=terraform -period=8640h
