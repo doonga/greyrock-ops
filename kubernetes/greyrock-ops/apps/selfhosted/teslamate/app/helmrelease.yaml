@@ -48,11 +48,13 @@ spec:
           secretKeyRef:
             name: teslamate-pguser-teslamate
             key: user
+            namespace: selfhosted
       DATABASE_PASS:
         valueFrom:
           secretKeyRef:
             name: teslamate-pguser-teslamate
             key: password
+            namespace: selfhosted
 
     envFrom:
       - secretRef:
