@@ -56,6 +56,10 @@ spec:
             name: invidious-server-pguser-invidious-server
             key: dbname
 
+    envFrom:
+      - secretRef:
+          name: invidious-server-secret
+
     service:
       main:
         ports:
