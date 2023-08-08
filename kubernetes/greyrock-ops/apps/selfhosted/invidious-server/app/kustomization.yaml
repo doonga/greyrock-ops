@@ -6,12 +6,6 @@ resources:
   - ./externalsecret.yaml
   - ./postgresCluster.yaml
   - ./helmrelease.yaml
-configMapGenerator:
-  - name: invidious-server
-    files:
-      - config/config.yml
-generatorOptions:
-  disableNameSuffixHash: true
 commonLabels:
   app.kubernetes.io/name: invidious-server
   app.kubernetes.io/instance: invidious-server
