@@ -9,5 +9,14 @@ terraform {
       source = "aminueza/minio"
       version = "1.17.2"
     }
+
+    vault = {
+      source = "hashicorp/vault"
+      version = "3.19.0"
+    }
   }
+}
+
+data "vault_generic_secret" "minio" {
+  path  = "secrets/minio"
 }
