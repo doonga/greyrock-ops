@@ -36,21 +36,25 @@ spec:
 
     env:
       SECRET_INVIDIOUS_DB_USER:
-        secretRef:
-          name: invidious-server-pguser-invidious-server
-          key: user
+        valueFrom:
+          secretKeyRef:
+            name: invidious-server-pguser-invidious-server
+            key: user
       SECRET_INVIDIOUS_DB_PASSWORD:
-        secretRef:
-          name: invidious-server-pguser-invidious-server
-          key: password
+        valueFrom:
+          secretKeyRef:
+            name: invidious-server-pguser-invidious-server
+            key: password
       SECRET_INVIDIOUS_DB_HOST:
-        secretRef:
-          name: invidious-server-pguser-invidious-server
-          key: host
+        valueFrom:
+          secretKeyRef:
+            name: invidious-server-pguser-invidious-server
+            key: host
       SECRET_INVIDIOUS_DB_NAME:
-        secretRef:
-          name: invidious-server-pguser-invidious-server
-          key: dbname
+        valueFrom:
+          secretKeyRef:
+            name: invidious-server-pguser-invidious-server
+            key: dbname
 
     service:
       main:
