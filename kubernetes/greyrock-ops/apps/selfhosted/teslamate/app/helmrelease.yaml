@@ -56,7 +56,7 @@ spec:
           secretKeyRef:
             name: teslamate-pguser-teslamate
             key: password
-      DATABASE_SSL: noverify
+      # DATABASE_SSL: noverify
 
     envFrom:
       - secretRef:

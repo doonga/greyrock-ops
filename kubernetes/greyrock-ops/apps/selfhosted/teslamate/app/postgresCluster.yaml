@@ -26,6 +26,8 @@ spec:
       synchronous_mode: true
       postgresql:
         synchronous_commit: "on"
+        pg_hba:
+          - "hostnossl all all all md5"
   instances:
     - name: postgres
       replicas: 2
