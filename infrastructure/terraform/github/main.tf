@@ -14,28 +14,20 @@ terraform {
   }
 }
 
-module "onepassword_item_github" {
-  source = "github.com/Doonga/terraform-1password-item?ref=main"
-  vault  = "Services"
-  item   = "Github"
+data "vault_generic_secret" "github" {
+  path  = "secrets/github"
 }
 
-module "onepassword_item_github_greyrock_bot" {
-  source = "github.com/Doonga/terraform-1password-item?ref=main"
-  vault  = "Automation"
-  item   = "github-greyrock-bot"
+data "vault_generic_secret" "github_greyrock_bot" {
+  path  = "secrets/github-greyrock-bot"
 }
 
-module "onepassword_item_flux" {
-  source = "github.com/Doonga/terraform-1password-item?ref=main"
-  vault  = "Automation"
-  item   = "flux"
+data "vault_generic_secret" "flux" {
+  path  = "secrets/flux"
 }
 
-module "onepassword_item_discord" {
-  source = "github.com/doonga/terraform-1password-item?ref=main"
-  vault  = "Services"
-  item   = "Discord"
+data "vault_generic_secret" "discord" {
+  path  = "secrets/discord"
 }
 
 module "doonga" {
@@ -56,10 +48,10 @@ module "doonga" {
   }
 
   secrets = {
-    greyrock_bot_app_id            = module.onepassword_item_github_greyrock_bot.fields.github_app_id
-    greyrock_bot_private_key       = module.onepassword_item_github_greyrock_bot.fields.github_app_private_key
-    flux_github_webhook_url    = module.onepassword_item_flux.fields.github_webhook_url
-    flux_github_webhook_secret = module.onepassword_item_flux.fields.github_webhook_token
-    discord_ci_webhook_url = module.onepassword_item_discord.fields.webhook_greyrock_github_ci
+    greyrock_bot_app_id            = data.vault_generic_secret.github_greyrock_bot.data["github_app_id"]
+    greyrock_bot_private_key       = data.vault_generic_secret.github_greyrock_bot.data["github_app_private_key"]
+    flux_github_webhook_url        = data.vault_generic_secret.flux.data["github_webhook_url"]
+    flux_github_webhook_secret     = data.vault_generic_secret.flux.data["github_webhook_token"]
+    discord_ci_webhook_url         = data.vault_generic_secret.discord.data["webhook_greyrock_github_ci"]
   }
 }
