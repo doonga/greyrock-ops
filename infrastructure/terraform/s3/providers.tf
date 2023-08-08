@@ -7,4 +7,5 @@ provider "minio" {
 
 provider "vault" {
   address = "https://vault.greyrock.io"
+  skip_child_token = true
 }
