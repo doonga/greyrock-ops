@@ -29,14 +29,6 @@ spec:
     namespace: infrastructure
   runnerPodTemplate:
     spec:
-      env:
-        - name: OP_CONNECT_HOST
-          value: http://onepassword-connect.greyrock.casa:8080
-        - name: OP_CONNECT_TOKEN
-          valueFrom:
-            secretKeyRef:
-              name: tf-controller-secrets
-              key: OP_CONNECT_TOKEN
       volumeMounts:
         - name: tf-controller-sops-key
           mountPath: /home/runner/.config/sops/age/keys.txt
