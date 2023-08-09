@@ -3,37 +3,30 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: homepage-todd
-  namespace: selfhosted
+  namespace: personalization
 spec:
+  interval: 15m
   chart:
     spec:
-      chart: app-template
-      version: 1.5.1
-      interval: 30m
+      chart: homepage
+      version: 1.2.0
       sourceRef:
         kind: HelmRepository
-        name: bjw-s
+        name: jameswynn
         namespace: flux-system
-  interval: 30m
-
+  install:
+    createNamespace: true
+    remediation:
+      retries: 5
+  upgrade:
+    remediation:
+      retries: 5
   values:
     image:
       repository: ghcr.io/benphelps/homepage
       tag: v0.6.28
 
-    controller:
-      replicas: 2
-      strategy: RollingUpdate
-
-    podAnnotations:
-      configmap.reloader.stakater.com/reload: homepage-config
-      secret.reloader.stakater.com/reload: homepage-secret
-
-    service:
-      main:
-        ports:
-          http:
-            port: 3000
+    enableRbac: true
 
     ingress:
       main:
@@ -48,34 +41,15 @@ spec:
           - hosts:
               - *host
 
-    persistence:
-      config:
-        enabled: true
-        type: custom
-        volumeSpec:
-          configMap:
-            name: homepage-config
-        subPath:
-          - path: bookmarks.yaml
-            mountPath: /app/config/bookmarks.yaml
-          - path: docker.yaml
-            mountPath: /app/config/docker.yaml
-          - path: kubernetes.yaml
-            mountPath: /app/config/kubernetes.yaml
-          - path: services.yaml
-            mountPath: /app/config/services.yaml
-          - path: settings.yaml
-            mountPath: /app/config/settings.yaml
-          - path: widgets.yaml
-            mountPath: /app/config/widgets.yaml
+    config:
+      useExistingConfigMap: homepage-config
 
-    serviceAccount:
-      create: true
+    podAnnotations:
+      configmap.reloader.stakater.com/reload: homepage-config
 
     resources:
       requests:
-        cpu: 25m
-        memory: 50Mi
-    # envFrom:
-    #   - secretRef:
-    #       name: homepage-secret
+        cpu: 15m
+        memory: 127M
+      limits:
+        memory: 308M
