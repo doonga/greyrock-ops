@@ -23,6 +23,7 @@ spec:
       template:
         engineVersion: v2
         data:
+          VAULT_ADDR: "https://vault.greyrock.io"
           VAULT_TOKEN: "{{ .vault_snapshot_token }}"
     dataFrom:
       - extract:

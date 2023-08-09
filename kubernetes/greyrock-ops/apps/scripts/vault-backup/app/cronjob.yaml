@@ -24,9 +24,6 @@ spec:
             envFrom:
             - secretRef:
                 name: vault-snapshot-agent-token
-            env:
-            - name: VAULT_ADDR
-              vault: https://vault.greyrock.io
             volumeMounts:
             - mountPath: /share
               name: share
