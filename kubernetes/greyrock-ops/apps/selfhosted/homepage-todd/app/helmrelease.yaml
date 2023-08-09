@@ -2,19 +2,20 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: &app homepage-todd
-  namespace: selfhosted
+  name: homepage-todd
+  namespace: media
 spec:
-  interval: 15m
   chart:
     spec:
-      # renovate: registryUrl=https://homepage.io
-      chart: homepage
-      version: 2.0.2
+      chart: app-template
+      version: 1.5.1
+      interval: 30m
       sourceRef:
         kind: HelmRepository
-        name: homepage
+        name: bjw-s
         namespace: flux-system
+  interval: 30m
+
   values:
     image:
       repository: ghcr.io/benphelps/homepage
