@@ -5,8 +5,8 @@ resources:
   # Pre Flux-Kustomizations
   - ./namespace.yaml
   # Flux-Kustomizations
-  - ./hajimari-todd/ks.yaml
   - ./hajimari-andy/ks.yaml
+  - ./homepage-todd/ks.yaml
   - ./immich/ks.yaml
   - ./invidious-server/ks.yaml
   - ./libreddit/ks.yaml
