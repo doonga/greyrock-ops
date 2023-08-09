@@ -6,6 +6,7 @@ metadata:
   namespace: security
 spec:
   schedule: "@every 12h"
+  concurrencyPolicy: Forbid
   jobTemplate:
     spec:
       template:
@@ -29,6 +30,8 @@ spec:
               name: share
             - mountPath: /nas-backups
               name: nas-backups
+
+          restartPolicy: OnFailure
 
           volumes:
             - name: share
