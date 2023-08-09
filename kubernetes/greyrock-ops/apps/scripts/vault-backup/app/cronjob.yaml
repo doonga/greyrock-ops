@@ -1,0 +1,42 @@
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: vault-snapshot-cronjob
+  namespace: security
+spec:
+  schedule: "@every 12h"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: snapshot
+            image: vault:1.7.2
+            imagePullPolicy: IfNotPresent
+            command:
+            - /bin/sh
+            args:
+            - -ec
+            - |
+              vault operator raft snapshot save /share/vault-raft.snap;
+              cp /share/vault-raft.snap /nas-backups/vault-raft.snap
+            envFrom:
+            - secretRef:
+                name: vault-snapshot-agent-token
+            env:
+            - name: VAULT_ADDR
+              vault: https://vault.greyrock.io
+            volumeMounts:
+            - mountPath: /share
+              name: share
+            - mountPath: /nas-backups
+              name: nas-backups
+
+          volumes:
+            - name: share
+              emptyDir: {}
+            - name: nas-backups
+              nfs:
+                server: "nas.greyrock.io"
+                path: /tank/backup/vault

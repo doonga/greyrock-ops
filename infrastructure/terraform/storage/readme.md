@@ -6,24 +6,24 @@ Notes:
 After bootstrapping vault:
 vault secrets enable -path=secrets -version=2 kv
 
-# create read-only policy for kubernetes
+# Create policies
 
-Create temporary policy.hcl and apply it
+echo '
+  path "secrets/*" {
+    capabilities = ["read", "create", "update"]
+  }' | vault policy write external-secrets-operator -
 
-path "secrets/*" {
-  capabilities = ["read", "create", "update"]
-}
+echo '
+  path "secrets/*" {
+    capabilities = ["read"]
+  }' | vault policy write terraform -
 
-vault policy write external-secrets-operator policy.hcl
+echo '
+  path "sys/storage/raft/snapshot" {
+     capabilities = ["read"]
+  }' | vault policy write snapshot -
 
-Create temporary policy.hcl and apply it
-
-path "secrets/*" {
-  capabilities = ["read"]
-}
-
-vault policy write terraform policy.hcl
-
-Create token for external-secrets-operator & terraform
+# Create tokens
 vault token create -policy=external-secrets-operator -period=8640h
 vault token create -policy=terraform -period=8640h
+vault token create -policy=snapshot -period=8640h
