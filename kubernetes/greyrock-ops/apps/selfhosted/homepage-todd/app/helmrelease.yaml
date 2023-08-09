@@ -69,8 +69,8 @@ spec:
           - path: widgets.yaml
             mountPath: /app/config/widgets.yaml
 
-    # serviceAccount:
-    #   create: true
+    serviceAccount:
+      create: true
 
     resources:
       requests:
