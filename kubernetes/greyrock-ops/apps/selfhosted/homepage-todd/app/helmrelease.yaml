@@ -3,7 +3,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: homepage-todd
-  namespace: personalization
+  namespace: selfhosted
 spec:
   interval: 15m
   chart:
