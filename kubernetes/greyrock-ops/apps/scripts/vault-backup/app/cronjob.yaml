@@ -2,7 +2,7 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: vault-snapshot-cronjob
+  name: vault-snapshot
   namespace: security
 spec:
   schedule: "@every 12h"
