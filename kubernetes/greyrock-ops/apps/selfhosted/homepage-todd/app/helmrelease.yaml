@@ -3,7 +3,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: homepage-todd
-  namespace: media
+  namespace: selfhosted
 spec:
   chart:
     spec:
@@ -20,6 +20,10 @@ spec:
     image:
       repository: ghcr.io/benphelps/homepage
       tag: v0.6.28
+
+    controller:
+      replicas: 2
+      strategy: RollingUpdate
 
     podAnnotations:
       configmap.reloader.stakater.com/reload: &config homepage-config
