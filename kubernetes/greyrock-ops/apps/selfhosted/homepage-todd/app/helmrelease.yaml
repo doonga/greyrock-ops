@@ -26,7 +26,7 @@ spec:
       strategy: RollingUpdate
 
     podAnnotations:
-      configmap.reloader.stakater.com/reload: &config homepage-config
+      configmap.reloader.stakater.com/reload: homepage-config
       secret.reloader.stakater.com/reload: homepage-secret
 
     service:
@@ -54,7 +54,7 @@ spec:
         type: custom
         volumeSpec:
           configMap:
-            name: *config
+            name: homepage-config
         subPath:
           - path: bookmarks.yaml
             mountPath: /app/config/bookmarks.yaml
