@@ -36,19 +36,19 @@
           password: {{HOMEPAGE_VAR_QBITTORRENT_PASSWORD}}
     - Radarr:
         icon: radarr.png
-        href: https://movie.greyrock.casa
+        href: https://radarr.greyrock.casa
         description: Movies Management
         widget:
           type: radarr
-          url: http://radarr.default.svc.cluster.local:7878
+          url: http://radarr.downloads:7878
           key: {{HOMEPAGE_VAR_RADARR_KEY}}
     - Sonarr:
         icon: sonarr.png
-        href: https://tv.greyrock.casa
+        href: https://sonarr.greyrock.casa
         description: TV Shows Management
         widget:
           type: sonarr
-          url: http://sonarr.default.svc.cluster.local:8989
+          url: http://sonarr.downloads:8989
           key: {{HOMEPAGE_VAR_SONARR_KEY}}
     - Lidarr:
         icon: lidarr.png
