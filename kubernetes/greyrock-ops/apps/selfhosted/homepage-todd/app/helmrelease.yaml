@@ -44,6 +44,10 @@ spec:
     config:
       useExistingConfigMap: homepage-todd-config
 
+    envFrom:
+      - secretRef:
+          name: homepage-todd-secret
+
     podAnnotations:
       configmap.reloader.stakater.com/reload: homepage-todd-config
       secret.reloader.stakater.com/reload: homepage-todd-secret
