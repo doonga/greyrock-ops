@@ -4,7 +4,7 @@ resources:
   - ./externalsecret.yaml
   - ./helmrelease.yaml
 configMapGenerator:
-  - name: homepage-config
+  - name: homepage-todd-config
     namespace: selfhosted
     files:
       - config/bookmarks.yaml
