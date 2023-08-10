@@ -45,8 +45,7 @@ spec:
       useExistingConfigMap: homepage-config
 
     podAnnotations:
-      configmap.reloader.stakater.com/reload: homepage-config
-
+      configmap.reloader.stakater.com/reload: homepage-config, homepage-todd-secret
     resources:
       requests:
         cpu: 15m
