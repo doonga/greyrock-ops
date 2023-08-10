@@ -79,11 +79,11 @@
 - Favorites:
     - My GitHub Repo:
         icon: si-github
-        href: https://github.com/budimanjojo
+        href: https://github.com/doonga
         description: My Code Repository
     - Grafana Dashboard:
         icon: si-grafana
-        href: https://dashboard.greyrock.casa
+        href: https://grafana.greyrock.casa
         description: My Cluster Metrics Visualization
     - k8s-at-home-search:
         icon: si-kubernetes
@@ -93,11 +93,11 @@
         icon: si-github
         href: https://github.com/onedr0p/home-ops
         description: onedr0p HomeOps Repository
+    - bjw-s home-ops:
+        icon: si-github
+        href: https://github.com/bjw-s/home-ops
+        description: onedr0p HomeOps Repository
     - bjw-s Chart Values:
         icon: si-github
         href: https://github.com/bjw-s/helm-charts/tree/main/charts/library/common#values
         description: app-template Helm Chart Values
-    - NixOS Search:
-        icon: si-nixos
-        href: https://search.nixos.org
-        description: Search NixOS Packages and Options
