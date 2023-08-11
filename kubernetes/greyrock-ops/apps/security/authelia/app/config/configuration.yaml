@@ -29,6 +29,11 @@ access_control:
       policy: two_factor
       subject:
         - ["group:admins"]
+    - domain:
+        - "calibre-web.greyrock.casa"
+      policy: one_factor
+      subject:
+        - ["group:calibreweb"]
 
 identity_providers:
   oidc:
