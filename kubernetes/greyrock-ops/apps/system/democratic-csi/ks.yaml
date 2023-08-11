@@ -12,3 +12,5 @@ spec:
   interval: 10m
   prune: true
   wait: true
+  dependsOn:
+    - name: cluster-apps-volsync
