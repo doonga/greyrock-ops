@@ -232,7 +232,7 @@ worker:
           extensions:
             - image: ghcr.io/siderolabs/intel-ucode:20230214
             - image: ghcr.io/siderolabs/i915-ucode:20230310
-            - image: ghcr.io/siderolabs/gasket-driver:97aeba58-v1.4.7
+            - image: ghcr.io/siderolabs/gasket-driver:97aeba58-v1.4.8
         kernel:
           modules:
             - name: gasket
