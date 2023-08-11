@@ -17,4 +17,4 @@
       showLabel: true
       label: greyrock-ops
     nodes:
-      show: true
+      show: false
