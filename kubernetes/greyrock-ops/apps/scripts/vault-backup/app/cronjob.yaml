@@ -21,7 +21,8 @@ spec:
                 - -ec
                 - |
                   vault operator raft snapshot save /share/vault-raft.snap;
-                  cp /share/vault-raft.snap /nas-backups/vault-raft.snap
+                  cp /share/vault-raft.snap /nas-backups/vault-raft-`date '+%Y_%m_%d__%H_%M_%S'`.snap;
+                  find /nas-backups/* -mtime +30 -exec rm {} \;
               envFrom:
                 - secretRef:
                     name: vault-snapshot-agent-token
