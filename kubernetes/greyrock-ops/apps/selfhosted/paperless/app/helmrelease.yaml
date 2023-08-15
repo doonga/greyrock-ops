@@ -24,7 +24,7 @@ spec:
 
     image:
       repository: ghcr.io/doonga/paperless-ngx
-      tag: 1.17.0@sha256:6abd3f983eb65fa4229524d6bda6ad1ef738c9758008e6da96dbc64850ae7ecb
+      tag: 1.17.1@sha256:e91208b2bcbe753924d672d9bc36ffcf79d89ba03f5ecde139e0f08edbedd5bd
 
     envFrom:
       - secretRef:
