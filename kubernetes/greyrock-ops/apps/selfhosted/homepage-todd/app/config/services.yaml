@@ -44,7 +44,7 @@
 - Network:
     - Pi-Hole:
         icon: pi-hole.png
-        href: https://pihole.greyrock.io
+        href: https://pihole.greyrock.io/admin/
         description: Ad Blocking DNS
         widget:
             type: pihole
