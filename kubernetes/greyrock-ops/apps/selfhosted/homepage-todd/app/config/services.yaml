@@ -51,15 +51,14 @@
             url: http://sonarr.downloads:8989
             key: {{HOMEPAGE_VAR_SONARR_KEY}}
 - Network:
-    - AdGuardHome:
-        icon: adguard-home.png
-        href: https://adguard.greyrock.casa
+    - Pi-Hole:
+        icon: pihole.png
+        href: https://pihole.greyrock.io
         description: Ad Blocking DNS
         widget:
-          type: adguard
-          url: http://10.5.0.2:80
-          username: {{HOMEPAGE_VAR_AGH_USERNAME}}
-          password: {{HOMEPAGE_VAR_AGH_PASSWORD}}
+          type: pihole
+          url: http://pihole.greyrock.io
+          key: {{HOMEPAGE_VAR_PIHOLE_KEY}}
 - Favorites:
     - My GitHub Repo:
         icon: si-github
