@@ -52,7 +52,7 @@
             key: {{HOMEPAGE_VAR_SONARR_KEY}}
 - Network:
     - Pi-Hole:
-        icon: pihole.png
+        icon: pi-hole.png
         href: https://pihole.greyrock.io
         description: Ad Blocking DNS
         widget:
