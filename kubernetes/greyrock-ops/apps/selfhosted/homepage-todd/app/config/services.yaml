@@ -36,7 +36,7 @@
     - Sabnzbd:
         icon: sabnzbd.png
         href: https://sabnzbd.greyrock.casa
-        description: TV Shows Management
+        description: Download Client
         widget:
             type: sabnzbd
             url: http://sabnzbd.downloads:8080
