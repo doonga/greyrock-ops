@@ -6,7 +6,7 @@
         description: Media Server
         widget:
             type: tautulli
-            url: http://tautulli.media
+            url: http://tautulli.media:8181
             key: {{HOMEPAGE_VAR_TAUTULLI_KEY}}
             enableNowPlaying: true
     - Overseerr:
@@ -15,7 +15,7 @@
         description: Media Requests
         widget:
             type: overseerr
-            url: http://overseerr.downloads:3579
+            url: http://overseerr.downloads
             key: {{HOMEPAGE_VAR_OVERSEERR_KEY}}
     - Immich:
         icon: immich.png
