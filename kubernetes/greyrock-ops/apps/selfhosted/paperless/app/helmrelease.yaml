@@ -42,10 +42,6 @@ spec:
       main:
         enabled: true
         ingressClassName: "internal-nginx"
-        annotations:
-          hajimari.io/enable: "true"
-          hajimari.io/instance: "todd"
-          hajimari.io/icon: "file-multiple"
         hosts:
           - host: &host "paperless.greyrock.casa"
             paths:

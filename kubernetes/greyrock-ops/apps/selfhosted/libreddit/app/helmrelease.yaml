@@ -40,7 +40,7 @@ spec:
         ingressClassName: "internal-nginx"
         annotations:
           hajimari.io/enable: "true"
-          hajimari.io/instance: "todd,andy"
+          hajimari.io/instance: "andy"
           hajimari.io/icon: simple-icons:reddit
         hosts:
           - host: &host "libreddit.greyrock.casa"

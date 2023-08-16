@@ -49,10 +49,6 @@ spec:
     ingress:
       main:
         enabled: true
-        annotations:
-          hajimari.io/enable: "true"
-          hajimari.io/instance: "todd,andy"
-          hajimari.io/icon: mdi:google
         ingressClassName: "internal-nginx"
         hosts:
           - host: &host "search.greyrock.casa"

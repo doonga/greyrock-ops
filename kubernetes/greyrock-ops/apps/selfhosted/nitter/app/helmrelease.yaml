@@ -34,10 +34,6 @@ spec:
       main:
         enabled: true
         ingressClassName: "internal-nginx"
-        annotations:
-          hajimari.io/enable: "true"
-          hajimari.io/instance: "todd,andy"
-          hajimari.io/icon: "twitter"
         hosts:
           - host: &host "nitter.greyrock.casa"
             paths:

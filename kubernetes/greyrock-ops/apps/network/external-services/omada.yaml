@@ -23,9 +23,6 @@ metadata:
   namespace: network
   annotations:
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-    hajimari.io/enable: "true"
-    hajimari.io/instance: "todd"
-    hajimari.io/icon: "router-wireless-settings"
   labels:
     app.kubernetes.io/name: omada
     app.kubernetes.io/instance: omada

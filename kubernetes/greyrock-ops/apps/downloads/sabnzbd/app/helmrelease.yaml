@@ -66,7 +66,7 @@ spec:
         ingressClassName: "internal-nginx"
         annotations:
           hajimari.io/enable: "true"
-          hajimari.io/instance: "todd,andy"
+          hajimari.io/instance: "andy"
           hajimari.io/icon: "mdi:download"
           nginx.ingress.kubernetes.io/configuration-snippet: |
             proxy_set_header Accept-Encoding "";

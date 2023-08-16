@@ -42,7 +42,7 @@ spec:
           external-dns.alpha.kubernetes.io/target: ingress-ext.greyrock.casa
           nginx.ingress.kubernetes.io/backend-protocol: HTTPS
           hajimari.io/enable: "true"
-          hajimari.io/instance: "todd,andy"
+          hajimari.io/instance: "andy"
           hajimari.io/icon: "mdi:plex"
         ingressClassName: "external-nginx"
         hosts:

@@ -34,9 +34,6 @@ spec:
             proxy_set_header Accept-Encoding "";
             sub_filter '</head>' '<link rel="stylesheet" type="text/css" href="https://theme-park.greyrock.casa/css/base/tautulli/nord.css"></head>';
             sub_filter_once on;
-          hajimari.io/enable: "true"
-          hajimari.io/instance: "todd"
-          hajimari.io/icon: "mdi:chart-bar"
         hosts:
           - host: &host tautulli.greyrock.casa
             paths:

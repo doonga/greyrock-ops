@@ -54,9 +54,6 @@ spec:
         enabled: true
         ingressClassName: "internal-nginx"
         annotations:
-          hajimari.io/enable: "true"
-          hajimari.io/instance: "todd"
-          hajimari.io/icon: "book-open"
           nginx.ingress.kubernetes.io/configuration-snippet: |
             proxy_set_header Accept-Encoding "";
             sub_filter '</head>' '<link rel="stylesheet" type="text/css" href="https://theme-park.greyrock.casa/css/base/readarr/nord.css"></head>';

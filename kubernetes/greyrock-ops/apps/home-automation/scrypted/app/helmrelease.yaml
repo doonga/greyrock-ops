@@ -42,9 +42,6 @@ spec:
       main:
         enabled: true
         annotations:
-          hajimari.io/enable: "true"
-          hajimari.io/instance: "todd"
-          hajimari.io/icon: "mdi:cctv"
           external-dns.alpha.kubernetes.io/target: ingress-ext.greyrock.casa
         ingressClassName: "external-nginx"
         hosts:

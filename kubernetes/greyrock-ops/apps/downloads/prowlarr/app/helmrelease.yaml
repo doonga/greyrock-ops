@@ -53,10 +53,6 @@ spec:
 
     ingress:
       main:
-        annotations:
-          hajimari.io/enable: "true"
-          hajimari.io/instance: "todd"
-          hajimari.io/icon: "mdi:movie-search"
         enabled: true
         ingressClassName: "internal-nginx"
         hosts:
