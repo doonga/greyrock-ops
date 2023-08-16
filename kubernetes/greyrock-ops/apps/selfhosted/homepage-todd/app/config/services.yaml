@@ -1,71 +1,55 @@
 ---
 - Media:
-    - Jellyfin:
-        icon: jellyfin.png
-        href: https://jellyfin.greyrock.casa
+    - Plex:
+        icon: plex.png
+        href: https://plex.greyrock.casa
         description: Media Server
         widget:
-          type: jellyfin
-          url: http://jellyfin.default.svc.cluster.local:8096
-          key: {{HOMEPAGE_VAR_JELLYFIN_KEY}}
-          enableNowPlaying: true
-    - Ombi:
-        icon: ombi.png
-        href: https://ombi.greyrock.casa
+            type: tautulli
+            url: http://tautulli.media
+            key: {{HOMEPAGE_VAR_TAUTULLI_KEY}}
+            enableNowPlaying: true
+    - Overseerr:
+        icon: overseerr.png
+        href: https://overseerr.greyrock.casa
         description: Media Requests
         widget:
-          type: ombi
-          url: http://ombi.default.svc.cluster.local:3579
-          key: {{HOMEPAGE_VAR_OMBI_KEY}}
+            type: overseerr
+            url: http://overseerr.downloads:3579
+            key: {{HOMEPAGE_VAR_OVERSEERR_KEY}}
     - Immich:
         icon: immich.png
         href: https://photos.greyrock.casa
         description: Photos and Videos Backup
         widget:
-          type: immich
-          url: http://immich-proxy.default.svc.cluster.local:8080
-          key: {{HOMEPAGE_VAR_IMMICH_KEY}}
+            type: immich
+            url: http://immich-proxy.default.svc.cluster.local:8080
+            key: {{HOMEPAGE_VAR_IMMICH_KEY}}
     - qBittorrent:
         icon: qbittorrent.png
         href: https://qbit.greyrock.casa
         description: Torrent Management
         widget:
-          type: qbittorrent
-          url: http://qbittorrent.default.svc.cluster.local:8080
-          username: {{HOMEPAGE_VAR_QBITTORRENT_USERNAME}}
-          password: {{HOMEPAGE_VAR_QBITTORRENT_PASSWORD}}
+            type: qbittorrent
+            url: http://qbittorrent.default.svc.cluster.local:8080
+            username: {{HOMEPAGE_VAR_QBITTORRENT_USERNAME}}
+            password: {{HOMEPAGE_VAR_QBITTORRENT_PASSWORD}}
     - Radarr:
         icon: radarr.png
         href: https://radarr.greyrock.casa
         description: Movies Management
         widget:
-          type: radarr
-          url: http://radarr.downloads:7878
-          key: {{HOMEPAGE_VAR_RADARR_KEY}}
+            type: radarr
+            url: http://radarr.downloads:7878
+            key: {{HOMEPAGE_VAR_RADARR_KEY}}
     - Sonarr:
         icon: sonarr.png
         href: https://sonarr.greyrock.casa
         description: TV Shows Management
         widget:
-          type: sonarr
-          url: http://sonarr.downloads:8989
-          key: {{HOMEPAGE_VAR_SONARR_KEY}}
-    - Lidarr:
-        icon: lidarr.png
-        href: https://music.greyrock.casa
-        description: Musics Management
-        widget:
-          type: lidarr
-          url: http://lidarr.default.svc.cluster.local:8686
-          key: {{HOMEPAGE_VAR_LIDARR_KEY}}
-    - Bazarr:
-        icon: bazarr.png
-        href: https://bazarr.greyrock.casa
-        description: Subtitles Management
-        widget:
-          type: bazarr
-          url: http://bazarr.default.svc.cluster.local:6767
-          key: {{HOMEPAGE_VAR_BAZARR_KEY}}
+            type: sonarr
+            url: http://sonarr.downloads:8989
+            key: {{HOMEPAGE_VAR_SONARR_KEY}}
 - Network:
     - AdGuardHome:
         icon: adguard-home.png
