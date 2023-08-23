@@ -24,7 +24,7 @@ spec:
 
     image:
       repository: sissbruecker/linkding
-      tag: 1.20.0
+      tag: 1.20.1
 
     enableServiceLinks: false
 
