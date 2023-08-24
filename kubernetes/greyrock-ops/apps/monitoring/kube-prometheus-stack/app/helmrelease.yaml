@@ -181,6 +181,14 @@ spec:
               - targets:
                   - "nas.greyrock.io:9633"
 
+          - job_name: vault
+            metrics_path: /v1/sys/metrics
+            params:
+              format: ['prometheus']
+            scheme: https
+            static_configs:
+              - targets: vault.greyrock.io:443
+
         enableAdminAPI: true
         # Breaks any metric that has an existing "cluster" label on a metric
         # externalLabels:
