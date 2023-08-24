@@ -61,12 +61,11 @@ spec:
           revision: 4
           datasource: Prometheus
 
+        # Ref: https://grafana.com/grafana/dashboards/12904-hashicorp-vault/
         vault:
-          # Ref: https://grafana.com/grafana/dashboards/12904-hashicorp-vault/
-          vault:
-            gnetId: 12904
-            revision: 2
-            datasource: Prometheus
+          gnetId: 12904
+          revision: 2
+          datasource: Prometheus
 
       node-exporter:
         # Ref: https://grafana.com/grafana/dashboards/1860-node-exporter-full/
