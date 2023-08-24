@@ -68,6 +68,13 @@ spec:
           revision: 29
           datasource: Prometheus
 
+      vault:
+        # Ref: https://grafana.com/grafana/dashboards/12904-hashicorp-vault/
+        vault:
+          gnetId: 12904
+          revision: 2
+          datasource: Prometheus
+
     datasources:
       datasources.yaml:
         apiVersion: 1
