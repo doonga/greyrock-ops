@@ -187,7 +187,8 @@ spec:
               format: ['prometheus']
             scheme: https
             static_configs:
-              - targets: vault.greyrock.io:443
+              - targets:
+                - vault.greyrock.io:443
 
         enableAdminAPI: true
         # Breaks any metric that has an existing "cluster" label on a metric
