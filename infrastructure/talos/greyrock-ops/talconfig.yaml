@@ -1,7 +1,7 @@
 ---
 clusterName: ${clusterName}
 
-talosVersion: v1.4.8
+talosVersion: v1.5.1
 kubernetesVersion: 1.27.3
 endpoint: "https://${clusterName}.greyrock.io:6443"
 
@@ -176,7 +176,7 @@ controlPlane:
           fs.inotify.max_user_instances: "8192"
         install:
           extensions:
-            - image: ghcr.io/siderolabs/intel-ucode:20230214
+            - image: ghcr.io/siderolabs/intel-ucode:20230808
         time:
           disabled: false
           servers:
@@ -230,9 +230,9 @@ worker:
           fs.inotify.max_user_instances: "8192"
         install:
           extensions:
-            - image: ghcr.io/siderolabs/intel-ucode:20230214
-            - image: ghcr.io/siderolabs/i915-ucode:20230310
-            - image: ghcr.io/siderolabs/gasket-driver:97aeba58-v1.4.8
+            - image: ghcr.io/siderolabs/intel-ucode:20230808
+            - image: ghcr.io/siderolabs/i915-ucode:20230804
+            - image: ghcr.io/siderolabs/gasket-driver:97aeba58-v1.5.1
         kernel:
           modules:
             - name: gasket
