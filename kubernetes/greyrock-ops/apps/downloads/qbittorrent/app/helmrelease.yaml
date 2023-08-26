@@ -91,7 +91,7 @@ spec:
 
     sidecars:
       reannounce:
-        image: ghcr.io/buroa/qbittools:v0.7.0@sha256:79194de1cb0362f9bea04b14bcd0b4eda3b6e15f0074b392484e3ec4311ac821
+        image: ghcr.io/buroa/qbittools:v0.8.2@sha256:2e7deab288c1cfe5c88dfb76647697e3e66ab54f6eea55156f7e0c148e1bb687
         imagePullPolicy: IfNotPresent
         args:
           - "reannounce"
