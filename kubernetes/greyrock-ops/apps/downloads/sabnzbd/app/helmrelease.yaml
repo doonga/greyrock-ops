@@ -91,9 +91,9 @@ spec:
     resources:
       requests:
         cpu: 5m
-        memory: "2048M"
+        memory: "8192M"
       limits:
-        memory: "4096M"
+        memory: "8192M"
 
     volumeClaimTemplates:
       - name: config
