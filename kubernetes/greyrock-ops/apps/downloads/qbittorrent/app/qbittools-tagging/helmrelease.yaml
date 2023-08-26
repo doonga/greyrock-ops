@@ -28,7 +28,7 @@ spec:
 
     image:
       repository: ghcr.io/buroa/qbittools
-      tag: v0.7.0@sha256:79194de1cb0362f9bea04b14bcd0b4eda3b6e15f0074b392484e3ec4311ac821
+      tag: v0.8.2@sha256:2e7deab288c1cfe5c88dfb76647697e3e66ab54f6eea55156f7e0c148e1bb687
 
     args:
       - tagging
