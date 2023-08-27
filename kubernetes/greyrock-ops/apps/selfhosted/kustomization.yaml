@@ -19,6 +19,5 @@ resources:
   - ./scribe/ks.yaml
   - ./teslamate/ks.yaml
   - ./thelounge/ks.yaml
-  - ./theme-park/ks.yaml
   - ./wallabag/ks.yaml
   - ./whoogle/ks.yaml
