@@ -57,7 +57,7 @@ spec:
     persistence:
       nfs-nas-media:
         enabled: true
-        mountPath: /storage/media
+        mountPath: /data/nas-media
         path: /tank/media
         server: nas.greyrock.io
         type: nfs
