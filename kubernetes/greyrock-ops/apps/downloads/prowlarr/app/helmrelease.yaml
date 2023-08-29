@@ -23,13 +23,7 @@ spec:
 
     image:
       repository: ghcr.io/onedr0p/prowlarr-nightly
-      tag: 1.8.5.3888@sha256:dcfcd092270d2e7d2babf72b9b7a50bf6c248b5d4480f75e55d3be52452ecbfe
-
-    podSecurityContext:
-      runAsUser: 568
-      runAsGroup: 568
-      fsGroup: 568
-      fsGroupChangePolicy: "OnRootMismatch"
+      tag: 1.8.5.3886@sha256:ac8c45c174903a65f7cbdad884b13c1e107ce4ec897748f3e6d4964dc270c965
 
     env:
       PROWLARR__INSTANCE_NAME: Prowlarr
@@ -43,8 +37,6 @@ spec:
             name: prowlarr-secret
             key: api_key
 
-    hostname: prowlarr
-
     service:
       main:
         ports:
@@ -56,7 +48,7 @@ spec:
         enabled: true
         ingressClassName: "internal-nginx"
         hosts:
-          - host: &host "prowlarr.greyrock.casa"
+          - host: &host "{{ .Release.Name }}.greyrock.casa"
             paths:
               - path: /
         tls:
@@ -70,7 +62,11 @@ spec:
 
     resources:
       requests:
-        cpu: 5m
-        memory: 256M
+        cpu: 18m
+        memory: 160Mi
       limits:
-        memory: 256M
+        memory: 160Mi
+
+    securityContext:
+      runAsUser: 568
+      runAsGroup: 568
