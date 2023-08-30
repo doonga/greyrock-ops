@@ -21,18 +21,16 @@ spec:
 
   values:
     controller:
-      replicas: 1
       strategy: RollingUpdate
       annotations:
         reloader.stakater.com/auto: "true"
 
     image:
       repository: ghcr.io/immich-app/immich-server
-      tag: v1.75.2@sha256:563990a53f585f1e28943a9caeac0452ac709e4faad044e5ef2198bd0f6a5f3e
+      tag: v1.76.0
 
-    command: /bin/sh
     args:
-      - ./start-server.sh
+      - start-server.sh
 
     env:
       DB_HOSTNAME:
@@ -71,14 +69,20 @@ spec:
     persistence:
       library:
         enabled: true
-        type: nfs
-        server: "nas.greyrock.io"
-        path: /tank/backup/photos/immich
+        existingClaim: immich-nfs
         mountPath: /usr/src/app/upload
+
+    podSecurityContext:
+      runAsUser: 568
+      runAsGroup: 568
+      fsGroup: 568
+      fsGroupChangePolicy: OnRootMismatch
+      supplementalGroups:
+        - 65541
 
     resources:
       requests:
-        cpu: 5m
-        memory: 114Mi
+        cpu: 100m
+        memory: 256Mi
       limits:
         memory: 512Mi

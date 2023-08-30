@@ -21,14 +21,13 @@ spec:
 
   values:
     controller:
-      replicas: 1
       strategy: RollingUpdate
       annotations:
         reloader.stakater.com/auto: "true"
 
     image:
       repository: ghcr.io/immich-app/immich-web
-      tag: v1.75.2@sha256:d3056701ce73e5b647861390e2bdecdae78fb6dc97b0a5539e5f1ab5069c3180
+      tag: v1.76.0
 
     command: /bin/sh
     args:
@@ -83,7 +82,7 @@ spec:
           hajimari.io/appName: Immich
           hajimari.io/icon: "heroicons:photo"
         hosts:
-          - host: &host photos.greyrock.casa
+          - host: &host immich.greyrock.casa
             paths:
               - path: /
                 pathType: Prefix
@@ -99,14 +98,20 @@ spec:
     persistence:
       library:
         enabled: true
-        type: nfs
-        server: "nas.greyrock.io"
-        path: /tank/backup/photos/immich
+        existingClaim: immich-nfs
         mountPath: /usr/src/app/upload
+
+    podSecurityContext:
+      runAsUser: 568
+      runAsGroup: 568
+      fsGroup: 568
+      fsGroupChangePolicy: OnRootMismatch
+      supplementalGroups:
+        - 65541
 
     resources:
       requests:
         cpu: 5m
         memory: 64Mi
       limits:
-        memory: 64Mi
+        memory: 256Mi

@@ -22,18 +22,16 @@ spec:
 
   values:
     controller:
-      replicas: 1
       strategy: RollingUpdate
       annotations:
         reloader.stakater.com/auto: "true"
 
     image:
       repository: ghcr.io/immich-app/immich-server
-      tag: v1.75.2@sha256:563990a53f585f1e28943a9caeac0452ac709e4faad044e5ef2198bd0f6a5f3e
+      tag: v1.76.0
 
-    command: /bin/sh
     args:
-      - ./start-microservices.sh
+      - start-microservices.sh
 
     env:
       DB_HOSTNAME:
@@ -70,14 +68,43 @@ spec:
     persistence:
       library:
         enabled: true
-        type: nfs
-        server: "nas.greyrock.io"
-        path: /tank/backup/photos/immich
+        existingClaim: immich-nfs
         mountPath: /usr/src/app/upload
+      geocoding-dump:
+        enabled: true
+        type: emptyDir
+        mountPath: /usr/src/app/.reverse-geocoding-dump
+      geoname-dump:
+        enabled: true
+        type: emptyDir
+        mountPath: /usr/src/app/node_modules/local-reverse-geocoder/geonames_dump
+
+    podSecurityContext:
+      runAsUser: 568
+      runAsGroup: 568
+      fsGroup: 568
+      fsGroupChangePolicy: OnRootMismatch
+      supplementalGroups:
+        - 44
+        - 109
+        - 65541
 
     resources:
       requests:
-        cpu: 5m
-        memory: 256Mi
-      limits:
+        cpu: 100m
+        gpu.intel.com/i915: 1
         memory: 512Mi
+      limits:
+        gpu.intel.com/i915: 1
+        memory: 8000Mi
+
+    nodeSelector:
+      intel.feature.node.kubernetes.io/gpu: "true"
+
+    topologySpreadConstraints:
+      - maxSkew: 1
+        topologyKey: kubernetes.io/hostname
+        whenUnsatisfiable: DoNotSchedule
+        labelSelector:
+          matchLabels:
+            app.kubernetes.io/name: immich-microservices

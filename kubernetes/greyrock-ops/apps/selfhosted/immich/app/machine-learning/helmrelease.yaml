@@ -21,14 +21,13 @@ spec:
 
   values:
     controller:
-      replicas: 1
       strategy: RollingUpdate
       annotations:
         reloader.stakater.com/auto: "true"
 
     image:
       repository: ghcr.io/immich-app/immich-machine-learning
-      tag: v1.75.2@sha256:045600d0b7fb1543fdff80b3cbd303a3990792130b7a3de2459d7bb0ff5ad471
+      tag: v1.76.0
 
     env:
       DB_HOSTNAME:
@@ -67,17 +66,17 @@ spec:
     persistence:
       library:
         enabled: true
-        type: nfs
-        server: "nas.greyrock.io"
-        path: /tank/backup/photos/immich
+        existingClaim: immich-nfs
         mountPath: /usr/src/app/upload
       cache:
         enabled: true
-        type: emptyDir
+        type: pvc
+        existingClaim: immich-machine-learning-cache
+        mountPath: /cache
 
     resources:
       requests:
-        cpu: 5m
+        cpu: 100m
         memory: 256Mi
       limits:
         memory: 3949Mi
