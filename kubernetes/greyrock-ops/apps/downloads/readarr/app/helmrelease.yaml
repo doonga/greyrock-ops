@@ -68,9 +68,7 @@ spec:
 
       media:
         enabled: true
-        type: nfs
-        server: "nas.greyrock.io"
-        path: /tank/media
+        existingClaim: nas-media
         mountPath: /data/nas-media
 
     resources:
