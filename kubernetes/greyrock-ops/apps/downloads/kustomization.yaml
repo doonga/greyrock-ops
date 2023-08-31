@@ -7,6 +7,7 @@ resources:
   - ./pvc-nas-media.yaml
   # Flux-Kustomizations
   - ./autoscan/ks.yaml
+  - ./cross-seed/ks.yaml
   - ./overseerr/ks.yaml
   - ./prowlarr/ks.yaml
   - ./qbittorrent/ks.yaml
