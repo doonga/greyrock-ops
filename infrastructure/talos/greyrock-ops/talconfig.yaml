@@ -2,7 +2,7 @@
 clusterName: ${clusterName}
 
 talosVersion: v1.5.1
-kubernetesVersion: 1.27.3
+kubernetesVersion: 1.28.1
 endpoint: "https://${clusterName}.greyrock.io:6443"
 
 cniConfig:
