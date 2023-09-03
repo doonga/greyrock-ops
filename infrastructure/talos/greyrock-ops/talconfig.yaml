@@ -30,7 +30,7 @@ nodes:
     installDisk: /dev/sda
     disableSearchDomain: true
     networkInterfaces:
-      - interface: eth0
+      - interface: enp0s25
         dhcp: true
   - hostname: k8s3.greyrock.io
     ipAddress: 10.1.1.6
@@ -38,7 +38,7 @@ nodes:
     installDisk: /dev/sda
     disableSearchDomain: true
     networkInterfaces:
-      - interface: eth0
+      - interface: enp0s25
         dhcp: true
   - hostname: k8s4.greyrock.io
     ipAddress: 10.1.1.7
@@ -82,7 +82,7 @@ nodes:
           - mountpoint: /var/mnt/sata
     disableSearchDomain: true
     networkInterfaces:
-      - interface: enp46s0
+      - interface: enp4s0
         dhcp: true
         vlans:
           - vlanId: 40
