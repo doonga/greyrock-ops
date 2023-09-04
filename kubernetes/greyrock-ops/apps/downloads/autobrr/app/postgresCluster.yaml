@@ -68,5 +68,5 @@ spec:
             differential: "0 1 * * 1-6"
           s3:
             bucket: "crunchy-postgres"
-            endpoint: "s3.bjw-s.dev"
+            endpoint: "s3.greyrock.io"
             region: "us-east-1"
