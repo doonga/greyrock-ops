@@ -24,7 +24,7 @@ spec:
 
     image:
       repository: ghcr.io/n8n-io/n8n
-      tag: 1.5.1@sha256:eb8b29938a98d01517017a567b0695fda82bc1b03e630e65b8aab0deed02de6b
+      tag: 1.6.0@sha256:0184a55fd2ac8502980a604be4508241de205dc911a991a98c9032f29d72db2d
 
     command:
       - n8n
