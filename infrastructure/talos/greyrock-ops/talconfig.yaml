@@ -1,7 +1,7 @@
 ---
 clusterName: ${clusterName}
 
-talosVersion: v1.5.1
+talosVersion: v1.5.2
 kubernetesVersion: 1.28.1
 endpoint: "https://${clusterName}.greyrock.io:6443"
 
@@ -232,7 +232,7 @@ worker:
           extensions:
             - image: ghcr.io/siderolabs/intel-ucode:20230808
             - image: ghcr.io/siderolabs/i915-ucode:20230804
-            - image: ghcr.io/siderolabs/gasket-driver:97aeba58-v1.5.1
+            - image: ghcr.io/siderolabs/gasket-driver:97aeba58-v1.5.2
         kernel:
           modules:
             - name: gasket

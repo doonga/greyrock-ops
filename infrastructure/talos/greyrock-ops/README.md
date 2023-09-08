@@ -13,3 +13,6 @@ talosctl apply-config -n k8s1.greyrock.io -f ./clusterconfig/greyrock-ops-k8s1.g
 
 Upgrade Talos again, this updates the modules
 talosctl upgrade -n k8s1.greyrock.io --image ghcr.io/siderolabs/installer:v1.5.1 --preserve
+
+Validate extensions
+talosctl get extensions -n k8s1.greyrock.io
