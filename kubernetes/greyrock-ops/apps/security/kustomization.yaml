@@ -6,5 +6,5 @@ resources:
   - ./namespace.yaml
   # Flux-Kustomizations
   - ./authelia/ks.yaml
-  # - ./external-secrets/ks.yaml
+  - ./external-secrets/ks.yaml
   - ./lldap/ks.yaml
