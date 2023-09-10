@@ -183,7 +183,7 @@ spec:
                 topologyKey: kubernetes.io/hostname
       extraVolumeMounts:
         - name: rules
-          mountPath: /rules
+          mountPath: /rules/fake
       extraVolumes:
         - name: rules
           emptyDir: {}
