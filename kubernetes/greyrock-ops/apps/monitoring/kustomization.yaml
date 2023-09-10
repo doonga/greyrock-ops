@@ -10,7 +10,7 @@ resources:
   - ./grafana/ks.yaml
   - ./hs110-exporter-rack/ks.yaml
   - ./kube-prometheus-stack/ks.yaml
-  # - ./loki/ks.yaml
+  - ./loki/ks.yaml
   - ./node-exporter/ks.yaml
   - ./thanos/ks.yaml
   - ./vector/ks.yaml
