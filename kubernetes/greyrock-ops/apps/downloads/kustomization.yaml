@@ -6,12 +6,12 @@ resources:
   - ./namespace.yaml
   - ./pvc-nas-media.yaml
   # Flux-Kustomizations
-  - ./autobrr/ks.yaml
+  # - ./autobrr/ks.yaml
   - ./autoscan/ks.yaml
   # - ./cross-seed/ks.yaml
   - ./overseerr/ks.yaml
   - ./prowlarr/ks.yaml
-  - ./qbittorrent/ks.yaml
+  # - ./qbittorrent/ks.yaml
   - ./radarr/ks.yaml
   - ./readarr/ks.yaml
   - ./recyclarr/ks.yaml
