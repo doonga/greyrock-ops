@@ -24,8 +24,9 @@ echo '
   }' | vault policy write snapshot -
 
 # Create tokens
+vault token create -policy="snapshot" -period=7d -format=json | jq -r ".auth.client_token" > periodic_token.txt
+
 vault token create -policy=terraform
-vault token create -policy=snapshot
 
 # Create approles
 vault auth enable approle
