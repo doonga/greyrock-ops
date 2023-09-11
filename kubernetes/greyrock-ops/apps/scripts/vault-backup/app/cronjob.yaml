@@ -12,6 +12,19 @@ spec:
       template:
         spec:
           containers:
+            - name: renew-vault-token
+              image: vault:1.13.3
+              imagePullPolicy: IfNotPresent
+              command:
+                - /bin/sh
+              args:
+                - -ec
+                - |
+                  vault token renew
+              envFrom:
+                - secretRef:
+                    name: vault-snapshot-agent-token
+
             - name: snapshot
               image: vault:1.13.3
               imagePullPolicy: IfNotPresent
