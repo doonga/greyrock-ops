@@ -7,17 +7,8 @@ resources:
   # Flux-Kustomizations
   - ./hajimari-andy/ks.yaml
   - ./homepage-todd/ks.yaml
-  - ./immich/ks.yaml
-  - ./invidious-server/ks.yaml
-  - ./libreddit/ks.yaml
-  - ./linkding/ks.yaml
   - ./miniflux/ks.yaml
-  - ./nitter/ks.yaml
   - ./node-red/ks.yaml
-  - ./obsidian-couchdb/ks.yaml
   - ./paperless/ks.yaml
-  - ./scribe/ks.yaml
   - ./teslamate/ks.yaml
   - ./thelounge/ks.yaml
-  - ./wallabag/ks.yaml
-  - ./whoogle/ks.yaml
