@@ -86,17 +86,3 @@ identity_providers:
         redirect_uris:
           - https://nodered.greyrock.casa/auth/strategy/callback
         userinfo_signing_algorithm: none
-      - id: immich
-        description: Immich
-        secret: "${IMMICH_OAUTH_CLIENT_SECRET}"
-        public: false
-        authorization_policy: one_factor
-        pre_configured_consent_duration: 1y
-        scopes:
-          - "openid"
-          - "profile"
-          - "email"
-        redirect_uris:
-          - "https://immich.greyrock.casa/auth/login"
-          - "app.immich:/"
-        userinfo_signing_algorithm: none
