@@ -12,7 +12,7 @@ resource "helm_release" "cert-manager" {
   name       = "cert-manager"
   repository = "https://charts.jetstack.io"
   chart      = "cert-manager"
-  version    = "v1.12.4"
+  version    = "v1.13.0"
 
   values = [
     "${file("values/cert-manager.yaml")}"
