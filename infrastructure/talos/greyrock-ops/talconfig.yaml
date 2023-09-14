@@ -17,7 +17,7 @@ additionalMachineCertSans:
 
 nodes:
   - hostname: k8s1.greyrock.io
-    ipAddress: 10.1.1.4
+    ipAddress: 10.1.1.71
     controlPlane: true
     installDisk: /dev/sda
     disableSearchDomain: true
@@ -25,7 +25,7 @@ nodes:
       - interface: enp0s25
         dhcp: true
   - hostname: k8s2.greyrock.io
-    ipAddress: 10.1.1.5
+    ipAddress: 10.1.1.72
     controlPlane: true
     installDisk: /dev/sda
     disableSearchDomain: true
@@ -33,7 +33,7 @@ nodes:
       - interface: enp0s25
         dhcp: true
   - hostname: k8s3.greyrock.io
-    ipAddress: 10.1.1.6
+    ipAddress: 10.1.1.73
     controlPlane: true
     installDisk: /dev/sda
     disableSearchDomain: true
@@ -41,7 +41,7 @@ nodes:
       - interface: enp0s25
         dhcp: true
   - hostname: k8s4.greyrock.io
-    ipAddress: 10.1.1.7
+    ipAddress: 10.1.1.74
     controlPlane: false
     installDiskSelector:
       busPath: /pci0000:00/0000:00:17.0/ata1/host0/target0:0:0/0:0:0:0/
@@ -72,7 +72,7 @@ nodes:
                   - rshared
                   - rw
   - hostname: k8s5.greyrock.io
-    ipAddress: 10.1.1.8
+    ipAddress: 10.1.1.75
     controlPlane: false
     installDiskSelector:
       busPath: /pci0000:00/0000:00:17.0/ata1/host0/target0:0:0/0:0:0:0/
@@ -103,7 +103,7 @@ nodes:
                   - rshared
                   - rw
   - hostname: k8s6.greyrock.io
-    ipAddress: 10.1.1.9
+    ipAddress: 10.1.1.76
     controlPlane: false
     installDiskSelector:
       busPath: /pci0000:00/0000:00:17.0/ata1/host0/target0:0:0/0:0:0:0/
@@ -114,6 +114,68 @@ nodes:
     disableSearchDomain: true
     networkInterfaces:
       - interface: enp4s0
+        dhcp: true
+        vlans:
+          - vlanId: 40
+            mtu: 1500
+            dhcp: true
+            dhcpOptions:
+              routeMetric: 4096
+    patches:
+      - |-
+        machine:
+          kubelet:
+            extraMounts:
+              - destination: /var/mnt/sata
+                type: bind
+                source: /var/mnt/sata
+                options:
+                  - rbind
+                  - rshared
+                  - rw
+  - hostname: k8s7.greyrock.io
+    ipAddress: 10.1.1.77
+    controlPlane: false
+    installDiskSelector:
+      busPath: /pci0000:00/0000:00:11.5/ata2/host1/target1:0:0/1:0:0:0/
+    machineDisks:
+      - device: /dev/disk/by-id/ata-SSD_128GB_2022061000033
+        partitions:
+          - mountpoint: /var/mnt/sata
+    disableSearchDomain: true
+    networkInterfaces:
+      - interface: eno7
+        dhcp: true
+        vlans:
+          - vlanId: 40
+            mtu: 1500
+            dhcp: true
+            dhcpOptions:
+              routeMetric: 4096
+    patches:
+      - |-
+        machine:
+          kubelet:
+            extraMounts:
+              - destination: /var/mnt/sata
+                type: bind
+                source: /var/mnt/sata
+                options:
+                  - rbind
+                  - rshared
+                  - rw
+  - hostname: k8s8.greyrock.io
+    ipAddress: 10.1.1.78
+    controlPlane: false
+    installDiskSelector:
+      busPath: /pci0000:00/0000:00:11.5/ata2/host1/target1:0:0/1:0:0:0/
+    machineDisks:
+      - device: /dev/disk/by-id/ata-SSD_128GB_2022061000130
+        partitions:
+          - mountpoint: /var/mnt/sata
+    disableSearchDomain: true
+    networkInterfaces:
+      - interface: eno7
         dhcp: true
         vlans:
           - vlanId: 40
@@ -231,7 +293,6 @@ worker:
         install:
           extensions:
             - image: ghcr.io/siderolabs/intel-ucode:20230808
-            - image: ghcr.io/siderolabs/i915-ucode:20230804
             - image: ghcr.io/siderolabs/gasket-driver:97aeba58-v1.5.2
         kernel:
           modules:
