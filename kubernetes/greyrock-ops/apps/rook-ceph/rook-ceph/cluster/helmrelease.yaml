@@ -88,6 +88,12 @@ spec:
           - name: "k8s6"
             devices:
               - name: "/dev/disk/by-id/nvme-WD_BLACK_SN770_1TB_22472N801099"
+          - name: "k8s7"
+            devices:
+              - name: "/dev/disk/by-id/nvme-WD_BLACK_SN770_1TB_23306W801670"
+          - name: "k8s8"
+            devices:
+              - name: "/dev/disk/by-id/nvme-WD_BLACK_SN770_1TB_23306W801674"
 
     ingress:
       dashboard:
