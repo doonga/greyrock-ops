@@ -76,16 +76,14 @@ spec:
         - 109
         - 65539
 
-    nodeSelector:
-      intel.feature.node.kubernetes.io/gpu: "true"
+    # nodeSelector:
+    #   intel.feature.node.kubernetes.io/gpu: "true"
 
     resources:
       requests:
         cpu: 5m
-        gpu.intel.com/i915: 1
         memory: 13710M
       limits:
-        gpu.intel.com/i915: 1
         memory: 13710M
 
     volumeClaimTemplates:
