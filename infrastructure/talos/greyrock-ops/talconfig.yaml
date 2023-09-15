@@ -19,39 +19,39 @@ nodes:
   - hostname: k8s1.greyrock.io
     ipAddress: 10.1.1.71
     controlPlane: true
-    installDisk: /dev/sda
+    installDisk: /dev/nvme0n1
     disableSearchDomain: true
     networkInterfaces:
-      - interface: enp0s25
+      - interface: eno1
         dhcp: true
   - hostname: k8s2.greyrock.io
     ipAddress: 10.1.1.72
     controlPlane: true
-    installDisk: /dev/sda
+    installDisk: /dev/nvme0n1
     disableSearchDomain: true
     networkInterfaces:
-      - interface: enp0s25
+      - interface: eno1
         dhcp: true
   - hostname: k8s3.greyrock.io
     ipAddress: 10.1.1.73
     controlPlane: true
-    installDisk: /dev/sda
+    installDisk: /dev/nvme0n1
     disableSearchDomain: true
     networkInterfaces:
-      - interface: enp0s25
+      - interface: eno1
         dhcp: true
   - hostname: k8s4.greyrock.io
     ipAddress: 10.1.1.74
     controlPlane: false
     installDiskSelector:
-      busPath: /pci0000:00/0000:00:17.0/ata1/host0/target0:0:0/0:0:0:0/
+      busPath: /pci0000:00/0000:00:11.5/ata2/host1/target1:0:0/1:0:0:0/
     machineDisks:
-      - device: /dev/disk/by-id/usb-SABRENT_SABRENT_DB9876543214E-0:0
+      - device: /dev/disk/by-id/ata-GN512_2022111500181
         partitions:
           - mountpoint: /var/mnt/sata
     disableSearchDomain: true
     networkInterfaces:
-      - interface: enp4s0
+      - interface: eno7
         dhcp: true
         vlans:
           - vlanId: 40
@@ -75,14 +75,14 @@ nodes:
     ipAddress: 10.1.1.75
     controlPlane: false
     installDiskSelector:
-      busPath: /pci0000:00/0000:00:17.0/ata1/host0/target0:0:0/0:0:0:0/
+      busPath: /pci0000:00/0000:00:11.5/ata2/host1/target1:0:0/1:0:0:0/
     machineDisks:
-      - device: /dev/disk/by-id/usb-SABRENT_SABRENT_DB9876543214E-0:0
+      - device: /dev/disk/by-id/ata-GN512_2022111500112
         partitions:
           - mountpoint: /var/mnt/sata
     disableSearchDomain: true
     networkInterfaces:
-      - interface: enp4s0
+      - interface: eno7
         dhcp: true
         vlans:
           - vlanId: 40
@@ -106,14 +106,14 @@ nodes:
     ipAddress: 10.1.1.76
     controlPlane: false
     installDiskSelector:
-      busPath: /pci0000:00/0000:00:17.0/ata1/host0/target0:0:0/0:0:0:0/
+      busPath: /pci0000:00/0000:00:11.5/ata2/host1/target1:0:0/1:0:0:0/
     machineDisks:
-      - device: /dev/disk/by-id/usb-SABRENT_SABRENT_DB9876543214E-0:0
+      - device: /dev/disk/by-id/ata-SSD_512GB_2023033006765
         partitions:
           - mountpoint: /var/mnt/sata
     disableSearchDomain: true
     networkInterfaces:
-      - interface: enp4s0
+      - interface: eno7
         dhcp: true
         vlans:
           - vlanId: 40
@@ -139,7 +139,7 @@ nodes:
     installDiskSelector:
       busPath: /pci0000:00/0000:00:11.5/ata2/host1/target1:0:0/1:0:0:0/
     machineDisks:
-      - device: /dev/disk/by-id/ata-SSD_128GB_2022061000033
+      - device: /dev/disk/by-id/ata-SSD_512GB_2023071900054
         partitions:
           - mountpoint: /var/mnt/sata
     disableSearchDomain: true
@@ -170,7 +170,7 @@ nodes:
     installDiskSelector:
       busPath: /pci0000:00/0000:00:11.5/ata2/host1/target1:0:0/1:0:0:0/
     machineDisks:
-      - device: /dev/disk/by-id/ata-SSD_128GB_2022061000130
+      - device: /dev/disk/by-id/ata-SSD_512GB_2023071900058
         partitions:
           - mountpoint: /var/mnt/sata
     disableSearchDomain: true
