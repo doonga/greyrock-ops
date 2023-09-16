@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 2.0.0-beta.2
       interval: 30m
       sourceRef:
         kind: HelmRepository
@@ -18,34 +18,45 @@ spec:
         namespace: flux-system
 
   values:
-    controller:
-      annotations:
-        reloader.stakater.com/auto: "true"
+    controllers:
+      main:
+        annotations:
+          reloader.stakater.com/auto: "true"
 
-    image:
-      repository: ghcr.io/onedr0p/radarr-develop
-      tag: 5.0.1.7993@sha256:10a6c584b77dbd447df5f6c3f9fd55466c67b1734ded718b89a38e92bfbae197
+        containers:
+          main:
+            image:
+              repository: ghcr.io/onedr0p/radarr-develop
+              tag: 5.0.1.7993@sha256:10a6c584b77dbd447df5f6c3f9fd55466c67b1734ded718b89a38e92bfbae197
 
-    podSecurityContext:
-      runAsUser: 568
-      runAsGroup: 568
-      fsGroup: 568
-      fsGroupChangePolicy: "OnRootMismatch"
-      supplementalGroups:
-        - 65539
+            env:
+              RADARR__INSTANCE_NAME: Radarr
+              RADARR__PORT: &port 7878
+              RADARR__AUTHENTICATION_METHOD: External
+              RADARR__AUTHENTICATION_REQUIRED: DisabledForLocalAddresses
+              RADARR__APPLICATION_URL: "https://radarr.greyrock.casa"
+              RADARR__LOG_LEVEL: info
+              RADARR__API_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: radarr-secret
+                    key: api_key
 
-    env:
-      RADARR__INSTANCE_NAME: Radarr
-      RADARR__PORT: &port 7878
-      RADARR__AUTHENTICATION_METHOD: External
-      RADARR__AUTHENTICATION_REQUIRED: DisabledForLocalAddresses
-      RADARR__APPLICATION_URL: "https://radarr.greyrock.casa"
-      RADARR__LOG_LEVEL: info
-      RADARR__API_KEY:
-        valueFrom:
-          secretKeyRef:
-            name: radarr-secret
-            key: api_key
+            resources:
+              requests:
+                cpu: 14m
+                memory: 431M
+              limits:
+                memory: 431M
+
+        pod:
+          securityContext:
+            runAsUser: 568
+            runAsGroup: 568
+            fsGroup: 568
+            fsGroupChangePolicy: "OnRootMismatch"
+            supplementalGroups:
+              - 65539
 
     service:
       main:
@@ -56,15 +67,14 @@ spec:
     ingress:
       main:
         enabled: true
-        ingressClassName: "internal-nginx"
-        annotations:
-          hajimari.io/enable: "true"
-          hajimari.io/instance: "andy"
-          hajimari.io/icon: "mdi:filmstrip"
+        className: "internal-nginx"
         hosts:
-          - host: &host "radarr.greyrock.casa"
+          - host: &host "{{ .Release.Name }}.greyrock.casa"
             paths:
               - path: /
+                service:
+                  name: main
+                  port: http
         tls:
           - hosts:
               - *host
@@ -77,11 +87,7 @@ spec:
       media:
         enabled: true
         existingClaim: nas-media
-        mountPath: /data/nas-media
-
-    resources:
-      requests:
-        cpu: 5m
-        memory: 364M
-      limits:
-        memory: 1024M
+        globalMounts:
+          - controllers:
+              - main
+            path: /data/nas-media
