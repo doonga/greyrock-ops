@@ -86,3 +86,16 @@ identity_providers:
         redirect_uris:
           - https://nodered.greyrock.casa/auth/strategy/callback
         userinfo_signing_algorithm: none
+      - id: windmill
+        description: Windmill
+        secret: "${WINDMILL_OAUTH_CLIENT_SECRET}"
+        public: false
+        authorization_policy: two_factor
+        pre_configured_consent_duration: 1y
+        scopes:
+          - "openid"
+          - "profile"
+          - "email"
+        redirect_uris:
+          - "https://windmill.greyrock.casa/user/login_callback/authelia"
+        userinfo_signing_algorithm: none
