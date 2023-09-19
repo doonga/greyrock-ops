@@ -7,11 +7,11 @@ metadata:
 spec:
   postgresVersion: 15
   dataSource:
-    pgbackrest:
-      stanza: db
-      configuration:
-        - secret:
-            name: pgo-s3-creds
+    # pgbackrest:
+    #   stanza: db
+    #   configuration:
+    #     - secret:
+    #         name: pgo-s3-creds
       global:
         repo1-path: /windmill/repo1
         repo1-s3-uri-style: path
