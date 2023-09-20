@@ -17,41 +17,41 @@ additionalMachineCertSans:
 
 nodes:
   - hostname: k8s1.greyrock.io
-    ipAddress: 10.1.1.71
+    ipAddress: 10.1.1.4
     controlPlane: true
     installDisk: /dev/nvme0n1
     disableSearchDomain: true
     networkInterfaces:
-      - interface: eno1
+      - interface: enp86s0
         dhcp: true
   - hostname: k8s2.greyrock.io
-    ipAddress: 10.1.1.72
+    ipAddress: 10.1.1.5
     controlPlane: true
     installDisk: /dev/nvme0n1
     disableSearchDomain: true
     networkInterfaces:
-      - interface: eno1
+      - interface: enp86s0
         dhcp: true
   - hostname: k8s3.greyrock.io
-    ipAddress: 10.1.1.73
+    ipAddress: 10.1.1.6
     controlPlane: true
     installDisk: /dev/nvme0n1
     disableSearchDomain: true
     networkInterfaces:
-      - interface: eno1
+      - interface: enp86s0
         dhcp: true
   - hostname: k8s4.greyrock.io
-    ipAddress: 10.1.1.74
+    ipAddress: 10.1.1.7
     controlPlane: false
     installDiskSelector:
-      busPath: /pci0000:00/0000:00:11.5/ata2/host1/target1:0:0/1:0:0:0/
+      busPath: /pci0000:00/0000:00:17.0/ata1/host0/target0:0:0/0:0:0:0/
     machineDisks:
-      - device: /dev/disk/by-id/ata-GN512_2022111500181
+      - device: /dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_BTWL406300TG800RGN
         partitions:
           - mountpoint: /var/mnt/sata
     disableSearchDomain: true
     networkInterfaces:
-      - interface: eno7
+      - interface: enp46s0
         dhcp: true
         vlans:
           - vlanId: 40
@@ -72,17 +72,17 @@ nodes:
                   - rshared
                   - rw
   - hostname: k8s5.greyrock.io
-    ipAddress: 10.1.1.75
+    ipAddress: 10.1.1.8
     controlPlane: false
     installDiskSelector:
-      busPath: /pci0000:00/0000:00:11.5/ata2/host1/target1:0:0/1:0:0:0/
+      busPath: /pci0000:00/0000:00:17.0/ata1/host0/target0:0:0/0:0:0:0/
     machineDisks:
-      - device: /dev/disk/by-id/ata-GN512_2022111500112
+      - device: /dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_BTWL503001EB800RGN
         partitions:
           - mountpoint: /var/mnt/sata
     disableSearchDomain: true
     networkInterfaces:
-      - interface: eno7
+      - interface: enp46s0
         dhcp: true
         vlans:
           - vlanId: 40
@@ -103,79 +103,17 @@ nodes:
                   - rshared
                   - rw
   - hostname: k8s6.greyrock.io
-    ipAddress: 10.1.1.76
+    ipAddress: 10.1.1.9
     controlPlane: false
     installDiskSelector:
-      busPath: /pci0000:00/0000:00:11.5/ata2/host1/target1:0:0/1:0:0:0/
+      busPath: /pci0000:00/0000:00:17.0/ata1/host0/target0:0:0/0:0:0:0/
     machineDisks:
-      - device: /dev/disk/by-id/ata-SSD_512GB_2023033006765
+      - device: /dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_BTWL421602AP800RGN
         partitions:
           - mountpoint: /var/mnt/sata
     disableSearchDomain: true
     networkInterfaces:
-      - interface: eno7
-        dhcp: true
-        vlans:
-          - vlanId: 40
-            mtu: 1500
-            dhcp: true
-            dhcpOptions:
-              routeMetric: 4096
-    patches:
-      - |-
-        machine:
-          kubelet:
-            extraMounts:
-              - destination: /var/mnt/sata
-                type: bind
-                source: /var/mnt/sata
-                options:
-                  - rbind
-                  - rshared
-                  - rw
-  - hostname: k8s7.greyrock.io
-    ipAddress: 10.1.1.77
-    controlPlane: false
-    installDiskSelector:
-      busPath: /pci0000:00/0000:00:11.5/ata2/host1/target1:0:0/1:0:0:0/
-    machineDisks:
-      - device: /dev/disk/by-id/ata-SSD_512GB_2023071900054
-        partitions:
-          - mountpoint: /var/mnt/sata
-    disableSearchDomain: true
-    networkInterfaces:
-      - interface: eno7
-        dhcp: true
-        vlans:
-          - vlanId: 40
-            mtu: 1500
-            dhcp: true
-            dhcpOptions:
-              routeMetric: 4096
-    patches:
-      - |-
-        machine:
-          kubelet:
-            extraMounts:
-              - destination: /var/mnt/sata
-                type: bind
-                source: /var/mnt/sata
-                options:
-                  - rbind
-                  - rshared
-                  - rw
-  - hostname: k8s8.greyrock.io
-    ipAddress: 10.1.1.78
-    controlPlane: false
-    installDiskSelector:
-      busPath: /pci0000:00/0000:00:11.5/ata2/host1/target1:0:0/1:0:0:0/
-    machineDisks:
-      - device: /dev/disk/by-id/ata-SSD_512GB_2023071900058
-        partitions:
-          - mountpoint: /var/mnt/sata
-    disableSearchDomain: true
-    networkInterfaces:
-      - interface: eno7
+      - interface: enp46s0
         dhcp: true
         vlans:
           - vlanId: 40
@@ -294,6 +232,7 @@ worker:
           extensions:
             - image: ghcr.io/siderolabs/intel-ucode:20230808
             - image: ghcr.io/siderolabs/gasket-driver:97aeba58-v1.5.2
+            - image: ghcr.io/siderolabs/i915-ucode:20230804
         kernel:
           modules:
             - name: gasket
