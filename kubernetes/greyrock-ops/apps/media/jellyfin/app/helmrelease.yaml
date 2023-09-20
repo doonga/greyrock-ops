@@ -56,8 +56,8 @@ spec:
           - hosts:
               - *host
 
-    # nodeSelector:
-    #   intel.feature.node.kubernetes.io/gpu: "true"
+    nodeSelector:
+      intel.feature.node.kubernetes.io/gpu: "true"
 
     persistence:
       nfs-nas-media:
@@ -82,9 +82,11 @@ spec:
 
     resources:
       requests:
+        gpu.intel.com/i915: 1
         cpu: 100m
         memory: 9248M
       limits:
+        gpu.intel.com/i915: 1
         memory: 9248M
 
     volumeClaimTemplates:

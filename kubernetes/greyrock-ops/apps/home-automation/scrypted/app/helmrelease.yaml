@@ -56,7 +56,7 @@ spec:
 
     nodeSelector:
       google.feature.node.kubernetes.io/coral: "true"
-      # intel.feature.node.kubernetes.io/gpu: "true"
+      intel.feature.node.kubernetes.io/gpu: "true"
 
     affinity:
       podAntiAffinity:
@@ -89,9 +89,11 @@ spec:
 
     resources:
       requests:
+        gpu.intel.com/i915: 1
         cpu: 10m
         memory: 250Mi
       limits:
+        gpu.intel.com/i915: 1
         memory: 16384Mi
 
     volumeClaimTemplates:
