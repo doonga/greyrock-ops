@@ -12,7 +12,7 @@ spec:
       "plugins": [
         {
           "type": "macvlan",
-          "master": "enp46s0.40",
+          "master": "enp4s0.40",
           "mode": "bridge",
           "capabilities": {
             "ips": true

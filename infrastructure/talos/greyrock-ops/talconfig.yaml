@@ -51,7 +51,7 @@ nodes:
           - mountpoint: /var/mnt/sata
     disableSearchDomain: true
     networkInterfaces:
-      - interface: enp46s0
+      - interface: enp4s0
         dhcp: true
         vlans:
           - vlanId: 40
@@ -82,7 +82,7 @@ nodes:
           - mountpoint: /var/mnt/sata
     disableSearchDomain: true
     networkInterfaces:
-      - interface: enp46s0
+      - interface: enp4s0
         dhcp: true
         vlans:
           - vlanId: 40
@@ -113,7 +113,7 @@ nodes:
           - mountpoint: /var/mnt/sata
     disableSearchDomain: true
     networkInterfaces:
-      - interface: enp46s0
+      - interface: enp4s0
         dhcp: true
         vlans:
           - vlanId: 40
