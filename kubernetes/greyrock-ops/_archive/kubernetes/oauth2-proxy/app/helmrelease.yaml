@@ -26,7 +26,7 @@ spec:
 
     image:
       repository: quay.io/oauth2-proxy/oauth2-proxy
-      tag: v7.5.0
+      tag: v7.5.1
 
     env:
       OAUTH2_PROXY_HTTP_ADDRESS: 0.0.0.0:4180
