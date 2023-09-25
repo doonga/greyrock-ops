@@ -10,8 +10,6 @@ collections:
     version: 3.4.8
   - name: ansible.posix
     version: 1.5.4
-  - name: onepassword.connect
-    version: 2.2.1
 
 roles:
   - src: geerlingguy.pip
