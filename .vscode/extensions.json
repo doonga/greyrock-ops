@@ -4,6 +4,6 @@
         "ms-kubernetes-tools.vscode-kubernetes-tools",
         "ms-vscode-remote.remote-containers",
         "redhat.ansible",
-        "bungcip.better-toml"
+        "tamasfe.even-better-toml"
     ]
 }
