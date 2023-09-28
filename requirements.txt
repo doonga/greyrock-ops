@@ -1,4 +1,4 @@
 ansible-core==2.15.4
-ansible-lint==6.20.0
+ansible-lint==6.20.1
 
 stormssh==0.7.0
