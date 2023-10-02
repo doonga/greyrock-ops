@@ -2,8 +2,8 @@ provider "github" {
   token = data.vault_generic_secret.github.data["pat_terraform"]
 }
 
-variable role_id {}
-variable secret_id {}
+variable login_approle_role_id {}
+variable login_approle_secret_id {}
 
 provider "vault" {
   address = "https://vault.greyrock.io"
@@ -11,8 +11,8 @@ provider "vault" {
     path = "auth/approle/login"
 
     parameters = {
-      role_id = var.role_id
-      secret_id = var.secret_id
+      role_id = var.login_approle_role_id
+      secret_id = var.login_approle_secret_id
     }
   }
 }
