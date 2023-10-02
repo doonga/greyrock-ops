@@ -5,7 +5,17 @@ provider "minio" {
   minio_password = data.vault_generic_secret.minio.data["root_password"]
 }
 
+variable login_approle_role_id {}
+variable login_approle_secret_id {}
+
 provider "vault" {
   address = "https://vault.greyrock.io"
-  skip_child_token = true
+  auth_login {
+    path = "auth/approle/login"
+
+    parameters = {
+      role_id = var.login_approle_role_id
+      secret_id = var.login_approle_secret_id
+    }
+  }
 }

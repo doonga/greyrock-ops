@@ -27,14 +27,11 @@ spec:
     kind: OCIRepository
     name: oci-terraform-s3
     namespace: infrastructure
+  varsFrom:
+    - kind: Secret
+      name: tf-controller-secrets
   runnerPodTemplate:
     spec:
-      env:
-        - name: VAULT_TOKEN
-          valueFrom:
-            secretKeyRef:
-              name: tf-controller-secrets
-              key: VAULT_TOKEN
       volumeMounts:
         - name: tf-controller-sops-key
           mountPath: /home/runner/.config/sops/age/keys.txt
