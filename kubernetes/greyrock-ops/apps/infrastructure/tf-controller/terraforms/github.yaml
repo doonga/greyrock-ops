@@ -30,12 +30,12 @@ spec:
   runnerPodTemplate:
     spec:
       env:
-        - name: TF_VAR_login_approle_role_id
+        - name: login_approle_role_id
           valueFrom:
             secretKeyRef:
               name: tf-controller-secrets
               key: login_approle_role_id
-        - name: TF_VAR_login_approle_secret_id
+        - name: login_approle_secret_id
           valueFrom:
             secretKeyRef:
               name: tf-controller-secrets
