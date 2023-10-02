@@ -30,11 +30,16 @@ spec:
   runnerPodTemplate:
     spec:
       env:
-        - name: VAULT_TOKEN
+        - name: TF_VAR_role_id
           valueFrom:
             secretKeyRef:
               name: tf-controller-secrets
-              key: VAULT_TOKEN
+              key: TF_VAR_role_id
+        - name: TF_VAR_secret_id
+          valueFrom:
+            secretKeyRef:
+              name: tf-controller-secrets
+              key: TF_VAR_secret_id
       volumeMounts:
         - name: tf-controller-sops-key
           mountPath: /home/runner/.config/sops/age/keys.txt
