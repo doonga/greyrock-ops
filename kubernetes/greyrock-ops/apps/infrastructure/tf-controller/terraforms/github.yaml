@@ -29,17 +29,9 @@ spec:
     namespace: infrastructure
   runnerPodTemplate:
     spec:
-      env:
-        - name: login_approle_role_id
-          valueFrom:
-            secretKeyRef:
-              name: tf-controller-secrets
-              key: login_approle_role_id
-        - name: login_approle_secret_id
-          valueFrom:
-            secretKeyRef:
-              name: tf-controller-secrets
-              key: login_approle_secret_id
+      varsFrom:
+        - kind: Secret
+          name: tf-controller-secrets
       volumeMounts:
         - name: tf-controller-sops-key
           mountPath: /home/runner/.config/sops/age/keys.txt
