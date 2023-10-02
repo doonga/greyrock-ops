@@ -27,7 +27,7 @@ echo '
      capabilities = ["read"]
   }' | vault policy write snapshot -
 
-# Create tokens
+# Create token for snapshot
 vault token create -policy="snapshot" -period=7d -format=json | jq -r ".auth.client_token" > periodic_token.txt
 
 # Create approles
