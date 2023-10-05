@@ -46,7 +46,7 @@ spec:
     ingress:
       main:
         enabled: true
-        ingressClassName: "internal-nginx"
+        className: "internal-nginx"
         annotations:
           hajimari.io/enable: "true"
           hajimari.io/instance: "andy"
