@@ -33,6 +33,9 @@ spec:
               limits:
                 memory: 36M
 
+            nodeSelector:
+              rtlamr.feature.node.kubernetes.io/rtlamr: "true"
+
     service:
       main:
         enabled: false
@@ -49,11 +52,8 @@ spec:
         defaultMode: 400
         globalMounts:
           - path: /etc/rtlamr2mqtt.yaml
-            subPath: rtlamr2mqtt.yaml
+            subPath: RT_LAMR_CONFIG_FILE
             readOnly: true
 
     securityContext:
       privileged: true
-
-    nodeSelector:
-      rtlamr.feature.node.kubernetes.io/rtlamr: "true"
