@@ -15,33 +15,22 @@ spec:
         kind: HelmRepository
         name: bjw-s
         namespace: flux-system
-  maxHistory: 3
   install:
     createNamespace: true
     remediation:
-      retries: 3
+      retries: 5
   upgrade:
-    cleanupOnFail: true
     remediation:
-      retries: 3
-  uninstall:
-    keepHistory: false
+      retries: 5
   values:
-    controllers:
-      main:
-        type: statefulset
-        nodeSelector:
-          zooz.feature.node.kubernetes.io/zwave: "true"
+    controller:
+      type: statefulset
+      annotations:
+        reloader.stakater.com/auto: "true"
 
-    containers:
-      main:
-        image:
-          repository: ghcr.io/zwave-js/zwave-js-ui
-          tag: 9.0.3@sha256:e268c2b704ccd3fabbf54068c9724a3d1f0d6988b63506070548f4fbd86cb5ab
-
-    pod:
-      securityContext:
-        privileged: true
+    image:
+      repository: ghcr.io/zwave-js/zwave-js-ui
+      tag: 9.0.3@sha256:e268c2b704ccd3fabbf54068c9724a3d1f0d6988b63506070548f4fbd86cb5ab
 
     service:
       main:
@@ -51,10 +40,6 @@ spec:
           websocket:
             enabled: true
             port: 3000
-
-    serviceMonitor:
-      main:
-        enabled: true
 
     probes:
       liveness: &probes
@@ -85,20 +70,29 @@ spec:
           - hosts:
               - *host
 
+    securityContext:
+      privileged: true
+
     persistence:
-      config:
-        enabled: true
-        mountPath: /usr/src/app/store
-        existingClaim: zwave-js-ui-data
       usb:
         enabled: true
         type: hostPath
         hostPath: /dev/serial/by-id/usb-0658_0200-if00
         hostPathType: CharDevice
 
+    nodeSelector:
+      aeotec.feature.node.kubernetes.io/zwave: "true"
+
     resources:
       requests:
-        cpu: 14m
-        memory: 303M
+        cpu: 10m
+        memory: 100Mi
       limits:
-        memory: 303M
+        memory: 500Mi
+
+    volumeClaimTemplates:
+      - name: config
+        mountPath: /usr/src/app/store
+        accessMode: ReadWriteOnce
+        size: 1Gi
+        storageClass: ceph-block
