@@ -18,20 +18,38 @@ spec:
         namespace: flux-system
 
   values:
-    controller:
-      type: statefulset
-      annotations:
-        reloader.stakater.com/auto: "true"
+    controllers:
+      main:
+        type: statefulset
 
-    image:
-      repository: ghcr.io/doonga/paperless-ngx
-      tag: 1.17.4@sha256:71593aff7e84c5e05130c75cf8ed3a0fa66112b69d21982f8ce868af6afd2dff
+        annotations:
+          reloader.stakater.com/auto: "true"
 
-    envFrom:
-      - secretRef:
-          name: paperless-secret
-      - configMapRef:
-          name: paperless-configmap
+        statefulset:
+          volumeClaimTemplates:
+            - name: data
+              accessMode: ReadWriteOnce
+              size: 15Gi
+              storageClass: ceph-block
+              globalMounts:
+                - path: /data/local
+
+        containers:
+          main:
+            image:
+              repository: ghcr.io/paperless-ngx/paperless-ngx
+              tag: 1.17.4
+            envFrom:
+              - secretRef:
+                  name: paperless-secret
+              - configMapRef:
+                  name: paperless-configmap
+            resources:
+              requests:
+                cpu: 11m
+                memory: 1812M
+              limits:
+                memory: 1812M
 
     service:
       main:
@@ -42,39 +60,33 @@ spec:
     ingress:
       main:
         enabled: true
-        ingressClassName: "internal-nginx"
+        className: "internal-nginx"
+        annotations:
+          nginx.ingress.kubernetes.io/auth-url: http://ak-outpost-internal-proxy-outpost.security.svc.cluster.local:9000/outpost.goauthentik.io/auth/nginx
+          nginx.ingress.kubernetes.io/auth-signin: /outpost.goauthentik.io/start?rd=$escaped_request_uri
+          nginx.ingress.kubernetes.io/auth-response-headers: Set-Cookie,X-authentik-username,X-authentik-groups,X-authentik-email,X-authentik-name,X-authentik-uid
+          nginx.ingress.kubernetes.io/auth-snippet: proxy_set_header X-Forwarded-Host $http_host;
         hosts:
           - host: &host "paperless.greyrock.casa"
             paths:
               - path: /
+                service:
+                  name: main
+                  port: http
         tls:
           - hosts:
               - *host
 
     persistence:
       nas-consume:
-        enabled: true
-        mountPath: /data/nas/consume
         type: nfs
         server: "nas.greyrock.io"
         path: /tank/documents/paperless/incoming
+        globalMounts:
+          - path: /data/nas/consume
       nas-export:
-        enabled: true
-        mountPath: /data/nas/export
         type: nfs
         server: "nas.greyrock.io"
         path: /tank/documents/paperless/export
-
-    resources:
-      requests:
-        cpu: 11m
-        memory: 1812M
-      limits:
-        memory: 1812M
-
-    volumeClaimTemplates:
-      - name: data
-        mountPath: /data/local
-        accessMode: ReadWriteOnce
-        size: 15Gi
-        storageClass: ceph-block
+        globalMounts:
+          - path: /data/nas/export
