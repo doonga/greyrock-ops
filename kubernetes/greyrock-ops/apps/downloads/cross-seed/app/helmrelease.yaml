@@ -25,29 +25,28 @@ spec:
         annotations:
           secret.reloader.stakater.com/reload: cross-seed-secret
 
+        pod:
+          securityContext:
+            runAsUser: 568
+            runAsGroup: 568
+            fsGroup: 568
+            fsGroupChangePolicy: "OnRootMismatch"
+            supplementalGroups:
+              - 65539
+
         containers:
           main:
             image:
               repository: ghcr.io/cross-seed/cross-seed
               tag: 5.5.4
-
             args:
               - daemon
-
             resources:
               requests:
                 cpu: 10m
                 memory: 128Mi
               limits:
                 memory: 256Mi
-
-        pod:
-          runAsUser: 568
-          runAsGroup: 568
-          fsGroup: 568
-          fsGroupChangePolicy: "OnRootMismatch"
-          supplementalGroups:
-            - 65539
 
     service:
       main:
@@ -59,20 +58,16 @@ spec:
       config:
         enabled: true
         existingClaim: qbittorrent-config
-
+        globalMounts:
+          - path: /config
       config-file:
-        enabled: true
         type: secret
         name: cross-seed-secret
         globalMounts:
           - path: /config/config.js
             subPath: config.js
             readOnly: true
-
       media:
-        enabled: true
         existingClaim: nas-media
         globalMounts:
-          - controllers:
-              - main
-            path: /data/nas-media
+          - path: /data/nas-media
