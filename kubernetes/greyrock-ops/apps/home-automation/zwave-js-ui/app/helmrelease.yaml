@@ -15,18 +15,20 @@ spec:
         kind: HelmRepository
         name: bjw-s
         namespace: flux-system
+  maxHistory: 3
   install:
     createNamespace: true
     remediation:
-      retries: 5
+      retries: 3
   upgrade:
+    cleanupOnFail: true
     remediation:
-      retries: 5
+      retries: 3
+  uninstall:
+    keepHistory: false
   values:
     controller:
       type: statefulset
-      annotations:
-        reloader.stakater.com/auto: "true"
 
     image:
       repository: ghcr.io/zwave-js/zwave-js-ui
@@ -40,6 +42,10 @@ spec:
           websocket:
             enabled: true
             port: 3000
+
+    serviceMonitor:
+      main:
+        enabled: true
 
     probes:
       liveness: &probes
@@ -74,6 +80,10 @@ spec:
       privileged: true
 
     persistence:
+      config:
+        enabled: true
+        mountPath: /usr/src/app/store
+        existingClaim: zwave-js-ui-data
       usb:
         enabled: true
         type: hostPath
@@ -81,18 +91,11 @@ spec:
         hostPathType: CharDevice
 
     nodeSelector:
-      aeotec.feature.node.kubernetes.io/zwave: "true"
+      zooz.feature.node.kubernetes.io/zwave: "true"
 
     resources:
       requests:
-        cpu: 10m
-        memory: 100Mi
+        cpu: 14m
+        memory: 303M
       limits:
-        memory: 500Mi
-
-    volumeClaimTemplates:
-      - name: config
-        mountPath: /usr/src/app/store
-        accessMode: ReadWriteOnce
-        size: 1Gi
-        storageClass: ceph-block
+        memory: 303M
