@@ -22,7 +22,7 @@ spec:
         containers:
           main:
             image:
-              repository: sdelrio/hs110-exporter
+              repository: docker.io/sdelrio/hs110-exporter
               tag: v1.0.0
 
             env:
