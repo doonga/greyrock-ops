@@ -20,8 +20,17 @@ spec:
   values:
     controllers:
       main:
+        type: statefulset
         annotations:
           reloader.stakater.com/auto: "true"
+
+        statefuleset:
+          volumeClaimTemplates:
+            - name: config
+              mountPath: /config
+              accessMode: ReadWriteOnce
+              size: 1Gi
+              storageClass: ceph-block
 
         containers:
           main:
@@ -49,10 +58,3 @@ spec:
     ingress:
       main:
         enabled: false
-
-    volumeClaimTemplates:
-      - name: config
-        mountPath: /config
-        accessMode: ReadWriteOnce
-        size: 1Gi
-        storageClass: ceph-block
