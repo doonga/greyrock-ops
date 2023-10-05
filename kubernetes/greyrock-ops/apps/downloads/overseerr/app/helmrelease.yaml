@@ -18,13 +18,23 @@ spec:
         namespace: flux-system
 
   values:
-    image:
-      repository: ghcr.io/sct/overseerr
-      tag: 1.33.2@sha256:714ea6db2bc007a2262d112bef7eec74972eb33d9c72bddb9cbd98b8742de950
+    controllers:
+      main:
+        containers:
+          image:
+            repository: ghcr.io/sct/overseerr
+            tag: 1.33.2@sha256:714ea6db2bc007a2262d112bef7eec74972eb33d9c72bddb9cbd98b8742de950
 
-    env:
-      LOG_LEVEL: "info"
-      PORT: 80
+          env:
+            LOG_LEVEL: "info"
+            PORT: 80
+
+          resources:
+            requests:
+              cpu: 5m
+              memory: 512M
+            limits:
+              memory: 512M
 
     service:
       main:
@@ -53,10 +63,3 @@ spec:
         enabled: true
         existingClaim: overseerr-config
         mountPath: /app/config
-
-    resources:
-      requests:
-        cpu: 5m
-        memory: 512M
-      limits:
-        memory: 512M
