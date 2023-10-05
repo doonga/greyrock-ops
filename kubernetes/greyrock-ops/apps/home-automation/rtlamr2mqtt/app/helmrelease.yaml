@@ -21,16 +21,17 @@ spec:
     controllers:
       main:
         containers:
-          image:
-            repository: allangood/rtlamr2mqtt
-            tag: 2.3.3
+          main:
+            image:
+              repository: allangood/rtlamr2mqtt
+              tag: 2.3.3
 
-          resources:
-            requests:
-              cpu: 100m
-              memory: 36M
-            limits:
-              memory: 36M
+            resources:
+              requests:
+                cpu: 100m
+                memory: 36M
+              limits:
+                memory: 36M
 
     service:
       main:
