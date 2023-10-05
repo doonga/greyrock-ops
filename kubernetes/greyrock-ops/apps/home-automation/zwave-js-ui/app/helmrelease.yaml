@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 2.0.2
+      version: 1.5.1
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -28,14 +28,11 @@ spec:
     keepHistory: false
   values:
     controller:
-      main:
-        type: statefulset
+      type: statefulset
 
-        containers:
-          main:
-            image:
-              repository: ghcr.io/zwave-js/zwave-js-ui
-              tag: 9.0.3@sha256:e268c2b704ccd3fabbf54068c9724a3d1f0d6988b63506070548f4fbd86cb5ab
+    image:
+      repository: ghcr.io/zwave-js/zwave-js-ui
+      tag: 9.0.3@sha256:e268c2b704ccd3fabbf54068c9724a3d1f0d6988b63506070548f4fbd86cb5ab
 
     service:
       main:
