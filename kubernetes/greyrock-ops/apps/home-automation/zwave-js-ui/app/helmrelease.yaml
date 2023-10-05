@@ -28,11 +28,14 @@ spec:
     keepHistory: false
   values:
     controller:
-      type: statefulset
+      main:
+        type: statefulset
 
-    image:
-      repository: ghcr.io/zwave-js/zwave-js-ui
-      tag: 9.0.3@sha256:e268c2b704ccd3fabbf54068c9724a3d1f0d6988b63506070548f4fbd86cb5ab
+      containers:
+        main:
+          image:
+            repository: ghcr.io/zwave-js/zwave-js-ui
+            tag: 9.0.3@sha256:e268c2b704ccd3fabbf54068c9724a3d1f0d6988b63506070548f4fbd86cb5ab
 
     service:
       main:
