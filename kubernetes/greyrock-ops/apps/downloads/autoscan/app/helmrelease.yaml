@@ -25,8 +25,8 @@ spec:
     containers:
       main:
         image:
-          repository: cloudb0x/autoscan
-          tag: master
+          repository: docker.io/cloudb0x/autoscan
+          tag: 1.4.0
 
         env:
           PUID: 568
