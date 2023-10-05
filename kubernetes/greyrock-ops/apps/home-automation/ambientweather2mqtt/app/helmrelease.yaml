@@ -18,13 +18,17 @@ spec:
         namespace: flux-system
 
   values:
-    image:
-      repository: ghcr.io/neilenns/ambientweather2mqtt
-      tag: v4.3.0@sha256:e1ae2a163b8d56332881bb2c08ac5386af121b167245d30233fad4147fadef94
+    controller:
+      main:
+        containers:
+          main:
+            image:
+              repository: ghcr.io/neilenns/ambientweather2mqtt
+              tag: v4.3.0@sha256:e1ae2a163b8d56332881bb2c08ac5386af121b167245d30233fad4147fadef94
 
-    envFrom:
-      - secretRef:
-          name: ambientweather2mqtt-secrets
+            envFrom:
+              - secretRef:
+                  name: ambientweather2mqtt-secrets
 
     service:
       main:
