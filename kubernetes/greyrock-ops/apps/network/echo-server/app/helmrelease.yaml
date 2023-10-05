@@ -18,14 +18,26 @@ spec:
         namespace: flux-system
 
   values:
-    image:
-      repository: ghcr.io/mendhak/http-https-echo
-      tag: "30"
+    controllers:
+      main:
+        annotations:
+          reloader.stakater.com/auto: "true"
 
-    env:
-      HTTP_PORT: &port 8080
-      LOG_WITHOUT_NEWLINE: "true"
-      LOG_IGNORE_PATH: "/healthz"
+        containers:
+          main:
+            image:
+              repository: ghcr.io/mendhak/http-https-echo
+              tag: 30
+            env:
+              HTTP_PORT: &port 8080
+              LOG_WITHOUT_NEWLINE: "true"
+              LOG_IGNORE_PATH: "/healthz"
+            resources:
+              requests:
+                cpu: 5m
+                memory: 30M
+              limits:
+                memory: 30M
 
     service:
       main:
@@ -36,23 +48,20 @@ spec:
     ingress:
       main:
         enabled: true
-        ingressClassName: "external-nginx"
+        className: "external-nginx"
         annotations:
-          nginx.ingress.kubernetes.io/auth-url: http://authelia.security.svc.cluster.local/api/verify
-          nginx.ingress.kubernetes.io/auth-signin: https://auth.greyrock.casa?rm=$request_method
-          nginx.ingress.kubernetes.io/auth-response-headers: "Remote-User,Remote-Name,Remote-Groups,Remote-Email"
           external-dns.alpha.kubernetes.io/target: ingress-ext.greyrock.casa
+          nginx.ingress.kubernetes.io/auth-url: http://ak-outpost-external-proxy-outpost.security.svc.cluster.local:9000/outpost.goauthentik.io/auth/nginx
+          nginx.ingress.kubernetes.io/auth-signin: /outpost.goauthentik.io/start?rd=$escaped_request_uri
+          nginx.ingress.kubernetes.io/auth-response-headers: Set-Cookie,X-authentik-username,X-authentik-groups,X-authentik-email,X-authentik-name,X-authentik-uid
+          nginx.ingress.kubernetes.io/auth-snippet: proxy_set_header X-Forwarded-Host $http_host;
         hosts:
           - host: &host "echo-server.greyrock.casa"
             paths:
               - path: /
+                service:
+                  name: main
+                  port: http
         tls:
           - hosts:
               - *host
-
-    resources:
-      requests:
-        cpu: 15m
-        memory: 64M
-      limits:
-        memory: 128M
