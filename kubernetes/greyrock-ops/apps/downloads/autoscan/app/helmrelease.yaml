@@ -19,17 +19,25 @@ spec:
 
   values:
     controller:
-      type: statefulset
       annotations:
         reloader.stakater.com/auto: "true"
 
-    image:
-      repository: cloudb0x/autoscan
-      tag: master
+    containers:
+      main:
+        image:
+          repository: cloudb0x/autoscan
+          tag: master
 
-    env:
-      PUID: 568
-      PGID: 100
+        env:
+          PUID: 568
+          PGID: 100
+
+        resources:
+          requests:
+            cpu: 5m
+            memory: 34M
+          limits:
+            memory: 34M
 
     service:
       main:
@@ -40,13 +48,6 @@ spec:
     ingress:
       main:
         enabled: false
-
-    resources:
-      requests:
-        cpu: 5m
-        memory: 34M
-      limits:
-        memory: 34M
 
     volumeClaimTemplates:
       - name: config
