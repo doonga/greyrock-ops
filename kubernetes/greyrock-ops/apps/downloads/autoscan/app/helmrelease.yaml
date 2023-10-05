@@ -23,11 +23,11 @@ spec:
         annotations:
           reloader.stakater.com/auto: "true"
 
-    containers:
-      main:
-        image:
-          repository: docker.io/cloudb0x/autoscan
-          tag: 1.4.0
+        containers:
+          main:
+            image:
+              repository: docker.io/cloudb0x/autoscan
+              tag: 1.4.0
 
         env:
           PUID: 568
