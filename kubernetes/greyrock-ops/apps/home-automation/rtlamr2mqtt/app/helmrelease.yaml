@@ -24,6 +24,9 @@ spec:
           nodeSelector:
             rtlamr.feature.node.kubernetes.io/rtlamr: "true"
 
+          securityContext:
+            privileged: true
+
         containers:
           main:
             image:
@@ -55,6 +58,3 @@ spec:
           - path: /etc/rtlamr2mqtt.yaml
             subPath: RT_LAMR_CONFIG_FILE
             readOnly: true
-
-    securityContext:
-      privileged: true
