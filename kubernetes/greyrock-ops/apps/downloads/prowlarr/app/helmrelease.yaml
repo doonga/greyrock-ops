@@ -18,25 +18,40 @@ spec:
         namespace: flux-system
 
   values:
-    controller:
-      annotations:
-        reloader.stakater.com/auto: "true"
+    controllers:
+      main:
+        annotations:
+          reloader.stakater.com/auto: "true"
 
-    image:
-      repository: ghcr.io/onedr0p/prowlarr-nightly
-      tag: 1.9.3.4010@sha256:692201bed229c4dd9228361875b4c3e59559b0d62310b58464e8c9f8f1eee48d
+        pod:
+          securityContext:
+            runAsUser: 568
+            runAsGroup: 568
+            fsGroup: 568
+            fsGroupChangePolicy: OnRootMismatch
 
-    env:
-      PROWLARR__INSTANCE_NAME: Prowlarr
-      PROWLARR__PORT: &port 9696
-      PROWLARR__LOG_LEVEL: info
-      PROWLARR__ANALYTICS_ENABLED: "False"
-      PROWLARR__AUTHENTICATION_METHOD: External
-      PROWLARR__API_KEY:
-        valueFrom:
-          secretKeyRef:
-            name: prowlarr-secret
-            key: api_key
+        containers:
+          main:
+            image:
+              repository: ghcr.io/onedr0p/prowlarr-nightly
+              tag: 1.9.3.4010@sha256:692201bed229c4dd9228361875b4c3e59559b0d62310b58464e8c9f8f1eee48d
+            env:
+              PROWLARR__INSTANCE_NAME: Prowlarr
+              PROWLARR__PORT: &port 9696
+              PROWLARR__LOG_LEVEL: info
+              PROWLARR__ANALYTICS_ENABLED: "False"
+              PROWLARR__AUTHENTICATION_METHOD: External
+              PROWLARR__API_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: prowlarr-secret
+                    key: api_key
+            resources:
+              requests:
+                cpu: 18m
+                memory: 128Mi
+              limits:
+                memory: 256Mi
 
     service:
       main:
@@ -47,11 +62,14 @@ spec:
     ingress:
       main:
         enabled: true
-        ingressClassName: "internal-nginx"
+        className: "internal-nginx"
         hosts:
           - host: &host "{{ .Release.Name }}.greyrock.casa"
             paths:
               - path: /
+                service:
+                  name: main
+                  port: http
         tls:
           - hosts:
               - *host
@@ -60,14 +78,3 @@ spec:
       config:
         enabled: true
         existingClaim: prowlarr-config
-
-    resources:
-      requests:
-        cpu: 18m
-        memory: 128Mi
-      limits:
-        memory: 256Mi
-
-    securityContext:
-      runAsUser: 568
-      runAsGroup: 568
