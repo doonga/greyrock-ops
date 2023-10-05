@@ -12,4 +12,4 @@ resources:
   - ./rtlamr2mqtt/ks.yaml
   - ./scrypted/ks.yaml
   - ./zigbee2mqtt/ks.yaml
-  - ./zwave-js-ui/ks.yaml
+  # - ./zwave-js-ui/ks.yaml
