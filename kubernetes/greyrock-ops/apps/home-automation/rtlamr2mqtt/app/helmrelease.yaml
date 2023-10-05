@@ -33,8 +33,9 @@ spec:
               limits:
                 memory: 36M
 
-            nodeSelector:
-              rtlamr.feature.node.kubernetes.io/rtlamr: "true"
+            pod:
+              nodeSelector:
+                rtlamr.feature.node.kubernetes.io/rtlamr: "true"
 
     service:
       main:
