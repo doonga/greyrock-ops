@@ -55,6 +55,9 @@ spec:
           - host: &host "overseerr.greyrock.casa"
             paths:
               - path: /
+                service:
+                  name: main
+                  port: http
         tls:
           - hosts:
               - *host
