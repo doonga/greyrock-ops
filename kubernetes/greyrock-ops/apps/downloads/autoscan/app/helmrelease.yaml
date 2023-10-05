@@ -49,11 +49,11 @@ spec:
           limits:
             memory: 34M
 
-    service:
-      main:
-        ports:
-          http:
-            port: 3030
+        service:
+          main:
+            ports:
+              http:
+                port: 3030
 
     ingress:
       main:
