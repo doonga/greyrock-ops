@@ -20,6 +20,10 @@ spec:
   values:
     controllers:
       main:
+        pod:
+          nodeSelector:
+            rtlamr.feature.node.kubernetes.io/rtlamr: "true"
+
         containers:
           main:
             image:
@@ -32,10 +36,6 @@ spec:
                 memory: 36M
               limits:
                 memory: 36M
-
-            pod:
-              nodeSelector:
-                rtlamr.feature.node.kubernetes.io/rtlamr: "true"
 
     service:
       main:
