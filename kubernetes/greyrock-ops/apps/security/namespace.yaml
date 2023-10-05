@@ -6,4 +6,4 @@ metadata:
   labels:
     kustomize.toolkit.fluxcd.io/prune: disabled
     vault-snapshot-greyrock.casa: "true"
-    pgo-enabled-bjw-s.dev: "true"
+    pgo-enabled-greyrock.casa: "true"
