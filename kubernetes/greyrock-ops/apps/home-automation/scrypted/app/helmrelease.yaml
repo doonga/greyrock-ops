@@ -18,87 +18,92 @@ spec:
         namespace: flux-system
 
   values:
-    controller:
-      type: statefulset
+    controllers:
+      main:
+        type: statefulset
+        annotations:
+          reloader.stakater.com/auto: "true"
 
-    image:
-      repository: ghcr.io/koush/scrypted
-      tag: 20-jammy-full-v0.55.0
+        statefulset:
+          volumeClaimTemplates:
+            - name: config
+              accessMode: ReadWriteOnce
+              size: 2Gi
+              storageClass: ceph-block
+              globalMounts:
+                - path: /server/volume
 
-    podAnnotations:
-      k8s.v1.cni.cncf.io/networks: |
-        [{
-          "name":"multus-iot",
-          "namespace": "network",
-          "ips": ["10.1.3.153/24"]
-        }]
+        pod:
+          annotations:
+            k8s.v1.cni.cncf.io/networks: |
+              [{
+                "name":"multus-iot",
+                "namespace": "network",
+                "ips": ["10.1.3.153/24"]
+              }]
+          nodeSelector:
+            google.feature.node.kubernetes.io/coral: "true"
+            intel.feature.node.kubernetes.io/gpu: "true"
+
+        containers:
+          main:
+            image:
+              repository: ghcr.io/koush/scrypted
+              tag: 18-jammy-full-v0.41.0
+            resources:
+              requests:
+                gpu.intel.com/i915: 1
+                cpu: 136m
+                memory: 1024Mi
+              limits:
+                gpu.intel.com/i915: 1
+                memory: 8192Mi
+            securityContext:
+              privileged: true
 
     service:
       main:
         ports:
           http:
             port: 11080
+          rebroadcast:
+            port: 34135
 
     ingress:
       main:
         enabled: true
-        ingressClassName: "internal-nginx"
+        className: "internal-nginx"
         hosts:
           - host: &host "scrypted.greyrock.casa"
             paths:
               - path: /
+                service:
+                  name: main
+                  port: http
         tls:
           - hosts:
               - *host
 
-    securityContext:
-      privileged: true
-
-    nodeSelector:
-      google.feature.node.kubernetes.io/coral: "true"
-      intel.feature.node.kubernetes.io/gpu: "true"
-
-    affinity:
-      podAntiAffinity:
-        preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 100
-            podAffinityTerm:
-              labelSelector:
-                matchExpressions:
-                  - key: app.kubernetes.io/name
-                    operator: In
-                    values:
-                      - frigate
-              topologyKey: kubernetes.io/hostname
-
     persistence:
       cache:
-        enabled: true
-        mountPath: /.npm
         type: emptyDir
-      media:
-        enabled: true
-        type: nfs
-        server: "nas.greyrock.io"
-        path: /tank/scrypted
-        mountPath: /media
-      apex:
-        enabled: true
+        globalMounts:
+          - path: /.cache
+      cache-npm:
+        type: emptyDir
+        globalMounts:
+          - path: /.npm
+      dev-bus-usb:
         type: hostPath
-        hostPath: /dev/apex_0
-
-    resources:
-      requests:
-        gpu.intel.com/i915: 1
-        cpu: 10m
-        memory: 250Mi
-      limits:
-        gpu.intel.com/i915: 1
-        memory: 16384Mi
-
-    volumeClaimTemplates:
-      - name: config
-        mountPath: /server/volume
-        accessMode: ReadWriteOnce
-        size: 2Gi
-        storageClass: ceph-block
+        hostPath: /dev/bus/usb
+        hostPathType: Directory
+      sys-bus-usb:
+        type: hostPath
+        hostPath: /sys/bus/usb
+        hostPathType: Directory
+      recs:
+        type: nfs
+        path: /tank/scrypted
+        server: nas.greyrock.io
+        globalMounts:
+          - path: /media
