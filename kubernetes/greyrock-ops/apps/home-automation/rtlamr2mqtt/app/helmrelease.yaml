@@ -18,9 +18,19 @@ spec:
         namespace: flux-system
 
   values:
-    image:
-      repository: allangood/rtlamr2mqtt
-      tag: 2.3.3
+    controllers:
+      main:
+        containers:
+          image:
+            repository: allangood/rtlamr2mqtt
+            tag: 2.3.3
+
+          resources:
+            requests:
+              cpu: 100m
+              memory: 36M
+            limits:
+              memory: 36M
 
     service:
       main:
@@ -36,19 +46,13 @@ spec:
         type: secret
         name: rtlamr2mqtt-secret
         defaultMode: 400
-        subPath:
-          - path: RT_LAMR_CONFIG_FILE
-            mountPath: /etc/rtlamr2mqtt.yaml
+        globalMounts:
+          - path: /etc/rtlamr2mqtt.yaml
+            subPath: rtlamr2mqtt.yaml
+            readOnly: true
 
     securityContext:
       privileged: true
 
     nodeSelector:
       rtlamr.feature.node.kubernetes.io/rtlamr: "true"
-
-    resources:
-      requests:
-        cpu: 100m
-        memory: 36M
-      limits:
-        memory: 36M
