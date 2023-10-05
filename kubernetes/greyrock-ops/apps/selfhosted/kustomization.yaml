@@ -12,4 +12,3 @@ resources:
   - ./paperless/ks.yaml
   - ./teslamate/ks.yaml
   - ./thelounge/ks.yaml
-  - ./windmill/ks.yaml
