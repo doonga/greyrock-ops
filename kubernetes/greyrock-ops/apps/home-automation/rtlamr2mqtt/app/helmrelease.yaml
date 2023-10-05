@@ -24,14 +24,14 @@ spec:
           nodeSelector:
             rtlamr.feature.node.kubernetes.io/rtlamr: "true"
 
-          securityContext:
-            privileged: true
-
         containers:
           main:
             image:
               repository: allangood/rtlamr2mqtt
               tag: 2.3.3
+
+            securityContext:
+              privileged: true
 
             resources:
               requests:
