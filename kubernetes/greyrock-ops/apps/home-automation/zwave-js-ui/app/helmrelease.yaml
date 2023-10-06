@@ -93,7 +93,7 @@ spec:
                 pathType: Prefix
                 service:
                   name: main
-                  port: websocket
+                  port: 3000
         tls:
           - hosts:
               - *host
