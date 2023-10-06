@@ -7,4 +7,3 @@ resources:
   - ./nodefeaturerule.yaml
   - ./helmrelease.yaml
   - ./volsync.yaml
-  - ./pvc.yaml
