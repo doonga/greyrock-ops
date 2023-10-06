@@ -93,7 +93,6 @@ spec:
                 pathType: Prefix
                 service:
                   name: main
-                  port: 3000
         tls:
           - hosts:
               - *host
