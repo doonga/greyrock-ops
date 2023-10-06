@@ -40,6 +40,15 @@ spec:
             securityContext:
               privileged: true
 
+            statefulset:
+              volumeClaimTemplates:
+                - name: config
+                  accessMode: ReadWriteOnce
+                  size: 1Gi
+                  storageClass: ceph-block
+                  globalMounts:
+                    - path: /usr/src/app/store
+
             probes:
               liveness: &probes
                 enabled: true
@@ -89,10 +98,6 @@ spec:
               - *host
 
     persistence:
-      config:
-        enabled: true
-        mountPath: /usr/src/app/store
-        existingClaim: zwave-js-ui-data
       usb:
         enabled: true
         type: hostPath
