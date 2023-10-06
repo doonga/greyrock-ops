@@ -47,7 +47,7 @@ spec:
                 spec:
                   httpGet:
                     path: /health
-                    port: *port
+                    port: 3000
                   initialDelaySeconds: 0
                   periodSeconds: 10
                   timeoutSeconds: 1
@@ -64,7 +64,7 @@ spec:
       main:
         ports:
           http:
-            port: &port 8091
+            port: 8091
           websocket:
             enabled: true
             port: 3000
