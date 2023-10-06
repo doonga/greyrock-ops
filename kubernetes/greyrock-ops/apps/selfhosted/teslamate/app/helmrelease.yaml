@@ -34,45 +34,45 @@ spec:
         annotations:
           reloader.stakater.com/auto: "true"
 
-    containers:
-      main:
-        image:
-          repository: docker.io/teslamate/teslamate
-          tag: 1.27.3
+        containers:
+          main:
+            image:
+              repository: teslamate/teslamate
+              tag: 1.27.3
 
-        env:
-          DATABASE_HOST:
-            valueFrom:
-              secretKeyRef:
-                name: teslamate-pguser-teslamate
-                key: host
-          DATABASE_NAME:
-            valueFrom:
-              secretKeyRef:
-                name: teslamate-pguser-teslamate
-                key: dbname
-          DATABASE_USER:
-            valueFrom:
-              secretKeyRef:
-                name: teslamate-pguser-teslamate
-                key: user
-          DATABASE_PASS:
-            valueFrom:
-              secretKeyRef:
-                name: teslamate-pguser-teslamate
-                key: password
-          # DATABASE_SSL: noverify
+            env:
+              DATABASE_HOST:
+                valueFrom:
+                  secretKeyRef:
+                    name: teslamate-pguser-teslamate
+                    key: host
+              DATABASE_NAME:
+                valueFrom:
+                  secretKeyRef:
+                    name: teslamate-pguser-teslamate
+                    key: dbname
+              DATABASE_USER:
+                valueFrom:
+                  secretKeyRef:
+                    name: teslamate-pguser-teslamate
+                    key: user
+              DATABASE_PASS:
+                valueFrom:
+                  secretKeyRef:
+                    name: teslamate-pguser-teslamate
+                    key: password
+              # DATABASE_SSL: noverify
 
-        envFrom:
-          - secretRef:
-              name: teslamate-secret
+            envFrom:
+              - secretRef:
+                  name: teslamate-secret
 
-        resources:
-          requests:
-            cpu: 6m
-            memory: 276M
-          limits:
-            memory: 512M
+            resources:
+              requests:
+                cpu: 6m
+                memory: 276M
+              limits:
+                memory: 512M
 
     service:
       main:
