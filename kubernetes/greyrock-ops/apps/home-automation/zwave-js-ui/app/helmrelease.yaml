@@ -40,15 +40,6 @@ spec:
             securityContext:
               privileged: true
 
-            statefulset:
-              volumeClaimTemplates:
-                - name: config
-                  accessMode: ReadWriteOnce
-                  size: 1Gi
-                  storageClass: ceph-block
-                  globalMounts:
-                    - path: /usr/src/app/store
-
             probes:
               liveness: &probes
                 enabled: true
@@ -64,6 +55,15 @@ spec:
               readiness: *probes
               startup:
                 enabled: false
+
+        statefulset:
+          volumeClaimTemplates:
+            - name: config
+              accessMode: ReadWriteOnce
+              size: 1Gi
+              storageClass: ceph-block
+              globalMounts:
+                - path: /usr/src/app/store
 
         pod:
           nodeSelector:
