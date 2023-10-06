@@ -89,6 +89,8 @@ spec:
           - host: &host "teslamate.greyrock.casa"
             paths:
               - path: /
+                service:
+                  name: main
         tls:
           - hosts:
               - *host
