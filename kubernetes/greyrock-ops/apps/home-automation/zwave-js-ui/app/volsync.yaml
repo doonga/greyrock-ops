@@ -28,7 +28,7 @@ metadata:
   name: zwave-js-ui
   namespace: home-automation
 spec:
-  sourcePVC: zwave-js-ui-data
+  sourcePVC: config-zwave-js-ui-0
   trigger:
     schedule: "0 */12 * * *"
   restic:
