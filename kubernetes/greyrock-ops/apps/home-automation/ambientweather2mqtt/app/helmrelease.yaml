@@ -24,7 +24,7 @@ spec:
           main:
             image:
               repository: ghcr.io/neilenns/ambientweather2mqtt
-              tag: v4.3.0@sha256:e1ae2a163b8d56332881bb2c08ac5386af121b167245d30233fad4147fadef94
+              tag: v4.3.1@sha256:bf3267eb973e3e81b64b66f558ca2c702e6c7c3651730ae98db3bcd08ea7c9eb
 
             envFrom:
               - secretRef:
