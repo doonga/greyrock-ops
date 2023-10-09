@@ -13,3 +13,4 @@ resources:
   - ./tagspaces/ks.yaml
   - ./teslamate/ks.yaml
   - ./thelounge/ks.yaml
+  - ./zipline/ks.yaml
