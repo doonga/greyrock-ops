@@ -3,7 +3,9 @@ locals {
     "loki",
     "thanos",
     "volsync",
-    "crunchy-postgres"
+    "crunchy-postgres",
+    "tagspaces",
+    "zipline"
   ]
 }
 
