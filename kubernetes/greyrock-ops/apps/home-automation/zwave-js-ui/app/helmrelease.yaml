@@ -35,7 +35,7 @@ spec:
           main:
             image:
               repository: ghcr.io/zwave-js/zwave-js-ui
-              tag: 9.2.0@sha256:5a921c188eb96734646279fa809882030e899a58e4cb235696820911245d2214
+              tag: 9.2.2@sha256:df45ca307594e4c012a436efc7d0d787ca12a1b9cc303f0aef896af9814c7d05
 
             securityContext:
               privileged: true
