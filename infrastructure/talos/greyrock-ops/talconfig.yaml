@@ -1,9 +1,20 @@
 ---
 clusterName: ${clusterName}
 
-talosVersion: v1.5.2
-kubernetesVersion: 1.28.1
 endpoint: "https://${clusterName}.greyrock.io:6443"
+talosVersion: v1.5.4
+kubernetesVersion: 1.28.3
+
+# Image URL rendered on https://factory.talos.dev
+# customization:
+#     extraKernelArgs:
+#         - net.ifnames=0
+#     systemExtensions:
+#         officialExtensions:
+#             - siderolabs/gasket-driver
+#             - siderolabs/i915-ucode
+#             - siderolabs/intel-ucode
+talosImageURL: factory.talos.dev/installer/d0fc674c397975b1687926d07afd7f869ddd9967f229b5c773f6f782b08bddf1
 
 cniConfig:
   name: none
@@ -20,25 +31,25 @@ nodes:
     ipAddress: 10.1.1.4
     controlPlane: true
     installDisk: /dev/nvme0n1
-    disableSearchDomain: true
     networkInterfaces:
-      - interface: enp86s0
+      - deviceSelector:
+          hardwareAddr: "48:21:0b:3e:d8:14"
         dhcp: true
   - hostname: k8s2.greyrock.io
     ipAddress: 10.1.1.5
     controlPlane: true
     installDisk: /dev/nvme0n1
-    disableSearchDomain: true
     networkInterfaces:
-      - interface: enp86s0
+      - deviceSelector:
+          hardwareAddr: "48:21:0b:3e:db:da"
         dhcp: true
   - hostname: k8s3.greyrock.io
     ipAddress: 10.1.1.6
     controlPlane: true
     installDisk: /dev/nvme0n1
-    disableSearchDomain: true
     networkInterfaces:
-      - interface: enp86s0
+      - deviceSelector:
+          hardwareAddr: "48:21:0b:3e:d8:02"
         dhcp: true
   - hostname: k8s4.greyrock.io
     ipAddress: 10.1.1.7
@@ -49,9 +60,9 @@ nodes:
       - device: /dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_BTWL406300TG800RGN
         partitions:
           - mountpoint: /var/mnt/sata
-    disableSearchDomain: true
     networkInterfaces:
-      - interface: enp4s0
+      - deviceSelector:
+          hardwareAddr: "00:30:93:12:38:d3"
         dhcp: true
         vlans:
           - vlanId: 40
@@ -80,9 +91,9 @@ nodes:
       - device: /dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_BTWL503001EB800RGN
         partitions:
           - mountpoint: /var/mnt/sata
-    disableSearchDomain: true
     networkInterfaces:
-      - interface: enp4s0
+      - deviceSelector:
+          hardwareAddr: "00:30:93:12:38:d6"
         dhcp: true
         vlans:
           - vlanId: 40
@@ -111,9 +122,9 @@ nodes:
       - device: /dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_BTWL421602AP800RGN
         partitions:
           - mountpoint: /var/mnt/sata
-    disableSearchDomain: true
     networkInterfaces:
-      - interface: enp4s0
+      - deviceSelector:
+          hardwareAddr: "00:30:93:12:38:8c"
         dhcp: true
         vlans:
           - vlanId: 40
@@ -136,27 +147,59 @@ nodes:
 
 controlPlane:
   patches:
+    # Disable search domain everywhere
+    - |-
+      machine:
+        network:
+          disableSearchDomain: true
+
+   # Configure NTP
+    - |-
+      machine:
+        time:
+          disabled: false
+          servers:
+            - 10.1.1.1
+
+    # Enable KubePrism
+    - |-
+      machine:
+        features:
+          kubePrism:
+            enabled: true
+            port: 7445
+
+    # Configure cluster loopback
+    - |-
+      machine:
+        network:
+          extraHostEntries:
+            - ip: ${clusterEndpointIP}
+              aliases:
+                - ${clusterName}.greyrock.io
+
+    # Cluster configuration
     - |-
       cluster:
         allowSchedulingOnMasters: false
         proxy:
           disabled: true
+
+    # ETCD configuration
+    - |-
+      cluster:
         etcd:
           advertisedSubnets:
             - 10.1.1.0/24
+
+    # Disable default API server admission plugins.
     - |-
       - op: remove
         path: /cluster/apiServer/admissionControl
+
+    # Kubelet configuration
     - |-
       machine:
-        files:
-          - op: create
-            path: /etc/cri/conf.d/20-customization.part
-            content: |
-              [plugins]
-                [plugins."io.containerd.grpc.v1.cri"]
-                  enable_unprivileged_ports = true
-                  enable_unprivileged_icmp = true
         kubelet:
           extraArgs:
             feature-gates: CronJobTimeZone=true,GracefulNodeShutdown=true,NewVolumeManagerReconstruction=false
@@ -166,21 +209,17 @@ controlPlane:
           nodeIP:
             validSubnets:
               - 10.1.1.0/24
-        network:
-          extraHostEntries:
-            - ip: ${clusterEndpointIP}
-              aliases:
-                - ${clusterName}.greyrock.io
+
+    # Custom sysctls
+    - |-
+      machine:
         sysctls:
           fs.inotify.max_user_watches: "1048576"
           fs.inotify.max_user_instances: "8192"
-        install:
-          extensions:
-            - image: ghcr.io/siderolabs/intel-ucode:20230808
-        time:
-          disabled: false
-          servers:
-            - 10.1.1.1
+
+    # Container mirrors
+    - |-
+      machine:
         registries:
           mirrors:
             docker.io:
@@ -201,16 +240,9 @@ controlPlane:
 
 worker:
   patches:
+    # Kubelet configuration
     - |-
       machine:
-        files:
-          - op: create
-            path: /etc/cri/conf.d/20-customization.part
-            content: |
-              [plugins]
-                [plugins."io.containerd.grpc.v1.cri"]
-                  enable_unprivileged_ports = true
-                  enable_unprivileged_icmp = true
         kubelet:
           extraArgs:
             feature-gates: CronJobTimeZone=true,GracefulNodeShutdown=true,NewVolumeManagerReconstruction=false
@@ -220,30 +252,24 @@ worker:
           nodeIP:
             validSubnets:
               - 10.1.1.0/24
-        network:
-          extraHostEntries:
-            - ip: ${clusterEndpointIP}
-              aliases:
-                - ${clusterName}.greyrock.io
+
+    # Custom sysctls
+    - |-
+      machine:
         sysctls:
           fs.inotify.max_user_watches: "1048576"
           fs.inotify.max_user_instances: "8192"
-        install:
-          extensions:
-            - image: ghcr.io/siderolabs/intel-ucode:20230808
-            - image: ghcr.io/siderolabs/gasket-driver:97aeba58-v1.5.2
-            - image: ghcr.io/siderolabs/i915-ucode:20230804
-        kernel:
-          modules:
-            - name: gasket
-            - name: apex
+
+    # Custom udev
+    - |-
+      machine:
         udev:
           rules:
             - SUBSYSTEM=="apex", MODE="0660", GROUP="568"
-        time:
-          disabled: false
-          servers:
-            - 10.1.1.1
+
+    # Container mirrors
+    - |-
+      machine:
         registries:
           mirrors:
             docker.io:
