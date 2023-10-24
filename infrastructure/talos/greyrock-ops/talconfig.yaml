@@ -153,7 +153,7 @@ controlPlane:
         network:
           disableSearchDomain: true
 
-   # Configure NTP
+    # Configure NTP
     - |-
       machine:
         time:
@@ -191,6 +191,18 @@ controlPlane:
         etcd:
           advertisedSubnets:
             - 10.1.1.0/24
+
+    # Configure containerd
+    - |-
+      machine:
+        files:
+          - op: create
+            path: /etc/cri/conf.d/20-customization.part
+            content: |
+              [plugins]
+                [plugins."io.containerd.grpc.v1.cri"]
+                  enable_unprivileged_ports = true
+                  enable_unprivileged_icmp = true
 
     # Disable default API server admission plugins.
     - |-
@@ -252,6 +264,18 @@ worker:
           nodeIP:
             validSubnets:
               - 10.1.1.0/24
+
+    # Configure containerd
+    - |-
+      machine:
+        files:
+          - op: create
+            path: /etc/cri/conf.d/20-customization.part
+            content: |
+              [plugins]
+                [plugins."io.containerd.grpc.v1.cri"]
+                  enable_unprivileged_ports = true
+                  enable_unprivileged_icmp = true
 
     # Custom sysctls
     - |-
