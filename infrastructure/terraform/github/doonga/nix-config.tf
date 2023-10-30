@@ -1,9 +1,9 @@
-module "dotfiles" {
+module "nix-config" {
   source = "github.com/bjw-s/terraform-github-repository?ref=v1.2.0"
 
-  name        = "dotfiles"
-  description = "My collection of dotfiles, powered by chezmoi"
-  topics      = ["dotfiles", "macos", "chezmoi"]
+  name        = "nix-config"
+  description = "My nix config for MacOS"
+  topics      = ["dotfiles", "macos", "nixos", "home-manager"]
   visibility  = "public"
 
   auto_init              = var.defaults.auto_init
