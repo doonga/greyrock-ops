@@ -135,10 +135,10 @@ radarr:
         reset_unmatched_scores:
           enabled: true
         upgrade:
-          allowed: true
+          allowed: false
           until_quality: Bluray-2160p
           until_score: 0
-        min_format_score: 0
+        min_format_score: 4500
         quality_sort: top
         qualities:
           - name: Bluray-2160p
