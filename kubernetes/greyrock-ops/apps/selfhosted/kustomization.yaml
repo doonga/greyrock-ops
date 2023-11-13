@@ -5,6 +5,7 @@ resources:
   # Pre Flux-Kustomizations
   - ./namespace.yaml
   # Flux-Kustomizations
+  - ./atuin/ks.yaml
   - ./hajimari-andy/ks.yaml
   - ./homepage-todd/ks.yaml
   - ./miniflux/ks.yaml
