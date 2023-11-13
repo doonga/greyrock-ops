@@ -1,0 +1,13 @@
+---
+apiVersion: monitoring.coreos.com/v1alpha1
+kind: ScrapeConfig
+metadata:
+  name: node-exporter
+  namespace: monitoring
+spec:
+  staticConfigs:
+    - targets:
+        - gateway.greyrock.io:9100
+        - nas.greyrock.io:9100
+        - pikvm.greyrock.io:9100
+  metricsPath: /metrics

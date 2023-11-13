@@ -156,16 +156,6 @@ spec:
               - targets:
                   - 10.5.0.8:9119 # router
 
-          - job_name: node-exporter
-            scrape_interval: 1m
-            scrape_timeout: 10s
-            honor_timestamps: true
-            static_configs:
-              - targets:
-                  - gateway.greyrock.io:9100
-                  - nas.greyrock.io:9100
-                  - pikvm.greyrock.io:9100
-
           - job_name: speedtest-exporter
             scrape_interval: 60m
             scrape_timeout: 60s
@@ -185,11 +175,11 @@ spec:
           - job_name: vault
             metrics_path: /v1/sys/metrics
             params:
-              format: ['prometheus']
+              format: ["prometheus"]
             scheme: https
             static_configs:
               - targets:
-                - vault.greyrock.io:443
+                  - vault.greyrock.io:443
 
         enableAdminAPI: true
         # Breaks any metric that has an existing "cluster" label on a metric
