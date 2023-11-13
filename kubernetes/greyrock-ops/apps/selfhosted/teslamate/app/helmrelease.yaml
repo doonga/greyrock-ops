@@ -38,7 +38,7 @@ spec:
           main:
             image:
               repository: teslamate/teslamate
-              tag: 1.27.3
+              tag: 1.27.4
 
             env:
               DATABASE_HOST:
