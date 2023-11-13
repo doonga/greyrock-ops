@@ -64,8 +64,8 @@ module "cf_domain_ingress" {
     },
     {
       enabled     = true
-      description = "Firewall rule to block all countries except US"
-      expression  = "(ip.geoip.country ne \"US\")"
+      description = "Firewall rule to block certain countries"
+      expression  = "(ip.geoip.country in {\"CN\" \"IN\" \"KP\" \"RU\"})"
       action      = "block"
     },
   ]
