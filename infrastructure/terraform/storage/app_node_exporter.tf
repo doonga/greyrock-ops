@@ -21,7 +21,7 @@ resource "kubernetes_daemon_set_v1" "node_exporter" {
       spec {
         container {
           name              = "main"
-          image             = "quay.io/prometheus/node-exporter:v1.6.1@sha256:81f94e50ea37a88dfee849d0f4acad25b96b397061f59e5095905f6bc5829637"
+          image             = "quay.io/prometheus/node-exporter:v1.7.0@sha256:4cb2b9019f1757be8482419002cb7afe028fdba35d47958829e4cfeaf6246d80"
           image_pull_policy = "IfNotPresent"
           args = [
             "--path.procfs=/host/proc",
