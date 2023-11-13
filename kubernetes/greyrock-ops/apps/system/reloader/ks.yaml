@@ -12,6 +12,4 @@ spec:
   sourceRef:
     kind: GitRepository
     name: greyrock-ops-kubernetes
-  dependsOn:
-    - name: cluster-apps-snapshot-controller
   wait: false # no flux ks dependents
