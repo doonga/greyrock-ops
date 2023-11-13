@@ -156,14 +156,6 @@ spec:
               - targets:
                   - 10.5.0.8:9119 # router
 
-          - job_name: speedtest-exporter
-            scrape_interval: 60m
-            scrape_timeout: 60s
-            honor_timestamps: true
-            static_configs:
-              - targets:
-                  - gateway.greyrock.io:9798
-
           - job_name: smartctl-exporter
             scrape_interval: 10m
             scrape_timeout: 10s
@@ -198,6 +190,7 @@ spec:
         retention: 2d
         retentionSize: "6GB"
         ruleSelectorNilUsesHelmValues: false
+        scrapeConfigSelectorNilUsesHelmValues: false
         scrapeInterval: 1m
         serviceMonitorSelectorNilUsesHelmValues: false
         storageSpec:
