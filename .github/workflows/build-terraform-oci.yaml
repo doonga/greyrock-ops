@@ -28,7 +28,7 @@ jobs:
 
       - name: Get changed files
         id: changed-files
-        uses: tj-actions/changed-files@v40
+        uses: tj-actions/changed-files@v40.1.1
         with:
           dir_names: true
           dir_names_max_depth: 3
@@ -84,4 +84,3 @@ jobs:
         run: |
           flux tag artifact "oci://ghcr.io/doonga/terraform/$(basename ${{ matrix.project }}):$(git rev-parse --short HEAD)" \
             --tag main
-
