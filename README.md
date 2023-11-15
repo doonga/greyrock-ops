@@ -24,7 +24,7 @@ _... managed by Flux and serviced with RenovateBot_ :robot:
 
 Welcome to my home operations repository.
 
-Lots of fun (to me at least :wink:) stuff can be found, poke around my [Kubernetes clusters](./kubernetes/clusters) directory to see what they are running. Feel free to open a [GitHub Issue](https://github.com/Doonga/greyrock-ops/issues/new).
+Lots of fun (to me at least :wink:) stuff can be found, poke around my [Kubernetes clusters](./kubernetes/clusters) directory to see what they are running. Feel free to open a [GitHub Issue](https://github.com/doonga/greyrock-ops/issues/new).
 
 For more information, head on over to my [docs](https://greyrock.github.io/greyrock-ops/).
 

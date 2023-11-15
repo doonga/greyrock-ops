@@ -6,8 +6,8 @@ site_author: Todd Punderson
 site_url: https://greyrock.github.io/greyrock-ops/
 
 # Repository
-repo_name: Doonga/greyrock-ops
-repo_url: https://github.com/Doonga/greyrock-ops
+repo_name: doonga/greyrock-ops
+repo_url: https://github.com/doonga/greyrock-ops
 edit_uri: ""
 
 # Configuration
@@ -65,7 +65,7 @@ extra_css:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/Doonga
+      link: https://github.com/doonga
 
 # Navigation structure
 nav:
