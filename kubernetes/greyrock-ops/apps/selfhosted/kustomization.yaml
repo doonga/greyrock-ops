@@ -7,7 +7,6 @@ resources:
   # Flux-Kustomizations
   - ./atuin/ks.yaml
   - ./hajimari-andy/ks.yaml
-  - ./homepage-todd/ks.yaml
   - ./miniflux/ks.yaml
   - ./node-red/ks.yaml
   - ./paperless/ks.yaml
