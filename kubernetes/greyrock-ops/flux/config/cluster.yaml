@@ -9,7 +9,7 @@ spec:
   interval: 30m
   ref:
     branch: main
-  url: https://github.com/Doonga/greyrock-ops.git
+  url: https://github.com/doonga/greyrock-ops.git
   ignore: |
     # exclude all
     /*
