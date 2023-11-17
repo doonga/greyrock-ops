@@ -57,7 +57,7 @@
       # Build darwin flake using:
       # $ darwin-rebuild build --flake .#<hostname>
       flake.darwinConfigurations = {
-        personal-macbook = myLib.mkDarwinSystem "aarch64-darwin" "todds-macbook";
+        todds-macbook = myLib.mkDarwinSystem "aarch64-darwin" "todds-macbook";
       };
     };
 }

@@ -10,6 +10,12 @@ in {
 
   options.modules.users.todd = {
     enable = mkEnableOption "todd";
+    enableDevTools = mkEnableOption "Enable dev tools" // {
+      default = false;
+    };
+    enableKubernetesTools = mkEnableOption "Enable k8s tools" // {
+      default = false;
+    };
   };
 
   config = mkIf (cfg.enable) (mkMerge [
@@ -41,23 +47,31 @@ in {
         };
       };
 
-      modules.users.todd.shell.fish.enable = true;
+      modules.users.todd.shell.fish = {
+        enable = true;
+      };
 
       modules.users.todd.shell.git = {
         enable = true;
         username = "Todd Punderson";
-        email = "tpunderson@greyrock.io";
+        email = "fairs_rubs_0j@icloud.com";
         signing = {
           signByDefault = true;
-          key = "0x80FF2B2CE4316DEE";
+          key = "aK4BG/tFqZYzc7bKJ5UF+husYq6yZZfn51egQOVGNtU";
         };
         aliases = {
           co = "checkout";
           logo = "log --pretty=format:\"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ (%cn)\" --decorate";
         };
         config = {
+          core = {
+            autocrlf = "input";
+          };
           init = {
             defaultBranch = "main";
+          };
+          pull = {
+            rebase = false;
           };
         };
         ignores = [
@@ -76,13 +90,12 @@ in {
         ];
       };
 
-      modules.users.todd.shell.rtx = {
-        enable = true;
-        package = pkgs-unstable.rtx;
-      };
-
+      modules.users.todd.shell.nvim.enable = true;
       modules.users.todd.shell.starship.enable = true;
       modules.users.todd.shell.tmux.enable = true;
     }
+
+    (mkIf (cfg.enableKubernetesTools) (import ./_kubernetes.nix))
+    (mkIf (cfg.enableKubernetesTools) (import ./_devtools.nix args))
   ]);
 }
