@@ -12,9 +12,6 @@ sonarr:
       type: series
 
     quality_profiles:
-      - name: HD-1080p
-        reset_unmatched_scores:
-          enabled: true
       - name: WEB-1080p
         reset_unmatched_scores:
           enabled: true
@@ -100,8 +97,8 @@ sonarr:
 
         quality_profiles:
           # - name: HD-1080p
+          - name: WEB-1080p
           - name: Ultra-HD
-          - name: HD - 720p/1080p
 
 radarr:
   radarr_main:
@@ -120,11 +117,12 @@ radarr:
           enabled: true
         upgrade:
           allowed: true
-          until_quality: Bluray-1080p
+          until_quality: Remux-1080p
           until_score: 0
         min_format_score: 0
         quality_sort: top
         qualities:
+          - name: Remux-1080p
           - name: Bluray-1080p
           - name: WEB 1080p
             qualities:
@@ -136,11 +134,12 @@ radarr:
           enabled: true
         upgrade:
           allowed: false
-          until_quality: Bluray-2160p
+          until_quality: Remux-2160p
           until_score: 0
         min_format_score: 4500
         quality_sort: top
         qualities:
+          - name: Remux-2160p
           - name: Bluray-2160p
           - name: WEB 2160p
             qualities:
@@ -191,7 +190,7 @@ radarr:
           - dfb86d5941bc9075d6af23b09c2aeecd # HDR10
           - e61e28db95d22bedcadf030b8f156d96 # HDR
           - 2a4d9069cc1fe3242ff9bdaebed239bb # HDR (undefined)
-          - 08d6d8834ad9ec87b1dc7ec8148e7a1f # PQ several HDR/DV Custom Formats
+          - 08d6d8834ad9ec87b1dc7ec8148e7a1f # PQ
           - 9364dd386c9b4a1100dde8264690add7 # HLG
           - 923b6abef9b17f937fab56cfcf89e1f1 # DV (WEBDL)
           - b17886cb4158d9fea189859409975758 # HDR10+Boost
@@ -226,4 +225,3 @@ radarr:
         quality_profiles:
           - name: HD-1080p
           - name: Ultra-HD
-          - name: Best
