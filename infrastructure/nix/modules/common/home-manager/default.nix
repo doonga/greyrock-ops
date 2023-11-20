@@ -16,6 +16,7 @@ in
     ( import ../kubernetes/kubectl {username=username;} )
     ( import ../kubernetes/kustomize {username=username;} )
     ( import ../kubernetes/stern {username=username;} )
+    ( import ../kubernetes/talosctl {username=username;} )
 
     ( import ../shell/atuin {username=username;} )
     ( import ../shell/fish {username=username;} )
