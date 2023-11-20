@@ -21,6 +21,7 @@ in {
   config = mkIf (cfg.enable) (mkMerge [
     (mkIf (pkgs.stdenv.isLinux) (import ./nixos.nix args))
     (mkIf (pkgs.stdenv.isDarwin) (import ./darwin.nix args))
+    (mkIf (pkgs.stdenv.isDarwin) (import ./homebrew.nix args))
 
     {
       users.users.todd = {
@@ -57,7 +58,7 @@ in {
         email = "fairs_rubs_0j@icloud.com";
         signing = {
           signByDefault = true;
-          key = "aK4BG/tFqZYzc7bKJ5UF+husYq6yZZfn51egQOVGNtU";
+          key = "BB12B5FCDAA356F8";
         };
         aliases = {
           co = "checkout";
