@@ -22,6 +22,7 @@ in {
     (mkIf (pkgs.stdenv.isLinux) (import ./nixos.nix args))
     (mkIf (pkgs.stdenv.isDarwin) (import ./darwin.nix args))
     (mkIf (pkgs.stdenv.isDarwin) (import ./homebrew.nix args))
+    (mkIf (pkgs.stdenv.isDarwin) {modules.users.todd.mac.kitty.enable = true;})
 
     {
       users.users.todd = {
@@ -94,7 +95,6 @@ in {
       modules.users.todd.shell.nvim.enable = true;
       modules.users.todd.shell.starship.enable = true;
       modules.users.todd.shell.tmux.enable = true;
-      modules.users.todd.mac.kitty.enable = true;
     }
 
     (mkIf (cfg.enableKubernetesTools) (import ./_kubernetes.nix))
