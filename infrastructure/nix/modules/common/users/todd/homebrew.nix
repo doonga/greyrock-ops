@@ -14,6 +14,7 @@
     };
     casks = ["gpg-suite-no-mail"];
     taps = [];
-    brews = ["mas"];
+    # someday move talhelper out of here when you know what you're actually doing with nix
+    brews = ["mas" "talhelper"];
   };
 }
