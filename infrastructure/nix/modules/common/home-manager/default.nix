@@ -11,6 +11,7 @@ in
     ( import ../kubernetes/krew {username=username;} )
     ( import ../kubernetes/kubecm {username=username;} )
     ( import ../kubernetes/stern {username=username;} )
+    ( import ../kubernetes/helm {username=username;} )
 
     ( import ../shell/atuin {username=username;} )
     ( import ../shell/fish {username=username;} )
