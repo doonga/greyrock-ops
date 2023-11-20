@@ -20,6 +20,8 @@ in
     ( import ../shell/rtx {username=username;} )
     ( import ../shell/starship {username=username;} )
     ( import ../shell/tmux {username=username;} )
+
+    ( import ../mac/kitty {username=username;} )
   ];
 
   options.modules.users.${username}.home-manager = {

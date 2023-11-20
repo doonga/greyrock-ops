@@ -94,6 +94,7 @@ in {
       modules.users.todd.shell.nvim.enable = true;
       modules.users.todd.shell.starship.enable = true;
       modules.users.todd.shell.tmux.enable = true;
+      modules.users.todd.mac.kitty.enable = true;
     }
 
     (mkIf (cfg.enableKubernetesTools) (import ./_kubernetes.nix))
