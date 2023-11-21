@@ -72,6 +72,14 @@ spec:
           revision: 2
           datasource: Prometheus
 
+        blocky:
+          # Ref: https://grafana.com/grafana/dashboards/13768-blocky/
+          gnetId: 13768
+          revision: 3
+          datasource:
+            - name: "DS_PROMETHEUS"
+              value: Prometheus
+
       node-exporter:
         # Ref: https://grafana.com/grafana/dashboards/1860-node-exporter-full/
         node-exporter:
