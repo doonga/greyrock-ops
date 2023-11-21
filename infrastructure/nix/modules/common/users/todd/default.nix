@@ -1,4 +1,4 @@
-args@{ pkgs, pkgs-unstable, lib, config, ... }:
+args@{ pkgs, pkgs-unstable, myPkgs, lib, config, ... }:
 with lib;
 
 let
@@ -14,6 +14,9 @@ in {
       default = false;
     };
     enableKubernetesTools = mkEnableOption "Enable k8s tools" // {
+      default = false;
+    };
+    enableDesktopTools = mkEnableOption "Enable Desktop tools" // {
       default = false;
     };
   };
@@ -99,6 +102,7 @@ in {
     }
 
     (mkIf (cfg.enableKubernetesTools) (import ./_kubernetes.nix))
-    (mkIf (cfg.enableKubernetesTools) (import ./_devtools.nix args))
+    (mkIf (cfg.enableDevTools) (import ./_devtools.nix args))
+    (mkIf (cfg.enableDesktopTools) (import ./_desktoptools.nix args))
   ]);
 }

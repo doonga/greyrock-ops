@@ -7,6 +7,7 @@
         enable = true;
         enableDevTools = true;
         enableKubernetesTools = true;
+        enableDesktopTools = true;
       };
     };
 

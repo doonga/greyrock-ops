@@ -51,6 +51,7 @@ in {
           _module.args = {
             inherit inputs system;
             myConfig = { hostname = hostname; };
+            myPkgs = inputs.self.legacyPackages.${system};
             pkgs-unstable = import inputs.nixpkgs-unstable {
               inherit system;
               config.allowUnfree = true;

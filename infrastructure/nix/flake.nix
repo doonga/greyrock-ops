@@ -51,7 +51,7 @@
         pkgs,
         ...
       }: {
-        # legacyPackages = import ./nixos/packages { inherit inputs' pkgs; };
+        legacyPackages = import ./packages { inherit inputs' pkgs; };
         # devShells.default = import ./nixos/packages/shell.nix { inherit inputs' pkgs; };
       };
 
