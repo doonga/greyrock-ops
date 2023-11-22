@@ -25,7 +25,6 @@ in
     ( import ../shell/nvim {username=username;} )
     ( import ../shell/rtx {username=username;} )
     ( import ../shell/starship {username=username;} )
-    ( import ../shell/tmux {username=username;} )
 
     ( import ../mac/kitty {username=username;} )
   ];
