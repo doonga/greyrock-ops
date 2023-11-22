@@ -63,7 +63,7 @@ in {
         email = "fairs_rubs_0j@icloud.com";
         signing = {
           signByDefault = true;
-          key = "BB12B5FCDAA356F8";
+          key = "B6F2966E0B5ECD1";
         };
         aliases = {
           co = "checkout";
