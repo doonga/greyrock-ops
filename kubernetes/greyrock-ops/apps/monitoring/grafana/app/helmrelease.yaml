@@ -80,7 +80,7 @@ spec:
             - name: "DS_PROMETHEUS"
               value: Prometheus
             - name: "VAR_BLOCKY_URL"
-              value: "http:\\&#47;\\&#47;10.5.0.7:4000"
+              value: "http:\\/\\/10.5.0.7:4000"
 
       node-exporter:
         # Ref: https://grafana.com/grafana/dashboards/1860-node-exporter-full/
