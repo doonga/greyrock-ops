@@ -82,7 +82,7 @@ spec:
         nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
         nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
       hosts:
-        - host: &host authentik.greyrock.casa
+        - host: &host auth.greyrock.casa
           paths:
             - path: /
       tls:

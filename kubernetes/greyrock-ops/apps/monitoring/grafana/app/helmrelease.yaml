@@ -139,7 +139,7 @@ spec:
       auth:
         oauth_auto_login: true
         oauth_allow_insecure_email_lookup: true
-        signout_redirect_url: https://authentik.greyrock.casa/application/o/grafana/end-session/
+        signout_redirect_url: https://auth.greyrock.casa/application/o/grafana/end-session/
       auth.basic:
         enabled: false
       auth.generic_oauth:
@@ -154,9 +154,9 @@ spec:
         use_pkce: true
         client_id: NBc32tPJHKlYYizcuRTDNmHVLWtCRblaJsgbSxMy
         client_secret: # Set by env vars
-        auth_url: https://authentik.greyrock.casa/application/o/authorize/
-        token_url: https://authentik.greyrock.casa/application/o/token/
-        api_url: https://authentik.greyrock.casa/application/o/userinfo/
+        auth_url: https://auth.greyrock.casa/application/o/authorize/
+        token_url: https://auth.greyrock.casa/application/o/token/
+        api_url: https://auth.greyrock.casa/application/o/userinfo/
         # map user groups to Grafana roles
         role_attribute_path: |
           contains(groups[*], 'Grafana Admins') && 'Admin' || contains(groups[*], 'Grafana Editors') && 'Editor' || 'Viewer'
