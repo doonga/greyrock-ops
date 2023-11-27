@@ -39,7 +39,7 @@ spec:
                     key: uri
               DEBUG: "1"
               LOG_DATE_TIME: "1"
-              OAUTH2_CLIENT_ID: BGzsRwsSgwqvY3onxfia9xkuHHxyLdfSkhChgoKY
+              OAUTH2_CLIENT_ID: WdFPr7hJkIpqxnYUpxpMVwktlAEyhwJehVodOukC
               OAUTH2_USER_CREATION: "1"
               OAUTH2_OIDC_DISCOVERY_ENDPOINT: https://auth.greyrock.casa/application/o/miniflux/
               OAUTH2_PROVIDER: oidc
