@@ -79,7 +79,7 @@ spec:
         enabled: true
         className: internal-nginx
         hosts:
-          - host: &host jellyfin.bjw-s.dev
+          - host: &host jellyfin.greyrock.casa
             paths:
               - path: /
                 service:
