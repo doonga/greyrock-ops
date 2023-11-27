@@ -12,7 +12,10 @@
     masApps = {
       "1Blocker - Ad Blocker" = 1365531024;
     };
-    casks = ["gpg-suite-no-mail"];
+    casks = [
+      "gpg-suite-no-mail"
+      "visual-studio-code"
+    ];
     taps = [];
     # someday move talhelper out of here when you know what you're actually doing with nix
     brews = [
