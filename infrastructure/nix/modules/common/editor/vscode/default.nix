@@ -15,7 +15,7 @@ let
     catppuccin.catppuccin-vsc-icons
     elagil.pre-commit-helper
     esbenp.prettier-vscode
-    gruntfuggly.todo-tre
+    gruntfuggly.todo-tree
     ionutvmi.path-autocomplete
     redhat.vscode-yaml
     signageos.signageos-vscode-sops

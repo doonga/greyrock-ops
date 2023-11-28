@@ -52,13 +52,13 @@ in {
           _module.args = {
             inherit inputs system;
             myConfig = { hostname = hostname; };
-            myPkgs = inputs.self.legacyPackages.${system};
             pkgs-unstable = import inputs.nixpkgs-unstable {
               inherit system;
               config.allowUnfree = true;
               overlays = [ (import ../packages/overlay.nix {inherit inputs system;}) ];
             };
           vscode-extensions = inputs.nix-vscode-extensions.extensions.${system};
+          talhelper = inputs.talhelper.packages.${system};
           };
         }
         inputs.home-manager.darwinModules.home-manager

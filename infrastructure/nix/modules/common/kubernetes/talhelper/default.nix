@@ -1,4 +1,4 @@
-{ username }: {pkgs, myPkgs, lib, config, ... }:
+{ username }: {pkgs, lib, config, talhelper, ... }:
 with lib;
 
 let
@@ -7,7 +7,7 @@ let
 in {
   options.modules.users.${username}.kubernetes.talhelper = {
     enable = mkEnableOption "${username} talhelper";
-    package = mkPackageOption myPkgs "talhelper" { };
+    package = mkPackageOption talhelper "talhelper" { };
 
     enableFishIntegration = mkEnableOption "Fish Integration" // {
       default = true;

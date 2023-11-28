@@ -14,13 +14,10 @@
     };
     casks = [
       "gpg-suite-no-mail"
-      "visual-studio-code"
     ];
     taps = [];
-    # someday move talhelper out of here when you know what you're actually doing with nix
     brews = [
       "mas"
-      "talhelper"
       "watch"
     ];
   };

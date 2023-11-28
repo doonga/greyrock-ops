@@ -1,3 +1,4 @@
+{ vscode-extensions, talhelper,  ...}:
 {
   modules.users.todd.kubernetes.cilium-cli.enable = true;
   modules.users.todd.kubernetes.fluxcd.enable = true;
@@ -11,7 +12,7 @@
   modules.users.todd.kubernetes.talhelper.enable = false;
   modules.users.todd.kubernetes.talosctl.enable = true;
 
-  
+
   modules.users.todd.shell.fish = {
     config.programs.fish = {
       shellAliases = {

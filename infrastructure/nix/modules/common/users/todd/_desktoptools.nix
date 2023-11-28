@@ -1,4 +1,4 @@
-{ pkgs, pkgs-unstable, myPkgs, ... }:
+{ pkgs, pkgs-unstable, ... }:
 {
   home-manager.users.todd.home.packages = [
     pkgs.discord

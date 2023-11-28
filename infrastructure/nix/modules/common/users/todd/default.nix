@@ -1,4 +1,4 @@
-args@{ pkgs, pkgs-unstable, myPkgs, vscode-extensions, lib, config, ... }:
+args@{ pkgs, pkgs-unstable, vscode-extensions, talhelper, lib, config, ... }:
 with lib;
 
 let
@@ -25,7 +25,7 @@ in {
     (mkIf (pkgs.stdenv.isLinux) (import ./nixos.nix args))
     (mkIf (pkgs.stdenv.isDarwin) (import ./darwin.nix args))
     (mkIf (pkgs.stdenv.isDarwin) (import ./homebrew.nix args))
-    
+
     (mkIf (pkgs.stdenv.isDarwin) {modules.users.todd.mac.kitty.enable = true;})
 
     {

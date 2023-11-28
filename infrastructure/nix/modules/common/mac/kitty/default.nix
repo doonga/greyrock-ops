@@ -18,7 +18,7 @@ in {
           size = 16;
         };
         shellIntegration.enableFishIntegration = true;
-        theme = "Catppuccin Macchiato";
+        theme = "Catppuccin-Macchiato";
       };
     };
   };

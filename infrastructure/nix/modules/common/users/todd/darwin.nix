@@ -3,7 +3,10 @@
   users.users.todd.home = "/Users/todd";
 
   fonts.fontDir.enable = true;
-  fonts.fonts = [(pkgs.nerdfonts.override {fonts = ["FireCode Nerd Font" "Font Awesome 6 Free Solid"];})];
+  fonts.fonts = with pkgs; [
+    font-awesome
+    (nerdfonts.override {fonts = ["FiraCode"];})
+  ];
 
   system.defaults = {
     finder.AppleShowAllExtensions = true;

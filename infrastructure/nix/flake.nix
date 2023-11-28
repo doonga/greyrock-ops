@@ -27,7 +27,6 @@
     # talhelper
     talhelper = {
       url = "github:budimanjojo/talhelper";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Flake-parts
@@ -51,7 +50,7 @@
         pkgs,
         ...
       }: {
-        legacyPackages = import ./packages { inherit inputs' pkgs; };
+        # legacyPackages = import ./packages { inherit inputs' pkgs; };
         # devShells.default = import ./nixos/packages/shell.nix { inherit inputs' pkgs; };
       };
 
