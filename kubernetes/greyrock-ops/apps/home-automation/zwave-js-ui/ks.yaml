@@ -14,7 +14,7 @@ spec:
     - name: cluster-apps-external-secrets-stores
     - name: cluster-apps-rook-ceph-cluster
   path: ./kubernetes/greyrock-ops/apps/home-automation/zwave-js-ui/app
-  prune: true
+  prune: false
   sourceRef:
     kind: GitRepository
     name: greyrock-ops-kubernetes

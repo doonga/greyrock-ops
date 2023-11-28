@@ -10,7 +10,7 @@ metadata:
 spec:
   interval: 10m
   path: "./kubernetes/greyrock-ops/apps/monitoring/vector/aggregator"
-  prune: true
+  prune: false
   sourceRef:
     kind: GitRepository
     name: greyrock-ops-kubernetes
@@ -28,7 +28,7 @@ metadata:
 spec:
   interval: 10m
   path: "./kubernetes/greyrock-ops/apps/monitoring/vector/agent"
-  prune: true
+  prune: false
   sourceRef:
     kind: GitRepository
     name: greyrock-ops-kubernetes

@@ -12,7 +12,7 @@ spec:
       app.kubernetes.io/name: *appname
   interval: 10m
   path: "./kubernetes/greyrock-ops/apps/selfhosted/libreddit/app"
-  prune: true
+  prune: false
   sourceRef:
     kind: GitRepository
     name: greyrock-ops-kubernetes

@@ -8,7 +8,7 @@ metadata:
 spec:
   interval: 10m
   path: "./kubernetes/greyrock-ops/apps/dev/actions-runner-controller/operator"
-  prune: true
+  prune: false
   sourceRef:
     kind: GitRepository
     name: greyrock-ops-kubernetes
@@ -26,7 +26,7 @@ metadata:
 spec:
   interval: 10m
   path: "./kubernetes/greyrock-ops/apps/dev/actions-runner-controller/runners"
-  prune: true
+  prune: false
   sourceRef:
     kind: GitRepository
     name: greyrock-ops-kubernetes

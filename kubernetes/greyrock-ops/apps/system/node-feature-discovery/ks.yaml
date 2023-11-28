@@ -8,7 +8,7 @@ metadata:
 spec:
   interval: 10m
   path: "./kubernetes/greyrock-ops/apps/system/node-feature-discovery/app"
-  prune: true
+  prune: false
   sourceRef:
     kind: GitRepository
     name: greyrock-ops-kubernetes
@@ -23,7 +23,7 @@ metadata:
 spec:
   interval: 10m
   path: "./kubernetes/greyrock-ops/apps/system/node-feature-discovery/rules"
-  prune: true
+  prune: false
   sourceRef:
     kind: GitRepository
     name: greyrock-ops-kubernetes
