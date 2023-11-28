@@ -43,6 +43,18 @@ spec:
           - media
           - rook-ceph
       name: "Andy"
+      defaultSearchProvider: DuckDuckGo
+      searchProviders:
+        - name: DuckDuckGo
+          token: d
+          icon: simple-icons:duckduckgo
+          searchUrl: https://duckduckgo.com/?q={query}
+          url: https://duckduckgo.com
+        - name: Google
+          token: g
+          icon: simple-icons:google
+          searchUrl: https://www.google.com/search?q={query}
+          url: https://www.google.com
       globalBookmarks:
         - group: Lifestyle
           bookmarks:

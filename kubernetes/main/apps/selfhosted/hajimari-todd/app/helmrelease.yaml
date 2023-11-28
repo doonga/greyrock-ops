@@ -45,6 +45,11 @@ spec:
       name: "Todd"
       defaultSearchProvider: DuckDuckGo
       searchProviders:
+        - name: DuckDuckGo
+          token: d
+          icon: simple-icons:duckduckgo
+          searchUrl: https://duckduckgo.com/?q={query}
+          url: https://duckduckgo.com
         - name: Google
           token: g
           icon: simple-icons:google
