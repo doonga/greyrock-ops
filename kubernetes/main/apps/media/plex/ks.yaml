@@ -8,7 +8,7 @@ metadata:
 spec:
   interval: 10m
   path: "./kubernetes/main/apps/media/plex/app"
-  prune: false
+  prune: true
   sourceRef:
     kind: GitRepository
     name: greyrock-ops-kubernetes
@@ -25,7 +25,7 @@ metadata:
 spec:
   interval: 10m
   path: "./kubernetes/main/apps/media/plex/trakt-sync"
-  prune: false
+  prune: true
   sourceRef:
     kind: GitRepository
     name: greyrock-ops-kubernetes

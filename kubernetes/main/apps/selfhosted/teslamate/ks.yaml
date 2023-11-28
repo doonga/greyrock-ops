@@ -14,7 +14,7 @@ spec:
     - name: external-secrets-stores
     - name: crunchy-postgres-operator
     - name: external-secrets-cluster-secrets
-  prune: false
+  prune: true
   wait: false # no flux ks dependents
   interval: 30m
   retryInterval: 2m

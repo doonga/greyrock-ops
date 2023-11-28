@@ -8,7 +8,7 @@ metadata:
 spec:
   interval: 10m
   path: "./kubernetes/main/apps/network/multus/app"
-  prune: false
+  prune: true
   sourceRef:
     kind: GitRepository
     name: greyrock-ops-kubernetes
@@ -23,7 +23,7 @@ metadata:
 spec:
   interval: 10m
   path: "./kubernetes/main/apps/network/multus/config"
-  prune: false
+  prune: true
   sourceRef:
     kind: GitRepository
     name: greyrock-ops-kubernetes
