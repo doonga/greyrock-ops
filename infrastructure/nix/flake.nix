@@ -24,15 +24,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Flake-parts
+    nix-vscode-extensions = {
+      url = "github:nix-community/nix-vscode-extensions";
+    };
+
     # talhelper
     talhelper = {
       url = "github:budimanjojo/talhelper";
     };
 
-    # Flake-parts
-    nix-vscode-extensions = {
-      url = "github:nix-community/nix-vscode-extensions";
-    };
   };
 
   outputs = { flake-parts, ... }@inputs:

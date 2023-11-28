@@ -28,7 +28,7 @@ in
     ( import ../shell/rtx {username=username;} )
     ( import ../shell/starship {username=username;} )
 
-    ( import ../mac/kitty {username=username;} )
+    ( import ../terminal/kitty {username=username;} )
   ];
 
   options.modules.users.${username}.home-manager = {

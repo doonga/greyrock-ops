@@ -58,7 +58,7 @@ in {
               overlays = [ (import ../packages/overlay.nix {inherit inputs system;}) ];
             };
           vscode-extensions = inputs.nix-vscode-extensions.extensions.${system};
-          talhelper = inputs.talhelper.packages.${system};
+          talhelper = inputs.talhelper.packages.${system}.default;
           };
         }
         inputs.home-manager.darwinModules.home-manager

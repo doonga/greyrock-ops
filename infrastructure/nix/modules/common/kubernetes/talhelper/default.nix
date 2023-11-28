@@ -7,7 +7,6 @@ let
 in {
   options.modules.users.${username}.kubernetes.talhelper = {
     enable = mkEnableOption "${username} talhelper";
-    package = mkPackageOption talhelper "talhelper" { };
 
     enableFishIntegration = mkEnableOption "Fish Integration" // {
       default = true;
@@ -16,13 +15,12 @@ in {
 
   config = mkIf cfg.enable {
     home-manager.users.${username} = {
-      home.packages = [ cfg.package ];
+      home.packages = [ talhelper ];
 
       programs = {
         fish.interactiveShellInit = mkIf cfg.enableFishIntegration (
           ''
-            ${getExe cfg.package} completion fish | source
-            fish_add_path $HOME/.talhelper/bin
+            ${getExe talhelper} completion fish | source
           ''
         );
       };
