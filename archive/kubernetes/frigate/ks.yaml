@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
-  path: "./kubernetes/greyrock-ops/apps/home-automation/frigate/app"
+  path: "./kubernetes/main/apps/home-automation/frigate/app"
   prune: false
   sourceRef:
     kind: GitRepository

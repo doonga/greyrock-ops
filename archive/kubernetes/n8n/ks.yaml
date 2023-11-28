@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
-  path: "./kubernetes/greyrock-ops/apps/selfhosted/n8n/app"
+  path: "./kubernetes/main/apps/selfhosted/n8n/app"
   prune: false
   sourceRef:
     kind: GitRepository

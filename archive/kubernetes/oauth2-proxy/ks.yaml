@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
-  path: "./kubernetes/greyrock-ops/apps/security/oauth2-proxy/redis"
+  path: "./kubernetes/main/apps/security/oauth2-proxy/redis"
   prune: false
   sourceRef:
     kind: GitRepository
@@ -22,7 +22,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
-  path: "./kubernetes/greyrock-ops/apps/security/oauth2-proxy/app"
+  path: "./kubernetes/main/apps/security/oauth2-proxy/app"
   prune: false
   sourceRef:
     kind: GitRepository
