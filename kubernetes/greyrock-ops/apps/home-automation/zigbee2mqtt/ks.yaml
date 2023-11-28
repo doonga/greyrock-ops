@@ -3,7 +3,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: cluster-apps-zigbee2mqtt
+  name: zigbee2mqtt
   namespace: flux-system
 spec:
   interval: 10m
@@ -14,6 +14,6 @@ spec:
     name: greyrock-ops-kubernetes
   wait: false # no flux ks dependents
   dependsOn:
-    - name: cluster-apps-mosquitto
-    - name: cluster-apps-external-secrets-stores
-    - name: cluster-apps-rook-ceph-cluster
+    - name: mosquitto
+    - name: external-secrets-stores
+    - name: rook-ceph-cluster
