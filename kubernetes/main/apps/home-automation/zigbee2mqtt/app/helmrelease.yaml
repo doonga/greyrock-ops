@@ -112,6 +112,10 @@ spec:
 
     ingress:
       main:
+        annotations:
+          hajimari.io/enable: "true"
+          hajimari.io/instance: "todd"
+          hajimari.io/icon: "mdi:zigbee"
         enabled: true
         className: "internal-nginx"
         hosts:

@@ -76,6 +76,10 @@ spec:
 
     ingress:
       main:
+        annotations:
+          hajimari.io/enable: "true"
+          hajimari.io/instance: "todd"
+          hajimari.io/icon: "simple-icons:jellyfin"
         enabled: true
         className: internal-nginx
         hosts:

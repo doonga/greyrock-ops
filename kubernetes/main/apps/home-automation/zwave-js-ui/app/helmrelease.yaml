@@ -84,6 +84,10 @@ spec:
 
     ingress:
       main:
+        annotations:
+          hajimari.io/enable: "true"
+          hajimari.io/instance: "todd"
+          hajimari.io/icon: "mdi:z-wave"
         enabled: true
         className: internal-nginx
         hosts:

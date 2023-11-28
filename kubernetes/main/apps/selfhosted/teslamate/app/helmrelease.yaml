@@ -83,6 +83,10 @@ spec:
 
     ingress:
       main:
+        annotations:
+          hajimari.io/enable: "true"
+          hajimari.io/instance: "todd"
+          hajimari.io/icon: "car-electric"
         enabled: true
         className: "internal-nginx"
         hosts:

@@ -48,6 +48,10 @@ spec:
 
     ingress:
       main:
+        annotations:
+          hajimari.io/enable: "true"
+          hajimari.io/instance: "todd"
+          hajimari.io/icon: "mdi:chart-bar"
         enabled: true
         className: internal-nginx
         hosts:
