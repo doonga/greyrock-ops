@@ -31,6 +31,10 @@
       servers.nfs.enable = true;
       servers.samba.enable = true;
       servers.samba.shares = {
+        Backup = {
+          path = "/tank/Backup";
+          "read only" = "no";
+        };
         Docs = {
           path = "/tank/Docs";
           "read only" = "no";
@@ -45,6 +49,13 @@
         };
         Software = {
           path = "/tank/Software";
+          "read only" = "no";
+        };
+        TimeMachineBackup = {
+          "vfs objects" = "acl_xattr catia fruit streams_xattr";
+          "fruit:time machine" = "yes";
+          "comment" = "Time Machine Backups";
+          "path" = "/tank/Backup/TimeMachine";
           "read only" = "no";
         };
       };

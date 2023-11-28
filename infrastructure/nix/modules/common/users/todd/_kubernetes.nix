@@ -22,4 +22,16 @@
       '';
     };
   };
+
+  modules.users.todd.editor.vscode = {
+    extensions = with vscode-extensions.vscode-marketplace; [
+      ms-kubernetes-tools.vscode-kubernetes-tools
+    ];
+
+    config = {
+      vs-kubernetes = {
+        "vs-kubernetes.crd-code-completion" = "disabled";
+      };
+    };
+  };
 }

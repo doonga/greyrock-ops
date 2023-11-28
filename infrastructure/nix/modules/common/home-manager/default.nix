@@ -7,6 +7,8 @@ in
   imports = [
     ( import ../sops {username=username;} )
 
+    ( import ../editor/vscode {username=username;} )
+
     ( import ../kubernetes/cilium-cli {username=username;} )
     ( import ../kubernetes/fluxcd {username=username;} )
     ( import ../kubernetes/helm {username=username;} )

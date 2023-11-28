@@ -1,4 +1,4 @@
-args@{ pkgs, pkgs-unstable, myPkgs, lib, config, ... }:
+args@{ pkgs, pkgs-unstable, myPkgs, vscode-extensions, lib, config, ... }:
 with lib;
 
 let
@@ -100,7 +100,7 @@ in {
       modules.users.todd.shell.starship.enable = true;
     }
 
-    (mkIf (cfg.enableKubernetesTools) (import ./_kubernetes.nix))
+    (mkIf (cfg.enableKubernetesTools) (import ./_kubernetes.nix args))
     (mkIf (cfg.enableDevTools) (import ./_devtools.nix args))
     (mkIf (cfg.enableDesktopTools) (import ./_desktoptools.nix args))
   ]);

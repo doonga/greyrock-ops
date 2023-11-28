@@ -14,11 +14,11 @@ in {
       programs.kitty = {
         enable = true;
         font = {
-          name = "MesloLGS Nerd Font Mono";
+          name = "FiraCode Nerd Font";
           size = 16;
         };
         shellIntegration.enableFishIntegration = true;
-        theme = "Solarized Dark Higher Contrast";
+        theme = "Catppuccin Macchiato";
       };
     };
   };
