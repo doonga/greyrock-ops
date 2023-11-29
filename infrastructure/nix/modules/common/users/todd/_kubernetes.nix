@@ -1,4 +1,7 @@
-{ vscode-extensions, talhelper,  ...}:
+{ pkgs, talhelper,  ...}:
+let
+   vscode-extensions = (import ../../editor/vscode/extensions.nix){pkgs = pkgs;};
+ in
 {
   modules.users.todd.kubernetes.cilium-cli.enable = true;
   modules.users.todd.kubernetes.fluxcd.enable = true;
@@ -25,7 +28,7 @@
   };
 
   modules.users.todd.editor.vscode = {
-    extensions = with vscode-extensions.vscode-marketplace; [
+    extensions = with vscode-extensions; [
       ms-kubernetes-tools.vscode-kubernetes-tools
     ];
 
