@@ -3,6 +3,12 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: selfhosted
 configMapGenerator:
+  - name: battery-health
+    files:
+      - charge-level.json=https://raw.githubusercontent.com/adriankumpf/teslamate/master/grafana/dashboards/battery-health.json
+  - name: battery-health-lfp
+    files:
+      - charge-level.json=https://raw.githubusercontent.com/adriankumpf/teslamate/master/grafana/dashboards/battery-health-lfp.json
   - name: charge-level
     files:
       - charge-level.json=https://raw.githubusercontent.com/adriankumpf/teslamate/master/grafana/dashboards/charge-level.json
@@ -12,6 +18,9 @@ configMapGenerator:
   - name: charging-stats
     files:
       - charging-stats.json=https://raw.githubusercontent.com/adriankumpf/teslamate/master/grafana/dashboards/charging-stats.json
+  - name: charging-stats-lfp
+    files:
+      - charging-stats.json=https://raw.githubusercontent.com/adriankumpf/teslamate/master/grafana/dashboards/charging-stats-lfp.json
   - name: drive-stats
     files:
       - drive-stats.json=https://raw.githubusercontent.com/adriankumpf/teslamate/master/grafana/dashboards/drive-stats.json
@@ -30,6 +39,9 @@ configMapGenerator:
   - name: overview
     files:
       - overview.json=https://raw.githubusercontent.com/adriankumpf/teslamate/master/grafana/dashboards/overview.json
+  - name: overview-lfp
+    files:
+      - overview.json=https://raw.githubusercontent.com/adriankumpf/teslamate/master/grafana/dashboards/overview-lfp.json
   - name: projected-range
     files:
       - projected-range.json=https://raw.githubusercontent.com/adriankumpf/teslamate/master/grafana/dashboards/projected-range.json
