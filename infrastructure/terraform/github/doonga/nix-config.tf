@@ -20,7 +20,7 @@ module "nix_config" {
 
   plaintext_secrets = merge(
     {},
-    local.bjws_bot_secrets
+    local.greyrock_bot_secrets
   )
 
   issue_labels_manage_default_github_labels = false
@@ -35,7 +35,7 @@ module "nix_config" {
       allows_deletions = false
 
       force_push_bypassers = [
-        "/bjw-s"
+        "/doonga"
       ]
 
       required_pull_request_reviews = {
