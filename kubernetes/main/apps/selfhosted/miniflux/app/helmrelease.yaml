@@ -24,11 +24,16 @@ spec:
         annotations:
           reloader.stakater.com/auto: "true"
 
+        pod:
+          securityContext:
+            runAsUser: 568
+            runAsGroup: 568
+
         containers:
           main:
             image:
               repository: ghcr.io/miniflux/miniflux
-              tag: 2.0.50@sha256:759712dd554234b28b229bb9695f31e99b4771018d2ccefdd825a1ebe66ee219
+              tag: 2.0.50-distroless
             env:
               BASE_URL: https://miniflux.greyrock.casa
               CREATE_ADMIN: "1"
