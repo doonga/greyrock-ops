@@ -9,7 +9,7 @@ module "cf_domain_nocanseemymail" {
     # Generic settings
     {
       name  = "_dmarc"
-      value = "v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s; rua=mailto:9fad2d90843e43ff94930d1289f5dead@dmarc-reports.cloudflare.net"
+      value = "v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s; rua=mailto:2421f907c5c54fc995906209a78b3753@dmarc-reports.cloudflare.net"
       type  = "TXT"
     },
     # Fastmail settings
