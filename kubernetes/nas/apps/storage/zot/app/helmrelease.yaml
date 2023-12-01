@@ -29,7 +29,7 @@ spec:
             fsGroup: 568
             fsGroupChangePolicy: OnRootMismatch
             supplementalGroups:
-              - 65542 # gladius:external-services
+              - 65542 # nas:external-services
 
         containers:
           main:
