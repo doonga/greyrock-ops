@@ -1,4 +1,4 @@
-module "cf_domain_main" {
+module "cf_domain_nocanseemymail" {
   source               = "./modules/cf_domain"
   domain               = "nocanseemymail.com"
   account_id           = cloudflare_account.greyrock.id
