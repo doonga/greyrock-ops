@@ -9,7 +9,7 @@ module "cf_domain_undercovermail" {
     # Generic settings
     {
       name  = "_dmarc"
-      value = "v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s; rua=mailto:2421f907c5c54fc995906209a78b3753@dmarc-reports.cloudflare.net"
+      value = "v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s; rua=mailto:ddfbe302fb6e4fe1a81d1e47c52ffad2@dmarc-reports.cloudflare.net"
       type  = "TXT"
     },
     # Fastmail settings
