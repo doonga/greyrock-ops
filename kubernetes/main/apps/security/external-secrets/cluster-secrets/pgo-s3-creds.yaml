@@ -8,7 +8,7 @@ spec:
 
   namespaceSelector:
     matchLabels:
-      pgo-enabled-greyrock-casa: "true"
+      pgo-enabled-greyrock.casa: "true"
 
   refreshTime: "1m"
 
