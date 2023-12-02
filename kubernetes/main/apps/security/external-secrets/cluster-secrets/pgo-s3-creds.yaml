@@ -8,7 +8,7 @@ spec:
 
   namespaceSelector:
     matchLabels:
-      pgo-enabled-greyrock.casa: "true"
+      pgo-enabled-greyrock-casa: "true"
 
   refreshTime: "1m"
 
@@ -27,6 +27,7 @@ spec:
             [global]
             repo1-s3-key=crunchy-postgres
             repo1-s3-key-secret={{ .minio_crunchy_postgres_secret_key }}
+
     dataFrom:
       - extract:
           key: minio

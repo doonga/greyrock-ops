@@ -8,8 +8,8 @@ metadata:
 spec:
   targetNamespace: security
   commonMetadata:
-  labels:
-    app.kubernetes.io/name: *appname
+    labels:
+      app.kubernetes.io/name: *appname
   interval: 10m
   path: "./kubernetes/main/apps/security/external-secrets/app"
   prune: true
@@ -27,8 +27,8 @@ metadata:
 spec:
   targetNamespace: security
   commonMetadata:
-  labels:
-    app.kubernetes.io/name: *appname
+    labels:
+      app.kubernetes.io/name: *appname
   interval: 10m
   path: "./kubernetes/main/apps/security/external-secrets/stores"
   prune: true
@@ -48,8 +48,8 @@ metadata:
 spec:
   targetNamespace: security
   commonMetadata:
-  labels:
-    app.kubernetes.io/name: *appname
+    labels:
+      app.kubernetes.io/name: *appname
   interval: 10m
   path: "./kubernetes/main/apps/security/external-secrets/cluster-secrets"
   prune: true
