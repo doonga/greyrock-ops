@@ -1,6 +1,6 @@
-module "cf_domain_nocanseemymail" {
+module "cf_domain_undercovermail" {
   source               = "./modules/cf_domain"
-  domain               = "nocanseemymail.com"
+  domain               = "undercovermail.org"
   account_id           = cloudflare_account.greyrock.id
   plan_type            = "free" # change to free when plan expires
   enable_email_routing = false
