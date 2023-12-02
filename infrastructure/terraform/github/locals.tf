@@ -20,7 +20,7 @@ locals {
   ]
 
   greyrock_bot_secrets = {
-    "GREYROCK_APP_ID"          = data.vault_generic_secret.github_greyrock_bot.data["github_app_id"]
-    "GREYROCK_APP_PRIVATE_KEY" = data.vault_generic_secret.github_greyrock_bot.data["github_app_private_key"]
+    "GREYROCK_APP_ID"          = module.onepassword_item_github_greyrock_bot.fields.github_app_id
+    "GREYROCK_APP_PRIVATE_KEY" = module.onepassword_item_github_greyrock_bot.fields.github_app_private_key
   }
 }

@@ -1,5 +1,5 @@
 module "nix_config" {
-  source = "github.com/doonga/terraform-github-repository?ref=v1.2.0"
+  source = "github.com/bjw-s/terraform-github-repository?ref=v1.2.0"
 
   name        = "nix-config"
   description = "My nix systems configuration"

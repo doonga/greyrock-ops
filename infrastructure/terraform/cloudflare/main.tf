@@ -23,6 +23,8 @@ data "http" "ipv4_lookup_raw" {
   url = "http://ipv4.icanhazip.com"
 }
 
-data "vault_generic_secret" "cloudflare" {
-  path  = "secrets/cloudflare"
+module "onepassword_item_cloudflare" {
+  source = "github.com/bjw-s/terraform-1password-item?ref=main"
+  vault  = "Services"
+  item   = "Cloudflare"
 }

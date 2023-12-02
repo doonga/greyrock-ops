@@ -6,17 +6,9 @@ terraform {
     }
 
     minio = {
-      source = "aminueza/minio"
+      source  = "aminueza/minio"
       version = "2.0.1"
     }
 
-    vault = {
-      source = "hashicorp/vault"
-      version = "3.23.0"
-    }
   }
-}
-
-data "vault_generic_secret" "minio" {
-  path  = "secrets/minio"
 }

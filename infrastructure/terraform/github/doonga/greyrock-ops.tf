@@ -1,5 +1,5 @@
 module "greyrock_ops" {
-  source = "github.com/doonga/terraform-github-repository?ref=v1.2.0"
+  source = "github.com/bjw-s/terraform-github-repository?ref=v1.2.0"
 
   name         = "greyrock-ops"
   description  = "My home or for-home infrastructure written as code, adhering to GitOps practices"
