@@ -1,9 +1,0 @@
----
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
-namespace: security
-resources:
-  - ./cronjob.yaml
-commonLabels:
-  app.kubernetes.io/name: vault-backup
-  app.kubernetes.io/instance: vault-backup

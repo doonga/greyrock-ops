@@ -66,12 +66,6 @@ spec:
           revision: 4
           datasource: Prometheus
 
-        # Ref: https://grafana.com/grafana/dashboards/12904-hashicorp-vault/
-        vault:
-          gnetId: 12904
-          revision: 2
-          datasource: Prometheus
-
         blocky:
           # Ref: https://grafana.com/grafana/dashboards/13768-blocky/
           gnetId: 13768
