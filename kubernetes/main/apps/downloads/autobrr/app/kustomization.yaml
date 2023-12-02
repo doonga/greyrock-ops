@@ -6,12 +6,6 @@ resources:
   - ./helmrelease.yaml
   - ./externalsecret.yaml
   - ./postgresCluster.yaml
-configMapGenerator:
-  - name: autobrr-configmap
-    files:
-      - ./config/config.toml
-generatorOptions:
-  disableNameSuffixHash: true
 commonLabels:
   app.kubernetes.io/name: autobrr
   app.kubernetes.io/instance: autobrr
