@@ -7,7 +7,7 @@ metadata:
 spec:
   secretStoreRef:
     kind: ClusterSecretStore
-    name: vault-kv
+    name: onepassword-connect
   target:
     name: scrypted-restic-secret
     creationPolicy: Owner

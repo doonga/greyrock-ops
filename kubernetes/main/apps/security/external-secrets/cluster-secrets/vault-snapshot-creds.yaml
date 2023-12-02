@@ -15,7 +15,7 @@ spec:
   externalSecretSpec:
     secretStoreRef:
       kind: ClusterSecretStore
-      name: vault-kv
+      name: onepassword-connect
 
     target:
       name: vault-snapshot-agent-token
