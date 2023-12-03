@@ -96,7 +96,7 @@ spec:
     persistence:
       nfs-nas-media:
         type: nfs
-        server: nas.greyrock.io
+        server: nas.greyrock.casa
         path: /tank/media
         globalMounts:
           - path: /data/nas-media
