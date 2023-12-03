@@ -107,7 +107,7 @@ spec:
         hostPathType: Directory
       recs:
         type: nfs
-        path: /tank/scrypted
-        server: nas.greyrock.io
+        path: /tank/Apps/scrypted
+        server: nas.greyrock.casa
         globalMounts:
           - path: /media
