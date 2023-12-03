@@ -19,7 +19,7 @@ spec:
         name: repo1
         s3:
           bucket: "crunchy-postgres"
-          endpoint: "s3.greyrock.io:443"
+          endpoint: "s3.greyrock.casa"
           region: "us-east-1"
   patroni:
     dynamicConfiguration:
@@ -63,5 +63,5 @@ spec:
             differential: "0 1 * * 1-6"
           s3:
             bucket: "crunchy-postgres"
-            endpoint: "s3.greyrock.io:443"
+            endpoint: "s3.greyrock.casa"
             region: "us-east-1"

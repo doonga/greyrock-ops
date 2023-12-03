@@ -11,7 +11,7 @@ window.ExtLocations = [
     secretAccessKey: "{{ .minio_tagspaces_secret_key }}",
     bucketName: "tagspaces",
     region: "us-east-1",
-    endpointURL: "https://s3.greyrock.io",
+    endpointURL: "https://s3.greyrock.casa",
     isNotEditable: true, // disable the opening of the location properties and export
   },
 ]

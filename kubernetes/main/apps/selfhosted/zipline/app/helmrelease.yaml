@@ -58,7 +58,7 @@ spec:
                     name: zipline-secret
                     key: DATASOURCE_S3_SECRET_ACCESS_KEY
               DATASOURCE_S3_BUCKET: zipline
-              DATASOURCE_S3_ENDPOINT: s3.greyrock.io
+              DATASOURCE_S3_ENDPOINT: s3.greyrock.casa
               DATASOURCE_S3_PORT: 443
               DATASOURCE_S3_FORCE_S3_PATH: "true"
               DATASOURCE_S3_USE_SSL: "true"
