@@ -162,7 +162,7 @@ spec:
             honor_timestamps: true
             static_configs:
               - targets:
-                  - "nas.greyrock.io:9633"
+                  - "nas.greyrock.casa:9633"
 
         enableAdminAPI: true
         # Breaks any metric that has an existing "cluster" label on a metric

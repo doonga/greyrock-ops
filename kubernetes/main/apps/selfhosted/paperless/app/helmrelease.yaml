@@ -83,13 +83,13 @@ spec:
     persistence:
       nas-consume:
         type: nfs
-        server: "nas.greyrock.io"
-        path: /tank/documents/paperless/incoming
+        server: "nas.greyrock.casa"
+        path: /tank/Docs/paperless/incoming
         globalMounts:
           - path: /data/nas/consume
       nas-export:
         type: nfs
-        server: "nas.greyrock.io"
-        path: /tank/documents/paperless/export
+        server: "nas.greyrock.casa"
+        path: /tank/Docs/paperless/export
         globalMounts:
           - path: /data/nas/export

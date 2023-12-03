@@ -146,7 +146,7 @@ spec:
 
         - module: icmp
           name: nas-icmp
-          url: nas.greyrock.io
+          url: nas.greyrock.casa
 
         - module: icmp
           name: ping-cloudflare
