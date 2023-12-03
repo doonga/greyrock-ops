@@ -19,8 +19,8 @@ spec:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
   nfs:
-    server: nas.greyrock.io
-    path: /tank/media
+    server: nas.greyrock.casa
+    path: /tank/Media
   mountOptions:
     - nfsvers=4.1
     - nconnect=8
