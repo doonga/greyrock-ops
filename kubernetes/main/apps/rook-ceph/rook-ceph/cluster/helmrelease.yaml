@@ -35,36 +35,46 @@ spec:
       resources:
         mgr:
           requests:
-            cpu: "250m"
-            memory: "549M"
+            cpu: "125m"
+            memory: "512Mi"
+          limits:
+            memory: "2Gi"
         mon:
           requests:
             cpu: "49m"
-            memory: "477M"
+            memory: "512Mi"
+          limits:
+            memory: "1Gi"
         osd:
           requests:
             cpu: "442m"
-            memory: "2678M"
-        prepareosd:
-          requests:
-            cpu: "250m"
-            memory: "50Mi"
+            memory: "2Gi"
+          limits:
+            memory: "6Gi"
         mgr-sidecar:
           requests:
             cpu: "49m"
-            memory: "94M"
+            memory: "128Mi"
+          limits:
+            memory: "256Mi"
         crashcollector:
           requests:
             cpu: "15m"
-            memory: "64M"
+            memory: "64Mi"
+          limits:
+            memory: "64Mi"
         logcollector:
           requests:
             cpu: "100m"
-            memory: "100M"
+            memory: "100Mi"
+          limits:
+            memory: "1Gi"
         cleanup:
           requests:
             cpu: "250m"
-            memory: "100M"
+            memory: "100Mi"
+          limits:
+            memory: "1Gi"
 
       crashCollector:
         disable: false
@@ -101,9 +111,6 @@ spec:
           - hosts:
               - *host
 
-    cephBlockPoolsVolumeSnapshotClass:
-      enabled: false
-
     cephBlockPools:
       - name: ceph-blockpool
         spec:
@@ -126,6 +133,12 @@ spec:
             csi.storage.k8s.io/node-stage-secret-name: rook-csi-rbd-node
             csi.storage.k8s.io/node-stage-secret-namespace: rook-ceph
             csi.storage.k8s.io/fstype: ext4
+
+    cephBlockPoolsVolumeSnapshotClass:
+      enabled: true
+      name: csi-ceph-blockpool
+      isDefault: false
+      deletionPolicy: Delete
 
     cephFileSystems:
       - name: ceph-filesystem
@@ -161,6 +174,12 @@ spec:
             csi.storage.k8s.io/node-stage-secret-name: rook-csi-cephfs-node
             csi.storage.k8s.io/node-stage-secret-namespace: rook-ceph
             csi.storage.k8s.io/fstype: ext4
+
+    cephFileSystemVolumeSnapshotClass:
+      enabled: true
+      name: csi-ceph-filesystem
+      isDefault: false
+      deletionPolicy: Delete
 
     cephObjectStores:
       - name: ceph-objectstore
