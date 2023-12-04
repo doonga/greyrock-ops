@@ -3,7 +3,7 @@ clusterName: ${clusterName}
 
 endpoint: "https://${clusterName}.greyrock.io:6443"
 
-talosVersion: v1.5.4
+talosVersion: v1.5.5
 kubernetesVersion: 1.28.3
 
 # Image URL rendered on https://factory.talos.dev
@@ -179,6 +179,36 @@ controlPlane:
               aliases:
                 - ${clusterName}.greyrock.io
 
+    # Configure pull through cache
+    - |-
+      machine:
+        registries:
+          mirrors:
+            docker.io:
+              endpoints:
+                - https://zot.greyrock.casa/v2/docker.io
+              overridePath: true
+            ghcr.io:
+              endpoints:
+                - https://zot.greyrock.casa/v2/ghcr.io
+              overridePath: true
+            quay.io:
+              endpoints:
+                - https://zot.greyrock.casa/v2/quay.io
+              overridePath: true
+            gcr.io:
+              endpoints:
+                - https://zot.greyrock.casa/v2/gcr.io
+              overridePath: true
+            registry.k8s.io:
+              endpoints:
+                - https://zot.greyrock.casa/v2/registry.k8s.io
+              overridePath: true
+            public.ecr.aws:
+              endpoints:
+                - https://zot.greyrock.casa/v2/public.ecr.aws
+              overridePath: true
+
     # Cluster configuration
     - |-
       cluster:
@@ -230,27 +260,6 @@ controlPlane:
           fs.inotify.max_user_watches: "1048576"
           fs.inotify.max_user_instances: "8192"
 
-    # Container mirrors
-    - |-
-      machine:
-        registries:
-          mirrors:
-            docker.io:
-              endpoints:
-                - http://10.5.0.10:5000
-            registry.k8s.io:
-              endpoints:
-                - http://10.5.0.11:5000
-            gcr.io:
-              endpoints:
-                - http://10.5.0.12:5000
-            ghcr.io:
-              endpoints:
-                - http://10.5.0.13:5000
-            quay.io:
-              endpoints:
-                - http://10.5.0.14:5000
-
 worker:
   patches:
     # Kubelet configuration
@@ -292,23 +301,32 @@ worker:
           rules:
             - SUBSYSTEM=="apex", MODE="0660", GROUP="568"
 
-    # Container mirrors
+    # Configure pull through cache
     - |-
       machine:
         registries:
           mirrors:
             docker.io:
               endpoints:
-                - http://10.5.0.10:5000
-            registry.k8s.io:
-              endpoints:
-                - http://10.5.0.11:5000
-            gcr.io:
-              endpoints:
-                - http://10.5.0.12:5000
+                - https://zot.greyrock.casa/v2/docker.io
+              overridePath: true
             ghcr.io:
               endpoints:
-                - http://10.5.0.13:5000
+                - https://zot.greyrock.casa/v2/ghcr.io
+              overridePath: true
             quay.io:
               endpoints:
-                - http://10.5.0.14:5000
+                - https://zot.greyrock.casa/v2/quay.io
+              overridePath: true
+            gcr.io:
+              endpoints:
+                - https://zot.greyrock.casa/v2/gcr.io
+              overridePath: true
+            registry.k8s.io:
+              endpoints:
+                - https://zot.greyrock.casa/v2/registry.k8s.io
+              overridePath: true
+            public.ecr.aws:
+              endpoints:
+                - https://zot.greyrock.casa/v2/public.ecr.aws
+              overridePath: true
