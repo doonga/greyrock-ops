@@ -44,6 +44,9 @@ spec:
           nodeSelector:
             google.feature.node.kubernetes.io/coral: "true"
             intel.feature.node.kubernetes.io/gpu: "true"
+          securityContext:
+            supplementalGroups:
+              - 65542
 
         containers:
           main:
@@ -106,8 +109,7 @@ spec:
         hostPath: /sys/bus/usb
         hostPathType: Directory
       recs:
-        type: nfs
-        path: /tank/Apps/scrypted
-        server: nas.greyrock.casa
+        type: persistentVolumeClaim
+        existingClaim: scrypted-nfs
         globalMounts:
           - path: /media
