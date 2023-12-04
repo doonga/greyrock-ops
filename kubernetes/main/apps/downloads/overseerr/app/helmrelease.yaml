@@ -4,6 +4,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: overseerr
+  namespace: downloads
 spec:
   interval: 30m
   chart:
@@ -62,7 +63,7 @@ spec:
           hajimari.io/instance: "todd,andy"
           hajimari.io/icon: mdi:eye-circle
         hosts:
-          - host: ${HOSTNAME}
+          - host: &host "overseerr.greyrock.casa"
             paths:
               - path: /
                 service:
@@ -70,4 +71,4 @@ spec:
                   port: http
         tls:
           - hosts:
-              - ${HOSTNAME}
+              - *host
