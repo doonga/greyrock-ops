@@ -10,7 +10,6 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *appname
-      app.kubernetes.io/instance: *appname
   interval: 10m
   path: "./kubernetes/main/apps/downloads/prowlarr/app"
   prune: true
