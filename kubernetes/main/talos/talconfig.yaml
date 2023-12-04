@@ -2,6 +2,7 @@
 clusterName: ${clusterName}
 
 endpoint: "https://${clusterName}.greyrock.io:6443"
+
 talosVersion: v1.5.4
 kubernetesVersion: 1.28.3
 
