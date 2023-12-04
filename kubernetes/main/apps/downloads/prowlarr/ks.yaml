@@ -16,7 +16,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: greyrock-ops-kubernetes
-  wait: false # no flux ks dependents
+  wait: false
   dependsOn:
     - name: rook-ceph-cluster
     - name: volsync
