@@ -4,7 +4,7 @@ clusterName: ${clusterName}
 endpoint: "https://${clusterName}.greyrock.io:6443"
 
 talosVersion: v1.5.5
-kubernetesVersion: 1.28.3
+kubernetesVersion: 1.28.4
 
 # Image URL rendered on https://factory.talos.dev
 # customization:
@@ -154,6 +154,13 @@ controlPlane:
         network:
           disableSearchDomain: true
 
+    # Force nameserver
+    - |-
+      machine:
+        network:
+          nameservers:
+            - 10.5.0.4
+
     # Configure NTP
     - |-
       machine:
@@ -275,6 +282,19 @@ worker:
             validSubnets:
               - 10.1.1.0/24
 
+    # Disable search domain everywhere
+    - |-
+      machine:
+        network:
+          disableSearchDomain: true
+
+    # Force nameserver
+    - |-
+      machine:
+        network:
+          nameservers:
+            - 10.5.0.4
+
     # Configure containerd
     - |-
       machine:
@@ -286,6 +306,23 @@ worker:
                 [plugins."io.containerd.grpc.v1.cri"]
                   enable_unprivileged_ports = true
                   enable_unprivileged_icmp = true
+
+    # Configure nfs mount options
+    - |-
+      machine:
+        files:
+          - op: overwrite
+            path: /etc/nfsmount.conf
+            permissions: 0o644
+            content: |
+              [ NFSMount_Global_Options ]
+              nfsvers=4.2
+              hard=True
+              noatime=True
+              nodiratime=True
+              rsize=131072
+              wsize=131072
+              nconnect=8
 
     # Custom sysctls
     - |-
