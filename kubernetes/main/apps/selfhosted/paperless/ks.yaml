@@ -3,9 +3,13 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: paperless-redis
+  name: &appname paperless-redis
   namespace: flux-system
 spec:
+  targetNamespace: selfhosted
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *appname
   interval: 10m
   path: "./kubernetes/main/apps/selfhosted/paperless/redis"
   prune: true
@@ -18,17 +22,30 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: paperless
+  name: &appname paperless
   namespace: flux-system
 spec:
+  targetNamespace: selfhosted
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *appname
   interval: 10m
   path: "./kubernetes/main/apps/selfhosted/paperless/app"
   prune: true
   sourceRef:
     kind: GitRepository
     name: greyrock-ops-kubernetes
-  wait: false # no flux ks dependents
+  wait: false
   dependsOn:
     - name: paperless-redis
-    - name: external-secrets-stores
     - name: rook-ceph-cluster
+    - name: volsync
+    - name: external-secrets-stores
+  postBuild:
+    substitute:
+      APP: *appname
+      HOSTNAME: paperless.greyrock.casa
+      APP_UID: "1000"
+      APP_GID: "65543"
+      VOLSYNC_CLAIM: paperless-data
+      VOLSYNC_CAPACITY: 15Gi

@@ -70,8 +70,8 @@ hubble:
       - tcp
       - flow
       - port-distribution
-      - http
       - icmp
+      - http
 
   relay:
     enabled: true

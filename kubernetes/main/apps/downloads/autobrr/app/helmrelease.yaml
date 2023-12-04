@@ -61,7 +61,6 @@ spec:
                   secretKeyRef:
                     name: "${APP}-pguser-${DB_USER}"
                     key: dbname
-
               AUTOBRR__SESSION_SECRET:
                 valueFrom:
                   secretKeyRef:

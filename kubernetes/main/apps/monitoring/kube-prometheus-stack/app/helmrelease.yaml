@@ -4,7 +4,6 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: kube-prometheus-stack
-  namespace: monitoring
 spec:
   interval: 30m
   maxHistory: 2
@@ -12,7 +11,7 @@ spec:
   chart:
     spec:
       chart: kube-prometheus-stack
-      version: 54.2.2
+      version: 55.0.0
       sourceRef:
         kind: HelmRepository
         name: prometheus-community
@@ -22,6 +21,7 @@ spec:
     crds:
       enabled: true
     cleanPrometheusOperatorObjectNames: true
+
     ###
     ### Component values
     ###
@@ -157,22 +157,13 @@ spec:
               - targets:
                   - 10.5.0.8:9119 # router
 
-          - job_name: smartctl-exporter
-            scrape_interval: 10m
-            scrape_timeout: 10s
-            honor_timestamps: true
-            static_configs:
-              - targets:
-                  - "nas.greyrock.casa:9633"
-
         enableAdminAPI: true
         enableFeatures:
           - auto-gomaxprocs
           - memory-snapshot-on-shutdown
           - new-service-discovery-manager
-        # Breaks any metric that has an existing "cluster" label on a metric
-        # externalLabels:
-        #   cluster: main
+        externalLabels:
+          cluster: main
         podMonitorSelectorNilUsesHelmValues: false
         probeSelectorNilUsesHelmValues: false
         replicas: 1

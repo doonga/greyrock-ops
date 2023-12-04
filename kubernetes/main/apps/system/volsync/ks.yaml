@@ -3,9 +3,13 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: volsync
+  name: &appname volsync
   namespace: flux-system
 spec:
+  targetNamespace: system
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *appname
   interval: 10m
   path: "./kubernetes/main/apps/system/volsync/app"
   prune: true
@@ -14,5 +18,5 @@ spec:
     name: greyrock-ops-kubernetes
   dependsOn:
     - name: snapshot-controller
-  wait: false # no flux ks dependents
+  wait: false
   timeout: 2m

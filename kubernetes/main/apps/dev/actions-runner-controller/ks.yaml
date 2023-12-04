@@ -3,9 +3,13 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: actions-runner-controller
+  name: &appname actions-runner-controller
   namespace: flux-system
 spec:
+  targetNamespace: dev
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *appname
   interval: 10m
   path: "./kubernetes/main/apps/dev/actions-runner-controller/operator"
   prune: true
@@ -21,16 +25,20 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: actions-runner-controller-runners
+  name: &appname actions-runner-controller-runners
   namespace: flux-system
 spec:
+  targetNamespace: dev
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *appname
   interval: 10m
   path: "./kubernetes/main/apps/dev/actions-runner-controller/runners"
   prune: true
   sourceRef:
     kind: GitRepository
     name: greyrock-ops-kubernetes
-  wait: false # no flux ks dependents
+  wait: false
   dependsOn:
     - name: actions-runner-controller
     - name: rook-ceph-cluster

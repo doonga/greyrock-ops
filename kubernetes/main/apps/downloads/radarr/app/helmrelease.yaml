@@ -4,7 +4,6 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: radarr
-  namespace: downloads
 spec:
   interval: 30m
   chart:
@@ -22,6 +21,15 @@ spec:
       main:
         annotations:
           reloader.stakater.com/auto: "true"
+
+        pod:
+          securityContext:
+            runAsUser: ${APP_UID}
+            runAsGroup: ${APP_GID}
+            fsGroup: ${APP_GID}
+            fsGroupChangePolicy: "OnRootMismatch"
+            supplementalGroups:
+              - 65542 # gladius:external-services
 
         containers:
           main:
@@ -41,22 +49,12 @@ spec:
                   secretKeyRef:
                     name: radarr-secret
                     key: api_key
-
             resources:
               requests:
                 cpu: 14m
                 memory: 431M
               limits:
                 memory: 431M
-
-        pod:
-          securityContext:
-            runAsUser: 568
-            runAsGroup: 568
-            fsGroup: 568
-            fsGroupChangePolicy: "OnRootMismatch"
-            supplementalGroups:
-              - 65542 # nas:external-services
 
     service:
       main:
@@ -73,7 +71,7 @@ spec:
         enabled: true
         className: "internal-nginx"
         hosts:
-          - host: &host "{{ .Release.Name }}.greyrock.casa"
+          - host: "${HOSTNAME}"
             paths:
               - path: /
                 service:
@@ -81,15 +79,15 @@ spec:
                   port: http
         tls:
           - hosts:
-              - *host
+              - "${HOSTNAME}"
 
     persistence:
       config:
         enabled: true
-        existingClaim: radarr-config
-
+        existingClaim: "${VOLSYNC_CLAIM}"
       media:
-        enabled: true
-        existingClaim: nas-media
+        type: nfs
+        server: nas.greyrock.casa
+        path: /tank/Media
         globalMounts:
           - path: /data/nas-media

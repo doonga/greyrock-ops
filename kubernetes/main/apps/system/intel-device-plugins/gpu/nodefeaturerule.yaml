@@ -14,6 +14,7 @@ spec:
               value:
                 - "0300"
                 - "0380"
+                - "a7a0"
             vendor:
               op: In
               value:

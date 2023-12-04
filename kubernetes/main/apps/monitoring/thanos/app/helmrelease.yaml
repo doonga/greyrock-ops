@@ -4,7 +4,6 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: thanos
-  namespace: monitoring
 spec:
   interval: 30m
   chart:
@@ -57,6 +56,7 @@ spec:
       enabled: true
       extraFlags:
         - "--compact.concurrency=4"
+        - --delete-delay=30m
       retentionResolutionRaw: 30d
       retentionResolution5m: 60d
       retentionResolution1h: 90d
@@ -88,8 +88,7 @@ spec:
       enabled: true
       alertmanagers:
         - http://alertmanager.monitoring.svc.cluster.local:9093
-      # Breaks any metric that has an existing "cluster" label on a metric
-      # clusterName: main # must match with kube-prometheus-stack value `.prometheus.prometheusSpec.externalLabels.cluster`
+      clusterName: main # must match with kube-prometheus-stack value `.prometheus.prometheusSpec.externalLabels.cluster`
       config: |-
         groups:
           - name: "PrometheusWatcher"
@@ -105,9 +104,9 @@ spec:
       resources:
         requests:
           cpu: 23m
-          memory: 256M
+          memory: 128M
         limits:
-          memory: 2048M
+          memory: 256M
 
     metrics:
       enabled: true

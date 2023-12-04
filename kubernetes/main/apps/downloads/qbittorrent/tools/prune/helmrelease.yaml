@@ -3,8 +3,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: qbittools-prune
-  namespace: downloads
+  name: qbtools-prune
 spec:
   interval: 30m
   chart:
@@ -30,14 +29,14 @@ spec:
         pod:
           restartPolicy: OnFailure
           securityContext:
-            runAsUser: 568
-            runAsGroup: 568
+            runAsUser: ${APP_UID}
+            runAsGroup: ${APP_GID}
 
         containers:
           main:
             image:
-              repository: ghcr.io/buroa/qbittools
-              tag: v0.10.1
+              repository: ghcr.io/buroa/qbtools
+              tag: v0.10.2
             args:
               - prune
               - --exclude-category

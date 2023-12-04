@@ -3,9 +3,13 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: mosquitto
+  name: &appname mosquitto
   namespace: flux-system
 spec:
+  targetNamespace: home-automation
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *appname
   interval: 10m
   path: "./kubernetes/main/apps/home-automation/mosquitto/app"
   prune: true
@@ -14,5 +18,14 @@ spec:
     name: greyrock-ops-kubernetes
   wait: true
   dependsOn:
-    - name: external-secrets-stores
     - name: rook-ceph-cluster
+    - name: volsync
+    - name: external-secrets-stores
+  postBuild:
+    substitute:
+      APP: *appname
+      HOSTNAME: mqtt.greyrock.casa
+      APP_UID: "568"
+      APP_GID: "568"
+      VOLSYNC_CLAIM: mosquitto-data
+      VOLSYNC_CAPACITY: 512Mi

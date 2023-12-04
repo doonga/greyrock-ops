@@ -4,7 +4,6 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: paperless
-  namespace: selfhosted
 spec:
   interval: 30m
   chart:
@@ -20,19 +19,8 @@ spec:
   values:
     controllers:
       main:
-        type: statefulset
-
         annotations:
           reloader.stakater.com/auto: "true"
-
-        statefulset:
-          volumeClaimTemplates:
-            - name: data
-              accessMode: ReadWriteOnce
-              size: 15Gi
-              storageClass: ceph-block
-              globalMounts:
-                - path: /data/local
 
         pod:
           securityContext:
@@ -51,7 +39,7 @@ spec:
                   secretKeyRef:
                     name: paperless-secret
                     key: PAPERLESS_SECRET_KEY
-              PAPERLESS_URL: https://paperless.greyrock.casa
+              PAPERLESS_URL: https://${HOSTNAME}
               PAPERLESS_PORT: "8000"
               PAPERLESS_TIME_ZONE: "America/New_York"
               PAPERLESS_WEBSERVER_WORKERS: "2"
@@ -112,7 +100,7 @@ spec:
           hajimari.io/instance: "todd"
           hajimari.io/icon: "file-multiple"
         hosts:
-          - host: &host "paperless.greyrock.casa"
+          - host: "${HOSTNAME}"
             paths:
               - path: /
                 service:
@@ -120,11 +108,19 @@ spec:
                   port: http
         tls:
           - hosts:
-              - *host
+              - "${HOSTNAME}"
 
     persistence:
+      data:
+        enabled: true
+        existingClaim: "${VOLSYNC_CLAIM}"
+        advancedMounts:
+          main:
+            main:
+              - path: /data/local
       nas:
-        type: persistentVolumeClaim
-        existingClaim: paperless-nfs
+        type: nfs
+        server: nas.greyrock.casa
+        path: /tank/Apps/paperless
         globalMounts:
           - path: /data/nas

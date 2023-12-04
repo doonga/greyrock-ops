@@ -4,7 +4,6 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: externaldns-external
-  namespace: network
 spec:
   interval: 30m
   chart:
@@ -41,6 +40,13 @@ spec:
 
     policy: sync
     provider: cloudflare
+
+    resources:
+      requests:
+        cpu: 13m
+        memory: 42M
+      limits:
+        memory: 42M
 
     serviceMonitor:
       enabled: true

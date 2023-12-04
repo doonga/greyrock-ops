@@ -4,7 +4,6 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: blackbox-exporter
-  namespace: monitoring
 spec:
   interval: 30m
   chart:
@@ -101,14 +100,6 @@ spec:
         interval: 1m
         scrapeTimeout: 30s
       targets:
-        # 3D Printer controller
-        # - module: http_2xx
-        #   name: horus-http
-        #   url: "http://horus.bjw-s.tech"
-        # - module: icmp
-        #   name: horus-icmp
-        #   url: horus.bjw-s.tech
-
         # PiKVM
         - module: http_2xx
           name: pikvm-http
@@ -117,36 +108,10 @@ spec:
           name: pikvm-icmp
           url: pikvm.greyrock.io
 
-        # Robot vacuums
-        # - module: icmp
-        #   name: valetudo-living-room-icmp
-        #   url: livingroom-vacuum.bjw-s.tech
-        # - module: http_2xx
-        #   name: valetudo-living-room-http
-        #   url: "http://livingroom-vacuum.bjw-s.tech"
-        # - module: icmp
-        #   name: valetudo-upstairs-icmp
-        #   url: upstairs-vacuum.bjw-s.tech
-        # - module: http_2xx
-        #   name: valetudo-upstairs-http
-        #   url: "http://upstairs-vacuum.bjw-s.tech"
-
-        # Wallmount tablets
-        # - module: http_2xx
-        #   name: hallway-tablet-http
-        #   url: "http://hallway-tablet.bjw-s.tech:2323"
-        # - module: icmp
-        #   name: hallway-tablet-icmp
-        #   url: hallway-tablet.bjw-s.tech
-
         # Other devices
         - module: icmp
           name: zigbee-controller-icmp
           url: slzb-06.greyrock.io
-
-        - module: icmp
-          name: nas-icmp
-          url: nas.greyrock.casa
 
         - module: icmp
           name: ping-cloudflare

@@ -6,13 +6,17 @@ metadata:
   name: &appname weave-gitops
   namespace: flux-system
 spec:
+  targetNamespace: flux-system
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *appname
   interval: 10m
   path: "./kubernetes/main/apps/flux-system/weave-gitops/app"
   prune: true
   sourceRef:
     kind: GitRepository
     name: greyrock-ops-kubernetes
-  wait: false # no flux ks dependents
+  wait: false
   dependsOn:
     - name: external-secrets-stores
   postBuild:

@@ -4,13 +4,12 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: rook-ceph-cluster
-  namespace: rook-ceph
 spec:
   interval: 30m
   chart:
     spec:
       chart: rook-ceph-cluster
-      version: 1.12.9
+      version: v1.12.9
       sourceRef:
         kind: HelmRepository
         name: rook-ceph
@@ -101,11 +100,10 @@ spec:
 
     ingress:
       dashboard:
-        ingressClassName: "internal-nginx"
         annotations:
           nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
         host:
-          name: &host rook.greyrock.casa
+          name: &host rook-main.greyrock.casa
           path: "/"
         tls:
           - hosts:
@@ -156,9 +154,9 @@ spec:
             resources:
               requests:
                 cpu: "35m"
-                memory: "64M"
+                memory: "1Gi"
               limits:
-                memory: "144M"
+                memory: "3Gi"
         storageClass:
           enabled: true
           isDefault: false
@@ -199,7 +197,7 @@ spec:
             resources:
               requests:
                 cpu: 100m
-                memory: 128M
+                memory: 256Mi
               limits:
                 memory: 2Gi
             instances: 1

@@ -4,7 +4,6 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: externaldns-internal
-  namespace: network
 spec:
   interval: 30m
   chart:
@@ -50,6 +49,13 @@ spec:
 
     policy: sync
     provider: rfc2136
+
+    resources:
+      requests:
+        cpu: 16m
+        memory: 90M
+      limits:
+        memory: 90M
 
     serviceMonitor:
       enabled: true

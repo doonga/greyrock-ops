@@ -34,6 +34,7 @@ receivers:
               {{- end }}
             {{- end }}
           {{- end }}
+
 route:
   group_by: ["alertname", "job"]
   group_wait: 30s

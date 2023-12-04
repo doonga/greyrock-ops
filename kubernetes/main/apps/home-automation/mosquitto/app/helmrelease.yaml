@@ -4,7 +4,6 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: mosquitto
-  namespace: home-automation
 spec:
   interval: 30m
   chart:
@@ -20,24 +19,14 @@ spec:
   values:
     controllers:
       main:
-        type: statefulset
         annotations:
           reloader.stakater.com/auto: "true"
 
-        statefulset:
-          volumeClaimTemplates:
-            - name: data
-              accessMode: ReadWriteOnce
-              size: 512Mi
-              storageClass: ceph-block
-              globalMounts:
-                - path: /data
-
         pod:
           securityContext:
-            runAsUser: 568
-            runAsGroup: 568
-            fsGroup: 568
+            runAsUser: ${APP_UID}
+            runAsGroup: ${APP_GID}
+            fsGroup: ${APP_GID}
             fsGroupChangePolicy: OnRootMismatch
 
         initContainers:
@@ -69,7 +58,7 @@ spec:
       main:
         type: LoadBalancer
         annotations:
-          external-dns.alpha.kubernetes.io/hostname: "mqtt.greyrock.casa."
+          external-dns.alpha.kubernetes.io/hostname: "${HOSTNAME}."
           io.cilium/lb-ipam-ips: "10.45.0.10"
         externalTrafficPolicy: Local
         ports:
@@ -80,6 +69,12 @@ spec:
             port: 1883
 
     persistence:
+      data:
+        existingClaim: "${VOLSYNC_CLAIM}"
+        advancedMounts:
+          main:
+            main:
+              - path: /data
       mosquitto-configfile:
         type: configMap
         name: mosquitto-configmap
