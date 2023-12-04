@@ -44,7 +44,7 @@ spec:
             supplementalGroups:
               - 44
               - 109
-              - 65539
+              - 65542 # nas:external-services
 
         containers:
           main:
@@ -93,11 +93,11 @@ spec:
 
     persistence:
       nfs-nas-media:
-        type: nfs
-        server: nas.greyrock.casa
-        path: /tank/Media
-        globalMounts:
-          - path: /data/nas-media
+        existingClaim: nas-media
+        advancedMounts:
+          main:
+            main:
+              - path: /data/nas-media
       transcode:
         type: emptyDir
         globalMounts:

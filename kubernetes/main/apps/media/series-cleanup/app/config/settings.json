@@ -2,7 +2,7 @@
   "deleteAfterHours": 24,
   "folderRegex": "(?P<Show>.*) \\(\\d{4}\\) \\[imdb-(?P<IMDBID>[t\\d]+)\\]",
   "loglevel": "debug",
-  "scanFolders": ["/storage/media/series"],
+  "scanFolders": ["/data/nas-media/series"],
   "dryRun": false,
   "trakt": {
     "user": "doonga"
