@@ -4,7 +4,6 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: zwave-js-ui
-  namespace: home-automation
 spec:
   interval: 15m
   chart:
@@ -29,13 +28,11 @@ spec:
   values:
     controllers:
       main:
-        type: statefulset
-
         containers:
           main:
             image:
               repository: ghcr.io/zwave-js/zwave-js-ui
-              tag: 9.5.1@sha256:04fc6ced11a135407f53f5dc7be91545bd8960acf013b22b4f0db3d2eb9cfe7f
+              tag: 9.5.1
 
             securityContext:
               privileged: true
@@ -55,15 +52,6 @@ spec:
               readiness: *probes
               startup:
                 enabled: false
-
-        statefulset:
-          volumeClaimTemplates:
-            - name: config
-              accessMode: ReadWriteOnce
-              size: 1Gi
-              storageClass: ceph-block
-              globalMounts:
-                - path: /usr/src/app/store
 
         pod:
           nodeSelector:
@@ -91,7 +79,7 @@ spec:
         enabled: true
         className: internal-nginx
         hosts:
-          - host: &host "zwave-js-ui.greyrock.casa"
+          - host: ${HOSTNAME}
             paths:
               - path: /
                 pathType: Prefix
@@ -99,7 +87,7 @@ spec:
                   name: main
         tls:
           - hosts:
-              - *host
+              - ${HOSTNAME}
 
     persistence:
       usb:
@@ -107,6 +95,12 @@ spec:
         type: hostPath
         hostPath: /dev/serial/by-id/usb-0658_0200-if00
         hostPathType: CharDevice
+      data:
+        existingClaim: "${VOLSYNC_CLAIM}"
+        advancedMounts:
+          main:
+            main:
+              - path: /usr/src/app/store
 
     resources:
       requests:
