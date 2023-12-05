@@ -11,7 +11,7 @@ tasks:
         claim: PVC to mount (required)
     interactive: true
     vars:
-      claim: '{{ or .cluster (fail "Argument (claim) is required") }}'
+      claim: '{{ or .claim (fail "Argument (claim) is required") }}'
       ns: '{{.ns | default "default"}}'
       cluster: '{{ or .cluster (fail "Argument (cluster) is required") }}'
     cmds:
