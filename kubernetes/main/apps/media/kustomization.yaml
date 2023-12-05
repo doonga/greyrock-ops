@@ -5,6 +5,6 @@ resources:
   # Pre Flux-Kustomizations
   - ./namespace.yaml
   # Flux-Kustomizations
-  # - ./plex/ks.yaml
+  - ./plex/ks.yaml
   - ./series-cleanup/ks.yaml
   - ./tautulli/ks.yaml
