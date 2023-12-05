@@ -29,4 +29,4 @@ spec:
     substitute:
       APP: *appname
       HOSTNAME: zwave-js-ui.greyrock.casa
-      VOLSYNC_CLAIM: zigbee2mqtt-data
+      VOLSYNC_CLAIM: zwave-js-ui-data
