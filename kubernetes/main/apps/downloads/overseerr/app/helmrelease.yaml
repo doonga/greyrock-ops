@@ -51,7 +51,7 @@ spec:
           hajimari.io/instance: "todd,andy"
           hajimari.io/icon: mdi:eye-circle
         hosts:
-          - host: &host "overseerr.greyrock.casa"
+          - host: ${HOSTNAME}
             paths:
               - path: /
                 service:
@@ -59,7 +59,7 @@ spec:
                   port: http
         tls:
           - hosts:
-              - *host
+              - ${HOSTNAME}
 
     persistence:
       config:
