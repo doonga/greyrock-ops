@@ -2,9 +2,13 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: hajimari-todd
+  name: &appname hajimari-todd
   namespace: flux-system
 spec:
+  targetNamespace: monitoring
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *appname
   interval: 10m
   path: "./kubernetes/main/apps/selfhosted/hajimari-todd/app"
   prune: true
@@ -12,3 +16,9 @@ spec:
     kind: GitRepository
     name: greyrock-ops-kubernetes
   wait: false # no flux ks dependents
+  dependsOn:
+    - name: nginx-internal
+  postBuild:
+    substitute:
+      APP: *appname
+      HOSTNAME: home-todd.greyrock.casa
