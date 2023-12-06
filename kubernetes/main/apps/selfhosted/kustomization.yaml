@@ -9,6 +9,7 @@ resources:
   - ./hajimari-andy/ks.yaml
   - ./hajimari-todd/ks.yaml
   - ./libreddit/ks.yaml
+  - ./mealie/ks.yaml
   - ./miniflux/ks.yaml
   - ./node-red/ks.yaml
   - ./paperless/ks.yaml
