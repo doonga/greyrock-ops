@@ -3,8 +3,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: &app teslamate
-  namespace: selfhosted
+  name: teslamate
 spec:
   interval: 15m
   chart:
@@ -30,7 +29,6 @@ spec:
   values:
     controllers:
       main:
-        type: statefulset
         annotations:
           reloader.stakater.com/auto: "true"
 
@@ -44,22 +42,22 @@ spec:
               DATABASE_HOST:
                 valueFrom:
                   secretKeyRef:
-                    name: teslamate-pguser-teslamate
+                    name: ${APP}-pguser-${DB_USER}
                     key: host
               DATABASE_NAME:
                 valueFrom:
                   secretKeyRef:
-                    name: teslamate-pguser-teslamate
+                    name: ${APP}-pguser-${DB_USER}
                     key: dbname
               DATABASE_USER:
                 valueFrom:
                   secretKeyRef:
-                    name: teslamate-pguser-teslamate
+                    name: ${APP}-pguser-${DB_USER}
                     key: user
               DATABASE_PASS:
                 valueFrom:
                   secretKeyRef:
-                    name: teslamate-pguser-teslamate
+                    name: ${APP}-pguser-${DB_USER}
                     key: password
               # DATABASE_SSL: noverify
 
@@ -95,13 +93,14 @@ spec:
         enabled: true
         className: external-nginx
         hosts:
-          - host: &host "teslamate.greyrock.casa"
+          - host: ${HOSTNAME}
             paths:
               - path: /
                 service:
                   name: main
         tls:
           - hosts:
-              - *host
+              - ${HOSTNAME}
+
     postgresql:
       enabled: false

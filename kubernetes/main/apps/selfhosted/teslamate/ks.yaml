@@ -3,19 +3,29 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: teslamate
+  name: &appname teslamate
   namespace: flux-system
 spec:
+  targetNamespace: selfhosted
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *appname
   path: "./kubernetes/main/apps/selfhosted/teslamate/app"
   sourceRef:
     kind: GitRepository
     name: greyrock-ops-kubernetes
-  dependsOn:
-    - name: external-secrets-stores
-    - name: crunchy-postgres-operator
-    - name: external-secrets-cluster-secrets
   prune: true
   wait: false # no flux ks dependents
   interval: 30m
   retryInterval: 2m
   timeout: 1m
+  dependsOn:
+    - name: external-secrets-stores
+    - name: crunchy-postgres-operator
+    - name: external-secrets-cluster-secrets
+  postBuild:
+    substitute:
+      APP: *appname
+      HOSTNAME: teslamate.greyrock.casa
+      DB_NAME: teslamate
+      DB_USER: teslamate
