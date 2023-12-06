@@ -3,9 +3,13 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: ambientweather2mqtt
+  name: &appname ambientweather2mqtt
   namespace: flux-system
 spec:
+  targetNamespace: home-automation
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *appname
   interval: 10m
   path: "./kubernetes/main/apps/home-automation/ambientweather2mqtt/app"
   prune: true
@@ -16,3 +20,6 @@ spec:
   dependsOn:
     - name: external-secrets-stores
     - name: mosquitto
+  postBuild:
+    substitute:
+      APP: *appname
