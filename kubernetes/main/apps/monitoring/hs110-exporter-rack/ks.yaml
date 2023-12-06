@@ -6,6 +6,10 @@ metadata:
   name: hs110-exporter-rack
   namespace: flux-system
 spec:
+  targetNamespace: monitoring
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *appname
   interval: 10m
   path: "./kubernetes/main/apps/monitoring/hs110-exporter-rack/app"
   prune: true
@@ -13,3 +17,6 @@ spec:
     kind: GitRepository
     name: greyrock-ops-kubernetes
   wait: true
+  postBuild:
+    substitute:
+      APP: *appname
