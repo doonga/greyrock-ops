@@ -17,4 +17,5 @@ resources:
   - ./paperless/ks.yaml
   - ./teslamate/ks.yaml
   - ./thelounge/ks.yaml
+  - ./wallabag/ks.yaml
   - ./zipline/ks.yaml

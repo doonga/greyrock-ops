@@ -1,0 +1,95 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrelease-helm-v2beta1.json
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: wallabag
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 2.3.0
+      interval: 30m
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+
+  values:
+    controllers:
+      main:
+        annotations:
+          reloader.stakater.com/auto: "true"
+
+        strategy: RollingUpdate
+
+        pod:
+          enableServiceLinks: false
+
+        containers:
+          main:
+            image:
+              repository: wallabag/wallabag
+              tag: 2.6.7
+            env:
+              SYMFONY__ENV__DATABASE_DRIVER: pdo_pgsql
+              SYMFONY__ENV__DATABASE_HOST:
+                valueFrom:
+                  secretKeyRef:
+                    name: "${APP}-pguser-${DB_USER}"
+                    key: host
+              SYMFONY__ENV__DATABASE_PORT:
+                valueFrom:
+                  secretKeyRef:
+                    name: "${APP}-pguser-${DB_USER}"
+                    key: port
+              SYMFONY__ENV__DATABASE_NAME:
+                valueFrom:
+                  secretKeyRef:
+                    name: "${APP}-pguser-${DB_USER}"
+                    key: dbname
+              SYMFONY__ENV__DATABASE_USER:
+                valueFrom:
+                  secretKeyRef:
+                    name: "${APP}-pguser-${DB_USER}"
+                    key: user
+              SYMFONY__ENV__DATABASE_PASSWORD:
+                valueFrom:
+                  secretKeyRef:
+                    name: "${APP}-pguser-${DB_USER}"
+                    key: password
+              SYMFONY__ENV__DOMAIN_NAME: https://${HOSTNAME}
+              SYMFONY__ENV__SERVER_NAME: Wallabag
+              SYMFONY__ENV__FOSUSER_REGISTRATION: "false"
+              SYMFONY__ENV__FOSUSER_CONFIRMATION: "false"
+              POPULATE_DATABASE: "false"
+            resources:
+              requests:
+                cpu: 12m
+                memory: 64M
+              limits:
+                memory: 256M
+
+    service:
+      main:
+        ports:
+          http:
+            port: 80
+
+    ingress:
+      main:
+        enabled: true
+        className: "external-nginx"
+        annotations:
+          external-dns.alpha.kubernetes.io/target: ingress-ext.greyrock.casa
+        hosts:
+          - host: "${HOSTNAME}"
+            paths:
+              - path: /
+                service:
+                  name: main
+                  port: http
+        tls:
+          - hosts:
+              - "${HOSTNAME}"
