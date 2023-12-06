@@ -67,7 +67,7 @@ spec:
             readOnly: true
       media:
         type: nfs
-        server: nas.greyrock.casa
+        server: nas.greyrock.io
         path: /tank/Media
         globalMounts:
           - path: /data/nas-media

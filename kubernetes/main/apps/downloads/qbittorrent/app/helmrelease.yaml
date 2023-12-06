@@ -142,7 +142,7 @@ spec:
                 readOnly: true
       media:
         type: nfs
-        server: nas.greyrock.casa
+        server: nas.greyrock.io
         path: /tank/Media
         advancedMounts:
           main:

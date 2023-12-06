@@ -90,7 +90,7 @@ spec:
               - path: /config
       nfs-nas-media:
         type: nfs
-        server: nas.greyrock.casa
+        server: nas.greyrock.io
         path: /tank/Media
         advancedMounts:
           main:

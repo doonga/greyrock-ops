@@ -52,5 +52,5 @@ spec:
           volumes:
             - name: nas-backups
               nfs:
-                server: "nas.greyrock.casa"
+                server: "nas.greyrock.io"
                 path: /tank/backup/databases/postgresql

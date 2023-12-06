@@ -83,7 +83,7 @@ spec:
       media:
         enabled: true
         type: nfs
-        server: "nas.greyrock.casa"
+        server: "nas.greyrock.io"
         path: /tank/frigate
         mountPath: /media
       coral:

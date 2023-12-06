@@ -86,7 +86,7 @@ spec:
         existingClaim: "${VOLSYNC_CLAIM}"
       media:
         type: nfs
-        server: nas.greyrock.casa
+        server: nas.greyrock.io
         path: /tank/Media
         globalMounts:
           - path: /data/nas-media

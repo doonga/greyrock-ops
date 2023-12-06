@@ -120,7 +120,7 @@ spec:
               - path: /data/local
       nas:
         type: nfs
-        server: nas.greyrock.casa
+        server: nas.greyrock.io
         path: /tank/Apps/paperless
         globalMounts:
           - path: /data/nas
