@@ -99,8 +99,8 @@ spec:
               - name: "/dev/disk/by-id/nvme-WD_BLACK_SN770_1TB_22472N805186"
 
     ingress:
+      ingressClassName: "internal-nginx"
       dashboard:
-        ingressClass: internal-nginx
         annotations:
           nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
         host:
