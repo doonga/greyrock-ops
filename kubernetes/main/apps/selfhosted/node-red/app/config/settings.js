@@ -16,7 +16,7 @@ module.exports = {
         authorizationURL: "https://auth.greyrock.casa/application/o/authorize/",
         tokenURL: "https://auth.greyrock.casa/application/o/token/",
         userInfoURL: "https://auth.greyrock.casa/application/o/userinfo/",
-        clientID: "SWd6h6kSLC7roc9OvzZ5WFtvtAB3PrUPz0oNWjZR",
+        clientID: "PfMqd0tMBveRFzLEA4ux3HE2ShCG6lxSDrBqsaru",
         clientSecret: process.env.NODE_RED_OAUTH_CLIENT_SECRET,
         callbackURL: "https://nodered.greyrock.casa/auth/strategy/callback",
         scope: ["email", "profile", "openid"],
