@@ -28,3 +28,4 @@ spec:
       APP_UID: "568"
       APP_GID: "568"
       VOLSYNC_CLAIM: radarr-config
+      VOLSYNC_CAPACITY: 5Gi
