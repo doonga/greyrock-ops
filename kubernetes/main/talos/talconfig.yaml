@@ -31,30 +31,6 @@ nodes:
   - hostname: k8s1.greyrock.io
     ipAddress: 10.1.1.4
     controlPlane: true
-    installDisk: /dev/nvme0n1
-    networkInterfaces:
-      - deviceSelector:
-          hardwareAddr: "48:21:0b:3e:d8:14"
-        dhcp: true
-  - hostname: k8s2.greyrock.io
-    ipAddress: 10.1.1.5
-    controlPlane: true
-    installDisk: /dev/nvme0n1
-    networkInterfaces:
-      - deviceSelector:
-          hardwareAddr: "48:21:0b:3e:db:da"
-        dhcp: true
-  - hostname: k8s3.greyrock.io
-    ipAddress: 10.1.1.6
-    controlPlane: true
-    installDisk: /dev/nvme0n1
-    networkInterfaces:
-      - deviceSelector:
-          hardwareAddr: "48:21:0b:3e:d8:02"
-        dhcp: true
-  - hostname: k8s4.greyrock.io
-    ipAddress: 10.1.1.7
-    controlPlane: false
     installDiskSelector:
       busPath: /pci0000:00/0000:00:17.0/ata1/host0/target0:0:0/0:0:0:0/
     machineDisks:
@@ -83,9 +59,9 @@ nodes:
                   - rbind
                   - rshared
                   - rw
-  - hostname: k8s5.greyrock.io
-    ipAddress: 10.1.1.8
-    controlPlane: false
+  - hostname: k8s2.greyrock.io
+    ipAddress: 10.1.1.5
+    controlPlane: true
     installDiskSelector:
       busPath: /pci0000:00/0000:00:17.0/ata1/host0/target0:0:0/0:0:0:0/
     machineDisks:
@@ -114,9 +90,9 @@ nodes:
                   - rbind
                   - rshared
                   - rw
-  - hostname: k8s6.greyrock.io
-    ipAddress: 10.1.1.9
-    controlPlane: false
+  - hostname: k8s3.greyrock.io
+    ipAddress: 10.1.1.6
+    controlPlane: true
     installDiskSelector:
       busPath: /pci0000:00/0000:00:17.0/ata1/host0/target0:0:0/0:0:0:0/
     machineDisks:
@@ -219,7 +195,7 @@ controlPlane:
     # Cluster configuration
     - |-
       cluster:
-        allowSchedulingOnMasters: false
+        allowSchedulingOnMasters: true
         proxy:
           disabled: true
 
@@ -267,103 +243,9 @@ controlPlane:
           fs.inotify.max_user_watches: "1048576"
           fs.inotify.max_user_instances: "8192"
 
-worker:
-  patches:
-    # Kubelet configuration
-    - |-
-      machine:
-        kubelet:
-          extraArgs:
-            feature-gates: CronJobTimeZone=true,GracefulNodeShutdown=true,NewVolumeManagerReconstruction=false
-            rotate-server-certificates: "true"
-          extraConfig:
-            maxPods: 150
-          nodeIP:
-            validSubnets:
-              - 10.1.1.0/24
-
-    # Disable search domain everywhere
-    - |-
-      machine:
-        network:
-          disableSearchDomain: true
-
-    # Force nameserver
-    - |-
-      machine:
-        network:
-          nameservers:
-            - 10.5.0.4
-
-    # Configure containerd
-    - |-
-      machine:
-        files:
-          - op: create
-            path: /etc/cri/conf.d/20-customization.part
-            content: |
-              [plugins]
-                [plugins."io.containerd.grpc.v1.cri"]
-                  enable_unprivileged_ports = true
-                  enable_unprivileged_icmp = true
-
-    # Configure nfs mount options
-    - |-
-      machine:
-        files:
-          - op: overwrite
-            path: /etc/nfsmount.conf
-            permissions: 0o644
-            content: |
-              [ NFSMount_Global_Options ]
-              nfsvers=4.2
-              hard=True
-              noatime=True
-              nodiratime=True
-              rsize=131072
-              wsize=131072
-              nconnect=8
-
-    # Custom sysctls
-    - |-
-      machine:
-        sysctls:
-          fs.inotify.max_user_watches: "1048576"
-          fs.inotify.max_user_instances: "8192"
-
     # Custom udev
     - |-
       machine:
         udev:
           rules:
             - SUBSYSTEM=="apex", MODE="0660", GROUP="568"
-
-    # Configure pull through cache
-    - |-
-      machine:
-        registries:
-          mirrors:
-            docker.io:
-              endpoints:
-                - https://zot.greyrock.casa/v2/docker.io
-              overridePath: true
-            ghcr.io:
-              endpoints:
-                - https://zot.greyrock.casa/v2/ghcr.io
-              overridePath: true
-            quay.io:
-              endpoints:
-                - https://zot.greyrock.casa/v2/quay.io
-              overridePath: true
-            gcr.io:
-              endpoints:
-                - https://zot.greyrock.casa/v2/gcr.io
-              overridePath: true
-            registry.k8s.io:
-              endpoints:
-                - https://zot.greyrock.casa/v2/registry.k8s.io
-              overridePath: true
-            public.ecr.aws:
-              endpoints:
-                - https://zot.greyrock.casa/v2/public.ecr.aws
-              overridePath: true
