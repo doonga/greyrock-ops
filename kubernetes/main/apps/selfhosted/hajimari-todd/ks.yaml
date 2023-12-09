@@ -5,7 +5,7 @@ metadata:
   name: &appname hajimari-todd
   namespace: flux-system
 spec:
-  targetNamespace: monitoring
+  targetNamespace: selfhosted
   commonMetadata:
     labels:
       app.kubernetes.io/name: *appname
