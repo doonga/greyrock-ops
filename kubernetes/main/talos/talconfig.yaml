@@ -15,9 +15,19 @@ kubernetesVersion: 1.28.4
 #             - siderolabs/gasket-driver
 #             - siderolabs/i915-ucode
 #             - siderolabs/intel-ucode
-talosImageURL: factory.talos.dev/installer/d0fc674c397975b1687926d07afd7f869ddd9967f229b5c773f6f782b08bddf1
 
-schematic: {}
+# TODO Remove this once image URL is validated.
+# talosImageURL: factory.talos.dev/installer/d0fc674c397975b1687926d07afd7f869ddd9967f229b5c773f6f782b08bddf1
+
+schematic:
+  customization:
+    extraKernelArgs:
+      - net.ifnames=0
+    systemExtensions:
+      officialExtensions:
+        - siderolabs/gasket-driver
+        - siderolabs/i915-ucode
+        - siderolabs/intel-ucode
 
 cniConfig:
   name: none
