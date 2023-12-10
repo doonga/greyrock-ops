@@ -6,7 +6,7 @@ resources:
   - ./namespace.yaml
   # Flux-Kustomizations
   - ./autobrr/ks.yaml
-  # - ./autoscan/ks.yaml
+  - ./autoscan/ks.yaml
   # - ./cross-seed/ks.yaml
   - ./overseerr/ks.yaml
   - ./prowlarr/ks.yaml
