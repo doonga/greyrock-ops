@@ -56,6 +56,9 @@ spec:
         className: "external-nginx"
         annotations:
           external-dns.alpha.kubernetes.io/target: ingress-ext.greyrock.casa
+          hajimari.io/enable: "true"
+          hajimari.io/instance: "todd"
+          hajimari.io/icon: "mdi:nodejs"
         hosts:
           - host: "${HOSTNAME}"
             paths:
