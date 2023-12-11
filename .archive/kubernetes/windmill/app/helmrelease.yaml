@@ -3,13 +3,12 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: windmill
-  namespace: selfhosted
 spec:
   interval: 30m
   chart:
     spec:
       chart: windmill
-      version: 2.0.23
+      version: 2.0.50
       interval: 30m
       sourceRef:
         kind: HelmRepository
@@ -26,49 +25,63 @@ spec:
     windmill:
       # -- replica for the application app
       appReplicas: 1
-      # TODO: Remove once new k8tz version has been released
-      app:
-        annotations:
-          k8tz.io/inject: "false"
-
-      # -- replicas for the workers, jobs are executed on the workers
-      workerReplicas: 1
-      # TODO: Remove once new k8tz version has been released
-      workers:
-        annotations:
-          k8tz.io/inject: "false"
 
       # -- replicas for the lsp containers used by the app
       lspReplicas: 1
-      # TODO: Remove once new k8tz version has been released
-      lsp:
-        annotations:
-          k8tz.io/inject: "false"
 
       # -- replicas for the multiplayer containers used by the app
       multiplayerReplicas: 1
-      # TODO: Remove once new k8tz version has been released
-      multiplayer:
-        annotations:
-          k8tz.io/inject: "false"
 
-      baseDomain: &host windmill.greyrock.casa
+      baseDomain: "${HOSTNAME}"
       baseProtocol: https
 
       # Set by valuesFrom
       # databaseUrl:
 
-      oauthSecretName: windmill-oauth
+      workerGroups:
+        - name: "default"
+          replicas: 2
+          annotations: {}
+          labels: {}
+          nodeSelector: {}
+          tolerations: []
+          affinity: {}
+          resources:
+            requests:
+              memory: "1028Mi"
+              cpu: "500m"
+            limits:
+              memory: "2048Mi"
+              cpu: "1000m"
+          extraEnv: []
+          volumes: []
+          volumeMounts: []
+        - name: "native"
+          replicas: 2
+          annotations: {}
+          labels: {}
+          nodeSelector: {}
+          tolerations: []
+          affinity: {}
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "256Mi"
+              cpu: "200m"
 
     ingress:
       enabled: true
-      className: "internal-nginx"
+      className: "external-nginx"
+      annotations:
+        external-dns.alpha.kubernetes.io/target: ingress-ext.greyrock.casa
       tls:
         - hosts:
-            - *host
+            - "${HOSTNAME}"
 
   valuesFrom:
     - kind: Secret
-      name: windmill-pguser-windmill
+      name: ${APP}-pguser-${DB_USER}
       valuesKey: uri
       targetPath: windmill.databaseUrl
