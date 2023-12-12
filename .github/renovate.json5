@@ -5,12 +5,10 @@
     "github>doonga/renovate-config:automerge-github-actions",
     "github>doonga/greyrock-ops//.github/renovate/allowedVersions.json5",
     "github>doonga/greyrock-ops//.github/renovate/autoMerge.json5",
+    "github>doonga/greyrock-ops//.github/renovate/customVersioning.json5",
     "github>doonga/greyrock-ops//.github/renovate/disabledDatasources.json5",
     "github>doonga/greyrock-ops//.github/renovate/groups.json5",
   ],
-  platform: "github",
-  username: "greyrock-bot[bot]",
-  gitAuthor: "greyrock-bot <112729691+greyrock-bot[bot]@users.noreply.github.com>",
   ignorePaths: ["^.archive/**"],
   flux: {
     fileMatch: ["^kubernetes/.+\\.ya?ml$"],
