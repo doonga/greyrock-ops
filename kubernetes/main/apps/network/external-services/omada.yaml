@@ -41,7 +41,7 @@ spec:
               service:
                 name: omada
                 port:
-                  number: 443
+                  number: 8043
   tls:
     - hosts:
         - *host
