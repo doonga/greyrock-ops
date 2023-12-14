@@ -12,7 +12,7 @@ spec:
   externalName: omada-controller.greyrock.io.
   ports:
     - name: http
-      port: &port 443
+      port: &port 8043
       protocol: TCP
       targetPort: *port
 ---
