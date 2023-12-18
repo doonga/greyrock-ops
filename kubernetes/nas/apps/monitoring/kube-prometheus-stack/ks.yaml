@@ -15,3 +15,5 @@ spec:
   prune: true
   sourceRef:
     kind: GitRepository
+  dependsOn:
+    - name: external-secrets-stores
