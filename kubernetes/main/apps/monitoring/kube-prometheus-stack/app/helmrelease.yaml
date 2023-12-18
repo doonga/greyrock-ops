@@ -128,7 +128,7 @@ spec:
         ingressClassName: internal-nginx
         pathType: Prefix
         hosts:
-          - &host_prometheus prometheus.greyrock.casa
+          - &host_prometheus prometheus-${CLUSTER_NAME}.greyrock.casa
         tls:
           - hosts:
               - *host_prometheus
@@ -148,21 +148,13 @@ spec:
               - targets:
                   - hs110-exporter-rack.monitoring.svc.cluster.local:8110
 
-          - job_name: bind-exporter
-            # scrape_interval: 1m
-            # scrape_timeout: 10s
-            honor_timestamps: true
-            static_configs:
-              - targets:
-                  - 10.5.0.8:9119 # router
-
         enableAdminAPI: true
         enableFeatures:
           - auto-gomaxprocs
           - memory-snapshot-on-shutdown
           - new-service-discovery-manager
         externalLabels:
-          cluster: main
+          cluster: ${CLUSTER_NAME}
         podMonitorSelectorNilUsesHelmValues: false
         probeSelectorNilUsesHelmValues: false
         replicas: 1
