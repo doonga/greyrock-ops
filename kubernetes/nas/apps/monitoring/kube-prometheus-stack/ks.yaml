@@ -11,10 +11,11 @@ spec:
     labels:
       app.kubernetes.io/name: *appname
   interval: 10m
-  path: "./kubernetes/main/apps/monitoring/kube-prometheus-stack/app"
+  path: "./kubernetes/nas/apps/monitoring/kube-prometheus-stack/app"
   prune: true
   sourceRef:
     kind: GitRepository
     name: greyrock-ops-kubernetes
+  wait: true
   dependsOn:
     - name: external-secrets-stores
