@@ -76,7 +76,7 @@ nodes:
       size: "<= 600GB"
       model: "GN512"
     machineDisks:
-      - device: /dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_BTWL503001EB800RGN
+      - device: /dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_BTWL421602AP800RGN
         partitions:
           - mountpoint: /var/mnt/sata
     networkInterfaces:
