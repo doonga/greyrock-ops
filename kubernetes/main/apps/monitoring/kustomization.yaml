@@ -9,6 +9,7 @@ resources:
   - ./blackbox-exporter/ks.yaml
   - ./grafana/ks.yaml
   - ./hs110-exporter-rack/ks.yaml
+  - ./kromgo/ks.yaml
   - ./kube-prometheus-stack/ks.yaml
   - ./loki/ks.yaml
   - ./node-exporter/ks.yaml
