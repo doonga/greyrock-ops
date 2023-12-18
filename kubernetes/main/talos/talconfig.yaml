@@ -1,132 +1,44 @@
 ---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/budimanjojo/talhelper/master/pkg/config/schemas/talconfig.json
 clusterName: ${clusterName}
+endpoint: "https://${clusterName}.${clusterDNSSuffix}:6443"
 
-endpoint: "https://${clusterName}.greyrock.io:6443"
-
-talosVersion: v1.5.5
+talosVersion: v1.6.0
 kubernetesVersion: 1.28.4
 
 cniConfig:
   name: none
 
-additionalApiServerCertSans:
+additionalApiServerCertSans: &san
   - ${clusterEndpointIP}
-
-additionalMachineCertSans:
-  - ${clusterEndpointIP}
-  - ${clusterName}.greyrock.io
+  - ${clusterName}.${clusterDNSSuffix}
+  - "127.0.0.1" # KubePrism
+additionalMachineCertSans: *san
 
 nodes:
   - hostname: k8s1.greyrock.io
     ipAddress: 10.1.1.4
     controlPlane: true
     installDiskSelector:
-      busPath: /pci0000:00/0000:00:17.0/ata1/host0/target0:0:0/0:0:0:0/
+      size: "<= 600GB"
+      model: "SSD 512GB"
     machineDisks:
       - device: /dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_BTWL406300TG800RGN
         partitions:
           - mountpoint: /var/mnt/sata
     networkInterfaces:
       - deviceSelector:
-          hardwareAddr: "00:30:93:12:38:d3"
+          driver: atlantic
         dhcp: true
         vlans:
-          - vlanId: 40
+          - &vlan40
+            vlanId: 40
             mtu: 1500
             dhcp: true
             dhcpOptions:
               routeMetric: 4096
-    schematic:
-      customization:
-        extraKernelArgs:
-          - net.ifnames=0
-        systemExtensions:
-          officialExtensions:
-            - siderolabs/gasket-driver
-            - siderolabs/i915-ucode
-            - siderolabs/intel-ucode
     patches:
-      - |-
-        machine:
-          kubelet:
-            extraMounts:
-              - destination: /var/mnt/sata
-                type: bind
-                source: /var/mnt/sata
-                options:
-                  - rbind
-                  - rshared
-                  - rw
-  - hostname: k8s2.greyrock.io
-    ipAddress: 10.1.1.5
-    controlPlane: true
-    installDiskSelector:
-      busPath: /pci0000:00/0000:00:17.0/ata1/host0/target0:0:0/0:0:0:0/
-    machineDisks:
-      - device: /dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_BTWL503001EB800RGN
-        partitions:
-          - mountpoint: /var/mnt/sata
-    networkInterfaces:
-      - deviceSelector:
-          hardwareAddr: "00:30:93:12:38:d6"
-        dhcp: true
-        vlans:
-          - vlanId: 40
-            mtu: 1500
-            dhcp: true
-            dhcpOptions:
-              routeMetric: 4096
-    schematic:
-      customization:
-        extraKernelArgs:
-          - net.ifnames=0
-        systemExtensions:
-          officialExtensions:
-            - siderolabs/gasket-driver
-            - siderolabs/i915-ucode
-            - siderolabs/intel-ucode
-    patches:
-      - |-
-        machine:
-          kubelet:
-            extraMounts:
-              - destination: /var/mnt/sata
-                type: bind
-                source: /var/mnt/sata
-                options:
-                  - rbind
-                  - rshared
-                  - rw
-  - hostname: k8s3.greyrock.io
-    ipAddress: 10.1.1.6
-    controlPlane: true
-    installDiskSelector:
-      busPath: /pci0000:00/0000:00:17.0/ata1/host0/target0:0:0/0:0:0:0/
-    machineDisks:
-      - device: /dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_BTWL421602AP800RGN
-        partitions:
-          - mountpoint: /var/mnt/sata
-    networkInterfaces:
-      - deviceSelector:
-          hardwareAddr: "00:30:93:12:38:8c"
-        dhcp: true
-        vlans:
-          - vlanId: 40
-            mtu: 1500
-            dhcp: true
-            dhcpOptions:
-              routeMetric: 4096
-    schematic:
-      customization:
-        extraKernelArgs:
-          - net.ifnames=0
-        systemExtensions:
-          officialExtensions:
-            - siderolabs/gasket-driver
-            - siderolabs/i915-ucode
-            - siderolabs/intel-ucode
-    patches:
-      - |-
+      - &kubelet_extra_mounts |-
         machine:
           kubelet:
             extraMounts:
@@ -138,7 +50,55 @@ nodes:
                   - rshared
                   - rw
 
+  - hostname: k8s2.greyrock.io
+    ipAddress: 10.1.1.5
+    controlPlane: true
+    installDiskSelector:
+      size: "<= 600GB"
+      model: "GN512"
+    machineDisks:
+      - device: /dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_BTWL503001EB800RGN
+        partitions:
+          - mountpoint: /var/mnt/sata
+    networkInterfaces:
+      - deviceSelector:
+          driver: atlantic
+        dhcp: true
+        vlans:
+          - *vlan40
+    patches:
+      - *kubelet_extra_mounts
+
+  - hostname: k8s3.greyrock.io
+    ipAddress: 10.1.1.6
+    controlPlane: true
+    installDiskSelector:
+      size: "<= 600GB"
+      model: "GN512"
+    machineDisks:
+      - device: /dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_BTWL503001EB800RGN
+        partitions:
+          - mountpoint: /var/mnt/sata
+    networkInterfaces:
+      - deviceSelector:
+          driver: atlantic
+        dhcp: true
+        vlans:
+          - *vlan40
+    patches:
+      - *kubelet_extra_mounts
+
 controlPlane:
+  schematic:
+    customization:
+      extraKernelArgs:
+        - net.ifnames=0
+      systemExtensions:
+        officialExtensions:
+          - siderolabs/intel-ucode
+          - siderolabs/i915-ucode
+          - siderolabs/gasket-driver
+
   patches:
     # Disable search domain everywhere
     - |-
@@ -176,7 +136,7 @@ controlPlane:
           extraHostEntries:
             - ip: ${clusterEndpointIP}
               aliases:
-                - ${clusterName}.greyrock.io
+                - ${clusterName}.${clusterDNSSuffix}
 
     # Configure pull through cache
     - |-
@@ -234,6 +194,23 @@ controlPlane:
                   enable_unprivileged_ports = true
                   enable_unprivileged_icmp = true
 
+    # Configure nfs mount options
+    - |-
+      machine:
+        files:
+          - op: overwrite
+            path: /etc/nfsmount.conf
+            permissions: 0o644
+            content: |
+              [ NFSMount_Global_Options ]
+              nfsvers=4.2
+              hard=True
+              noatime=True
+              nodiratime=True
+              rsize=131072
+              wsize=131072
+              nconnect=8
+
     # Disable default API server admission plugins.
     - |-
       - op: remove
@@ -250,7 +227,7 @@ controlPlane:
             maxPods: 150
           nodeIP:
             validSubnets:
-              - 10.1.1.0/24
+                - 10.1.1.0/24
 
     # Custom sysctls
     - |-
@@ -258,10 +235,3 @@ controlPlane:
         sysctls:
           fs.inotify.max_user_watches: "1048576"
           fs.inotify.max_user_instances: "8192"
-
-    # Custom udev
-    - |-
-      machine:
-        udev:
-          rules:
-            - SUBSYSTEM=="apex", MODE="0660", GROUP="568"
