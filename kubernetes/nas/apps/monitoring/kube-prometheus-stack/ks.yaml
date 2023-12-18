@@ -15,5 +15,6 @@ spec:
   prune: true
   sourceRef:
     kind: GitRepository
+    name: greyrock-ops-kubernetes
   dependsOn:
     - name: external-secrets-stores
