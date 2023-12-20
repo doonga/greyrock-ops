@@ -21,8 +21,8 @@ spec:
 
     githubConfigUrl: https://github.com/doonga/greyrock-ops
 
-    minRunners: 2
-    maxRunners: 4
+    minRunners: 0
+    maxRunners: 2
 
     containerMode:
       type: "dind"
