@@ -55,10 +55,6 @@ spec:
           searchUrl: https://www.google.com/search?q={query}
           url: https://www.google.com
       globalBookmarks:
-        - group: Lifestyle
-          bookmarks:
-            - name: Youtube
-              url: "https://youtube.com"
         - group: FFXIV
           bookmarks:
             - name: Sub Calculator

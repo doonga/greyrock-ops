@@ -63,10 +63,6 @@ spec:
               icon: video-switch
 
       globalBookmarks:
-        - group: Lifestyle
-          bookmarks:
-            - name: Youtube
-              url: "https://youtube.com"
         - group: FFXIV
           bookmarks:
             - name: Sub Calculator
