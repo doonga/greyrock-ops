@@ -1,91 +1,45 @@
 ---
-name: "Docs: Publish to GitHub Pages"
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+name: "Docs: Release to GitHub pages"
 
-on: # yamllint disable-line rule:truthy
+on:
   workflow_dispatch:
   push:
     branches:
-      - "docs-*"
       - main
     paths:
-      - ".github/workflows/docs-publish.yaml"
-      - "mkdocs.yaml"
-      - "docs/**"
-
-env:
-  BOT_USERNAME: "greyrock[bot]"
+      - .github/workflows/docs-publish.yaml
+      - docs/**
 
 jobs:
-  markdownlint:
-    name: Markdownlint
+  release-docs:
+    name: Release documentation
     runs-on: ubuntu-latest
-
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+      - name: Generate Token
+        uses: actions/create-github-app-token@v1
+        id: app-token
         with:
-          fetch-depth: 1
+          app-id: ${{ secrets.GREYROCK_APP_ID }}
+          private-key: ${{ secrets.GREYROCK_APP_PRIVATE_KEY }}
 
-      - name: markdownlint-cli
-        uses: nosborn/github-action-markdown-cli@v3.3.0
+      - name: Checkout main branch
+        uses: actions/checkout@v4
         with:
-          files: "README.md docs/**"
-          config_file: ".github/markdownlint.config.yaml"
+          token: ${{ steps.app-token.outputs.token }}
 
-  markdown-link-check:
-    name: Markdown link check
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+      - name: Build docs
+        uses: docker://ghcr.io/bjw-s/mdbook:0.4.36@sha256:d86edc42a0d22e38f3d59d6cf517a9d93a7dbe8ec3ec80a114dfd7a99d9354cd
         with:
-          fetch-depth: 1
+          args: bash -c "cd docs && mdbook build"
 
-      - uses: gaurav-nelson/github-action-markdown-link-check@v1
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3.9.3
+        if: ${{ github.ref == 'refs/heads/main' }}
         with:
-          config-file: ".github/markdown-link-check_config.json"
-          file-path: "./README.md"
-
-  deploy:
-    name: Deploy to GitHub Pages
-    if: github.event.pull_request.head.repo.fork == false
-    runs-on: ubuntu-latest
-    needs:
-      - markdownlint
-      - markdown-link-check
-
-    steps:
-      - name: Get greyrock-bot token
-        id: get-app-token
-        uses: getsentry/action-github-app-token@v2
-        with:
-          app_id: ${{ secrets.GREYROCK_APP_ID }}
-          private_key: ${{ secrets.GREYROCK_APP_PRIVATE_KEY }}
-
-      - name: Checkout
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
-        with:
-          token: ${{ steps.get-app-token.outputs.token }}
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: 3.x
-
-      - name: Configure Git
-        run: |
-          git config user.name "${{ env.BOT_USERNAME }}"
-          git config user.email "${{ env.BOT_USERNAME }}@users.noreply.github.com"
-
-      - name: Set up mkdocs
-        run: |
-          pip install \
-            mkdocs>=1.1 \
-            mkdocs-macros-plugin >=0.5 \
-            mkdocs-material >=1.0 \
-            mkdocs-minify-plugin>=0.3 \
-            mkdocs-redirects>=1.0
-
-      - name: Deploy documentation
-        run: |
-          mkdocs gh-deploy --config-file ./mkdocs.yaml --force
+          github_token: ${{ steps.app-token.outputs.token }}
+          publish_dir: ./docs/book/html
+          user_name: "greyrock-bot[bot]"
+          user_email: "greyrock-bot <112729691+greyrock-bot[bot]@users.noreply.github.com>"
