@@ -7,11 +7,8 @@
       automerge: true,
       automergeType: "branch",
       matchUpdateTypes: ["digest"],
-      matchPackagePattern: [
-        "ghcr.io/onedr0p",
-        "ghcr.io/bjw-s",
-        "ghcr.io/doonga",
-      ],
+      matchPackagePattern: ["ghcr.io/onedr0p", "ghcr.io/bjw-s", "ghcr.io/doonga"],
+      ignoreTests: true,
     },
   ],
 }

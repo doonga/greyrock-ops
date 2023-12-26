@@ -51,10 +51,10 @@ jobs:
       - changed-files
     if: ${{ needs.changed-files.outputs.matrix != '[]' }}
     permissions:
-      pull-requests: write
+      pull-requests: read
     strategy:
       matrix:
-        files: ${{ fromJSON(needs.changed-files.outputs.matrix) }}
+        paths: ${{ fromJSON(needs.changed-files.outputs.matrix) }}
       max-parallel: 4
       fail-fast: false
     outputs:
