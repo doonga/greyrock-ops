@@ -13,5 +13,6 @@ resources:
   - ./kube-prometheus-stack/ks.yaml
   - ./loki/ks.yaml
   - ./node-exporter/ks.yaml
+  - ./omada-exporter/ks.yaml
   - ./thanos/ks.yaml
   - ./vector/ks.yaml
