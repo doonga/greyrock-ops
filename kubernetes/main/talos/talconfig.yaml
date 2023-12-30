@@ -91,6 +91,8 @@ nodes:
 controlPlane:
   schematic:
     customization:
+      extraKernelArgs:
+        - net.ifnames=0
       systemExtensions:
         officialExtensions:
           - siderolabs/intel-ucode
