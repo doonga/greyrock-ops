@@ -20,8 +20,8 @@ nodes:
     ipAddress: 10.1.1.4
     controlPlane: true
     installDiskSelector:
-      size: "<= 600GB"
-      model: "SSD 512GB"
+      size: "<= 256GB"
+      model: "TS240GMTS420S"
     machineDisks:
       - device: /dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_BTWL406300TG800RGN
         partitions:
@@ -54,8 +54,8 @@ nodes:
     ipAddress: 10.1.1.5
     controlPlane: true
     installDiskSelector:
-      size: "<= 600GB"
-      model: "GN512"
+      size: "<= 256GB"
+      model: "TS240GMTS420S"
     machineDisks:
       - device: /dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_BTWL503001EB800RGN
         partitions:
@@ -91,8 +91,6 @@ nodes:
 controlPlane:
   schematic:
     customization:
-      extraKernelArgs:
-        - net.ifnames=0
       systemExtensions:
         officialExtensions:
           - siderolabs/intel-ucode
