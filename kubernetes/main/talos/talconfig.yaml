@@ -20,6 +20,39 @@ nodes:
     ipAddress: 10.1.1.4
     controlPlane: true
     installDiskSelector:
+      size: "<= 512GB"
+      model: "WDC WDS500G2B0C-00PXH0"
+    networkInterfaces:
+      - deviceSelector:
+          driver: igc
+        dhcp: true
+
+  - hostname: k8s2.greyrock.io
+    ipAddress: 10.1.1.5
+    controlPlane: true
+    installDiskSelector:
+      size: "<= 512GB"
+      model: "WDC WDS500G2B0C-00PXH0"
+    networkInterfaces:
+      - deviceSelector:
+          driver: igc
+        dhcp: true
+
+  - hostname: k8s3.greyrock.io
+    ipAddress: 10.1.1.6
+    controlPlane: true
+    installDiskSelector:
+      size: "<= 512GB"
+      model: "WD Blue SN570 500GB"
+    networkInterfaces:
+      - deviceSelector:
+          driver: igc
+        dhcp: true
+
+  - hostname: k8s4.greyrock.io
+    ipAddress: 10.1.1.7
+    controlPlane: true
+    installDiskSelector:
       size: "<= 256GB"
       model: "TS240GMTS420S"
     machineDisks:
@@ -50,8 +83,8 @@ nodes:
                   - rshared
                   - rw
 
-  - hostname: k8s2.greyrock.io
-    ipAddress: 10.1.1.5
+  - hostname: k8s5.greyrock.io
+    ipAddress: 10.1.1.8
     controlPlane: true
     installDiskSelector:
       size: "<= 256GB"
@@ -69,8 +102,8 @@ nodes:
     patches:
       - *kubelet_extra_mounts
 
-  - hostname: k8s3.greyrock.io
-    ipAddress: 10.1.1.6
+  - hostname: k8s6.greyrock.io
+    ipAddress: 10.1.1.9
     controlPlane: true
     installDiskSelector:
       size: "<= 600GB"
@@ -89,6 +122,135 @@ nodes:
       - *kubelet_extra_mounts
 
 controlPlane:
+  schematic:
+    customization:
+      extraKernelArgs:
+        - net.ifnames=0
+      systemExtensions:
+        officialExtensions:
+          - siderolabs/intel-ucode
+
+  patches:
+    # Disable search domain everywhere
+    - |-
+      machine:
+        network:
+          disableSearchDomain: true
+
+    # Force nameserver
+    - |-
+      machine:
+        network:
+          nameservers:
+            - 10.5.0.4
+
+    # Configure NTP
+    - |-
+      machine:
+        time:
+          disabled: false
+          servers:
+            - 10.1.1.1
+
+    # Enable KubePrism
+    - |-
+      machine:
+        features:
+          kubePrism:
+            enabled: true
+            port: 7445
+
+    # Configure cluster loopback
+    - |-
+      machine:
+        network:
+          extraHostEntries:
+            - ip: ${clusterEndpointIP}
+              aliases:
+                - ${clusterName}.${clusterDNSSuffix}
+
+    # Configure pull through cache
+    - |-
+      machine:
+        registries:
+          mirrors:
+            docker.io:
+              endpoints:
+                - https://zot.greyrock.casa/v2/docker.io
+              overridePath: true
+            ghcr.io:
+              endpoints:
+                - https://zot.greyrock.casa/v2/ghcr.io
+              overridePath: true
+            quay.io:
+              endpoints:
+                - https://zot.greyrock.casa/v2/quay.io
+              overridePath: true
+            gcr.io:
+              endpoints:
+                - https://zot.greyrock.casa/v2/gcr.io
+              overridePath: true
+            registry.k8s.io:
+              endpoints:
+                - https://zot.greyrock.casa/v2/registry.k8s.io
+              overridePath: true
+            public.ecr.aws:
+              endpoints:
+                - https://zot.greyrock.casa/v2/public.ecr.aws
+              overridePath: true
+
+    # Cluster configuration
+    - |-
+      cluster:
+        allowSchedulingOnMasters: false
+        proxy:
+          disabled: true
+
+    # ETCD configuration
+    - |-
+      cluster:
+        etcd:
+          advertisedSubnets:
+            - 10.1.1.0/24
+
+    # Configure containerd
+    - |-
+      machine:
+        files:
+          - op: create
+            path: /etc/cri/conf.d/20-customization.part
+            content: |
+              [plugins]
+                [plugins."io.containerd.grpc.v1.cri"]
+                  enable_unprivileged_ports = true
+                  enable_unprivileged_icmp = true
+
+    # Disable default API server admission plugins.
+    - |-
+      - op: remove
+        path: /cluster/apiServer/admissionControl
+
+    # Kubelet configuration
+    - |-
+      machine:
+        kubelet:
+          extraArgs:
+            feature-gates: GracefulNodeShutdown=true,NewVolumeManagerReconstruction=false
+            rotate-server-certificates: "true"
+          extraConfig:
+            maxPods: 150
+          nodeIP:
+            validSubnets:
+                - 10.1.1.0/24
+
+    # Custom sysctls
+    - |-
+      machine:
+        sysctls:
+          fs.inotify.max_user_watches: "1048576"
+          fs.inotify.max_user_instances: "8192"
+
+worker:
   schematic:
     customization:
       extraKernelArgs:
@@ -171,16 +333,9 @@ controlPlane:
     # Cluster configuration
     - |-
       cluster:
-        allowSchedulingOnMasters: true
+        allowSchedulingOnMasters: false
         proxy:
           disabled: true
-
-    # ETCD configuration
-    - |-
-      cluster:
-        etcd:
-          advertisedSubnets:
-            - 10.1.1.0/24
 
     # Configure containerd
     - |-
@@ -210,11 +365,6 @@ controlPlane:
               rsize=131072
               wsize=131072
               nconnect=8
-
-    # Disable default API server admission plugins.
-    - |-
-      - op: remove
-        path: /cluster/apiServer/admissionControl
 
     # Kubelet configuration
     - |-

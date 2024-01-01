@@ -13,8 +13,8 @@ vars:
   ts: '{{now | date "150405"}}'
 
 tasks:
-  wipe-node-k8s1:
-    desc: Trigger a wipe of Rook-Ceph data on node "k8s1"
+  wipe-node-k8s4:
+    desc: Trigger a wipe of Rook-Ceph data on node "k8s4"
     cmds:
       - task: wipe-disk
         vars:
@@ -24,10 +24,10 @@ tasks:
         vars:
           node: "{{.node}}"
     vars:
-      node: k8s1
+      node: k8s4
 
-  wipe-node-k8s2:
-    desc: Trigger a wipe of Rook-Ceph data on node "k8s2"
+  wipe-node-k8s5:
+    desc: Trigger a wipe of Rook-Ceph data on node "k8s5"
     cmds:
       - task: wipe-disk
         vars:
@@ -37,10 +37,10 @@ tasks:
         vars:
           node: "{{.node}}"
     vars:
-      node: k8s2
+      node: k8s5
 
-  wipe-node-k8s3:
-    desc: Trigger a wipe of Rook-Ceph data on node "k8s3"
+  wipe-node-k8s6:
+    desc: Trigger a wipe of Rook-Ceph data on node "k8s6"
     cmds:
       - task: wipe-disk
         vars:
@@ -50,7 +50,7 @@ tasks:
         vars:
           node: "{{.node}}"
     vars:
-      node: k8s3
+      node: k8s6
 
   wipe-disk:
     desc: Wipe all remnants of rook-ceph from a given disk (ex. task rook:wipe-disk node=k8s1 ceph_disk="/dev/nvme0n1")
