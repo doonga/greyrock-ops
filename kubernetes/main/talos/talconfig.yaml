@@ -51,7 +51,7 @@ nodes:
 
   - hostname: k8s4.greyrock.io
     ipAddress: 10.1.1.7
-    controlPlane: true
+    controlPlane: false
     installDiskSelector:
       size: "<= 256GB"
       model: "TS240GMTS420S"
@@ -85,7 +85,7 @@ nodes:
 
   - hostname: k8s5.greyrock.io
     ipAddress: 10.1.1.8
-    controlPlane: true
+    controlPlane: false
     installDiskSelector:
       size: "<= 256GB"
       model: "TS240GMTS420S"
@@ -104,7 +104,7 @@ nodes:
 
   - hostname: k8s6.greyrock.io
     ipAddress: 10.1.1.9
-    controlPlane: true
+    controlPlane: false
     installDiskSelector:
       size: "<= 600GB"
       model: "GN512"

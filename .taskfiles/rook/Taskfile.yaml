@@ -53,7 +53,7 @@ tasks:
       node: k8s6
 
   wipe-disk:
-    desc: Wipe all remnants of rook-ceph from a given disk (ex. task rook:wipe-disk node=k8s1 ceph_disk="/dev/nvme0n1")
+    desc: Wipe all remnants of rook-ceph from a given disk (ex. task rook:wipe-disk node=k8s4 ceph_disk="/dev/nvme0n1")
     silent: true
     internal: true
     cmds:
@@ -74,7 +74,7 @@ tasks:
       - sh: test -f {{.wipeRookDiskJobTemplate}}
 
   wipe-data:
-    desc: Wipe all remnants of rook-ceph from a given disk (ex. task rook:wipe-data node=k8s1)
+    desc: Wipe all remnants of rook-ceph from a given disk (ex. task rook:wipe-data node=k8s4)
     silent: true
     internal: true
     cmds:
