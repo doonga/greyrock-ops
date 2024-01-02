@@ -64,7 +64,7 @@ spec:
                 memory: 6144Mi
             securityContext:
               allowPrivilegeEscalation: false
-              readOnlyRootFilesystem: true
+              # readOnlyRootFilesystem: true
               capabilities:
                 drop:
                   - ALL
