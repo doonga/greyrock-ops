@@ -31,7 +31,7 @@ spec:
   instances:
     - name: postgres
       metadata:
-        annotations:
+        labels:
           app.kubernetes.io/name: pgo-${APP}
       replicas: 2
       dataVolumeClaimSpec:
