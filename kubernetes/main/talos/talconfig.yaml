@@ -106,8 +106,8 @@ nodes:
     ipAddress: 10.1.1.9
     controlPlane: false
     installDiskSelector:
-      size: "<= 600GB"
-      model: "GN512"
+      size: "<= 256GB"
+      model: "TS240GMTS420S"
     machineDisks:
       - device: /dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_BTWL421602AP800RGN
         partitions:
