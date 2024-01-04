@@ -209,18 +209,6 @@ spec:
             url: http://alertmanager.monitoring.svc.cluster.local:9093
             jsonData:
               implementation: prometheus
-          - name: TeslaMate
-            type: postgres
-            access: proxy
-            url: teslamate-primary.selfhosted.svc:5432
-            user: teslamate
-            secureJsonData:
-              password: $TESLAMATE_POSTGRES_PASSWORD
-              sslmode: disable
-            jsonData:
-              postgresVersion: 1000
-              sslmode: disable
-              database: teslamate
         deleteDatasources:
           - name: Loki
             orgId: 1

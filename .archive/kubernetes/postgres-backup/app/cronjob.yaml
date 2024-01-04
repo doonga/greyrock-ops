@@ -42,7 +42,7 @@ spec:
                       name: postgres.postgres.credentials.postgresql.acid.zalan.do
                       key: password
                 - name: POSTGRES_DB
-                  value: "immich,miniflux,home-assistant,teslamate,invidious"
+                  value: "immich,miniflux,home-assistant,invidious"
               volumeMounts:
                 - name: nas-backups
                   mountPath: /backups
