@@ -18,6 +18,7 @@ spec:
             app.kubernetes.io/name: rtlamr2mqtt
         - matchLabels:
             app.kubernetes.io/name: teslamate
+            k8s:io.kubernetes.pod.namespace: selfhosted
         - matchLabels:
             app.kubernetes.io/name: zigbee2mqtt
         - matchLabels:
