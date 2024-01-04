@@ -33,3 +33,12 @@ spec:
         - ports:
             - port: "1883"
               protocol: TCP
+
+    # zwave-js-ui
+    - toEndpoints:
+        - matchLabels:
+            app.kubernetes.io/name: zwave-js-ui
+      toPorts:
+        - ports:
+            - port: "3000"
+              protocol: TCP
