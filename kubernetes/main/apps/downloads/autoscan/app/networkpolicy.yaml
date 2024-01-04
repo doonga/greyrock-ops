@@ -17,7 +17,7 @@ spec:
             matchLabels:
               app.kubernetes.io/name: radarr
       ports:
-        - port: &port 7878
+        - port: &port 3030
           protocol: TCP
     # sonarr
     - from:
