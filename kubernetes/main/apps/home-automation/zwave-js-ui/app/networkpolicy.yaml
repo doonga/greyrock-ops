@@ -8,6 +8,13 @@ spec:
   endpointSelector:
     matchLabels:
       app.kubernetes.io/name: zwave-js-ui
+  ingress:
+    - fromEndpoints:
+        - matchLabels:
+            app.kubernetes.io/name: home-assistant
+        - matchLabels:
+            app.kubernetes.io/name: prometheus
+            k8s:io.kubernetes.pod.namespace: monitoring
   egress:
     # mosquitto
     - toEndpoints:
