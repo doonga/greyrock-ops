@@ -50,7 +50,7 @@ spec:
               app.kubernetes.io/name: plex
       ports:
         - port: 32400
-          protocol: UDP
+          protocol: TCP
     # kube-dns
     - to:
         - namespaceSelector:
