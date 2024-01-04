@@ -40,6 +40,14 @@ spec:
       ports:
         - port: 8989
           protocol: TCP
+    # tautulli
+    - to:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: tautulli
+      ports:
+        - port: 8181
+          protocol: TCP
     # plex
     - to:
         - namespaceSelector:
