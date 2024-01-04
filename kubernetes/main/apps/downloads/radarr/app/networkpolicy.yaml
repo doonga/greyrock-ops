@@ -31,6 +31,14 @@ spec:
       ports:
         - port: *port
           protocol: TCP
+    # overseerr
+    - from:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: overseerr
+      ports:
+        - port: *port
+          protocol: TCP
     # prowlarr
     - from:
         - podSelector:
@@ -83,6 +91,14 @@ spec:
       ports:
         - port: 32400
           protocol: UDP
+    # autoscan
+    - to:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: autoscan
+      ports:
+        - port: 3030
+          protocol: TCP
     # kube-dns
     - to:
         - namespaceSelector:
