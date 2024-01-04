@@ -8,6 +8,12 @@ spec:
   endpointSelector:
     matchLabels:
       app.kubernetes.io/name: home-assistant
+  ingress:
+    - fromEndpoints:
+        - matchLabels:
+            app.kubernetes.io/name: node-red
+        - matchLabels:
+            app.kubernetes.io/name: zwave-js-ui
   egress:
     # database
     - toEndpoints:
