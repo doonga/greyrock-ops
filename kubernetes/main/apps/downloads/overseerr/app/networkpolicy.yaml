@@ -36,9 +36,9 @@ spec:
     - to:
         - podSelector:
             matchLabels:
-              app.kubernetes.io/name: sabnzbd
+              app.kubernetes.io/name: sonarr
       ports:
-        - port: 8080
+        - port: 8989
           protocol: TCP
     # plex
     - to:
