@@ -12,6 +12,7 @@ spec:
     - fromEndpoints:
         - matchLabels:
             app.kubernetes.io/name: node-red
+            namespace: selfhosted
         - matchLabels:
             app.kubernetes.io/name: zwave-js-ui
   egress:
