@@ -21,7 +21,7 @@ spec:
               app.kubernetes.io/name: ingress-nginx
               app.kubernetes.io/instance: nginx-internal
       ports:
-        - port: &port 8989
+        - port: &port 80
           protocol: TCP
   egress:
     # radarr
