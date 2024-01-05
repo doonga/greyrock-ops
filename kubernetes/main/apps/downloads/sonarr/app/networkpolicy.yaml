@@ -33,7 +33,7 @@ spec:
             app.kubernetes.io/name: autoscan
       toPorts:
         - ports:
-            - port: "7878"
+            - port: "3030"
               protocol: TCP
 
     # plex
