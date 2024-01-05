@@ -21,6 +21,12 @@ spec:
         - matchLabels:
             app.kubernetes.io/name: tautulli
         - matchLabels:
+            app.kubernetes.io/name: autoscan
+            io.kubernetes.pod.namespace: downloads
+        - matchLabels:
+            app.kubernetes.io/name: overseerr
+            io.kubernetes.pod.namespace: downloads
+        - matchLabels:
             app.kubernetes.io/name: radarr
             io.kubernetes.pod.namespace: downloads
         - matchLabels:
