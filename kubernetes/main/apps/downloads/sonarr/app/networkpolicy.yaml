@@ -27,6 +27,15 @@ spec:
               protocol: TCP
 
   egress:
+    # autoscan
+    - toEndpoints:
+        - matchLabels:
+            app.kubernetes.io/name: autoscan
+      toPorts:
+        - ports:
+            - port: "7878"
+              protocol: TCP
+
     # plex
     - toEndpoints:
         - matchLabels:
