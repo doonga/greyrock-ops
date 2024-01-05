@@ -8,6 +8,11 @@ spec:
   endpointSelector:
     matchLabels:
       app.kubernetes.io/name: tautulli
+  ingress:
+    - fromEndpoints:
+        - matchLabels:
+            app.kubernetes.io/name: overseerr
+            io.kubernetes.pod.namespace: downloads
   egress:
     # plex
     - toEndpoints:

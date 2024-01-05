@@ -13,6 +13,8 @@ spec:
         - matchLabels:
             app.kubernetes.io/name: autobrr
         - matchLabels:
+            app.kubernetes.io/name: overseerr
+        - matchLabels:
             app.kubernetes.io/name: prowlarr
         - matchLabels:
             app.kubernetes.io/name: recyclarr
@@ -30,6 +32,15 @@ spec:
       toPorts:
         - ports:
             - port: "32400"
+              protocol: TCP
+
+    # prowlarr
+    - toEndpoints:
+        - matchLabels:
+            app.kubernetes.io/name: prowlarr
+      toPorts:
+        - ports:
+            - port: "9696"
               protocol: TCP
 
     # qbittorrent
