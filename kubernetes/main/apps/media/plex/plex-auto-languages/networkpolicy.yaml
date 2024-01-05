@@ -3,28 +3,16 @@
 apiVersion: cilium.io/v2
 kind: CiliumNetworkPolicy
 metadata:
-  name: autoscan
+  name: plex-auto-languages
 spec:
   endpointSelector:
     matchLabels:
-      app.kubernetes.io/name: autoscan
-  ingress:
-    - fromEndpoints:
-        - matchLabels:
-            app.kubernetes.io/name: sonarr
-        - matchLabels:
-            app.kubernetes.io/name: radarr
-      toPorts:
-        - ports:
-            - port: "7878"
-              protocol: TCP
-
+      app.kubernetes.io/name: plex-auto-languages
   egress:
     # plex
     - toEndpoints:
         - matchLabels:
             app.kubernetes.io/name: plex
-            io.kubernetes.pod.namespace: media
       toPorts:
         - ports:
             - port: "32400"
