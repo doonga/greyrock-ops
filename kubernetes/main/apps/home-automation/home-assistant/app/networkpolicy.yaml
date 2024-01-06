@@ -34,6 +34,15 @@ spec:
             - port: "1883"
               protocol: TCP
 
+    # scrypted
+    - toEndpoints:
+        - matchLabels:
+            app.kubernetes.io/name: scrypted
+      toPorts:
+        - ports:
+            - port: "34135"
+              protocol: TCP
+
     # zwave-js-ui
     - toEndpoints:
         - matchLabels:
