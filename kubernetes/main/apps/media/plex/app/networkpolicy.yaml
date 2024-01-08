@@ -17,6 +17,8 @@ spec:
         - matchLabels:
             app.kubernetes.io/name: plex-image-cleanup
         - matchLabels:
+            app.kubernetes.io/name: plex-meta-manager
+        - matchLabels:
             app.kubernetes.io/name: plex-trakt-sync
         - matchLabels:
             app.kubernetes.io/name: tautulli

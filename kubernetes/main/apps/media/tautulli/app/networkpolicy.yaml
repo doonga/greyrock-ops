@@ -13,6 +13,8 @@ spec:
         - matchLabels:
             app.kubernetes.io/name: overseerr
             io.kubernetes.pod.namespace: downloads
+        - matchLabels:
+            app.kubernetes.io/name: plex-meta-manager
   egress:
     # plex
     - toEndpoints:
