@@ -8,6 +8,11 @@ spec:
   endpointSelector:
     matchLabels:
       app.kubernetes.io/name: maintainerr
+  ingress:
+    - fromEndpoints:
+        - matchLabels:
+            app.kubernetes.io/name: maintainerr
+            io.kubernetes.pod.namespace: media
   egress:
     # plex
     - toEndpoints:
@@ -16,6 +21,16 @@ spec:
       toPorts:
         - ports:
             - port: "32400"
+              protocol: TCP
+
+    # overseerr
+    - toEndpoints:
+        - matchLabels:
+            app.kubernetes.io/name: overseerr
+            io.kubernetes.pod.namespace: downloads
+      toPorts:
+        - ports:
+            - port: "80"
               protocol: TCP
 
     # sonarr
