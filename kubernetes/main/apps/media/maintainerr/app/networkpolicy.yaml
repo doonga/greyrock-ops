@@ -33,6 +33,16 @@ spec:
             - port: "80"
               protocol: TCP
 
+    # radarr
+    - toEndpoints:
+        - matchLabels:
+            app.kubernetes.io/name: radarr
+            io.kubernetes.pod.namespace: downloads
+      toPorts:
+        - ports:
+            - port: "7878"
+              protocol: TCP
+
     # sonarr
     - toEndpoints:
         - matchLabels:
