@@ -20,7 +20,7 @@ additionalMachineCertSans: *san
 nodes:
   - hostname: k8s1.greyrock.io
     ipAddress: 10.1.1.4
-    controlPlane: false
+    controlPlane: true
     installDiskSelector:
       size: "<= 256GB"
       model: "TS240GMTS420S"
@@ -54,7 +54,7 @@ nodes:
 
   - hostname: k8s2.greyrock.io
     ipAddress: 10.1.1.5
-    controlPlane: false
+    controlPlane: true
     installDiskSelector:
       size: "<= 256GB"
       model: "TS240GMTS420S"
@@ -73,7 +73,7 @@ nodes:
 
   - hostname: k8s3.greyrock.io
     ipAddress: 10.1.1.6
-    controlPlane: false
+    controlPlane: true
     installDiskSelector:
       size: "<= 256GB"
       model: "TS240GMTS420S"
