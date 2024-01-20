@@ -64,7 +64,7 @@ spec:
                 memory: 16000Mi
             securityContext:
               allowPrivilegeEscalation: false
-              # readOnlyRootFilesystem: true
+              readOnlyRootFilesystem: true
               capabilities:
                 drop:
                   - ALL
@@ -108,3 +108,10 @@ spec:
         path: /tank/Media
         globalMounts:
           - path: /data/nas-media
+
+      temp:
+        type: emptyDir
+        advancedMounts:
+          main:
+            main:
+              - path: /tmp
