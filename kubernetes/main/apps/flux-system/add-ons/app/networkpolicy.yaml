@@ -1,0 +1,15 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/cilium.io/ciliumnetworkpolicy_v2.json
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: flux-source-controller
+spec:
+  endpointSelector:
+    matchLabels:
+      app.kubernetes.io/name: source-controller
+  ingress:
+    - fromEndpoints:
+        - matchLabels:
+            app.kubernetes.io/name: tf-controller
+            k8s:io.kubernetes.pod.namespace: infrastructure
