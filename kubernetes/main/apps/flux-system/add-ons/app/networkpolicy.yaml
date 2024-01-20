@@ -3,11 +3,11 @@
 apiVersion: cilium.io/v2
 kind: CiliumNetworkPolicy
 metadata:
-  name: flux-source-controller
+  name: source-controller
 spec:
   endpointSelector:
     matchLabels:
-      app.kubernetes.io/name: source-controller
+      app.kubernetes.io/app: source-controller
   ingress:
     - fromEndpoints:
         - matchLabels:
