@@ -62,9 +62,9 @@ spec:
             - name: Sub Map
               url: "https://i.imgur.com/QY7t5eg.png"
         - group: Misc
-        bookmarks:
-          - name: Fastmail
-            url: "https://app.fastmail.com"
+          bookmarks:
+            - name: Fastmail
+              url: "https://app.fastmail.com"
 
     ingress:
       main:
