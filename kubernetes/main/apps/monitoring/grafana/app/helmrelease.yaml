@@ -248,6 +248,7 @@ spec:
 
       omada-exporter:
         clients:
+          # renovate: dashboardName="Omada Overview"
           gnetId: 16343
           revision: 2
           datasource:
