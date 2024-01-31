@@ -13,7 +13,7 @@
       description: "Process Grafana dashboards",
       fileMatch: ["(^|/)kubernetes/.+\\.ya?ml(\\.j2)?$"],
       matchStrings: [
-        'depName="(?<depName>.*)"\\n.*?gnetId: (?<packageName>\\d+)\\n.*?revision: (?<currentValue>\\d+)',
+        '# ?renovate: depName="(?<depName>.*)"\\n(?<indentation>\\s+)gnetId: (?<packageName>\\d+)\\n.+revision: (?<currentValue>\\d+)',
       ],
       datasourceTemplate: "custom.grafana-dashboards",
       versioningTemplate: "regex:^(?<major>\\d+)$",
@@ -22,10 +22,10 @@
   packageRules: [
     {
       addLabels: ["renovate/grafana-dashboard"],
-      matchDatasources: ["grafana-dashboards", "custom.grafana-dashboards"],
+      matchDatasources: ["custom.grafana-dashboards"],
       matchUpdateTypes: ["major"],
       semanticCommitScope: "grafana-dashboards",
-      semanticCommitType: "",
+      semanticCommitType: "chore",
       commitMessageTopic: "dashboard {{depName}}",
       commitMessageExtra: "( {{currentVersion}} → {{newVersion}} )",
     },
