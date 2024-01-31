@@ -1,8 +1,0 @@
----
-timezone: "America/New_York"
-
-ssh_authorized_keys:
-  - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILt+39KiHG0k5C4u/r+SZp14QZjzJGYwMxh+swzjZUEW
-
-vector_aggregator_addr: "10.45.0.2"
-vector_aggregator_port: "6002"
