@@ -77,8 +77,7 @@ tasks:
     cmds:
       - kubectl --context {{.cluster}} delete pods --field-selector status.phase=Succeeded -A --ignore-not-found=true
 
-
-   delete-pending-pods:
+  delete-pending-pods:
     desc: Deletes pods with Pending phase
     summary: |
       Args:

@@ -98,7 +98,7 @@ spec:
         existingClaim: "${VOLSYNC_CLAIM}"
         advancedMounts:
           main:
-            main:
+            agent:
               - path: /library
       # Prevents errors due to running as non-default user
       caddy:
