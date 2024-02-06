@@ -47,7 +47,7 @@ spec:
       searchProviders:
         - name: Kagi
           token: d
-          icon: https://assets.kagi.com/v1/kagi_assets/logos/dark_2.png
+          icon: "https://assets.kagi.com/v1/kagi_assets/logos/dark_2.png"
           searchUrl: https://kagi.com/search?q={query}
           url: https://kagi.com
         - name: Google
