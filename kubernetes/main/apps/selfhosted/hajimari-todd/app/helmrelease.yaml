@@ -43,13 +43,13 @@ spec:
           - media
           - rook-ceph
       name: "Todd"
-      defaultSearchProvider: DuckDuckGo
+      defaultSearchProvider: Kagi
       searchProviders:
-        - name: DuckDuckGo
+        - name: Kagi
           token: d
-          icon: simple-icons:duckduckgo
-          searchUrl: https://duckduckgo.com/?q={query}
-          url: https://duckduckgo.com
+          icon: https://assets.kagi.com/v1/kagi_assets/logos/dark_2.svg?v=e256c0602d6697948ab098fbc1ef6142d86a28c4
+          searchUrl: https://kagi.com/search?q={query}
+          url: https://kagi.com
         - name: Google
           token: g
           icon: simple-icons:google
