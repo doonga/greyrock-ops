@@ -32,6 +32,5 @@ resources:
   - stakater.yaml
   - tf-controller.yaml
   - vector.yaml
-  - weave-gitops.yaml
   - windmill.yaml
   - zalando-postgres-operator.yaml
