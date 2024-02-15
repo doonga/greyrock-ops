@@ -31,6 +31,9 @@ spec:
         host: "authentik-redis.security.svc.cluster.local"
         password: ""
 
+    env:
+      AUTHENTIK_POSTGRESQL__USE_PGBOUNCER: true
+
     envValueFrom:
       AUTHENTIK_SECRET_KEY:
         secretKeyRef:
