@@ -33,6 +33,7 @@ spec:
 
     env:
       AUTHENTIK_POSTGRESQL__USE_PGBOUNCER: true
+      AUTHENTIK_POSTGRESQL__SSLMODE: "require"
 
     envValueFrom:
       AUTHENTIK_SECRET_KEY:
