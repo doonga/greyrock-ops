@@ -29,7 +29,7 @@ spec:
     spec:
       env:
         - name: OP_CONNECT_HOST
-          value: https://onepassword-connect.greyrock.io:8443
+          value: http://onepassword-connect.greyrock.io:8080
         - name: OP_CONNECT_TOKEN
           valueFrom:
             secretKeyRef:
