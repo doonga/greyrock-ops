@@ -16,8 +16,9 @@ spec:
         name: authentik
         namespace: flux-system
   values:
-    # podAnnotations:
-    #   secret.reloader.stakater.com/reload: authentik-secret, authentik-db-secret,authentik-redis-secret
+    global:
+      podAnnotations:
+        secret.reloader.stakater.com/reload: authentik-secret, authentik-db-secret,authentik-redis-secret
 
     authentik:
       log_level: info
