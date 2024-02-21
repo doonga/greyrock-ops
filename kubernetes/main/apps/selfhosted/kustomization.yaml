@@ -17,6 +17,7 @@ resources:
   - ./miniflux/ks.yaml
   - ./node-red/ks.yaml
   - ./paperless/ks.yaml
+  - ./tandoor/ks.yaml
   - ./thelounge/ks.yaml
   - ./wallabag/ks.yaml
   - ./zipline/ks.yaml
