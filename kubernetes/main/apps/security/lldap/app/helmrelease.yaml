@@ -56,7 +56,7 @@ spec:
               LLDAP_HTTP_PORT: &port 80
               LLDAP_HTTP_URL: https://${HOSTNAME}
               LLDAP_LDAP_PORT: &ldapPort 389
-              LLDAP_LDAP_BASE_DN: dc=bjw-s,dc=dev
+              LLDAP_LDAP_BASE_DN: dc=greyrock,dc=casa
             envFrom:
               - secretRef:
                   name: lldap-secret
