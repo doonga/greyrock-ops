@@ -14,8 +14,8 @@ module.exports = {
       options: {
         issuer: "https://auth.greyrock.casa",
         authorizationURL: "https://auth.greyrock.casa/api/oidc/authorization",
-        tokenURL: "https://auth.bjw-s.dev/api/oidc/token",
-        userInfoURL: "https://auth.bjw-s.dev/api/oidc/userinfo",
+        tokenURL: "https://auth.greyrock.casa/api/oidc/token",
+        userInfoURL: "https://auth.greyrock.casa/api/oidc/userinfo",
         clientID: "nodered",
         clientSecret: process.env.NODE_RED_OAUTH_CLIENT_SECRET,
         callbackURL: "https://nodered.greyrock.casa/auth/strategy/callback",

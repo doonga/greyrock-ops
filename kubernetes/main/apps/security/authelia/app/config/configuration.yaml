@@ -90,7 +90,7 @@ identity_providers:
         pre_configured_consent_duration: 1y
         scopes: ["openid", "profile", "groups", "email"]
         redirect_uris:
-          - https://grafana.bjw-s.dev/login/generic_oauth
+          - https://grafana.greyrock.casa/login/generic_oauth
         userinfo_signed_response_alg: none
 
       - id: miniflux
@@ -112,7 +112,7 @@ identity_providers:
         pre_configured_consent_duration: 1y
         scopes: ["openid", "profile", "groups", "email"]
         redirect_uris:
-          - https://nodered.bjw-s.dev/auth/strategy/callback
+          - https://nodered.greyrock.casa/auth/strategy/callback
         userinfo_signed_response_alg: none
 
       - id: paperless
@@ -123,5 +123,5 @@ identity_providers:
         pre_configured_consent_duration: 1y
         scopes: ["openid", "profile", "groups", "email"]
         redirect_uris:
-          - https://paperless.bjw-s.dev/accounts/oidc/authelia/login/callback/
+          - https://paperless.greyrock.casa/accounts/oidc/authelia/login/callback/
         userinfo_signed_response_alg: none
