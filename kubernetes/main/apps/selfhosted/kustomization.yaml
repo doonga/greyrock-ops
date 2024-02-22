@@ -13,7 +13,6 @@ resources:
   - ./libreddit/ks.yaml
   - ./linkding/ks.yaml
   - ./maker-management-platform/ks.yaml
-  - ./mealie/ks.yaml
   - ./miniflux/ks.yaml
   - ./node-red/ks.yaml
   - ./paperless/ks.yaml

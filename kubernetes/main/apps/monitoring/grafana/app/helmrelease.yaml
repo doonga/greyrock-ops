@@ -109,6 +109,7 @@ spec:
               value: Prometheus
 
         external-dns:
+          # renovate: dashboardName="External-DNS"
           gnetId: 15038
           revision: 3
           datasource: Prometheus
@@ -289,21 +290,19 @@ spec:
       GF_AUTH_ANONYMOUS_ENABLED: false
       GF_AUTH_BASIC_ENABLED: false
       GF_AUTH_GENERIC_OAUTH_ENABLED: true
-      GF_AUTH_GENERIC_OAUTH_API_URL: https://auth.greyrock.casa/application/o/userinfo/
-      GF_AUTH_GENERIC_OAUTH_AUTH_URL: https://auth.greyrock.casa/application/o/authorize/
-      GF_AUTH_GENERIC_OAUTH_CLIENT_ID: 22aA4qld9YC8WdCvMtwthFw1O6Q9aspacTpbdP29
-      GF_AUTH_GENERIC_OAUTH_NAME: Authentik
-      GF_AUTH_GENERIC_OAUTH_ROLE_ATTRIBUTE_PATH: "contains(groups[*], 'Grey Rock Admins') && 'Admin' || 'Viewer'"
-      GF_AUTH_GENERIC_OAUTH_SCOPES: openid profile email
-      GF_AUTH_GENERIC_OAUTH_TOKEN_URL: https://auth.greyrock.casa/application/o/token/
+      GF_AUTH_GENERIC_OAUTH_API_URL: https://auth.greyrock.casa/api/oidc/userinfo
+      GF_AUTH_GENERIC_OAUTH_AUTH_URL: https://auth.greyrock.casa/api/oidc/authorization
+      GF_AUTH_GENERIC_OAUTH_CLIENT_ID: grafana
+      GF_AUTH_GENERIC_OAUTH_EMPTY_SCOPES: false
+      GF_AUTH_GENERIC_OAUTH_ROLE_ATTRIBUTE_PATH: "contains(groups[*], 'bjws_admins') && 'Admin' || 'Viewer'"
+      GF_AUTH_GENERIC_OAUTH_SCOPES: openid profile email groups
+      GF_AUTH_GENERIC_OAUTH_TOKEN_URL: https://auth.bjw-s.dev/api/oidc/token
       GF_AUTH_OAUTH_AUTO_LOGIN: true
-      GF_AUTH_SIGNOUT_REDIRECT_URL: https://auth.greyrock.casa/application/o/grafana/end-session/
       GF_DATE_FORMATS_USE_BROWSER_LOCALE: true
       GF_EXPLORE_ENABLED: true
       GF_FEATURE_TOGGLES_ENABLE: publicDashboards
       GF_LOG_MODE: console
       GF_NEWS_NEWS_FEED_ENABLED: false
-      GF_PANELS_DISABLE_SANITIZE_HTML: true
       GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS: natel-discrete-panel,pr0ps-trackmap-panel,panodata-map-panel
       GF_SECURITY_COOKIE_SAMESITE: grafana
       GF_SERVER_ROOT_URL: https://grafana.greyrock.casa

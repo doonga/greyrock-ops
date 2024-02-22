@@ -46,6 +46,6 @@ spec:
   postBuild:
     substitute:
       APP: *appname
-      HOSTNAME: authelia.greyrock.casa
+      HOSTNAME: auth.greyrock.casa
       APP_UID: "568"
       APP_GID: "568"
