@@ -1,7 +1,7 @@
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/budimanjojo/talhelper/master/pkg/config/schemas/talconfig.json
 clusterName: ${clusterName}
-endpoint: "https://${clusterName}.${clusterDNSSuffix}:6443"
+endpoint: "https://${clusterEndpointIP}:6443"
 
 # renovate: depName=ghcr.io/siderolabs/installer datasource=docker extractVersion=^(?<version>.*)$
 talosVersion: v1.6.5
@@ -12,7 +12,6 @@ cniConfig:
   name: none
 
 additionalApiServerCertSans: &san
-  - ${clusterEndpointIP}
   - ${clusterName}.${clusterDNSSuffix}
   - "127.0.0.1" # KubePrism
 additionalMachineCertSans: *san
@@ -131,15 +130,6 @@ controlPlane:
             enabled: true
             port: 7445
 
-    # Configure cluster loopback
-    - |-
-      machine:
-        network:
-          extraHostEntries:
-            - ip: ${clusterEndpointIP}
-              aliases:
-                - ${clusterName}.${clusterDNSSuffix}
-
     # Cluster configuration
     - |-
       cluster:
@@ -205,16 +195,6 @@ controlPlane:
     - |-
       machine:
         sysctls:
-          fs.inotify.max_user_watches: "1048576"
+          fs.inotify.max_queued_events: "65536"
           fs.inotify.max_user_instances: "8192"
-
-    # Enable K8s Talos API Access
-    - |-
-      machine:
-        features:
-          kubernetesTalosAPIAccess:
-            enabled: true
-            allowedRoles:
-              - os:admin
-            allowedKubernetesNamespaces:
-              - system-controllers
+          fs.inotify.max_user_watches: "524288"
