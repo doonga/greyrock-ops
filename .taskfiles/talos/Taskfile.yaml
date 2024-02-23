@@ -78,7 +78,7 @@ tasks:
   bootstrap-matchbox:
     desc: Bootstrap required Matchbox configuration to Vyos for PXE Boot
     vars:
-      VYOS_ADDR: gateway.bjw-s.casa
+      VYOS_ADDR: gateway.greyrock.io
       VYOS_USER: vyos
       VYOS_MATCHBOX_DIR: /config/containers/matchbox/data
       VYOS_MATCHBOX_GROUPS_DIR: "{{.VYOS_MATCHBOX_DIR}}/groups"
