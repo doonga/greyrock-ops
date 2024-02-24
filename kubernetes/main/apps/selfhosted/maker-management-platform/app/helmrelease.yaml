@@ -25,8 +25,8 @@ spec:
         pod:
           enableServiceLinks: false
           securityContext:
-            # runAsUser: ${APP_UID}
-            # runAsGroup: ${APP_GID}
+            runAsUser: ${APP_UID}
+            runAsGroup: ${APP_GID}
             fsGroup: ${APP_GID}
             fsGroupChangePolicy: "OnRootMismatch"
 
@@ -101,7 +101,7 @@ spec:
             agent:
               - path: /library
                 subPath: library
-              - path: /app/data
+              - path: /data
                 subPath: data
       # Prevents errors due to running as non-default user
       temp:
