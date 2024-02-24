@@ -28,8 +28,12 @@ nodes:
         partitions:
           - mountpoint: /var/mnt/sata
     networkInterfaces:
-      - deviceSelector:
-          driver: atlantic
+      - interface: bond0
+        bond:
+          mode: active-backup
+          deviceSelectors:
+            - hardwareAddr: 00:30:93:12:38:d3
+              driver: atlantic
         dhcp: true
         vlans:
           - &vlan40
@@ -62,8 +66,12 @@ nodes:
         partitions:
           - mountpoint: /var/mnt/sata
     networkInterfaces:
-      - deviceSelector:
-          driver: atlantic
+      - interface: bond0
+        bond:
+          mode: active-backup
+          deviceSelectors:
+            - hardwareAddr: 00:30:93:12:38:d6
+              driver: atlantic
         dhcp: true
         vlans:
           - *vlan40
@@ -81,8 +89,12 @@ nodes:
         partitions:
           - mountpoint: /var/mnt/sata
     networkInterfaces:
-      - deviceSelector:
-          driver: atlantic
+      - interface: bond0
+        bond:
+          mode: active-backup
+          deviceSelectors:
+            - hardwareAddr: 00:30:93:12:38:8c
+              driver: atlantic
         dhcp: true
         vlans:
           - *vlan40
@@ -92,8 +104,6 @@ nodes:
 controlPlane:
   schematic:
     customization:
-      extraKernelArgs:
-        - net.ifnames=0
       systemExtensions:
         officialExtensions:
           - siderolabs/intel-ucode
