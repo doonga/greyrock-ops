@@ -23,6 +23,7 @@ resources:
   - kubernetes-sigs-metrics-server.yaml
   - kubernetes-sigs-nfd.yaml
   - metallb.yaml
+  - openebs.yaml
   - piraeus.yaml
   - postfinance.yaml
   - prometheus-community.yaml
