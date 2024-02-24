@@ -101,7 +101,7 @@ spec:
             agent:
               - path: /library
                 subPath: library
-              - path: /data
+              - path: /app/data
                 subPath: data
       # Prevents errors due to running as non-default user
       temp:
