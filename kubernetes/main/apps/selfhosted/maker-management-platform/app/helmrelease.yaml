@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 2.6.0
+      version: 2.5.0
       interval: 30m
       sourceRef:
         kind: HelmRepository
@@ -25,8 +25,7 @@ spec:
         pod:
           enableServiceLinks: false
           securityContext:
-            runAsUser: ${APP_UID}
-            runAsGroup: ${APP_GID}
+            # TODO: can't run  all containers as ${APP_UID} until https://github.com/Maker-Management-Platform/agent/pull/86 gets merged
             fsGroup: ${APP_GID}
             fsGroupChangePolicy: "OnRootMismatch"
 
@@ -36,7 +35,7 @@ spec:
           agent:
             image:
               repository: ghcr.io/maker-management-platform/agent
-              tag: v1.1.0
+              tag: v1.0.3
             env:
               LIBRARY_PATH: /library
               LOG_PATH: ""
@@ -46,16 +45,10 @@ spec:
                 memory: 128M
               limits:
                 memory: 512M
-            securityContext:
-              allowPrivilegeEscalation: false
-              readOnlyRootFilesystem: true
-              capabilities:
-                drop:
-                  - ALL
           ui:
             image:
               repository: ghcr.io/maker-management-platform/mmp-ui
-              tag: v1.1.0
+              tag: v1.0.2
             env:
               AGENT_ADDRESS: localhost:8000
             resources:
@@ -65,11 +58,8 @@ spec:
               limits:
                 memory: 128M
             securityContext:
-              allowPrivilegeEscalation: false
-              readOnlyRootFilesystem: true
-              capabilities:
-                drop:
-                  - ALL
+              runAsUser: ${APP_UID}
+              runAsGroup: ${APP_GID}
 
     service:
       main:
@@ -93,27 +83,18 @@ spec:
               - "${HOSTNAME}"
 
     persistence:
-      data:
+      library:
         enabled: true
         existingClaim: "${VOLSYNC_CLAIM}"
         advancedMounts:
           main:
-            agent:
+            main:
               - path: /library
-                subPath: library
-              - path: /data
-                subPath: data
       # Prevents errors due to running as non-default user
-      temp:
+      caddy:
         enabled: true
         type: emptyDir
         advancedMounts:
           main:
-            agent:
-              - path: /app/temp
-                subPath: agent-tmp
-              - path: /app/cache
-                subPath: agent-cache
             ui:
               - path: /config/caddy
-                subPath: caddy
