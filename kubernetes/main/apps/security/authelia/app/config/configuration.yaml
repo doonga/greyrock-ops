@@ -50,7 +50,7 @@ totp:
   issuer: authelia.com
 
 webauthn:
-  disable: true
+  disable: false
 
 duo_api:
   disable: true
