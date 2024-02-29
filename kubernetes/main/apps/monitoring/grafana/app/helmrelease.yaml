@@ -327,10 +327,10 @@ spec:
     ingress:
       enabled: true
       ingressClassName: internal-nginx
-        annotations:
-          hajimari.io/enable: "true"
-          hajimari.io/instance: "todd"
-          hajimari.io/icon: "mdi:plex"
+      annotations:
+        hajimari.io/enable: "true"
+        hajimari.io/instance: "todd"
+        hajimari.io/icon: "mdi:plex"
       hosts:
         - &host grafana.greyrock.casa
       tls:
