@@ -64,6 +64,10 @@ spec:
       main:
         enabled: true
         className: "internal-nginx"
+        annotations:
+          hajimari.io/enable: "true"
+          hajimari.io/instance: "todd"
+          hajimari.io/icon: "mdi:home-assistant"
         hosts:
           - host: "${HOSTNAME}"
             paths:

@@ -60,6 +60,10 @@ spec:
       main:
         enabled: true
         className: "internal-nginx"
+        annotations:
+          hajimari.io/enable: "true"
+          hajimari.io/instance: "todd"
+          hajimari.io/icon: "mdi:plex"
         hosts:
           - host: &host "{{ .Release.Name }}.greyrock.casa"
             paths:

@@ -67,6 +67,9 @@ spec:
           nginx.ingress.kubernetes.io/auth-signin: https://auth.greyrock.casa/?rm=$request_method
           nginx.ingress.kubernetes.io/auth-response-headers: Remote-User,Remote-Name,Remote-Groups,Remote-Email
           nginx.ingress.kubernetes.io/auth-snippet: proxy_set_header X-Forwarded-Method $request_method;
+          hajimari.io/enable: "true"
+          hajimari.io/instance: "todd"
+          hajimari.io/icon: "mdi:plex"
         hosts:
           - host: "${HOSTNAME}"
             paths:

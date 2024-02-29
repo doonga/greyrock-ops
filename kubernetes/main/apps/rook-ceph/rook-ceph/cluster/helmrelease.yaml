@@ -103,6 +103,9 @@ spec:
         ingressClassName: "internal-nginx"
         annotations:
           nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+          hajimari.io/enable: "true"
+          hajimari.io/instance: "todd"
+          hajimari.io/icon: "mdi:plex"
         host:
           name: &host rook-main.greyrock.casa
           path: "/"
