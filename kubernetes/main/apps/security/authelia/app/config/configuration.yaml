@@ -41,9 +41,10 @@ session:
 notifier:
   disable_startup_check: true
   smtp:
-    address: smtp-relay.default.svc.cluster.local:25
-    sender: Authelia <authelia@greyrock.casa>
-    disable_require_tls: true
+    host: smtp.mailgun.org
+    port: 587
+    username: authelia@m.greyrock.io
+    sender: Authelia <authelia@m.greyrock.io>
 
 totp:
   disable: false
