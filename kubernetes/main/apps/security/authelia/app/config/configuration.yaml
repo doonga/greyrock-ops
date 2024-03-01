@@ -70,12 +70,12 @@ access_control:
         - libreddit.greyrock.casa
       subject:
         - ["group:greyrock_users"]
-      policy: one_factor
+      policy: two_factor
     - domain:
         - echo-server.greyrock.casa
       subject:
         - ["user:todd"]
-      policy: one_factor
+      policy: two_factor
 
 identity_providers:
   oidc:
@@ -87,7 +87,7 @@ identity_providers:
         description: Grafana
         secret: "$${OAUTH_CLIENT_SECRET_GRAFANA}"
         public: false
-        authorization_policy: one_factor
+        authorization_policy: two_factor
         pre_configured_consent_duration: 1y
         scopes: ["openid", "profile", "groups", "email"]
         redirect_uris:
@@ -98,7 +98,7 @@ identity_providers:
         description: Miniflux
         secret: "$${OAUTH_CLIENT_SECRET_MINIFLUX}"
         public: false
-        authorization_policy: one_factor
+        authorization_policy: two_factor
         pre_configured_consent_duration: 1y
         scopes: ["openid", "profile", "groups", "email"]
         redirect_uris:
@@ -109,7 +109,7 @@ identity_providers:
         description: Node-RED
         secret: "$${OAUTH_CLIENT_SECRET_NODERED}"
         public: false
-        authorization_policy: one_factor
+        authorization_policy: two_factor
         pre_configured_consent_duration: 1y
         scopes: ["openid", "profile", "groups", "email"]
         redirect_uris:
@@ -120,7 +120,7 @@ identity_providers:
         description: Paperless
         secret: "$${OAUTH_CLIENT_SECRET_PAPERLESS}"
         public: false
-        authorization_policy: one_factor
+        authorization_policy: two_factor
         pre_configured_consent_duration: 1y
         scopes: ["openid", "profile", "groups", "email"]
         redirect_uris:
