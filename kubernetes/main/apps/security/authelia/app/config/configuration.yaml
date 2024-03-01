@@ -41,8 +41,7 @@ session:
 notifier:
   disable_startup_check: true
   smtp:
-    host: smtp.mailgun.org
-    port: 587
+    address: smtp.mailgun.org:587
     username: authelia@m.greyrock.io
     sender: Authelia <authelia@m.greyrock.io>
 
@@ -51,7 +50,8 @@ totp:
   issuer: authelia.com
 
 webauthn:
-  disable: true
+  disable: false
+  display_name: Grey Rock
 
 duo_api:
   disable: true
