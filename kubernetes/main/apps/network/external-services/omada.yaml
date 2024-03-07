@@ -9,10 +9,10 @@ metadata:
     app.kubernetes.io/instance: omada
 spec:
   type: ExternalName
-  externalName: omada-controller.greyrock.io.
+  externalName: omada.greyrock.io.
   ports:
     - name: http
-      port: &port 8043
+      port: &port 443
       protocol: TCP
       targetPort: *port
 ---
@@ -41,7 +41,7 @@ spec:
               service:
                 name: omada
                 port:
-                  number: 8043
+                  number: 443
   tls:
     - hosts:
         - *host
