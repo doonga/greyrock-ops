@@ -61,9 +61,6 @@ spec:
             - name: PiKVM
               url: https://pikvm.greyrock.io
               icon: video-switch
-            - name: Ruckus Unleashed
-              url: http://unleashed.greyrock.io
-              icon: video-switch
 
       globalBookmarks:
         - group: FFXIV
