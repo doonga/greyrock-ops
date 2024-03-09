@@ -14,6 +14,7 @@ resources:
   - ./linkding/ks.yaml
   - ./maker-management-platform/ks.yaml
   - ./miniflux/ks.yaml
+  - ./omada-controller/ks.yaml
   - ./node-red/ks.yaml
   - ./paperless/ks.yaml
   - ./tandoor/ks.yaml

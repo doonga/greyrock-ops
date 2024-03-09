@@ -6,12 +6,12 @@ metadata:
   name: &appname omada-controller
   namespace: flux-system
 spec:
-  targetNamespace: network
+  targetNamespace: selfhosted
   commonMetadata:
     labels:
       app.kubernetes.io/name: *appname
   interval: 10m
-  path: "./kubernetes/main/apps/network/omada-controller/app"
+  path: "./kubernetes/main/apps/selfhosted/omada-controller/app"
   prune: true
   sourceRef:
     kind: GitRepository
