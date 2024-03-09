@@ -161,15 +161,21 @@ spec:
       config:
         enabled: true
         existingClaim: "${VOLSYNC_CLAIM}"
-        globalMounts:
-          - path: /opt/tplink/EAPController/data
+        advancedMounts:
+          main:
+            main:
+              - path: /opt/tplink/EAPController/data
       work:
         enabled: true
-        existingClaim: omada-controller-work-pvc
-        globalMounts:
-          - path: /opt/tplink/EAPController/work
+        existingClaim: omada-controller-work
+        advancedMounts:
+          main:
+            main:
+              - path: /opt/tplink/EAPController/work
       logs:
         enabled: true
-        existingClaim: omada-controller-logs-pvc
-        globalMounts:
-          - path: /opt/tplink/EAPController/logs
+        existingClaim: omada-controller-logs
+        advancedMounts:
+          main:
+            main:
+              - path: /opt/tplink/EAPController/logs
