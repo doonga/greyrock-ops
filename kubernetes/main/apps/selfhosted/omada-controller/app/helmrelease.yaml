@@ -138,6 +138,9 @@ spec:
           nginx.ingress.kubernetes.io/upstream-vhost: "omada.greyrock.casa:8043"
           nginx.ingress.kubernetes.io/proxy-redirect-from: "~https://(.+):8043/(.+)/login$"
           nginx.ingress.kubernetes.io/proxy-redirect-to: "https://$1/$2/login"
+          hajimari.io/enable: "true"
+          hajimari.io/instance: "todd"
+          hajimari.io/icon: "router-wireless-settings"
 
         hosts:
           - host: "${HOSTNAME}"
