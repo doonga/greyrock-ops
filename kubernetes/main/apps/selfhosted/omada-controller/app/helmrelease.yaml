@@ -179,3 +179,11 @@ spec:
           main:
             main:
               - path: /opt/tplink/EAPController/logs
+      backups:
+        type: nfs
+        server: nas.greyrock.io
+        path: /tank/Backups/omada-controller
+        advancedMounts:
+          main:
+            main:
+              - path: /opt/tplink/EAPController/data/autobackup
