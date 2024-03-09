@@ -182,7 +182,7 @@ spec:
       backups:
         type: nfs
         server: nas.greyrock.io
-        path: /tank/Backups/omada-controller
+        path: /tank/Backup/omada-controller
         advancedMounts:
           main:
             main:
