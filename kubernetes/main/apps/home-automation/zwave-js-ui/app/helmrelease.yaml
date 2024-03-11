@@ -1,5 +1,5 @@
 ---
-# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrelease-helm-v2beta2.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/app-template-3.0.1/charts/other/app-template/schemas/helmrelease-helm-v2beta2.schema.json
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
@@ -27,7 +27,7 @@ spec:
     keepHistory: false
   values:
     controllers:
-      main:
+      zwave-js-ui:
         pod:
           labels:
             ingress.home.arpa/nginx-internal: allow
@@ -37,7 +37,7 @@ spec:
             zooz.feature.node.kubernetes.io/zwave: "true"
 
         containers:
-          main:
+          app:
             image:
               repository: ghcr.io/zwave-js/zwave-js-ui
               tag: 9.9.1
@@ -61,8 +61,16 @@ spec:
               startup:
                 enabled: false
 
+            resources:
+              requests:
+                cpu: 14m
+                memory: 303M
+              limits:
+                memory: 303M
+
     service:
-      main:
+      app:
+        controller: zwave-js-ui
         ports:
           http:
             port: 8091
@@ -75,12 +83,11 @@ spec:
         enabled: true
 
     ingress:
-      main:
+      app:
         annotations:
           hajimari.io/enable: "true"
           hajimari.io/instance: "todd"
           hajimari.io/icon: "mdi:z-wave"
-        enabled: true
         className: internal-nginx
         hosts:
           - host: ${HOSTNAME}
@@ -88,7 +95,7 @@ spec:
               - path: /
                 pathType: Prefix
                 service:
-                  name: main
+                  identifier: app
         tls:
           - hosts:
               - ${HOSTNAME}
@@ -102,13 +109,6 @@ spec:
       data:
         existingClaim: "${VOLSYNC_CLAIM}"
         advancedMounts:
-          main:
-            main:
+          zwave-js-ui:
+            app:
               - path: /usr/src/app/store
-
-    resources:
-      requests:
-        cpu: 14m
-        memory: 303M
-      limits:
-        memory: 303M

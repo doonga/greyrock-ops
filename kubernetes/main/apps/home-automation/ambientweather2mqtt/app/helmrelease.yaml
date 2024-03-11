@@ -1,5 +1,5 @@
 ---
-# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrelease-helm-v2beta2.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/app-template-3.0.1/charts/other/app-template/schemas/helmrelease-helm-v2beta2.schema.json
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
@@ -18,14 +18,14 @@ spec:
 
   values:
     controllers:
-      main:
+      ambientweather2mqtt:
         pod:
           labels:
             ingress.home.arpa/lan: allow
             egress.home.arpa/kubedns: allow # FIXME: Remove when clusterNetworkPolicy is in place
 
         containers:
-          main:
+          ambientweather2mqtt:
             image:
               repository: ghcr.io/neilenns/ambientweather2mqtt
               tag: v4.7.0@sha256:4064ade46536a86b9a6e65dfb27fc145d3cea5c47b3cc6cd9852dab70d75cd17
@@ -34,8 +34,16 @@ spec:
               - secretRef:
                   name: ambientweather2mqtt-secrets
 
+            resources:
+              requests:
+                cpu: 5m
+                memory: 47M
+              limits:
+                memory: 47M
+
     service:
-      main:
+      app:
+        controller: ambientweather2mqtt
         type: LoadBalancer
         annotations:
           io.cilium/lb-ipam-ips: "10.45.0.26"
@@ -43,14 +51,3 @@ spec:
         ports:
           http:
             port: 8080
-
-    ingress:
-      main:
-        enabled: false
-
-    resources:
-      requests:
-        cpu: 5m
-        memory: 47M
-      limits:
-        memory: 47M
