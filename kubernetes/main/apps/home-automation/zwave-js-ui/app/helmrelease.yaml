@@ -79,7 +79,8 @@ spec:
             port: 3000
 
     serviceMonitor:
-      main:
+      app:
+        serviceName: zwave-js-ui
         enabled: true
 
     ingress:
