@@ -36,7 +36,7 @@ spec:
               tag: 0.13.0
             env:
               OMADA_SITE: Grey Rock
-              OMADA_HOST: https://omada.greyrock.io
+              OMADA_HOST: https://omada-controller.selfhosted:8043
               OMADA_INSECURE: true
               OMADA_USER: exporter
               OMADA_PASS:
