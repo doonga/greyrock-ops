@@ -22,7 +22,6 @@ spec:
           reloader.stakater.com/auto: "true"
 
         pod:
-          enableServiceLinks: false
           labels:
             egress.home.arpa/internet: allow
             egress.home.arpa/kubedns: allow # FIXME: Remove when clusterNetworkPolicy is in place
@@ -65,11 +64,12 @@ spec:
 
     persistence:
       config:
+        enabled: true
         existingClaim: "${VOLSYNC_CLAIM}"
         advancedMounts:
-          main:
-            plex-trakt-sync:
-              - app: /app/config
+          plex-trakt-sync:
+            app:
+              - path: /app/config
       config-yaml:
         type: configMap
         name: plex-tract-sync-configmap
