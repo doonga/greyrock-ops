@@ -1,5 +1,5 @@
 ---
-# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrelease-helm-v2beta2.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/app-template-3.0.1/charts/other/app-template/schemas/helmrelease-helm-v2beta2.schema.json
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
@@ -17,9 +17,9 @@ spec:
   interval: 30m
   values:
     controllers:
-      main:
+      hs110-exporter-rack:
         containers:
-          main:
+          app:
             image:
               repository: docker.io/sdelrio/hs110-exporter
               tag: v1.0.0
@@ -27,15 +27,16 @@ spec:
             env:
               HS110IP: "10.1.3.37"
 
+            resources:
+              requests:
+                cpu: 15m
+                memory: 64M
+              limits:
+                memory: 74M
+
     service:
-      main:
+      app:
+        controller: hs110-exporter-rack
         ports:
           http:
             port: 8110
-
-    resources:
-      requests:
-        cpu: 15m
-        memory: 64M
-      limits:
-        memory: 74M

@@ -1,5 +1,5 @@
 ---
-# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrelease-helm-v2beta2.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/app-template-3.0.1/charts/other/app-template/schemas/helmrelease-helm-v2beta2.schema.json
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
@@ -18,14 +18,11 @@ spec:
 
   values:
     controllers:
-      main:
+      thelounge:
         type: statefulset
 
         annotations:
           reloader.stakater.com/auto: "true"
-
-        pod:
-          enableServiceLinks: false
 
         statefulset:
           volumeClaimTemplates:
@@ -37,12 +34,22 @@ spec:
                 - path: /config
 
         containers:
-          main:
+          app:
             image:
               repository: ghcr.io/thelounge/thelounge
               tag: 4.4.1
             env:
               THELOUNGE_HOME: /config
+            probes:
+              liveness:
+                enabled: true
+              readiness:
+                enabled: true
+              startup:
+                enabled: true
+                spec:
+                  failureThreshold: 30
+                  periodSeconds: 5
             resources:
               requests:
                 cpu: 12m
@@ -51,14 +58,14 @@ spec:
                 memory: 512M
 
     service:
-      main:
+      app:
+        controller: thelounge
         ports:
           http:
             port: 9000
 
     ingress:
-      main:
-        enabled: true
+      app:
         className: "internal-nginx"
         annotations:
           hajimari.io/enable: "true"
@@ -69,7 +76,7 @@ spec:
             paths:
               - path: /
                 service:
-                  name: main
+                  identifier: app
                   port: http
         tls:
           - hosts:

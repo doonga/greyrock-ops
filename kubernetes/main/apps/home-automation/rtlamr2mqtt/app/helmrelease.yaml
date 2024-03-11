@@ -1,5 +1,5 @@
 ---
-# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrelease-helm-v2beta2.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/app-template-3.0.1/charts/other/app-template/schemas/helmrelease-helm-v2beta2.schema.json
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
@@ -18,13 +18,13 @@ spec:
 
   values:
     controllers:
-      main:
+      rtlamr2mqtt:
         pod:
           nodeSelector:
             rtlamr.feature.node.kubernetes.io/rtlamr: "true"
 
         containers:
-          main:
+          app:
             image:
               repository: allangood/rtlamr2mqtt
               tag: 2.3.4
@@ -39,17 +39,8 @@ spec:
               limits:
                 memory: 36M
 
-    service:
-      main:
-        enabled: false
-
-    ingress:
-      main:
-        enabled: false
-
     persistence:
       config-file:
-        enabled: true
         type: secret
         name: rtlamr2mqtt-secret
         defaultMode: 400

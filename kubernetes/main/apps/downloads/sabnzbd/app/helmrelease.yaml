@@ -1,5 +1,5 @@
 ---
-# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrelease-helm-v2beta2.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/app-template-3.0.1/charts/other/app-template/schemas/helmrelease-helm-v2beta2.schema.json
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
@@ -18,7 +18,7 @@ spec:
 
   values:
     controllers:
-      main:
+      sabnzbd:
         annotations:
           reloader.stakater.com/auto: "true"
 
@@ -33,7 +33,7 @@ spec:
               - 65542 # nas:external-services
 
         containers:
-          main:
+          app:
             image:
               repository: ghcr.io/onedr0p/sabnzbd
               tag: 4.2.2@sha256:5b1f15c8d25afa2342505492486361d4ecf14449e1453aeea45cd7c1e5eeb63a
@@ -56,6 +56,16 @@ spec:
                   secretKeyRef:
                     name: sabnzbd-secret
                     key: nzb_key
+            probes:
+              liveness:
+                enabled: true
+              readiness:
+                enabled: true
+              startup:
+                enabled: true
+                spec:
+                  failureThreshold: 30
+                  periodSeconds: 5
             resources:
               requests:
                 cpu: 5m
@@ -70,25 +80,25 @@ spec:
                   - ALL
 
     service:
-      main:
+      app:
+        controller: sabnzbd
         ports:
           http:
             port: *port
 
     ingress:
-      main:
+      app:
         annotations:
           hajimari.io/enable: "true"
           hajimari.io/instance: "todd,andy"
           hajimari.io/icon: "mdi:download"
-        enabled: true
         className: "internal-nginx"
         hosts:
           - host: "${HOSTNAME}"
             paths:
               - path: /
                 service:
-                  name: main
+                  identifier: app
                   port: http
         tls:
           - hosts:
@@ -96,11 +106,10 @@ spec:
 
     persistence:
       config:
-        enabled: true
         existingClaim: "${VOLSYNC_CLAIM}"
         advancedMounts:
-          main:
-            main:
+          sabnzbd:
+            app:
               - path: /config
       media:
         type: nfs
@@ -112,6 +121,6 @@ spec:
       temp:
         type: emptyDir
         advancedMounts:
-          main:
-            main:
+          sabnzbd:
+            app:
               - path: /tmp

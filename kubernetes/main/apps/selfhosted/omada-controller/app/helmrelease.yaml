@@ -1,5 +1,5 @@
 ---
-# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrelease-helm-v2beta1.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/app-template-3.0.1/charts/other/app-template/schemas/helmrelease-helm-v2beta2.schema.json
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
@@ -30,11 +30,11 @@ spec:
     cleanupOnFail: true
   values:
     controllers:
-      main:
+      omada-controller:
         annotations:
           reloader.stakater.com/auto: "true"
         containers:
-          main:
+          app:
             image:
               repository: mbentley/omada-controller
               tag: 5.13@sha256:538ec216054f51558c15a649d9e12de13d95a7a01542fbb8fe7d1e12dc6e3164
@@ -48,9 +48,16 @@ spec:
               PUID: "${APP_GID}"
               SHOW_SERVER_LOGS: "true"
               SHOW_MONGODB_LOGS: "true"
+            resources:
+              requests:
+                memory: 1200Mi
+                cpu: 1200m
+              limits:
+                memory: 2000Mi
 
     service:
-      main:
+      app:
+        controller: omada-controller
         enabled: true
         ports:
           http:
@@ -60,14 +67,13 @@ spec:
             protocol: TCP
 
       controller:
-        controller: main
+        controller: omada-controller
         type: LoadBalancer
         annotations:
           io.cilium/lb-ipam-ips: "10.45.0.11"
         externalTrafficPolicy: Local
         ports:
           mgmt-8088-tcp:
-            enabled: true
             port: 8088
             targetPort: 8088
             protocol: TCP
@@ -77,59 +83,48 @@ spec:
           #   protocol: TCP
           #   targetPort: 8043
           portal-8843-tcp:
-            enabled: true
             port: 8843
             protocol: TCP
             targetPort: 8843
           eap-discovery:
-            enabled: true
             port: 29810
             protocol: UDP
             targetPort: 29810
           old-eap-mgmt:
-            enabled: true
             port: 29811
             protocol: TCP
             targetPort: 29811
           old-eap-adopt:
-            enabled: true
             port: 29812
             protocol: TCP
             targetPort: 29812
           old-eap-upgrade:
-            enabled: true
             port: 29813
             protocol: TCP
             targetPort: 29813
           eap-adopt:
-            enabled: true
             port: 29814
             protocol: TCP
             targetPort: 29814
           init-check:
-            enabled: true
             port: 27001
             protocol: UDP
             targetPort: 27001
           old-init-info:
-            enabled: true
             port: 27002
             protocol: TCP
             targetPort: 27002
           old-db-access:
-            enabled: true
             port: 27017
             protocol: TCP
             targetPort: 27017
           db-access:
-            enabled: true
             port: 27217
             protocol: TCP
             targetPort: 27217
 
     ingress:
-      main:
-        enabled: true
+      app:
         className: "internal-nginx"
         annotations:
           nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
@@ -147,46 +142,36 @@ spec:
             paths:
               - path: /
                 service:
-                  name: main
+                  identifier: app
                   port: http
         tls:
           - hosts:
               - "${HOSTNAME}"
 
-    resources:
-      requests:
-        memory: 1200Mi
-        cpu: 1200m
-      limits:
-        memory: 2000Mi
-
     persistence:
       config:
-        enabled: true
         existingClaim: "${VOLSYNC_CLAIM}"
         advancedMounts:
-          main:
-            main:
+          omada-controller:
+            app:
               - path: /opt/tplink/EAPController/data
       work:
-        enabled: true
         existingClaim: omada-controller-work
         advancedMounts:
-          main:
-            main:
+          omada-controller:
+            app:
               - path: /opt/tplink/EAPController/work
       logs:
-        enabled: true
         existingClaim: omada-controller-logs
         advancedMounts:
-          main:
-            main:
+          omada-controller:
+            app:
               - path: /opt/tplink/EAPController/logs
       backups:
         type: nfs
         server: nas.greyrock.io
         path: /tank/Backup/omada-controller
         advancedMounts:
-          main:
-            main:
+          omada-controller:
+            app:
               - path: /opt/tplink/EAPController/data/autobackup
