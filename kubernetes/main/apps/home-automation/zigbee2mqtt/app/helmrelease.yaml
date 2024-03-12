@@ -88,16 +88,16 @@ spec:
               ZIGBEE2MQTT_CONFIG_SERIAL_BAUDRATE: 115200
               ZIGBEE2MQTT_CONFIG_SERIAL_ADAPTER: "zstack"
               ZIGBEE2MQTT_CONFIG_SERIAL_DISABLE_LED: false
-            # probes:
-            #   liveness:
-            #     enabled: true
-            #   readiness:
-            #     enabled: true
-            #   startup:
-            #     enabled: true
-            #     spec:
-            #       failureThreshold: 30
-            #       periodSeconds: 5
+            probes:
+              liveness:
+                enabled: true
+              readiness:
+                enabled: true
+              startup:
+                enabled: true
+                spec:
+                  failureThreshold: 30
+                  periodSeconds: 5
             resources:
               requests:
                 cpu: 8m
