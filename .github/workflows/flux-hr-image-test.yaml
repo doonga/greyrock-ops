@@ -71,19 +71,6 @@ jobs:
         with:
           path: pull
 
-      - name: Install Flux
-        uses: fluxcd/flux2/action@main
-        with:
-          version: "latest"
-
-      - name: Install yq
-        uses: frenck/action-setup-yq@v1
-
-      - name: Install jo
-        uses: awalsh128/cache-apt-pkgs-action@v1.4.2
-        with:
-          packages: jo
-
       - name: Gather Images in Default Branch
         uses: docker://ghcr.io/allenporter/flux-local:v4.3.1
         with:
