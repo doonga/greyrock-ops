@@ -22,5 +22,6 @@ spec:
     - name: volsync
   postBuild:
     substitute:
+      APP: *appname
       VOLSYNC_CLAIM: omada-controller-config
       VOLSYNC_CAPACITY: 20Gi
