@@ -12,4 +12,4 @@ resources:
   - ./ingress-nginx/ks.yaml
   - ./multus/ks.yaml
   # Standard Resources
-  # - ./external-services
+  - ./external-services

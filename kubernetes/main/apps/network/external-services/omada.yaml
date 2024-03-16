@@ -1,0 +1,47 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: omada
+  namespace: network
+  labels:
+    app.kubernetes.io/name: omada
+    app.kubernetes.io/instance: omada
+spec:
+  type: ExternalName
+  externalName: omada.greyrock.io.
+  ports:
+    - name: http
+      port: &port 443
+      protocol: TCP
+      targetPort: *port
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: omada
+  namespace: network
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    hajimari.io/enable: "true"
+    hajimari.io/instance: "todd"
+    hajimari.io/icon: "router-wireless-settings"
+  labels:
+    app.kubernetes.io/name: omada
+    app.kubernetes.io/instance: omada
+spec:
+  ingressClassName: internal-nginx
+  rules:
+    - host: &host omada.greyrock.casa
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: omada
+                port:
+                  number: 443
+  tls:
+    - hosts:
+        - *host
