@@ -12,7 +12,7 @@ spec:
   externalName: omada.greyrock.io.
   ports:
     - name: http
-      port: &port 443
+      port: &port 8043
       protocol: TCP
       targetPort: *port
 ---
@@ -41,7 +41,7 @@ spec:
               service:
                 name: omada
                 port:
-                  number: 443
+                  number: 8043
   tls:
     - hosts:
         - *host
