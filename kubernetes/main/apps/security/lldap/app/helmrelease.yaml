@@ -54,7 +54,7 @@ spec:
               - run
             env:
               LLDAP_HTTP_PORT: &port 80
-              LLDAP_HTTP_URL: https://${HOSTNAME}
+              LLDAP_HTTP_URL: https://lldap.greyrock.casa
               LLDAP_LDAP_PORT: &ldapPort 389
               LLDAP_LDAP_BASE_DN: dc=greyrock,dc=casa
             envFrom:
