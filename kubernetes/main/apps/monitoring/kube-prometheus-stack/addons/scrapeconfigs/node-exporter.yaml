@@ -9,6 +9,10 @@ spec:
     - targets:
         - gateway.greyrock.io:9100
         - pikvm.greyrock.io:9100
+        - time1.greyrock.io
+        - time2.greyrock.io
+        - time3.greyrock.io
+        - time4.greyrock.io
   metricsPath: /metrics
   relabelings:
     - action: replace
