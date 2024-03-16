@@ -29,10 +29,10 @@ spec:
             ingress.home.arpa/nginx-external: allow
             egress.home.arpa/kubedns: allow # FIXME: Remove when clusterNetworkPolicy is in place
           securityContext:
-            runAsUser: ${APP_UID}
-            runAsGroup: ${APP_GID}
+            runAsUser: 568
+            runAsGroup: 568
             runAsNonRoot: true
-            fsGroup: ${APP_GID}
+            fsGroup: 568
             fsGroupChangePolicy: "OnRootMismatch"
 
         containers:
@@ -110,7 +110,7 @@ spec:
           hajimari.io/instance: "todd"
           hajimari.io/icon: "mdi:plex"
         hosts:
-          - host: "${HOSTNAME}"
+          - host: &hostName tandoor.greyrock.casa
             paths:
               - path: /
                 service:
@@ -118,11 +118,11 @@ spec:
                   port: http
         tls:
           - hosts:
-              - "${HOSTNAME}"
+              - *hostName
 
     persistence:
       files:
-        existingClaim: "${VOLSYNC_CLAIM}"
+        existingClaim: tandoor-data
         advancedMounts:
           tandoor:
             app:

@@ -15,6 +15,11 @@ spec:
             io.kubernetes.pod.namespace: downloads
         - matchLabels:
             app.kubernetes.io/name: plex-meta-manager
+      toPorts:
+        - ports:
+            - port: "8181"
+              protocol: TCP
+
   egress:
     # plex
     - toEndpoints:

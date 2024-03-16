@@ -28,9 +28,9 @@ spec:
             egress.home.arpa/world: allow
             egress.home.arpa/kubedns: allow # FIXME: Remove when clusterNetworkPolicy is in place
           securityContext:
-            runAsUser: ${APP_UID}
-            runAsGroup: ${APP_GID}
-            fsGroup: ${APP_GID}
+            runAsUser: 568
+            runAsGroup: 568
+            fsGroup: 568
             fsGroupChangePolicy: OnRootMismatch
 
         containers:
@@ -65,7 +65,7 @@ spec:
               ZIGBEE2MQTT_CONFIG_DEVICE_OPTIONS_RETAIN: "true"
               ZIGBEE2MQTT_CONFIG_EXPERIMENTAL_NEW_API: "true"
               ZIGBEE2MQTT_CONFIG_FRONTEND_PORT: 8080
-              ZIGBEE2MQTT_CONFIG_FRONTEND_URL: https://${HOSTNAME}
+              ZIGBEE2MQTT_CONFIG_FRONTEND_URL: https://zigbee2mqtt.greyrock.casa
               ZIGBEE2MQTT_CONFIG_HOMEASSISTANT: "true"
               ZIGBEE2MQTT_CONFIG_MQTT_BASE_TOPIC: zigbee2mqtt
               ZIGBEE2MQTT_CONFIG_MQTT_INCLUDE_DEVICE_INFORMATION: "true"
@@ -88,31 +88,31 @@ spec:
               ZIGBEE2MQTT_CONFIG_SERIAL_BAUDRATE: 115200
               ZIGBEE2MQTT_CONFIG_SERIAL_ADAPTER: "zstack"
               ZIGBEE2MQTT_CONFIG_SERIAL_DISABLE_LED: false
-            # probes:
-            #   liveness:
-            #     enabled: true
-            #   readiness:
-            #     enabled: true
-            #   startup:
-            #     enabled: true
-            #     spec:
-            #       failureThreshold: 30
-            #       periodSeconds: 5
+            probes:
+              liveness:
+                enabled: true
+              readiness:
+                enabled: true
+              startup:
+                enabled: true
+                spec:
+                  failureThreshold: 30
+                  periodSeconds: 10
             resources:
               requests:
                 cpu: 8m
-                memory: 212M
+                memory: 384Mi
               limits:
-                memory: 256M
+                memory: 384Mi
 
     service:
       app:
         controller: zigbee2mqtt
         ports:
           http:
+            primary: true
             port: 8080
           metrics:
-            enabled: true
             port: 9000
 
     ingress:
@@ -123,7 +123,7 @@ spec:
           hajimari.io/icon: "mdi:zigbee"
         className: "internal-nginx"
         hosts:
-          - host: "${HOSTNAME}"
+          - host: &hostName zigbee2mqtt.greyrock.casa
             paths:
               - path: /
                 service:
@@ -131,11 +131,11 @@ spec:
                   port: http
         tls:
           - hosts:
-              - "${HOSTNAME}"
+              - *hostName
 
     persistence:
       data:
-        existingClaim: "${VOLSYNC_CLAIM}"
+        existingClaim: zigbee2mqtt-data
         advancedMounts:
           zigbee2mqtt:
             app:

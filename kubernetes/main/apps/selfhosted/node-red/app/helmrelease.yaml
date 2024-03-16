@@ -24,9 +24,9 @@ spec:
 
         pod:
           securityContext:
-            runAsUser: ${APP_UID}
-            runAsGroup: ${APP_GID}
-            fsGroup: ${APP_GID}
+            runAsUser: 1000
+            runAsGroup: 1000
+            fsGroup: 1000
             fsGroupChangePolicy: "OnRootMismatch"
 
         containers:
@@ -60,7 +60,7 @@ spec:
           hajimari.io/instance: "todd"
           hajimari.io/icon: "mdi:nodejs"
         hosts:
-          - host: "${HOSTNAME}"
+          - host: &hostName nodered.greyrock.casa
             paths:
               - path: /
                 service:
@@ -68,12 +68,11 @@ spec:
                   port: http
         tls:
           - hosts:
-              - "${HOSTNAME}"
+              - *hostName
 
     persistence:
       data:
-        enabled: true
-        existingClaim: "${VOLSYNC_CLAIM}"
+        existingClaim: node-red-data
         advancedMounts:
           node-red:
             app:

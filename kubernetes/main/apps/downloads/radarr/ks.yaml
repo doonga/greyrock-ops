@@ -24,8 +24,5 @@ spec:
   postBuild:
     substitute:
       APP: *appname
-      HOSTNAME: radarr.greyrock.casa
-      APP_UID: "568"
-      APP_GID: "568"
       VOLSYNC_CLAIM: radarr-config
       VOLSYNC_CAPACITY: 5Gi

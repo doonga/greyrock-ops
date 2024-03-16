@@ -69,7 +69,7 @@ spec:
           hajimari.io/instance: "todd"
           hajimari.io/icon: "mdi:home-assistant"
         hosts:
-          - host: "${HOSTNAME}"
+          - host: &hostName esphome.greyrock.casa
             paths:
               - path: /
                 service:
@@ -77,12 +77,11 @@ spec:
                   port: http
         tls:
           - hosts:
-              - "${HOSTNAME}"
+              - *hostName
 
     persistence:
       config:
-        enabled: true
-        existingClaim: "${VOLSYNC_CLAIM}"
+        existingClaim: esphome-config
         advancedMounts:
           esphome:
             app:

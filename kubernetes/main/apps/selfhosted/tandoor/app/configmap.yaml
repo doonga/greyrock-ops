@@ -15,6 +15,7 @@ data:
       fastcgi_temp_path     /tmp/fastcgi_temp;
       uwsgi_temp_path       /tmp/uwsgi_temp;
       scgi_temp_path        /tmp/scgi_temp;
+
       include mime.types;
       server {
         listen 8080;

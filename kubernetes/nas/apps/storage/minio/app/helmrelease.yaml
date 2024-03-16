@@ -64,7 +64,6 @@ spec:
 
     ingress:
       app:
-        enabled: true
         className: "internal-nginx"
         hosts:
           - host: &host "minio.greyrock.casa"

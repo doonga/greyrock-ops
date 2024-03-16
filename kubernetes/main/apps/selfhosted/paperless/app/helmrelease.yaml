@@ -112,7 +112,7 @@ spec:
           hajimari.io/instance: "todd"
           hajimari.io/icon: "mdi:plex"
         hosts:
-          - host: "${HOSTNAME}"
+          - host: &hostName paperless.greyrock.casa
             paths:
               - path: /
                 service:
@@ -120,11 +120,11 @@ spec:
                   port: http
         tls:
           - hosts:
-              - "${HOSTNAME}"
+              - *hostName
 
     persistence:
       data:
-        existingClaim: "${VOLSYNC_CLAIM}"
+        existingClaim: paperless-data
         advancedMounts:
           paperless:
             app:

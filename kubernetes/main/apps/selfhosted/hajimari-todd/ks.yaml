@@ -2,7 +2,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: &appname hajimari-todd
+  name: hajimari-todd
   namespace: flux-system
 spec:
   targetNamespace: selfhosted
@@ -18,7 +18,3 @@ spec:
   wait: false # no flux ks dependents
   dependsOn:
     - name: nginx-internal
-  postBuild:
-    substitute:
-      APP: *appname
-      HOSTNAME: home-todd.greyrock.casa

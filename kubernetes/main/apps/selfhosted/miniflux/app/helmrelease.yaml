@@ -92,7 +92,7 @@ spec:
           hajimari.io/instance: "todd"
           hajimari.io/icon: "mdi:rss"
         hosts:
-          - host: "${HOSTNAME}"
+          - host: &hostName miniflux.greyrock.casa
             paths:
               - path: /
                 service:
@@ -100,4 +100,4 @@ spec:
                   port: http
         tls:
           - hosts:
-              - "${HOSTNAME}"
+              - *hostName

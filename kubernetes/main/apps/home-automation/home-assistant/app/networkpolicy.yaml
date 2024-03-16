@@ -16,15 +16,6 @@ spec:
         - matchLabels:
             app.kubernetes.io/name: zwave-js-ui
   egress:
-    # database
-    - toEndpoints:
-        - matchLabels:
-            app.kubernetes.io/name: pgo-${APP}
-      toPorts:
-        - ports:
-            - port: "5432"
-              protocol: TCP
-
     # mosquitto
     - toEndpoints:
         - matchLabels:

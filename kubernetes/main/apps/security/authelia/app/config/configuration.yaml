@@ -32,7 +32,7 @@ session:
   cookies:
     - name: greyrock_casa_session
       domain: greyrock.casa
-      authelia_url: https://${HOSTNAME}
+      authelia_url: https://auth.greyrock.casa
       default_redirection_url: https://greyrock.casa
   redis:
     host: authelia-redis.security.svc.cluster.local

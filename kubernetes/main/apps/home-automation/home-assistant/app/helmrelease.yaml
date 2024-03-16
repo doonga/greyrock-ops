@@ -53,9 +53,9 @@ spec:
             resources:
               requests:
                 cpu: 47m
-                memory: 1254M
+                memory: 2Gi
               limits:
-                memory: 1254M
+                memory: 2Gi
 
     service:
       app:
@@ -66,6 +66,7 @@ spec:
 
     ingress:
       app:
+        enabled: true
         className: "external-nginx"
         annotations:
           external-dns.alpha.kubernetes.io/target: ingress-ext.greyrock.casa
@@ -73,7 +74,7 @@ spec:
           hajimari.io/instance: "todd"
           hajimari.io/icon: "mdi:home-assistant"
         hosts:
-          - host: "${HOSTNAME}"
+          - host: &hostName hass.greyrock.casa
             paths:
               - path: /
                 service:
@@ -81,12 +82,11 @@ spec:
                   port: http
         tls:
           - hosts:
-              - "${HOSTNAME}"
+              - *hostName
 
     persistence:
       config:
-        enabled: true
-        existingClaim: "${VOLSYNC_CLAIM}"
+        existingClaim: home-assistant-config
         advancedMounts:
           home-assistant:
             app:

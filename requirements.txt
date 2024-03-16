@@ -1,3 +1,0 @@
-ansible-core==2.16.4
-ansible-lint==24.2.1
-ansible-pylibssh==1.1.0

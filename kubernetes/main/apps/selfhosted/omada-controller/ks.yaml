@@ -3,7 +3,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: &appname omada-controller
+  name: omada-controller
   namespace: flux-system
 spec:
   targetNamespace: selfhosted
@@ -22,9 +22,5 @@ spec:
     - name: volsync
   postBuild:
     substitute:
-      APP: *appname
-      HOSTNAME: omada.greyrock.casa
-      APP_UID: "568"
-      APP_GID: "568"
       VOLSYNC_CLAIM: omada-controller-config
       VOLSYNC_CAPACITY: 20Gi

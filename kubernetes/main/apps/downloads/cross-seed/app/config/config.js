@@ -9,6 +9,7 @@ module.exports = {
     "http://prowlarr.downloads.svc.cluster.local:9696/18/api?apikey={{ .prowlarr_api_key }}",
     "http://prowlarr.downloads.svc.cluster.local:9696/16/api?apikey={{ .prowlarr_api_key }}",
   ],
+  port: process.env.CROSSSEED_PORT || 2468,
   apiAuth: false,
   action: "inject",
   includeEpisodes: false,

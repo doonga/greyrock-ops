@@ -84,7 +84,7 @@ spec:
           hajimari.io/icon: "mdi:cctv"
         className: "internal-nginx"
         hosts:
-          - host: "${HOSTNAME}"
+          - host: &hostName scrypted.greyrock.casa
             paths:
               - path: /
                 service:
@@ -92,12 +92,11 @@ spec:
                   port: http
         tls:
           - hosts:
-              - "${HOSTNAME}"
+              - *hostName
 
     persistence:
       config:
-        enabled: true
-        existingClaim: "${VOLSYNC_CLAIM}"
+        existingClaim: scrypted-config
         advancedMounts:
           scrypted:
             app:

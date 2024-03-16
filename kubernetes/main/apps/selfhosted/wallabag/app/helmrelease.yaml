@@ -37,7 +37,7 @@ spec:
               repository: wallabag/wallabag
               tag: 2.6.8
             env:
-              SYMFONY__ENV__DOMAIN_NAME: https://${HOSTNAME}
+              SYMFONY__ENV__DOMAIN_NAME: https://wallabag.greyrock.casa
               SYMFONY__ENV__SERVER_NAME: Wallabag
               SYMFONY__ENV__FOSUSER_REGISTRATION: "false"
               SYMFONY__ENV__FOSUSER_CONFIRMATION: "false"
@@ -78,7 +78,7 @@ spec:
           hajimari.io/instance: "todd"
           hajimari.io/icon: "mdi:plex"
         hosts:
-          - host: "${HOSTNAME}"
+          - host: &hostName wallabag.greyrock.casa
             paths:
               - path: /
                 service:
@@ -86,4 +86,4 @@ spec:
                   port: http
         tls:
           - hosts:
-              - "${HOSTNAME}"
+              - *hostName

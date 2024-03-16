@@ -19,7 +19,6 @@ spec:
   values:
     defaultPodOptions:
       automountServiceAccountToken: false
-      enableServiceLinks: false
 
     controllers:
       zipline:
@@ -117,7 +116,7 @@ spec:
           hajimari.io/instance: "todd"
           hajimari.io/icon: "mdi:plex"
         hosts:
-          - host: "${HOSTNAME}"
+          - host: &hostName s.greyrock.casa
             paths:
               - path: /
                 service:
@@ -125,4 +124,4 @@ spec:
                   port: http
         tls:
           - hosts:
-              - "${HOSTNAME}"
+              - s.bjw-s.dev
