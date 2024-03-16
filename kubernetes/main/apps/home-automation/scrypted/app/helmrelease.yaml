@@ -72,6 +72,7 @@ spec:
         controller: scrypted
         ports:
           http:
+            primary: true
             port: 11080
           rebroadcast:
             port: 34135
