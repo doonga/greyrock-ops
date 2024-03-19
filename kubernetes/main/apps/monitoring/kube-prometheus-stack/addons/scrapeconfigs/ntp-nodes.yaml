@@ -3,12 +3,14 @@
 apiVersion: monitoring.coreos.com/v1alpha1
 kind: ScrapeConfig
 metadata:
-  name: &name node-exporter
+  name: &name ntp-nodes
 spec:
   staticConfigs:
     - targets:
-        - gateway.greyrock.io:9100
-        - pikvm.greyrock.io:9100
+        - time1.greyrock.io:80
+        - time2.greyrock.io:80
+        - time3.greyrock.io:80
+        - time4.greyrock.io:80
   metricsPath: /metrics
   relabelings:
     - action: replace
