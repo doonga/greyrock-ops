@@ -2,46 +2,43 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: omada
+  name: unifi
   namespace: network
   labels:
-    app.kubernetes.io/name: omada
-    app.kubernetes.io/instance: omada
+    app.kubernetes.io/name: unifi
+    app.kubernetes.io/instance: unifi
 spec:
   type: ExternalName
-  externalName: omada.greyrock.io.
+  externalName: unifi.
   ports:
     - name: http
-      port: &port 8043
+      port: &port 8443
       protocol: TCP
       targetPort: *port
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: omada
+  name: unifi
   namespace: network
   annotations:
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-    hajimari.io/enable: "true"
-    hajimari.io/instance: "todd"
-    hajimari.io/icon: "router-wireless-settings"
   labels:
-    app.kubernetes.io/name: omada
-    app.kubernetes.io/instance: omada
+    app.kubernetes.io/name: unifi
+    app.kubernetes.io/instance: unifi
 spec:
   ingressClassName: internal-nginx
   rules:
-    - host: &host omada.greyrock.casa
+    - host: &host unifi.greyrock.casa
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: omada
+                name: unifi
                 port:
-                  number: 8043
+                  number: 8443
   tls:
     - hosts:
         - *host
