@@ -11,6 +11,7 @@ on:
       - .github/workflows/flux-ks-sync.yaml
       - kubernetes/main/**
       - kubernetes/nas/**
+      - kubernetes/utility/**
 
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
