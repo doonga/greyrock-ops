@@ -3,3 +3,5 @@ providerRegex: |
   ^(utility).*
 
 bypassDnsResolution: true
+
+replicas: 1
