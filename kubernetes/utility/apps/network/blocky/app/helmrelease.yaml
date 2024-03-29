@@ -48,16 +48,9 @@ spec:
     service:
       app:
         controller: blocky
-        nameOverride: blocky
-        ports:
-          http:
-            port: 4000
-      dns:
-        controller: blocky
         type: LoadBalancer
         annotations:
           io.cilium/lb-ipam-ips: 10.46.0.7
-          external-dns.alpha.kubernetes.io/hostname: dns.greyrock.casa
         externalTrafficPolicy: Cluster
         ports:
           dns-tcp:
