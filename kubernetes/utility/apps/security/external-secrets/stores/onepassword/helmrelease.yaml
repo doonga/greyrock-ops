@@ -1,9 +1,8 @@
 ---
-# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2beta2.schema.json
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
-  name: onepassword-connect
+  name: &app onepassword-connect
 spec:
   interval: 30m
   chart:
@@ -62,19 +61,21 @@ spec:
                     path: /health
                     port: *apiPort
                   initialDelaySeconds: 15
-            securityContext: &securityContext
-              allowPrivilegeEscalation: false
-              readOnlyRootFilesystem: true
-              capabilities: { drop: ["ALL"] }
             resources: &resources
               requests:
                 cpu: 10m
               limits:
                 memory: 256M
+            securityContext: &securityContext
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities:
+                drop:
+                  - ALL
           sync:
             image:
               repository: docker.io/1password/connect-sync
-              tag: 1.7.2@sha256:ff5bf86187ac4da88224e63a5896b393b5a53f81434e8dbc5314e406a0f1db89
+              tag: 1.7.2
             env:
               XDG_DATA_HOME: *configDir
               OP_HTTP_PORT: &syncPort 8081
@@ -104,8 +105,8 @@ spec:
                     path: /health
                     port: *syncPort
                   initialDelaySeconds: 15
-            securityContext: *securityContext
             resources: *resources
+            securityContext: *securityContext
         pod:
           securityContext:
             runAsUser: 999
@@ -113,12 +114,6 @@ spec:
             runAsNonRoot: true
             fsGroup: 999
             fsGroupChangePolicy: OnRootMismatch
-    service:
-      app:
-        controller: onepassword-connect
-        ports:
-          http:
-            port: *apiPort
     ingress:
       app:
         className: internal-nginx
@@ -127,12 +122,19 @@ spec:
             paths:
               - path: /
                 service:
-                  identifier: api
+                  identifier: app
                   port: http
         tls:
-          - hosts: [*host]
+          - hosts:
+              - *host
     persistence:
       config:
         type: emptyDir
         globalMounts:
           - path: *configDir
+    service:
+      app:
+        controller: *app
+        ports:
+          http:
+            port: *apiPort
