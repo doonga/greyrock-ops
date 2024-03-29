@@ -33,7 +33,6 @@ spec:
               - "-4"
               - "-f"
               - "-c /etc/bind/named.conf"
-              - "-u bind"
             probes:
               liveness:
                 enabled: false
