@@ -37,12 +37,12 @@ spec:
                 spec:
                   failureThreshold: 30
                   periodSeconds: 5
-            # resources:
-            #   requests:
-            #     cpu: 5m
-            #     memory: 30M
-            #   limits:
-            #     memory: 30M
+            resources:
+              requests:
+                cpu: 5m
+                memory: 256M
+              limits:
+                memory: 256M
 
     service:
       app:
