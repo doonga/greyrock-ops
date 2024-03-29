@@ -1,0 +1,139 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/budimanjojo/talhelper/master/pkg/config/schemas/talconfig.json
+clusterName: ${clusterName}
+endpoint: "https://${clusterEndpointIP}:6443"
+
+# renovate: depName=ghcr.io/siderolabs/installer datasource=docker extractVersion=^(?<version>.*)$
+talosVersion: v1.6.7
+# renovate: depName=kubernetes/kubernetes datasource=github-releases extractVersion=^v(?<version>.*)$
+kubernetesVersion: 1.29.3
+
+cniConfig:
+  name: none
+
+additionalApiServerCertSans: &san
+  - ${clusterName}.${clusterDNSSuffix}
+  - "127.0.0.1" # KubePrism
+additionalMachineCertSans: *san
+
+nodes:
+  - hostname: utility.greyrock.io
+    ipAddress: 10.1.1.7
+    controlPlane: true
+    installDiskSelector:
+      size: "<= 512GB"
+      model: "WDC WDS500G2B0C-00PXH0"
+    networkInterfaces:
+      - interface: bond0
+        bond:
+          mode: active-backup
+          deviceSelectors:
+            - hardwareAddr: 00:30:93:12:38:d3
+              driver: atlantic
+        dhcp: true
+
+controlPlane:
+  schematic:
+    customization:
+      systemExtensions:
+        officialExtensions:
+          - siderolabs/intel-ucode
+
+  patches:
+    # Disable search domain everywhere
+    - |-
+      machine:
+        network:
+          disableSearchDomain: true
+
+    # Force nameserver
+    - |-
+      machine:
+        network:
+          nameservers:
+            - 10.5.0.4
+
+    # Configure NTP
+    - |-
+      machine:
+        time:
+          disabled: false
+          servers:
+            - 10.1.1.1
+
+    # Enable KubePrism
+    - |-
+      machine:
+        features:
+          kubePrism:
+            enabled: true
+            port: 7445
+
+    # Cluster configuration
+    - |-
+      cluster:
+        allowSchedulingOnMasters: true
+        proxy:
+          disabled: true
+
+    # ETCD configuration
+    - |-
+      cluster:
+        etcd:
+          advertisedSubnets:
+            - 10.1.1.0/24
+
+    # Configure containerd
+    - |-
+      machine:
+        files:
+          - op: create
+            path: /etc/cri/conf.d/20-customization.part
+            content: |
+              [plugins]
+                [plugins."io.containerd.grpc.v1.cri"]
+                  enable_unprivileged_ports = true
+                  enable_unprivileged_icmp = true
+
+    # Configure nfs mount options
+    - |-
+      machine:
+        files:
+          - op: overwrite
+            path: /etc/nfsmount.conf
+            permissions: 0o644
+            content: |
+              [ NFSMount_Global_Options ]
+              nfsvers=4.2
+              hard=True
+              noatime=True
+              nodiratime=True
+              rsize=131072
+              wsize=131072
+              nconnect=8
+
+    # Disable default API server admission plugins.
+    - |-
+      - op: remove
+        path: /cluster/apiServer/admissionControl
+
+    # Kubelet configuration
+    - |-
+      machine:
+        kubelet:
+          extraArgs:
+            feature-gates: GracefulNodeShutdown=true,NewVolumeManagerReconstruction=false
+            rotate-server-certificates: "true"
+          extraConfig:
+            maxPods: 150
+          nodeIP:
+            validSubnets:
+                - 10.1.1.0/24
+
+    # Custom sysctls
+    - |-
+      machine:
+        sysctls:
+          fs.inotify.max_queued_events: "65536"
+          fs.inotify.max_user_instances: "8192"
+          fs.inotify.max_user_watches: "524288"
