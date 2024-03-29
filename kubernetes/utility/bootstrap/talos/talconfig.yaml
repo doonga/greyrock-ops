@@ -23,6 +23,10 @@ nodes:
     installDiskSelector:
       size: "<= 512GB"
       model: "WDC WDS500G2B0C-00PXH0"
+    machineDisks:
+      - device: /dev/disk/by-id/ata-SSD_512GB_2023033006765
+        partitions:
+          - mountpoint: /var/mnt/sata
     networkInterfaces:
       - interface: bond0
         bond:
