@@ -52,3 +52,11 @@ spec:
         ports:
           dns:
             port: 53
+
+      config-file:
+        type: configMap
+        name: dnsdist-configmap
+        globalMounts:
+          - path: /etc/dnsdist/dnsdist.conf
+            subPath: dnsdist.conf
+            readOnly: true
