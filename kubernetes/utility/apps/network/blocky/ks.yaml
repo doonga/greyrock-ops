@@ -10,7 +10,7 @@ spec:
   dependsOn:
     - name: external-secrets-stores
   interval: 10m
-  path: ./kubernetes/utility/apps/networking/blocky/app
+  path: ./kubernetes/utility/apps/network/blocky/app
   prune: true
   sourceRef:
     kind: GitRepository
