@@ -28,8 +28,8 @@ nodes:
         bond:
           mode: active-backup
           deviceSelectors:
-            - hardwareAddr: 00:30:93:12:38:d3
-              driver: atlantic
+            - hardwareAddr: 48:21:0b:3e:d8:14
+              driver: igc
         dhcp: true
 
 controlPlane:
