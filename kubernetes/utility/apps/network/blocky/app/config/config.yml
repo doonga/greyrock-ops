@@ -1,0 +1,71 @@
+ports:
+  dns: 53
+  http: 4000
+
+bootstrapDns:
+  - upstream: https://cloudflare-dns.com/dns-query
+    ips:
+      - 1.1.1.1
+      - 1.0.0.1
+
+upstreams:
+  groups:
+    # these external DNS resolvers will be used. Blocky picks 2 random resolvers from the list for each query
+    default:
+      # Cloudflare
+      - https://cloudflare-dns.com/dns-query
+
+# configuration of client name resolution
+clientLookup:
+  upstream: 10.5.0.3
+
+ecs:
+  useAsClient: true
+  forward: true
+
+ede:
+  enable: true
+
+prometheus:
+  enable: true
+  path: /metrics
+
+caching:
+  minTime: 30m
+  maxTime: 2h
+  prefetching: true
+  prefetchThreshold: 2
+
+blocking:
+  blockType: nxDomain
+
+  loading:
+    downloads:
+      timeout: 4m
+
+  blackLists:
+    ads:
+      - https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+    fakenews:
+      - https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-only/hosts
+    gambling:
+      - https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling-only/hosts
+    doh:
+      - https://raw.githubusercontent.com/dibdot/DoH-IP-blocklists/master/doh-domains.txt
+    icloud-private-relay:
+      - |
+        mask.icloud.com
+        mask-h2.icloud.com
+
+  whiteLists:
+    doh:
+      - |
+        doh.dns.apple.com
+
+  clientGroupsBlock:
+    default:
+      - ads
+      - doh
+      - fakenews
+      - gambling
+      - icloud-private-relay
