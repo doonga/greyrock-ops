@@ -50,8 +50,12 @@ spec:
         annotations:
           io.cilium/lb-ipam-ips: "10.46.0.4"
         ports:
-          dns:
+          dns-tcp:
             port: 53
+            protocol: TCP
+          dns-udp:
+            port: 53
+            protocol: UDP
 
     persistence:
       config-file:
