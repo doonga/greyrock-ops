@@ -84,7 +84,7 @@ spec:
           - path: /etc/bind/zones/db.unifi
             subPath: db.unifi
             readOnly: true
-      config-file:
+      other-conf-file:
         type: secret
         name: bind-secret
         defaultMode: 400
