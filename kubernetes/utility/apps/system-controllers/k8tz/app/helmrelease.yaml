@@ -18,7 +18,7 @@ spec:
   values:
     namespace: system-controllers
 
-    replicaCount: 3
+    replicaCount: 1
 
     timezone: America/New_York
     cronJobTimeZone: true
