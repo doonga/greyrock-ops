@@ -60,6 +60,8 @@ spec:
 
     persistence:
       matchbox-data:
-        type: emptyDir
+        storageClass: openebs-hostpath
+        size: 5Gi
+        accessMode: ReadWriteOnce
         globalMounts:
           - path: /var/lib/matchbox
