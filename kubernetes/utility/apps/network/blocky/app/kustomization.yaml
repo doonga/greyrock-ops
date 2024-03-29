@@ -5,7 +5,7 @@ kind: Kustomization
 resources:
   - ./helmrelease.yaml
 configMapGenerator:
-  - name: blocky-config
+  - name: blocky-configmap
     files:
       - ./config/config.yml
 generatorOptions:
