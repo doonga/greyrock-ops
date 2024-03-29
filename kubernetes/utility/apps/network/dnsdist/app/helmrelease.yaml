@@ -53,6 +53,7 @@ spec:
           dns:
             port: 53
 
+    persistence:
       config-file:
         type: configMap
         name: dnsdist-configmap
