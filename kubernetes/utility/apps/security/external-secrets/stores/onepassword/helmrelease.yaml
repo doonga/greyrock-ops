@@ -129,7 +129,8 @@ spec:
                   identifier: api
                   port: http
         tls:
-          - hosts: *host
+          - hosts:
+              - *host
 
     persistence:
       config:
