@@ -28,6 +28,7 @@ jobs:
         cluster:
           - main
           - nas
+          - utility
     steps:
       - name: Install Flux
         uses: fluxcd/flux2/action@main
