@@ -49,7 +49,7 @@ spec:
         controller: dnsdist
         type: LoadBalancer
         annotations:
-          io.cilium/lb-ipam-ips: "10.45.0.4"
+          io.cilium/lb-ipam-ips: "10.46.0.4"
         externalTrafficPolicy: Cluster
         ports:
           dns-tcp:
