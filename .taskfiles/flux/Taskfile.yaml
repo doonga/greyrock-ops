@@ -4,7 +4,7 @@ version: "3"
 
 vars:
   # renovate: depName=prometheus-operator/prometheus-operator datasource=github-releases
-  PROMETHEUS_OPERATOR_VERSION: release-0.72
+  PROMETHEUS_OPERATOR_VERSION: 0.72.0
 
 tasks:
   bootstrap:
@@ -50,7 +50,6 @@ tasks:
         path: Path to the Flux Kustomization resource (required)
         name: Name of the Flux Kustomization to apply (default: last segment of <path> variable)
         ns: Namespace the Flux Kustomization exists in (default: flux-system)
-        new: Whether Flux Kustomization already exists in the cluster (default: false)
     cmds:
       - flux --context {{.cluster}} build ks {{.ks_name}}
         --namespace {{.ns}}
@@ -65,6 +64,7 @@ tasks:
       kustomization_file: "{{.kustomization_path}}/ks.yaml"
       cluster: '{{ or .cluster (fail "Argument (cluster) is required") }}'
       path: '{{ or .path (fail "Argument (path) is required") }}'
+      ks_name: '{{ .name | default (splitList "/" .path | last) }}'
       ns: '{{.ns | default "flux-system"}}'
       kustomization_found:
         sh: flux --context {{.cluster}} --namespace {{.ns}} get kustomization {{.ks_name}} 2>&1
