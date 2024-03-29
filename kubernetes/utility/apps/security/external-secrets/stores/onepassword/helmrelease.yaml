@@ -1,40 +1,35 @@
 ---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2beta2.schema.json
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
-  name: &app onepassword-connect
+  name: onepassword-connect
 spec:
   interval: 30m
   chart:
     spec:
       chart: app-template
       version: 3.0.4
+      interval: 30m
       sourceRef:
         kind: HelmRepository
         name: bjw-s
         namespace: flux-system
-  install:
-    remediation:
-      retries: 3
-  upgrade:
-    cleanupOnFail: true
-    remediation:
-      strategy: rollback
-      retries: 3
+
   values:
     controllers:
       onepassword-connect:
-        strategy: RollingUpdate
         annotations:
           reloader.stakater.com/auto: "true"
+
         containers:
           api:
             image:
               repository: docker.io/1password/connect-api
               tag: 1.7.2
             env:
-              XDG_DATA_HOME: &configDir /config
-              OP_HTTP_PORT: &apiPort 80
+              XDG_DATA_HOME: /config
+              OP_HTTP_PORT: 80
               OP_BUS_PORT: 11220
               OP_BUS_PEERS: localhost:11221
               OP_SESSION:
@@ -49,7 +44,7 @@ spec:
                 spec:
                   httpGet:
                     path: /heartbeat
-                    port: *apiPort
+                    port: 80
                   initialDelaySeconds: 15
                   periodSeconds: 30
                   failureThreshold: 3
@@ -59,26 +54,22 @@ spec:
                 spec:
                   httpGet:
                     path: /health
-                    port: *apiPort
+                    port: 80
                   initialDelaySeconds: 15
-            resources: &resources
+            resources:
               requests:
                 cpu: 10m
+                memory: 256M
               limits:
                 memory: 256M
-            securityContext: &securityContext
-              allowPrivilegeEscalation: false
-              readOnlyRootFilesystem: true
-              capabilities:
-                drop:
-                  - ALL
+
           sync:
             image:
               repository: docker.io/1password/connect-sync
               tag: 1.7.2
             env:
-              XDG_DATA_HOME: *configDir
-              OP_HTTP_PORT: &syncPort 8081
+              XDG_DATA_HOME: /config
+              OP_HTTP_PORT: 8081
               OP_BUS_PORT: 11221
               OP_BUS_PEERS: localhost:11220
               OP_SESSION:
@@ -93,7 +84,7 @@ spec:
                 spec:
                   httpGet:
                     path: /heartbeat
-                    port: *syncPort
+                    port: 8081
                   initialDelaySeconds: 15
                   periodSeconds: 30
                   failureThreshold: 3
@@ -103,10 +94,15 @@ spec:
                 spec:
                   httpGet:
                     path: /health
-                    port: *syncPort
+                    port: 8081
                   initialDelaySeconds: 15
-            resources: *resources
-            securityContext: *securityContext
+            resources:
+              requests:
+                cpu: 10m
+                memory: 256M
+              limits:
+                memory: 256M
+
         pod:
           securityContext:
             runAsUser: 999
@@ -114,6 +110,7 @@ spec:
             runAsNonRoot: true
             fsGroup: 999
             fsGroupChangePolicy: OnRootMismatch
+
     ingress:
       app:
         className: internal-nginx
@@ -127,14 +124,16 @@ spec:
         tls:
           - hosts:
               - *host
+
     persistence:
       config:
         type: emptyDir
         globalMounts:
-          - path: *configDir
+          - path: /config
+
     service:
       app:
-        controller: *app
+        controller: onepassword-connect
         ports:
           http:
-            port: *apiPort
+            port: 80
