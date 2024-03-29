@@ -1,0 +1,127 @@
+; Make sure to update the epoch time in the SOA records so coreDNS picks up the changes automatically
+; https://www.epochconverter.com/
+
+; SOA Records
+$TTL 3600
+$ORIGIN 1.10.in-addr.arpa.
+@ 3600 IN SOA gateway.greyrock.io. gateway.greyrock.io. (
+  1682790096         ; serial number (epoch timestamp)
+  7200               ; refresh period
+  3600               ; retry period
+  1209600            ; expire time
+  3600               ; minimum ttl
+)
+
+; NS Records
+@                          IN  NS gateway.greyrock.io.
+
+; LAN
+$ORIGIN 0.1.10.in-addr.arpa.
+1                          IN  PTR  gateway.greyrock.io.
+11                         IN  PTR  office-usw-pro-aggregation.greyrock.io.
+12                         IN  PTR  office-usw-pro-max-24-poe.greyrock.io.
+13                         IN  PTR  game-room-usw-pro-max-24-poe.greyrock.io.
+14                         IN  PTR  garage-usw-pro-max-24-poe.greyrock.io.
+15                         IN  PTR  office-usw-flex-mini.greyrock.io.
+16                         IN  PTR  game-room-usw-flex-mini.greyrock.io.
+17                         IN  PTR  living-room-usw-flex-mini.greyrock.io.
+21                         IN  PTR  kitchen-u7-pro.greyrock.io.
+22                         IN  PTR  game-room-u7-pro.greyrock.io.
+23                         IN  PTR  upstairs-u7-pro.greyrock.io.
+24                         IN  PTR  outdoor-back-u6-mesh.greyrock.io.
+25                         IN  PTR  outdoor-side-driveway-u6-mesh.greyrock.io.
+26                         IN  PTR  outdoor-side-yard-u6-mesh.greyrock.io.
+31                         IN  PTR  office-usp-pdu-pro.greyrock.io.
+
+; SERVERS
+$ORIGIN 1.1.10.in-addr.arpa.
+3                          IN  PTR  nas.greyrock.casa.
+4                          IN  PTR  k8s1.greyrock.io.
+5                          IN  PTR  k8s2.greyrock.io.
+6                          IN  PTR  k8s3.greyrock.io.
+52                         IN  PTR  pikvm.greyrock.io.
+
+; NTP
+$ORIGIN 7.1.10.in-addr.arpa.
+2                          IN  PTR  time1.greyrock.io.
+3                          IN  PTR  time2.greyrock.io.
+4                          IN  PTR  time3.greyrock.io.
+5                          IN  PTR  time4.greyrock.io.
+
+; IOT
+$ORIGIN 3.1.10.in-addr.arpa.
+7                          IN  PTR  k8s1-iot.greyrock.io.
+8                          IN  PTR  k8s2-iot.greyrock.io.
+9                          IN  PTR  k8s3-iot.greyrock.io.
+10                         IN  PTR  game-room-ps5.greyrock.io.
+11                         IN  PTR  game-room-ps4.greyrock.io.
+12                         IN  PTR  nintendo-switch-todd.greyrock.io.
+13                         IN  PTR  brother-printer.greyrock.io.
+20                         IN  PTR  hvac-office.greyrock.io.
+21                         IN  PTR  hvac-master-bedroom.greyrock.io.
+22                         IN  PTR  hvac-kitchen.greyrock.io.
+23                         IN  PTR  hvac-dining-room.greyrock.io.
+24                         IN  PTR  hvac-game-room.greyrock.io.
+25                         IN  PTR  hydrawise-sprinkler-controller.greyrock.io.
+26                         IN  PTR  game-room-samsung-tv-right.greyrock.io.
+27                         IN  PTR  withings-scale.greyrock.io.
+28                         IN  PTR  tesla-model-3-todd.greyrock.io.
+29                         IN  PTR  game-room-samsung-tv-left.greyrock.io.
+30                         IN  PTR  office-samsung-tv.greyrock.io.
+31                         IN  PTR  upstairs-litter-robot.greyrock.io.
+32                         IN  PTR  formalsittingroom-lg-tv.greyrock.io.
+33                         IN  PTR  downstairs-litter-robot.greyrock.io.
+34                         IN  PTR  garage-door-todd.greyrock.io.
+35                         IN  PTR  garage-door-andy.greyrock.io.
+36                         IN  PTR  slzb-06.greyrock.io.
+37                         IN  PTR  office-hs110-rack.greyrock.io.
+38                         IN  PTR  ambient-ws5000.greyrock.io.
+39                         IN  PTR  garage-iotawatt.greyrock.io.
+40                         IN  PTR  basement-iotawatt.greyrock.io.
+41                         IN  PTR  teslawallconnector-todd.greyrock.io.
+42                         IN  PTR  canon-printer.greyrock.io.
+43                         IN  PTR  garage-door-andy-ratgdo.greyrock.io.
+44                         IN  PTR  garage-door-todd-ratgdo.greyrock.io.
+45                         IN  PTR  basement-hs110-sump-pump.greyrock.io.
+46                         IN  PTR  motion-sensor-office-screek-1u.greyrock.io.
+47                         IN  PTR  bambu-a1-3d-printer.greyrock.io.
+48                         IN  PTR  motion-sensor-fsr-screek-1u.greyrock.io.
+49                         IN  PTR  bluetooth-proxy-office-olimex.greyrock.io.
+50                         IN  PTR  light-office-ceiling-1.greyrock.io.
+51                         IN  PTR  light-office-ceiling-2.greyrock.io.
+52                         IN  PTR  light-office-ceiling-3.greyrock.io.
+53                         IN  PTR  light-office-ceiling-4.greyrock.io.
+54                         IN  PTR  light-office-lamp.greyrock.io.
+55                         IN  PTR  plug-master-bedroom-fan.greyrock.io.
+199                        IN  PTR  solaredge-inverter.greyrock.io.
+
+; Trusted
+$ORIGIN 2.1.10.in-addr.arpa.
+10                         IN  PTR  todds-desktop.greyrock.io.
+11                         IN  PTR  andys-desktop.greyrock.io.
+12                         IN  PTR  fsr-appletv.greyrock.io.
+13                         IN  PTR  game-room-appletv.greyrock.io.
+14                         IN  PTR  office-appletv.greyrock.io.
+
+; Wireless
+$ORIGIN 5.1.10.in-addr.arpa.
+10                         IN  PTR  todds-macbook.greyrock.io.
+11                         IN  PTR  todds-iphone.greyrock.io.
+12                         IN  PTR  todds-ipad.greyrock.io.
+13                         IN  PTR  todds-watch.greyrock.io.
+14                         IN  PTR  andys-iphone.greyrock.io.
+15                         IN  PTR  formalsittingroom-homepod-left.greyrock.io.
+16                         IN  PTR  downstairs-bathroom-homepod.greyrock.io.
+17                         IN  PTR  garage-homepod.greyrock.io.
+18                         IN  PTR  kitchen-homepod.greyrock.io.
+19                         IN  PTR  masterbedroom-homepod.greyrock.io.
+20                         IN  PTR  office-homepod-right.greyrock.io.
+21                         IN  PTR  andys-ipad.greyrock.io.
+22                         IN  PTR  formalsittingroom-homepod-right.greyrock.io.
+23                         IN  PTR  office-homepod-left.greyrock.io.
+24                         IN  PTR  game-room-homepod-left.greyrock.io.
+25                         IN  PTR  game-room-homepod-right.greyrock.io.
+
+; Video
+$ORIGIN 4.1.10.in-addr.arpa.
+12                         IN  PTR  courtard-porch-doorbell.greyrock.io.

@@ -1,0 +1,18 @@
+---
+# yaml-language-server: $schema=https://json.schemastore.org/kustomization
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ./helmrelease.yaml
+configMapGenerator:
+  - name: bind-configmap
+    files:
+      - ./config/named.conf
+      - ./config/zones/db.1.10.in-addr.arpa
+      - ./config/zones/db.greyrock.casa
+      - ./config/zones/db.greyrock.io
+      - ./config/zones/db.unifi
+generatorOptions:
+  disableNameSuffixHash: true
+  annotations:
+    kustomize.toolkit.fluxcd.io/substitute: disabled
