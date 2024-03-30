@@ -67,7 +67,7 @@ controlPlane:
       machine:
         network:
           nameservers:
-            - 10.46.0.4
+            - 10.1.1.1
 
     # Configure NTP
     - |-
