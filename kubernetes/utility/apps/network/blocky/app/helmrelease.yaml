@@ -52,6 +52,8 @@ spec:
           io.cilium/lb-ipam-ips: "10.46.0.7"
         externalTrafficPolicy: Cluster
         ports:
+          http:
+            port: 4000
           dns-tcp:
             port: 53
             protocol: TCP
@@ -67,3 +69,13 @@ spec:
           - path: /app/config.yml
             subPath: config.yml
             readOnly: true
+
+    serviceMonitor:
+      app:
+        serviceName: blocky
+        endpoints:
+          - port: http
+            scheme: http
+            path: /metrics
+            interval: 1m
+            scrapeTimeout: 10s
