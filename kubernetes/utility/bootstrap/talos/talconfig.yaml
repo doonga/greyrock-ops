@@ -35,6 +35,18 @@ nodes:
             - hardwareAddr: 48:21:0b:3e:d8:14
               driver: igc
         dhcp: true
+    patches:
+      - &kubelet_extra_mounts |-
+        machine:
+          kubelet:
+            extraMounts:
+              - destination: /var/mnt/sata
+                type: bind
+                source: /var/mnt/sata
+                options:
+                  - rbind
+                  - rshared
+                  - rw
 
 controlPlane:
   schematic:
