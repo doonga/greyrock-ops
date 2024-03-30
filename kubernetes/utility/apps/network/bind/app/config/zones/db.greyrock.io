@@ -38,6 +38,7 @@ k8s2                                IN  A  10.1.1.5
 k8s3                                IN  A  10.1.1.6
 nas                                 IN  A  10.1.1.3
 pikvm                               IN  A  10.1.1.52
+utility                             IN  A  10.1.1.7
 
 ; NTP
 time1                               IN  A  10.1.7.2
