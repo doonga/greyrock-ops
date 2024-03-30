@@ -42,6 +42,8 @@ nodes:
             dhcp: true
             dhcpOptions:
               routeMetric: 4096
+        vip:
+          ip: &vipIp 10.1.1.2
     patches:
       - &kubelet_extra_mounts |-
         machine:
@@ -75,6 +77,8 @@ nodes:
         dhcp: true
         vlans:
           - *vlan40
+        vip:
+          ip: *vipIp
     patches:
       - *kubelet_extra_mounts
 
@@ -98,6 +102,8 @@ nodes:
         dhcp: true
         vlans:
           - *vlan40
+        vip:
+          ip: *vipIp
     patches:
       - *kubelet_extra_mounts
 
