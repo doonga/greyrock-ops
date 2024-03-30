@@ -48,7 +48,6 @@ spec:
       app:
         controller: blocky
         type: LoadBalancer
-        clusterIP: "10.111.0.7"
         annotations:
           io.cilium/lb-ipam-ips: "10.46.0.7"
         externalTrafficPolicy: Cluster
