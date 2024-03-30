@@ -36,6 +36,10 @@ caching:
   prefetching: true
   prefetchThreshold: 2
 
+redis:
+  address: dragonfly.database.svc.cluster.local:6379
+  database: 0
+
 blocking:
   blockType: nxDomain
 

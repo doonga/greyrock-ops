@@ -9,6 +9,7 @@ spec:
   targetNamespace: network
   dependsOn:
     - name: external-secrets-stores
+    - name: dragonfly-cluster
   interval: 10m
   path: ./kubernetes/utility/apps/network/blocky/app
   prune: true
