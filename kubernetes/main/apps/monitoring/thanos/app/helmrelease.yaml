@@ -72,9 +72,9 @@ spec:
         egress.home.arpa/kubedns: allow # FIXME: Remove when clusterNetworkPolicy is in place
       replicas: 2
       additionalStores:
-        - thanos-svc-nas.bjw-s.dev:10901
+        - thanos-svc-nas.greyrock.casa:10901
       extraArgs:
-        - --alert.query-url=http://thanos.bjw-s.dev
+        - --alert.query-url=http://thanos.greyrock.casa
     queryFrontend:
       enabled: true
       replicas: 2
@@ -97,7 +97,7 @@ spec:
         enabled: true
         ingressClassName: internal-nginx
         hosts:
-          - &queryFrontendhost thanos.bjw-s.dev
+          - &queryFrontendhost thanos.greyrock.casa
         tls:
           - hosts:
               - *queryFrontendhost
