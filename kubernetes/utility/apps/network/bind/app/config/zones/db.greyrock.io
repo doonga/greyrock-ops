@@ -36,6 +36,7 @@ upstairs-u7-pro                     IN  A  10.1.0.23
 k8s1                                IN  A  10.1.1.4
 k8s2                                IN  A  10.1.1.5
 k8s3                                IN  A  10.1.1.6
+main                                IN  A  10.1.1.2
 nas                                 IN  A  10.1.1.3
 pikvm                               IN  A  10.1.1.52
 utility                             IN  A  10.1.1.7
@@ -119,10 +120,6 @@ todds-watch                         IN  A  10.1.5.13
 
 ; Video
 courtyard-porch-doorbell            IN  A  10.1.4.12
-
-; Containers
-main                                IN  A  10.5.0.2
-onepassword-connect                 IN  A  10.5.0.5
 
 ; CNAME records
 vpn                                 IN  CNAME  gateway.greyrock.io.
