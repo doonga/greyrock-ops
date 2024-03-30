@@ -75,6 +75,11 @@ hydrawise-sprinkler-controller      IN  A  10.1.3.25
 k8s1-iot                            IN  A  10.1.3.7
 k8s2-iot                            IN  A  10.1.3.8
 k8s3-iot                            IN  A  10.1.3.9
+light-dining-room-ceiling-1         IN  A  10.1.3.56
+light-dining-room-ceiling-2         IN  A  10.1.3.57
+light-dining-room-ceiling-3         IN  A  10.1.3.58
+light-dining-room-ceiling-4         IN  A  10.1.3.59
+light-dining-room-ceiling-5         IN  A  10.1.3.60
 light-office-ceiling-1              IN  A  10.1.3.50
 light-office-ceiling-2              IN  A  10.1.3.51
 light-office-ceiling-3              IN  A  10.1.3.52
