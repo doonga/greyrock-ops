@@ -80,6 +80,8 @@ light-dining-room-ceiling-2         IN  A  10.1.3.57
 light-dining-room-ceiling-3         IN  A  10.1.3.58
 light-dining-room-ceiling-4         IN  A  10.1.3.59
 light-dining-room-ceiling-5         IN  A  10.1.3.60
+light-kitchen-ceiling-1             IN  A  10.1.3.63
+light-kitchen-ceiling-2             IN  A  10.1.3.64
 light-living-room-front             IN  A  10.1.3.61
 light-living-room-side              IN  A  10.1.3.62
 light-office-ceiling-1              IN  A  10.1.3.50

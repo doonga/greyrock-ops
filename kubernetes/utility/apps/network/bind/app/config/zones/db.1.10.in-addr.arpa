@@ -102,6 +102,8 @@ $ORIGIN 3.1.10.in-addr.arpa.
 60                         IN  PTR  light-dining-room-ceiling-5.greyrock.io.
 61                         IN  PTR  light-living-room-lamp-front.greyrock.io.
 62                         IN  PTR  light-living-room-lamp-side.greyrock.io.
+63                         IN  PTR  light-kitchen-ceiling-1.greyrock.io.
+64                         IN  PTR  light-kitchen-ceiling-2.greyrock.io.
 199                        IN  PTR  solaredge-inverter.greyrock.io.
 
 ; Trusted
