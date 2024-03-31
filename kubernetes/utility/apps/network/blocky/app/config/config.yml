@@ -70,6 +70,10 @@ blocking:
       - other
       - suspicious
       - tracking
+    192.168.2.16/24:
+      - malicious
+      - suspicious
+      - tracking
 
 caching:
   minTime: 15m
