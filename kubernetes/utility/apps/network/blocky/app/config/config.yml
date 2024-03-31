@@ -14,6 +14,10 @@ upstreams:
     default:
       # Cloudflare
       - https://cloudflare-dns.com/dns-query
+      # Quad 9
+      - https://dns.quad9.net/dns-query
+      # Google
+      - https://dns.google/dns-query
 
 # configuration of client name resolution
 clientLookup:
