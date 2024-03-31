@@ -19,9 +19,6 @@ spec:
   values:
     controllers:
       dnsdist:
-        replicas: 2
-        strategy: RollingUpdate
-
         annotations:
           reloader.stakater.com/auto: "true"
 
