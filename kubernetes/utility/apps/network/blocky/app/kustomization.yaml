@@ -11,6 +11,7 @@ configMapGenerator:
   - name: blocky-lists-configmap
     files:
       - ./lists/whitelist.txt
+      - ./lists/icloud-private-relay.txt
 generatorOptions:
   disableNameSuffixHash: true
   annotations:

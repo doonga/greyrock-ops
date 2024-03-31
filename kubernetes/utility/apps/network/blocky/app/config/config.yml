@@ -41,6 +41,7 @@ blocking:
       - https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/native.winoffice.txt
     other: # Ref: https://firebog.net
       - https://zerodot1.gitlab.io/CoinBlockerLists/hosts_browser
+      - /lists/icloud-private-relay.txt
     suspicious: # Ref: https://firebog.net
       - https://raw.githubusercontent.com/PolishFiltersTeam/KADhosts/master/KADhosts.txt
       - https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.Spam/hosts
