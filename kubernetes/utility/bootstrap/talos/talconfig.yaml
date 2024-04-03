@@ -17,8 +17,8 @@ additionalApiServerCertSans: &san
 additionalMachineCertSans: *san
 
 nodes:
-  - hostname: utility.greyrock.io
-    ipAddress: 10.1.1.7
+  - hostname: k8s4.greyrock.io
+    ipAddress: 10.1.1.8
     controlPlane: true
     installDiskSelector:
       size: "<= 512GB"
@@ -35,6 +35,74 @@ nodes:
             - hardwareAddr: 48:21:0b:3e:d8:14
               driver: igc
         dhcp: true
+        vip:
+          ip: &vipIp 10.1.1.7
+    patches:
+      - &kubelet_extra_mounts |-
+        machine:
+          kubelet:
+            extraMounts:
+              - destination: /var/mnt/sata
+                type: bind
+                source: /var/mnt/sata
+                options:
+                  - rbind
+                  - rshared
+                  - rw
+
+  - hostname: k8s5.greyrock.io
+    ipAddress: 10.1.1.9
+    controlPlane: true
+    installDiskSelector:
+      size: "<= 512GB"
+      model: "WDC WDS500G2B0C-00PXH0"
+    machineDisks:
+      - device: /dev/disk/by-id/ata-SSD_128GB_2022061000033
+        partitions:
+          - mountpoint: /var/mnt/sata
+    networkInterfaces:
+      - interface: bond0
+        bond:
+          mode: active-backup
+          deviceSelectors:
+            - hardwareAddr: 48:21:0b:3e:db:da
+              driver: igc
+        dhcp: true
+        vip:
+          ip: &vipIp 10.1.1.2
+    patches:
+      - &kubelet_extra_mounts |-
+        machine:
+          kubelet:
+            extraMounts:
+              - destination: /var/mnt/sata
+                type: bind
+                source: /var/mnt/sata
+                options:
+                  - rbind
+                  - rshared
+                  - rw
+
+  - hostname: k8s6.greyrock.io
+    ipAddress: 10.1.1.10
+    controlPlane: true
+    installDiskSelector:
+      size: "<= 512GB"
+      model: "WD Blue SN570 500GB"
+    machineDisks:
+      - device: /dev/disk/by-id/ata-GN512_2022111500181
+        partitions:
+          - mountpoint: /var/mnt/sata
+    networkInterfaces:
+      - interface: bond0
+        bond:
+          mode: active-backup
+          deviceSelectors:
+            - hardwareAddr: 48:21:0b:3e:d8:02
+              driver: igc
+        dhcp: true
+        vip:
+          ip: &vipIp 10.1.1.2
     patches:
       - &kubelet_extra_mounts |-
         machine:

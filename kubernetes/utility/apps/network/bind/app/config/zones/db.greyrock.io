@@ -36,6 +36,9 @@ upstairs-u7-pro                     IN  A  10.1.0.23
 k8s1                                IN  A  10.1.1.4
 k8s2                                IN  A  10.1.1.5
 k8s3                                IN  A  10.1.1.6
+k8s4                                IN  A  10.1.1.8
+k8s5                                IN  A  10.1.1.9
+k8s6                                IN  A  10.1.1.10
 main                                IN  A  10.1.1.2
 nas                                 IN  A  10.1.1.3
 pikvm                               IN  A  10.1.1.52

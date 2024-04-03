@@ -41,6 +41,9 @@ $ORIGIN 1.1.10.in-addr.arpa.
 5                          IN  PTR  k8s2.greyrock.io.
 6                          IN  PTR  k8s3.greyrock.io.
 7                          IN  PTR  utility.greyrock.io.
+8                          IN  PTR  k8s4.greyrock.io.
+9                          IN  PTR  k8s5.greyrock.io.
+10                         IN  PTR  k8s6.greyrock.io.
 52                         IN  PTR  pikvm.greyrock.io.
 
 ; NTP
