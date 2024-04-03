@@ -76,3 +76,12 @@ spec:
           dns-udp:
             port: 53
             protocol: UDP
+
+    persistence:
+      config-file:
+        type: configMap
+        name: pdns-recursor-configmap
+        globalMounts:
+          - path: /etc/powerdns/recursor.yml
+            subPath: recursor.yml
+            readOnly: true
