@@ -69,7 +69,7 @@ nodes:
               driver: igc
         dhcp: true
         vip:
-          ip: &vipIp 10.1.1.2
+          ip: *vipIp
     patches:
       - &kubelet_extra_mounts |-
         machine:
@@ -102,7 +102,7 @@ nodes:
               driver: igc
         dhcp: true
         vip:
-          ip: &vipIp 10.1.1.2
+          ip: *vipIp
     patches:
       - &kubelet_extra_mounts |-
         machine:
