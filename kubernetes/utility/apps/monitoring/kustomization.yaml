@@ -8,3 +8,4 @@ resources:
   # Flux-Kustomizations
   - ./node-exporter/ks.yaml
   - ./kube-prometheus-stack/ks.yaml
+  - ./vector/ks.yaml
