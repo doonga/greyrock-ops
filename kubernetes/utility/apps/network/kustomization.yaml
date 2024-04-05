@@ -12,4 +12,3 @@ resources:
   - ./external-dns/ks.yaml
   - ./ingress-nginx/ks.yaml
   - ./matchbox/ks.yaml
-  - ./pdns-recursor/ks.yaml
