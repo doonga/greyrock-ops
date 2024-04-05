@@ -36,10 +36,11 @@ nodes:
               driver: atlantic
         dhcp: true
         vlans:
-          - &vlan40
-            vlanId: 40
+          - vlanId: 40
             mtu: 1500
-            dhcp: true
+            dhcp: false
+            addresses:
+              - 10.1.4.4/23
             dhcpOptions:
               routeMetric: 4096
         vip:
@@ -76,7 +77,13 @@ nodes:
               driver: atlantic
         dhcp: true
         vlans:
-          - *vlan40
+          - vlanId: 40
+            mtu: 1500
+            dhcp: false
+            addresses:
+              - 10.1.4.5/23
+            dhcpOptions:
+              routeMetric: 4096
         vip:
           ip: *vipIp
     patches:
@@ -101,7 +108,13 @@ nodes:
               driver: atlantic
         dhcp: true
         vlans:
-          - *vlan40
+          - vlanId: 40
+            mtu: 1500
+            dhcp: false
+            addresses:
+              - 10.1.4.6/23
+            dhcpOptions:
+              routeMetric: 4096
         vip:
           ip: *vipIp
     patches:
