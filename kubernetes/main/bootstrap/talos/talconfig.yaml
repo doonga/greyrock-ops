@@ -38,9 +38,7 @@ nodes:
         vlans:
           - vlanId: 40
             mtu: 1500
-            dhcp: false
-            addresses:
-              - 10.1.4.4/23
+            dhcp: true
             dhcpOptions:
               routeMetric: 4096
         vip:
@@ -79,9 +77,7 @@ nodes:
         vlans:
           - vlanId: 40
             mtu: 1500
-            dhcp: false
-            addresses:
-              - 10.1.4.5/23
+            dhcp: true
             dhcpOptions:
               routeMetric: 4096
         vip:
@@ -110,9 +106,7 @@ nodes:
         vlans:
           - vlanId: 40
             mtu: 1500
-            dhcp: false
-            addresses:
-              - 10.1.4.6/23
+            dhcp: true
             dhcpOptions:
               routeMetric: 4096
         vip:
