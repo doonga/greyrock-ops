@@ -6,4 +6,3 @@ resources:
   - ./node-exporter.yaml
   - ./ntp-nodes.yaml
   - ./smartctl-exporter.yaml
-  - ./speedtest-exporter.yaml
