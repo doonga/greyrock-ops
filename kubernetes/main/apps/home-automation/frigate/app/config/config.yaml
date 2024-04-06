@@ -1,5 +1,5 @@
 ---
-# yaml-language-server: $schema=https://frigate.greyrock.casa/api/config/schema.json
+# yaml-language-server: $schema=https://frigate.greyrock.casa/api/config/schema
 logger:
   default: info
   # logs:
@@ -21,7 +21,7 @@ database:
 detectors:
   coral:
     type: edgetpu
-    device: pci
+    device: usb
 
 # Global ffmpeg configuration
 ffmpeg:
@@ -61,22 +61,22 @@ objects:
 # Specify camera's
 go2rtc:
   streams:
-    courtyard_porch_doorbell_main:
-      - rtsp://{FRIGATE_CAMERA_COURTYARD_DOORBELL_USER}:{FRIGATE_CAMERA_COURTYARD_DOORBELL_PASSWORD}@{FRIGATE_CAMERA_COURTYARD_DOORBELL_HOST}:554/h264Preview_01_main
-    courtyard_porch_doorbell_substream:
-      - rtsp://{FRIGATE_CAMERA_COURTYARD_DOORBELL_USER}:{FRIGATE_CAMERA_COURTYARD_DOORBELL_PASSWORD}@{FRIGATE_CAMERA_COURTYARD_DOORBELL_HOST}:554/h264Preview_01_sub
+    doorbell:
+      - rtsp://{FRIGATE_CAMERA_DOORBELL_USER}:{FRIGATE_CAMERA_DOORBELL_PASSWORD}@{FRIGATE_CAMERA_DOORBELL_HOST}:554/h264Preview_01_main
+    doorbell_substream:
+      - rtsp://{FRIGATE_CAMERA_DOORBELL_USER}:{FRIGATE_CAMERA_DOORBELL_PASSWORD}@{FRIGATE_CAMERA_DOORBELL_HOST}:554/h264Preview_01_sub
 
 cameras:
-  courtyard_porch_doorbell:
+  doorbell:
     ffmpeg:
       output_args:
         record: preset-record-generic-audio-copy
       inputs:
-        - path: rtsp://127.0.0.1:8554/courtyard_porch_doorbell_main
+        - path: rtsp://127.0.0.1:8554/doorbell
           input_args: preset-rtsp-restream
           roles:
             - record
-        - path: rtsp://127.0.0.1:8554/courtyard_porch_doorbell_substream
+        - path: rtsp://127.0.0.1:8554/doorbell_substream
           input_args: preset-rtsp-restream
           roles:
             - detect

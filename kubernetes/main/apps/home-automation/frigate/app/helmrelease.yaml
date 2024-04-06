@@ -1,0 +1,135 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2beta2.schema.json
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: frigate
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 3.1.0
+      interval: 30m
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+
+  values:
+    controller:
+      frigate:
+        annotations:
+          reloader.stakater.com/auto: "true"
+
+    containers:
+      app:
+        image:
+          repository: ghcr.io/blakeblackshear/frigate
+          tag: 0.13.2
+        envFrom:
+          - secretRef:
+              name: frigate-secret
+        probes:
+          liveness: &probe
+            enabled: true
+            custom: true
+            spec:
+              httpGet:
+                path: /api/version
+                port: 5000
+              initialDelaySeconds: 0
+              periodSeconds: 10
+              timeoutSeconds: 1
+              failureThreshold: 3
+          readiness:
+            enabled: true
+            custom: true
+            spec:
+              httpGet:
+                path: /api/version
+                port: 5000
+              initialDelaySeconds: 0
+              periodSeconds: 10
+              timeoutSeconds: 1
+              failureThreshold: 3
+          startup:
+            enabled: true
+            custom: true
+            spec:
+              httpGet:
+                path: /api/version
+                port:
+              failureThreshold: 30
+              periodSeconds: 10
+          nodeSelector:
+            google.feature.node.kubernetes.io/coral: "true"
+            intel.feature.node.kubernetes.io/gpu: "true"
+          resources:
+            requests:
+              gpu.intel.com/i915: 1
+              cpu: 454m
+              memory: 1552Mi
+            limits:
+              gpu.intel.com/i915: 1
+              memory: 1552Mi
+          securityContext:
+            privileged: true
+
+    service:
+      app:
+        controller: frigate
+        ports:
+          http:
+            port: 5000
+          rtsp:
+            enabled: true
+            port: 8554
+
+    ingress:
+      app:
+        enabled: true
+        className: "internal-nginx"
+        annotations:
+          external-dns.alpha.kubernetes.io/target: ingress-ext.greyrock.casa
+          hajimari.io/enable: "true"
+          hajimari.io/instance: "todd"
+          hajimari.io/icon: "mdi:home-assistant"
+        hosts:
+          - host: &hostName "frigate.greyrock.casa"
+            paths:
+              - path: /
+                service:
+                  identifier: app
+                  port: http
+        tls:
+          - hosts:
+              - *hostName
+
+    persistence:
+      config:
+        type: configMap
+        name: frigate-configmap
+        globalMounts:
+          - path: /config/config.yml
+            subPath: config.yaml
+            readOnly: true
+      media:
+        type: nfs
+        server: "nas.greyrock.io"
+        path: /tank/Apps/frigate
+        advancedMounts:
+          frigate:
+            app:
+              - path: /media
+      usb:
+        type: hostPath
+        hostPath: /dev/bus/usb
+      cache:
+        type: emptyDir
+        medium: Memory
+        sizeLimit: 512Mi
+        advancedMounts:
+          frigate:
+            app:
+              - path: /dev/shm
