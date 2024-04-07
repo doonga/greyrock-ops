@@ -84,7 +84,7 @@ caching:
   prefetchThreshold: 3
 
 clientLookup:
-  upstream: 10.46.0.3
+  upstream: 10.1.1.1
 
 connectIPVersion: v4
 
