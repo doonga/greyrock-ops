@@ -18,6 +18,15 @@ spec:
   values:
     controllers:
       hs110-exporter-rack:
+        pod:
+          annotations:
+            k8s.v1.cni.cncf.io/networks: |
+              [{
+                "name":"multus-iot",
+                "namespace": "network",
+                "ips": ["10.1.4.155/23"]
+              }]
+
         containers:
           app:
             image:
