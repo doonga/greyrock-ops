@@ -36,7 +36,7 @@ spec:
               tag: v2.11.1
             env:
               UP_UNIFI_DEFAULT_ROLE: greyrock-ops
-              UP_UNIFI_DEFAULT_URL: https://unifi:8443
+              UP_UNIFI_DEFAULT_URL: https://unifi.greyrock.io
               UP_UNIFI_DEFAULT_VERIFY_SSL: false
               UP_UNIFI_DEFAULT_USER: unifipoller
               UP_UNIFI_DEFAULT_PASS:
