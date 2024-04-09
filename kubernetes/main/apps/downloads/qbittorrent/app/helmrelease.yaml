@@ -142,15 +142,6 @@ spec:
           qbittorrent:
             app:
               - path: /config
-      scripts:
-        type: configMap
-        name: qbittorrent-scripts
-        defaultMode: 0775
-        advancedMounts:
-          qbittorrent:
-            app:
-              - path: /scripts
-                readOnly: true
       media:
         type: nfs
         server: nas.greyrock.io
