@@ -21,10 +21,10 @@ nodes:
     ipAddress: 10.1.1.8
     controlPlane: true
     installDiskSelector:
-      size: "<= 512GB"
-      model: "WDC WDS500G2B0C-00PXH0"
+      size: "<= 256GB"
+      model: "TS240GMTS420S"
     machineDisks:
-      - device: /dev/disk/by-id/ata-SSD_512GB_2023033006765
+      - device: /dev/disk/by-id/nvme-WDC_WDS500G2B0C-00PXH0_21381C806554
         partitions:
           - mountpoint: /var/mnt/sata
     networkInterfaces:
@@ -54,10 +54,10 @@ nodes:
     ipAddress: 10.1.1.9
     controlPlane: true
     installDiskSelector:
-      size: "<= 512GB"
-      model: "WDC WDS500G2B0C-00PXH0"
+      size: "<= 256GB"
+      model: "TS240GMTS420S"
     machineDisks:
-      - device: /dev/disk/by-id/ata-SSD_128GB_2022061000033
+      - device: /dev/disk/by-id/nvme-WDC_WDS500G2B0C-00PXH0_21381C801327
         partitions:
           - mountpoint: /var/mnt/sata
     networkInterfaces:
@@ -87,10 +87,10 @@ nodes:
     ipAddress: 10.1.1.10
     controlPlane: true
     installDiskSelector:
-      size: "<= 512GB"
-      model: "WD Blue SN570 500GB"
+      size: "<= 256GB"
+      model: "TS240GMTS420S"
     machineDisks:
-      - device: /dev/disk/by-id/ata-GN512_2022111500181
+      - device: /dev/disk/by-id/nvme-WD_Blue_SN570_500GB_22410H804662
         partitions:
           - mountpoint: /var/mnt/sata
     networkInterfaces:
