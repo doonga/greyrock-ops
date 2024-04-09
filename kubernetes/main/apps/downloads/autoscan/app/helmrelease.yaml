@@ -35,7 +35,7 @@ spec:
               tag: 1.4.0
 
             env:
-              PUID: 568
+              PUID: 2000
               PGID: 100
 
             resources:
