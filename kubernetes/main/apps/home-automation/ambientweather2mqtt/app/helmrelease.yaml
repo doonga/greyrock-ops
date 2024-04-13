@@ -19,6 +19,9 @@ spec:
   values:
     controllers:
       ambientweather2mqtt:
+        annotations:
+          reloader.stakater.com/auto: "true"
+
         pod:
           labels:
             ingress.home.arpa/lan: allow
