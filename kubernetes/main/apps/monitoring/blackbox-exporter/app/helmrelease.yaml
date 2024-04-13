@@ -109,9 +109,9 @@ spec:
           url: pikvm.greyrock.io
 
         # Other devices
-        - module: icmp
-          name: zigbee-controller-icmp
-          url: slzb-06.greyrock.io
+        - module: http_2xx
+          name: zigbee-controller-http
+          url: "http://slzb-06.greyrock.io"
 
         - module: icmp
           name: ping-cloudflare
