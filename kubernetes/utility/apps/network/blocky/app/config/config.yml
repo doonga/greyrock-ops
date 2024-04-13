@@ -104,6 +104,11 @@ prometheus:
   enable: true
   path: /metrics
 
+queryLog:
+  type: postgresql
+  target: {{ .blocky_uri }}
+  logRetentionDays: 10
+
 redis:
   address: dragonfly.database.svc.cluster.local:6379
   database: 0

@@ -85,9 +85,9 @@ spec:
             protocol: UDP
 
     persistence:
-      config-file:
-        type: configMap
-        name: blocky-configmap
+      config:
+        type: secret
+        name: blocky-secret
         globalMounts:
           - path: /app/config.yml
             subPath: config.yml
