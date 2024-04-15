@@ -19,7 +19,7 @@ spec:
   values:
     controllers:
       dnsdist:
-        replicas: 2
+        replicas: 3
         strategy: RollingUpdate
 
         annotations:
