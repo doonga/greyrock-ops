@@ -76,20 +76,14 @@ tasks:
       - test -f {{.KUBERNETES_DIR}}/{{.cluster}}/bootstrap/talos/talconfig.yaml
 
   bootstrap-matchbox:
-    desc: Bootstrap required Matchbox configuration for PXE Boot
-    summary: |
-      Args:
-        cluster: Cluster to generate (required)
-        matchbox_cluster: Cluster that hosts matchbox (required)
-        matchbox_namespace: Namespace where matchbox is deployed (required)
+    desc: Bootstrap required Matchbox configuration to Omni for PXE Boot
     vars:
-      K8S_MATCHBOX_DIR: /var/lib/matchbox
-      K8S_MATCHBOX_GROUPS_DIR: "{{.K8S_MATCHBOX_DIR}}/groups"
-      K8S_MATCHBOX_PROFILES_DIR: "{{.K8S_MATCHBOX_DIR}}/profiles"
-      K8S_MATCHBOX_ASSETS_DIR: "{{.K8S_MATCHBOX_DIR}}/assets/talos/{{.cluster}}"
-      K8S_MATCHBOX_POD:
-        sh: |
-          kubectl get --context {{.matchbox_cluster}} pod -n {{.matchbox_namespace}} -l app.kubernetes.io/name=matchbox -o name | awk -F'/' '{print $2}'
+      OMNI_ADDR: omni.greyrock.io
+      OMNI_USER: todd
+      OMNI_MATCHBOX_DIR: /home/todd/apps/matchbox/data
+      OMNI_MATCHBOX_GROUPS_DIR: "{{.OMNI_MATCHBOX_DIR}}/groups"
+      OMNI_MATCHBOX_PROFILES_DIR: "{{.OMNI_MATCHBOX_DIR}}/profiles"
+      OMNI_MATCHBOX_ASSETS_DIR: "{{.OMNI_MATCHBOX_DIR}}/assets/talos/{{.cluster}}"
       TALOS_VERSION:
         sh: |
           yq -r ".talosVersion" {{.KUBERNETES_DIR}}/{{.cluster}}/bootstrap/talos/talconfig.yaml
@@ -104,30 +98,29 @@ tasks:
           | sed -E 's/\/metal-amd64.iso//'
     cmds:
       # Prepare folders
-      - kubectl exec --context {{.matchbox_cluster}} -n {{.matchbox_namespace}} -c app {{.K8S_MATCHBOX_POD}} -- mkdir -p {{.K8S_MATCHBOX_GROUPS_DIR}}
-      - kubectl exec --context {{.matchbox_cluster}} -n {{.matchbox_namespace}} -c app {{.K8S_MATCHBOX_POD}} -- mkdir -p {{.K8S_MATCHBOX_PROFILES_DIR}}
-      - kubectl exec --context {{.matchbox_cluster}} -n {{.matchbox_namespace}} -c app {{.K8S_MATCHBOX_POD}} -- mkdir -p {{.K8S_MATCHBOX_ASSETS_DIR}}
+      - ssh -l {{.OMNI_USER}} {{.OMNI_ADDR}} "sudo mkdir -p {{.OMNI_MATCHBOX_GROUPS_DIR}}"
+      - ssh -l {{.OMNI_USER}} {{.OMNI_ADDR}} "sudo mkdir -p {{.OMNI_MATCHBOX_PROFILES_DIR}}"
+      - ssh -l {{.OMNI_USER}} {{.OMNI_ADDR}} "sudo mkdir -p {{.OMNI_MATCHBOX_ASSETS_DIR}}"
+      - ssh -l {{.OMNI_USER}} {{.OMNI_ADDR}} "sudo chown -R {{.OMNI_USER}}:{{.OMNI_USER}} {{.OMNI_MATCHBOX_DIR}}"
       # Upload Talos to Matchbox
       - for: ["kernel-amd64", "initramfs-amd64.xz"]
         cmd: |
-          kubectl exec --context {{.matchbox_cluster}} -n {{.matchbox_namespace}} -c app {{.K8S_MATCHBOX_POD}} -- wget -q -O {{.K8S_MATCHBOX_ASSETS_DIR}}/{{.ITEM}} {{.TALOS_BASE_URL}}/{{.ITEM}}
+          ssh -l {{.OMNI_USER}} {{.OMNI_ADDR}} "wget -q -O {{.OMNI_MATCHBOX_ASSETS_DIR}}/{{.ITEM}} {{.TALOS_BASE_URL}}/{{.ITEM}}"
       # Generate new cluster config
       - task: generate-clusterconfig
         vars:
           cluster: "{{.cluster}}"
       # Copy generated clusterconfigs to Matchbox
-      - find {{.KUBERNETES_DIR}}/{{.cluster}}/bootstrap/talos/clusterconfig/*.yaml -type f | xargs -I{} kubectl cp --context {{.matchbox_cluster}} {} -c app {{.matchbox_namespace}}/{{.K8S_MATCHBOX_POD}}:{{.K8S_MATCHBOX_ASSETS_DIR}}/
+      - find {{.KUBERNETES_DIR}}/{{.cluster}}/bootstrap/talos/clusterconfig/*.yaml -type f | xargs -I{} scp -p {} {{.OMNI_USER}}@{{.OMNI_ADDR}}:/{{.OMNI_MATCHBOX_ASSETS_DIR}}/
       # Copy groups to Matchbox
-      - find {{.KUBERNETES_DIR}}/{{.cluster}}/bootstrap/talos/matchbox/groups/*.json -type f | xargs -I{} kubectl cp --context {{.matchbox_cluster}} {} -c app {{.matchbox_namespace}}/{{.K8S_MATCHBOX_POD}}:{{.K8S_MATCHBOX_GROUPS_DIR}}/
+      - find {{.KUBERNETES_DIR}}/{{.cluster}}/bootstrap/talos/matchbox/groups/*.json -type f | xargs -I{} scp -p {} {{.OMNI_USER}}@{{.OMNI_ADDR}}:/{{.OMNI_MATCHBOX_GROUPS_DIR}}/
       # Copy profiles to Matchbox
-      - find {{.KUBERNETES_DIR}}/{{.cluster}}/bootstrap/talos/matchbox/profiles/*.json -type f | xargs -I{} kubectl cp --context {{.matchbox_cluster}} {} -c app {{.matchbox_namespace}}/{{.K8S_MATCHBOX_POD}}:{{.K8S_MATCHBOX_PROFILES_DIR}}/
+      - find {{.KUBERNETES_DIR}}/{{.cluster}}/bootstrap/talos/matchbox/profiles/*.json -type f | xargs -I{} scp -p {} {{.OMNI_USER}}@{{.OMNI_ADDR}}:/{{.OMNI_MATCHBOX_PROFILES_DIR}}/
       # Restart the Matchbox container
-      - kubectl delete --context {{.matchbox_cluster}} pod -n {{.matchbox_namespace}} {{.K8S_MATCHBOX_POD}}
+      - ssh -l {{.OMNI_USER}} {{.OMNI_ADDR}} -t docker restart matchbox
     requires:
       vars:
         - cluster
-        - matchbox_cluster
-        - matchbox_namespace
 
   upgrade:
     desc: Upgrade Talos version for a node

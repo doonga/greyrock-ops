@@ -13,7 +13,7 @@
       "console=ttyS0",
       "printk.devkmsg=on",
       "talos.platform=metal",
-      "talos.config=http://10.46.0.8/assets/talos/main/main-k8s3.greyrock.io.yaml"
+      "talos.config=http://10.1.1.11/assets/talos/main/main-k8s3.greyrock.io.yaml"
     ]
   }
 }

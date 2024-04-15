@@ -2,8 +2,8 @@
   "id": "talos-controller",
   "name": "talos-controller",
   "boot": {
-    "kernel": "/assets/talos/main/kernel-amd64",
-    "initrd": ["/assets/talos/main/initramfs-amd64.xz"],
+    "kernel": "/assets/talos/utility/kernel-amd64",
+    "initrd": ["/assets/talos/utility/initramfs-amd64.xz"],
     "args": [
       "initrd=initramfs-amd64.xz",
       "init_on_alloc=1",
@@ -13,7 +13,7 @@
       "console=ttyS0",
       "printk.devkmsg=on",
       "talos.platform=metal",
-      "talos.config=http://10.1.1.11/assets/talos/main/main-k8s1.greyrock.io.yaml"
+      "talos.config=http://10.1.1.11/assets/talos/utility/utility-k8s5.greyrock.io.yaml"
     ]
   }
 }
