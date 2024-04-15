@@ -1,7 +1,7 @@
 {
   "id": "k8s3",
   "name": "k8s3",
-  "profile": "omni",
+  "profile": "omni-main",
   "selector": {
     "mac": "48:21:0b:5a:4f:a7"
   }

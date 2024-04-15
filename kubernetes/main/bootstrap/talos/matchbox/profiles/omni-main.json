@@ -13,7 +13,7 @@
       "console=ttyS0",
       "printk.devkmsg=on",
       "talos.platform=metal",
-      "siderolink.api=https://omni.greyrock.io:8090/?jointoken=<puthere>",
+      "siderolink.api=https://omni.greyrock.io:8090/?jointoken=JOINTOKEN",
       "talos.events.sink=[fdae:41e4:649b:9303::1]:8091",
       "talos.logging.kernel=tcp://[fdae:41e4:649b:9303::1]:8092"
     ]

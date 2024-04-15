@@ -57,12 +57,16 @@ tasks:
       OMNI_MATCHBOX_GROUPS_DIR: "{{.OMNI_MATCHBOX_DIR}}/groups"
       OMNI_MATCHBOX_PROFILES_DIR: "{{.OMNI_MATCHBOX_DIR}}/profiles"
       OMNI_MATCHBOX_ASSETS_DIR: "{{.OMNI_MATCHBOX_DIR}}/assets/talos/{{.cluster}}"
+      OMNI_JOINTOKEN:
+        sh: |
+          omnictl get connectionparams -o json | jq -r '.spec["jointoken"]'
       TALOS_BASE_URL:
         sh: |
           omnictl download iso \
+          --pxe \
           | grep "https://" \
           | head -n 1 \
-          | sed -E 's/\/metal-amd64.iso//' \
+          | sed -E 's/\/metal-amd64//' \
           | sed -E 's/pxe\//image\//'
     cmds:
       # Prepare folders
@@ -78,6 +82,8 @@ tasks:
       - find {{.KUBERNETES_DIR}}/{{.cluster}}/bootstrap/talos/matchbox/groups/*.json -type f | xargs -I{} scp -p {} {{.OMNI_USER}}@{{.OMNI_ADDR}}:/{{.OMNI_MATCHBOX_GROUPS_DIR}}/
       # Copy profiles to Matchbox
       - find {{.KUBERNETES_DIR}}/{{.cluster}}/bootstrap/talos/matchbox/profiles/*.json -type f | xargs -I{} scp -p {} {{.OMNI_USER}}@{{.OMNI_ADDR}}:/{{.OMNI_MATCHBOX_PROFILES_DIR}}/
+      # Replace jointoken
+      - ssh -l {{.OMNI_USER}} {{.OMNI_ADDR}} "find {{.OMNI_MATCHBOX_PROFILES_DIR}}/*.json -type f | xargs -I {} sed -i 's/JOINTOKEN/{{.OMNI_JOINTOKEN}}/g' {}"
       # Restart the Matchbox container
       - ssh -l {{.OMNI_USER}} {{.OMNI_ADDR}} -t docker restart matchbox
     requires:
