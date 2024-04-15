@@ -1,0 +1,19 @@
+machine:
+  network:
+    hostname: "k8s4"
+    interfaces:
+      - interface: bond0
+        bond:
+          interfaces: []
+          deviceSelectors:
+            - hardwareAddr: 48:21:0b:3e:d8:14
+              driver: igc
+          mode: active-backup
+        dhcp: true
+        vip:
+          ip: 10.1.1.7
+
+  disks:
+    - device: /dev/disk/by-id/nvme-WDC_WDS500G2B0C-00PXH0_21381C806554
+      partitions:
+        - mountpoint: /var/mnt/sata

@@ -1,0 +1,37 @@
+# Control Plane
+cluster:
+  apiServer:
+    # Disable default API server admission by namespace
+    admissionControl:
+      - configuration:
+          exemptions:
+            namespaces:
+              - openebs
+              - security
+        name: PodSecurity
+    disablePodSecurityPolicy: true
+    extraArgs:
+      bind-address: 0.0.0.0
+    certSANs:
+      - 10.1.1.2
+      - main.greyrock.io
+      - 127.0.0.1
+  controllerManager:
+    extraArgs:
+      bind-address: 0.0.0.0
+  # ETCD configuration
+  etcd:
+    extraArgs:
+      listen-metrics-urls: http://0.0.0.0:2381
+    advertisedSubnets:
+      - 10.1.1.0/24
+  scheduler:
+    extraArgs:
+      bind-address: 0.0.0.0
+
+# Enable KubePrism
+machine:
+  features:
+    kubePrism:
+      enabled: true
+      port: 7445

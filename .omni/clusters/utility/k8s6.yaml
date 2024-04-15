@@ -1,0 +1,19 @@
+machine:
+  network:
+    hostname: "k8s6"
+    interfaces:
+      - interface: bond0
+        bond:
+          interfaces: []
+          deviceSelectors:
+            - hardwareAddr: 48:21:0b:3e:d8:02
+              driver: igc
+          mode: active-backup
+        dhcp: true
+        vip:
+          ip: 10.1.1.7
+
+  disks:
+    - device: /dev/disk/by-id/nvme-WD_Blue_SN570_500GB_22410H804662
+      partitions:
+        - mountpoint: /var/mnt/sata
