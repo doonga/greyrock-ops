@@ -13,9 +13,9 @@ cluster:
     disablePodSecurityPolicy: true
     extraArgs:
       bind-address: 0.0.0.0
+    # Cert SANs, needed for Kubeprism and VIP
     certSANs:
       - 10.1.1.7
-      - utility.greyrock.io
       - 127.0.0.1
   controllerManager:
     extraArgs:
@@ -24,6 +24,7 @@ cluster:
   etcd:
     extraArgs:
       listen-metrics-urls: http://0.0.0.0:2381
+    # Ensures ETCD will use the correct network
     advertisedSubnets:
       - 10.1.1.0/24
   scheduler:

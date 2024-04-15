@@ -80,6 +80,7 @@ cluster:
     # Disable CNI for Cilium
     cni:
       name: none
+
   # Disable kubeproxy
   proxy:
     disabled: true
