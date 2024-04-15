@@ -13,7 +13,9 @@
       "console=ttyS0",
       "printk.devkmsg=on",
       "talos.platform=metal",
-      "talos.config=http://10.1.1.11/assets/talos/utility/utility-k8s6.greyrock.io.yaml"
+      "siderolink.api=https://omni.greyrock.io:8090/?jointoken=<puthere>",
+      "talos.events.sink=[fdae:41e4:649b:9303::1]:8091",
+      "talos.logging.kernel=tcp://[fdae:41e4:649b:9303::1]:8092"
     ]
   }
 }
