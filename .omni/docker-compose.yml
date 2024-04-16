@@ -21,7 +21,7 @@ services:
 
   keycloak:
     image: quay.io/keycloak/keycloak:21.0.1
-    command: ["start-dev"]
+    command: ["start-dev --https-certificate-file=/cert.pem --https-certificate-key-file=/cert.key"]
     container_name: keycloak
     environment:
       DB_VENDOR: ${DB_VENDOR}
@@ -44,6 +44,9 @@ services:
     depends_on:
       - database
     restart: always
+    volumes:
+      - /home/todd/certs/greyrock.io_ecc/greyrock.io.cer:/cert.pem
+      - /home/todd/certs/greyrock.io_ecc/greyrock.io.key:/cert.key
     links:
       - database
     networks:
