@@ -12,8 +12,8 @@ services:
     hostname: local
     restart: always
     volumes:
-      - ./db-data:/var/lib/postgresql/data/
-      - ./sql:/docker-entrypoint-initdb.d/:ro
+      - /home/todd/apps/keycloak/data/postgres/db-data:/var/lib/postgresql/data/
+      - /home/todd/apps/keycloak/data/postgres/sql:/docker-entrypoint-initdb.d/:ro
     ports:
       - "5439:5432"
     networks:
