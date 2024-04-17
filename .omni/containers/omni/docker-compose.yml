@@ -1,7 +1,7 @@
 name: omni
 services:
     omni:
-        image: ghcr.io/siderolabs/omni:v0.33.0
+        image: ghcr.io/siderolabs/omni:v0.33.2
         container_name: omni
         restart: unless-stopped
         network_mode: host
@@ -26,6 +26,7 @@ services:
             - --auth-saml-enabled=true
             - --auth-saml-url=https://omni.greyrock.io:8443/realms/omni/protocol/saml/descriptor
         volumes:
+            - /dev/net/tun:/dev/net/tun
             - /home/todd/certs/greyrock.io_ecc:/certs
             - /home/todd/apps/omni/data/omni.asc:/omni.asc
             - /home/todd/apps/omni/data/etcd:/_out/etcd
