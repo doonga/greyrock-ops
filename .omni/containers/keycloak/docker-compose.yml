@@ -43,7 +43,7 @@ services:
       - database
     restart: always
     volumes:
-      - /home/todd/certs/greyrock.io_ecc/greyrock.io.cer:/cert.pem
+      - /home/todd/certs/greyrock.io_ecc/fullchain.cer:/cert.pem
       - /home/todd/certs/greyrock.io_ecc/greyrock.io.key:/cert.key
     links:
       - database
