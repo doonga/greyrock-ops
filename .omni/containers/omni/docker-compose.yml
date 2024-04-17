@@ -10,10 +10,10 @@ services:
         command:
             - --account-id=d62239cb-615c-43a0-83e8-d33e8a59cf23
             - --name=onprem-omni
-            - --cert=/tls.crt
-            - --key=/tls.key
-            - --siderolink-api-cert=/tls.crt
-            - --siderolink-api-key=/tls.key
+            - --cert=/certs/fullchain.pem
+            - --key=/certs/greyrock.io.key
+            - --siderolink-api-cert=/certs/fullchain.pem
+            - --siderolink-api-key=/certs/greyrock.io.key
             - --private-key-source=file:///omni.asc
             - --event-sink-port=8091
             - --bind-addr=0.0.0.0:443
@@ -26,7 +26,6 @@ services:
             - --auth-saml-enabled=true
             - --auth-saml-url=https://omni.greyrock.io:8443/realms/omni/protocol/saml/descriptor
         volumes:
-            - /home/todd/certs/greyrock.io_ecc/fullchain.pem:/tls.crt
-            - /home/todd/certs/greyrock.io_ecc/greyrock.io.key:/tls.key
+            - /home/todd/certs/greyrock.io_ecc:/certs
             - /home/todd/apps/omni/data/omni.asc:/omni.asc
             - /home/todd/apps/omni/data/etcd:/_out/etcd
