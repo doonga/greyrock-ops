@@ -12,6 +12,7 @@ on:
       - kubernetes/main/**
       - kubernetes/nas/**
       - kubernetes/utility/**
+      - kubernetes/omni/**
 
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
@@ -29,6 +30,7 @@ jobs:
           - main
           - nas
           - utility
+          - omni
     steps:
       - name: Install Flux
         uses: fluxcd/flux2/action@main
