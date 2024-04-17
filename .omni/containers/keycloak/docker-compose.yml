@@ -20,7 +20,7 @@ services:
       - db-keycloak
 
   keycloak:
-    image: quay.io/keycloak/keycloak:21.0.1
+    image: quay.io/keycloak/keycloak:24.0.3
     command: ["start-dev --https-certificate-file=/cert.pem --https-certificate-key-file=/cert.key"]
     container_name: keycloak
     environment:
