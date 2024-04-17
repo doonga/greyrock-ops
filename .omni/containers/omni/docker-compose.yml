@@ -29,6 +29,6 @@ services:
             - --initial-users=tpunderson@greyrock.io
         volumes:
             - ./data/etcd:/_out/etcd
-            - /etc/letsencrypt/live/greyrock.io/fullchain.pem:/tls.crt
-            - /etc/letsencrypt/live/greyrock.io/privkey.pem:/tls.key
+            - /home/todd/certs/greyrock.io_ecc/fullchain.pem:/tls.crt
+            - /home/todd/certs/greyrock.io_ecc/greyrock.io.key:/tls.key
             - ./data/omni.asc:/omni.asc
