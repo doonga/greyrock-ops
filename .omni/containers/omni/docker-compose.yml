@@ -31,4 +31,4 @@ services:
             - ./data/etcd:/_out/etcd
             - /home/todd/certs/greyrock.io_ecc/fullchain.pem:/tls.crt
             - /home/todd/certs/greyrock.io_ecc/greyrock.io.key:/tls.key
-            - ./data/omni.asc:/omni.asc
+            - /home/todd/apps/omni/data/omni.asc:/omni.asc
