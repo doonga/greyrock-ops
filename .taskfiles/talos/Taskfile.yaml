@@ -53,10 +53,18 @@ tasks:
     vars:
       OMNI_ADDR: omni.greyrock.io
       OMNI_USER: todd
-      OMNI_MATCHBOX_DIR: /home/todd/apps/matchbox/data
+      OMNI_MATCHBOX_CLUSTER: omni
+      OMNI_MATCHBOX_NAMESPACE: network
+      OMNI_MATCHBOX_PVC_PATH:
+        sh: |
+          kubectl get --context omni pvc -n network matchbox-matchbox-data -o json | jq -r '.spec.volumeName'
+      OMNI_MATCHBOX_DIR: /mnt/openebs/local/{{.OMNI_MATCHBOX_PVC_PATH}}
       OMNI_MATCHBOX_GROUPS_DIR: "{{.OMNI_MATCHBOX_DIR}}/groups"
       OMNI_MATCHBOX_PROFILES_DIR: "{{.OMNI_MATCHBOX_DIR}}/profiles"
       OMNI_MATCHBOX_ASSETS_DIR: "{{.OMNI_MATCHBOX_DIR}}/assets/talos/{{.cluster}}"
+      OMNI_MATCHBOX_POD:
+        sh: |
+          kubectl get --context {{.OMNI_MATCHBOX_CLUSTER}} pod -n {{.OMNI_MATCHBOX_NAMESPACE}} -l app.kubernetes.io/name=matchbox -o name | awk -F'/' '{print $2}'
       OMNI_JOINTOKEN:
         sh: |
           omnictl get connectionparams -o json | jq -r '.spec["jointoken"]'
@@ -85,7 +93,7 @@ tasks:
       # Replace jointoken
       - ssh -l {{.OMNI_USER}} {{.OMNI_ADDR}} "find {{.OMNI_MATCHBOX_PROFILES_DIR}}/*.json -type f | xargs -I {} sed -i 's/JOINTOKEN/{{.OMNI_JOINTOKEN}}/g' {}"
       # Restart the Matchbox container
-      - ssh -l {{.OMNI_USER}} {{.OMNI_ADDR}} -t docker restart matchbox
+      - kubectl delete --context {{.OMNI_MATCHBOX_CLUSTER}} pod -n {{.OMNI_MATCHBOX_NAMESPACE}} {{.OMNI_MATCHBOX_POD}}
     requires:
       vars:
         - cluster
