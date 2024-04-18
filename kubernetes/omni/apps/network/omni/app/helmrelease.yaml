@@ -1,0 +1,115 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2beta2.schema.json
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: omni
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 3.1.0
+      interval: 30m
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+
+  values:
+    defaultPodOptions:
+      automountServiceAccountToken: true
+      enableServiceLinks: false
+      hostIPC: false
+      hostNetwork: true
+      hostPID: false
+
+    controllers:
+      omni:
+        annotations:
+          reloader.stakater.com/auto: "true"
+
+        containers:
+          app:
+            image:
+              repository: ghcr.io/siderolabs/omni
+              tag: v0.33.0
+            args:
+              - --account-id=d62239cb-615c-43a0-83e8-d33e8a59cf23
+              - --name=greyrock-omni
+              - --cert=/tls.crt
+              - --key=/tls.key
+              - --siderolink-api-cert=/tls.crt
+              - --siderolink-api-key=/tls.key
+              - --private-key-source=file:///omni.asc
+              - --event-sink-port=8091
+              - --bind-addr=0.0.0.0:443
+              - --siderolink-api-bind-addr=0.0.0.0:8090
+              - --k8s-proxy-bind-addr=0.0.0.0:8100
+              - --advertised-api-url=https://omni.greyrock.io/
+              - --siderolink-api-advertised-url=https://omni.greyrock.io:8090/
+              - --siderolink-wireguard-advertised-addr=10.1.1.11:50180
+              - --advertised-kubernetes-proxy-url=https://omni.greyrock.io:8100/
+              - --auth-auth0-enabled=true
+              - --auth-auth0-domain=dev-wdolvr4vthdpmy13.us.auth0.com
+              - --auth-auth0-client-id=O1IjsnLbRSevM1tCtRI3Ib0Gd2Z1qc0d
+              - --initial-users=tpunderson@greyrock.io
+            probes:
+              liveness:
+                enabled: false
+              readiness:
+                enabled: false
+              startup:
+                enabled: false
+                spec:
+                  failureThreshold: 30
+                  periodSeconds: 5
+            resources:
+              requests:
+                cpu: 5m
+                memory: 256M
+              limits:
+                memory: 256M
+
+    service:
+      app:
+        controller: omni
+        type: ClusterIP
+        ports:
+          event-sink:
+            port: 8091
+          http:
+            port: 443
+          siderolink-api:
+            port: 8090
+          k8s-proxy:
+            port: 8100
+          wireguard:
+            port: 50180
+
+    persistence:
+      omni-data:
+        storageClass: openebs-hostpath
+        size: 5Gi
+        accessMode: ReadWriteOnce
+        globalMounts:
+          - path: /_out/etcd
+      cert-files:
+        type: secret
+        name: greyrock-io-tls
+        defaultMode: 400
+        globalMounts:
+          - path: /tls.crt
+            subPath: tls.crt
+            readOnly: true
+          - path: /tls.key
+            subPath: tls.key
+            readOnly: true
+      omni-files:
+        type: secret
+        name: omni-secret
+        defaultMode: 400
+        globalMounts:
+          - path: /omni.asc
+            subPath: omni.asc
+            readOnly: true
