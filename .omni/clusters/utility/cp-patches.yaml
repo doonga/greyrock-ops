@@ -4,12 +4,16 @@ cluster:
   apiServer:
     # Disable default API server admission by namespace
     admissionControl:
-      - configuration:
+      - name: PodSecurity
+        configuration:
           exemptions:
             namespaces:
+              - monitoring
               - openebs
               - security
-        name: PodSecurity
+              - system
+          kind: PodSecurityConfiguration
+
     disablePodSecurityPolicy: true
     extraArgs:
       bind-address: 0.0.0.0
