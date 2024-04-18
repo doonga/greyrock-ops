@@ -3,7 +3,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
-  name: dnsmasq
+  name: matchbox
 spec:
   interval: 30m
   chart:
@@ -25,28 +25,18 @@ spec:
       hostPID: false
 
     controllers:
-      dnsmasq:
+      matchbox:
         annotations:
           reloader.stakater.com/auto: "true"
 
         containers:
           app:
             image:
-              repository: quay.io/poseidon/dnsmasq
-              tag: v0.5.0
+              repository: quay.io/poseidon/matchbox
+              tag: v0.11.0
             args:
-              - -d
-              - -q
-              - --dhcp-range=10.1.1.1,proxy,255.255.255.0
-              - --enable-tftp
-              - --tftp-root=/var/lib/tftpboot
-              - --dhcp-userclass=set:ipxe,iPXE
-              - --pxe-service=tag:#ipxe,x86PC,"PXE chainload to iPXE",undionly.kpxe
-              - --pxe-service=tag:ipxe,x86PC,"iPXE",http://10.1.1.11:9080/boot.ipxe
-              - --pxe-service=tag:#ipxe,X86-64_EFI,"PXE chainload to iPXE UEFI",ipxe.efi
-              - --pxe-service=tag:ipxe,X86-64_EFI,"iPXE UEFI",http://10.1.1.11:9080/boot.ipxe
-              - --log-queries
-              - --log-dhcp
+              - "-address=0.0.0.0:9080"
+              - "-log-level=debug"
             probes:
               liveness:
                 enabled: false
@@ -63,20 +53,19 @@ spec:
                 memory: 256M
               limits:
                 memory: 256M
-            securityContext:
-              capabilities:
-                add:
-                  - NET_ADMIN
-              privileged: true
 
     service:
       app:
-        controller: dnsmasq
+        controller: matchbox
         type: ClusterIP
         ports:
-          dhcp:
-            port: 67
-            protocol: UDP
-          tftp:
-            port: 69
-            protocol: UDP
+          http:
+            port: 9080
+
+    persistence:
+      matchbox-data:
+        storageClass: openebs-hostpath
+        size: 5Gi
+        accessMode: ReadWriteOnce
+        globalMounts:
+          - path: /var/lib/matchbox
