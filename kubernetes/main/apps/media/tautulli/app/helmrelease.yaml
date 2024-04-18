@@ -37,22 +37,29 @@ spec:
             image:
               repository: ghcr.io/tautulli/tautulli
               tag: v2.13.4
-            command: ["/usr/local/bin/python", "Tautulli.py"]
-            args: [
-              "--config", "/config/config.ini",
-              "--datadir", "/config",
-              "--port", "80"
-            ]
+            command: 
+              - /usr/local/bin/python"
+              - Tautulli.py
+            args:
+              - --config
+              - /config/config.ini
+              - --datadir
+              - /config
+              - --port
+              - 8181
             probes:
-              liveness:
+              liveness: &probes
                 enabled: true
-              readiness:
-                enabled: true
-              startup:
-                enabled: true
+                custom: true
                 spec:
-                  failureThreshold: 30
-                  periodSeconds: 5
+                  httpGet:
+                    path: /status
+                    port: 8181
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
             resources:
               requests:
                 cpu: 5m
@@ -65,7 +72,7 @@ spec:
         controller: tautulli
         ports:
           http:
-            port: 80
+            port: 8181
 
     ingress:
       app:
