@@ -19,3 +19,4 @@ spec:
   wait: false
   dependsOn:
     - name: cert-manager-issuers
+    - name: external-secrets-stores
