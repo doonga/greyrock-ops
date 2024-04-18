@@ -70,6 +70,8 @@ spec:
                 memory: 256M
               limits:
                 memory: 256M
+            securityContext:
+              privileged: true
 
     service:
       app:
@@ -113,3 +115,7 @@ spec:
           - path: /omni.asc
             subPath: omni.asc
             readOnly: true
+      dev-net-tun:
+        type: hostPath
+        hostPath: /dev/net/tun
+        hostPathType: Directory
