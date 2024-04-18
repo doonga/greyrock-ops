@@ -118,4 +118,3 @@ spec:
       dev-net-tun:
         type: hostPath
         hostPath: /dev/net/tun
-        hostPathType: Directory
