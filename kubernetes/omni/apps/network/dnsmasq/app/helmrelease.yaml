@@ -1,0 +1,82 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2beta2.schema.json
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: dnsmasq
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 3.1.0
+      interval: 30m
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+
+  values:
+    defaultPodOptions:
+      automountServiceAccountToken: true
+      enableServiceLinks: false
+      hostIPC: false
+      hostNetwork: true
+      hostPID: false
+
+    controllers:
+      dnsmasq:
+        annotations:
+          reloader.stakater.com/auto: "true"
+
+        containers:
+          app:
+            image:
+              repository: quay.io/poseidon/dnsmasq
+              tag: v0.5.0
+            args:
+              - -d
+              - -q
+              - --dhcp-range=10.1.1.1,proxy,255.255.255.0
+              - --enable-tftp
+              - --tftp-root=/var/lib/tftpboot
+              - --dhcp-userclass=set:ipxe,iPXE
+              - --pxe-service=tag:#ipxe,x86PC,"PXE chainload to iPXE",undionly.kpxe
+              - --pxe-service=tag:ipxe,x86PC,"iPXE",http://10.1.1.11/boot.ipxe
+              - --pxe-service=tag:#ipxe,X86-64_EFI,"PXE chainload to iPXE UEFI",ipxe.efi
+              - --pxe-service=tag:ipxe,X86-64_EFI,"iPXE UEFI",http://10.1.1.11/boot.ipxe
+              - --log-queries
+              - --log-dhcp
+            probes:
+              liveness:
+                enabled: false
+              readiness:
+                enabled: false
+              startup:
+                enabled: false
+                spec:
+                  failureThreshold: 30
+                  periodSeconds: 5
+            resources:
+              requests:
+                cpu: 5m
+                memory: 256M
+              limits:
+                memory: 256M
+            securityContext:
+              capabilities:
+                add:
+                  - NET_ADMIN
+              privileged: true
+
+    service:
+      app:
+        controller: dnsmasq
+        type: ClusterIP
+        ports:
+          dhcp:
+            port: 67
+            protocol: UDP
+          tftp:
+            port: 69
+            protocol: UDP
