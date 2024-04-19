@@ -37,8 +37,8 @@ spec:
             image:
               repository: ghcr.io/tautulli/tautulli
               tag: v2.13.4
-            command: 
-              - /usr/local/bin/python"
+            command:
+              - /usr/local/bin/python
               - Tautulli.py
             args:
               - --config
@@ -46,7 +46,7 @@ spec:
               - --datadir
               - /config
               - --port
-              - 8181
+              - "8181"
             probes:
               liveness: &probes
                 enabled: true
@@ -63,9 +63,9 @@ spec:
             resources:
               requests:
                 cpu: 5m
-                memory: 256M
+                memory: 128Mi
               limits:
-                memory: 512M
+                memory: 512Mi
 
     service:
       app:
@@ -76,10 +76,6 @@ spec:
 
     ingress:
       app:
-        annotations:
-          hajimari.io/enable: "true"
-          hajimari.io/instance: "todd"
-          hajimari.io/icon: "mdi:chart-bar"
         className: internal-nginx
         hosts:
           - host: &hostName tautulli.greyrock.casa
