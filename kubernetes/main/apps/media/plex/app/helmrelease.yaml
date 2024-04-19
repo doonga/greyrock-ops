@@ -27,8 +27,8 @@ spec:
             ingress.home.arpa/lan: allow
             ingress.home.arpa/nginx-external: allow
             egress.home.arpa/kubedns: allow # FIXME: Remove when clusterNetworkPolicy is in place
-          nodeSelector:
-            intel.feature.node.kubernetes.io/gpu: "true"
+          # nodeSelector:
+          #   intel.feature.node.kubernetes.io/gpu: "true"
           securityContext:
             runAsUser: 2000
             runAsGroup: 2000
@@ -60,10 +60,10 @@ spec:
             resources:
               requests:
                 cpu: 100m
-                gpu.intel.com/i915: 1
+                # gpu.intel.com/i915: 1
                 memory: 9248M
               limits:
-                gpu.intel.com/i915: 1
+                # gpu.intel.com/i915: 1
                 memory: 16384M
 
     service:

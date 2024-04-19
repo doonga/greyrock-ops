@@ -34,9 +34,8 @@ spec:
                 "namespace": "network",
                 "ips": ["10.1.4.153/23"]
               }]
-          nodeSelector:
-            google.feature.node.kubernetes.io/coral: "true"
-            intel.feature.node.kubernetes.io/gpu: "true"
+          # nodeSelector:
+          #   intel.feature.node.kubernetes.io/gpu: "true"
           securityContext:
             supplementalGroups:
               - 65542 # nas:external-services
@@ -58,11 +57,11 @@ spec:
                   periodSeconds: 5
             resources:
               requests:
-                gpu.intel.com/i915: 1
+                # gpu.intel.com/i915: 1
                 cpu: 136m
                 memory: 1024Mi
               limits:
-                gpu.intel.com/i915: 1
+                # gpu.intel.com/i915: 1
                 memory: 8192Mi
             securityContext:
               privileged: true
