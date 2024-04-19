@@ -86,10 +86,6 @@ spec:
         server: "nas.greyrock.io"
         path: /tank/frigate
         mountPath: /media
-      coral:
-        enabled: true
-        type: hostPath
-        hostPath: /dev/apex_0
       cache:
         enabled: true
         type: emptyDir
@@ -121,8 +117,7 @@ spec:
       privileged: true
 
     nodeSelector:
-      google.feature.node.kubernetes.io/coral: "true"
-      intel.feature.node.kubernetes.io/gpu: "true"
+      # intel.feature.node.kubernetes.io/gpu: "true"
 
     affinity:
       podAntiAffinity:
@@ -139,11 +134,11 @@ spec:
 
     resources:
       requests:
-        gpu.intel.com/i915: 1
+        # gpu.intel.com/i915: 1
         cpu: 189m
         memory: 1219M
       limits:
-        gpu.intel.com/i915: 1
+        # gpu.intel.com/i915: 1
         memory: 1219M
 
     volumeClaimTemplates:
