@@ -18,5 +18,6 @@ spec:
     name: greyrock-ops-kubernetes
   wait: false # no flux ks dependents
   dependsOn:
+    - name: multus-config
     - name: external-secrets-stores
     - name: mosquitto
