@@ -63,8 +63,6 @@ spec:
               limits:
                 # gpu.intel.com/i915: 1
                 memory: 8192Mi
-            securityContext:
-              privileged: true
 
     service:
       app:
@@ -109,14 +107,6 @@ spec:
         type: emptyDir
         globalMounts:
           - path: /.npm
-      dev-bus-usb:
-        type: hostPath
-        hostPath: /dev/bus/usb
-        hostPathType: Directory
-      sys-bus-usb:
-        type: hostPath
-        hostPath: /sys/bus/usb
-        hostPathType: Directory
       recs:
         type: nfs
         server: nas.greyrock.io
