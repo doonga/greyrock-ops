@@ -1,14 +1,19 @@
 # Control Plane
 cluster:
+  allowSchedulingOnControlPlanes: true
   apiServer:
     # Disable default API server admission by namespace
     admissionControl:
-      - configuration:
+      - name: PodSecurity
+        configuration:
           exemptions:
             namespaces:
+              - monitoring
               - openebs
+              - rook-ceph
               - security
-        name: PodSecurity
+              - system
+          kind: PodSecurityConfiguration
     disablePodSecurityPolicy: true
     extraArgs:
       bind-address: 0.0.0.0

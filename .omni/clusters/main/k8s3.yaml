@@ -1,6 +1,6 @@
 machine:
   network:
-    hostname: "k8s1"
+    hostname: "k8s3"
     interfaces:
       - interface: bond0
         bond:
@@ -17,8 +17,3 @@ machine:
     - device: /dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_BTWL421602AP800RGN
       partitions:
         - mountpoint: /var/mnt/sata
-
-  systemExtensions:
-    - siderolabs/intel-ucode
-    - siderolabs/i915-ucode
-    - siderolabs/gasket-driver

@@ -17,6 +17,3 @@ machine:
     - device: /dev/disk/by-id/nvme-WDC_WDS500G2B0C-00PXH0_21381C801327
       partitions:
         - mountpoint: /var/mnt/sata
-
-  systemExtensions:
-    - siderolabs/intel-ucode

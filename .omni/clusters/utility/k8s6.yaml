@@ -17,6 +17,3 @@ machine:
     - device: /dev/disk/by-id/nvme-WD_Blue_SN570_500GB_22410H804662
       partitions:
         - mountpoint: /var/mnt/sata
-
-  systemExtensions:
-    - siderolabs/intel-ucode
