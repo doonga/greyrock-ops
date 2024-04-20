@@ -19,10 +19,8 @@ spec:
   values:
     controllers:
       rtlamr2mqtt:
-        pod:
-          nodeSelector:
-            rtlamr.feature.node.kubernetes.io/rtlamr: "true"
-
+        annotations:
+          reloader.stakater.com/auto: "true"
         containers:
           app:
             image:
@@ -34,17 +32,17 @@ spec:
 
             resources:
               requests:
-                cpu: 100m
-                memory: 36M
+                cpu: 10m
               limits:
-                memory: 36M
-
+                memory: 256Mi
+    defaultPodOptions:
+      nodeSelector:
+        rtlamr.feature.node.kubernetes.io/rtlamr: "true"
     persistence:
       config-file:
         type: secret
         name: rtlamr2mqtt-secret
-        defaultMode: 400
         globalMounts:
           - path: /etc/rtlamr2mqtt.yaml
-            subPath: RT_LAMR_CONFIG_FILE
+            subPath: rtlamr2mqtt.yaml
             readOnly: true
