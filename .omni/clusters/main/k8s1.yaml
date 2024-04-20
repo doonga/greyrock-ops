@@ -9,9 +9,18 @@ machine:
             - hardwareAddr: 00:30:93:12:38:d3
               driver: atlantic
           mode: active-backup
+        vlans:
+          - routes: []
+            dhcp: true
+            vlanId: 40
+            mtu: 1500
+            dhcpOptions:
+              routeMetric: 4096
         dhcp: true
         vip:
           ip: 10.1.1.2
+      - interface: enp86s0
+        ignore: true
 
   disks:
     - device: /dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_BTWL406300TG800RGN

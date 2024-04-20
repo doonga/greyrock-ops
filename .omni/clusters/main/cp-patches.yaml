@@ -8,7 +8,12 @@ cluster:
         configuration:
           exemptions:
             namespaces:
+              - dev
+              - downloads
+              - home-automation
+              - media
               - monitoring
+              - network
               - openebs
               - rook-ceph
               - security
