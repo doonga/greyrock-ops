@@ -6,7 +6,7 @@ metadata:
 spec:
   secretName: "greyrock-casa-tls"
   issuerRef:
-    name: letsencrypt-production
+    name: zerossl-production
     kind: ClusterIssuer
   commonName: "greyrock.casa"
   dnsNames:
