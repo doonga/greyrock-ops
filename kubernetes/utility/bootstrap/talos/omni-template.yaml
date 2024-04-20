@@ -1,15 +1,17 @@
 kind: Cluster
-name: main
+name: utility
 kubernetes:
+  # renovate: depName=kubernetes/kubernetes datasource=github-releases extractVersion=^v(?<version>.*)$
   version: v1.29.4
 talos:
+  # renovate: depName=ghcr.io/siderolabs/installer datasource=docker extractVersion=^(?<version>.*)$
   version: v1.7.0
 features:
   diskEncryption: true
   backupConfiguration:
     interval: 1h0m0s
 patches:
-  - idOverride: 200-main
+  - idOverride: 200-utility
     inline:
       cluster:
         network:
@@ -80,11 +82,11 @@ patches:
 ---
 kind: ControlPlane
 machines:
-  - 5de2ceb3-4756-8152-8b59-48210b5a4aef
-  - 980ac1a2-5e62-e2f9-6edf-48210b5a45df
-  - c3c2fce5-fdb5-ef02-cfa1-48210b5a4fa7
+  - 1ead03ec-069e-75af-657e-48210b3ed814
+  - 5d35ad44-a5cb-684f-f351-48210b3ed802
+  - dfd3e0cb-8ce4-3109-c087-48210b3edbda
 patches:
-  - idOverride: 400-main-control-planes
+  - idOverride: 400-utility-control-planes
     inline:
       cluster:
         allowSchedulingOnControlPlanes: true
@@ -93,21 +95,14 @@ patches:
             - configuration:
                 exemptions:
                   namespaces:
-                    - dev
-                    - downloads
-                    - home-automation
-                    - media
                     - monitoring
-                    - network
                     - openebs
-                    - rook-ceph
                     - security
                     - system
                 kind: PodSecurityConfiguration
               name: PodSecurity
           certSANs:
-            - 10.1.1.2
-            - main.greyrock.io
+            - 10.1.1.7
             - 127.0.0.1
           disablePodSecurityPolicy: true
           extraArgs:
@@ -132,115 +127,79 @@ patches:
 kind: Workers
 ---
 kind: Machine
-name: 5de2ceb3-4756-8152-8b59-48210b5a4aef
+name: 1ead03ec-069e-75af-657e-48210b3ed814
 install:
   disk: /dev/sda
 patches:
-  - idOverride: 400-cm-5de2ceb3-4756-8152-8b59-48210b5a4aef
+  - idOverride: 400-cm-1ead03ec-069e-75af-657e-48210b3ed814
     inline:
       machine:
         disks:
-          - device: /dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_BTWL406300TG800RGN
+          - device: /dev/disk/by-id/nvme-WDC_WDS500G2B0C-00PXH0_21381C806554
             partitions:
               - mountpoint: /var/mnt/sata
         network:
-          hostname: k8s1
+          hostname: k8s4
           interfaces:
             - bond:
                 deviceSelectors:
-                  - driver: atlantic
-                    hardwareAddr: 00:30:93:12:38:d3
+                  - driver: igc
+                    hardwareAddr: 48:21:0b:3e:d8:14
                 interfaces: []
                 mode: active-backup
               dhcp: true
               interface: bond0
               vip:
-                ip: 10.1.1.2
-              vlans:
-                - dhcp: true
-                  dhcpOptions:
-                    routeMetric: 4096
-                  mtu: 1500
-                  routes: []
-                  vlanId: 40
-            - ignore: true
-              interface: enp86s0
-systemExtensions:
-  - siderolabs/intel-ucode
-  - siderolabs/i915-ucode
+                ip: 10.1.1.7
 ---
 kind: Machine
-name: 980ac1a2-5e62-e2f9-6edf-48210b5a45df
+name: 5d35ad44-a5cb-684f-f351-48210b3ed802
 install:
   disk: /dev/sda
 patches:
-  - idOverride: 400-cm-980ac1a2-5e62-e2f9-6edf-48210b5a45df
+  - idOverride: 400-cm-5d35ad44-a5cb-684f-f351-48210b3ed802
     inline:
       machine:
         disks:
-          - device: /dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_BTWL503001EB800RGN
+          - device: /dev/disk/by-id/nvme-WD_Blue_SN570_500GB_22410H804662
             partitions:
               - mountpoint: /var/mnt/sata
         network:
-          hostname: k8s2
+          hostname: k8s6
           interfaces:
             - bond:
                 deviceSelectors:
-                  - driver: atlantic
-                    hardwareAddr: 00:30:93:12:38:d6
+                  - driver: igc
+                    hardwareAddr: 48:21:0b:3e:d8:02
                 interfaces: []
                 mode: active-backup
               dhcp: true
               interface: bond0
               vip:
-                ip: 10.1.1.2
-              vlans:
-                - dhcp: true
-                  dhcpOptions:
-                    routeMetric: 4096
-                  mtu: 1500
-                  routes: []
-                  vlanId: 40
-            - ignore: true
-              interface: enp86s0
-systemExtensions:
-  - siderolabs/intel-ucode
-  - siderolabs/i915-ucode
+                ip: 10.1.1.7
 ---
 kind: Machine
-name: c3c2fce5-fdb5-ef02-cfa1-48210b5a4fa7
+name: dfd3e0cb-8ce4-3109-c087-48210b3edbda
 install:
   disk: /dev/sda
 patches:
-  - idOverride: 400-cm-c3c2fce5-fdb5-ef02-cfa1-48210b5a4fa7
+  - idOverride: 400-cm-dfd3e0cb-8ce4-3109-c087-48210b3edbda
     inline:
       machine:
         disks:
-          - device: /dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_BTWL421602AP800RGN
+          - device: /dev/disk/by-id/nvme-WDC_WDS500G2B0C-00PXH0_21381C801327
             partitions:
               - mountpoint: /var/mnt/sata
         network:
-          hostname: k8s3
+          hostname: k8s5
           interfaces:
             - bond:
                 deviceSelectors:
-                  - driver: atlantic
-                    hardwareAddr: 00:30:93:12:38:8c
+                  - driver: igc
+                    hardwareAddr: 48:21:0b:3e:db:da
                 interfaces: []
                 mode: active-backup
               dhcp: true
               interface: bond0
               vip:
-                ip: 10.1.1.2
-              vlans:
-                - dhcp: true
-                  dhcpOptions:
-                    routeMetric: 4096
-                  mtu: 1500
-                  routes: []
-                  vlanId: 40
-            - ignore: true
-              interface: enp86s0
-systemExtensions:
-  - siderolabs/intel-ucode
-  - siderolabs/i915-ucode
+                ip: 10.1.1.7
