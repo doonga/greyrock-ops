@@ -24,7 +24,7 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
     hajimari.io/enable: "true"
-    hajimari.io/instance: "todd"
+    hajimari.io/instance: "todd,andy"
     hajimari.io/icon: "router-wireless-settings"
   labels:
     app.kubernetes.io/name: unifi
