@@ -10,8 +10,6 @@ features:
     interval: 1h0m0s
 patches:
   - idOverride: 200-main
-    annotations:
-      name: ""
     inline:
       cluster:
         network:
@@ -87,8 +85,6 @@ machines:
   - c3c2fce5-fdb5-ef02-cfa1-48210b5a4fa7
 patches:
   - idOverride: 400-main-control-planes
-    annotations:
-      name: ""
     inline:
       cluster:
         allowSchedulingOnControlPlanes: true
@@ -97,10 +93,17 @@ patches:
             - configuration:
                 exemptions:
                   namespaces:
+                    - dev
+                    - downloads
+                    - home-automation
+                    - media
                     - monitoring
+                    - network
                     - openebs
+                    - rook-ceph
                     - security
                     - system
+                kind: PodSecurityConfiguration
               name: PodSecurity
           certSANs:
             - 10.1.1.2
@@ -129,16 +132,11 @@ patches:
 kind: Workers
 ---
 kind: Machine
-systemExtensions:
-  - siderolabs/i915-ucode
-  - siderolabs/intel-ucode
 name: 5de2ceb3-4756-8152-8b59-48210b5a4aef
 install:
   disk: /dev/sda
 patches:
   - idOverride: 400-cm-5de2ceb3-4756-8152-8b59-48210b5a4aef
-    annotations:
-      name: ""
     inline:
       machine:
         disks:
@@ -158,18 +156,25 @@ patches:
               interface: bond0
               vip:
                 ip: 10.1.1.2
+              vlans:
+                - dhcp: true
+                  dhcpOptions:
+                    routeMetric: 4096
+                  mtu: 1500
+                  routes: []
+                  vlanId: 40
+            - ignore: true
+              interface: enp86s0
+systemExtensions:
+  - siderolabs/intel-ucode
+  - siderolabs/i915-ucode
 ---
 kind: Machine
-systemExtensions:
-  - siderolabs/i915-ucode
-  - siderolabs/intel-ucode
 name: 980ac1a2-5e62-e2f9-6edf-48210b5a45df
 install:
   disk: /dev/sda
 patches:
   - idOverride: 400-cm-980ac1a2-5e62-e2f9-6edf-48210b5a45df
-    annotations:
-      name: ""
     inline:
       machine:
         disks:
@@ -189,18 +194,25 @@ patches:
               interface: bond0
               vip:
                 ip: 10.1.1.2
+              vlans:
+                - dhcp: true
+                  dhcpOptions:
+                    routeMetric: 4096
+                  mtu: 1500
+                  routes: []
+                  vlanId: 40
+            - ignore: true
+              interface: enp86s0
+systemExtensions:
+  - siderolabs/intel-ucode
+  - siderolabs/i915-ucode
 ---
 kind: Machine
-systemExtensions:
-  - siderolabs/i915-ucode
-  - siderolabs/intel-ucode
 name: c3c2fce5-fdb5-ef02-cfa1-48210b5a4fa7
 install:
   disk: /dev/sda
 patches:
   - idOverride: 400-cm-c3c2fce5-fdb5-ef02-cfa1-48210b5a4fa7
-    annotations:
-      name: ""
     inline:
       machine:
         disks:
@@ -220,3 +232,15 @@ patches:
               interface: bond0
               vip:
                 ip: 10.1.1.2
+              vlans:
+                - dhcp: true
+                  dhcpOptions:
+                    routeMetric: 4096
+                  mtu: 1500
+                  routes: []
+                  vlanId: 40
+            - ignore: true
+              interface: enp86s0
+systemExtensions:
+  - siderolabs/intel-ucode
+  - siderolabs/i915-ucode
