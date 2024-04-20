@@ -3,7 +3,7 @@ name: main
 kubernetes:
   version: v1.29.4
 talos:
-  version: v1.6.7
+  version: v1.7.0
 features:
   diskEncryption: true
   backupConfiguration:
