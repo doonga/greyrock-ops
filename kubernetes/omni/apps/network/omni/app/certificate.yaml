@@ -6,7 +6,7 @@ metadata:
 spec:
   secretName: "greyrock-io-tls"
   issuerRef:
-    name: letsencrypt-production
+    name: zerossl-production
     kind: ClusterIssuer
   commonName: "greyrock.io"
   dnsNames:
