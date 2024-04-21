@@ -56,6 +56,5 @@ jobs:
         shell: bash
         run: |
           for f in ${{ steps.changed-files.outputs.all_changed_and_modified_files }}; do
-            cluster_name=$(echo "${f}" | awk -F'/' '{print $2}')
-            omnictl cluster status ${cluster_name} -f "${f}"
+            omnictl cluster template status -f "${f}"
           done
