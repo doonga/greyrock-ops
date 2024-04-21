@@ -2,7 +2,7 @@ kind: Cluster
 name: main
 kubernetes:
   # renovate: depName=kubernetes/kubernetes datasource=github-releases extractVersion=^v(?<version>.*)$
-  version: v1.29.4
+  version: v1.30.0
 talos:
   # renovate: depName=ghcr.io/siderolabs/installer datasource=docker extractVersion=^(?<version>.*)$
   version: v1.7.0
@@ -47,7 +47,6 @@ patches:
         kubelet:
           defaultRuntimeSeccompProfileEnabled: true
           extraArgs:
-            feature-gates: GracefulNodeShutdown=true,NewVolumeManagerReconstruction=false
             rotate-server-certificates: "true"
           extraConfig:
             maxPods: 150

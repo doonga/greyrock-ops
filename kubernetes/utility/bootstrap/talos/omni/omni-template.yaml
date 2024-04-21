@@ -47,7 +47,6 @@ patches:
         kubelet:
           defaultRuntimeSeccompProfileEnabled: true
           extraArgs:
-            feature-gates: GracefulNodeShutdown=true,NewVolumeManagerReconstruction=false
             rotate-server-certificates: "true"
           extraConfig:
             maxPods: 150
