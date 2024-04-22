@@ -7,5 +7,6 @@ resources:
   - ./namespace.yaml
   # Flux-Kustomizations
   - ./dnsmasq/ks.yaml
+  - ./external-dns/ks.yaml
   - ./matchbox/ks.yaml
   - ./omni/ks.yaml
