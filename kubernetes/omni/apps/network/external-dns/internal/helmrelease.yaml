@@ -61,7 +61,7 @@ spec:
       - ingress
       - service
 
-    txtPrefix: "k8s-nas."
+    txtPrefix: "k8s-omni."
 
   postRenderers:
     - kustomize:
