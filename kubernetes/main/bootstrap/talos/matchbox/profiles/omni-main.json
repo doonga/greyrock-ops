@@ -2,8 +2,8 @@
   "id": "talos-controller",
   "name": "talos-controller",
   "boot": {
-    "kernel": "/assets/talos/utility/kernel-amd64",
-    "initrd": ["/assets/talos/utility/initramfs-amd64.xz"],
+    "kernel": "/assets/talos/main/kernel-amd64",
+    "initrd": ["/assets/talos/main/initramfs-amd64.xz"],
     "args": [
       "initrd=initramfs-amd64.xz",
       "init_on_alloc=1",
