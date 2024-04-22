@@ -8,19 +8,16 @@ tasks:
     summary: |
       Args:
         cluster: Cluster to run command against (required)
-        controller: Controller node to run command against (required)
     prompt: Bootstrap Talos on the '{{.cluster}}' cluster... continue?
     cmds:
       - task: fetch-kubeconfig
         vars: &vars
           cluster: "{{.cluster}}"
-          controller: "{{.controller}}"
       - task: bootstrap-integrations
         vars: *vars
     requires:
       vars:
         - cluster
-        - controller
 
   bootstrap-integrations:
     desc: Bootstrap core integrations needed for Talos
@@ -38,15 +35,12 @@ tasks:
       - test -f {{.KUBERNETES_DIR}}/{{.cluster}}/bootstrap/talos/integrations/helmfile.yaml
 
   fetch-kubeconfig:
-    desc: Fetch kubeconfig from Talos controllers
+    desc: Fetch kubeconfig from Omni
     cmd: |
-      talosctl --context {{.cluster}} kubeconfig --nodes {{.controller}} \
-          --force --force-context-name {{.cluster}} {{.KUBERNETES_DIR}}/{{.cluster}}
+      omnictl kubeconfig {{.KUBERNETES_DIR}}/{{.cluster}} --force --force-context-name {{.cluster}} --cluster {{.cluster}}
     requires:
       vars:
         - cluster
-    preconditions:
-      - talosctl config get-contexts | grep {{.cluster}}
 
   bootstrap-matchbox:
     desc: Bootstrap required Matchbox configuration to Omni for PXE Boot
