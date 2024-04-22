@@ -32,7 +32,8 @@ spec:
               [{
                 "name":"multus-iot",
                 "namespace": "network",
-                "ips": ["10.1.4.153/23"]
+                "ips": ["10.1.4.153/23"],
+                "mac": "64:64:63:90:8d:d8"
               }]
           # nodeSelector:
           #   intel.feature.node.kubernetes.io/gpu: "true"
