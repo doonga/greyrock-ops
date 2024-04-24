@@ -33,7 +33,7 @@ spec:
           app:
             image:
               repository: ghcr.io/siderolabs/omni
-              tag: v0.33.2
+              tag: v0.34.0
             args:
               - --account-id=d62239cb-615c-43a0-83e8-d33e8a59cf23
               - --name=greyrock-omni
