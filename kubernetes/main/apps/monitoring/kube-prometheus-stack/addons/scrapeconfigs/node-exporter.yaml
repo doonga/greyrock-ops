@@ -7,6 +7,7 @@ metadata:
 spec:
   staticConfigs:
     - targets:
+        - utility.greyrock.io:9100
         - pikvm.greyrock.io:9100
   metricsPath: /metrics
   relabelings:
