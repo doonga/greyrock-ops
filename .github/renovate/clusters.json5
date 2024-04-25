@@ -11,15 +11,5 @@
       matchFileNames: ["**/kubernetes/nas/**"],
       additionalBranchPrefix: "nas-",
     },
-    {
-      description: "Separate PRs for utility cluster",
-      matchFileNames: ["**/kubernetes/utility/**"],
-      additionalBranchPrefix: "utility-",
-    },
-    {
-      description: "Separate PRs for omni cluster",
-      matchFileNames: ["**/kubernetes/omni/**"],
-      additionalBranchPrefix: "omni-",
-    },
   ],
 }

@@ -73,8 +73,6 @@ spec:
       replicas: 2
       additionalStores:
         - thanos-svc-nas.greyrock.casa:10901
-        - thanos-svc-omni.greyrock.casa:10901
-        - thanos-svc-utility.greyrock.casa:10901
       extraArgs:
         - --alert.query-url=http://thanos.greyrock.casa
     queryFrontend:

@@ -13,9 +13,3 @@ cluster/main:
 cluster/nas:
   - changed-files:
       - any-glob-to-any-file: kubernetes/nas/**/*
-cluster/utility:
-  - changed-files:
-      - any-glob-to-any-file: kubernetes/utility/**/*
-cluster/omni:
-  - changed-files:
-      - any-glob-to-any-file: kubernetes/omni/**/*
