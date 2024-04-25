@@ -8,16 +8,29 @@ tasks:
     summary: |
       Args:
         cluster: Cluster to run command against (required)
+        controller: Controller node to run command against (required)
     prompt: Bootstrap Talos on the '{{.cluster}}' cluster... continue?
     cmds:
-      - task: fetch-kubeconfig
+      - task: bootstrap-etcd
         vars: &vars
           cluster: "{{.cluster}}"
+          controller: "{{.controller}}"
+      - task: fetch-kubeconfig
+        vars: *vars
       - task: bootstrap-integrations
         vars: *vars
     requires:
       vars:
         - cluster
+        - controller
+
+  bootstrap-etcd:
+    desc: Bootstrap Etcd
+    cmd: until talosctl --context {{.cluster}} --nodes {{.controller}} bootstrap; do sleep 10; done
+    requires:
+      vars:
+        - cluster
+        - controller
 
   bootstrap-integrations:
     desc: Bootstrap core integrations needed for Talos
@@ -35,59 +48,169 @@ tasks:
       - test -f {{.KUBERNETES_DIR}}/{{.cluster}}/bootstrap/talos/integrations/helmfile.yaml
 
   fetch-kubeconfig:
-    desc: Fetch kubeconfig from Omni
+    desc: Fetch kubeconfig from Talos controllers
     cmd: |
-      omnictl kubeconfig {{.KUBERNETES_DIR}}/{{.cluster}} --force --force-context-name {{.cluster}} --cluster {{.cluster}}
+      talosctl --context {{.cluster}} kubeconfig --nodes {{.controller}} \
+          --force --force-context-name {{.cluster}} {{.KUBERNETES_DIR}}/{{.cluster}}
+    requires:
+      vars:
+        - cluster
+    preconditions:
+      - talosctl config get-contexts | grep {{.cluster}}
+
+  generate-clusterconfig:
+    desc: Generate clusterconfig for Talos
+    cmds:
+      - talhelper genconfig
+        --env-file {{.KUBERNETES_DIR}}/{{.cluster}}/bootstrap/talos/talenv.sops.yaml
+        --secret-file {{.KUBERNETES_DIR}}/{{.cluster}}/bootstrap/talos/talsecret.sops.yaml
+        --config-file {{.KUBERNETES_DIR}}/{{.cluster}}/bootstrap/talos/talconfig.yaml
+        --out-dir {{.KUBERNETES_DIR}}/{{.cluster}}/bootstrap/talos/clusterconfig
+    requires:
+      vars:
+        - cluster
+    preconditions:
+      - which talhelper
+      - test -f {{.KUBERNETES_DIR}}/{{.cluster}}/bootstrap/talos/talenv.sops.yaml
+      - test -f {{.KUBERNETES_DIR}}/{{.cluster}}/bootstrap/talos/talsecret.sops.yaml
+      - test -f {{.KUBERNETES_DIR}}/{{.cluster}}/bootstrap/talos/talconfig.yaml
+
+  bootstrap-matchbox:
+    desc: Bootstrap required Matchbox configuration to Vyos for PXE Boot
+    vars:
+      VYOS_ADDR: gateway.greyrock.io
+      VYOS_USER: vyos
+      VYOS_MATCHBOX_DIR: /config/containers/matchbox/data
+      VYOS_MATCHBOX_GROUPS_DIR: "{{.VYOS_MATCHBOX_DIR}}/groups"
+      VYOS_MATCHBOX_PROFILES_DIR: "{{.VYOS_MATCHBOX_DIR}}/profiles"
+      VYOS_MATCHBOX_ASSETS_DIR: "{{.VYOS_MATCHBOX_DIR}}/assets/talos/{{.cluster}}"
+      TALOS_VERSION:
+        sh: |
+          yq -r ".talosVersion" {{.KUBERNETES_DIR}}/{{.cluster}}/bootstrap/talos/talconfig.yaml
+      TALOS_BASE_URL:
+        sh: |
+          talhelper genurl iso \
+            --env-file {{.KUBERNETES_DIR}}/{{.cluster}}/bootstrap/talos/talenv.sops.yaml \
+            --config-file {{.KUBERNETES_DIR}}/{{.cluster}}/bootstrap/talos/talconfig.yaml \
+          | grep "https://" \
+          | head -n 1 \
+          | awk '{split($0,u," "); print u[2]}' \
+          | sed -E 's/\/metal-amd64.iso//'
+    cmds:
+      # Prepare folders
+      - ssh -l {{.VYOS_USER}} {{.VYOS_ADDR}} "sudo mkdir -p {{.VYOS_MATCHBOX_GROUPS_DIR}}"
+      - ssh -l {{.VYOS_USER}} {{.VYOS_ADDR}} "sudo mkdir -p {{.VYOS_MATCHBOX_PROFILES_DIR}}"
+      - ssh -l {{.VYOS_USER}} {{.VYOS_ADDR}} "sudo mkdir -p {{.VYOS_MATCHBOX_ASSETS_DIR}}"
+      - ssh -l {{.VYOS_USER}} {{.VYOS_ADDR}} "sudo chown -R {{.VYOS_USER}}:vyattacfg {{.VYOS_MATCHBOX_DIR}}"
+      # Upload Talos to Matchbox
+      - for: ["kernel-amd64", "initramfs-amd64.xz"]
+        cmd: |
+          ssh -l {{.VYOS_USER}} {{.VYOS_ADDR}} "wget -q -O {{.VYOS_MATCHBOX_ASSETS_DIR}}/{{.ITEM}} {{.TALOS_BASE_URL}}/{{.ITEM}}"
+      # Generate new cluster config
+      - task: generate-clusterconfig
+        vars:
+          cluster: "{{.cluster}}"
+      # Copy generated clusterconfigs to Matchbox
+      - find {{.KUBERNETES_DIR}}/{{.cluster}}/bootstrap/talos/clusterconfig/*.yaml -type f | xargs -I{} scp -p {} vyos@{{.VYOS_ADDR}}:/{{.VYOS_MATCHBOX_ASSETS_DIR}}/
+      # Copy groups to Matchbox
+      - find {{.KUBERNETES_DIR}}/{{.cluster}}/bootstrap/talos/matchbox/groups/*.json -type f | xargs -I{} scp -p {} vyos@{{.VYOS_ADDR}}:/{{.VYOS_MATCHBOX_GROUPS_DIR}}/
+      # Copy profiles to Matchbox
+      - find {{.KUBERNETES_DIR}}/{{.cluster}}/bootstrap/talos/matchbox/profiles/*.json -type f | xargs -I{} scp -p {} vyos@{{.VYOS_ADDR}}:/{{.VYOS_MATCHBOX_PROFILES_DIR}}/
+      # Restart the Matchbox container
+      - ssh -l {{.VYOS_USER}} {{.VYOS_ADDR}} -t /opt/vyatta/bin/vyatta-op-cmd-wrapper "restart container matchbox"
     requires:
       vars:
         - cluster
 
-  bootstrap-matchbox:
-    desc: Bootstrap required Matchbox configuration to Omni for PXE Boot
+  upgrade:
+    desc: Upgrade Talos version for a node
     vars:
-      OMNI_ADDR: omni.greyrock.io
-      OMNI_USER: todd
-      OMNI_MATCHBOX_CLUSTER: omni
-      OMNI_MATCHBOX_NAMESPACE: network
-      OMNI_MATCHBOX_PVC_PATH:
+      TALOS_VERSION:
         sh: |
-          kubectl get --context omni pvc -n network matchbox-matchbox-data -o json | jq -r '.spec.volumeName'
-      OMNI_MATCHBOX_DIR: /mnt/openebs/local/{{.OMNI_MATCHBOX_PVC_PATH}}
-      OMNI_MATCHBOX_GROUPS_DIR: "{{.OMNI_MATCHBOX_DIR}}/groups"
-      OMNI_MATCHBOX_PROFILES_DIR: "{{.OMNI_MATCHBOX_DIR}}/profiles"
-      OMNI_MATCHBOX_ASSETS_DIR: "{{.OMNI_MATCHBOX_DIR}}/assets/talos/{{.cluster}}"
-      OMNI_MATCHBOX_POD:
+          yq -r ".talosVersion" {{.KUBERNETES_DIR}}/{{.cluster}}/bootstrap/talos/talconfig.yaml
+      TALOS_IMAGE:
         sh: |
-          kubectl get --context {{.OMNI_MATCHBOX_CLUSTER}} pod -n {{.OMNI_MATCHBOX_NAMESPACE}} -l app.kubernetes.io/name=matchbox -o name | awk -F'/' '{print $2}'
-      OMNI_JOINTOKEN:
-        sh: |
-          omnictl get connectionparams -o json | jq -r '.spec["jointoken"]'
-      TALOS_BASE_URL:
-        sh: |
-          omnictl download iso \
-          --pxe \
-          | grep "https://" \
-          | head -n 1 \
-          | sed -E 's/\/metal-amd64//' \
-          | sed -E 's/pxe\//image\//'
+          talhelper genurl installer \
+            --env-file {{.KUBERNETES_DIR}}/{{.cluster}}/bootstrap/talos/talenv.sops.yaml \
+            --config-file {{.KUBERNETES_DIR}}/{{.cluster}}/bootstrap/talos/talconfig.yaml \
+          | grep {{.node}} \
+          | awk '{split($0,u," "); print u[2]}'
     cmds:
-      # Prepare folders
-      - ssh -l {{.OMNI_USER}} {{.OMNI_ADDR}} "sudo mkdir -p {{.OMNI_MATCHBOX_GROUPS_DIR}}"
-      - ssh -l {{.OMNI_USER}} {{.OMNI_ADDR}} "sudo mkdir -p {{.OMNI_MATCHBOX_PROFILES_DIR}}"
-      - ssh -l {{.OMNI_USER}} {{.OMNI_ADDR}} "sudo mkdir -p {{.OMNI_MATCHBOX_ASSETS_DIR}}"
-      - ssh -l {{.OMNI_USER}} {{.OMNI_ADDR}} "sudo chown -R {{.OMNI_USER}}:{{.OMNI_USER}} {{.OMNI_MATCHBOX_DIR}}"
-      # Upload Talos to Matchbox
-      - for: ["kernel-amd64", "initramfs-amd64.xz"]
-        cmd: |
-          ssh -l {{.OMNI_USER}} {{.OMNI_ADDR}} "wget -q -O {{.OMNI_MATCHBOX_ASSETS_DIR}}/{{.ITEM}} {{.TALOS_BASE_URL}}/{{.ITEM}}"
-      # Copy groups to Matchbox
-      - find {{.KUBERNETES_DIR}}/{{.cluster}}/bootstrap/talos/matchbox/groups/*.json -type f | xargs -I{} scp -p {} {{.OMNI_USER}}@{{.OMNI_ADDR}}:/{{.OMNI_MATCHBOX_GROUPS_DIR}}/
-      # Copy profiles to Matchbox
-      - find {{.KUBERNETES_DIR}}/{{.cluster}}/bootstrap/talos/matchbox/profiles/*.json -type f | xargs -I{} scp -p {} {{.OMNI_USER}}@{{.OMNI_ADDR}}:/{{.OMNI_MATCHBOX_PROFILES_DIR}}/
-      # Replace jointoken
-      - ssh -l {{.OMNI_USER}} {{.OMNI_ADDR}} "find {{.OMNI_MATCHBOX_PROFILES_DIR}}/*.json -type f | xargs -I {} sed -i 's/JOINTOKEN/{{.OMNI_JOINTOKEN}}/g' {}"
-      # Restart the Matchbox container
-      - kubectl delete --context {{.OMNI_MATCHBOX_CLUSTER}} pod -n {{.OMNI_MATCHBOX_NAMESPACE}} {{.OMNI_MATCHBOX_POD}}
+      - talosctl --context {{.cluster}} upgrade -n {{.node}} --image {{.TALOS_IMAGE }}
     requires:
       vars:
         - cluster
+        - node
+    preconditions:
+      - which talhelper
+      - talosctl config get-contexts | grep {{.cluster}}
+      - test -f {{.KUBERNETES_DIR}}/{{.cluster}}/bootstrap/talos/talenv.sops.yaml
+      - test -f {{.KUBERNETES_DIR}}/{{.cluster}}/bootstrap/talos/talconfig.yaml
+      - msg: "Talos image could not be determined for {{.node}}"
+        sh: 'test -n "{{.TALOS_IMAGE}}"'
+
+  upgrade-k8s:
+    desc: Upgrade Kubernetes version for a Talos cluster
+    vars:
+      KUBERNETES_VERSION:
+        sh: |
+          yq -r ".kubernetesVersion" {{.KUBERNETES_DIR}}/{{.cluster}}/bootstrap/talos/talconfig.yaml
+      CONTROLPLANE_NODE:
+        sh: |
+          talosctl --context main config info \
+          | grep Endpoints: \
+          | awk '{split($0,u," "); print u[2]}' \
+          | sed -E 's/,//'
+    cmds:
+      - talosctl upgrade-k8s -n {{.CONTROLPLANE_NODE}} --to {{.KUBERNETES_VERSION}}
+    requires:
+      vars:
+        - cluster
+    preconditions:
+      - which talhelper
+      - talosctl config get-contexts | grep {{.cluster}}
+      - test -f {{.KUBERNETES_DIR}}/{{.cluster}}/bootstrap/talos/talenv.sops.yaml
+      - test -f {{.KUBERNETES_DIR}}/{{.cluster}}/bootstrap/talos/talconfig.yaml
+      - msg: "Kubernetes version could not be determined for cluster {{.cluster}}"
+        sh: 'test -n "{{.KUBERNETES_VERSION}}"'
+      - msg: "Control plane node could not be determined for cluster {{.cluster}}"
+        sh: 'test -n "{{.CONTROLPLANE_NODE}}"'
+
+  apply-clusterconfig:
+    desc: Apply clusterconfig for a Talos cluster
+    vars:
+      CLUSTERCONFIG_FILES:
+        sh: find {{.KUBERNETES_DIR}}/{{.cluster}}/bootstrap/talos/clusterconfig -type f -name '*.yaml' -printf '%f\n'
+    cmds:
+      - for:
+          var: CLUSTERCONFIG_FILES
+        task: _apply-machineconfig
+        vars:
+          cluster: "{{ .cluster }}"
+          filename: "{{.ITEM}}"
+          hostname: |-
+            {{ trimPrefix (printf "%s-" .cluster) .ITEM | trimSuffix ".yaml" }}
+          dry_run: "{{ .dry_run }}"
+    requires:
+      vars:
+        - cluster
+    preconditions:
+      - talosctl config get-contexts | grep {{.cluster}}
+      - test -d {{.KUBERNETES_DIR}}/{{.cluster}}/bootstrap/talos/clusterconfig
+
+  _apply-machineconfig:
+    internal: true
+    desc: Apply a single Talos machineConfig to a Talos node
+    cmds:
+      - talosctl --context {{.cluster}} apply-config
+        --nodes "{{.hostname}}"
+        --file "{{.KUBERNETES_DIR}}/{{.cluster}}/bootstrap/talos/clusterconfig/{{.filename}}"
+        {{ if eq "true" .dry_run }}--dry-run{{ end }}
+    requires:
+      vars:
+        - cluster
+        - hostname
+        - filename
+    preconditions:
+      - talosctl config get-contexts | grep {{.cluster}}
+      - test -f {{.KUBERNETES_DIR}}/{{.cluster}}/bootstrap/talos/clusterconfig/{{.filename}}

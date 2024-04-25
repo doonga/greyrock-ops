@@ -43,6 +43,8 @@ nodes:
               routeMetric: 4096
         vip:
           ip: ${clusterEndpointIP}
+      - interface: enp86s0
+        ignore: true
     patches:
       - &kubelet_extra_mounts |-
         machine:
@@ -82,6 +84,8 @@ nodes:
               routeMetric: 4096
         vip:
           ip: ${clusterEndpointIP}
+      - interface: enp86s0
+        ignore: true
     patches:
       - *kubelet_extra_mounts
 
@@ -111,6 +115,8 @@ nodes:
               routeMetric: 4096
         vip:
           ip: ${clusterEndpointIP}
+      - interface: enp86s0
+        ignore: true
     patches:
       - *kubelet_extra_mounts
 
