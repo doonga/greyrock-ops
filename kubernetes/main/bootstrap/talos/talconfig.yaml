@@ -117,11 +117,12 @@ nodes:
 controlPlane:
   schematic:
     customization:
+      extraKernelArgs:
+        - net.ifnames=1
       systemExtensions:
         officialExtensions:
           - siderolabs/intel-ucode
           - siderolabs/i915-ucode
-          - siderolabs/gasket-driver
 
   patches:
     # Disable search domain everywhere
