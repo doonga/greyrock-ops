@@ -35,14 +35,15 @@ nodes:
             - hardwareAddr: 00:30:93:12:38:d3
               driver: atlantic
         dhcp: true
+        vip:
+          ip: ${clusterEndpointIP}
         vlans:
-          - vlanId: 40
+          - &vlan40
+            vlanId: 40
             mtu: 1500
             dhcp: true
             dhcpOptions:
               routeMetric: 4096
-        vip:
-          ip: ${clusterEndpointIP}
       - interface: enp86s0
         ignore: true
     patches:
@@ -76,14 +77,10 @@ nodes:
             - hardwareAddr: 00:30:93:12:38:d6
               driver: atlantic
         dhcp: true
-        vlans:
-          - vlanId: 40
-            mtu: 1500
-            dhcp: true
-            dhcpOptions:
-              routeMetric: 4096
         vip:
           ip: ${clusterEndpointIP}
+        vlans:
+          - *vlan40
       - interface: enp86s0
         ignore: true
     patches:
@@ -107,14 +104,10 @@ nodes:
             - hardwareAddr: 00:30:93:12:38:8c
               driver: atlantic
         dhcp: true
-        vlans:
-          - vlanId: 40
-            mtu: 1500
-            dhcp: true
-            dhcpOptions:
-              routeMetric: 4096
         vip:
           ip: ${clusterEndpointIP}
+        vlans:
+          - *vlan40
       - interface: enp86s0
         ignore: true
     patches:
