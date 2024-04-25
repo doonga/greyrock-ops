@@ -1,3 +1,0 @@
-# icloud private relay
-mask.icloud.com
-mask-h2.icloud.com
