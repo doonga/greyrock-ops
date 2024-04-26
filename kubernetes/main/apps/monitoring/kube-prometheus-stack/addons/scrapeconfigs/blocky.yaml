@@ -8,6 +8,7 @@ spec:
   staticConfigs:
     - targets:
         - 10.1.1.11:4000
+        - 10.1.1.12:4000
   metricsPath: /metrics
   relabelings:
     - action: replace

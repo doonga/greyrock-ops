@@ -7,9 +7,10 @@ metadata:
 spec:
   staticConfigs:
     - targets:
+        - dns1.greyrock.io:9100
+        - dns2.greyrock.io:9100
         - nas.greyrock.io:9100
         - pikvm.greyrock.io:9100
-        - utility.greyrock.io:9100
   metricsPath: /metrics
   relabelings:
     - action: replace
