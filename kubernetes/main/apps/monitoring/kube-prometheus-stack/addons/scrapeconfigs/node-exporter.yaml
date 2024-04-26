@@ -7,8 +7,9 @@ metadata:
 spec:
   staticConfigs:
     - targets:
-        - utility.greyrock.io:9100
+        - nas.greyrock.io:9100
         - pikvm.greyrock.io:9100
+        - utility.greyrock.io:9100
   metricsPath: /metrics
   relabelings:
     - action: replace
