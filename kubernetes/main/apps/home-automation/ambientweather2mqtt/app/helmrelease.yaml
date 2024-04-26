@@ -26,14 +26,6 @@ spec:
           labels:
             ingress.home.arpa/lan: allow
             egress.home.arpa/kubedns: allow # FIXME: Remove when clusterNetworkPolicy is in place
-          annotations:
-            k8s.v1.cni.cncf.io/networks: |
-              [{
-                "name":"multus-iot",
-                "namespace": "network",
-                "ips": ["10.1.4.157/23"],
-                "mac": "64:64:63:90:8d:d5"
-              }]
 
         containers:
           ambientweather2mqtt:

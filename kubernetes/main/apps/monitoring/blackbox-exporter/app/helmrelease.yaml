@@ -21,15 +21,6 @@ spec:
     image:
       registry: quay.io
 
-    podAnnotations:
-      k8s.v1.cni.cncf.io/networks: |
-        [{
-          "name":"multus-iot",
-          "namespace": "network",
-          "ips": ["10.1.4.156/23"],
-          "mac": "64:64:63:90:8d:da"
-        }]
-
     podSecurityContext:
       sysctls:
         - name: net.ipv4.ping_group_range
