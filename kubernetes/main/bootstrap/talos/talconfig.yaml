@@ -44,8 +44,6 @@ nodes:
             dhcp: true
             dhcpOptions:
               routeMetric: 4096
-      - interface: enp86s0
-        ignore: true
     patches:
       - &kubelet_extra_mounts |-
         machine:
@@ -81,8 +79,6 @@ nodes:
           ip: ${clusterEndpointIP}
         vlans:
           - *vlan40
-      - interface: enp86s0
-        ignore: true
     patches:
       - *kubelet_extra_mounts
 
@@ -108,8 +104,6 @@ nodes:
           ip: ${clusterEndpointIP}
         vlans:
           - *vlan40
-      - interface: enp86s0
-        ignore: true
     patches:
       - *kubelet_extra_mounts
 
@@ -118,6 +112,7 @@ controlPlane:
     customization:
       extraKernelArgs:
         - net.ifnames=1
+        - module_blacklist=igc
       systemExtensions:
         officialExtensions:
           - siderolabs/intel-ucode
