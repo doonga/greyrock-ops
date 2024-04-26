@@ -112,7 +112,6 @@ controlPlane:
     customization:
       extraKernelArgs:
         - net.ifnames=1
-        - module_blacklist=igc
       systemExtensions:
         officialExtensions:
           - siderolabs/intel-ucode
