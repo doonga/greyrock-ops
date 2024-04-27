@@ -35,8 +35,8 @@ spec:
                 "ips": ["10.1.4.153/23"],
                 "mac": "64:64:63:90:8d:d8"
               }]
-          # nodeSelector:
-          #   intel.feature.node.kubernetes.io/gpu: "true"
+          nodeSelector:
+            intel.feature.node.kubernetes.io/gpu: "true"
           securityContext:
             supplementalGroups:
               - 65542 # nas:external-services
@@ -108,9 +108,3 @@ spec:
         type: emptyDir
         globalMounts:
           - path: /.npm
-      recs:
-        type: nfs
-        server: nas.greyrock.io
-        path: /tank/Apps/scrypted
-        globalMounts:
-          - path: /recs
