@@ -5,7 +5,7 @@ kind: Kustomization
 resources:
   # Pre Flux-Kustomizations
   - ./namespace.yaml
-  - ./networkpolicy.yaml
+
   # Flux-Kustomizations
   - ./ambientweather2mqtt/ks.yaml
   - ./esphome/ks.yaml
