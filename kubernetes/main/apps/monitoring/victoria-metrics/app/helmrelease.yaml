@@ -30,7 +30,7 @@ spec:
         # Duration to keep metrics
         retentionPeriod: "2" # this is months unless a character prefix is added (1d, 1w, etc)
         extraArgs:
-          dedup.minScrapeInterval: "60s"
+          dedup.minScrapeInterval: 20s
         replicationFactor: 3
         # Storage backend
         vmstorage:
@@ -51,7 +51,7 @@ spec:
                 matchLabels:
                   app.kubernetes.io/name: vmstorage
           extraArgs:
-            dedup.minScrapeInterval: 60s
+            dedup.minScrapeInterval: 20s
             search.maxConcurrentRequests: "6"
           storage:
             volumeClaimTemplate:
@@ -79,7 +79,7 @@ spec:
                 matchLabels:
                   app.kubernetes.io/name: vmselect
           extraArgs:
-            dedup.minScrapeInterval: "60s" # should be equal to VMAgent's scrapeInterval (default 30s)
+            dedup.minScrapeInterval: 20s # should be equal to VMAgent's scrapeInterval (default 30s)
             search.minStalenessInterval: "5m"
             search.maxConcurrentRequests: "6"
             vmalert.proxyURL: https://vmalert.greyrock.casa
@@ -130,7 +130,6 @@ spec:
             labelSelector:
               matchLabels:
                 app.kubernetes.io/name: vmalert
-        evaluationInterval: "60s"
         notifiers:
           - url: http://alertmanager.monitoring.svc.cluster.local:9093
       ingress:
@@ -148,6 +147,7 @@ spec:
       spec:
         replicaCount: 1
         shardCount: 2
+        scrapeInterval: 20s
         resources:
           requests:
             cpu: 50m
@@ -162,7 +162,6 @@ spec:
             labelSelector:
               matchLabels:
                 app.kubernetes.io/name: vmagent
-
         additionalScrapeConfigs:
           name: vm-additional-scrape-configs
           key: prometheus-additional.yaml
