@@ -30,7 +30,7 @@ spec:
         # Duration to keep metrics
         retentionPeriod: "2" # this is months unless a character prefix is added (1d, 1w, etc)
         extraArgs:
-          dedup.minScrapeInterval: 20s
+          dedup.minScrapeInterval: 30s
         replicationFactor: 3
         # Storage backend
         vmstorage:
@@ -51,8 +51,7 @@ spec:
                 matchLabels:
                   app.kubernetes.io/name: vmstorage
           extraArgs:
-            dedup.minScrapeInterval: 20s
-            search.maxConcurrentRequests: "6"
+            dedup.minScrapeInterval: 30s
           storage:
             volumeClaimTemplate:
               spec:
@@ -70,7 +69,6 @@ spec:
             limits:
               cpu: 750m
               memory: 256Mi
-          cacheMountPath: /select-cache
           topologySpreadConstraints:
             - maxSkew: 1
               topologyKey: kubernetes.io/hostname
@@ -78,11 +76,11 @@ spec:
               labelSelector:
                 matchLabels:
                   app.kubernetes.io/name: vmselect
+          cacheMountPath: /select-cache
           extraArgs:
-            dedup.minScrapeInterval: 20s # should be equal to VMAgent's scrapeInterval (default 30s)
-            search.minStalenessInterval: "5m"
-            search.maxConcurrentRequests: "6"
-            vmalert.proxyURL: https://vmalert.greyrock.casa
+            dedup.minScrapeInterval: 30s
+            search.minStalenessInterval: 5m
+            vmalert.proxyURL: http://vmalert-victoria-metrics:8080
           storage:
             volumeClaimTemplate:
               spec:
@@ -109,7 +107,6 @@ spec:
                   app.kubernetes.io/name: vminsert
           extraArgs:
             maxLabelsPerTimeseries: "90" # More needed if you are scraping a LOT of stuff and having issues
-            # insert.maxConcurrentRequests: 10
 
     # VM Alerting (however, this just watches & passes alerts to alertmanager)
     vmalert:
@@ -147,7 +144,7 @@ spec:
       spec:
         replicaCount: 1
         shardCount: 2
-        scrapeInterval: 20s
+        scrapeInterval: 30s
         resources:
           requests:
             cpu: 50m
