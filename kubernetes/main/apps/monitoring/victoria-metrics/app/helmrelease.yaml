@@ -61,7 +61,7 @@ spec:
               cpu: 100m
               memory: 256Mi
             limits:
-              cpu: 500m
+              cpu: 750m
               memory: 256Mi
           cacheMountPath: /select-cache
           extraArgs:
@@ -109,7 +109,7 @@ spec:
         enabled: true
         ingressClassName: internal-nginx
         hosts:
-          - &hostalert vmalert.bjw-s.dev
+          - &hostalert vmalert.greyrock.casa
         tls:
           - hosts:
               - *hostalert
