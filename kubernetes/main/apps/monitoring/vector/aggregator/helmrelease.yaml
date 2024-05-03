@@ -67,7 +67,7 @@ spec:
                   periodSeconds: 5
 
     service:
-      app:
+      vector-aggregator:
         controller: vector-aggregator
         type: LoadBalancer
         annotations:
