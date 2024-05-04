@@ -81,15 +81,24 @@ spec:
         config:
           osdsPerDevice: "1"
         nodes:
-          - name: "k8s1"
+          - name: "k8s4"
             devices:
-              - name: "/dev/disk/by-id/nvme-WD_BLACK_SN770_1TB_22472N801099"
-          - name: "k8s2"
+              - name: "/dev/xvdb"
+          - name: "k8s5"
             devices:
-              - name: "/dev/disk/by-id/nvme-WD_BLACK_SN770_1TB_22472N804710"
-          - name: "k8s3"
+              - name: "/dev/xvdb"
+          - name: "k8s6"
             devices:
-              - name: "/dev/disk/by-id/nvme-WD_BLACK_SN770_1TB_22472N805186"
+              - name: "/dev/xvdb"
+          - name: "k8s7"
+            devices:
+              - name: "/dev/xvdb"
+          - name: "k8s8"
+            devices:
+              - name: "/dev/xvdb"
+          - name: "k8s9"
+            devices:
+              - name: "/dev/xvdb"
 
     cephBlockPools:
       - name: ceph-blockpool
