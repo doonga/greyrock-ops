@@ -22,5 +22,5 @@ spec:
       value: CephNodeDiskspaceWarning
       isRegex: false
     - name: device
-      value: /dev/sda6
+      value: /dev/xvda6
       isRegex: false
