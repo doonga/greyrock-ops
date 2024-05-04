@@ -56,13 +56,13 @@ nodes:
         partitions:
           - mountpoint: /var/mnt/sata
     networkInterfaces:
-      - interface: bond1
+      - interface: bond0
         bond:
           mode: active-backup
           deviceSelectors:
             - hardwareAddr: 62:5f:5a:a0:31:f7
         dhcp: true
-      - interface: bond0
+      - interface: bond1
         bond:
           mode: active-backup
           deviceSelectors:
@@ -92,13 +92,13 @@ nodes:
         partitions:
           - mountpoint: /var/mnt/sata
     networkInterfaces:
-      - interface: bond1
+      - interface: bond0
         bond:
           mode: active-backup
           deviceSelectors:
             - hardwareAddr: 52:46:8f:c8:7c:50
         dhcp: true
-      - interface: bond0
+      - interface: bond1
         bond:
           mode: active-backup
           deviceSelectors:
@@ -128,13 +128,13 @@ nodes:
         partitions:
           - mountpoint: /var/mnt/sata
     networkInterfaces:
-      - interface: bond1
+      - interface: bond0
         bond:
           mode: active-backup
           deviceSelectors:
             - hardwareAddr: f2:ec:70:30:c9:45
         dhcp: true
-      - interface: bond0
+      - interface: bond1
         bond:
           mode: active-backup
           deviceSelectors:
@@ -164,13 +164,13 @@ nodes:
         partitions:
           - mountpoint: /var/mnt/sata
     networkInterfaces:
-      - interface: bond1
+      - interface: bond0
         bond:
           mode: active-backup
           deviceSelectors:
             - hardwareAddr: ea:08:6d:14:97:27
         dhcp: true
-      - interface: bond0
+      - interface: bond1
         bond:
           mode: active-backup
           deviceSelectors:
@@ -200,13 +200,13 @@ nodes:
         partitions:
           - mountpoint: /var/mnt/sata
     networkInterfaces:
-      - interface: bond1
+      - interface: bond0
         bond:
           mode: active-backup
           deviceSelectors:
             - hardwareAddr: ae:17:97:79:bc:da
         dhcp: true
-      - interface: bond0
+      - interface: bond1
         bond:
           mode: active-backup
           deviceSelectors:
@@ -236,13 +236,13 @@ nodes:
         partitions:
           - mountpoint: /var/mnt/sata
     networkInterfaces:
-      - interface: bond1
+      - interface: bond0
         bond:
           mode: active-backup
           deviceSelectors:
             - hardwareAddr: 96:ab:c2:56:5a:af
         dhcp: true
-      - interface: bond0
+      - interface: bond1
         bond:
           mode: active-backup
           deviceSelectors:
