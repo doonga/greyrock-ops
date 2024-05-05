@@ -34,6 +34,9 @@ spec:
               repository: ghcr.io/zwave-js/zwave-js-ui
               tag: 9.12.0
 
+            env:
+              TRUST_PROXY: uniquelocal
+
             probes:
               liveness: &probes
                 enabled: false
