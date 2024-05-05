@@ -3,13 +3,6 @@ autoDirectNodeRoutes: true
 bandwidthManager:
   bbr: true
   enabled: true
-bgp:
-  enabled: false
-  announce:
-    loadbalancerIP: true
-    podCIDR: false
-bgpControlPlane:
-  enabled: true
 bpf:
   masquerade: true
   tproxy: true
@@ -56,7 +49,7 @@ k8sServicePort: 7445
 kubeProxyReplacement: true
 kubeProxyReplacementHealthzBindAddr: 0.0.0.0:10256
 l2announcements:
-  enabled: false
+  enabled: true
 loadBalancer:
   algorithm: maglev
   mode: dsr
