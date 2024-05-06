@@ -27,7 +27,7 @@
       matchDatasources: ["helm"],
       automerge: true,
       matchUpdateTypes: ["minor", "patch"],
-      matchPackageNames: ["prowlarr-nightly"],
+      matchPackageNames: ["ghcr.io/onedr0p/prowlarr-nightly"],
       ignoreTests: false,
     },
   ],
