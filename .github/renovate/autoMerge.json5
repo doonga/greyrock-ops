@@ -27,7 +27,7 @@
       matchDatasources: ["helm"],
       automerge: true,
       matchUpdateTypes: ["minor", "patch"],
-      matchPackageNames: ["prowlarr"],
+      matchPackageNames: ["prowlarr-nightly"],
       ignoreTests: false,
     },
   ],
