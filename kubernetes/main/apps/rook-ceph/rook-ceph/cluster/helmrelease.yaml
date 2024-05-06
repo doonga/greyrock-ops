@@ -81,22 +81,40 @@ spec:
         config:
           osdsPerDevice: "1"
         nodes:
-          - name: "k8s4"
+          - name: "k8s04"
             devices:
               - name: "/dev/xvdb"
-          - name: "k8s5"
+          - name: "k8s05"
             devices:
               - name: "/dev/xvdb"
-          - name: "k8s6"
+          - name: "k8s06"
             devices:
               - name: "/dev/xvdb"
-          - name: "k8s7"
+          - name: "k8s07"
             devices:
               - name: "/dev/xvdb"
-          - name: "k8s8"
+          - name: "k8s08"
             devices:
               - name: "/dev/xvdb"
-          - name: "k8s9"
+          - name: "k8s09"
+            devices:
+              - name: "/dev/xvdb"
+          - name: "k8s10"
+            devices:
+              - name: "/dev/xvdb"
+          - name: "k8s11"
+            devices:
+              - name: "/dev/xvdb"
+          - name: "k8s12"
+            devices:
+              - name: "/dev/xvdb"
+          - name: "k8s13"
+            devices:
+              - name: "/dev/xvdb"
+          - name: "k8s14"
+            devices:
+              - name: "/dev/xvdb"
+          - name: "k8s15"
             devices:
               - name: "/dev/xvdb"
 

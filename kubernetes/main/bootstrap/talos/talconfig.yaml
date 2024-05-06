@@ -17,7 +17,7 @@ additionalApiServerCertSans: &san
 additionalMachineCertSans: *san
 
 nodes:
-  - hostname: k8s1.greyrock.io
+  - hostname: k8s01.greyrock.io
     ipAddress: 10.1.1.21
     controlPlane: true
     installDisk: /dev/xvda
@@ -27,7 +27,7 @@ nodes:
         vip:
           ip: ${clusterEndpointIP}
 
-  - hostname: k8s2.greyrock.io
+  - hostname: k8s02.greyrock.io
     ipAddress: 10.1.1.22
     controlPlane: true
     installDisk: /dev/xvda
@@ -37,7 +37,7 @@ nodes:
         vip:
           ip: ${clusterEndpointIP}
 
-  - hostname: k8s3.greyrock.io
+  - hostname: k8s03.greyrock.io
     ipAddress: 10.1.1.23
     controlPlane: true
     installDisk: /dev/xvda
@@ -47,7 +47,7 @@ nodes:
         vip:
           ip: ${clusterEndpointIP}
 
-  - hostname: k8s4.greyrock.io
+  - hostname: k8s04.greyrock.io
     ipAddress: 10.1.1.24
     controlPlane: false
     installDisk: /dev/xvda
@@ -83,7 +83,7 @@ nodes:
                   - rshared
                   - rw
 
-  - hostname: k8s5.greyrock.io
+  - hostname: k8s05.greyrock.io
     ipAddress: 10.1.1.25
     controlPlane: false
     installDisk: /dev/xvda
@@ -119,7 +119,7 @@ nodes:
                   - rshared
                   - rw
 
-  - hostname: k8s6.greyrock.io
+  - hostname: k8s06.greyrock.io
     ipAddress: 10.1.1.26
     controlPlane: false
     installDisk: /dev/xvda
@@ -155,7 +155,7 @@ nodes:
                   - rshared
                   - rw
 
-  - hostname: k8s7.greyrock.io
+  - hostname: k8s07.greyrock.io
     ipAddress: 10.1.1.27
     controlPlane: false
     installDisk: /dev/xvda
@@ -191,7 +191,7 @@ nodes:
                   - rshared
                   - rw
 
-  - hostname: k8s8.greyrock.io
+  - hostname: k8s08.greyrock.io
     ipAddress: 10.1.1.28
     controlPlane: false
     installDisk: /dev/xvda
@@ -227,7 +227,7 @@ nodes:
                   - rshared
                   - rw
 
-  - hostname: k8s9.greyrock.io
+  - hostname: k8s09.greyrock.io
     ipAddress: 10.1.1.29
     controlPlane: false
     installDisk: /dev/xvda
@@ -247,6 +247,222 @@ nodes:
           mode: active-backup
           deviceSelectors:
             - hardwareAddr: 32:67:ab:a9:ae:05
+        dhcp: true
+        dhcpOptions:
+          routeMetric: 4096
+    patches:
+      - &kubelet_extra_mounts |-
+        machine:
+          kubelet:
+            extraMounts:
+              - destination: /var/mnt/sata
+                type: bind
+                source: /var/mnt/sata
+                options:
+                  - rbind
+                  - rshared
+                  - rw
+
+  - hostname: k8s10.greyrock.io
+    ipAddress: 10.1.1.30
+    controlPlane: false
+    installDisk: /dev/xvda
+    machineDisks:
+      - device: /dev/xvdc
+        partitions:
+          - mountpoint: /var/mnt/sata
+    networkInterfaces:
+      - interface: bond0
+        bond:
+          mode: active-backup
+          deviceSelectors:
+            - hardwareAddr: 9e:dd:a3:bb:50:5c
+        dhcp: true
+      - interface: bond1
+        bond:
+          mode: active-backup
+          deviceSelectors:
+            - hardwareAddr: 06:50:be:2d:75:90
+        dhcp: true
+        dhcpOptions:
+          routeMetric: 4096
+    patches:
+      - &kubelet_extra_mounts |-
+        machine:
+          kubelet:
+            extraMounts:
+              - destination: /var/mnt/sata
+                type: bind
+                source: /var/mnt/sata
+                options:
+                  - rbind
+                  - rshared
+                  - rw
+
+  - hostname: k8s11.greyrock.io
+    ipAddress: 10.1.1.31
+    controlPlane: false
+    installDisk: /dev/xvda
+    machineDisks:
+      - device: /dev/xvdc
+        partitions:
+          - mountpoint: /var/mnt/sata
+    networkInterfaces:
+      - interface: bond0
+        bond:
+          mode: active-backup
+          deviceSelectors:
+            - hardwareAddr: c2:20:6a:11:31:f5
+        dhcp: true
+      - interface: bond1
+        bond:
+          mode: active-backup
+          deviceSelectors:
+            - hardwareAddr: 5e:82:3d:ce:90:f5
+        dhcp: true
+        dhcpOptions:
+          routeMetric: 4096
+    patches:
+      - &kubelet_extra_mounts |-
+        machine:
+          kubelet:
+            extraMounts:
+              - destination: /var/mnt/sata
+                type: bind
+                source: /var/mnt/sata
+                options:
+                  - rbind
+                  - rshared
+                  - rw
+
+  - hostname: k8s12.greyrock.io
+    ipAddress: 10.1.1.32
+    controlPlane: false
+    installDisk: /dev/xvda
+    machineDisks:
+      - device: /dev/xvdc
+        partitions:
+          - mountpoint: /var/mnt/sata
+    networkInterfaces:
+      - interface: bond0
+        bond:
+          mode: active-backup
+          deviceSelectors:
+            - hardwareAddr: b2:c0:8c:e1:ad:8f
+        dhcp: true
+      - interface: bond1
+        bond:
+          mode: active-backup
+          deviceSelectors:
+            - hardwareAddr: ae:aa:2d:e5:87:53
+        dhcp: true
+        dhcpOptions:
+          routeMetric: 4096
+    patches:
+      - &kubelet_extra_mounts |-
+        machine:
+          kubelet:
+            extraMounts:
+              - destination: /var/mnt/sata
+                type: bind
+                source: /var/mnt/sata
+                options:
+                  - rbind
+                  - rshared
+                  - rw
+
+  - hostname: k8s13.greyrock.io
+    ipAddress: 10.1.1.33
+    controlPlane: false
+    installDisk: /dev/xvda
+    machineDisks:
+      - device: /dev/xvdc
+        partitions:
+          - mountpoint: /var/mnt/sata
+    networkInterfaces:
+      - interface: bond0
+        bond:
+          mode: active-backup
+          deviceSelectors:
+            - hardwareAddr: 06:67:20:8e:31:cd
+        dhcp: true
+      - interface: bond1
+        bond:
+          mode: active-backup
+          deviceSelectors:
+            - hardwareAddr: 96:48:e8:0f:df:da
+        dhcp: true
+        dhcpOptions:
+          routeMetric: 4096
+    patches:
+      - &kubelet_extra_mounts |-
+        machine:
+          kubelet:
+            extraMounts:
+              - destination: /var/mnt/sata
+                type: bind
+                source: /var/mnt/sata
+                options:
+                  - rbind
+                  - rshared
+                  - rw
+
+  - hostname: k8s14.greyrock.io
+    ipAddress: 10.1.1.34
+    controlPlane: false
+    installDisk: /dev/xvda
+    machineDisks:
+      - device: /dev/xvdc
+        partitions:
+          - mountpoint: /var/mnt/sata
+    networkInterfaces:
+      - interface: bond0
+        bond:
+          mode: active-backup
+          deviceSelectors:
+            - hardwareAddr: aa:89:24:04:ba:a3
+        dhcp: true
+      - interface: bond1
+        bond:
+          mode: active-backup
+          deviceSelectors:
+            - hardwareAddr: 52:9a:5d:e5:cc:f8
+        dhcp: true
+        dhcpOptions:
+          routeMetric: 4096
+    patches:
+      - &kubelet_extra_mounts |-
+        machine:
+          kubelet:
+            extraMounts:
+              - destination: /var/mnt/sata
+                type: bind
+                source: /var/mnt/sata
+                options:
+                  - rbind
+                  - rshared
+                  - rw
+
+  - hostname: k8s15.greyrock.io
+    ipAddress: 10.1.1.35
+    controlPlane: false
+    installDisk: /dev/xvda
+    machineDisks:
+      - device: /dev/xvdc
+        partitions:
+          - mountpoint: /var/mnt/sata
+    networkInterfaces:
+      - interface: bond0
+        bond:
+          mode: active-backup
+          deviceSelectors:
+            - hardwareAddr: 3e:42:34:d1:a5:3e
+        dhcp: true
+      - interface: bond1
+        bond:
+          mode: active-backup
+          deviceSelectors:
+            - hardwareAddr: 12:cc:25:28:74:f4
         dhcp: true
         dhcpOptions:
           routeMetric: 4096
