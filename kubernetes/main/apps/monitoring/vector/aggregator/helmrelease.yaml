@@ -37,7 +37,7 @@ spec:
           init-geoip:
             image:
               repository: ghcr.io/maxmind/geoipupdate
-              tag: v7.0
+              tag: v7.0.1
               pullPolicy: IfNotPresent
             env:
               GEOIPUPDATE_EDITION_IDS: GeoLite2-City
@@ -48,7 +48,7 @@ spec:
                   name: vector-aggregator-secret
 
         containers:
-          app:
+          vector-aggregator:
             image:
               repository: docker.io/timberio/vector
               tag: 0.38.0-alpine
@@ -67,7 +67,7 @@ spec:
                   periodSeconds: 5
 
     service:
-      vector-aggregator:
+      app:
         controller: vector-aggregator
         type: LoadBalancer
         annotations:
