@@ -135,7 +135,7 @@ spec:
         enabled: true
         ingressClassName: internal-nginx
         hosts:
-          - &hostalert vmalert.bjw-s.dev
+          - &hostalert vmalert.greyrock.casa
         tls:
           - hosts:
               - *hostalert
