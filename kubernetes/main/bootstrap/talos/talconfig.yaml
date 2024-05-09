@@ -20,9 +20,9 @@ nodes:
   - hostname: k8s01.greyrock.io
     ipAddress: 10.1.1.21
     controlPlane: true
-    installDisk: /dev/xvda
+    installDisk: /dev/sda
     networkInterfaces:
-      - interface: enxce6e54f0d633
+      - interface: enxbc2411528050
         dhcp: true
         vip:
           ip: ${clusterEndpointIP}
@@ -30,9 +30,9 @@ nodes:
   - hostname: k8s02.greyrock.io
     ipAddress: 10.1.1.22
     controlPlane: true
-    installDisk: /dev/xvda
+    installDisk: /dev/sda
     networkInterfaces:
-      - interface: enxc29867e506ac
+      - interface: enxbc241183d06e
         dhcp: true
         vip:
           ip: ${clusterEndpointIP}
@@ -40,9 +40,9 @@ nodes:
   - hostname: k8s03.greyrock.io
     ipAddress: 10.1.1.23
     controlPlane: true
-    installDisk: /dev/xvda
+    installDisk: /dev/sda
     networkInterfaces:
-      - interface: enx1ee755b5ca64
+      - interface: enxbc2411bb89e6
         dhcp: true
         vip:
           ip: ${clusterEndpointIP}
@@ -50,9 +50,9 @@ nodes:
   - hostname: k8s04.greyrock.io
     ipAddress: 10.1.1.24
     controlPlane: false
-    installDisk: /dev/xvda
+    installDisk: /dev/sda
     machineDisks:
-      - device: /dev/xvdc
+      - device: /dev/sdc
         partitions:
           - mountpoint: /var/mnt/sata
     networkInterfaces:
@@ -60,16 +60,16 @@ nodes:
         bond:
           mode: active-backup
           deviceSelectors:
-            - hardwareAddr: 62:5f:5a:a0:31:f7
+            - hardwareAddr: bc:24:11:19:f8:1b
+              driver: virtio_net
         dhcp: true
-      - interface: bond1
-        bond:
-          mode: active-backup
-          deviceSelectors:
-            - hardwareAddr: 76:45:95:3e:9d:90
-        dhcp: true
-        dhcpOptions:
-          routeMetric: 4096
+        vlans:
+          - &vlan40
+            vlanId: 40
+            mtu: 1500
+            dhcp: true
+            dhcpOptions:
+              routeMetric: 4096
     patches:
       - &kubelet_extra_mounts |-
         machine:
@@ -86,9 +86,9 @@ nodes:
   - hostname: k8s05.greyrock.io
     ipAddress: 10.1.1.25
     controlPlane: false
-    installDisk: /dev/xvda
+    installDisk: /dev/sda
     machineDisks:
-      - device: /dev/xvdc
+      - device: /dev/sdc
         partitions:
           - mountpoint: /var/mnt/sata
     networkInterfaces:
@@ -96,16 +96,16 @@ nodes:
         bond:
           mode: active-backup
           deviceSelectors:
-            - hardwareAddr: 52:46:8f:c8:7c:50
+            - hardwareAddr: bc:24:11:e1:73:57
+              driver: virtio_net
         dhcp: true
-      - interface: bond1
-        bond:
-          mode: active-backup
-          deviceSelectors:
-            - hardwareAddr: 8e:f6:87:62:48:f9
-        dhcp: true
-        dhcpOptions:
-          routeMetric: 4096
+        vlans:
+          - &vlan40
+            vlanId: 40
+            mtu: 1500
+            dhcp: true
+            dhcpOptions:
+              routeMetric: 4096
     patches:
       - &kubelet_extra_mounts |-
         machine:
@@ -122,9 +122,9 @@ nodes:
   - hostname: k8s06.greyrock.io
     ipAddress: 10.1.1.26
     controlPlane: false
-    installDisk: /dev/xvda
+    installDisk: /dev/sda
     machineDisks:
-      - device: /dev/xvdc
+      - device: /dev/sdc
         partitions:
           - mountpoint: /var/mnt/sata
     networkInterfaces:
@@ -132,16 +132,16 @@ nodes:
         bond:
           mode: active-backup
           deviceSelectors:
-            - hardwareAddr: f2:ec:70:30:c9:45
+            - hardwareAddr: bc:24:11:82:97:92
+              driver: virtio_net
         dhcp: true
-      - interface: bond1
-        bond:
-          mode: active-backup
-          deviceSelectors:
-            - hardwareAddr: b6:bd:38:b0:9a:eb
-        dhcp: true
-        dhcpOptions:
-          routeMetric: 4096
+        vlans:
+          - &vlan40
+            vlanId: 40
+            mtu: 1500
+            dhcp: true
+            dhcpOptions:
+              routeMetric: 4096
     patches:
       - &kubelet_extra_mounts |-
         machine:
@@ -158,9 +158,9 @@ nodes:
   - hostname: k8s07.greyrock.io
     ipAddress: 10.1.1.27
     controlPlane: false
-    installDisk: /dev/xvda
+    installDisk: /dev/sda
     machineDisks:
-      - device: /dev/xvdc
+      - device: /dev/sdc
         partitions:
           - mountpoint: /var/mnt/sata
     networkInterfaces:
@@ -168,16 +168,16 @@ nodes:
         bond:
           mode: active-backup
           deviceSelectors:
-            - hardwareAddr: ea:08:6d:14:97:27
+            - hardwareAddr: bc:24:11:da:ea:1d
+              driver: virtio_net
         dhcp: true
-      - interface: bond1
-        bond:
-          mode: active-backup
-          deviceSelectors:
-            - hardwareAddr: 36:3f:ca:c6:49:4d
-        dhcp: true
-        dhcpOptions:
-          routeMetric: 4096
+        vlans:
+          - &vlan40
+            vlanId: 40
+            mtu: 1500
+            dhcp: true
+            dhcpOptions:
+              routeMetric: 4096
     patches:
       - &kubelet_extra_mounts |-
         machine:
@@ -194,9 +194,9 @@ nodes:
   - hostname: k8s08.greyrock.io
     ipAddress: 10.1.1.28
     controlPlane: false
-    installDisk: /dev/xvda
+    installDisk: /dev/sda
     machineDisks:
-      - device: /dev/xvdc
+      - device: /dev/sdc
         partitions:
           - mountpoint: /var/mnt/sata
     networkInterfaces:
@@ -204,16 +204,16 @@ nodes:
         bond:
           mode: active-backup
           deviceSelectors:
-            - hardwareAddr: ae:17:97:79:bc:da
+            - hardwareAddr: bc:24:11:79:a4:f0
+              driver: virtio_net
         dhcp: true
-      - interface: bond1
-        bond:
-          mode: active-backup
-          deviceSelectors:
-            - hardwareAddr: fe:59:32:2e:59:73
-        dhcp: true
-        dhcpOptions:
-          routeMetric: 4096
+        vlans:
+          - &vlan40
+            vlanId: 40
+            mtu: 1500
+            dhcp: true
+            dhcpOptions:
+              routeMetric: 4096
     patches:
       - &kubelet_extra_mounts |-
         machine:
@@ -230,9 +230,9 @@ nodes:
   - hostname: k8s09.greyrock.io
     ipAddress: 10.1.1.29
     controlPlane: false
-    installDisk: /dev/xvda
+    installDisk: /dev/sda
     machineDisks:
-      - device: /dev/xvdc
+      - device: /dev/sdc
         partitions:
           - mountpoint: /var/mnt/sata
     networkInterfaces:
@@ -240,16 +240,16 @@ nodes:
         bond:
           mode: active-backup
           deviceSelectors:
-            - hardwareAddr: 96:ab:c2:56:5a:af
+            - hardwareAddr: bc:24:11:49:bc:63
+              driver: virtio_net
         dhcp: true
-      - interface: bond1
-        bond:
-          mode: active-backup
-          deviceSelectors:
-            - hardwareAddr: 32:67:ab:a9:ae:05
-        dhcp: true
-        dhcpOptions:
-          routeMetric: 4096
+        vlans:
+          - &vlan40
+            vlanId: 40
+            mtu: 1500
+            dhcp: true
+            dhcpOptions:
+              routeMetric: 4096
     patches:
       - &kubelet_extra_mounts |-
         machine:
@@ -266,9 +266,9 @@ nodes:
   - hostname: k8s10.greyrock.io
     ipAddress: 10.1.1.30
     controlPlane: false
-    installDisk: /dev/xvda
+    installDisk: /dev/sda
     machineDisks:
-      - device: /dev/xvdc
+      - device: /dev/sdc
         partitions:
           - mountpoint: /var/mnt/sata
     networkInterfaces:
@@ -276,16 +276,16 @@ nodes:
         bond:
           mode: active-backup
           deviceSelectors:
-            - hardwareAddr: 9e:dd:a3:bb:50:5c
+            - hardwareAddr: bc:24:11:c3:d8:47
+              driver: virtio_net
         dhcp: true
-      - interface: bond1
-        bond:
-          mode: active-backup
-          deviceSelectors:
-            - hardwareAddr: 06:50:be:2d:75:90
-        dhcp: true
-        dhcpOptions:
-          routeMetric: 4096
+        vlans:
+          - &vlan40
+            vlanId: 40
+            mtu: 1500
+            dhcp: true
+            dhcpOptions:
+              routeMetric: 4096
     patches:
       - &kubelet_extra_mounts |-
         machine:
@@ -302,9 +302,9 @@ nodes:
   - hostname: k8s11.greyrock.io
     ipAddress: 10.1.1.31
     controlPlane: false
-    installDisk: /dev/xvda
+    installDisk: /dev/sda
     machineDisks:
-      - device: /dev/xvdc
+      - device: /dev/sdc
         partitions:
           - mountpoint: /var/mnt/sata
     networkInterfaces:
@@ -312,16 +312,16 @@ nodes:
         bond:
           mode: active-backup
           deviceSelectors:
-            - hardwareAddr: c2:20:6a:11:31:f5
+            - hardwareAddr: bc:24:11:e9:1b:a3
+              driver: virtio_net
         dhcp: true
-      - interface: bond1
-        bond:
-          mode: active-backup
-          deviceSelectors:
-            - hardwareAddr: 5e:82:3d:ce:90:f5
-        dhcp: true
-        dhcpOptions:
-          routeMetric: 4096
+        vlans:
+          - &vlan40
+            vlanId: 40
+            mtu: 1500
+            dhcp: true
+            dhcpOptions:
+              routeMetric: 4096
     patches:
       - &kubelet_extra_mounts |-
         machine:
@@ -338,9 +338,9 @@ nodes:
   - hostname: k8s12.greyrock.io
     ipAddress: 10.1.1.32
     controlPlane: false
-    installDisk: /dev/xvda
+    installDisk: /dev/sda
     machineDisks:
-      - device: /dev/xvdc
+      - device: /dev/sdc
         partitions:
           - mountpoint: /var/mnt/sata
     networkInterfaces:
@@ -348,16 +348,16 @@ nodes:
         bond:
           mode: active-backup
           deviceSelectors:
-            - hardwareAddr: b2:c0:8c:e1:ad:8f
+            - hardwareAddr: bc:24:11:04:ed:17
+              driver: virtio_net
         dhcp: true
-      - interface: bond1
-        bond:
-          mode: active-backup
-          deviceSelectors:
-            - hardwareAddr: ae:aa:2d:e5:87:53
-        dhcp: true
-        dhcpOptions:
-          routeMetric: 4096
+        vlans:
+          - &vlan40
+            vlanId: 40
+            mtu: 1500
+            dhcp: true
+            dhcpOptions:
+              routeMetric: 4096
     patches:
       - &kubelet_extra_mounts |-
         machine:
@@ -374,9 +374,9 @@ nodes:
   - hostname: k8s13.greyrock.io
     ipAddress: 10.1.1.33
     controlPlane: false
-    installDisk: /dev/xvda
+    installDisk: /dev/sda
     machineDisks:
-      - device: /dev/xvdc
+      - device: /dev/sdc
         partitions:
           - mountpoint: /var/mnt/sata
     networkInterfaces:
@@ -384,16 +384,16 @@ nodes:
         bond:
           mode: active-backup
           deviceSelectors:
-            - hardwareAddr: 06:67:20:8e:31:cd
+            - hardwareAddr: bc:24:11:45:23:26
+              driver: virtio_net
         dhcp: true
-      - interface: bond1
-        bond:
-          mode: active-backup
-          deviceSelectors:
-            - hardwareAddr: 96:48:e8:0f:df:da
-        dhcp: true
-        dhcpOptions:
-          routeMetric: 4096
+        vlans:
+          - &vlan40
+            vlanId: 40
+            mtu: 1500
+            dhcp: true
+            dhcpOptions:
+              routeMetric: 4096
     patches:
       - &kubelet_extra_mounts |-
         machine:
@@ -410,9 +410,9 @@ nodes:
   - hostname: k8s14.greyrock.io
     ipAddress: 10.1.1.34
     controlPlane: false
-    installDisk: /dev/xvda
+    installDisk: /dev/sda
     machineDisks:
-      - device: /dev/xvdc
+      - device: /dev/sdc
         partitions:
           - mountpoint: /var/mnt/sata
     networkInterfaces:
@@ -420,16 +420,16 @@ nodes:
         bond:
           mode: active-backup
           deviceSelectors:
-            - hardwareAddr: aa:89:24:04:ba:a3
+            - hardwareAddr: bc:24:11:22:e7:0e
+              driver: virtio_net
         dhcp: true
-      - interface: bond1
-        bond:
-          mode: active-backup
-          deviceSelectors:
-            - hardwareAddr: 52:9a:5d:e5:cc:f8
-        dhcp: true
-        dhcpOptions:
-          routeMetric: 4096
+        vlans:
+          - &vlan40
+            vlanId: 40
+            mtu: 1500
+            dhcp: true
+            dhcpOptions:
+              routeMetric: 4096
     patches:
       - &kubelet_extra_mounts |-
         machine:
@@ -446,9 +446,9 @@ nodes:
   - hostname: k8s15.greyrock.io
     ipAddress: 10.1.1.35
     controlPlane: false
-    installDisk: /dev/xvda
+    installDisk: /dev/sda
     machineDisks:
-      - device: /dev/xvdc
+      - device: /dev/sdc
         partitions:
           - mountpoint: /var/mnt/sata
     networkInterfaces:
@@ -456,16 +456,16 @@ nodes:
         bond:
           mode: active-backup
           deviceSelectors:
-            - hardwareAddr: 3e:42:34:d1:a5:3e
+            - hardwareAddr: bc:24:11:c9:2d:11
+              driver: virtio_net
         dhcp: true
-      - interface: bond1
-        bond:
-          mode: active-backup
-          deviceSelectors:
-            - hardwareAddr: 12:cc:25:28:74:f4
-        dhcp: true
-        dhcpOptions:
-          routeMetric: 4096
+        vlans:
+          - &vlan40
+            vlanId: 40
+            mtu: 1500
+            dhcp: true
+            dhcpOptions:
+              routeMetric: 4096
     patches:
       - &kubelet_extra_mounts |-
         machine:
@@ -488,7 +488,7 @@ controlPlane:
         officialExtensions:
           - siderolabs/intel-ucode
           - siderolabs/i915-ucode
-          - siderolabs/xen-guest-agent
+          - siderolabs/qemu-guest-agent
 
   patches:
     # Disable search domain everywhere
@@ -613,7 +613,7 @@ worker:
         officialExtensions:
           - siderolabs/intel-ucode
           - siderolabs/i915-ucode
-          - siderolabs/xen-guest-agent
+          - siderolabs/qemu-guest-agent
 
   patches:
     # Disable search domain everywhere
