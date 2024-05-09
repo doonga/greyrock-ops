@@ -83,40 +83,40 @@ spec:
         nodes:
           - name: "k8s04"
             devices:
-              - name: "/dev/xvdb"
+              - name: "/dev/sdb"
           - name: "k8s05"
             devices:
-              - name: "/dev/xvdb"
+              - name: "/dev/sdb"
           - name: "k8s06"
             devices:
-              - name: "/dev/xvdb"
+              - name: "/dev/sdb"
           - name: "k8s07"
             devices:
-              - name: "/dev/xvdb"
+              - name: "/dev/sdb"
           - name: "k8s08"
             devices:
-              - name: "/dev/xvdb"
+              - name: "/dev/sdb"
           - name: "k8s09"
             devices:
-              - name: "/dev/xvdb"
+              - name: "/dev/sdb"
           - name: "k8s10"
             devices:
-              - name: "/dev/xvdb"
+              - name: "/dev/sdb"
           - name: "k8s11"
             devices:
-              - name: "/dev/xvdb"
+              - name: "/dev/sdb"
           - name: "k8s12"
             devices:
-              - name: "/dev/xvdb"
+              - name: "/dev/sdb"
           - name: "k8s13"
             devices:
-              - name: "/dev/xvdb"
+              - name: "/dev/sdb"
           - name: "k8s14"
             devices:
-              - name: "/dev/xvdb"
+              - name: "/dev/sdb"
           - name: "k8s15"
             devices:
-              - name: "/dev/xvdb"
+              - name: "/dev/sdb"
 
     cephBlockPools:
       - name: ceph-blockpool
