@@ -206,6 +206,13 @@ spec:
           url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/grafana/dashboards/request-handling-performance.json
           datasource: Prometheus
 
+      smartctl-exporter:
+        smartctl-exporter:
+          # renovate: dashboardName="Dashboard for smartctl_exporter"
+          gnetId: 20204
+          revision: 1
+          datasource: Prometheus
+
       unpoller:
         unifi-insights:
           # renovate: dashboardName="UniFi-Poller: Client Insights - Prometheus"
@@ -231,6 +238,7 @@ spec:
           datasource:
             - name: "DS_PROMETHEUS"
               value: Prometheus
+
       victoriametrics:
         vm-cluster:
           # renovate: dashboardName="VictoriaMetrics - cluster"
