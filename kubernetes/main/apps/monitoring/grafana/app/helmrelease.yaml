@@ -219,7 +219,9 @@ spec:
           # renovate: dashboardName="Dashboard for smartctl_exporter"
           gnetId: 20204
           revision: 1
-          datasource: Prometheus
+          datasource:
+            - name: "DS_PROMETHEUS"
+              value: Prometheus
 
       unpoller:
         unifi-insights:
