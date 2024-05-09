@@ -67,6 +67,14 @@ spec:
             editable: true
             options:
               path: /var/lib/grafana/dashboards/nginx
+          - name: smartctl-exporter
+            orgId: 1
+            folder: "SMART Exporter"
+            type: file
+            disableDeletion: false
+            editable: true
+            options:
+              path: /var/lib/grafana/dashboards/smartexporter
           - name: unpoller
             disableDeletion: false
             editable: true
