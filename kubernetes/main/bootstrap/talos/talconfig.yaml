@@ -17,32 +17,53 @@ additionalApiServerCertSans: &san
 additionalMachineCertSans: *san
 
 nodes:
-  - hostname: k8s01.greyrock.io
+  - hostname: k8s1.greyrock.io
     ipAddress: 10.1.1.21
     controlPlane: true
-    installDisk: /dev/sda
+    installDiskSelector:
+      size: "<= 550GB"
+      model: "WDC WDS500G2B0C-00PXH0"
     networkInterfaces:
-      - interface: enxbc2411528050
+      - interface: bond0
+        bond:
+          mode: active-backup
+          deviceSelectors:
+            - hardwareAddr: 00:23:24:c2:14:8e
+              driver: e1000e
         dhcp: true
         vip:
           ip: ${clusterEndpointIP}
 
-  - hostname: k8s02.greyrock.io
+  - hostname: k8s2.greyrock.io
     ipAddress: 10.1.1.22
     controlPlane: true
-    installDisk: /dev/sda
+    installDiskSelector:
+      size: "<= 550GB"
+      model: "WDC WDS500G2B0C-00PXH0"
     networkInterfaces:
-      - interface: enxbc241183d06e
+      - interface: bond0
+        bond:
+          mode: active-backup
+          deviceSelectors:
+            - hardwareAddr: 00:23:24:bf:2d:70
+              driver: e1000e
         dhcp: true
         vip:
           ip: ${clusterEndpointIP}
 
-  - hostname: k8s03.greyrock.io
+  - hostname: k8s3.greyrock.io
     ipAddress: 10.1.1.23
     controlPlane: true
-    installDisk: /dev/sda
+    installDiskSelector:
+      size: "<= 550GB"
+      model: "WDC WDS500G2B0C-00PXH0"
     networkInterfaces:
-      - interface: enxbc2411bb89e6
+      - interface: bond0
+        bond:
+          mode: active-backup
+          deviceSelectors:
+            - hardwareAddr: 6c:0b:84:e1:a9:3d
+              driver: e1000e
         dhcp: true
         vip:
           ip: ${clusterEndpointIP}
@@ -487,8 +508,6 @@ controlPlane:
       systemExtensions:
         officialExtensions:
           - siderolabs/intel-ucode
-          - siderolabs/i915-ucode
-          - siderolabs/qemu-guest-agent
 
   patches:
     # Disable search domain everywhere
@@ -613,7 +632,6 @@ worker:
         officialExtensions:
           - siderolabs/intel-ucode
           - siderolabs/i915-ucode
-          - siderolabs/qemu-guest-agent
 
   patches:
     # Disable search domain everywhere
