@@ -58,6 +58,9 @@ spec:
       customApps:
         - group: Network
           apps:
+            - name: Mesh Central
+              url: https://meshcentral.greyrock.casa
+              icon: video-switch
             - name: PiKVM
               url: https://pikvm.greyrock.io
               icon: video-switch
