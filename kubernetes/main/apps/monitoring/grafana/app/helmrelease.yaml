@@ -180,6 +180,11 @@ spec:
           gnetId: 15761
           revision: 16
           datasource: Prometheus
+        k8s-system-coredns:
+          # renovate: dashboardName="Kubernetes / System / API Server"
+          gnetId: 15762
+          revision: 18
+          datasource: Prometheus
         k8s-views-global:
           # renovate: dashboardName="Kubernetes / Views / Global"
           gnetId: 15757
