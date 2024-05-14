@@ -214,19 +214,19 @@ spec:
           - targetLabel: "job"
             replacement: "kubelet"
     kubeApiServer:
-      enabled: false
+      enabled: true
     kubeControllerManager:
-      enabled: false
+      enabled: true
     kubeProxy:
       enabled: false
     kubeScheduler:
-      enabled: false
+      enabled: true
     kubeEtcd:
-      enabled: false
+      enabled: true
 
     # Enable deployment of kube-state-metrics
     kube-state-metrics:
-      enabled: false
+      enabled: true
 
     # Enable deployment of prometheus-node-exporter
     prometheus-node-exporter:
