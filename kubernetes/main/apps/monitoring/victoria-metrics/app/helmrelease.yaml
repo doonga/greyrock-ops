@@ -42,7 +42,7 @@ spec:
               memory: 512Mi
             limits:
               cpu: 750m
-              memory: 1536Mi
+              memory: 2000Mi
           topologySpreadConstraints:
             - maxSkew: 1
               topologyKey: kubernetes.io/hostname
