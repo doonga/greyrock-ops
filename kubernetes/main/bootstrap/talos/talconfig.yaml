@@ -284,222 +284,6 @@ nodes:
                   - rshared
                   - rw
 
-  - hostname: k8s10.greyrock.io
-    ipAddress: 10.1.1.30
-    controlPlane: false
-    installDisk: /dev/sda
-    machineDisks:
-      - device: /dev/sdc
-        partitions:
-          - mountpoint: /var/mnt/sata
-    networkInterfaces:
-      - interface: bond0
-        bond:
-          mode: active-backup
-          deviceSelectors:
-            - hardwareAddr: bc:24:11:c3:d8:47
-              driver: virtio_net
-        dhcp: true
-        vlans:
-          - &vlan40
-            vlanId: 40
-            mtu: 1500
-            dhcp: true
-            dhcpOptions:
-              routeMetric: 4096
-    patches:
-      - &kubelet_extra_mounts |-
-        machine:
-          kubelet:
-            extraMounts:
-              - destination: /var/mnt/sata
-                type: bind
-                source: /var/mnt/sata
-                options:
-                  - rbind
-                  - rshared
-                  - rw
-
-  - hostname: k8s11.greyrock.io
-    ipAddress: 10.1.1.31
-    controlPlane: false
-    installDisk: /dev/sda
-    machineDisks:
-      - device: /dev/sdc
-        partitions:
-          - mountpoint: /var/mnt/sata
-    networkInterfaces:
-      - interface: bond0
-        bond:
-          mode: active-backup
-          deviceSelectors:
-            - hardwareAddr: bc:24:11:e9:1b:a3
-              driver: virtio_net
-        dhcp: true
-        vlans:
-          - &vlan40
-            vlanId: 40
-            mtu: 1500
-            dhcp: true
-            dhcpOptions:
-              routeMetric: 4096
-    patches:
-      - &kubelet_extra_mounts |-
-        machine:
-          kubelet:
-            extraMounts:
-              - destination: /var/mnt/sata
-                type: bind
-                source: /var/mnt/sata
-                options:
-                  - rbind
-                  - rshared
-                  - rw
-
-  - hostname: k8s12.greyrock.io
-    ipAddress: 10.1.1.32
-    controlPlane: false
-    installDisk: /dev/sda
-    machineDisks:
-      - device: /dev/sdc
-        partitions:
-          - mountpoint: /var/mnt/sata
-    networkInterfaces:
-      - interface: bond0
-        bond:
-          mode: active-backup
-          deviceSelectors:
-            - hardwareAddr: bc:24:11:04:ed:17
-              driver: virtio_net
-        dhcp: true
-        vlans:
-          - &vlan40
-            vlanId: 40
-            mtu: 1500
-            dhcp: true
-            dhcpOptions:
-              routeMetric: 4096
-    patches:
-      - &kubelet_extra_mounts |-
-        machine:
-          kubelet:
-            extraMounts:
-              - destination: /var/mnt/sata
-                type: bind
-                source: /var/mnt/sata
-                options:
-                  - rbind
-                  - rshared
-                  - rw
-
-  - hostname: k8s13.greyrock.io
-    ipAddress: 10.1.1.33
-    controlPlane: false
-    installDisk: /dev/sda
-    machineDisks:
-      - device: /dev/sdc
-        partitions:
-          - mountpoint: /var/mnt/sata
-    networkInterfaces:
-      - interface: bond0
-        bond:
-          mode: active-backup
-          deviceSelectors:
-            - hardwareAddr: bc:24:11:45:23:26
-              driver: virtio_net
-        dhcp: true
-        vlans:
-          - &vlan40
-            vlanId: 40
-            mtu: 1500
-            dhcp: true
-            dhcpOptions:
-              routeMetric: 4096
-    patches:
-      - &kubelet_extra_mounts |-
-        machine:
-          kubelet:
-            extraMounts:
-              - destination: /var/mnt/sata
-                type: bind
-                source: /var/mnt/sata
-                options:
-                  - rbind
-                  - rshared
-                  - rw
-
-  - hostname: k8s14.greyrock.io
-    ipAddress: 10.1.1.34
-    controlPlane: false
-    installDisk: /dev/sda
-    machineDisks:
-      - device: /dev/sdc
-        partitions:
-          - mountpoint: /var/mnt/sata
-    networkInterfaces:
-      - interface: bond0
-        bond:
-          mode: active-backup
-          deviceSelectors:
-            - hardwareAddr: bc:24:11:22:e7:0e
-              driver: virtio_net
-        dhcp: true
-        vlans:
-          - &vlan40
-            vlanId: 40
-            mtu: 1500
-            dhcp: true
-            dhcpOptions:
-              routeMetric: 4096
-    patches:
-      - &kubelet_extra_mounts |-
-        machine:
-          kubelet:
-            extraMounts:
-              - destination: /var/mnt/sata
-                type: bind
-                source: /var/mnt/sata
-                options:
-                  - rbind
-                  - rshared
-                  - rw
-
-  - hostname: k8s15.greyrock.io
-    ipAddress: 10.1.1.35
-    controlPlane: false
-    installDisk: /dev/sda
-    machineDisks:
-      - device: /dev/sdc
-        partitions:
-          - mountpoint: /var/mnt/sata
-    networkInterfaces:
-      - interface: bond0
-        bond:
-          mode: active-backup
-          deviceSelectors:
-            - hardwareAddr: bc:24:11:c9:2d:11
-              driver: virtio_net
-        dhcp: true
-        vlans:
-          - &vlan40
-            vlanId: 40
-            mtu: 1500
-            dhcp: true
-            dhcpOptions:
-              routeMetric: 4096
-    patches:
-      - &kubelet_extra_mounts |-
-        machine:
-          kubelet:
-            extraMounts:
-              - destination: /var/mnt/sata
-                type: bind
-                source: /var/mnt/sata
-                options:
-                  - rbind
-                  - rshared
-                  - rw
-
 controlPlane:
   schematic:
     customization:
@@ -516,24 +300,16 @@ controlPlane:
         network:
           disableSearchDomain: true
 
-    # Force nameserver
-    - |-
-      machine:
-        network:
-          nameservers:
-            - 10.1.1.11
-            - 10.1.1.12
-
     # Configure NTP
     - |-
       machine:
         time:
           disabled: false
           servers:
-            - 10.1.7.2
-            - 10.1.7.3
-            - 10.1.7.4
-            - 10.1.7.5
+            - time1.greyrock.io
+            - time2.greyrock.io
+            - time3.greyrock.io
+            - time4.greyrock.io
 
     # Enable KubePrism
     - |-
@@ -640,24 +416,16 @@ worker:
         network:
           disableSearchDomain: true
 
-    # Force nameserver
-    - |-
-      machine:
-        network:
-          nameservers:
-            - 10.1.1.11
-            - 10.1.1.12
-
     # Configure NTP
     - |-
       machine:
         time:
           disabled: false
           servers:
-            - 10.1.7.2
-            - 10.1.7.3
-            - 10.1.7.4
-            - 10.1.7.5
+            - time1.greyrock.io
+            - time2.greyrock.io
+            - time3.greyrock.io
+            - time4.greyrock.io
 
     # Cluster configuration
     - |-
