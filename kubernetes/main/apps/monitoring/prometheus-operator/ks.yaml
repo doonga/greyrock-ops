@@ -18,4 +18,4 @@ spec:
   sourceRef:
     kind: GitRepository
     name: greyrock-ops-kubernetes
-  wait: true
+  wait: false

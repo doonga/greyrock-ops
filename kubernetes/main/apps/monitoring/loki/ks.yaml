@@ -18,6 +18,5 @@ spec:
     name: greyrock-ops-kubernetes
   wait: true
   dependsOn:
-    - name: prometheus-operator-crds
     - name: external-secrets-stores
     - name: openebs
