@@ -68,12 +68,14 @@ nodes:
         vip:
           ip: ${clusterEndpointIP}
 
-  - hostname: k8s04.greyrock.io
+  - hostname: k8s4.greyrock.io
     ipAddress: 10.1.1.24
     controlPlane: false
-    installDisk: /dev/sda
+    installDiskSelector:
+      size: "<= 250GB"
+      model: "TS240GMTS420S"
     machineDisks:
-      - device: /dev/sdc
+      - device: /dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_PHWL437601XW800RGN
         partitions:
           - mountpoint: /var/mnt/sata
     networkInterfaces:
@@ -81,8 +83,8 @@ nodes:
         bond:
           mode: active-backup
           deviceSelectors:
-            - hardwareAddr: bc:24:11:19:f8:1b
-              driver: virtio_net
+            - hardwareAddr: 00:30:93:12:38:d3
+              driver: atlantic
         dhcp: true
         vlans:
           - &vlan40
@@ -104,12 +106,14 @@ nodes:
                   - rshared
                   - rw
 
-  - hostname: k8s05.greyrock.io
+  - hostname: k8s5.greyrock.io
     ipAddress: 10.1.1.25
     controlPlane: false
-    installDisk: /dev/sda
+    installDiskSelector:
+      size: "<= 250GB"
+      model: "TS240GMTS420S"
     machineDisks:
-      - device: /dev/sdc
+      - device: /dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_BTWL406300TG800RGN
         partitions:
           - mountpoint: /var/mnt/sata
     networkInterfaces:
@@ -117,8 +121,8 @@ nodes:
         bond:
           mode: active-backup
           deviceSelectors:
-            - hardwareAddr: bc:24:11:e1:73:57
-              driver: virtio_net
+            - hardwareAddr: 00:30:93:12:38:d6
+              driver: atlantic
         dhcp: true
         vlans:
           - &vlan40
@@ -140,12 +144,14 @@ nodes:
                   - rshared
                   - rw
 
-  - hostname: k8s06.greyrock.io
+  - hostname: k8s6.greyrock.io
     ipAddress: 10.1.1.26
     controlPlane: false
-    installDisk: /dev/sda
+    installDiskSelector:
+      size: "<= 250GB"
+      model: "TS240GMTS420S"
     machineDisks:
-      - device: /dev/sdc
+      - device: /dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_PHWL4436048S800RGN
         partitions:
           - mountpoint: /var/mnt/sata
     networkInterfaces:
@@ -153,116 +159,8 @@ nodes:
         bond:
           mode: active-backup
           deviceSelectors:
-            - hardwareAddr: bc:24:11:82:97:92
-              driver: virtio_net
-        dhcp: true
-        vlans:
-          - &vlan40
-            vlanId: 40
-            mtu: 1500
-            dhcp: true
-            dhcpOptions:
-              routeMetric: 4096
-    patches:
-      - &kubelet_extra_mounts |-
-        machine:
-          kubelet:
-            extraMounts:
-              - destination: /var/mnt/sata
-                type: bind
-                source: /var/mnt/sata
-                options:
-                  - rbind
-                  - rshared
-                  - rw
-
-  - hostname: k8s07.greyrock.io
-    ipAddress: 10.1.1.27
-    controlPlane: false
-    installDisk: /dev/sda
-    machineDisks:
-      - device: /dev/sdc
-        partitions:
-          - mountpoint: /var/mnt/sata
-    networkInterfaces:
-      - interface: bond0
-        bond:
-          mode: active-backup
-          deviceSelectors:
-            - hardwareAddr: bc:24:11:da:ea:1d
-              driver: virtio_net
-        dhcp: true
-        vlans:
-          - &vlan40
-            vlanId: 40
-            mtu: 1500
-            dhcp: true
-            dhcpOptions:
-              routeMetric: 4096
-    patches:
-      - &kubelet_extra_mounts |-
-        machine:
-          kubelet:
-            extraMounts:
-              - destination: /var/mnt/sata
-                type: bind
-                source: /var/mnt/sata
-                options:
-                  - rbind
-                  - rshared
-                  - rw
-
-  - hostname: k8s08.greyrock.io
-    ipAddress: 10.1.1.28
-    controlPlane: false
-    installDisk: /dev/sda
-    machineDisks:
-      - device: /dev/sdc
-        partitions:
-          - mountpoint: /var/mnt/sata
-    networkInterfaces:
-      - interface: bond0
-        bond:
-          mode: active-backup
-          deviceSelectors:
-            - hardwareAddr: bc:24:11:79:a4:f0
-              driver: virtio_net
-        dhcp: true
-        vlans:
-          - &vlan40
-            vlanId: 40
-            mtu: 1500
-            dhcp: true
-            dhcpOptions:
-              routeMetric: 4096
-    patches:
-      - &kubelet_extra_mounts |-
-        machine:
-          kubelet:
-            extraMounts:
-              - destination: /var/mnt/sata
-                type: bind
-                source: /var/mnt/sata
-                options:
-                  - rbind
-                  - rshared
-                  - rw
-
-  - hostname: k8s09.greyrock.io
-    ipAddress: 10.1.1.29
-    controlPlane: false
-    installDisk: /dev/sda
-    machineDisks:
-      - device: /dev/sdc
-        partitions:
-          - mountpoint: /var/mnt/sata
-    networkInterfaces:
-      - interface: bond0
-        bond:
-          mode: active-backup
-          deviceSelectors:
-            - hardwareAddr: bc:24:11:49:bc:63
-              driver: virtio_net
+            - hardwareAddr: 00:30:93:12:38:8c
+              driver: atlantic
         dhcp: true
         vlans:
           - &vlan40
@@ -292,6 +190,7 @@ controlPlane:
       systemExtensions:
         officialExtensions:
           - siderolabs/intel-ucode
+          - siderolabs/i915-ucode
 
   patches:
     # Disable search domain everywhere
@@ -299,6 +198,14 @@ controlPlane:
       machine:
         network:
           disableSearchDomain: true
+
+    # Force nameserver
+    - |-
+      machine:
+        network:
+          nameservers:
+            - 10.1.1.11
+            - 10.1.1.12
 
     # Configure NTP
     - |-
@@ -415,6 +322,14 @@ worker:
       machine:
         network:
           disableSearchDomain: true
+
+    # Force nameserver
+    - |-
+      machine:
+        network:
+          nameservers:
+            - 10.1.1.11
+            - 10.1.1.12
 
     # Configure NTP
     - |-
