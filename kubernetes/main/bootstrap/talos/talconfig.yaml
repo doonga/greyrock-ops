@@ -199,14 +199,6 @@ controlPlane:
         network:
           disableSearchDomain: true
 
-    # Force nameserver
-    - |-
-      machine:
-        network:
-          nameservers:
-            - 10.1.1.11
-            - 10.1.1.12
-
     # Configure NTP
     - |-
       machine:
@@ -322,14 +314,6 @@ worker:
       machine:
         network:
           disableSearchDomain: true
-
-    # Force nameserver
-    - |-
-      machine:
-        network:
-          nameservers:
-            - 10.1.1.11
-            - 10.1.1.12
 
     # Configure NTP
     - |-
