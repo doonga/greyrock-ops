@@ -100,14 +100,6 @@ spec:
         interval: 1m
         scrapeTimeout: 30s
       targets:
-        # PiKVM
-        - module: http_2xx
-          name: pikvm-http
-          url: "http://pikvm.greyrock.io"
-        - module: icmp
-          name: pikvm-icmp
-          url: pikvm.greyrock.io
-
         # Other devices
         - module: icmp
           name: zigbee-controller-icmp
