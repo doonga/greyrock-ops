@@ -39,10 +39,10 @@ spec:
           resources:
             requests:
               cpu: 100m
-              memory: 768Mi
+              memory: 512Mi
             limits:
-              cpu: 750m
-              memory: 2000Mi
+              cpu: 500m
+              memory: 1536Mi
           topologySpreadConstraints:
             - maxSkew: 1
               topologyKey: kubernetes.io/hostname
@@ -67,7 +67,7 @@ spec:
               cpu: 100m
               memory: 256Mi
             limits:
-              cpu: 1000m
+              cpu: 750m
               memory: 256Mi
           topologySpreadConstraints:
             - maxSkew: 1
@@ -226,7 +226,7 @@ spec:
 
     # Enable deployment of kube-state-metrics
     kube-state-metrics:
-      enabled: true
+      enabled: false
 
     # Enable deployment of prometheus-node-exporter
     prometheus-node-exporter:
