@@ -25,7 +25,3 @@ spec:
     - "--maxmemory=$(MAX_MEMORY)Mi"
     - "--proactor_threads=2"
     - "--cluster_mode=emulated"
-  serviceSpec:
-    type: LoadBalancer
-    annotations:
-      io.cilium/lb-ipam-ips: 10.1.1.158
