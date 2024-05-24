@@ -5,3 +5,6 @@ main-k8s4.greyrock.io.yaml
 main-k8s5.greyrock.io.yaml
 main-k8s6.greyrock.io.yaml
 talosconfig
+main-k8s7.greyrock.io.yaml
+main-k8s8.greyrock.io.yaml
+main-k8s9.greyrock.io.yaml

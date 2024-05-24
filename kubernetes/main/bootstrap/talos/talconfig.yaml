@@ -72,8 +72,8 @@ nodes:
     ipAddress: 10.1.1.24
     controlPlane: false
     installDiskSelector:
-      size: "<= 250GB"
-      model: "TS240GMTS420S"
+      size: "<= 1TB"
+      model: "WD_BLACK SN770 1TB"
     machineDisks:
       - device: /dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_PHWL437601XW800RGN
         partitions:
@@ -83,8 +83,8 @@ nodes:
         bond:
           mode: active-backup
           deviceSelectors:
-            - hardwareAddr: 00:30:93:12:38:d3
-              driver: atlantic
+            - hardwareAddr: 58:47:ca:77:5e:da
+              driver: i40e
         dhcp: true
         vlans:
           - &vlan40
@@ -93,6 +93,9 @@ nodes:
             dhcp: true
             dhcpOptions:
               routeMetric: 4096
+      - interface: enp90s0
+        dhcp: false
+        ignore: true
     patches:
       - &kubelet_extra_mounts |-
         machine:
@@ -110,10 +113,10 @@ nodes:
     ipAddress: 10.1.1.25
     controlPlane: false
     installDiskSelector:
-      size: "<= 250GB"
-      model: "TS240GMTS420S"
+      size: "<= 1TB"
+      model: "WD_BLACK SN770 1TB"
     machineDisks:
-      - device: /dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_BTWL406300TG800RGN
+      - device: /dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_PHWL437601XW800RGN
         partitions:
           - mountpoint: /var/mnt/sata
     networkInterfaces:
@@ -121,8 +124,8 @@ nodes:
         bond:
           mode: active-backup
           deviceSelectors:
-            - hardwareAddr: 00:30:93:12:38:d6
-              driver: atlantic
+            - hardwareAddr: 58:47:ca:77:5e:da
+              driver: i40e
         dhcp: true
         vlans:
           - &vlan40
@@ -131,6 +134,9 @@ nodes:
             dhcp: true
             dhcpOptions:
               routeMetric: 4096
+      - interface: enp90s0
+        dhcp: false
+        ignore: true
     patches:
       - &kubelet_extra_mounts |-
         machine:
@@ -148,10 +154,10 @@ nodes:
     ipAddress: 10.1.1.26
     controlPlane: false
     installDiskSelector:
-      size: "<= 250GB"
-      model: "TS240GMTS420S"
+      size: "<= 1TB"
+      model: "WD_BLACK SN770 1TB"
     machineDisks:
-      - device: /dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_PHWL4436048S800RGN
+      - device: /dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_PHWL437601XW800RGN
         partitions:
           - mountpoint: /var/mnt/sata
     networkInterfaces:
@@ -159,8 +165,8 @@ nodes:
         bond:
           mode: active-backup
           deviceSelectors:
-            - hardwareAddr: 00:30:93:12:38:8c
-              driver: atlantic
+            - hardwareAddr: 58:47:ca:77:5e:da
+              driver: i40e
         dhcp: true
         vlans:
           - &vlan40
@@ -169,6 +175,132 @@ nodes:
             dhcp: true
             dhcpOptions:
               routeMetric: 4096
+      - interface: enp90s0
+        dhcp: false
+        ignore: true
+    patches:
+      - &kubelet_extra_mounts |-
+        machine:
+          kubelet:
+            extraMounts:
+              - destination: /var/mnt/sata
+                type: bind
+                source: /var/mnt/sata
+                options:
+                  - rbind
+                  - rshared
+                  - rw
+
+  - hostname: k8s7.greyrock.io
+    ipAddress: 10.1.1.27
+    controlPlane: false
+    installDiskSelector:
+      size: "<= 1TB"
+      model: "WD_BLACK SN770 1TB"
+    machineDisks:
+      - device: /dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_PHWL437601XW800RGN
+        partitions:
+          - mountpoint: /var/mnt/sata
+    networkInterfaces:
+      - interface: bond0
+        bond:
+          mode: active-backup
+          deviceSelectors:
+            - hardwareAddr: 58:47:ca:77:5e:da
+              driver: i40e
+        dhcp: true
+        vlans:
+          - &vlan40
+            vlanId: 40
+            mtu: 1500
+            dhcp: true
+            dhcpOptions:
+              routeMetric: 4096
+      - interface: enp90s0
+        dhcp: false
+        ignore: true
+    patches:
+      - &kubelet_extra_mounts |-
+        machine:
+          kubelet:
+            extraMounts:
+              - destination: /var/mnt/sata
+                type: bind
+                source: /var/mnt/sata
+                options:
+                  - rbind
+                  - rshared
+                  - rw
+
+  - hostname: k8s8.greyrock.io
+    ipAddress: 10.1.1.28
+    controlPlane: false
+    installDiskSelector:
+      size: "<= 1TB"
+      model: "WD_BLACK SN770 1TB"
+    machineDisks:
+      - device: /dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_PHWL437601XW800RGN
+        partitions:
+          - mountpoint: /var/mnt/sata
+    networkInterfaces:
+      - interface: bond0
+        bond:
+          mode: active-backup
+          deviceSelectors:
+            - hardwareAddr: 58:47:ca:77:5e:da
+              driver: i40e
+        dhcp: true
+        vlans:
+          - &vlan40
+            vlanId: 40
+            mtu: 1500
+            dhcp: true
+            dhcpOptions:
+              routeMetric: 4096
+      - interface: enp90s0
+        dhcp: false
+        ignore: true
+    patches:
+      - &kubelet_extra_mounts |-
+        machine:
+          kubelet:
+            extraMounts:
+              - destination: /var/mnt/sata
+                type: bind
+                source: /var/mnt/sata
+                options:
+                  - rbind
+                  - rshared
+                  - rw
+
+  - hostname: k8s9.greyrock.io
+    ipAddress: 10.1.1.29
+    controlPlane: false
+    installDiskSelector:
+      size: "<= 1TB"
+      model: "WD_BLACK SN770 1TB"
+    machineDisks:
+      - device: /dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_PHWL437601XW800RGN
+        partitions:
+          - mountpoint: /var/mnt/sata
+    networkInterfaces:
+      - interface: bond0
+        bond:
+          mode: active-backup
+          deviceSelectors:
+            - hardwareAddr: 58:47:ca:77:5e:da
+              driver: i40e
+        dhcp: true
+        vlans:
+          - &vlan40
+            vlanId: 40
+            mtu: 1500
+            dhcp: true
+            dhcpOptions:
+              routeMetric: 4096
+      - interface: enp90s0
+        dhcp: false
+        ignore: true
     patches:
       - &kubelet_extra_mounts |-
         machine:
