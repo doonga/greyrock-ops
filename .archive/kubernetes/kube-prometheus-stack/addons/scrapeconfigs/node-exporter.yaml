@@ -7,7 +7,6 @@ metadata:
 spec:
   staticConfigs:
     - targets:
-        - dns.greyrock.io:9100
         - nas.greyrock.io:9100
   metricsPath: /metrics
   relabelings:
