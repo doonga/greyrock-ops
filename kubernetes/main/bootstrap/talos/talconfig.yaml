@@ -72,10 +72,10 @@ nodes:
     ipAddress: 10.1.1.24
     controlPlane: false
     installDiskSelector:
-      size: "<= 1TB"
+      size: "<= 1.1TB"
       model: "WD_BLACK SN770 1TB"
     machineDisks:
-      - device: /dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_PHWL437601XW800RGN
+      - device: /dev/disk/by-id/nvme-SAMSUNG_MZ1LB1T9HALS-00007_S436NA0N765014
         partitions:
           - mountpoint: /var/mnt/sata
     networkInterfaces:
@@ -113,10 +113,10 @@ nodes:
     ipAddress: 10.1.1.25
     controlPlane: false
     installDiskSelector:
-      size: "<= 1TB"
+      size: "<= 1.1TB"
       model: "WD_BLACK SN770 1TB"
     machineDisks:
-      - device: /dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_PHWL437601XW800RGN
+      - device: /dev/disk/by-id/nvme-SAMSUNG_MZ1LB1T9HALS-00007_S436NC0R700234
         partitions:
           - mountpoint: /var/mnt/sata
     networkInterfaces:
@@ -124,7 +124,7 @@ nodes:
         bond:
           mode: active-backup
           deviceSelectors:
-            - hardwareAddr: 58:47:ca:77:5e:da
+            - hardwareAddr: 58:47:ca:77:5a:ba
               driver: i40e
         dhcp: true
         vlans:
@@ -154,10 +154,10 @@ nodes:
     ipAddress: 10.1.1.26
     controlPlane: false
     installDiskSelector:
-      size: "<= 1TB"
+      size: "<= 1.1TB"
       model: "WD_BLACK SN770 1TB"
     machineDisks:
-      - device: /dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_PHWL437601XW800RGN
+      - device: /dev/disk/by-id/nvme-SAMSUNG_MZ1LB1T9HALS-00007_S436NC0R700283
         partitions:
           - mountpoint: /var/mnt/sata
     networkInterfaces:
@@ -165,7 +165,7 @@ nodes:
         bond:
           mode: active-backup
           deviceSelectors:
-            - hardwareAddr: 58:47:ca:77:5e:da
+            - hardwareAddr: 58:47:ca:77:53:fa
               driver: i40e
         dhcp: true
         vlans:
@@ -195,10 +195,10 @@ nodes:
     ipAddress: 10.1.1.27
     controlPlane: false
     installDiskSelector:
-      size: "<= 1TB"
+      size: "<= 1.1TB"
       model: "WD_BLACK SN770 1TB"
     machineDisks:
-      - device: /dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_PHWL437601XW800RGN
+      - device: /dev/disk/by-id/nvme-SAMSUNG_MZ1LB1T9HALS-00007_S436NC0R700299
         partitions:
           - mountpoint: /var/mnt/sata
     networkInterfaces:
@@ -206,7 +206,7 @@ nodes:
         bond:
           mode: active-backup
           deviceSelectors:
-            - hardwareAddr: 58:47:ca:77:5e:da
+            - hardwareAddr: 58:47:ca:77:58:8a
               driver: i40e
         dhcp: true
         vlans:
@@ -236,10 +236,10 @@ nodes:
     ipAddress: 10.1.1.28
     controlPlane: false
     installDiskSelector:
-      size: "<= 1TB"
+      size: "<= 1.1TB"
       model: "WD_BLACK SN770 1TB"
     machineDisks:
-      - device: /dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_PHWL437601XW800RGN
+      - device: /dev/disk/by-id/nvme-SAMSUNG_MZ1LB1T9HALS-00007_S436NC0R700280
         partitions:
           - mountpoint: /var/mnt/sata
     networkInterfaces:
@@ -247,7 +247,7 @@ nodes:
         bond:
           mode: active-backup
           deviceSelectors:
-            - hardwareAddr: 58:47:ca:77:5e:da
+            - hardwareAddr: 58:47:ca:77:57:22
               driver: i40e
         dhcp: true
         vlans:
@@ -277,10 +277,10 @@ nodes:
     ipAddress: 10.1.1.29
     controlPlane: false
     installDiskSelector:
-      size: "<= 1TB"
+      size: "<= 1.1TB"
       model: "WD_BLACK SN770 1TB"
     machineDisks:
-      - device: /dev/disk/by-id/ata-INTEL_SSDSC2BB800G4_PHWL437601XW800RGN
+      - device: /dev/disk/by-id/nvme-SAMSUNG_MZ1LB1T9HALS-00007_S436NA0N765111
         partitions:
           - mountpoint: /var/mnt/sata
     networkInterfaces:
@@ -288,7 +288,7 @@ nodes:
         bond:
           mode: active-backup
           deviceSelectors:
-            - hardwareAddr: 58:47:ca:77:5e:da
+            - hardwareAddr: 58:47:ca:77:5e:ea
               driver: i40e
         dhcp: true
         vlans:

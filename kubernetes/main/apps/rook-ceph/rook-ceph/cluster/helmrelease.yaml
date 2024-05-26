@@ -83,13 +83,22 @@ spec:
         nodes:
           - name: "k8s4"
             devices:
-              - name: "/dev/disk/by-id/nvme-WD_BLACK_SN770_1TB_22472N801099"
+              - name: "/dev/disk/by-id/nvme-SAMSUNG_MZ1LB1T9HALS-00007_S436NA0N765021"
           - name: "k8s5"
             devices:
-              - name: "/dev/disk/by-id/nvme-WD_BLACK_SN770_1TB_22472N804710"
+              - name: "/dev/disk/by-id/nvme-SAMSUNG_MZ1LB1T9HALS-00007_S436NC0R700270"
           - name: "k8s6"
             devices:
-              - name: "/dev/disk/by-id/nvme-WD_BLACK_SN770_1TB_22472N805186"
+              - name: "/dev/disk/by-id/nvme-SAMSUNG_MZ1LB1T9HALS-00007_S436NC0R700298"
+          - name: "k8s7"
+            devices:
+              - name: "/dev/disk/by-id/nvme-SAMSUNG_MZ1LB1T9HALS-00007_S436NC0R700235"
+          - name: "k8s8"
+            devices:
+              - name: "/dev/disk/by-id/nvme-SAMSUNG_MZ1LB1T9HALS-00007_S436NC0R700286"
+          - name: "k8s9"
+            devices:
+              - name: "/dev/disk/by-id/nvme-SAMSUNG_MZ1LB1T9HALS-00007_S436NC0R700149"
 
     cephBlockPools:
       - name: ceph-blockpool
