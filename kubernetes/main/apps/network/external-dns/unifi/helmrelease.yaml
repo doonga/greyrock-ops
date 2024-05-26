@@ -31,8 +31,6 @@ spec:
         env:
           - name: UNIFI_HOST
             value: https://10.1.1.1
-          - name: SERVER_HOST
-            value: 0.0.0.0
           - name: UNIFI_USER
             value: externaldns
           - name: UNIFI_PASS
@@ -42,8 +40,6 @@ spec:
                 key: externaldns_unifi_pass
           - name: LOG_LEVEL
             value: debug
-          - name: UNIFI_SKIP_TLS_VERIFY
-            value: "true"
 
     podAnnotations:
       secret.reloader.stakater.com/reload: externaldns-unifi-secrets
