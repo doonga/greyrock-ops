@@ -22,33 +22,29 @@ spec:
     domainFilters:
       - greyrock.casa
 
-    env:
-      - name: EXTERNAL_DNS_RFC2136_HOST
-        value: "10.1.1.11"
-      - name: EXTERNAL_DNS_RFC2136_PORT
-        value: "53"
-      - name: EXTERNAL_DNS_RFC2136_ZONE
-        value: "greyrock.casa"
-      - name: EXTERNAL_DNS_RFC2136_TSIG_AXFR
-        value: "true"
-      - name: EXTERNAL_DNS_RFC2136_TSIG_KEYNAME
-        value: externaldns
-      - name: EXTERNAL_DNS_RFC2136_TSIG_SECRET_ALG
-        valueFrom:
-          secretKeyRef:
-            name: externaldns-internal-secrets
-            key: bind_rndc_algorithm
-      - name: EXTERNAL_DNS_RFC2136_TSIG_SECRET
-        valueFrom:
-          secretKeyRef:
-            name: externaldns-internal-secrets
-            key: bind_rndc_secret
+    provider:
+      name: webhook
+      webhook:
+        image:
+          repository: ghcr.io/kashalls/external-dns-unifi-webhook
+          tag: v0.0.6
+        env:
+          - name: UNIFI_HOST
+            value: https://10.1.1.1
+          - name: UNIFI_USER
+            value: externaldns
+          - name: UNIFI_PASS
+            valueFrom:
+              secretKeyRef:
+                name: externaldns-internal-secrets
+                key: externaldns_internal_pass
+          - name: LOG_LEVEL
+            value: debug
 
     podAnnotations:
       secret.reloader.stakater.com/reload: externaldns-internal-secrets
 
     policy: sync
-    provider: rfc2136
 
     resources:
       requests:
@@ -64,7 +60,8 @@ spec:
       - ingress
       - service
 
-    txtPrefix: "k8s."
+    txtOwnerId: main
+    txtPrefix: "k8s.main."
 
   postRenderers:
     - kustomize:
