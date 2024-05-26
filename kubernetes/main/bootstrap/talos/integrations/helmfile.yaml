@@ -30,12 +30,12 @@ releases:
     values:
       - ../../../apps/system-controllers/kubelet-csr-approver/app/values.yaml
     needs:
-      - cilium
+      - kube-system/cilium
 
   - name: prometheus-operator-crds
     namespace: monitoring
     chart: prometheus-community/prometheus-operator-crds
     version: 11.0.0
     needs:
-      - cilium
-      - kubelet-csr-approver
+      - kube-system/cilium
+      - system-controllers/kubelet-csr-approver
