@@ -1,5 +1,4 @@
 ---
 providerRegex: |
   ^(k8s[0-9]).*
-
 bypassDnsResolution: true
