@@ -71,15 +71,12 @@ spec:
           hajimari.io/instance: "todd"
           hajimari.io/icon: "mdi:home-assistant"
         hosts:
-          - host: &hostName hass.greyrock.casa
+          - host: hass.greyrock.casa
             paths:
               - path: /
                 service:
                   identifier: app
                   port: http
-        tls:
-          - hosts:
-              - *hostName
 
     persistence:
       config:

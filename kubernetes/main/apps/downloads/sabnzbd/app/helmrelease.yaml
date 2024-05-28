@@ -94,15 +94,12 @@ spec:
           hajimari.io/icon: "mdi:download"
         className: "internal-nginx"
         hosts:
-          - host: &hostName sabnzbd.greyrock.casa
+          - host: sabnzbd.greyrock.casa
             paths:
               - path: /
                 service:
                   identifier: app
                   port: http
-        tls:
-          - hosts:
-              - *hostName
 
     persistence:
       config:

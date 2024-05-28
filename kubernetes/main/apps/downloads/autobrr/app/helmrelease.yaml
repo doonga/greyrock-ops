@@ -77,12 +77,9 @@ spec:
       app:
         className: internal-nginx
         hosts:
-          - host: &hostName autobrr.greyrock.casa
+          - host: autobrr.greyrock.casa
             paths:
               - path: /
                 service:
                   identifier: app
                   port: http
-        tls:
-          - hosts:
-              - *hostName

@@ -69,12 +69,9 @@ spec:
           hajimari.io/instance: "todd"
           hajimari.io/icon: "video-input-antenna"
         hosts:
-          - host: &host "echo-server.greyrock.casa"
+          - host: echo-server.greyrock.casa
             paths:
               - path: /
                 service:
                   identifier: app
                   port: http
-        tls:
-          - hosts:
-              - *host

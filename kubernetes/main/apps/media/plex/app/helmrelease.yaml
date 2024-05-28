@@ -82,15 +82,12 @@ spec:
           hajimari.io/icon: "mdi:plex"
         className: "external-nginx"
         hosts:
-          - host: &hostName plex.greyrock.casa
+          - host: plex.greyrock.casa
             paths:
               - path: /
                 service:
                   identifier: app
                   port: http
-        tls:
-          - hosts:
-              - *hostName
 
     persistence:
       config:

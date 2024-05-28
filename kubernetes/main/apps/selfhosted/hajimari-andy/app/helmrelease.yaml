@@ -71,13 +71,10 @@ spec:
         enabled: true
         ingressClassName: internal-nginx
         hosts:
-          - host: &hostName home-andy.greyrock.casa
+          - host: home-andy.greyrock.casa
             paths:
               - path: /
                 pathType: Prefix
-        tls:
-          - hosts:
-              - *hostName
 
     persistence:
       data:

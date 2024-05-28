@@ -351,10 +351,7 @@ spec:
         hajimari.io/instance: "todd"
         hajimari.io/icon: "mdi:plex"
       hosts:
-        - &host grafana.greyrock.casa
-      tls:
-        - hosts:
-            - *host
+        - grafana.greyrock.casa
 
     persistence:
       enabled: false

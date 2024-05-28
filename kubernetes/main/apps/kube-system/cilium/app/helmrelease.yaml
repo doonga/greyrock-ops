@@ -40,10 +40,7 @@ spec:
           enabled: true
           className: "internal-nginx"
           hosts:
-            - &host hubble-main.greyrock.casa
-          tls:
-            - hosts:
-                - *host
+            - hubble-main.greyrock.casa
 
     operator:
       prometheus:

@@ -119,15 +119,12 @@ spec:
           hajimari.io/icon: "mdi:zigbee"
         className: "internal-nginx"
         hosts:
-          - host: &hostName zigbee2mqtt.greyrock.casa
+          - host: zigbee2mqtt.greyrock.casa
             paths:
               - path: /
                 service:
                   identifier: app
                   port: http
-        tls:
-          - hosts:
-              - *hostName
 
     persistence:
       data:

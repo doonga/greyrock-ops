@@ -111,15 +111,12 @@ spec:
           hajimari.io/instance: "todd"
           hajimari.io/icon: "mdi:plex"
         hosts:
-          - host: &hostName paperless.greyrock.casa
+          - host: paperless.greyrock.casa
             paths:
               - path: /
                 service:
                   identifier: app
                   port: http
-        tls:
-          - hosts:
-              - *hostName
 
     persistence:
       data:

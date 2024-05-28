@@ -22,11 +22,8 @@ spec:
       dashboard:
         ingressClassName: "internal-nginx"
         host:
-          name: &host rook-main.greyrock.casa
+          name: rook-main.greyrock.casa
           path: "/"
-        tls:
-          - hosts:
-              - *host
     toolbox:
       enabled: false
     configOverride: |

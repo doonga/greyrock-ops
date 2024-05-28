@@ -83,15 +83,12 @@ spec:
           hajimari.io/instance: "todd"
           hajimari.io/icon: "mdi:plex"
         hosts:
-          - host: &hostName mmp.greyrock.casa
+          - host: mmp.greyrock.casa
             paths:
               - path: /
                 service:
                   identifier: app
                   port: http
-        tls:
-          - hosts:
-              - *hostName
 
     persistence:
       data:

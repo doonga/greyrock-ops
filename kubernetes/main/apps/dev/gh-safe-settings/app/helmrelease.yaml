@@ -86,15 +86,12 @@ spec:
           external-dns.alpha.kubernetes.io/target: ingress-ext.greyrock.casa
         className: "external-nginx"
         hosts:
-          - host: &hostname gh-safe-settings.greyrock.casa
+          - host: gh-safe-settings.greyrock.casa
             paths:
               - path: /
                 service:
                   identifier: app
                   port: http
-        tls:
-          - hosts:
-              - *hostname
 
     persistence:
       config:

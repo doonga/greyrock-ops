@@ -50,15 +50,12 @@ spec:
         enabled: true
         className: "internal-nginx"
         hosts:
-          - host: &host "{{ .Release.Name }}.greyrock.casa"
+          - host: {{ .Release.Name }}.greyrock.casa
             paths:
               - path: /
                 service:
                   name: main
                   port: http
-        tls:
-          - hosts:
-              - *host
 
     persistence:
       config:

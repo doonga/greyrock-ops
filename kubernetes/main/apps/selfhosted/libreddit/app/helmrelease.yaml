@@ -77,12 +77,9 @@ spec:
           hajimari.io/instance: "todd,andy"
           hajimari.io/icon: simple-icons:reddit
         hosts:
-          - host: &hostName libreddit.greyrock.casa
+          - host: libreddit.greyrock.casa
             paths:
               - path: /
                 service:
                   identifier: app
                   port: http
-        tls:
-          - hosts:
-              - *hostName

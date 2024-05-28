@@ -131,10 +131,7 @@ spec:
         ingressClassName: internal-nginx
         pathType: Prefix
         hosts:
-          - &host_prometheus prometheus-${CLUSTER_NAME}.greyrock.casa
-        tls:
-          - hosts:
-              - *host_prometheus
+          - prometheus-${CLUSTER_NAME}.greyrock.casa
 
       prometheusSpec:
         alertingEndpoints:

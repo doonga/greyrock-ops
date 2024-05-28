@@ -73,15 +73,12 @@ spec:
         enabled: true
         className: "internal-nginx"
         hosts:
-          - host: &hostName atuin.greyrock.casa
+          - host: atuin.greyrock.casa
             paths:
               - path: /
                 service:
                   identifier: app
                   port: http
-        tls:
-          - hosts:
-              - *hostName
 
     persistence:
       config:

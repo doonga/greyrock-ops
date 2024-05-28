@@ -124,15 +124,12 @@ spec:
           hajimari.io/instance: "todd,andy"
           hajimari.io/icon: "mdi:download"
         hosts:
-          - host: &hostName qbittorrent.greyrock.casa
+          - host: qbittorrent.greyrock.casa
             paths:
               - path: /
                 service:
                   identifier: app
                   port: http
-        tls:
-          - hosts:
-              - *hostName
 
     persistence:
       config:

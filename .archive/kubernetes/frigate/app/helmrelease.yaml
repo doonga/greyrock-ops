@@ -106,12 +106,9 @@ spec:
         enabled: true
         ingressClassName: "internal-nginx"
         hosts:
-          - host: &host "frigate.greyrock.casa"
+          - host: frigate.greyrock.casa
             paths:
               - path: /
-        tls:
-          - hosts:
-              - *host
 
     securityContext:
       privileged: true

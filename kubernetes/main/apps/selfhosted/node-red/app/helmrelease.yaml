@@ -60,15 +60,12 @@ spec:
           hajimari.io/instance: "todd"
           hajimari.io/icon: "mdi:nodejs"
         hosts:
-          - host: &hostName nodered.greyrock.casa
+          - host: nodered.greyrock.casa
             paths:
               - path: /
                 service:
                   identifier: app
                   port: http
-        tls:
-          - hosts:
-              - *hostName
 
     persistence:
       data:

@@ -112,15 +112,12 @@ spec:
           hajimari.io/instance: "todd"
           hajimari.io/icon: "mdi:plex"
         hosts:
-          - host: &hostName auth.greyrock.casa
+          - host: auth.greyrock.casa
             paths:
               - path: /
                 service:
                   identifier: app
                   port: http
-        tls:
-          - hosts:
-              - *hostName
 
     persistence:
       config:

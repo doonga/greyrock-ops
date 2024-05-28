@@ -72,12 +72,9 @@ spec:
           hajimari.io/instance: "todd"
           hajimari.io/icon: "mdi:plex"
         hosts:
-          - host: &host "{{ .Release.Name }}.greyrock.casa"
+          - host: thelounge.greyrock.casa
             paths:
               - path: /
                 service:
                   identifier: app
                   port: http
-        tls:
-          - hosts:
-              - *host

@@ -103,15 +103,12 @@ spec:
           hajimari.io/instance: "todd"
           hajimari.io/icon: "mdi:plex"
         hosts:
-          - host: &hostName lldap.greyrock.casa
+          - host: lldap.greyrock.casa
             paths:
               - path: /
                 service:
                   identifier: app
                   port: http
-        tls:
-          - hosts:
-              - *hostName
 
     persistence:
       data:

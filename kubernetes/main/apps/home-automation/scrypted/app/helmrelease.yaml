@@ -77,15 +77,12 @@ spec:
           hajimari.io/icon: "mdi:cctv"
         className: "internal-nginx"
         hosts:
-          - host: &hostName scrypted.greyrock.casa
+          - host: scrypted.greyrock.casa
             paths:
               - path: /
                 service:
                   identifier: app
                   port: http
-        tls:
-          - hosts:
-              - *hostName
 
     persistence:
       config:

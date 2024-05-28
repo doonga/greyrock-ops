@@ -45,13 +45,10 @@ spec:
       enabled: true
       className: internal-nginx
       hosts:
-        - host: &host "blackbox-exporter.greyrock.casa"
+        - host: blackbox-exporter.greyrock.casa
           paths:
             - path: /
               pathType: Prefix
-      tls:
-        - hosts:
-            - *host
 
     prometheusRule:
       enabled: true

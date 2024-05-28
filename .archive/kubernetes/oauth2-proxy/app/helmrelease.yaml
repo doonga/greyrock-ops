@@ -93,13 +93,10 @@ spec:
         annotations:
           external-dns.alpha.kubernetes.io/target: ingress-ext.greyrock.casa
         hosts:
-          - host: &host "auth.greyrock.casa"
+          - host: auth.greyrock.casa
             paths:
               - path: /oauth2
                 pathType: Prefix
-        tls:
-          - hosts:
-              - *host
 
     resources:
       requests:

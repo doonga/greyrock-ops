@@ -38,12 +38,9 @@ spec:
           hajimari.io/icon: "mdi:draw-pen"
           external-dns.alpha.kubernetes.io/target: ingress-ext.greyrock.casa
         hosts:
-          - host: &host "draw.greyrock.casa"
+          - host: draw.greyrock.casa
             paths:
               - path: /
-        tls:
-          - hosts:
-              - *host
 
     resources:
       requests:
