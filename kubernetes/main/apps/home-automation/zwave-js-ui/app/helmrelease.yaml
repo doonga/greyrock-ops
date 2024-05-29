@@ -85,9 +85,6 @@ spec:
                 service:
                   identifier: app
                   port: http
-        tls:
-          - hosts:
-              - ${HOSTNAME}
 
     persistence:
       data:
