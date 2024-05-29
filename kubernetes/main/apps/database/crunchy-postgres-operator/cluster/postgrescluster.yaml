@@ -103,11 +103,6 @@ spec:
         - wallabag
       password:
         type: AlphaNumeric
-    - name: zipline
-      databases:
-        - zipline
-      password:
-        type: AlphaNumeric
 
   backups:
     pgbackrest:
