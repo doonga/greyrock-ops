@@ -3,7 +3,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: externaldns-internal
+  name: externaldns-unifi
 spec:
   interval: 30m
   chart:
@@ -17,11 +17,14 @@ spec:
       interval: 30m
 
   values:
-    fullnameOverride: &name externaldns-internal
-
+    fullnameOverride: &name externaldns-unifi
     domainFilters:
       - greyrock.casa
-
+    extraArgs:
+      - --ignore-ingress-tls-spec
+    podAnnotations:
+      secret.reloader.stakater.com/reload: externaldns-unifi-secret
+    policy: sync
     provider:
       name: webhook
       webhook:
@@ -32,53 +35,37 @@ spec:
           - name: UNIFI_HOST
             value: https://10.1.1.1
           - name: UNIFI_USER
-            value: externaldns
+            value: external-dns
           - name: UNIFI_PASS
             valueFrom:
               secretKeyRef:
-                name: externaldns-internal-secrets
-                key: externaldns_internal_pass
-          - name: LOG_LEVEL
-            value: debug
-
+                name: external-dns-unifi-secret
+                key: external_dns_password
         livenessProbe:
           httpGet:
             path: /healthz
             port: http-wh-metrics
           initialDelaySeconds: 10
           timeoutSeconds: 5
-
         readinessProbe:
           httpGet:
             path: /readyz
             port: http-wh-metrics
           initialDelaySeconds: 10
           timeoutSeconds: 5
-
-    extraArgs:
-      - --ignore-ingress-tls-spec
-
-    podAnnotations:
-      secret.reloader.stakater.com/reload: externaldns-internal-secrets
-
-    policy: sync
-
     resources:
       requests:
         cpu: 16m
         memory: 90M
       limits:
         memory: 90M
-
     serviceMonitor:
       enabled: true
-
     sources:
       - ingress
       - service
-
     txtOwnerId: main
-    txtPrefix: "k8s.main."
+    txtPrefix: "k8s."
 
   postRenderers:
     - kustomize:
