@@ -61,6 +61,9 @@ spec:
             - name: Mesh Central
               url: https://meshcentral.greyrock.casa
               icon: video-switch
+            - name: Unifi
+              url: "https://unifi.ui.com"
+              icon: simple-icons:ubiquiti
 
       globalBookmarks:
         - group: FFXIV

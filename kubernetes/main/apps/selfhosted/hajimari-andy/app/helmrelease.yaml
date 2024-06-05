@@ -54,6 +54,12 @@ spec:
           icon: simple-icons:google
           searchUrl: https://www.google.com/search?q={query}
           url: https://www.google.com
+      customApps:
+        - group: Network
+          apps:
+            - name: Unifi
+              url: "https://unifi.ui.com"
+              icon: simple-icons:ubiquiti
       globalBookmarks:
         - group: FFXIV
           bookmarks:
