@@ -45,7 +45,6 @@ spec:
         type: LoadBalancer
         annotations:
           io.cilium/lb-ipam-ips: "10.1.1.159"
-        externalTrafficPolicy: Cluster
         ports:
           http:
             port: 8080
