@@ -72,10 +72,9 @@ nodes:
     ipAddress: 10.1.1.24
     controlPlane: false
     installDiskSelector:
-      size: "<= 1.1TB"
-      model: "WD_BLACK SN770 1TB"
+      serial: S436NA0N765014
     machineDisks:
-      - device: /dev/disk/by-id/nvme-SAMSUNG_MZ1LB1T9HALS-00007_S436NA0N765014
+      - device: /dev/disk/by-id/nvme-SAMSUNG_MZ1LB1T9HALS-00007_S436NA0N765021
         partitions:
           - mountpoint: /var/mnt/sata
     networkInterfaces:
@@ -113,10 +112,9 @@ nodes:
     ipAddress: 10.1.1.25
     controlPlane: false
     installDiskSelector:
-      size: "<= 1.1TB"
-      model: "WD_BLACK SN770 1TB"
+      serial: S436NC0R700234
     machineDisks:
-      - device: /dev/disk/by-id/nvme-SAMSUNG_MZ1LB1T9HALS-00007_S436NC0R700234
+      - device: /dev/disk/by-id/nvme-SAMSUNG_MZ1LB1T9HALS-00007_S436NC0R700270
         partitions:
           - mountpoint: /var/mnt/sata
     networkInterfaces:
@@ -154,10 +152,9 @@ nodes:
     ipAddress: 10.1.1.26
     controlPlane: false
     installDiskSelector:
-      size: "<= 1.1TB"
-      model: "WD_BLACK SN770 1TB"
+      serial: S436NC0R700283
     machineDisks:
-      - device: /dev/disk/by-id/nvme-SAMSUNG_MZ1LB1T9HALS-00007_S436NC0R700283
+      - device: /dev/disk/by-id/nvme-SAMSUNG_MZ1LB1T9HALS-00007_S436NC0R700298
         partitions:
           - mountpoint: /var/mnt/sata
     networkInterfaces:
@@ -195,10 +192,9 @@ nodes:
     ipAddress: 10.1.1.27
     controlPlane: false
     installDiskSelector:
-      size: "<= 1.1TB"
-      model: "WD_BLACK SN770 1TB"
+      serial: S436NC0R700299
     machineDisks:
-      - device: /dev/disk/by-id/nvme-SAMSUNG_MZ1LB1T9HALS-00007_S436NC0R700299
+      - device: /dev/disk/by-id/nvme-SAMSUNG_MZ1LB1T9HALS-00007_S436NC0R700235
         partitions:
           - mountpoint: /var/mnt/sata
     networkInterfaces:
@@ -236,10 +232,9 @@ nodes:
     ipAddress: 10.1.1.28
     controlPlane: false
     installDiskSelector:
-      size: "<= 1.1TB"
-      model: "WD_BLACK SN770 1TB"
+      serial: S436NC0R700280
     machineDisks:
-      - device: /dev/disk/by-id/nvme-SAMSUNG_MZ1LB1T9HALS-00007_S436NC0R700280
+      - device: /dev/disk/by-id/nvme-SAMSUNG_MZ1LB1T9HALS-00007_S436NC0R700286
         partitions:
           - mountpoint: /var/mnt/sata
     networkInterfaces:
@@ -277,10 +272,9 @@ nodes:
     ipAddress: 10.1.1.29
     controlPlane: false
     installDiskSelector:
-      size: "<= 1.1TB"
-      model: "WD_BLACK SN770 1TB"
+      serial: S436NA0N765111
     machineDisks:
-      - device: /dev/disk/by-id/nvme-SAMSUNG_MZ1LB1T9HALS-00007_S436NA0N765111
+      - device: /dev/disk/by-id/nvme-SAMSUNG_MZ1LB1T9HALS-00007_S436NC0R700149
         partitions:
           - mountpoint: /var/mnt/sata
     networkInterfaces:
