@@ -117,6 +117,7 @@ spec:
           hajimari.io/enable: "true"
           hajimari.io/instance: "todd"
           hajimari.io/icon: "mdi:zigbee"
+          external-dns.alpha.kubernetes.io/target: ingress-int.greyrock.casa
         className: "internal-nginx"
         hosts:
           - host: zigbee2mqtt.greyrock.casa

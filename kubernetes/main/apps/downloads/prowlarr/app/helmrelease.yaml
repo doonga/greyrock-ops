@@ -83,6 +83,7 @@ spec:
           hajimari.io/enable: "true"
           hajimari.io/instance: "todd"
           hajimari.io/icon: "mdi:movie-search"
+          external-dns.alpha.kubernetes.io/target: ingress-int.greyrock.casa
         className: "internal-nginx"
         hosts:
           - host: prowlarr.greyrock.casa

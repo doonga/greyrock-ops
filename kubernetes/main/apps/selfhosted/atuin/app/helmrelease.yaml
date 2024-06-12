@@ -72,6 +72,8 @@ spec:
       app:
         enabled: true
         className: "internal-nginx"
+        annotations:
+          external-dns.alpha.kubernetes.io/target: ingress-int.greyrock.casa
         hosts:
           - host: atuin.greyrock.casa
             paths:

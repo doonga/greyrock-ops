@@ -44,6 +44,8 @@ spec:
     ingress:
       enabled: true
       className: internal-nginx
+      annotations:
+        external-dns.alpha.kubernetes.io/target: ingress-int.greyrock.casa
       hosts:
         - host: blackbox-exporter.greyrock.casa
           paths:

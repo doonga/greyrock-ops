@@ -92,6 +92,7 @@ spec:
           hajimari.io/enable: "true"
           hajimari.io/instance: "todd,andy"
           hajimari.io/icon: "mdi:download"
+          external-dns.alpha.kubernetes.io/target: ingress-int.greyrock.casa
         className: "internal-nginx"
         hosts:
           - host: sabnzbd.greyrock.casa

@@ -71,6 +71,7 @@ spec:
           hajimari.io/enable: "true"
           hajimari.io/instance: "todd"
           hajimari.io/icon: "mdi:plex"
+          external-dns.alpha.kubernetes.io/target: ingress-int.greyrock.casa
         hosts:
           - host: thelounge.greyrock.casa
             paths:

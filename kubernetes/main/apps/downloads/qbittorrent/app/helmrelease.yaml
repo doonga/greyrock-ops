@@ -123,6 +123,7 @@ spec:
           hajimari.io/enable: "true"
           hajimari.io/instance: "todd,andy"
           hajimari.io/icon: "mdi:download"
+          external-dns.alpha.kubernetes.io/target: ingress-int.greyrock.casa
         hosts:
           - host: qbittorrent.greyrock.casa
             paths:

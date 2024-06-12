@@ -134,6 +134,8 @@ spec:
       ingress:
         enabled: true
         ingressClassName: internal-nginx
+        annotations:
+          external-dns.alpha.kubernetes.io/target: ingress-int.greyrock.casa
         hosts:
           - vmalert.greyrock.casa
 
@@ -166,6 +168,8 @@ spec:
       ingress:
         enabled: true
         ingressClassName: internal-nginx
+        annotations:
+          external-dns.alpha.kubernetes.io/target: ingress-int.greyrock.casa
         hosts:
           - vmagent.greyrock.casa
 

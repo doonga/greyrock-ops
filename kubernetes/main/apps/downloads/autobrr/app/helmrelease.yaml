@@ -75,7 +75,9 @@ spec:
 
     ingress:
       app:
-        className: internal-nginx
+        className:
+        annotations:
+          external-dns.alpha.kubernetes.io/target: ingress-int.greyrock.casa
         hosts:
           - host: autobrr.greyrock.casa
             paths:

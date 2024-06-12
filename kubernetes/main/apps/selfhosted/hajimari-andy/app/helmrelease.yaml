@@ -76,6 +76,8 @@ spec:
       main:
         enabled: true
         ingressClassName: internal-nginx
+        annotations:
+          external-dns.alpha.kubernetes.io/target: ingress-int.greyrock.casa
         hosts:
           - host: home-andy.greyrock.casa
             paths:
