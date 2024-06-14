@@ -110,7 +110,7 @@ spec:
             add_header X-XSS-Protection "1; mode=block";
           hajimari.io/enable: "true"
           hajimari.io/instance: "todd"
-          hajimari.io/icon: "mdi:plex"
+          hajimari.io/icon: "simple-icons:authelia"
         hosts:
           - host: auth.greyrock.casa
             paths:

@@ -81,7 +81,7 @@ spec:
         annotations:
           hajimari.io/enable: "true"
           hajimari.io/instance: "todd"
-          hajimari.io/icon: "mdi:plex"
+          hajimari.io/icon: "simple-icons:bambulab"
           external-dns.alpha.kubernetes.io/target: ingress-int.greyrock.casa
         hosts:
           - host: mmp.greyrock.casa

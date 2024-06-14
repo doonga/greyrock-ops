@@ -71,7 +71,7 @@ spec:
           nginx.ingress.kubernetes.io/auth-snippet: proxy_set_header X-Forwarded-Method $request_method;
           hajimari.io/enable: "true"
           hajimari.io/instance: "todd"
-          hajimari.io/icon: "mdi:plex"
+          hajimari.io/icon: "mdi:bookmark-check"
         hosts:
           - host: bookmarks.greyrock.casa
             paths:

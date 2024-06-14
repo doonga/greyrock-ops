@@ -58,6 +58,9 @@ spec:
         className: "internal-nginx"
         annotations:
           external-dns.alpha.kubernetes.io/target: ingress-int.greyrock.casa
+          hajimari.io/enable: "true"
+          hajimari.io/instance: "todd"
+          hajimari.io/icon: "simple-icons:speedtest"
         hosts:
           - host: openspeedtest.greyrock.casa
             paths:
