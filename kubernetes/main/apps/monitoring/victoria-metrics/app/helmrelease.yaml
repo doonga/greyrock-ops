@@ -34,7 +34,7 @@ spec:
         replicationFactor: 3
         # Storage backend
         vmstorage:
-          replicaCount: 3
+          replicaCount: 6
           # required for HA vmagents
           resources:
             requests:
@@ -61,7 +61,7 @@ spec:
                     storage: 10Gi
         # Query backend
         vmselect:
-          replicaCount: 2 # HA
+          replicaCount: 3 # HA
           resources:
             requests:
               cpu: 100m
@@ -90,7 +90,7 @@ spec:
                     storage: 2Gi
         # Data ingestion backend
         vminsert:
-          replicaCount: 2 # HA
+          replicaCount: 3 # HA
           resources:
             requests:
               cpu: 100m
