@@ -75,6 +75,9 @@ spec:
         className: internal-nginx
         annotations:
           external-dns.alpha.kubernetes.io/target: ingress-int.greyrock.casa
+          hajimari.io/enable: "true"
+          hajimari.io/instance: "todd"
+          hajimari.io/icon: "mdi:plex"
         hosts:
           - host: tautulli.greyrock.casa
             paths:
