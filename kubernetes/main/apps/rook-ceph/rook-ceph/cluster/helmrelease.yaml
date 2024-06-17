@@ -82,22 +82,22 @@ spec:
         nodes:
           - name: "k8s4"
             devices:
-              - name: "/dev/disk/by-id/nvme-SAMSUNG_MZ1LB1T9HALS-00007_S436NA0N765021"
+              - name: "/dev/disk/by-id/nvme-WUS3CA116C7P3E3_A053C229"
           - name: "k8s5"
             devices:
-              - name: "/dev/disk/by-id/nvme-SAMSUNG_MZ1LB1T9HALS-00007_S436NC0R700270"
+              - name: "/dev/disk/by-id/nvme-WUS3CA116C7P3E3_A052E476"
           - name: "k8s6"
             devices:
-              - name: "/dev/disk/by-id/nvme-SAMSUNG_MZ1LB1T9HALS-00007_S436NC0R700298"
+              - name: "/dev/disk/by-id/nvme-WUS3CA116C7P3E3_A052E4DA"
           - name: "k8s7"
             devices:
-              - name: "/dev/disk/by-id/nvme-SAMSUNG_MZ1LB1T9HALS-00007_S436NC0R700235"
+              - name: "/dev/disk/by-id/nvme-WUS3CA116C7P3E3_A053C1D7"
           - name: "k8s8"
             devices:
-              - name: "/dev/disk/by-id/nvme-SAMSUNG_MZ1LB1T9HALS-00007_S436NC0R700286"
+              - name: "/dev/disk/by-id/nvme-WUS3CA116C7P3E3_A052E486"
           - name: "k8s9"
             devices:
-              - name: "/dev/disk/by-id/nvme-SAMSUNG_MZ1LB1T9HALS-00007_S436NC0R700149"
+              - name: "/dev/disk/by-id/nvme-WUS3CA116C7P3E3_A053C251"
 
     cephBlockPools:
       - name: ceph-blockpool
