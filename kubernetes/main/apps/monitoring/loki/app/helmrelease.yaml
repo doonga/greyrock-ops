@@ -122,7 +122,7 @@ spec:
             paths:
               - path: /
                 pathType: Prefix
-
+        tls: []
     write:
       replicas: 2
       persistence:
