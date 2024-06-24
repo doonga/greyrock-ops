@@ -6,7 +6,6 @@
       matchDatasources: ["docker"],
       matchPackageNames: [
         "ghcr.io/onedr0p/plex",
-        "ghcr.io/onedr0p/qbittorrent",
       ],
       versioning: "loose",
     },
@@ -17,16 +16,10 @@
       versioning: "regex:^(?<major>\\d+)$",
     },
     {
-      description: "Custom versioning for Minio",
-      matchDatasources: ["docker"],
-      versioning: "regex:^RELEASE\\.(?<major>\\d+)-(?<minor>\\d+)-(?<patch>\\d+)T.*Z(-(?<compatibility>.*))?$",
-      matchPackageNames: ["quay.io/minio/minio"],
-    },
-    {
       description: "Custom versioning for miniflux",
       matchDatasources: ["docker"],
-      versioning: "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)-(?<compatibility>)$",
       matchPackageNames: ["ghcr.io/miniflux/miniflux"],
+      versioning: "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)-(?<compatibility>)$",
     },
   ],
 }
