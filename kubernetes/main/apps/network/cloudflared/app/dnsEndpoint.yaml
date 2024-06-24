@@ -7,4 +7,4 @@ spec:
   endpoints:
     - dnsName: ingress-ext.greyrock.casa
       recordType: CNAME
-      targets: ["0bebc764-6f55-4f28-a348-26e54944333d.cfargotunnel.com"]
+      targets: ["c34f5ea8-1d3d-44f9-871e-b0ae0528b2c9.cfargotunnel.com"]
