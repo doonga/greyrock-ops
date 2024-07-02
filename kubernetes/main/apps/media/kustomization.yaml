@@ -7,6 +7,6 @@ resources:
   - ./namespace.yaml
 
   # Flux-Kustomizations
-  - ./maintainerr/ks.yaml
+  # - ./maintainerr/ks.yaml
   # - ./plex/ks.yaml
   # - ./tautulli/ks.yaml
