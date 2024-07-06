@@ -7,10 +7,10 @@ resources:
   - ./namespace.yaml
 
   # Flux-Kustomizations
-  - ./ambientweather2mqtt/ks.yaml
+  # - ./ambientweather2mqtt/ks.yaml
   - ./esphome/ks.yaml
-  - ./home-assistant/ks.yaml
-  - ./mosquitto/ks.yaml
+  # - ./home-assistant/ks.yaml
+  # - ./mosquitto/ks.yaml
   # - ./scrypted/ks.yaml
-  - ./zigbee2mqtt/ks.yaml
-  - ./zwave-js-ui/ks.yaml
+  # - ./zigbee2mqtt/ks.yaml
+  # - ./zwave-js-ui/ks.yaml
