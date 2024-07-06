@@ -8,7 +8,7 @@ resources:
 
   # Flux-Kustomizations
   # - ./ambientweather2mqtt/ks.yaml
-  - ./esphome/ks.yaml
+  # - ./esphome/ks.yaml
   # - ./home-assistant/ks.yaml
   # - ./mosquitto/ks.yaml
   # - ./scrypted/ks.yaml
