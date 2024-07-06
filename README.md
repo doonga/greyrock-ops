@@ -1,3 +1,5 @@
+As of 7/6/24, I've decided to move back to a simpler setup. This repo is no longer in service.
+
 <div align="center">
 
 <img src="https://github.com/doonga/doonga/blob/main/_assets/images/logo.jpg?raw=true" width="144px" height="144px"/>
